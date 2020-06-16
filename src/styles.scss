@@ -1,0 +1,86 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'reset'; // 0.7 kb
+@import 'var';
+@import 'ngx-theme'; // 62 kb
+@import 'typography'; // 1kb
+@import 'common'; //0.5 kb
+// @import 'grid'; //8.5 kb
+:root {
+  font-size: 16px;
+  @media (max-width: 767px) {
+    font-size: 14px;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: $font, 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: #fff;
+}
+
+/* Change the white to any color ;) */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  box-shadow: 0 0 0 30px white inset !important;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #eee;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3d82ab;
+  border-radius: 3px;
+}
+
+.btn_primary,
+.btn_secondry {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3d82ab;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 10px 30px;
+  border: 0;
+  font-family: 'Roboto', sans-serif, 'Helvetica Neue', sans-serif;
+  cursor: pointer;
+}
+
+.btn_secondry {
+  padding: 8px 30px;
+  border: 2px solid #3d82ab;
+  color: #3d82ab;
+  background: transparent;
+}
+input[type='file'] {
+  display: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}

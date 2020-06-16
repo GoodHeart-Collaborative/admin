@@ -1,0 +1,180 @@
+<!-- <div class="mat-card page-heading">
+  <h1 class="mat-title">Users</h1>
+</div>
+
+<div class="mat-card">
+
+  <div class="row">
+    <div class="col-md-6">
+      <app-search-filter [placeholder]="'Search by name, email'" (setSearch)="setSearch($event)"></app-search-filter>
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-sm-8">
+
+        </div>
+        <div class="col-sm-4">
+          <button class="filter_btn" mat-fab color="primary" matTooltip="Filter" type="button"
+            (click)="showFilter=!showFilter">
+            <mat-icon>filter_list</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <mat-expansion-panel class="adminFilter" [expanded]="showFilter">
+    <div class="mat_filter">
+      <form [formGroup]="userListingForm">
+        <div class="row">
+          <div class="col-sm-6">
+            <app-date-filter [dateObject]="filterObject.registrationDate">
+            </app-date-filter>
+          </div>
+          <div class="col-sm-6">
+            <app-range-filter></app-range-filter>
+          </div>
+          <div class="col-sm-3">
+            <app-dropdown-filter [dropdown]="filterObject.status" class="drop-down-filter"></app-dropdown-filter>
+          </div>
+          <div class="col-sm-12">
+            <div class="form-btn text-center">
+              <button filter_btn mat-stroked-button [disabled]="disable()" (click)="resetFilter()"> Reset
+              </button>
+              <button filter_btn mat-raised-button color="primary" [disabled]="disable()" (click)="filter()">
+                Filter </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </mat-expansion-panel>
+  <div class="table-wrapper">
+    <table mat-table [dataSource]="userList" matSort (matSortChange)="sortData($event)">
+
+      <ng-container *ngIf="isNotification" matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef width="60px">
+          <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()" color="primary">
+          </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+            [checked]="selection.isSelected(row)" color="primary">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> S. No </th>
+        <td mat-cell *matCellDef="let user;let i = index"> {{getSerialNumber(i+1)}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>
+          Name
+        </th>
+        <td mat-cell *matCellDef="let user">
+          <span class="name-wrapper">
+            <a [routerLink]="['USER_DETAIL' | absolutePath,user._id]" routerLinkActive="active">{{user.name}}</a>
+          </span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef class="white_space">
+          <span class="email-wrapper">Email</span>
+        </th>
+        <td mat-cell *matCellDef="let user">
+          {{user.email}}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="white_space">
+          <span class="email-wrapper">Registration Date</span>
+        </th>
+        <td mat-cell *matCellDef="let user">
+          {{user.createdAt|customDate}}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef class="text-center white_space">
+          Mobile Number
+        </th>
+        <td mat-cell *matCellDef="let user" class="text-center">
+          {{user.countryCode}} - {{user.phoneNo}}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="noOfBooking">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center white_space">
+          Bookings
+        </th>
+        <td mat-cell *matCellDef="let user" class="text-center">
+          0
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef class="text-center">
+          Status
+        </th>
+        <td mat-cell *matCellDef="let user" class="text-center "
+          [ngClass]="user.status == userStatus.ACTIVE ? 'status-active' : 'status-inactive'">
+          {{ user.status|titlecase }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action" *ngIf="!isNotification">
+        <th mat-header-cell *matHeaderCellDef class="white_space">
+          Action
+        </th>
+        <td mat-cell *matCellDef="let user">
+          <div class="action_btn">
+            <button mat-button matTooltip=" {{ user.status == userStatus.ACTIVE ? 'Block' : 'Unblock' }}"
+              (click)="changeStatus(user.status == userStatus.ACTIVE?'BLOCKED':'ACTIVE',user._id)">
+              <mat-icon>{{ user.status == userStatus.ACTIVE ? 'lock_open' : 'lock' }}</mat-icon>
+            </button>
+          </div>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let user; columns: displayedColumns;">
+      </tr>
+    </table>
+    <div *ngIf="total===0">
+      <div class="_tableNoData">No Record Found</div>
+    </div>
+  </div>
+  <mat-paginator *ngIf="userList.data.length" [length]="total" [pageIndex]="page-1" [pageSize]="pageSize"
+    [pageSizeOptions]="pageOptions" (page)="changePage($event)">
+  </mat-paginator>
+</div> -->
+
+<app-listing (changeListEvent)="onTableEventChange($event)" [config]="listingConfig">
+  <app-table [tableSource]="tableSource">
+    <<ng-template appFor="name" let-row="row">
+      {{row.name}}
+      <!-- <a [routerLink]="['USER_DETAIL' | absolutePath,row._id]" routerLinkActive="active">{{row.name}}</a> -->
+      </ng-template>
+      <<ng-template appFor="createdAt" let-row="row">
+        {{row.createdAt | customDate}}
+        </ng-template>
+
+        <ng-template appFor="actions" let-row="row">
+          <button (click)="blockUser(row._id)" *ngIf="row.status == 'active'" mat-button matTooltip="Block">
+            <mat-icon>block</mat-icon>
+          </button>
+
+          <button (click)="unblockUser(row._id)" *ngIf="row.status == 'block'" mat-button matTooltip="UnBlock">
+            <mat-icon>update</mat-icon>
+          </button>
+
+          <button (click)="deleteUser(row._id)" mat-button matTooltip="Delete">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </ng-template>
+  </app-table>
+</app-listing>

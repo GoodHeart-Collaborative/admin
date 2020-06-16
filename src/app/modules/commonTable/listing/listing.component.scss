@@ -1,0 +1,153 @@
+// @import 'app.scss';
+.filter_options {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.filterButton {
+  border: 0;
+  border-radius: 100%;
+  background: #eee;
+  width: 40px;
+  height: 40px;
+  padding-top: 7px;
+  outline: none;
+  &.add {
+    margin-right: 10px;
+  }
+}
+
+.actionWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.searchWrapper {
+  width: 500px;
+}
+
+.listHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.rightFilterWrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.totalList {
+  font-size: 14px;
+  // background: $theme_blue_dark;
+  padding: 9px 16px;
+  border-radius: 5px;
+  color: var(--white);
+  // font-family: $theme_font;
+  font-weight: 500;
+  margin-right: 10px;
+  margin-bottom: 3px;
+  margin-left: 15px;
+  // @extend %imageHover;
+}
+
+.tableTitle {
+  display: block;
+  // background: #04bdba3d;
+  // border-left: 4px solid #0c8280;
+}
+
+.tableHeader {
+  padding: 0px 15px 10px 15px;
+  // font-family: $theme_font;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.mr-10 {
+  margin-right: 10px !important;
+}
+
+.pd-0 {
+  padding: 0 !important;
+}
+
+.pdlr-15 {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+
+.mat-card-content {
+  padding: 0 15px;
+}
+
+.headerText {
+  font-size: 21px;
+  font-weight: 600;
+  color: #000000;
+}
+
+// cstm table
+.cstm_common_table {
+  overflow: auto;
+  .table_heading {
+    margin-bottom: 30px;
+    h3 {
+      font-size: 21px;
+      font-weight: 700;
+      color: #000000;
+    }
+  }
+  .cstm_table {
+    .x-scroll {
+      min-width: 991px;
+      max-height: 546px;
+      overflow-x: auto;
+    }
+  }
+}
+
+:host ::ng-deep {
+  .mat-paginator-page-size-label,
+  .mat-paginator-range-label {
+    margin: 0 4px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #59798b;
+  }
+  .mat-paginator-icon {
+    path {
+      fill: #479ee9;
+    }
+  }
+  .mat-paginator-navigation-previous {
+    .mat-button-wrapper {
+      .mat-paginator-icon {
+        path {
+          fill: #59798b;
+        }
+      }
+    }
+  }
+  .mat-paginator-navigation-first {
+    .mat-button-wrapper {
+      .mat-paginator-icon {
+        path {
+          fill: #59798b;
+        }
+      }
+    }
+  }
+}
+
+.noData {
+  font-size: 1rem;
+  text-align: center;
+  padding: 20px 0;
+}

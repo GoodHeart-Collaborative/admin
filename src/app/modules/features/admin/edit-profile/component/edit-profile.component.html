@@ -1,0 +1,37 @@
+<div class="mat-card page-heading">
+  <div class="mat-title">Edit Profile</div>
+</div>
+<input type="file" accept="image/x-png,image/jpeg" (change)="onSelectFile($event)" matTooltip="Change Image" />
+<div class="mat-card">
+  <form [formGroup]="editProfileForm" (ngSubmit)="editProfile()">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="img">
+          <img [src]="profilePicURL|customImage:'USER'|async" alt="">
+
+          <button type="button" class="camBtn" (click)="file.click()" mat-mini-fab color="primary">
+            <mat-icon>camera_alt</mat-icon>
+            <input type="file" accept="image/x-png,image/jpeg" #file (change)="onSelectFile($event)"
+              matTooltip="Change Image" />
+          </button>
+        </div>
+      </div>
+
+      <div class="col-md-9">
+        <div class="row admin-info">
+          <div class="col-sm-6">
+            <mat-form-field>
+              <input matInput formControlName="name" placeholder="Name">
+              <mat-error>{{getControl('name')|validate:'name'}}</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="form-btn">
+      <button mat-raised-button [routerLink]="['SETTINGS'|absolutePath]">Cancel</button>
+      <button mat-raised-button color="primary">Update</button>
+    </div>
+  </form>
+</div>

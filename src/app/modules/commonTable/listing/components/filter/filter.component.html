@@ -1,0 +1,18 @@
+<div class="filter__header">
+  <!-- <button mat-icon-button (click)="onCloseHandler()">
+    <mat-icon>arrow_back</mat-icon>
+  </button> -->
+  <span (click)="onCloseHandler()" style="margin: 0 10px;cursor: pointer;">
+    <mat-icon>arrow_back</mat-icon>
+  </span>
+
+
+  <span class="filter__title">{{ label }}</span>
+</div>
+<div class="filter_body">
+  <ng-content></ng-content>
+</div>
+<div class="filter__actions">
+  <button class="btn_secondry " (click)="reset.emit()">Reset</button>
+  <button class="btn_primary" (click)="apply.emit()">Apply</button>
+</div>

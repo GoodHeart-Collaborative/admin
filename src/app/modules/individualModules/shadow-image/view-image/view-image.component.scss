@@ -1,0 +1,51 @@
+// @import 'app.scss';
+._imgOverly {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  img {
+    object-fit: contain;
+    -o-object-fit: contain;
+    object-fit: contain;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    cursor: zoom-out;
+  }
+}
+// ._viewImgOverly {
+//   background-color: #fff;
+// }
+
+.pdf-container {
+  h4 {
+    // background: $theme_blue_dark;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    // color: $theme_white;
+    font-weight: 600;
+  }
+  .close {
+    position: absolute;
+    top: 4px;
+    right: 10px;
+    width: 25px;
+    height: 25px;
+    opacity: 1;
+    svg {
+      fill: #fff;
+    }
+  }
+}
+
+:host ::ng-deep {
+  .--real1x5P {
+    .mat-dialog-container {
+      padding: 0 !important;
+      box-shadow: none;
+      background: transparent;
+    }
+  }
+}

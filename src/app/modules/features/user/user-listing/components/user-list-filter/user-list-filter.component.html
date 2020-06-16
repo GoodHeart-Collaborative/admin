@@ -1,0 +1,10 @@
+<app-filter (apply)="onApplyHandler()" (reset)="resetFilter()">
+    <form [formGroup]="userFilterForm">
+        <app-date-filter [dateObject]="userFilterObject.registrationDate"></app-date-filter>
+        <app-min-max-filter [rangeObject]="userFilterObject.bookingRange"></app-min-max-filter>
+
+        <app-dropdown-filter [dropdown]="userFilterObject.companyType"></app-dropdown-filter>
+
+
+    </form>
+</app-filter>
