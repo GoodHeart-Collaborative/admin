@@ -17,13 +17,21 @@ export class HttpService {
   }
 
   post<T>(url, data, loader = true): Observable<ApiResponse<T>> {
-    if (loader) {
+    return new Observable(observe => observe.next({ 
+      statusCode: 200,
+      message: 'er development',
+      data: null}))    
+      if (loader) {
       this._loaderService.loader.next(loader);
     }
     return this.http.post<ApiResponse<T>>(this.apiUrl + url, data);
   }
 
   put<T>(url, data?, loader = true): Observable<ApiResponse<T>> {
+    return new Observable(observe => observe.next({ 
+      statusCode: 200,
+      message: 'er development',
+      data: null}))
     if (loader) {
       this._loaderService.loader.next(loader);
     }
@@ -31,10 +39,18 @@ export class HttpService {
   }
 
   delete<T>(url, loader = true): Observable<ApiResponse<T>> {
+    return new Observable(observe => observe.next({ 
+      statusCode: 200,
+      message: 'er development',
+      data: null}));
     return this.http.delete<ApiResponse<T>>(this.apiUrl + url);
   }
 
   patch<T>(url, data, loader = true): Observable<ApiResponse<T>> {
+    return new Observable(observe => observe.next({ 
+      statusCode: 200,
+      message: 'er development',
+      data: null}))
     if (loader) {
       this._loaderService.loader.next(loader);
     }
@@ -42,6 +58,10 @@ export class HttpService {
   }
 
   get<T>(url, httpParams?: any, loader = true): Observable<ApiResponse<T>> {
+    return new Observable(observe => observe.next({ 
+      statusCode: 200,
+      message: 'er development',
+      data: null}))
     if (loader) {
       this._loaderService.loader.next(loader);
     }
