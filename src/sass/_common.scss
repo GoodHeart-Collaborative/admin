@@ -1,15 +1,4 @@
 @import 'var';
-/* 
-===================
-
-WRITE YOUR CODE FOR THEME COMPONENTS
-
-===================
-WARNING: this will apply in global style css so write only important common css here.
-*/
-
-/* --- FORM COMPONENT --- */
-
 mat-form-field {
     width: 100%;
     margin-bottom: 10px;
@@ -24,10 +13,18 @@ mat-form-field {
 .mat-raised-button,
 .mat-icon-button,
 .mat-stroked-button {
-    font-size: 1rem;
-    letter-spacing: 0.01rem;
-    // height: 42px;
     font-weight: 400;
+    height: auto;
+    padding: 6px 12px !important;
+    line-height: initial !important;
+    min-width: 80 !important;
+    @media screen and (max-width: 1600px) {
+        padding: 5px 10px !important;
+    }
+
+    @media screen and (max-width: 568px) {
+        padding: 4px 8px !important;
+    }
 }
 
 
@@ -40,8 +37,7 @@ mat-form-field {
     position: relative;
     padding: 16px;
     border-radius: 2px;
-    box-shadow: rgba(35, 47, 53, 0.09) 0px 2px 8px 0px !important;
-    & + .mat-card {margin-top: 20px;}
+    box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.2) !important;
 }
 
 .mat-radio-group {

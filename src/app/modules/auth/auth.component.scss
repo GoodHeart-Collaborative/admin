@@ -1,62 +1,67 @@
-@import 'var';
-.account_wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    height: 100%;
-    .left_banner {
-        flex-basis: 40%;
-        max-width: 40%;
-        background-color: #f5fbff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-    }
-    .right_form {
-        flex-basis: 60%;
-        max-width: 60%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-}
-
-.form_wrap {
-    max-width: 400px;
-}
-.banner_wrap {
-    position: relative;
-    z-index: 2;
-    padding:0 50px;
-}
-
-.logo_blk {
-    // background-color: #ffffff;
-    border-radius: 3px;
-    img {
-        max-width: 160px;
-        display: flex;
-    }
-}
-
-.textInfo {
-    margin-top: 40px;
-    color: #fff;
-    .mat-h1 {
-        color:#3d82ab;
-        font-weight: 600;
-    }
-    p {
-        font-size: 18px;
-        &::before {
-            content: '';
-            position: relative;
-            background: url(/assets/default-image/check.svg) center/20px no-repeat;
-            width: 22px;
-            height: 22px;
-            display: inline-block;
-            vertical-align: middle;
-            margin-right: 10px;
-        }
-    }
+.on-boarding-page{
+	mat-card {
+		width: 400px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		border-radius: 10px;
+		@media screen and (max-width: 1500px){
+			width: 350px;
+		}
+		@media screen and (max-width: 440px){
+			width: 90%;
+		}
+		.mat-card-header{
+			display: block;
+			.logo-cover {
+				position: relative;
+				width: 120px;
+				height: 120px;
+				border-radius: 50%;
+				// background: #f7f7f7;
+				margin: auto;
+				margin-bottom: 30px;
+				box-shadow: 0px 2px 9px 0px rgba(46, 61, 73, 0.3);
+				@media screen and (max-width: 1500px){
+					width: 100px;
+					height: 100px;
+				}
+				img {
+					// width: 70px;
+                    width: 100%;
+                    position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					@media screen and (max-width: 1500px){
+						// width: 55px;
+                        width: 100%;
+                    }
+				}
+			}
+			.mat-card-title{
+				@media screen and (max-width: 1500px){
+					font-size: 18px;
+				}
+				@media screen and (max-width: 1280px){
+					font-size: 16px;
+				}
+			}
+		}
+		.mat-card-body{
+			.mat-form-field{
+				width: 100%;
+			}
+			.link-cover{
+				text-align: right;
+				a{
+					font-size: 12px;
+				}
+			}
+			.btn-cover{
+				padding-top: 10px;
+			}
+		}
+	}
 }

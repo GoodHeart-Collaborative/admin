@@ -1,14 +1,3 @@
-@import 'mix';
-@include btn_groups;
-
-.mat-h2 {
-    margin-bottom: 0;
-}
-
-form {
-    margin-top: 30px;
-}
-.btn_groups {
-    display: flex;
-    justify-content: space-between;
+:host ::ng-deep{
+    @import '../../auth.component.scss';
 }

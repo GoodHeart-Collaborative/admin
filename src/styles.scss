@@ -5,6 +5,7 @@
 @import 'ngx-theme'; // 62 kb
 @import 'typography'; // 1kb
 @import 'common'; //0.5 kb
+@import "./sass/global-sass";
 // @import 'grid'; //8.5 kb
 :root {
   font-size: 16px;
