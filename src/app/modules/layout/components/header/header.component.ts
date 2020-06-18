@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { POPUP_MESSAGES } from '../../../../constant/messages';
 import { UtilityService } from '../../../shared/services/utility.service';
 import { HttpService } from '../../../shared/services/http.service';
@@ -16,14 +16,26 @@ import { IPopupData } from '../../../../models/common-models';
 export class HeaderComponent implements OnInit {
   profileSubscriber;
   profileDetail;
+  flag = 1;
 
   constructor(
     private _utilityService: UtilityService,
+    private renderer: Renderer2,
     private _http: HttpService,
     private _router: Router,
     private _dataService: DataTransferService
   ) {
     this.getProfileDetail();
+  }
+
+  sidebarCollaped() {
+    if (this.flag === 1) {
+      this.renderer.addClass(document.body, "collapsed");
+      this.flag++;
+    } else {
+      this.renderer.removeClass(document.body, "collapsed");
+      this.flag--;
+    }
   }
 
   getProfileDetail() {

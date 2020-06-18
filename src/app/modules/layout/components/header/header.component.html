@@ -1,20 +1,32 @@
-<header class="header_inr">
-  <div  routerLink="/" class="logo">Desk Now</div>
-  <div class="dropdown_menu">
-      <button mat-icon-button><mat-icon>notifications</mat-icon></button>
-      <button class="setting_menu" mat-button  [matMenuTriggerFor]="menu">
-          <div class="inr_wrap">
-              <img [src]="profileDetail?.profilePhoto|customImage:'USER'|async" alt="">
-              <span class="name">{{profileDetail?.name}}</span>
-              <mat-icon>keyboard_arrow_down</mat-icon>
-          </div>
-      </button> 
-      <mat-menu #menu="matMenu" xPosition="before">
-          <button class="drop-menu" mat-menu-item [routerLink]="['ADMIN_PROFILE' | absolutePath]" > <mat-icon>person</mat-icon> My Profile </button>
-          <button class="drop-menu" mat-menu-item [routerLink]="['CHANGE_PASSWORD' | absolutePath]" > <mat-icon>lock</mat-icon> Change Password </button>
-          <button class="drop-menu" mat-menu-item (click)="logout()" > <mat-icon>power_settings_new</mat-icon> Logout </button>
-      </mat-menu>
-  </div>
- 
-</header>
-  
+<div class="page-header">
+	<mat-toolbar class="header">
+		<mat-toolbar-row>
+			<div class="left-portion">
+				<span class="material-icons close-sidebar-icon" (click)="sidebarCollaped()">arrow_back</span>
+				<span mat-button class="material-icons hamburger-icon" (click)="sidebarCollaped()">menu</span>
+				<div class="logo-cover">
+					<img src="../../../../../assets/images/logo-white.png" alt="Logo">
+				</div>
+			</div>
+
+			<div class="btn_group">
+
+				<button mat-icon-button><mat-icon>notifications</mat-icon></button>
+				<button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>settings_applications</mat-icon></button>
+				<button mat-icon-button><mat-icon>exit_to_app</mat-icon></button>
+                <!-- <button class="setting_menu" mat-button  >
+                    <div class="inr_wrap">
+                        <img [src]="profileDetail?.profilePhoto|customImage:'USER'|async" alt="">
+                        <span class="name">{{profileDetail?.name}}</span>
+                        <mat-icon>keyboard_arrow_down</mat-icon>
+                    </div>
+                </button>  -->
+                <mat-menu #menu="matMenu" xPosition="before">
+                    <button class="drop-menu" mat-menu-item [routerLink]="['ADMIN_PROFILE' | absolutePath]" > <mat-icon>person</mat-icon> My Profile </button>
+                    <button class="drop-menu" mat-menu-item [routerLink]="['CHANGE_PASSWORD' | absolutePath]" > <mat-icon>lock</mat-icon> Change Password </button>
+                    <button class="drop-menu" mat-menu-item (click)="logout()" > <mat-icon>power_settings_new</mat-icon> Logout </button>
+                </mat-menu>
+			</div>
+		</mat-toolbar-row>
+	</mat-toolbar>
+</div>

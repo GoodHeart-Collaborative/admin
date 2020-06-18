@@ -24,54 +24,35 @@ body {
   background-color: #fff;
 }
 
-/* Change the white to any color ;) */
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px white inset !important;
-  box-shadow: 0 0 0 30px white inset !important;
-}
-
-::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
-}
-
-::-webkit-scrollbar-track {
-  background: #eee;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #3d82ab;
-  border-radius: 3px;
-}
-
-.btn_primary,
-.btn_secondry {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #3d82ab;
-  border-radius: 3px;
-  color: #fff;
-  font-size: 15px;
-  font-weight: 500;
-  padding: 10px 30px;
-  border: 0;
-  font-family: 'Roboto', sans-serif, 'Helvetica Neue', sans-serif;
-  cursor: pointer;
-}
-
-.btn_secondry {
-  padding: 8px 30px;
-  border: 2px solid #3d82ab;
-  color: #3d82ab;
-  background: transparent;
-}
-input[type='file'] {
-  display: none;
+body {
+	&.collapsed {
+		.mat-tooltip {
+			display: block;
+		}
+		.sidebar {
+			width: 0px !important;
+			.page-sidebar {
+				width: 0px !important;
+				.profile-view-cover{
+					opacity: 0;
+				}
+			}
+		}
+		.content-cover {
+			width: 100% !important;
+			.header{
+				.mat-toolbar-row{
+					left: 0px;
+					width: 100%;
+					.logo-cover{
+						transition: .3s;
+						opacity: 1 !important;
+						display: flex !important;
+					}
+				}
+			}
+		}
+	}
 }
 
 /* Chrome, Safari, Edge, Opera */

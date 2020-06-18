@@ -1,59 +1,148 @@
-@import 'var';
-.mat-nav-list .mat-list-item{
-    border-bottom: 1px solid rgba($primary, 0.05 );
-    .mat-icon{
-        background-color: rgba($primary, 0.2);
-        width: 35px;
-        height: 35px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 10px;
-        border-radius: 3px;
-    }
-    &.active{
-        background-color: rgba($primary, 0.2 );
-    }
+@import "../../../../../sass/import-sass";
+
+.page-sidebar {
+	box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.1);
+	width: 220px;
+	position: fixed;
+	top: 0px;
+	bottom: 0px;
+	transition: .3s;
+	background-color: #5de6de;
+	// background-image: linear-gradient(315deg, #5de6de 0%, #b58ecc 74%);
+	background-image: linear-gradient(315deg, #b58ecc 0%, #419ebb 63%);
+	.profile-view-cover{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 20px 0px 20px 18px;
+		// position: relative;
+		box-shadow: -2px 0px 4px 0px rgba(0,0,0,0.4);
+		// .close-sidebar-icon{
+		// 	position: absolute;
+		// 	left: -215px;
+		// 	color: white;
+		// 	top: 13px;
+		// 	font-size: 40px;
+		// 	cursor: pointer;
+		// }
+		.img-cover{
+			width: 110px;
+			height: 80px;
+			img{
+				width: 100%;
+			}
+		}
+	}
+
+	// @media screen and (max-width: 1600px) {
+	// 	top: 50px;
+	// 	width: 200px;
+	// }
+
+	.sidebar-list {
+		width: 100%;
+		min-height: 100%;
+		z-index: 1;
+		padding-left: 10px;
+		padding-right: 10px;
+		transition: 0.3s ease width;
+		// background-color: #fff;
+		overflow-y: auto;
+		overflow-x: hidden;
+		padding-top: 20px;
+		max-height: calc(100vh - 64px);
+		@include scroller(5px, $theme-color);
+		overflow-x: hidden;
+
+		@media screen and (max-width: 1600px) {
+			padding-top: 10px;
+		}
+
+		.admin {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			margin-bottom: 15px;
+
+			.adminLogo {
+				font-size: 70px;
+				width: 100%;
+				height: 100%;
+			}
+		}
+
+		.mat-list-item {
+			position: relative;
+			cursor: pointer;
+			outline: none;
+			transition: 0.3s ease all;
+			white-space: nowrap;
+			border-radius: 5px;
+			color: white;
+			font-size: 14px;
+			@media screen and (max-width: 1600px) {
+				height: 44px;
+			}
+
+			
+			&.active {
+				background-color: white;
+				color: black;
+				font-weight: bold;
+				.mat-icon {
+					color: black;
+				}
+			}
+			// &:hover{
+
+			// }
+
+			.mat-icon {
+				width: 40px;
+				height: 40px;
+				min-width: 40px;
+				vertical-align: middle;
+				text-align: center;
+				border-radius: 50%;
+				line-height: 1.7;
+				margin-right: 10px;
+				transition: 0.3s ease all;
+				// color: #8e8e8e;
+				color: white;
+
+				@media screen and (max-width: 1600px) {
+					width: 35px;
+					height: 35px;
+					min-width: 35px;
+					vertical-align: middle;
+					text-align: center;
+					border-radius: 50%;
+					line-height: 35px;
+					font-size: 20px;
+				}
+
+				&.spinner-cover {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+				}
+			}
+
+			span {
+				font-size: 14px;
+				transition: 0.3s ease all;
+
+				@media screen and (max-width: 1600px) {
+					font-size: 13px;
+				}
+			}
+		}
+	}
 }
 
-// MAT EXPANSION PANEL 
-
-// ::ng-deep{
-//     .mat-nav-list .mat-expansion-panel{
-//         background: transparent;
-//         border-radius: 0 ;
-//         box-shadow: none !important;
-//         &.mat-expanded{
-//             margin-bottom: 10px;
-//             background: inherit;
-//         }
-//         .mat-expansion-panel-header{
-//             padding: 0;
-//             border-radius: 0;
-//             position: relative;
-            
-//             .mat-expansion-indicator{
-//                 transform: rotate(0deg);
-//                 position: absolute;
-//                 right: 10px;
-//                 top: calc(50% - 0);
-//                 width: 10px;
-//                 height: 10px;
-//                 display: inline-block;
-//                 &::after {
-//                     position: absolute;
-//                     top: 0;
-//                     left: 0;
-//                 }
-//             }
-//         }
-//         .mat-expansion-panel-body{
-//             padding: 0 !important;
-//             .mat-list-item{
-//                 padding-left: 10px;
-//                 &::before{display: none}
-//             }
-//         }
-       
-//     }
-// }
+::ng-deep {
+	.mat-tooltip {
+		display: none;
+	}
+}
