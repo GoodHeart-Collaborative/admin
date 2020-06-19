@@ -5,7 +5,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { USER_STATUS } from '../../../../constant/app-constant';
 import { PAGE_OPTIONS } from 'src/app/constant/constants';
 import { Subscription } from 'rxjs';
-import { USER_LIST_CONFIG, UserTableDataSource } from './user-list.model';
+import { USER_LIST_CONFIG, UserTableDataSource } from './model/user-list.model';
 import { IPopupData } from 'src/app/models/common-models';
 import { COMMON_MESSAGES, POPUP_MESSAGES } from 'src/app/constant/messages';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
@@ -32,7 +32,7 @@ export class UserListingComponent implements OnInit {
     private _userListingService: UserListingService,
     private utilityService: UtilityService
   ) {
-    this.fetchUserList();
+    // this.fetchUserList();
   }
 
   ngOnInit() {}
@@ -41,32 +41,32 @@ export class UserListingComponent implements OnInit {
       Fetching user list after 
   */
 
-  fetchUserList() {
-    this.sub.add(
-      this._userListingService
-        .getUserListing(this.pageOptions)
-        .subscribe(({ data: { result, page, limit, total } }) => {
-          if (page === -1) {
-            // page = 2;
-            page = this.pageOptions.page + 1;
-          }
-          if (result.length === 0) {
-            this.listingConfig.noRecord = true;
-          }
-          const initialIndex = (page - 1) * this.pageOptions.limit + 1;
-          console.log(initialIndex);
+  // fetchUserList() {
+  //   this.sub.add(
+  //     this._userListingService
+  //       .getUserListing(this.pageOptions)
+  //       .subscribe(({ data: { result, page, limit, total } }) => {
+  //         if (page === -1) {
+  //           // page = 2;
+  //           page = this.pageOptions.page + 1;
+  //         }
+  //         if (result.length === 0) {
+  //           this.listingConfig.noRecord = true;
+  //         }
+  //         const initialIndex = (page - 1) * this.pageOptions.limit + 1;
+  //         console.log(initialIndex);
 
-          this.listingConfig.total = total;
-          this.tableSource = new UserTableDataSource(
-            result.map((item, index) => ({ ...item, sn: initialIndex + index }))
-          );
-        })
-    );
-  }
+  //         this.listingConfig.total = total;
+  //         this.tableSource = new UserTableDataSource(
+  //           result.map((item, index) => ({ ...item, sn: initialIndex + index }))
+  //         );
+  //       })
+  //   );
+  // }
 
   onTableEventChange(event) {
     this.pageOptions = event;
-    this.fetchUserList();
+    // this.fetchUserList();
   }
 
   /*
@@ -87,7 +87,7 @@ export class UserListingComponent implements OnInit {
               this.utilityService.showAlert(
                 COMMON_MESSAGES.ACTIVE.success('user')
               );
-              this.fetchUserList();
+              // this.fetchUserList();
             });
           }
         })
@@ -107,7 +107,7 @@ export class UserListingComponent implements OnInit {
             this.utilityService.showAlert(
               COMMON_MESSAGES.BLOCKED.success('user')
             );
-            this.fetchUserList();
+            // this.fetchUserList();
           });
         }
       })
@@ -129,7 +129,7 @@ export class UserListingComponent implements OnInit {
               this.utilityService.showAlert(
                 COMMON_MESSAGES.DELETED.success('user')
               );
-              this.fetchUserList();
+              // this.fetchUserList();
             });
           }
         })

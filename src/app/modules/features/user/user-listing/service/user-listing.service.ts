@@ -24,9 +24,9 @@ export class UserListingService {
     private _http: HttpService
   ) {}
 
-  getUserListing(data) {
-    return this._http.get<any>(USER, data);
-  }
+  // getUserListing(data) {
+  //   return this._http.get<any>(USER, data);
+  // }
 
   blockUser(userId) {
     return this._http.put(USER_BLOCK(userId)).pipe(

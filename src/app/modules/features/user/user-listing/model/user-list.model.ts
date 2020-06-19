@@ -1,5 +1,5 @@
-import { Config } from '../../../commonTable/listing/listing.types';
-import { UserListFilterComponent } from './components/user-list-filter/user-list-filter.component';
+import { Config } from '../../../../commonTable/listing/listing.types';
+import { UserListFilterComponent } from '../components/user-list-filter/user-list-filter.component';
 
 export const USER_LIST_CONFIG: Config = {
   label: 'User List',

@@ -73,14 +73,9 @@ export class FormService {
   }
 
   minMaxRangeValidator(min: string, max: string) {
-    console.log({ min, max });
-
     return (fg: FormGroup) => {
       console.log({ min, max });
-
-      console.log(fg.controls[max].value, fg.controls[min].value);
-
-      const minValue = Number(fg.controls[min].value) || 0;
+     const minValue = Number(fg.controls[min].value) || 0;
       const maxValue = Number(fg.controls[max].value) || 0;
       if (!maxValue) {
         return fg.controls[max].setErrors(null);

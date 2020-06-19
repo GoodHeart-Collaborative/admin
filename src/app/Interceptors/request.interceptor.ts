@@ -25,12 +25,16 @@ export class RequestInterceptor implements HttpInterceptor {
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-        const headers = {};
+        const headers = {
+            'authorization': 'Basic ' + btoa(`${'wc'}:${'wc@123'}`),
+            'timezone': (new Date().getTimezoneOffset()).toString(),
+            'platform' : '3'
+
+        };
         const token = this.utilityService.getAuthToken();
         if (token) {
             headers['authorization'] = 'Bearer ' + token;
         }
-
         request = request.clone({
             setHeaders: headers
         });

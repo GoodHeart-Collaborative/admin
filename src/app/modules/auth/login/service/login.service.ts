@@ -16,7 +16,7 @@ export class LoginService {
     ) {
     }
 
-    /*  
+    /*
         Method For Calling Login API
     */
     login(data) {
@@ -35,7 +35,7 @@ export class LoginService {
         Method For Login
     */
     loginSuccess(data) {
-        this._utilityService.setAuthToken(data['authToken']);
+        this._utilityService.setAuthToken(data['accessToken']);
         this._router.navigate(['']);
     }
 }

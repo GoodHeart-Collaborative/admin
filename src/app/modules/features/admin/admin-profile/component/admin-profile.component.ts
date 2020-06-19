@@ -27,6 +27,6 @@ export class AdminProfileComponent implements OnInit {
           console.log(response)
           this.profileDetail = response.data;
         }, err => { }
-      )
+      );
   }
 }
