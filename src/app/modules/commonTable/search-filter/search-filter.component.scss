@@ -11,15 +11,23 @@
 }
 
 :host ::ng-deep {
-    .mat-input-element {
-        font-size: 17px !important;
-        font-family: "Poppins", sans-serif !important;
+    // .mat-input-element {
+    //     font-size: 17px !important;
+    //     font-family: "Poppins", sans-serif !important;
+    // }
+    // .mat-form-field {
+    //     margin-bottom: 0;
+    // }
+    // .mat-form-field-appearance-outline .mat-form-field-wrapper {
+    //     margin-bottom: 0;
+    //     padding-bottom: 0;
+    // }
+    .mat-form-field-infix{
+        padding: 12px 0 10px 0;
     }
-    .mat-form-field {
-        margin-bottom: 0;
-    }
-    .mat-form-field-appearance-outline .mat-form-field-wrapper {
-        margin-bottom: 0;
-        padding-bottom: 0;
+    .mat-form-field-suffix{
+        top: 4px !important;
+        right: -3px;
+        cursor: pointer;
     }
 }

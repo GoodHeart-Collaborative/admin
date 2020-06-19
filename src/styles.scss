@@ -6,13 +6,6 @@
 @import 'typography'; // 1kb
 @import 'common'; //0.5 kb
 @import "./sass/global-sass";
-// @import 'grid'; //8.5 kb
-:root {
-  font-size: 16px;
-  @media (max-width: 767px) {
-    font-size: 14px;
-  }
-}
 
 body {
   margin: 0;
@@ -66,3 +59,14 @@ input::-webkit-inner-spin-button {
 input[type='number'] {
   -moz-appearance: textfield;
 }
+.mat-dialog-container{
+	padding: 0px !important;
+}
+		// .sidebar-list{
+		// 	&::-webkit-scrollbar-thumb{
+		// 		color: white !important;
+		// 	}
+		// 	&::-webkit-scrollbar-track{
+		// 		background: transparent !important;
+		// 	}
+		// }

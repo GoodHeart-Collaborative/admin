@@ -86,7 +86,7 @@ export class ListingComponent extends Pagination
       const subscription = this.dialog
         .open(this.config.options.filter, {
           panelClass: "openState",
-          width: "400px",
+          width: "340px",
           disableClose: false,
           position: {
             right: "20px",

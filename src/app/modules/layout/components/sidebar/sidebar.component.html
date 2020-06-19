@@ -9,17 +9,23 @@
 
 
   <mat-list class="sidebar-list">
-    <mat-list-item color="primary" [routerLink]="['DASHBOARD' | absolutePath]" routerLinkActive="active">
+    <mat-list-item color="primary" [routerLink]="['DASHBOARD' | absolutePath]" routerLinkActive="">
       <mat-icon>dashboard</mat-icon> Dashboard
     </mat-list-item>
-    <mat-list-item color="primary" [routerLink]="['USER' | absolutePath]" routerLinkActive="active">
+    <mat-list-item color="primary" [routerLink]="['USER' | absolutePath]" routerLinkActive="">
       <mat-icon>person</mat-icon> Users
     </mat-list-item>
     <mat-list-item color="primary" [routerLink]="['DASHBOARD' | absolutePath]" routerLinkActive="active">
-      <mat-icon>person</mat-icon> Events
+      <mat-icon>category</mat-icon> Categories
     </mat-list-item>
     <mat-list-item color="primary" [routerLink]="['USER' | absolutePath]" routerLinkActive="active">
-      <mat-icon>person</mat-icon> Employees
+      <mat-icon>account_balance</mat-icon> Management
+    </mat-list-item>
+    <mat-list-item color="primary" [routerLink]="['DASHBOARD' | absolutePath]" routerLinkActive="">
+      <mat-icon>group_work</mat-icon> Employees
+    </mat-list-item>
+    <mat-list-item color="primary" [routerLink]="['USER' | absolutePath]" routerLinkActive="">
+      <mat-icon>wc</mat-icon> Ladies
     </mat-list-item>
   </mat-list>
 <mat-nav-list>

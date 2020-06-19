@@ -1,0 +1,23 @@
+.couple-filter-cover{
+    padding-top: 1px;
+    h6{
+        margin: 0px;
+        font-size: 15px;
+        margin-bottom: -5px;
+        font-size: 14px;
+    }
+    .couple-filter-content{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        mat-form-field{
+            width: 50%;
+            &:first-child{
+                padding-right: 10px;
+            }
+            &:last-child{
+                padding-left: 10px;
+            }
+        }
+    }
+}

@@ -1,6 +1,6 @@
 <mat-card-title class="transactions-listing pd-0">
     <span class="headerText">{{ label }}</span>
-    <div class="listHeader pdlr-15">
+    <div class="listHeader">
         <div class="searchWrapper" *ngIf="config.options.search">
             <app-search-filter (setSearch)="searchData($event)" [placeholder]="config.options.searchPlaceholder">
             </app-search-filter>

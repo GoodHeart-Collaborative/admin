@@ -10,40 +10,41 @@
         @media screen and (max-width: 1600px){
             width: 220px;
         }
-        // @media screen and (max-width: 992px){
-        //     position: fixed;
-        // }
     }
     .content-cover{
         display: flex;
         width: calc(100% - 220px);
         padding-top: 64px;
-        // @media screen and (max-width: 1600px){
-        //     height: calc(100vh - 50px);
-        // }
         .main-content{
             width: 100%;
             padding: 15px 20px;
             transition: .3s;
             height: calc(100vh - 64px);
             @include scroller(6px , $theme-color);
-            @media screen and (max-width: 1600px){
-                // max-height: calc(100vh - 50px);
-                width: 100%;
-                padding: 12px 15px;
-                
-            }
-            @media screen and (max-width: 992px){
-                margin-left: 55px;
-                width: calc(100% - 55px);
-            }
-            @media screen and (max-width: 568px){
-                margin-left: 0px;
-                width: 100%;
-            }
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // .page-layout-screen{
 //     .content-cover{
 //         display: flex;
