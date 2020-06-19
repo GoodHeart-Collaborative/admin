@@ -1,13 +1,13 @@
 // tslint:disable-next-line:no-namespace
-export const LOGIN = 'admins/login';
-export const FORGOT_PASSWORD = 'admins/password/forgot';
-export const CHANGE_PASSWORD = 'admins/password';
-export const ADMIN = 'admins/details';
-export const EDIT_PROFILE = 'admins/update';
-export const RESET_PASSWORD = 'admins/password/reset';
-export const LOGOUT = 'admins/logout';
-export const VALIDATE_TOKEN = 'admins/password/verify';
-export const USER = 'admins/users/list';
+export const LOGIN = 'admin/login';
+export const FORGOT_PASSWORD = 'admin/password/forgot';
+export const CHANGE_PASSWORD = 'admin/password';
+// export const ADMIN = 'admin/details';
+export const EDIT_PROFILE = 'admin/update';
+export const RESET_PASSWORD = 'admin/password/reset';
+export const LOGOUT = 'admin/logout';
+export const VALIDATE_TOKEN = 'admin/password/verify';
+export const USER = 'admin/users/list';
 export const FEEDBACK = 'feedback';
 export const NOTIFICATION = 'notification';
 export const DASHBOARD = 'dashboard';

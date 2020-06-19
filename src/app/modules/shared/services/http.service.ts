@@ -16,11 +16,7 @@ export class HttpService {
     this.apiUrl = environment.url;
   }
 
-  post<T>(url, data, loader = true): Observable<ApiResponse<T>> {
-    return new Observable(observe => observe.next({ 
-      statusCode: 200,
-      message: 'er development',
-      data: null}))    
+  post<T>(url, data, loader = true): Observable<ApiResponse<T>> {    
       if (loader) {
       this._loaderService.loader.next(loader);
     }
@@ -28,29 +24,17 @@ export class HttpService {
   }
 
   put<T>(url, data?, loader = true): Observable<ApiResponse<T>> {
-    return new Observable(observe => observe.next({ 
-      statusCode: 200,
-      message: 'er development',
-      data: null}))
     if (loader) {
       this._loaderService.loader.next(loader);
     }
     return this.http.put<ApiResponse<T>>(this.apiUrl + url, data);
   }
 
-  delete<T>(url, loader = true): Observable<ApiResponse<T>> {
-    return new Observable(observe => observe.next({ 
-      statusCode: 200,
-      message: 'er development',
-      data: null}));
+  delete<T>(url, loader = true): Observable<ApiResponse<T>> {;
     return this.http.delete<ApiResponse<T>>(this.apiUrl + url);
   }
 
   patch<T>(url, data, loader = true): Observable<ApiResponse<T>> {
-    return new Observable(observe => observe.next({ 
-      statusCode: 200,
-      message: 'er development',
-      data: null}))
     if (loader) {
       this._loaderService.loader.next(loader);
     }
@@ -58,10 +42,6 @@ export class HttpService {
   }
 
   get<T>(url, httpParams?: any, loader = true): Observable<ApiResponse<T>> {
-    return new Observable(observe => observe.next({ 
-      statusCode: 200,
-      message: 'er development',
-      data: null}))
     if (loader) {
       this._loaderService.loader.next(loader);
     }

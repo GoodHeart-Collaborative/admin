@@ -28,7 +28,9 @@ export class LoginComponent implements OnInit {
         this.loginForm = this._formBuilder.group(
             {
                 email: this._formService.getControl('email'),
-                password: this._formService.getControl('password')
+                password: this._formService.getControl('password'),
+                deviceToken: [this.attachDeviceID().toString()],
+                deviceId: [this.attachDeviceID().toString()],
             }
         );
     }
@@ -37,6 +39,9 @@ export class LoginComponent implements OnInit {
         return this.loginForm.controls[control];
     }
 
+    attachDeviceID() {
+        return Date.now() + Math.floor(Math.random() * 1000000) + 1;
+      }
     /*
          Method For Calling Login API
     */
