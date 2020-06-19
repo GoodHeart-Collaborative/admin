@@ -1,4 +1,19 @@
-<h4 class="mat-h4">{{rangeObject.label}}</h4>
+<div class="couple-filter-cover">
+    <h6>{{rangeObject.label}}</h6>
+    <div class="couple-filter-content">
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Min</mat-label>
+            <input appDigitOnly type="number" [formControl]="rangeObject.min" matInput>
+            <mat-error>{{rangeObject.min | validate : rangeObject.label}}</mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Max</mat-label>
+            <input appDigitOnly type="number" [formControl]="rangeObject.max" matInput>
+            <mat-error>{{rangeObject.max | validate :(rangeObject.label)}}</mat-error>
+        </mat-form-field>
+    </div>
+</div>
+<!-- <h4 class="mat-h4">{{rangeObject.label}}</h4>
 <div class="row">
     <div class="col-md-6">
         <mat-form-field class="example-full-width" appearance="outline">
@@ -14,4 +29,4 @@
             <mat-error>{{rangeObject.max | validate :(rangeObject.label)}}</mat-error>
         </mat-form-field>
     </div>
-</div>
+</div> -->

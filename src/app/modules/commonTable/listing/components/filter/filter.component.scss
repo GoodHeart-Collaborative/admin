@@ -1,35 +1,40 @@
-.filter__header {
+.filter-header {
     height: 52px;
-    width: calc(100% + 48px);
-    margin: -24px 0 10px -24px;
     display: flex;
     align-items: center;
     color: #FFF;
     background-color: #233456;
+    padding: 10px 15px;
     button {
         margin: 0 7px;
     }
+    mat-icon{
+        cursor: pointer;
+        margin-right: 10px;
+    }
 }
 
-.filter__title {
+.filter-title {
     font-size: 19px;
     font-weight: 500;
 }
 
-.filter__actions {
-    height: 56px;
-    width: calc(100% + 48px);
-    margin: 10px 0 -24px -24px;
-    background-color: rgba(#000, .07);
-    // box-shadow: 0 3px 2px -2px rgba(#000, 0.25) inset;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+.filter-body {
+    max-height: calc(100vh - 130px);
+    padding: 15px 20px;
+    overflow-y: auto;
 }
 
-.filter_body {
-    max-height: 75vh;
-    overflow-y: auto;
-    margin-right: -20px;
-    padding-right: 20px;
+.filter-actions {
+    height: 56px;
+    background-color: rgba(#000, .07);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px -1px 4px 0px rgba(0,0,0,.4);
+    .btn{
+        &:not(:first-child){
+            margin-left: 10px;
+        }
+    }
 }
