@@ -1,10 +1,6 @@
 @import "../../../../../sass/import-sass";
 
 .page-header{
-    // @media screen and (max-width: 1600px){
-    //     height: 50px;
-    //     min-height: 50px;
-    // }
     .mat-toolbar-row{
         position: fixed;
         top: 0;
@@ -17,11 +13,7 @@
         align-items: center;
         justify-content: space-between;    
         box-shadow: 0px 2px 4px rgba(0,0,0, 0.1);
-        // background-color: #f9f9f9;
         background: linear-gradient(323deg, #b58ecc 14%, #409fbb 98%);
-        // @media screen and (max-width: 1600px){
-        //     height: 50px;
-        // }
         .left-portion{
             display: flex;
             align-items: center;
@@ -35,7 +27,6 @@
                 cursor: pointer;
             }
             .hamburger-icon{
-                // color: $theme-color;
                 color: white;
                 font-size: 28px;
                 cursor: pointer;
@@ -44,7 +35,6 @@
                 }
             }
             .logo-cover{
-                // display: flex;
                 align-items: center;
                 color: #08575b;
                 padding: 0px 10px;
@@ -81,35 +71,16 @@
         @media screen and (max-width: 568px){
             display: flex;
         }
-        .mat-button{
+        .mat-icon-button{
             min-width: 45px;
             width: auto;
             height: 45px;
             padding: 0;
             border-radius: 50%;
-            margin-left: 15px;
-            color: $theme-color;
-            @media screen and (max-width: 1600px){
-                min-width: 30px;
-                width: auto;
-                height: 30px;
-                margin-left: 10px;
-                line-height: 28px;
-            }
+            color: white !important;
             .mat-icon{
                 width: auto;
-                @media screen and (max-width: 1600px){
-                    width: 20px;
-                    height: 20px;
-                    font-size: 20px;
-                    line-height: 20px;
-                }
-                @media screen and (max-width: 1350px){
-                    width: 18px;
-                    height: 18px;
-                    font-size: 18px;
-                    line-height: 18px;
-                }
+                color: white;
             }
         }
     }
