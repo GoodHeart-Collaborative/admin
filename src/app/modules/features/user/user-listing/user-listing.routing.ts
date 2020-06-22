@@ -5,7 +5,10 @@ import { UserListingComponent } from "./user-listing.component";
 import { UserListingModule } from "./user-listing.module";
 const routes: Routes = [{ path: "", component: UserListingComponent }];
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes), UserListingModule],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    UserListingModule],
   declarations: [],
   exports: [],
 })

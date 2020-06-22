@@ -9,18 +9,13 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
   dashboardForm: FormGroup;
   displayValue: string;
-
   displayValueList = ['Daily', 'Weekly', 'Monthly', 'Yearly'];
-
   filterObject;
-
   minDate: Date;
 
   constructor(private _dashboardService: DashboardService) {
-
     this.dashboardForm = this._dashboardService.getFilterForm();
     this.filterObject = this._dashboardService.createFilterObject(this.dashboardForm);
   }
