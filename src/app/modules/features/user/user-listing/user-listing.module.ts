@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserListingComponent } from './user-listing.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
 import { UserListingService } from './service/user-listing.service';
 import { ListingModule } from 'src/app/modules/commonTable/listing';
 import { TableModule } from 'src/app/modules/commonTable/table';

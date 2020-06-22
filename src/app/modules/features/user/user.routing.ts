@@ -26,7 +26,7 @@ const routes: Routes = [
           import('./user-detail/user-detail.routing').then(
             (m) => m.UserDetailRouting
           ),
-      },
+       },
     ],
   },
 ];
