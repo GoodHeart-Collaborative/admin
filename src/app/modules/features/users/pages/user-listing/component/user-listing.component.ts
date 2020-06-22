@@ -18,6 +18,13 @@ export class UserListingComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.tableSource = new UserTableDataSource([
+      {name: 'shama',
+      email : 'aaa@ha.com',
+      phoneNo : '4454353454',
+     }
+    ]);
+  
   }
 
   onOptionChange(event) {

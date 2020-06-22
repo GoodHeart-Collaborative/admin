@@ -21,7 +21,7 @@ export class UserTableDataSource implements Table.Source<any> {
       title: 'Name',
       id: 'name',
       sorting: true,
-      templateBy: 'name',
+      resolve: (row: any) => row['name'] || 'NA',
     },
     {
       title: 'Email ID',
@@ -33,7 +33,7 @@ export class UserTableDataSource implements Table.Source<any> {
       title: 'Mobile Number',
       id: 'phoneNo',
       sorting: false,
-      resolve: (row: any) => row['countryCode'] + row['phoneNo'],
+      resolve: (row: any) =>  row['phoneNo'],
     },
     {
       title: 'No Of Bookings',

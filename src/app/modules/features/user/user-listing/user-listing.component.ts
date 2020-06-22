@@ -21,7 +21,6 @@ import { Config } from 'src/app/modules/commonTable/listing/listing.types';
 export class UserListingComponent implements OnInit {
   selection = new SelectionModel<any>(true, []);
   userList: MatTableDataSource<any>;
-
   pageOptions = { ...PAGE_OPTIONS };
   sub: Subscription = new Subscription();
   listingConfig: Config = USER_LIST_CONFIG;
@@ -31,9 +30,9 @@ export class UserListingComponent implements OnInit {
   constructor(
     private _userListingService: UserListingService,
     private utilityService: UtilityService
-  ) {
+  ) {}
     // this.fetchUserList();
-  }
+ 
 
   ngOnInit() {}
 
