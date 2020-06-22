@@ -16,10 +16,15 @@ const routes: Routes = [
             (m) => m.DashboardModule
           ),
       },
+      // {
+      //   path: USER.path,
+      //   loadChildren: () =>
+      //     import('./../features/user/user.module').then((m) => m.UserModule),
+      // },
       {
         path: USER.path,
         loadChildren: () =>
-          import('./../features/user/user.module').then((m) => m.UserModule),
+          import('./../features/users/users.module').then((m) => m.UsersModule),
       },
     ],
   },
