@@ -1,7 +1,10 @@
 .search_filter .mat-form-field-suffix .mat-icon {
     color: #333 !important;
 }
-
+.search_filter{
+    min-width: 430px;
+    max-width: 100%;
+}
 .search-btn {
     min-width: 37px;
 }
@@ -11,17 +14,6 @@
 }
 
 :host ::ng-deep {
-    // .mat-input-element {
-    //     font-size: 17px !important;
-    //     font-family: "Poppins", sans-serif !important;
-    // }
-    // .mat-form-field {
-    //     margin-bottom: 0;
-    // }
-    // .mat-form-field-appearance-outline .mat-form-field-wrapper {
-    //     margin-bottom: 0;
-    //     padding-bottom: 0;
-    // }
     .mat-form-field-infix{
         padding: 12px 0 10px 0;
     }

@@ -38,31 +38,12 @@ a{
     color: $theme-color;
 }
 
-.breadcrumbnew{
-    margin-bottom: 15px;
-    h4{
-        font-size: 16px;
-        margin: 0px;
-        @media screen and (max-width: 1600px){
-            font-size: 14px;
-        }
-        span{
-            cursor: pointer;
-            transition: .2s;
-            &:hover{
-                text-decoration: underline;
-                color: $theme-color;
-            }
-        }
-    }
-}
-
 .listing-filter{
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     margin-top: -14px;
     @media screen and (max-width: 700px){
         flex-direction: column;

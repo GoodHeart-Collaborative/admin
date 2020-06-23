@@ -1,23 +1,18 @@
-:host {
-  display: block;
-  padding: 2px;
-}
-
 table {
   width: 100%;
-  width: 100%;
-  // min-width: 991px;
-  // overflow-x: auto;
 }
-
-// .mat-elevation-z1 {
-//     box-shadow: 0px 0px 10px 0 rgba(0, 0, 0, 0.11);
-// }
 :host {
-  th.mat-header-cell {
-    border-bottom-width: 0;
-    border-bottom-style: none;
-    font-size: 14px;
+  .mat-header-row{
+    height: 48px;
+  }
+  th{
+    &.mat-header-cell {
+      border-bottom-width: 0;
+      border-bottom-style: none;
+      font-size: 14px;
+      color: white;
+      background-color: #409fbb;
+    }
   }
 
   td.mat-cell,
@@ -37,40 +32,38 @@ table {
     font-size: 11px;
   }
 
-  td.mat-cell {
-    font-size: 13px;
-    color: #59798b;
-    text-transform: capitalize;
-    @media (max-width: 991px) {
-      font-size: 11px;
+  td{
+    &.mat-cell {
+      font-size: 13px;
+      color: black;
+      text-align: center;
+      text-transform: capitalize;
+      @media (max-width: 991px) {
+        font-size: 11px;
+      }
+
+      &:nth-of-type(2) {
+        font-size: 14px;
+        letter-spacing: .5px;
+        font-weight: 700;
+      }
     }
-
-    &:nth-of-type(2) {
-      font-size: 14px;
-      color: #2b2b2b;
-      font-weight: 700;
+  }
+  .mat-row{
+    height: 45px;
+    &:first-child{
+      &:hover{
+        box-shadow: 0 0px 5px 1px rgba(0, 0, 0, 0.3);
+      }
     }
-  }
-
-  tr.mat-row.ng-star-inserted:nth-of-type(odd) {
-    background: #f2f7ff;
-  }
-
-  tr.mat-row.ng-star-inserted {
-    margin-top: 10px;
-  }
-
-  .mat-paginator-page-size-label {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-  }
-
-  tr.mat-footer-row,
-  tr.mat-row {
     &:hover {
-      box-shadow: 0 1px 3px 0 rgba(34, 90, 162, 0.26);
-      background-color: rgba(223, 236, 252, 0.3);
+      box-shadow: 0 0px 5px 1px rgba(0, 0, 0, 0.22);
+    }
+    &:nth-of-type(even){
+      background: #f3f3f3;
+      &:hover{
+        box-shadow: 0 0px 5px 1px rgba(0, 0, 0, 0.25);
+      }
     }
   }
 }

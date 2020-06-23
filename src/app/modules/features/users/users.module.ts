@@ -3,13 +3,27 @@ import { CommonModule } from '@angular/common';
 
 import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './users.component';
+import { MinMaxFilterModule } from '../../layout/layout-shared/min-max-filter/min-max-filter.module';
+import { ListingModule } from '../../commonTable/listing';
+import { TableModule } from '../../commonTable/table';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DateFilterModule } from '../../layout/layout-shared/date-filter/date-filter.module';
+import { RouterModule } from '@angular/router';
+import { DropdownFilterModule } from '../../layout/layout-shared/dropdown-filter/dropdown-filter.module';
 
 
 @NgModule({
   declarations: [UsersComponent],
   imports: [
     CommonModule,
-    UsersRoutingModule
+    UsersRoutingModule,
+    ListingModule,
+    TableModule,
+    ReactiveFormsModule,
+    DateFilterModule,
+    MinMaxFilterModule,
+    RouterModule,
+    DropdownFilterModule,
   ]
 })
 export class UsersModule { }

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UserListingComponent } from './component/user-listing.component';
 import { Routes, RouterModule } from '@angular/router';
 import { TableModule } from 'src/app/modules/commonTable/table';
+import { SearchFilterModule } from 'src/app/modules/commonTable/search-filter/search-filter.module';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     TableModule,
+    SearchFilterModule
   ]
 })
 export class UserListingModule { }
