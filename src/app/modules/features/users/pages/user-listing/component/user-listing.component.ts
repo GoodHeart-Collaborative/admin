@@ -24,7 +24,6 @@ export class UserListingComponent implements OnInit {
       phoneNo : '4454353454',
      }
     ]);
-  
   }
 
   onOptionChange(event) {

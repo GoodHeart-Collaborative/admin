@@ -25,7 +25,7 @@ export class ForgotPasswordService {
         data = this._utilityService.trim(data);
         return this._http.post(FORGOT_PASSWORD, data).pipe(
             tap(
-                response => this.emailValidationSuccess()
+                response => this.emailValidationSuccess(response.message)
             ),
             catchError(
                 error => throwError(error)
@@ -36,10 +36,10 @@ export class ForgotPasswordService {
     /* 
        Method For Showing popup of successfully verifying and sending reset password link
    */
-    emailValidationSuccess() {
-        let data:IPopupData = {
+    emailValidationSuccess(msg) {
+        let data: IPopupData = {
             title: POPUP_MESSAGES.passwordResetTitle,
-            message: POPUP_MESSAGES.passwordResetLink,
+            message: msg,
             confirmButtonText: POPUP_MESSAGES.close,
             hideCancelButton: true
         };
