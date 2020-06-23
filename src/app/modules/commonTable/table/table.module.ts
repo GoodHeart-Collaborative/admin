@@ -14,6 +14,7 @@ import {
 import { TableComponent } from './view/table.component';
 import { ForModule } from '../for';
 import { FilterComponent } from './components/filter/filter.component';
+import { SearchFilterModule } from '../search-filter/search-filter.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { FilterComponent } from './components/filter/filter.component';
     ForModule,
     MatMenuModule,
     MatIconModule,
-    
+    SearchFilterModule,
   ],
   exports: [
     TableComponent,
@@ -42,8 +43,9 @@ import { FilterComponent } from './components/filter/filter.component';
     MatMenuModule,
     MatInputModule,
     MatDialogModule,
-    MatCheckboxModule,
+    MatCheckboxModule, 
     MatFormFieldModule,
+    
   ],
   entryComponents: [
     FilterComponent

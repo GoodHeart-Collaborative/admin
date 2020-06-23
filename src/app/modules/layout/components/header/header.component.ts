@@ -45,16 +45,16 @@ export class HeaderComponent implements OnInit {
         this._dataService.profileDetail.next(this.profileDetail);
       }, err => {
 
-      }
-    )
+      });
   }
+
   ngOnInit() {
     this.profileSubscriber = this._dataService.profileDetail.subscribe(
       data => {
         if (data)
           this.profileDetail = data;
       }
-    )
+    );
   }
   logout() {
     let data: IPopupData = {

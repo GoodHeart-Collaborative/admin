@@ -68,8 +68,7 @@ export class AccountGuard implements CanActivate, CanLoad {
           observer.next(true);
 
           observer.complete();
-        }
-      )
+        });
     });
   }
 }

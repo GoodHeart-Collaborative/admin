@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { TableModule } from 'src/app/modules/commonTable/table';
 import { SearchFilterModule } from 'src/app/modules/commonTable/search-filter/search-filter.module';
 import { UsersListingFilterComponent } from './components/users-listing-filter.component';
-import { MatIconModule, MatMenuModule } from '@angular/material';
+import { MatIconModule, MatMenuModule, MatDialogModule } from '@angular/material';
 
 const routes: Routes = [
   {
@@ -21,7 +21,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     TableModule,
-   
+   MatDialogModule
   ],
   entryComponents:[UsersListingFilterComponent]
 })

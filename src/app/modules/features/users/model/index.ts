@@ -69,7 +69,7 @@ export class UserTableDataSource implements Table.Source<User> {
   ];
   options: Table.Options = {
     selection: false,
-    search: 'search',
+    search: 'Search by User Name',
     index: true,
     filterComponent: UsersListingFilterComponent
   };

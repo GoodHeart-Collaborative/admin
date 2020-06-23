@@ -5,8 +5,6 @@
 
 
 <ul class="breadcrumb">
-  <li><a class="chevron" href="#">Admin</a></li>
-  <li><a class="chevron" href="#">Users</a></li>
-  <li><a href="#">Raj Dixit</a></li>
-  <li><a href="#">Details</a></li>
+  <li  *ngFor="let step of routeSteps; let i = index"><a [ngClass]="{chevron: i > 0}" [routerLink]="step.url" routerLinkActive="disabled"
+    [routerLinkActiveOptions]="{exact: true }" href="javascript:void(0)">{{step.label}}</a></li>
 </ul>
