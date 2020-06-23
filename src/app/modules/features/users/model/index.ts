@@ -1,22 +1,22 @@
-import { Config } from 'src/app/modules/commonTable/listing/listing.types';
+import * as Table from 'src/app/modules/commonTable/table/interfaces';
+import { UsersListingFilterComponent } from '../pages/user-listing/components/users-listing-filter.component';
+type User = any;
 
-export const USER_LIST_CONFIG: Config = {
-  label: 'User List',
-  options: {
-    search: true,
-    pagination: true,
-    searchPlaceholder: 'Search by Name, Email',
-  },
-  total: 0,
+const defaultData: Table.Data<User> = {
+    pageIndex: 0,
+    pageSize: 10,
+    total: 0,
+    rows: null
 };
 
-export class UserTableDataSource implements Table.Source<any> {
-  columns: Table.Column<any>[] = [
-    {
-      title: 'S.No.',
-      id: 'sn',
-      resolve: (row: any) => row['sn'],
-    },
+export class UserTableDataSource implements Table.Source<User> {
+  label = 'Users Management';
+  columns: Table.Column<User>[] = [
+    // {
+    //   title: 'S.No.',
+    //   id: 'sn',
+    //   resolve: (row: any) => row['sn'],
+    // },
     {
       title: 'Name',
       id: 'name',
@@ -69,6 +69,9 @@ export class UserTableDataSource implements Table.Source<any> {
   ];
   options: Table.Options = {
     selection: false,
+    search: 'search',
+    index: true,
+    filterComponent: UsersListingFilterComponent
   };
-  constructor(public data: any[]) {}
+  constructor(public data: Table.Data<User> = defaultData) {}
 }

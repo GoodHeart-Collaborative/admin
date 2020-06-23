@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './users.component';
 import { MinMaxFilterModule } from '../../layout/layout-shared/min-max-filter/min-max-filter.module';
-import { ListingModule } from '../../commonTable/listing';
 import { TableModule } from '../../commonTable/table';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DateFilterModule } from '../../layout/layout-shared/date-filter/date-filter.module';
@@ -17,7 +16,6 @@ import { DropdownFilterModule } from '../../layout/layout-shared/dropdown-filter
   imports: [
     CommonModule,
     UsersRoutingModule,
-    ListingModule,
     TableModule,
     ReactiveFormsModule,
     DateFilterModule,

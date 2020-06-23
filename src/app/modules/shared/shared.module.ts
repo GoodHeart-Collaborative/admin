@@ -45,7 +45,8 @@ import { LoaderComponent } from './components/loader/loader.component';
     HttpClientModule,
     FormsModule,
     AbsoluteRoutingModule,
-    LoaderComponent
+    LoaderComponent,
+  
   ],
   entryComponents: [
     ConfirmationModalComponent

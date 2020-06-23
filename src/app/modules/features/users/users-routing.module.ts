@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UsersComponent } from './users.component';
-import { USER_LIST, USER_DETAIL } from '../../../constant/routes';
+import { USER_LIST } from '../../../constant/routes';
 
 const routes: Routes = [
   {
@@ -17,11 +17,6 @@ const routes: Routes = [
         path: USER_LIST.path,
         loadChildren: () => import('./pages/user-listing/user-listing.module').then( (m) => m.UserListingModule),
       },
-      // {
-      //   path: `${USER_DETAIL.path}/:id`,
-      //   loadChildren: () => import('./pages/user-detail/user-detail.module').then( (m) => m.UserDetailModule
-      //     ),
-      // },
     ],
   },
 ];
