@@ -1,0 +1,33 @@
+
+
+:host {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #FFF;
+    height: 56px;
+    border-radius: 6px;
+    font-size: 16px;
+    padding: 0 12px;
+    color: pink;
+    box-sizing: border-box;
+    border-left-width: 5px;
+    border-left-style: solid;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.breadcrumb-link{
+    color: pink;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.disabled {
+    color: #444;
+    pointer-events: none;
+}

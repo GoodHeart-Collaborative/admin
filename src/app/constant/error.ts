@@ -2,10 +2,11 @@ import {toTitleCase} from './messages';
 import {PATTERN} from './patterns';
 
 export const PATTERN_ERRORS = (pattern, key) => {
-    if (pattern === PATTERN.email) { 
+
+    if (pattern == PATTERN.email) {
         return `Please enter a valid ${key.toLowerCase()}`;
     }
-    if (pattern === PATTERN.password) {
+    if (pattern == PATTERN.password) {
         return `${toTitleCase(key)} can not contain blank spaces`;
     }
     if (pattern === PATTERN.name) {

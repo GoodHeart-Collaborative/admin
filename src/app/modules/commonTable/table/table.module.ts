@@ -3,24 +3,51 @@ import { CommonModule } from '@angular/common';
 import {
   MatTableModule,
   MatCheckboxModule,
-  MatSortModule
+  MatFormFieldModule,
+  MatInputModule,
+  MatPaginatorModule,
+  MatDialogModule,
+  MatSortModule,
+  MatMenuModule,
+  MatIconModule,
 } from '@angular/material';
-import { SharedModule } from '../../shared/shared.module';
-import { TableComponent } from './table.component';
+import { TableComponent } from './view/table.component';
 import { ForModule } from '../for';
-// import { StatusModule } from 'src/app/pipes/statusPipe/status.module';
+import { FilterComponent } from './components/filter/filter.component';
+// import { LayoutSharedModule } from 'src/app/modules/';
 
 @NgModule({
-  declarations: [TableComponent],
+  declarations: [
+    TableComponent,
+    FilterComponent
+  ],
   imports: [
     CommonModule,
-    SharedModule,
+    // LayoutSharedModule,
+    MatSortModule,
     MatTableModule,
+    MatInputModule,
     MatCheckboxModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    MatDialogModule,
     ForModule,
-    MatSortModule
-    // StatusModule
+    MatMenuModule,
+    MatIconModule,
+    
   ],
-  exports: [TableComponent]
+  exports: [
+    TableComponent,
+    FilterComponent,
+    ForModule,
+    MatMenuModule,
+    MatInputModule,
+    MatDialogModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+  ],
+  entryComponents: [
+    FilterComponent
+  ]
 })
-export class TableModule {}
+export class TableModule { }

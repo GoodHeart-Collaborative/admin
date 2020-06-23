@@ -13,6 +13,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { SharedModule } from '../shared/shared.module';
 import { MatSidenavModule, MatExpansionModule } from '@angular/material';
 import { CustomImageModule } from '../../pipes/custom-image/custom-image.module';
+import {BreadcrumbModule} from 'src/app/modules/shared/components/breadcrumb/breadcrumb.module'
 @NgModule({
   imports: [
     CommonModule,
@@ -26,7 +27,8 @@ import { CustomImageModule } from '../../pipes/custom-image/custom-image.module'
     MatTooltipModule,
     MatListModule,
     SharedModule,
-    CustomImageModule
+    CustomImageModule,
+    BreadcrumbModule
   ],
   declarations: [
     LayoutComponent,

@@ -1,0 +1,6 @@
+<!-- <a href="javascript:void(0)" routerLink="/dashboard" routerLinkActive="disabled" [routerLinkActiveOptions]="{exact: true}" class="header-link">Dashboard</a> -->
+
+<ng-template ngFor let-step [ngForOf]="routeSteps" let-i="index">
+  <mat-icon style="color: #AAA" *ngIf="i > 0">chevron_right</mat-icon>
+  <!-- <a href="javascript:void(0)" [routerLink]="step.url" routerLinkActive="disabled" [routerLinkActiveOptions]="{exact: true}" class="header-link text--primary">{{step.label}}</a> -->
+  <a href="javascript:void(0)" [routerLink]="step.url" routerLinkActive="disabled" [routerLinkActiveOptions]="{exact: true }" class="breadcrumb-link border-link text--primary">{{step.label}}</a>

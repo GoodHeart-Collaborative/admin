@@ -10,17 +10,17 @@ const appRoutes: Routes = [
     path: ACCOUNT.path,
     loadChildren: () =>
       import('./modules/auth/auth.module').then((m) => m.AuthModule),
-    // canLoad: [AccountGuard],
-    // canActivate: [AccountGuard],
+    canLoad: [AccountGuard],
+    canActivate: [AccountGuard],
   },
   {
     path: ADMIN.path,
     loadChildren: () =>
       import('./modules/layout/layout.module').then((m) => m.LayoutModule),
-    // canLoad: [HomeGuard],
-    // canActivate: [HomeGuard],
+    canLoad: [HomeGuard],
+    canActivate: [HomeGuard],
   },
-  {
+  { 
     path: '**',
     loadChildren: () =>
       import('./modules/not-found/not-found.module').then(

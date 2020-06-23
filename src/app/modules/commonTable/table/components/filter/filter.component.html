@@ -1,0 +1,14 @@
+<div class="filter__header mat-elevation-z1 fill--primary">
+	<button mat-icon-button (click)="onCloseHandler()">
+		<mat-icon>arrow_back</mat-icon>
+	</button>
+	<span class="filter__title">{{ label }}</span>
+</div>
+<ng-content></ng-content>
+<div class="filter__actions">
+	<button type="button" color="primary" mat-stroked-button (click)="$event.stopPropagation(); reset.emit()"
+		class="btn ">Reset</button>
+	
+	<button mat-raised-button color="primary" (click)="$event.stopPropagation();apply.emit()" class="btn"
+		type="button">Apply</button>
+</div>
