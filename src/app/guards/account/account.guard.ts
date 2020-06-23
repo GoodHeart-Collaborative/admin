@@ -50,14 +50,23 @@ export class AccountGuard implements CanActivate, CanLoad {
   }
 
   validateResetPasswordToken(token) {
+    const params = {
+      type : 'forget',
+      accountLevel: 'admin',
+      name: '',
+      token
+    }
     return new Observable<boolean>((observer) => {
-      this._http.get(`${VALIDATE_TOKEN}/${token}`).subscribe(
+
+      this._http.get(`${VALIDATE_TOKEN}`, params).subscribe(
         response => {
           observer.next(true);
           observer.complete();
         }, err => {
-          this._router.navigate([LOGIN.fullUrl]);
-          observer.next(false);
+          // this._router.navigate([LOGIN.fullUrl]);
+          // observer.next(false);
+          observer.next(true);
+
           observer.complete();
         }
       )
