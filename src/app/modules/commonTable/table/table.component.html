@@ -1,3 +1,14 @@
+<!-- <div class="listing-filter">
+    <div class="left-side-filters">
+        <app-search-filter class="left-filter-child">
+        </app-search-filter>
+    </div>
+    <div class="right-side-filters">
+        <app-filter class="right-filter-child">
+        </app-filter>
+    </div>
+</div> -->
+
 <table mat-table [matSortDisableClear]="true" (matSortChange)="sortData($event)" [dataSource]="dataSource"
     class="mat-elevation-z1" *ngIf="!!tableSource" matSort>
     <ng-container matColumnDef="selection">

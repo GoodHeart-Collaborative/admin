@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ValidationErrorPipeModule } from 'src/app/pipes/validation-error/validation-error-pipe.module';
 import { LoginService } from './service/login.service';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 const routes: Routes = [
   {path: '', component: LoginComponent,canActivate:[AccountGuard] }
@@ -28,6 +29,7 @@ const routes: Routes = [
     MatIconModule,
     MatInputModule,
     ReactiveFormsModule,
+    MatCheckboxModule,
     ValidationErrorPipeModule
   ],
   declarations: [LoginComponent],
