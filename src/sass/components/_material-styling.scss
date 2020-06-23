@@ -141,6 +141,9 @@ mat-form-field {
 
 .mat-sort-header-container {
     justify-content: center !important;
+    .mat-sort-header-arrow{
+        color: white !important;
+    }
 }
 
 .mat-select-placeholder {

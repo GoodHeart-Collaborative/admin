@@ -1,1 +1,25 @@
-<app-table [tableSource]="tableSource" (changeTableEvent)="onOptionChange($event)"></app-table>
+<ul class="breadcrumb">
+    <li><a class="chevron" href="#">Admin</a></li>
+    <li><a class="chevron" href="#">Users</a></li>
+    <li><a href="#">Raj Dixit</a></li>
+    <li><a href="#">Details</a></li>
+</ul>
+
+
+<div class="listing-filter">
+    <div class="left-side-filters">
+
+        <app-search-filter class="left-filter-child">
+        </app-search-filter>
+    </div>
+    <!-- <div class="right-side-filters">
+        <button class="btn btn-primary" [matBadge]="filterCount?filterCount:null" matBadgePosition="before"
+            matBadgeColor="accent" (click)="onFilterHandler()"><i class="fa fa-filter"></i>Filter</button>
+        <button *ngIf="canEdit" class="btn btn-primary" (click)="onAddHandler()"><i class="fa fa-plus"></i>Add
+            Employee</button>
+    </div> -->
+</div>
+
+<div class="table-cover">
+    <app-table [tableSource]="tableSource" (changeTableEvent)="onOptionChange($event)"></app-table>
+</div>

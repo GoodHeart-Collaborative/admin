@@ -19,10 +19,38 @@ export class UserListingComponent implements OnInit {
 
   ngOnInit() {
     this.tableSource = new UserTableDataSource([
+      {name: 'Avinash Sharma',
+      email : 'aaa@ha.com',
+      phoneNo : '4454353454',
+     },
+      {name: 'Rishabh',
+      email : 'aaa@ha.com',
+      phoneNo : '4454353454',
+     },
+      {name: 'umesh Sapra',
+      email : 'aaa@ha.com',
+      phoneNo : '4454353454',
+     },
       {name: 'shama',
       email : 'aaa@ha.com',
       phoneNo : '4454353454',
-     }
+     },
+      {name: 'Appinventiv',
+      email : 'aaa@ha.com',
+      phoneNo : '4454353454',
+     },
+      {name: 'Raj Dixit',
+      email : 'aaa@ha.com',
+      phoneNo : '4454353454',
+     },
+      {name: 'Appinventiv',
+      email : 'aaa@ha.com',
+      phoneNo : '4454353454',
+     },
+      {name: 'Raj Dixit',
+      email : 'aaa@ha.com',
+      phoneNo : '4454353454',
+     },
     ]);
   }
 
