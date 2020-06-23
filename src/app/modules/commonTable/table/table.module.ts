@@ -14,12 +14,11 @@ import {
 import { TableComponent } from './view/table.component';
 import { ForModule } from '../for';
 import { FilterComponent } from './components/filter/filter.component';
-// import { LayoutSharedModule } from 'src/app/modules/';
 
 @NgModule({
   declarations: [
     TableComponent,
-    FilterComponent
+    FilterComponent,
   ],
   imports: [
     CommonModule,

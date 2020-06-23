@@ -29,10 +29,6 @@
     background: linear-gradient(315deg, #b58ecc 0%, #419ebb 63%);
 }
 
-.table-cover{
-    @include box-shadow;
-}
-
 a{
     text-decoration: underline;
     color: $theme-color;

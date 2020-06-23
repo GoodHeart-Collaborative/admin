@@ -1,113 +1,81 @@
-// @import "core";
-
+.table-container{
+    box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.2);
+    .table-cover{
+        table {
+            width: 100%;
+        }
+    }
+    .mat-paginator{
+        box-shadow: 0px -2px 2px 0px rgba(0, 0, 0, 0.14);
+    }
+}
 :host {
-    display: block;
-    background-color: #fff;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.table-box__header {
-    display: flex;
-    align-items: center;
-    height: 52px;
-    font-size: 20px;
-    font-weight: 500;
-    padding: 0 16px;
-    background-color: rgba(#000, 0.02);
-}
-
-.search-clear {
-    font-size: 22px;
-    height: 22px;
-    width: 22px;
-    cursor: pointer;
-    transform: translateY(5px);
-    color: #444;
-}
-
-.search-clear--disabled {
-    pointer-events: none;
-    color: #aaa;
-    cursor: default;
-}
-
-.table-container {
-    width: 100%;
-    overflow-y: hidden;
-    overflow-x: auto;
-}
-
-table {
-    width: 100%;
-    min-width: 720px;
-    .table-header {
-        background-color: rgba(#000, 0.02);
+    .mat-header-row{
+        height: 48px;
+    }
+    th{
         &.mat-header-cell {
+            border-bottom-width: 0;
+            border-bottom-style: none;
             font-size: 14px;
-            font-weight: 500;
+            color: white;
+            background-color: #409fbb;
         }
     }
-    .mat-row {
+  
+    td.mat-cell,
+    td.mat-footer-cell,
+    th.mat-header-cell {
+        border-bottom-width: 0;
+        border-bottom-style: none;
+    }
+  
+    .mat-elevation-z1 {
+        box-shadow: none;
+    }
+  
+    .mat-header-cell {
+        font-weight: 300;
+        color: #59798b;
+        font-size: 11px;
+    }
+  
+    td{
+        &.mat-cell {
+            font-size: 13px;
+            color: black;
+            text-align: center;
+            text-transform: capitalize;
+            @media (max-width: 991px) {
+                font-size: 11px;
+            }
+    
+            &:nth-of-type(2) {
+                font-size: 14px;
+                letter-spacing: .5px;
+                font-weight: 700;
+            }
+        }
+    }
+    .mat-row{
+        height: 45px;
+        &:first-child{
+            &:hover{
+                box-shadow: 0 0px 5px 1px rgba(0, 0, 0, 0.3);
+            }
+        }
         &:hover {
-            background-color: #f6f6f6;
+            box-shadow: 0 0px 5px 1px rgba(0, 0, 0, 0.22);
+        }
+        &:nth-of-type(even){
+            background: #f3f3f3;
+            &:hover{
+                box-shadow: 0 0px 5px 1px rgba(0, 0, 0, 0.25);
+            }
         }
     }
 }
 
-::ng-deep .mat-cell {
-    // font-family: $font !important;
-    padding: 10px !important;
-    a {
-        // color: $primary;
-        font-weight: 500;
-    }
-}
-
-::ng-deep .mat-header-cell {
-    &:not(:first-of-type) {
-        padding: 10px !important;
-    }
-}
-
-.mat-column-fullName,
-.mat-column-BorrowerName,
-.mat-column-firstName,
-.mat-column-lastName {
-    text-transform: capitalize;
-}
-
-.mat-column-Action,
-.mat-column-referenceId,
-.mat-column-index,
-.mat-column-loanAmount,
-.mat-column-actions,
-.mat-column-refrenceId {
-    white-space: nowrap;
-}
-
-.mat-column-status {
-    // font-weight: 600;
-    &.active {
-        // color: $status_approved;
-    }
-    &.blocked {
-        // color: $status_declined;
-    }
-}
-
-
-::ng-deep .mat-column-actions {
-    .mat-sort-header-container {
-        .mat-sort-header-button {
-            margin-left: 0 !important;
-        }
-    }
-}
-
-.align--center {
-    text-align: center;
-}
 
 .table__placeholder {
     height: 220px;
@@ -120,27 +88,10 @@ table {
     h3 {
         font-size: 20px;
         font-weight: 500;
-        // color: rgba($color: #000000, $alpha: 0.5);
         margin: 5px 0 10px;
     }
     span {
-        // color: rgba($color: #000000, $alpha: 0.6);
         font-weight: 500;
         font-size: 15px;
-    }
-}
-
-.content--center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-::ng-deep .searchMenuPanel {
-    &.mat-menu-panel {
-        min-width: 250px;
-        .mat-menu-content {
-            padding: 10px;
-        }
     }
 }

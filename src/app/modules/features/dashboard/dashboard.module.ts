@@ -20,7 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DateFilterModule } from '../../layout/layout-shared/date-filter/date-filter.module';
 import { DashboardService } from './service/dashboard.service';
 import { SharedModule } from '../../shared/shared.module';
-import { SearchFilterModule } from '../../layout/layout-shared/search-filter/search-filter.module';
+// import { SearchFilterModule } from '../../layout/layout-shared/search-filter/search-filter.module';
 import { CheckNullPipeModule } from 'src/app/pipes/check-null/check-null-pipe.module';
 import { CustomDatePipeModule } from 'src/app/pipes/custom-date/custom-date-pipe.module';
 import { DropdownFilterModule } from '../../layout/layout-shared/dropdown-filter/dropdown-filter.module';
@@ -39,7 +39,7 @@ import { DropdownFilterModule } from '../../layout/layout-shared/dropdown-filter
     ReactiveFormsModule,
     MatTableModule,
     SharedModule,
-    SearchFilterModule,
+    // SearchFilterModule,
     MatIconModule,
     MatTooltipModule,
     MatSelectModule,

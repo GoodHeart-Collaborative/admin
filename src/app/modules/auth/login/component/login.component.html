@@ -2,7 +2,7 @@
 	<mat-card>
 		<div class="mat-card-header">
 			<div class="logo-cover">
-				<img src="../../../../../assets/images/bakery.png" alt="Logo">
+				<img src="../../../../../assets/images/logo-black.png" alt="Logo">
 			</div>
 			<mat-card-title>Login</mat-card-title>
 		</div>
@@ -10,19 +10,20 @@
 		<div class="mat-card-body">
 			<form [formGroup]="loginForm" (ngSubmit)="loginForm.valid&&login()">
 
-        <mat-form-field appearance="outline">
-          <mat-label>Email</mat-label>
-          <input matInput required formControlName="email">
-          <mat-error>{{getControl('email')|validate:'email'}}</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Password</mat-label>
-          <input matInput required formControlName="password" [type]="hide ? 'password' :'text'">
-          <mat-error>{{getControl('password')|validate:'password'}}</mat-error>
-          <mat-icon matSuffix (click)="hide= !hide">{{hide ? 'visibility_off' :'visibility'}}</mat-icon>
-        </mat-form-field>
+				<mat-form-field appearance="outline">
+				<mat-label>Email</mat-label>
+				<input matInput required formControlName="email">
+				<mat-error>{{getControl('email')|validate:'email'}}</mat-error>
+				</mat-form-field>
+				<mat-form-field appearance="outline">
+				<mat-label>Password</mat-label>
+				<input matInput required formControlName="password" [type]="hide ? 'password' :'text'">
+				<mat-error>{{getControl('password')|validate:'password'}}</mat-error>
+				<mat-icon matSuffix (click)="hide= !hide">{{hide ? 'visibility_off' :'visibility'}}</mat-icon>
+				</mat-form-field>
 
 				<div class="link-cover">
+					<mat-checkbox>Remember me</mat-checkbox>
 					<a [routerLink]="'FORGOT_PASSWORD'|absolutePath">Forgot Password</a>
 				</div>
 				<div class="btn-cover">
