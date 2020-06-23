@@ -1,77 +1,70 @@
-<div class="table-box__header">
-	<span class="text--primary">{{label}}</span>
-	<div style="flex: 1"></div>
-	<button mat-icon-button color="primary" *ngIf="hasSearch" matTooltip="Search" matTooltipClass="custom-tooltip"
-		[disabled]="!isSearchApplied && isInactive" [matMenuTriggerFor]="searchMenu" (click)="searchInput.focus()">
-		<mat-icon>search</mat-icon>
-	</button>
-	<mat-menu #searchMenu="matMenu" class="searchMenuPanel">
-
-		<div class="form-field-wrapper">
-			<mat-form-field (click)="onFormFieldClickHandler($event)">
-				<input matInput [placeholder]="placeholder" type="search" [disabled]="!isSearchApplied && isInactive"
-					#searchInput (paste)="onPasteHandler($event)" (keydown)="onSearchHandler($event)"
-					autocomplete="off" />
-				<mat-hint [ngClass]="{'search-error': isSearchError}">{{ searchHint }}</mat-hint>
-				<mat-icon class="search-clear" [ngClass]="{'search-clear--disabled': disabled}" matTooltip="clear"
-					matSuffix (click)="searchInput.value = ''" *ngIf="searchInput.value">close</mat-icon>
-			</mat-form-field>
-		</div>
-
-	</mat-menu>
-	<button mat-icon-button *ngIf="hasFilter" color="primary" matTooltip="Filter" matTooltipClass="custom-tooltip"
-		[disabled]="!isFilterApplied && isInactive" (click)="onFilterHandler()">
-		<mat-icon>filter_list</mat-icon>
-	</button>
-	<ng-container [ngTemplateOutlet]="headerTemplate"></ng-container>
+<div class="listing-filter">
+    <div class="left-side-filters">
+        <!-- <app-search-filter class="left-filter-child">
+		</app-search-filter> -->
+		<!-- <app-search-filter></app-search-filter> -->
+		<button mat-icon-button color="primary" *ngIf="hasSearch" matTooltip="Search" matTooltipClass="custom-tooltip"
+			[disabled]="!isSearchApplied && isInactive" [matMenuTriggerFor]="searchMenu" (click)="searchInput.focus()">
+			<mat-icon>search</mat-icon>
+		</button>
+    </div>
+    <div class="right-side-filters">
+		<button mat-icon-button *ngIf="hasFilter" color="primary" matTooltip="Filter" matTooltipClass="custom-tooltip"
+			[disabled]="!isFilterApplied && isInactive" (click)="onFilterHandler()">
+			<mat-icon>filter_list</mat-icon>
+		</button>
+        <!-- <app-filter class="right-filter-child">
+        </app-filter> -->
+    </div>
 </div>
 
 <div class="table-container">
-	<table mat-table [dataSource]="dataSource" matSort [matSortDisabled]="!hasSorting" *ngIf="!!tableSource">
-		<ng-container matColumnDef="selection">
-			<th mat-header-cell *matHeaderCellDef class="table-header">
-				<mat-checkbox (change)="onHeadSelectionChangeHandler($event)" color="primary"></mat-checkbox>
-			</th>
-			<td mat-cell *matCellDef="let element">
-				<mat-checkbox (change)="onSelectionChangeHandler($event)" color="primary"></mat-checkbox>
-			</td>
-		</ng-container>
-		<ng-container matColumnDef="index">
-			<th mat-header-cell *matHeaderCellDef class="table-header align--center">Sr. No.</th>
-			<td mat-cell *matCellDef="let element;let i = index" class="align--center"> {{ prevCount + i + 1 }}
-			</td>
-		</ng-container>
-		<ng-container [matColumnDef]="column.id" *ngFor="let column of tableSource.columns">
-			<th mat-header-cell *matHeaderCellDef class="table-header" mat-sort-header [disabled]="!column.sorting"
-				[attr.data-centered]="column.centered">{{column.title}}</th>
-			<td mat-cell *matCellDef="let element" [ngClass]="{'align--center': column.centered}">
-				<ng-container [ngTemplateOutlet]="templateOutlet(column) || columnTemplate"
-					[ngTemplateOutletContext]="{row: element}"></ng-container>
-				<ng-template #columnTemplate>
-					<span
-						[ngClass]="{'active': column?.id === 'status' && element.staffStatus === 'ACTIVE', 'blocked': column?.id === 'status' && element.staffStatus === 'BLOCKED'}"
-						style="text-align: center">
-
-						{{ column.resolve && column.resolve(element) }}
-					</span>
-				</ng-template>
-			</td>
-		</ng-container>
-		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-		<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-	</table>
-</div>
-
-<mat-paginator *ngIf="!isEmpty" [length]="total" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]"
-	(page)="onPageHandler($event)"></mat-paginator>
-
-<span class="table__placeholder content--center" *ngIf="!isLoaded">
-	<h3 class="loading-text"></h3>
-</span>
-<div class="table__placeholder content--center" *ngIf="isLoaded && isEmpty">
-	<div class="image-cover">
-		<img src="assets/images/default-image/no_data.svg" alt="">
+	<div class="table-cover">
+		<table mat-table [dataSource]="dataSource" matSort [matSortDisabled]="!hasSorting" *ngIf="!!tableSource">
+			<ng-container matColumnDef="selection">
+				<th mat-header-cell *matHeaderCellDef class="table-header">
+					<mat-checkbox (change)="onHeadSelectionChangeHandler($event)" color="primary"></mat-checkbox>
+				</th>
+				<td mat-cell *matCellDef="let element">
+					<mat-checkbox (change)="onSelectionChangeHandler($event)" color="primary"></mat-checkbox>
+				</td>
+			</ng-container>
+			<ng-container matColumnDef="index">
+				<th mat-header-cell *matHeaderCellDef class="table-header align--center">Sr. No.</th>
+				<td mat-cell *matCellDef="let element;let i = index" class="align--center"> {{ prevCount + i + 1 }}
+				</td>
+			</ng-container>
+			<ng-container [matColumnDef]="column.id" *ngFor="let column of tableSource.columns">
+				<th mat-header-cell *matHeaderCellDef class="table-header" mat-sort-header [disabled]="!column.sorting"
+					[attr.data-centered]="column.centered">{{column.title}}</th>
+				<td mat-cell *matCellDef="let element" [ngClass]="{'align--center': column.centered}">
+					<ng-container [ngTemplateOutlet]="templateOutlet(column) || columnTemplate"
+						[ngTemplateOutletContext]="{row: element}"></ng-container>
+					<ng-template #columnTemplate>
+						<span
+							[ngClass]="{'active': column?.id === 'status' && element.staffStatus === 'ACTIVE', 'blocked': column?.id === 'status' && element.staffStatus === 'BLOCKED'}"
+							style="text-align: center">
+	
+							{{ column.resolve && column.resolve(element) }}
+						</span>
+					</ng-template>
+				</td>
+			</ng-container>
+			<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+			<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+		</table>
 	</div>
-	<h3>No Data Found</h3>
-	<span>We cannot find the item you are searching for..</span>
+	<mat-paginator *ngIf="!isEmpty" [length]="total" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]"
+		(page)="onPageHandler($event)"></mat-paginator>
+	
+	<span class="table__placeholder content--center" *ngIf="!isLoaded">
+		<h3 class="loading-text"></h3>
+	</span>
+	<div class="table__placeholder content--center" *ngIf="isLoaded && isEmpty">
+		<div class="image-cover">
+			<img src="assets/images/default-image/no_data.svg" alt="">
+		</div>
+		<h3>No Data Found</h3>
+		<span>We cannot find the item you are searching for..</span>
+	</div>
 </div>
