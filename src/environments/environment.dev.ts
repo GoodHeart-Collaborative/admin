@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  url: 'https://desknowdevapi.appskeeper.com/api/',
+  url: 'http://womencomdevapi.appskeeper.com/v1/',
   tokenKey: 'desknow-admin-token',
   config: {
     AWS_BUCKET: 'appinventiv-development',
