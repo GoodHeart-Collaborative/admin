@@ -2,18 +2,12 @@
     <div class="left-side-filters">
         <app-search-filter   [placeholder]="tableSource.options.search || 'Search'" class="left-filter-child" >
 		</app-search-filter>
-		
-		<!-- <button mat-icon-button color="primary" *ngIf="hasSearch" matTooltip="Search" matTooltipClass="custom-tooltip"
-			[disabled]="!isSearchApplied && isInactive" [matMenuTriggerFor]="searchMenu" (click)="searchInput.focus()">
-			<mat-icon>search</mat-icon>
-		</button> -->
     </div>
     <div class="right-side-filters">
-		<button mat-icon-button *ngIf="hasFilter" color="primary" matTooltip="Filter" matTooltipClass="custom-tooltip"
+		<button class="filter-button" *ngIf="hasFilter" matTooltip="Filter"
 			[disabled]="!isFilterApplied && isInactive" (click)="onFilterHandler()">
 			<mat-icon>filter_list</mat-icon>
 		</button>
-       
     </div>
 </div>
 

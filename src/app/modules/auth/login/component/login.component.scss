@@ -1,3 +1,11 @@
 :host ::ng-deep{
     @import '../../auth.component.scss';
 }
+
+.link-cover{
+    display: flex;
+    margin-bottom: 10px;
+    margin-top: -5px !important;
+    align-items: center;
+    justify-content: space-between;
+}
