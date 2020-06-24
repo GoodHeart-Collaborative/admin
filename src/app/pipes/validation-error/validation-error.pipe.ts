@@ -18,9 +18,7 @@ export class ValidationErrorPipe implements PipeTransform {
       return `${toTitleCase(name)} is required`;
     }
     if (control.hasError('pattern')) {
-      
       let pattern = control.errors.pattern.requiredPattern;
-      console.log(pattern);
       return PATTERN_ERRORS(pattern, name);
     }
     if (control.hasError('minlength')) {

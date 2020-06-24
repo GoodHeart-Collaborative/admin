@@ -9,7 +9,6 @@ import { ConfirmationModalComponent } from '../components/confirmation-modal/con
 import { environment } from '../../../../environments/environment';
 import { Observable } from 'rxjs';
 import { IPopupResponse, IPopupData } from '../../../models/common-models';
-import { ComponentType } from 'aws-sdk/clients/imagebuilder';
 
 @Injectable()
 export class UtilityService {

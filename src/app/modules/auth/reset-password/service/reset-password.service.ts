@@ -16,10 +16,10 @@ export class ResetPasswordService {
         private _http: HttpService,
         private _utilityService: UtilityService,
         private _router: Router,
-    ) {
+      ) {
     }
 
-    /* 
+    /*
         Method For Resetting The Password
     */
     resetPassword(data) {

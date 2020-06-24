@@ -29,6 +29,6 @@ const routes: Routes = [
     ValidationErrorPipeModule
   ],
   declarations: [ResetPasswordComponent],
-  providers:[ResetPasswordService]
+  providers: [ResetPasswordService]
 })
 export class ResetPasswordModule { }

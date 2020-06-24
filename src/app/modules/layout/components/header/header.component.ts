@@ -63,18 +63,23 @@ export class HeaderComponent implements OnInit {
       confirmButtonText: POPUP_MESSAGES.logout
     }
     this._utilityService.openDialog(data).subscribe(success => {
-      if (success) {
-        this._http.patch(LOGOUT, {}).subscribe(
-          response => {
-            this._utilityService.clearStorage();
-            this._router.navigate([LOGIN.fullUrl]);
-          }, err => { }
-        )
+      if (!success) {
+        return;
+        //   this._http.patch(LOGOUT, {}).subscribe(
+        //     response => {
+        //       this._utilityService.clearStorage();
+        //       this._router.navigate([LOGIN.fullUrl]);
+        //     }, err => { }
+        //   )
       }
+      this._utilityService.clearStorage();
+      this._router.navigate([LOGIN.fullUrl]);
 
-    });
+     });
 
   }
+
+
   ngOnDestroy() {
     if (this.profileSubscriber) {
       this.profileSubscriber.unsubscribe();

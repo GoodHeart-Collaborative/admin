@@ -36,7 +36,7 @@ export const FORGOT_PASSWORD: IRoute = {
 };
 
 export const RESET_PASSWORD: IRoute = {
-  path: 'reset-password',
+  path: 'reset-password/token',
   get fullUrl(): string {
     return `${ACCOUNT.fullUrl}/${this.path}`;
   }
