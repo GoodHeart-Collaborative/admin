@@ -12,11 +12,6 @@ const defaultData: Table.Data<User> = {
 export class UserTableDataSource implements Table.Source<User> {
   label = 'Users Management';
   columns: Table.Column<User>[] = [
-    // {
-    //   title: 'S.No.',
-    //   id: 'sn',
-    //   resolve: (row: any) => row['sn'],
-    // },
     {
       title: 'Name',
       id: 'name',

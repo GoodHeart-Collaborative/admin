@@ -36,5 +36,8 @@ export class UserListingComponent implements OnInit {
     // this.updateUsers();
   }
  
+  onOptionChange(event) {
+
+  }
 
 }
