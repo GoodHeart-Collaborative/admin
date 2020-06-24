@@ -16,7 +16,7 @@ export class ResetPasswordService {
         private _http: HttpService,
         private _utilityService: UtilityService,
         private _router: Router,
-      ) {
+    ) {
     }
 
     /*
@@ -24,7 +24,11 @@ export class ResetPasswordService {
     */
     resetPassword(data) {
         data = this._utilityService.trim(data);
-        return this._http.post(`${RESET_PASSWORD}/${data.token}`, { password: data.password }).pipe(
+        const quaryParmas = {
+            token: data.token,
+            password: data.password
+        };
+        return this._http.patch(`${RESET_PASSWORD}`, null, quaryParmas).pipe(
             tap(
                 response => this.resetPasswordSuccess()
             ),

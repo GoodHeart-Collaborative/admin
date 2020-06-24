@@ -16,8 +16,8 @@ export class HttpService {
     this.apiUrl = environment.url;
   }
 
-  post<T>(url, data, loader = true): Observable<ApiResponse<T>> {    
-      if (loader) {
+  post<T>(url, data, loader = true): Observable<ApiResponse<T>> {
+    if (loader) {
       this._loaderService.loader.next(loader);
     }
     return this.http.post<ApiResponse<T>>(this.apiUrl + url, data);
@@ -30,15 +30,15 @@ export class HttpService {
     return this.http.put<ApiResponse<T>>(this.apiUrl + url, data);
   }
 
-  delete<T>(url, loader = true): Observable<ApiResponse<T>> {;
+  delete<T>(url, loader = true): Observable<ApiResponse<T>> {
     return this.http.delete<ApiResponse<T>>(this.apiUrl + url);
   }
 
-  patch<T>(url, data, loader = true): Observable<ApiResponse<T>> {
+  patch<T>(url, data, option?, loader = true): Observable<ApiResponse<T>> {
     if (loader) {
       this._loaderService.loader.next(loader);
     }
-    return this.http.patch<ApiResponse<T>>(this.apiUrl + url, data);
+    return this.http.patch<ApiResponse<T>>(this.apiUrl + url, data, { params: option });
   }
 
   get<T>(url, httpParams?: any, loader = true): Observable<ApiResponse<T>> {
