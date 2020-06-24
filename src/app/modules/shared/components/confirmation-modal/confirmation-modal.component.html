@@ -15,10 +15,10 @@
   </mat-dialog-content>
   <mat-dialog-actions>
     <div class="btn-wrapper">
-      <button mat-stroked-button *ngIf="!modalData?.hideCancelButton" (click)="onNoClick()" class="modal-btn no">
+      <button class="btn" mat-stroked-button *ngIf="!modalData?.hideCancelButton" (click)="onNoClick()">
         {{modalData?.cancelButtonText}}
       </button>
-      <button mat-raised-button color="primary"
+      <button class="btn btn-primary" mat-stroked-button
         [disabled]="(!responseData||!responseData.note||responseData.note.trim()=='') && modalData?.showTextBox"
         [mat-dialog-close]="responseData" (click)="confirm()" cdkFocusInitial>
         {{modalData?.confirmButtonText}}

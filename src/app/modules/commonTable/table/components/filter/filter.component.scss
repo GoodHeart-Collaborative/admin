@@ -1,9 +1,10 @@
+@import 'var';
 .filter-header {
     height: 52px;
     display: flex;
     align-items: center;
     color: #FFF;
-    background-color: #233456;
+    background-color: $primary;
     padding: 10px 15px;
     button {
         margin: 0 7px;

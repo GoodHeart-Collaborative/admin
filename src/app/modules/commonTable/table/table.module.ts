@@ -10,6 +10,8 @@ import {
   MatSortModule,
   MatMenuModule,
   MatIconModule,
+  MatButtonModule,
+  MatButtonToggleModule,
 } from '@angular/material';
 import { TableComponent } from './view/table.component';
 import { ForModule } from '../for';
@@ -26,6 +28,7 @@ import { SearchFilterModule } from '../search-filter/search-filter.module';
     // LayoutSharedModule,
     MatSortModule,
     MatTableModule,
+    MatIconModule,
     MatInputModule,
     MatCheckboxModule,
     MatFormFieldModule,
@@ -35,6 +38,8 @@ import { SearchFilterModule } from '../search-filter/search-filter.module';
     MatMenuModule,
     MatIconModule,
     SearchFilterModule,
+    MatButtonModule,
+    MatButtonToggleModule,
   ],
   exports: [
     TableComponent,

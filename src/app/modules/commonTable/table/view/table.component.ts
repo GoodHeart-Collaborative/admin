@@ -253,8 +253,9 @@ export class TableComponent implements OnInit {
       const subscription = this.$dialog.open(this.tableSource.options.filterComponent, {
         disableClose: true,
         position: {
-          right: '20px'
+          right: '20px',
         },
+        width: '350px',
         autoFocus: false,
         data: this.optionEvent.data.filterData
       }).afterClosed().subscribe((filterData) => {
