@@ -1,10 +1,12 @@
-<!-- <ul class="breadcrumb">
-    <li><a class="chevron" href="#">Admin</a></li>
-    <li><a class="chevron" href="#">Users</a></li>
-    <li><a href="#">Raj Dixit</a></li>
-    <li><a href="#">Details</a></li>
-</ul> -->
 
+<app-table [tableSource]="tableSource" (changeTableEvent)="onOptionChange($event)">
 
+    <ng-template appFor="createdAt" let-user="row">
+        {{ user?.createdAt |customDate}}
+    </ng-template>
+    
+    <ng-template appFor="name" let-user="row" >
+        {{ user?.firstName }} {{ user?.lastName }}
+    </ng-template>
 
-<app-table [tableSource]="tableSource" (changeTableEvent)="onOptionChange($event)"></app-table>
+</app-table>

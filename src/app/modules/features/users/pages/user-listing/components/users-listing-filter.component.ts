@@ -6,7 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./users-listing-filter.component.scss']
 })
 export class UsersListingFilterComponent implements OnInit {
-
+  dateFilterObject = {
+    label: 'User Date Filter',
+    maxFromDate: new Date(),
+  }
   constructor() { }
 
   ngOnInit() {

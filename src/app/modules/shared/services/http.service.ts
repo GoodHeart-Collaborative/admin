@@ -58,6 +58,7 @@ export class HttpService {
     if (httpParams) {
       header["params"] = httpParams;
     }
+  
     return this.http.get<ApiResponse<T>>(this.apiUrl + url, header);
   }
 }

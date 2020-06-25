@@ -28,7 +28,8 @@ export class RequestInterceptor implements HttpInterceptor {
         const headers = {
             'authorization': 'Basic ' + btoa(`${'wc'}:${'wc@123'}`),
             'timezone': (new Date().getTimezoneOffset()).toString(),
-            'platform' : '3'
+            'platform' : '3',
+            'api_key': '1234'
 
         };
         const token = this.utilityService.getAuthToken();
