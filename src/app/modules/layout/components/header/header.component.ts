@@ -16,7 +16,8 @@ import { IPopupData } from '../../../../models/common-models';
 export class HeaderComponent implements OnInit {
   profileSubscriber;
   profileDetail;
-  flag = 1;
+  flag = true;
+  
 
   constructor(
     private _utilityService: UtilityService,
@@ -29,12 +30,12 @@ export class HeaderComponent implements OnInit {
   }
 
   sidebarCollaped() {
-    if (this.flag === 1) {
+    if (this.flag === true) {
       this.renderer.addClass(document.body, "collapsed");
-      this.flag++;
+      this.flag = !this.flag;
     } else {
       this.renderer.removeClass(document.body, "collapsed");
-      this.flag--;
+      this.flag = !this.flag;
     }
   }
 
@@ -55,6 +56,10 @@ export class HeaderComponent implements OnInit {
           this.profileDetail = data;
       }
     );
+    if (window.innerWidth < 993){
+      this.renderer.addClass(document.body, "collapsed");
+      this.flag = !this.flag;
+    }
   }
   logout() {
     let data: IPopupData = {
