@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit, Renderer2, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,12 +6,24 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  flag = 1;
+  flag = true;
+  // @Output() open: EventEmitter<any> = new EventEmitter();
+
   constructor(
     private renderer: Renderer2,
   ) { }
 
   ngOnInit() {
+  }
+
+  sidebarCollaped() {
+    if (this.flag === true) {
+      this.renderer.addClass(document.body, "collapsed");
+      this.flag = !this.flag;
+    } else {
+      this.renderer.removeClass(document.body, "collapsed");
+      this.flag = !this.flag;
+    }
   }
 
 }

@@ -4,6 +4,9 @@
 .search_filter{
     min-width: 430px;
     max-width: 100%;
+    @media screen and (max-width: 768px){
+        min-width: auto;
+    }
 }
 .search-btn {
     min-width: 37px;
