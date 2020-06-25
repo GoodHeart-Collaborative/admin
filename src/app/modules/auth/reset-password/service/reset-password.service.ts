@@ -33,12 +33,10 @@ export class ResetPasswordService {
                 response => this.resetPasswordSuccess()
             ),
             catchError(
-                error => {
-                    if (error.error.statusCode === 400) {
-                        this._router.navigate([LOGIN.fullUrl]);
-                    }
-                    return throwError(error);
-                }
+                   // if (error.error.statusCode === 400) {
+                    //     // this._router.navigate([LOGIN.fullUrl]);
+                    // }
+                    err => throwError(err)
             )
         );
     }
