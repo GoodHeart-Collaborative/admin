@@ -28,5 +28,5 @@ export class AdminProfileComponent implements OnInit {
           this.profileDetail = response.data;
         }, err => { }
       );
-  }
+    }
 }

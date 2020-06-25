@@ -9,7 +9,7 @@ const routes: Routes = [
             { 
                 path: '', 
                 redirectTo: ADMIN_PROFILE.path, 
-                pathMatch: 'full' 
+                pathMatch: 'full',
             },
             { 
                 path: ADMIN_PROFILE.path, 

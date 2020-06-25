@@ -64,7 +64,7 @@ export const USER_LIST: IRoute = {
 };
 
 export const USER_DETAIL: IRoute = {
-  path: 'detail',
+  path: 'id',
   get fullUrl(): string {
     return `${USER.fullUrl}/${this.path}`;
   }

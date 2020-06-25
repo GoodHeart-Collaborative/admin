@@ -16,11 +16,6 @@ const routes: Routes = [
             (m) => m.DashboardModule
           ),
       },
-      // {
-      //   path: USER.path,
-      //   loadChildren: () =>
-      //     import('./../features/user/user.module').then((m) => m.UserModule),
-      // },
       {
         path: USER.path,
         loadChildren: () =>

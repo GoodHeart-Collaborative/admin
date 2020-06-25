@@ -32,12 +32,6 @@ export class UserTableDataSource implements Table.Source<User> {
       resolve: (row: any) =>  `+ ${row.fullMobileNo} `,
     },
     {
-      title: 'User Type',
-      id: 'companyType',
-      sorting: false,
-      resolve: (row: any) => row['companyType'] || 'NA',
-    },
-    {
       title: 'Added On',
       id: 'createdAt',
       sorting: true,

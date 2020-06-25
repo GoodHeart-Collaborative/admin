@@ -13,6 +13,7 @@ export const NOTIFICATION = 'notification';
 export const DASHBOARD = 'dashboard';
 
 // HOST API's //
+// HOST API's //
 export const HOST = 'admin/host/list';
 export const HOST_DELETE = (userId) => `admin/host/${userId}/delete`;
 export const HOST_VERFIY = (userId) => `admin/host/${userId}/verify`;

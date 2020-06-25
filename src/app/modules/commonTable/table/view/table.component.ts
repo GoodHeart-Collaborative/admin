@@ -249,6 +249,8 @@ export class TableComponent implements OnInit {
 
   // filter option
   onFilterHandler() {
+    console.log(this.tableSource);
+    
     if (this.tableSource && this.tableSource.options && this.tableSource.options.filterComponent) {
       const subscription = this.$dialog.open(this.tableSource.options.filterComponent, {
         disableClose: true,
@@ -267,6 +269,7 @@ export class TableComponent implements OnInit {
               filterData
             }
           };
+          console.log(this.optionEvent.data);
           this._emitOptionEvent();
         }
         subscription.unsubscribe();
