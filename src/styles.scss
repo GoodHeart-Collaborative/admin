@@ -1,7 +1,10 @@
-@import 'abstracts/mixins';
-@import 'ngx-theme';
-@import './sass/base/reset';
-@import './sass/components/material-styling';
+// @import 'abstracts/mixins';
+// @import 'ngx-theme';
+// @import './sass/base/reset';
+// @import './sass/components/material-styling';
+// @import './sass/components/buttons';
+
+@import './sass/global-sass';
 
 .mat-dialog-container{
 	padding: 0px !important;
