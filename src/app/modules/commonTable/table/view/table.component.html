@@ -50,14 +50,14 @@
 	<mat-paginator *ngIf="!isEmpty" [length]="total" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]"
 		(page)="onPageHandler($event)"></mat-paginator>
 	
-	<span class="table__placeholder content--center" *ngIf="!isLoaded">
-		<h3 class="loading-text"></h3>
+	<span class="table-placeholder" *ngIf="!isLoaded">
+		<h3 class="loading-text">Loading...</h3>
 	</span>
-	<div class="table__placeholder content--center" *ngIf="isLoaded && isEmpty">
+	<div class="table-placeholder" *ngIf="isLoaded && isEmpty">
 		<div class="image-cover">
-			<img src="assets/images/default-image/no_data.svg" alt="">
+			<img src="../../../../../assets/default-image/no_data.svg" alt="">
 		</div>
 		<h3>No Data Found</h3>
-		<span>We cannot find the item you are searching for..</span>
+		<span>We cannot find the item you are searching for...</span>
 	</div>
 </div>
