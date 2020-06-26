@@ -42,12 +42,12 @@ export class UsersListingFilterComponent implements OnInit {
     if (this.userFilterForm.valid) {
       const filterData = { ...this.userFilterForm.value};
       this.dialogRef.close(filterData);
-      // this.userFilterForm.reset();
     }
   }
 
   resetFilter() {
+    if (this.userFilterForm.touched && this.userFilterForm.valid) {
     this.userFilterForm.reset();
-    this.dialogRef.close({});
+    }
   }
 }
