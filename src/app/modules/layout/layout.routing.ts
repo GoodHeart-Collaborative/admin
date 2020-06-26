@@ -13,8 +13,7 @@ const routes: Routes = [
         path: DASHBOARD.path,
         loadChildren: () =>
           import('./../features/dashboard/dashboard.module').then(
-            (m) => m.DashboardModule
-          ),
+            (m) => m.DashboardModule),
       },
       {
         path: USER.path,

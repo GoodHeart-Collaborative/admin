@@ -7,12 +7,14 @@ export const EDIT_PROFILE = 'admin/update';
 export const RESET_PASSWORD = 'admin/reset-password';
 export const LOGOUT = 'admin/logout';
 export const VALIDATE_TOKEN = 'common/deepLink';
-export const USER = 'admin/users/list';
 export const FEEDBACK = 'feedback';
 export const NOTIFICATION = 'notification';
 export const DASHBOARD = 'dashboard';
 
-// HOST API's //
+// USER API's //
+export const USER = 'admin/users';
+export const USER_DETAILS = (id) => `admin/users/${id}`;
+
 // HOST API's //
 export const HOST = 'admin/host/list';
 export const HOST_DELETE = (userId) => `admin/host/${userId}/delete`;

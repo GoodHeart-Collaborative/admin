@@ -29,7 +29,7 @@ export class UserTableDataSource implements Table.Source<User> {
       title: 'Mobile Number',
       id: 'phoneNo',
       sorting: false,
-      resolve: (row: any) =>  `+ ${row.fullMobileNo} `,
+      resolve: (row: any) =>  `+${row.fullMobileNo} `,
     },
     {
       title: 'Added On',

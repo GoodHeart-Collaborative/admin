@@ -158,6 +158,7 @@ export const DASHBOARD: IRoute = {
   path: 'dashboard',
   get fullUrl(): string {
     return `${ADMIN.fullUrl}/${this.path}`;
+      // return `/${this.path}`;
   }
 };
 

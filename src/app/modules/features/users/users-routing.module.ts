@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UsersComponent } from './view/users.component';
 import { USER_LIST, USER_DETAIL } from '../../../constant/routes';
+// import { UsersServiceResolve } from './service/users.service';
 
 
 const routes: Routes = [
@@ -20,6 +21,9 @@ const routes: Routes = [
       },
       {
         path: `${USER_DETAIL.path}`,
+        // resolve: {
+        //   UserDetails : UsersServiceResolve
+        // },
         loadChildren: () => import('./pages/user-detail/user-detail.module').then( (m) => m.UserDetailModule),
       },
     ],
