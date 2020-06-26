@@ -65,7 +65,7 @@ export class UserListingComponent implements OnInit {
 
 
   onDetailsHandler(id) {
-    this.$router.navigate([USER.fullUrl, id]);
+    this.$router.navigate([USER.fullUrl, id, 'details']);
   }
 
   onOptionChange(event: Table.OptionEvent) {
