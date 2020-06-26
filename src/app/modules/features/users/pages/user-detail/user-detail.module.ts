@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserDetailComponent } from './user-detail.component';
+import { UserDetailComponent } from './view/user-detail.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MatTabsModule, MatIconModule, MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
