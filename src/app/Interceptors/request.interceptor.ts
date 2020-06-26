@@ -48,15 +48,17 @@ export class RequestInterceptor implements HttpInterceptor {
                     }
                 },
                 (err: any) => {
+                    console.log(err);
                     this.loaderService.hideLoader();
                     if (err instanceof HttpErrorResponse) {
                         this.utilityService.errorAlert(err);
-                        if (err.status === 401 || err.error.responseType === 'UNAUTHORIZED') {
+                        // tslint:disable-next-line: max-line-length
+                        if ((err.status === 401 || err.error.responseType === 'UNAUTHORIZED') || (err.status === 423 || err.error.type === '"SESSION_EXPIRED"') ) {
                             this.utilityService.clearStorage();
                             this.router.navigate([LOGIN.fullUrl]);
                         }
                     }
                 }
-            ));
+         ));
     }
 }

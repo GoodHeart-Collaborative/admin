@@ -11,11 +11,11 @@ export class SearchFilterComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
-  searchResult() {
+  searchResult(event) {
     // if (this.search.trim()) {
-    //   this.setSearch.emit(this.search);
+      this.setSearch.emit(event);
     // }
-    this.setSearch.emit(this.search.trim());
+    // this.setSearch.emit(this.search.trim());
   }
   resetSearch() {
     this.search = '';
