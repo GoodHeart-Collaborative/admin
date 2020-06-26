@@ -50,7 +50,7 @@ export class UserListingComponent implements OnInit {
       });
     }
     if (searchText) {
-      params['seachTerm'] = searchText;
+      params['searchTerm'] = searchText;
     }
     this.$userService.queryData(params).then(res => {
       console.log(res);

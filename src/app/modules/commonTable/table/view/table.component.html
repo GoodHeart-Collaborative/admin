@@ -1,6 +1,6 @@
 <div class="listing-filter">
     <div class="left-side-filters">
-        <app-search-filter   [placeholder]="tableSource.options.search || 'Search'" class="left-filter-child" >
+        <app-search-filter   [placeholder]="tableSource.options.search || 'Search'" class="left-filter-child" (setSearch)="onSearchHandler($event)">
 		</app-search-filter>
     </div>
     <div class="right-side-filters">
