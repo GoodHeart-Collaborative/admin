@@ -1,8 +1,9 @@
-<div class="popup-wrapper">
-  <div class="popup-inner" *ngIf="modalData?.title">
-    <h1 mat-dialog-title>{{modalData?.title}}</h1>
+<div class="confirmation-modal-page">
+  <div class="popup-header" *ngIf="modalData?.title">
+    <h3>{{modalData?.title}}</h3>
+    <mat-icon class="close-icon" (click)="onCloseHandler()">close</mat-icon>
   </div>
-  <mat-dialog-content>
+  <div class="popup-body">
     <div class="modal_message">
       <p>{{modalData?.message}} </p>
       <div *ngIf="modalData?.showTextBox" mat-dialog-actionst>
@@ -12,17 +13,15 @@
         </mat-form-field>
       </div>
     </div>
-  </mat-dialog-content>
-  <mat-dialog-actions>
-    <div class="btn-wrapper">
-      <button class="btn" mat-stroked-button *ngIf="!modalData?.hideCancelButton" (click)="onNoClick()">
-        {{modalData?.cancelButtonText}}
-      </button>
-      <button class="btn btn-primary" mat-stroked-button
-        [disabled]="(!responseData||!responseData.note||responseData.note.trim()=='') && modalData?.showTextBox"
-        [mat-dialog-close]="responseData" (click)="confirm()" cdkFocusInitial>
-        {{modalData?.confirmButtonText}}
-      </button>
-    </div>
-  </mat-dialog-actions>
+  </div>
+  <div class="popup-footer">
+    <button class="btn" mat-stroked-button *ngIf="!modalData?.hideCancelButton" (click)="onNoClick()">
+      {{modalData?.cancelButtonText}}
+    </button>
+    <button class="btn btn-primary" mat-stroked-button
+      [disabled]="(!responseData||!responseData.note||responseData.note.trim()=='') && modalData?.showTextBox"
+      [mat-dialog-close]="responseData" (click)="confirm()" cdkFocusInitial>
+      {{modalData?.confirmButtonText}}
+    </button>
+  </div>
 </div>
