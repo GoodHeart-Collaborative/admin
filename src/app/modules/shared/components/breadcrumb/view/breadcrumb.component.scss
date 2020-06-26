@@ -17,6 +17,7 @@
             text-decoration: none; 
             padding: 10px 25px 10px 20px;
             background: white;
+            text-transform: uppercase;
             position: relative; 
             display: block;
             float: left;
@@ -52,6 +53,9 @@
         &:nth-last-child(2){
             a{
                 padding-right: 20px;
+                cursor: default !important;
+                pointer-events: none;
+                text-decoration: none;
                 &::after{
                     content: "";
                     border-color: transparent #ffffff;
