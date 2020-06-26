@@ -1,4 +1,5 @@
-@import "../../../sass/import-sass";
+@import 'abstracts/mixins';
+@import 'abstracts/variables';
 
 .page-layout-screen{
     display: flex;
@@ -20,7 +21,7 @@
             padding: 15px 20px;
             transition: .3s;
             height: calc(100vh - 64px);
-            @include scroller(6px , $theme-color);
+            @include scroller(6px , $primary);
         }
     }
 }
@@ -68,7 +69,7 @@
 //             width: calc(100% - 220px);
 //             transition: .5s;
 //             max-height: calc(100vh - 64px);
-//             @include scroller(6px , $theme-color);
+//             @include scroller(6px , $primary);
 
 //             @media screen and (max-width: 1600px){
 //                 max-height: calc(100vh - 50px);

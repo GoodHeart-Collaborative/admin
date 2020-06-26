@@ -1,7 +1,7 @@
+@import './variables';
 
 // Single-Axis Scroller
-
-@mixin custom-scroller($axis, $brodness: 6px, $bgcolor: $theme-color) {
+@mixin custom-scroller($axis, $brodness: 6px, $bgcolor: $primary) {
     @if ($axis == "x") {
         overflow-x: auto;
         overflow-y: hidden;
@@ -32,8 +32,7 @@
 }
   
 //   Two-Axis Scroller
-
-@mixin scroller ($brodness: 6px, $bgcolor: $theme-color) {
+@mixin scroller ($brodness: 6px, $bgcolor: $primary) {
     overflow-y: auto;
     overflow-x: auto;
     &::-webkit-scrollbar {

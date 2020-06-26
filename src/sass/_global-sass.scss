@@ -1,7 +1,6 @@
-@import "./import-sass";
+@import './abstracts/mixins';
 
 @import "./base/reset";
-@import "./base/typography";
 
 @import "./components/buttons";
 @import "./components/material-styling";

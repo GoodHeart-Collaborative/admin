@@ -1,8 +1,8 @@
 .btn {
     padding: 6px 12px;
     border-radius: 4px;
-    border: 1px solid $theme-color !important;
-    color: $theme-color;
+    border: 1px solid $primary !important;
+    color: $primary;
     box-shadow: none !important;
     transition: .1s;
     white-space: nowrap;
@@ -21,7 +21,7 @@
 
     &.btn-primary {
         color: #ffffff;
-        background-color: $theme-color !important;
+        background-color: $primary !important;
     }
 
     &.btn-simple {
@@ -56,7 +56,7 @@
             right: 3px;
             top: -13px;
             width: 8px;
-            background: $theme-color;
+            background: $primary;
             position: absolute;
             border-radius: 50%;
         }
@@ -182,7 +182,7 @@
         }
 
         &:hover {
-            background-color: $theme-color;
+            background-color: $primary;
             color: white;
             transform: none;
         }
