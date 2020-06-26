@@ -17,6 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AbsoluteRoutingModule } from '../../pipes/absolute-routing/absolute-routing.module';
 import { LoaderComponent } from './components/loader/loader.component';
+import { MatIconModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { LoaderComponent } from './components/loader/loader.component';
     RouterModule,
     HttpClientModule,
     FormsModule,
-    AbsoluteRoutingModule
+    AbsoluteRoutingModule,
+    MatIconModule
   ],
   declarations: [
     ConfirmationModalComponent,

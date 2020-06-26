@@ -3,7 +3,8 @@
 	font-family: 'Nunito Sans', sans-serif;
 	box-sizing: border-box;
 	word-break: break-word;
-	list-style: none;
+    list-style: none;
+    margin: 0px;
 }
 
 @mixin clearfix() {

@@ -6,12 +6,17 @@
     color: #FFF;
     background-color: $primary;
     padding: 10px 15px;
+    position: relative;
     button {
         margin: 0 7px;
     }
     mat-icon{
+        position: absolute;
         cursor: pointer;
-        margin-right: 10px;
+        top: 11px;
+        right: 13px;
+        font-size: 27px;
+
     }
 }
 

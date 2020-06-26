@@ -9,6 +9,7 @@ import { POPUP_MESSAGES } from '../../../../constant/messages';
   styleUrls: ['./confirmation-modal.component.scss']
 })
 export class ConfirmationModalComponent {
+  [x: string]: any;
 
   modalData: IPopupData = {
     title: POPUP_MESSAGES.confrim,
@@ -23,6 +24,7 @@ export class ConfirmationModalComponent {
 
   constructor(
     private dialogRef: MatDialogRef<ConfirmationModalComponent>,
+    private $dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) private data: IPopupData
   ) {
     this.modalData = { ...this.modalData, ...this.data };
@@ -34,5 +36,8 @@ export class ConfirmationModalComponent {
   confirm() {
     if (this.modalData && this.reason && this.reason.trim() == '')
       return;
+  }
+  onCloseHandler() {
+    this.$dialogRef.close();
   }
 }
