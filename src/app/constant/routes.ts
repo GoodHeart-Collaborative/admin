@@ -50,7 +50,7 @@ export const REPORTS: IRoute = {
 };
 
 export const USER: IRoute = {
-  path: 'user',
+  path: 'users',
   get fullUrl(): string {
     return `${ADMIN.fullUrl}/${this.path}`;
   }

@@ -167,7 +167,7 @@ export class TableComponent implements OnInit {
   }
   get hasSearch(): boolean {
     // console.log(this.tableSource, this.tableSource.options);
-    
+
     return this.tableSource && this.tableSource.options && !!this.tableSource.options.search;
   }
   get hasFilter(): boolean {
@@ -287,41 +287,38 @@ export class TableComponent implements OnInit {
   onFormFieldClickHandler(event: MouseEvent) {
     event.stopPropagation();
   }
-  onSearchHandler(event: KeyboardEvent) {
-    console.log(event);
-    this.isSearchError = false;
-    this.$searchHintType = 'DEFAULT';
-    const target: HTMLInputElement = event.currentTarget as HTMLInputElement;
-    const key = event.code || event.key;
-    if (key === 'Enter') {
-      const value = target.value.trim();
-      console.log(value.length , this.optionEvent.data.searchText);
-      
-      if (value.length >= 3 || (value.length === 0 && this.optionEvent.data.searchText)) {
-        if (value !== this.optionEvent.data.searchText) {
-          this.optionEvent = {
-            type: 'SEARCH',
-            data: {
-              ...this.optionEvent.data,
-              searchText: value || null
-            }
-          };
-          this._emitOptionEvent();
-        } else {
-          this.$searchHintType = 'SEARCHED';
-        }
-      } else {
-        this.$searchHintType = 'INVALID';
-        this.isSearchError = true;
-      }
-    } else if (key === 'Space' && !target.selectionStart) {
-      event.preventDefault();
-      // const value = (currentTarget as HTMLInputElement).value;
-      // if (value !== value.trimLeft()) {
-      //   preventDefault();
-      // }
+  onSearchHandler(value) {
+    // console.log(event);
+    // this.isSearchError = false;
+    // this.$searchHintType = 'DEFAULT';
+    // const target: HTMLInputElement = event.currentTarget as HTMLInputElement;
+    // const key = event.code || event.key;
+    // if (key === 'Enter') {
+    //   const value = target.value.trim();
+    //   console.log(value.length , this.optionEvent.data.searchText);
 
+    if (value.length >= 3 || (value.length === 0 && this.optionEvent.data.searchText)) {
+      if (value !== this.optionEvent.data.searchText) {
+        this.optionEvent = {
+          type: 'SEARCH',
+          data: {
+            ...this.optionEvent.data,
+            searchText: value || null
+          }
+        };
+        this._emitOptionEvent();
+      } else {
+        this.$searchHintType = 'SEARCHED';
+      }
+    } else {
+      this.$searchHintType = 'INVALID';
+      this.isSearchError = true;
     }
+    // } else if (key === 'Space' && !target.selectionStart) {
+    //   event.preventDefault();
+
+
+    // }
   }
   onPasteHandler({ target }: KeyboardEvent) {
     const input = target as HTMLInputElement;
@@ -342,7 +339,7 @@ export class TableComponent implements OnInit {
   }
   private _emitOptionEvent() {
     console.log(this.optionEvent);
-    
+
     this.optionChange.emit(this.optionEvent);
   }
 }

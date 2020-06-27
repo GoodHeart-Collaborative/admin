@@ -9,11 +9,15 @@ export const LOGOUT = 'admin/logout';
 export const VALIDATE_TOKEN = 'common/deepLink';
 export const FEEDBACK = 'feedback';
 export const NOTIFICATION = 'notification';
-export const DASHBOARD = 'dashboard';
 
 // USER API's //
 export const USER = 'admin/users';
 export const USER_DETAILS = (id) => `admin/users/${id}`;
+
+
+
+// DREASHBOARD API's //
+export const DASHBOARD = 'admin/dashboard';
 
 // HOST API's //
 export const HOST = 'admin/host/list';

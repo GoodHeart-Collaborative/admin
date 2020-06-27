@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchFilterComponent } from './search-filter.component';
 import { MatIconModule, MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/material';
 
@@ -10,6 +10,7 @@ import { MatIconModule, MatFormFieldModule, MatInputModule, MatButtonModule } fr
     FormsModule,
     MatIconModule,
     MatFormFieldModule,
+    ReactiveFormsModule,
     MatInputModule,
     MatButtonModule
   ],

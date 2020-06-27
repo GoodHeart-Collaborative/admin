@@ -14,13 +14,22 @@ export class DashboardComponent implements OnInit {
   displayValueList = ['Daily', 'Weekly', 'Monthly', 'Yearly'];
   filterObject;
   minDate: Date;
+  data: any;
 
-  constructor(private _dashboardService: DashboardService) {
-    this.dashboardForm = this._dashboardService.getFilterForm();
-    this.filterObject = this._dashboardService.createFilterObject(this.dashboardForm);
+  constructor(private $dashboardService: DashboardService) {
+    // this.dashboardForm = this._dashboardService.getFilterForm();
+    // this.filterObject = this._dashboardService.createFilterObject(this.dashboardForm);
+     this.onDrashboardHandler();
   }
 
   ngOnInit() {
+  }
+
+  onDrashboardHandler() {
+      this.$dashboardService.onDrashboardHandler().then(res => {
+        console.log(res);
+        this.data = res.data;
+      });
   }
 
 }

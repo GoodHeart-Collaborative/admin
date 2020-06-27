@@ -38,6 +38,7 @@ export class UsersListingFilterComponent implements OnInit {
       },
     );
   }
+
   onApplyHandler() {
     if (this.userFilterForm.valid) {
       const filterData = { ...this.userFilterForm.value};
@@ -46,8 +47,8 @@ export class UsersListingFilterComponent implements OnInit {
   }
 
   resetFilter() {
-    if (this.userFilterForm.touched && this.userFilterForm.valid) {
+    // if (this.userFilterForm.touched && this.userFilterForm.valid) {
     this.userFilterForm.reset();
-    }
+    // }
   }
 }

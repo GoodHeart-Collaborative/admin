@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { UtilityService } from '../../../shared/services/utility.service';
-import { FormService } from '../../../shared/services/form.service';
 import { HttpService } from '../../../shared/services/http.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { DASHBOARD } from 'src/app/constant/urls';
 
 @Injectable({
   providedIn: 'root'
@@ -10,33 +8,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class DashboardService {
 
   constructor(
-    private _utilityService: UtilityService,
-    private _formService: FormService,
-    private _http: HttpService,
-    private _formBuilder: FormBuilder
+    private $http: HttpService,
   ) { }
 
-  getFilterForm() {
-    return this._formBuilder.group(
-      this._formService.getFilterFormControls(['fromDate', 'toDate', 'durationType'])
-    )
-  }
-
-  createFilterObject(form: FormGroup) {
-    return {
-      registrationDate: {
-        fromDate: form.controls.fromDate,
-        toDate: form.controls.toDate
-      },
-      durationType: {
-        list: [
-          { viewValue: 'Daily', value: 'daily' },
-          { viewValue: 'Weekly', value: 'weekly' },
-          { viewValue: 'Monthly', value: 'monthly' },
-          { viewValue: 'Yearly', value: 'yearly' }
-        ],
-        control: form.controls.durationType
-      }
-    }
+ onDrashboardHandler() {
+    return this.$http.get(DASHBOARD).toPromise();
   }
 }
