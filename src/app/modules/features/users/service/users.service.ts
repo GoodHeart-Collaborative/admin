@@ -23,18 +23,19 @@ export class UsersService {
   }
 }
 
-// @Injectable()
-// export class UsersServiceResolve implements Resolve<any>  {
-//   constructor(private $UsersService: UsersService, private $router: Router) { }
-//   resolve(route: ActivatedRouteSnapshot) {
-//     const userId = route.params['userId'];
-//     return this.$UsersService.onDetailsHandler(userId).catch(err => {
-//       console.log(err);
-//       if (err) {
-//         // this.$router.navigate(['admin/users']);
-//         return null;
-//       }
-//     }
-//     );
-//   }
-// }
+@Injectable()
+export class UsersServiceResolve implements Resolve<any>  {
+  constructor(private $UsersService: UsersService, private $router: Router) { }
+  resolve(route: ActivatedRouteSnapshot) {
+    const userId = route.params['id'];
+    console.log(route.params);
+    return this.$UsersService.onDetailsHandler(userId).catch(err => {
+      console.log(err);
+      if (err) {
+        // this.$router.navigate(['admin/users']);
+        return null;
+      }
+    }
+    );
+  }
+}

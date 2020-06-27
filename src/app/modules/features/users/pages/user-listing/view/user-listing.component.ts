@@ -73,5 +73,7 @@ export class UserListingComponent implements OnInit {
     this.updateUsers();
   }
 
+  onActionHandler(id, status) {
 
+  }
 }

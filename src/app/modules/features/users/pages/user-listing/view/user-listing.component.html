@@ -5,9 +5,37 @@
         {{ user?.createdAt |customDate}}
     </ng-template>
 
+    <ng-template appFor="status" let-user="row">
+        {{ user?.status | titlecase}}
+    </ng-template>
+
     <ng-template appFor="name" let-user="row" >
         <a href="javascript:void(0)" (click)="onDetailsHandler(user?._id)">
-            {{ user?.firstName }} {{ user?.lastName }}
+            {{ user?.firstName  | titlecase}} {{ user?.lastName | titlecase}}
          </a>
     </ng-template>
+
+    <ng-container>
+
+        <ng-template appFor="actions" let-user="row">
+            <button mat-icon-button color="warn" (click)="onActionHandler(user._id, 'Block')" matTooltip="Block User"
+                matTooltipClass="custom-tooltip" *ngIf="user.status === 'ACTIVE';else templateAction">
+                <mat-icon>blocked</mat-icon>
+            </button>
+            <ng-template #templateAction>
+                <button mat-icon-button color="primary" (click)="onActionHandler(user._id, 'Unblock')"
+                    matTooltip="Unblock User" matTooltipClass="custom-tooltip">
+                    <mat-icon>settings_backup_restore</mat-icon>
+                </button>
+            </ng-template>
+            <button mat-icon-button color="warn" (click)="onActionHandler(user._id, 'Delete')" matTooltip="Delete User"
+                matTooltipClass="custom-tooltip">
+                <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-icon-button color="primary" (click)="onEditHandler(user._id)" matTooltip="Edit User"
+                matTooltipClass="custom-tooltip">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </ng-template>
+    </ng-container>
 </app-table>

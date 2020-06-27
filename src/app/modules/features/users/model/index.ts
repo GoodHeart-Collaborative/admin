@@ -41,7 +41,8 @@ export class UserTableDataSource implements Table.Source<User> {
       title: 'Status',
       id: 'status',
       sorting: false,
-      resolve: (row: any) => row['status'] || 'NA',
+      templateBy: 'status'
+      // resolve: (row: any) => row['status'] || 'NA',
     },
 
     {

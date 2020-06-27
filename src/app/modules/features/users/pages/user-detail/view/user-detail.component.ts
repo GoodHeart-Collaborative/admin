@@ -9,23 +9,16 @@ import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/
   styleUrls: ['./user-detail.component.scss']
 })
 export class UserDetailComponent implements OnInit {
-  id: any;
-  userDetails: unknown;
+  id: string;
+  userDetails: any;
 
   constructor(
     private $router: ActivatedRoute,
-    private $userService: UsersService,
     private $breadcrumb: BreadcrumbService
   ) {
-    this.id = this.$router.snapshot.params.id;
-    console.log(this.id);
-    this.$userService.onDetailsHandler(this.id).then(res => {
-      if (res) {
-        this.$breadcrumb.replace(this.id, res['firstName']);
-        console.log(res);
-        this.userDetails = res;
-      }
-    });
+    console.log(this.$router.snapshot.data.UserDetails);
+    this.userDetails = this.$router.snapshot.data.UserDetails;
+    this.$breadcrumb.replace(this.userDetails.id, this.userDetails['firstName']);
   }
   ngOnInit() { }
 

@@ -17,27 +17,28 @@
                 </div>
                 <div class="col-md-4">
                     <p class="label">Phone</p>
-                    <p class="value">{{data?.mobileNo}}</p>
+                    <p class="value">+{{data?.countryCode}} {{data?.mobileNo}}</p>
                 </div>
                 <div class="col-md-4">
                     <p class="label">Date of Birth</p>
-                    <p class="value">{{data?.lastName}}</p>
+                    <p class="value">{{(data?.dob | customDate) || '2 jan 1990'}} </p>
                 </div>
                 <div class="col-md-4">
                     <p class="label">Profession</p>
-                    <p class="value">{{data?.lastName}}</p>
+                    <p class="value">{{data?.profession || 'Student'}}</p>
                 </div>
                 <div class="col-md-4">
                     <p class="label">Industry</p>
-                    <p class="value">{{data?.lastName}}</p>
+                    <p class="value">{{data?.industry || 'None'}}</p>
                 </div>
                 <div class="col-md-4">
                     <p class="label">Membership Type</p>
-                    <p class="value">{{data?.lastName}}</p>
+                    <p class="value">{{data?.membershipType || 'None'}}</p>
                 </div>
                 <div class="col-md-4">
                     <p class="label">Bio</p>
-                    <p class="value">Women community app is world's best app.</p>
+                    <p class="value">{{data?.bio || 'Women community app is world best app'}} </p>
+                    <!-- <p class="value">{{data?.bio || 'Women community app is world's best app'}} </p> -->
                 </div>
             </div>
         </div>

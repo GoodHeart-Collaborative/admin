@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
 import { DropdownFilterModule } from '../../layout/layout-shared/dropdown-filter/dropdown-filter.module';
 import { UsersComponent } from './view/users.component';
 import { MinMaxFilterModule } from '../../layout/layout-shared/min-max-filter/min-max-filter.module';
-// import { UsersServiceResolve } from './service/users.service';
+import { UsersServiceResolve } from './service/users.service';
 
 
 @NgModule({
@@ -23,6 +23,6 @@ import { MinMaxFilterModule } from '../../layout/layout-shared/min-max-filter/mi
     RouterModule,
     DropdownFilterModule,
   ],
-  // providers: [UsersServiceResolve]
+  providers: [UsersServiceResolve]
 })
 export class UsersModule { }

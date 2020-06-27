@@ -25,8 +25,9 @@ const routes: Routes = [
     TableModule,
     MatDialogModule,
     DateFilterModule,
-    CustomDatePipeModule
+    CustomDatePipeModule,
+    MatIconModule
   ],
-  entryComponents:[UsersListingFilterComponent]
+  entryComponents: [UsersListingFilterComponent]
 })
 export class UserListingModule { }
