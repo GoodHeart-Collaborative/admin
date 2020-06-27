@@ -26,6 +26,9 @@
             color: white;
             white-space: nowrap;
             background-color: $primary;
+            &:first-child{
+                width: 77px;
+            }
             &:not(:first-child){
                 padding-left: 10px;
             }

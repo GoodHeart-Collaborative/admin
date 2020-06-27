@@ -1,10 +1,5 @@
-<!-- <mat-form-field class="search_filter" appearance="outline">
-    <input type="text" matInput [placeholder]="placeholder" (keyup.enter)="searchResult($event)" [(ngModel)]="search">
-    <span matSuffix (click)="searchResult()" *ngIf="!search.trim()"> <mat-icon>search</mat-icon></span>
-    <span matSuffix (click)="resetSearch()" *ngIf="search.trim()"> <mat-icon>close</mat-icon></span>
-</mat-form-field> -->
 <mat-form-field class="search_filter" appearance="outline">
     <input type="text" matInput [placeholder]="placeholder" [formControl]="searchValue">
-    <span matSuffix (click)="searchResult()" *ngIf="!search.trim()"> <mat-icon>search</mat-icon></span>
+    <span matSuffix (click)="searchResult()" *ngIf="!searchValue.value.trim()"> <mat-icon>search</mat-icon></span>
     <span matSuffix (click)="clearSearch()" *ngIf="searchValue.value.trim()"> <mat-icon>close</mat-icon></span>
 </mat-form-field>
