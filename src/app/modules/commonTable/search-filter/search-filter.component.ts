@@ -14,7 +14,9 @@ export class SearchFilterComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {this.makeSearch()}
+  ngOnInit() {
+    this.makeSearch();
+  }
   searchResult(event) {
     // if (this.search.trim()) {
       // this.setSearch.emit(event);
