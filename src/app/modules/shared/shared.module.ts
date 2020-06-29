@@ -35,7 +35,7 @@ import { MatIconModule } from '@angular/material';
   ],
   declarations: [
     ConfirmationModalComponent,
-    LoaderComponent
+    LoaderComponent,
   ],
   exports : [
     MatButtonModule,
@@ -48,7 +48,6 @@ import { MatIconModule } from '@angular/material';
     FormsModule,
     AbsoluteRoutingModule,
     LoaderComponent,
-  
   ],
   entryComponents: [
     ConfirmationModalComponent

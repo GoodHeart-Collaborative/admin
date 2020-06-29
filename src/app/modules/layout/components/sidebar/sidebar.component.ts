@@ -7,7 +7,6 @@ import { Component, OnInit, Renderer2, Output, EventEmitter } from '@angular/cor
 })
 export class SidebarComponent implements OnInit {
   flag = true;
-  // @Output() open: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private renderer: Renderer2,

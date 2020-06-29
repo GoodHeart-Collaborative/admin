@@ -1,0 +1,40 @@
+
+<ng-container [ngSwitch]="true">
+    <ng-container *ngSwitchCase="type == 1">
+        <ng-container *ngTemplateOutlet="privacyTemplate">
+
+        </ng-container>
+    </ng-container>
+    <ng-container  *ngSwitchCase="type == 2">
+        <ng-container *ngTemplateOutlet="termsTemplate">
+
+        </ng-container>
+    </ng-container>
+    <ng-container *ngSwitchCase="type == 4">
+        <ng-container *ngTemplateOutlet="contactUsTemplate">
+
+        </ng-container>
+    </ng-container>
+    <ng-container  *ngSwitchCase="type == 5">
+        <ng-container *ngTemplateOutlet="aboutusTemplate">
+
+        </ng-container>
+    </ng-container>
+</ng-container>
+
+
+<ng-template #termsTemplate>
+    <h1>Terms and conditions</h1>
+</ng-template>
+
+<ng-template #aboutusTemplate>
+    <h1>About Us</h1>
+</ng-template>
+
+<ng-template #privacyTemplate>
+    <h1>Privacy </h1>
+</ng-template>
+
+<ng-template #contactUsTemplate>
+    <h1>Contact Us</h1>
+</ng-template>

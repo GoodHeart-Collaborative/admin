@@ -20,6 +20,12 @@ export const LINK_EXPIRED: IRoute = {
     return `/${this.path}`;
   }
 };
+export const CONTENT: IRoute = {
+  path: 'content/view',
+  get fullUrl(): string {
+    return `/${this.path}`;
+  }
+};
 
 export const LOGIN: IRoute = {
   path: 'login',

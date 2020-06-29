@@ -10,7 +10,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {ContentManagementComponent} from './component/content-management/content-management.component';
 import {ContentManagementRouting} from './content-management.routing';
-// import {QuillModule} from 'ngx-quill';
+import {QuillModule} from 'ngx-quill';
 import { QuillEditorComponent } from './component/quill-editor/quill-editor.component';
 import {ReactiveFormsModule} from '@angular/forms';
 
@@ -25,9 +25,10 @@ import {ReactiveFormsModule} from '@angular/forms';
         MatListModule,
         MatTabsModule,
         ContentManagementRouting,
-        // QuillModule,
         MatButtonModule,
-        ReactiveFormsModule
+        QuillModule.forRoot(),
+        ReactiveFormsModule,
+        
     ],
     declarations: [ContentManagementComponent, QuillEditorComponent]
 })
