@@ -1,5 +1,5 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import { AfterViewInit, Component, OnInit, ViewChild, Input } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'app-quill-editor',
@@ -8,12 +8,13 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 })
 export class QuillEditorComponent implements OnInit, AfterViewInit {
     @ViewChild('quillQuestion', { static: true }) quillQuestion;
+    @Input() content: any;
     contentForm: FormGroup;
     quillConfig = {
         toolbar: {
             container: [
                 ['bold', 'italic', 'underline'],
-                [{'script': 'sub'}, {'script': 'super'}],
+                [{ 'script': 'sub' }, { 'script': 'super' }],
             ],
         },
     };
@@ -25,12 +26,20 @@ export class QuillEditorComponent implements OnInit, AfterViewInit {
         this.createForm();
     }
 
+    ngOnChanges() {
+        if (this.content) {
+            this.contentForm.controls['content'].setValue(this.content);
+            console.log(this.content);
+            
+        }
+    }
+
     ngAfterViewInit(): void {
         this.quillConfig = {
             toolbar: {
                 container: [
                     ['bold', 'italic', 'underline'],
-                    [{'script': 'sub'}, {'script': 'super'}],
+                    [{ 'script': 'sub' }, { 'script': 'super' }],
                 ],
             },
         };
@@ -46,7 +55,7 @@ export class QuillEditorComponent implements OnInit, AfterViewInit {
      * Reset quill editor text
      */
     reset() {
-        this.quillQuestion.quillEditor.setContents([{insert: '\n'}]);
+        this.quillQuestion.quillEditor.setContents([{ insert: '\n' }]);
     }
 
 }

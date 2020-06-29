@@ -6,14 +6,15 @@
     </div>
   </div>
 
+  
   <mat-list class="sidebar-list">
     <mat-list-item color="primary" [routerLink]="['DASHBOARD' | absolutePath]" routerLinkActive="active">
       <mat-icon>dashboard</mat-icon> Dashboard
     </mat-list-item>
-    <mat-list-item color="primary" [routerLink]="['USER' | absolutePath]" routerLinkActive="active">
+    <mat-list-item color="primary"  [routerLink]="['USER' | absolutePath]" routerLinkActive="active">
       <mat-icon>person</mat-icon> Users
     </mat-list-item>
-    <mat-list-item color="primary" [routerLink]="['CONTENT_MANAGEMENT' | absolutePath]" routerLinkActive="active">
+    <mat-list-item color="primary" [queryParams]="{ tab: '0'}" [routerLink]="['CONTENT_MANAGEMENT' | absolutePath]" routerLinkActive="active">
       <mat-icon>category</mat-icon> Content
     </mat-list-item>
     <mat-list-item color="primary" [routerLink]="['USER' | absolutePath]" routerLinkActive="">
