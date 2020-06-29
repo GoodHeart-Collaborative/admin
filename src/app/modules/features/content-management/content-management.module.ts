@@ -28,7 +28,6 @@ import {ReactiveFormsModule} from '@angular/forms';
         MatButtonModule,
         QuillModule.forRoot(),
         ReactiveFormsModule,
-        
     ],
     declarations: [ContentManagementComponent, QuillEditorComponent]
 })

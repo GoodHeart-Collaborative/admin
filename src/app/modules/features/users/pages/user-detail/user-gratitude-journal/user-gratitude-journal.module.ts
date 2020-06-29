@@ -5,10 +5,10 @@ import { GratitudeJournalDetailModule } from './gratitude-journal-detail/gratitu
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: UserGratitudeJournalComponent
-  }
+  // {
+  //   path: '',
+  //   component: UserGratitudeJournalComponent
+  // }
 ];
 
 @NgModule({
