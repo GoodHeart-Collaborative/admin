@@ -18,9 +18,9 @@ export class ChangePasswordComponent implements OnInit {
   changePasswordForm: FormGroup;
 
   constructor(
-    private _changePasswordService: ChangePasswordService,
-    private _formBuilder: FormBuilder,
-    private _formService: FormService
+    private $changePasswordService: ChangePasswordService,
+    private $formBuilder: FormBuilder,
+    private $formService: FormService
   ) {
   }
 
@@ -29,14 +29,14 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   createForm() {
-    this.changePasswordForm = this._formBuilder.group(
+    this.changePasswordForm = this.$formBuilder.group(
       {
-        oldPassword: this._formService.getControl('password'),
-        password: this._formService.getControl('password'),
-        confirmPassword: this._formService.getControl('password'),
+        oldPassword: this.$formService.getControl('password'),
+        password: this.$formService.getControl('password'),
+        confirmPassword: this.$formService.getControl('password'),
       },
       {
-        validator: this._formService.matchPassword
+        validator: this.$formService.matchPassword
       }
     );
   }
@@ -57,7 +57,7 @@ export class ChangePasswordComponent implements OnInit {
         newPassword: this.changePasswordForm.value.password
       };
       this.changePasswordForm.disable();
-      this._changePasswordService.changePassword(data)
+      this.$changePasswordService.changePassword(data)
         .subscribe(
           response => {
           },

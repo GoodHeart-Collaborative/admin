@@ -1,7 +1,7 @@
 // tslint:disable-next-line:no-namespace
 export const LOGIN = 'admin/login';
 export const FORGOT_PASSWORD = 'admin/forgot-password';
-export const CHANGE_PASSWORD = 'admin/password';
+export const CHANGE_PASSWORD = 'admin/change-password';
 // export const ADMIN = 'admin/details';
 export const EDIT_PROFILE = 'admin/update';
 export const RESET_PASSWORD = 'admin/reset-password';

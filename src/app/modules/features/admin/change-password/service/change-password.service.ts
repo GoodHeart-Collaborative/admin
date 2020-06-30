@@ -12,23 +12,22 @@ import { SETTINGS } from '../../../../../constant/routes';
 @Injectable()
 export class ChangePasswordService {
     constructor(
-        private _utilityService: UtilityService,
-        private _http: HttpService,
-        private _formBuilder: FormBuilder,
-        private _router: Router,
+        private $utilityService: UtilityService,
+        private http: HttpService,
+        private $router: Router,
     ) { }
 
     /**
      * @description Changing Password , After that Redirect To Setting Page
-     * @param data 
+     * @param data
      */
     changePassword(data) {
-        return this._http.patch(CHANGE_PASSWORD, data).pipe(
+        return this.http.post(CHANGE_PASSWORD, data).pipe(
             map(
                 response => {
                     if (response['statusCode'] === 200) {
-                        this._utilityService.showAlert(POPUP_MESSAGES['passwordChanged']);
-                        this._router.navigate([SETTINGS.fullUrl]);
+                        this.$utilityService.showAlert(POPUP_MESSAGES['passwordChanged']);
+                        this.$router.navigate([SETTINGS.fullUrl]);
                     }
                 }
             ),

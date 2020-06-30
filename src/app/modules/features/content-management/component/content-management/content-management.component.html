@@ -1,5 +1,5 @@
 <mat-tab-group (selectedTabChange)="onTabChange($event)" [selectedIndex]="selectedTab">
   <mat-tab *ngFor="let tab of contentTabs" [label]="tab['tabName']">
-    <app-quill-editor></app-quill-editor>
+    <app-quill-editor [content]="content" (onSaveContent)="onEditContent($event)"></app-quill-editor>
   </mat-tab>
 </mat-tab-group>

@@ -4,7 +4,7 @@ import { UtilityService } from '../../../shared/services/utility.service';
 import { HttpService } from '../../../shared/services/http.service';
 import { Router } from '@angular/router';
 import { DataTransferService } from '../../../shared/services/data-transfer.service';
-import { LOGOUT } from 'src/app/constant/urls';
+import { CHANGE_PASSWORD } from 'src/app/constant/routes';
 import { LOGIN } from '../../../../constant/routes';
 import { IPopupData } from '../../../../models/common-models';
 
@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
   profileSubscriber;
   profileDetail;
   flag = true;
-  
+  changePassword = ['/', ...CHANGE_PASSWORD.fullUrl.split('/')];
 
   constructor(
     private _utilityService: UtilityService,
@@ -53,10 +53,10 @@ export class HeaderComponent implements OnInit {
     this.profileSubscriber = this._dataService.profileDetail.subscribe(
       data => {
         if (data)
-          this.profileDetail = data;
+        this.profileDetail = data;
       }
     );
-    if (window.innerWidth < 993){
+    if (window.innerWidth < 993) {
       this.renderer.addClass(document.body, "collapsed");
       this.flag = !this.flag;
     }
@@ -80,7 +80,7 @@ export class HeaderComponent implements OnInit {
       this._utilityService.clearStorage();
       this._router.navigate([LOGIN.fullUrl]);
 
-     });
+    });
 
   }
 

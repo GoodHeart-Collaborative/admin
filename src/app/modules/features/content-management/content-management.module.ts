@@ -13,6 +13,7 @@ import {ContentManagementRouting} from './content-management.routing';
 import {QuillModule} from 'ngx-quill';
 import { QuillEditorComponent } from './component/quill-editor/quill-editor.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { PopupService } from '../../shared/popup';
 
 @NgModule({
     imports: [
@@ -29,7 +30,8 @@ import {ReactiveFormsModule} from '@angular/forms';
         QuillModule.forRoot(),
         ReactiveFormsModule,
     ],
-    declarations: [ContentManagementComponent, QuillEditorComponent]
+    declarations: [ContentManagementComponent, QuillEditorComponent],
+    providers: [PopupService]
 })
 export class ContentManagementModule {
 }
