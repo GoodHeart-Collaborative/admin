@@ -14,6 +14,7 @@ import { SharedModule } from '../shared/shared.module';
 import { MatSidenavModule, MatExpansionModule } from '@angular/material';
 import { CustomImageModule } from '../../pipes/custom-image/custom-image.module';
 import {BreadcrumbModule} from 'src/app/modules/shared/components/breadcrumb/breadcrumb.module'
+import { ChangePasswordModule } from '../features/admin/change-password/change-password.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -28,12 +29,13 @@ import {BreadcrumbModule} from 'src/app/modules/shared/components/breadcrumb/bre
     MatListModule,
     SharedModule,
     CustomImageModule,
-    BreadcrumbModule
+    BreadcrumbModule,
+    ChangePasswordModule
   ],
   declarations: [
     LayoutComponent,
     HeaderComponent,
     SidebarComponent,
-  ]
+  ],
 })
 export class LayoutModule { }
