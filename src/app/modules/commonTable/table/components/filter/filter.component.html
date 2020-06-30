@@ -6,6 +6,6 @@
 	<ng-content></ng-content>
 </div>
 <div class="filter-actions">
-	<button class="btn" mat-stroked-button (click)="$event.stopPropagation(); reset.emit()">Reset</button>
-	<button class="btn btn-primary" mat-stroked-button (click)="$event.stopPropagation();apply.emit()">Apply</button>
+	<button class="btn" mat-stroked-button (click)="$event.stopPropagation(); disableValue = true ;reset.emit()">Reset</button>
+	<button class="btn btn-primary" mat-stroked-button (click)="$event.stopPropagation();apply.emit()" [disabled]="!disableValue">Apply</button>
 </div>

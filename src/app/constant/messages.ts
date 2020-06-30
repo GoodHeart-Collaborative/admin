@@ -65,6 +65,9 @@ export const COMMON_MESSAGES = {
 export const SOMETHING_WENT_WRONG =
   "Something went wrong , Please try again later.";
 
+export const SLOW_INTERNET_CONNECTION =
+  "Slow internet connection.";
+
 export const toTitleCase = (str) => {
   return str.replace(/\w\S*/g, function (txt) {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();

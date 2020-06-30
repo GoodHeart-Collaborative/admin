@@ -13,7 +13,11 @@ import { tap } from 'rxjs/operators';
 import { UtilityService } from '../modules/shared/services/utility.service';
 import { LoaderService } from '../modules/shared/services/loader.service';
 import { LOGIN } from '../constant/routes';
-
+import {
+    POPUP_MESSAGES,
+    SOMETHING_WENT_WRONG,
+    SLOW_INTERNET_CONNECTION,
+  } from '../constant/messages';
 @Injectable()
 export class RequestInterceptor implements HttpInterceptor {
     constructor(
@@ -51,12 +55,18 @@ export class RequestInterceptor implements HttpInterceptor {
                     console.log(err);
                     this.loaderService.hideLoader();
                     if (err instanceof HttpErrorResponse) {
-                        this.utilityService.errorAlert(err);
+                        let message = err.message;
                         // tslint:disable-next-line: max-line-length
                         if ((err.status === 401 || err.error.responseType === 'UNAUTHORIZED') || (err.status === 423 || err.error.type === '"SESSION_EXPIRED"') ) {
+                            message = SOMETHING_WENT_WRONG;
+
                             this.utilityService.clearStorage();
                             this.router.navigate([LOGIN.fullUrl]);
                         }
+                        if (err.status === 504 || err.status === 0) {
+                            message = SLOW_INTERNET_CONNECTION;
+                        } 
+                        this.utilityService.errorAlert(message);
                     }
                 }
          ));

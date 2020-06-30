@@ -13,6 +13,7 @@ export class UsersListingFilterComponent implements OnInit {
     maxFromDate: new Date(),
   };
   userFilterForm: FormGroup;
+  isProcessing = true;
   constructor(
      private $fb: FormBuilder,
      private dialogRef: MatDialogRef<any>,
@@ -24,8 +25,6 @@ export class UsersListingFilterComponent implements OnInit {
        this.userFilterForm.patchValue(data);
     }
   }
-
-
 
   ngOnInit() {
   }
@@ -40,7 +39,9 @@ export class UsersListingFilterComponent implements OnInit {
   }
 
   onApplyHandler() {
-    if (this.userFilterForm.valid) {
+
+    if (this.userFilterForm.valid && this.userFilterForm.touched) {
+      this.isProcessing = false;
       const filterData = { ...this.userFilterForm.value};
       this.dialogRef.close(filterData);
     }

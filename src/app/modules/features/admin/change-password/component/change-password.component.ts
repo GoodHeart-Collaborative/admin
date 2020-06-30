@@ -52,21 +52,24 @@ export class ChangePasswordComponent implements OnInit {
 
 
   changePassword() {
-    if (this.changePasswordForm.valid || this.changePasswordForm.disabled) {
-      let data = {
-        oldPassword: this.changePasswordForm.value.oldPassword,
-        newPassword: this.changePasswordForm.value.password
-      };
-      this.changePasswordForm.disable();
-      this.$changePasswordService.changePassword(data)
-        .subscribe(
-          response => {
-          },
-          error => {
-            this.changePasswordForm.enable();
-          }
-        );
+    if (this.changePasswordForm.invalid) {
+      return;
     }
+    let data = {
+      oldPassword: this.changePasswordForm.value.oldPassword,
+      password: this.changePasswordForm.value.password
+    };
+    console.log(data);
+    this.changePasswordForm.disable();
+    this.$changePasswordService.changePassword(data)
+      .subscribe(
+        response => {
+        },
+        error => {
+          this.changePasswordForm.enable();
+        }
+      );
+
   }
 
   onCloseHandler() {

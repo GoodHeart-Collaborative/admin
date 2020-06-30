@@ -40,10 +40,7 @@ export class UtilityService {
   errorAlert(error) {
     let data: IPopupData = {
       title: '',
-      message:
-        error && error.error && error.error.message
-          ? error.error.message
-          : SOMETHING_WENT_WRONG,
+      message: error,
       confirmButtonText: POPUP_MESSAGES.close,
       hideCancelButton: true,
     };
