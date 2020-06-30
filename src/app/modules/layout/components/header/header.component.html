@@ -2,7 +2,6 @@
 	<mat-toolbar class="header">
 		<mat-toolbar-row>
 			<div class="left-portion">
-				<!-- <span class="material-icons close-sidebar-icon" (click)="sidebarCollaped()">arrow_back</span> -->
 				<span mat-button class="material-icons hamburger-icon" (click)="sidebarCollaped()">menu</span>
 				<div class="logo-cover">
 					<img src="../../../../../assets/images/logo-white.png" alt="Logo">
@@ -15,23 +14,12 @@
 				<div class="user-img-cover" [matMenuTriggerFor]="menu">
 					<img src="../../../../../assets/default-image/user.jpg" alt="">
 				</div>
-				<!-- <button mat-icon-button >
-				</button> -->
-				<!-- <button mat-icon-button><mat-icon>exit_to_app</mat-icon></button> -->
-                <!-- <button class="setting_menu" mat-button  >
-                    <div class="inr_wrap">
-                        <img [src]="profileDetail?.profilePhoto|customImage:'USER'|async" alt="">
-                        <span class="name">{{profileDetail?.name}}</span>
-                        <mat-icon>keyboard_arrow_down</mat-icon>
-                    </div>
-                </button>  -->
                 <mat-menu #menu="matMenu" xPosition="before">
                     <button class="drop-menu" mat-menu-item  > <mat-icon>person</mat-icon> My Profile </button>
                     <button class="drop-menu" mat-menu-item [routerLink]="changePassword" routerLinkActive="active"> <mat-icon>lock</mat-icon> Change Password </button>
                     <button class="drop-menu" mat-menu-item (click)="logout()" > <mat-icon>power_settings_new</mat-icon> Logout </button>
                 </mat-menu>
 			</div>
-			<!-- '/','settings', 'change-password' -->
 		</mat-toolbar-row>
 	</mat-toolbar>
 </div>
