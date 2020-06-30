@@ -14,18 +14,17 @@ export class ContentService {
     async onAddContentHnadler(data) {
       return await this.$http.post('content', data).toPromise();
     }
-    async onEditContentHnadler(data) {
-      return await this.$http.put('content', data).toPromise();
+    async onEditContentHnadler(id,data) {
+      return await this.$http.put(`content/${id}`, data).toPromise();
     }
 
     onGetContentDetails(type) {
-   
     return fetch(`http://womencomdevapi.appskeeper.com/v1/content/view?type=${type}`)
-
-          .then(response => {
-              if (response.ok) {
-                  return response.clone().text(); //then consume it again, the error happens
-               }
-             });
+       .then(response => response.json());
+          // {
+          //     if (response.ok) {
+          //         return response; //then consume it again, the error happens
+          //      }
+          //    });
   }
 }

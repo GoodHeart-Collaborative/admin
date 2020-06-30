@@ -1,6 +1,6 @@
 import { Injectable, Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import {
   POPUP_MESSAGES,
   SOMETHING_WENT_WRONG,
@@ -9,10 +9,11 @@ import { ConfirmationModalComponent } from '../components/confirmation-modal/con
 import { environment } from '../../../../environments/environment';
 import { Observable } from 'rxjs';
 import { IPopupResponse, IPopupData } from '../../../models/common-models';
+import { PopupComponent } from '../popup/components/popup.component';
 
 @Injectable()
 export class UtilityService {
-  constructor(private dialog: MatDialog, private _snackBar: MatSnackBar) {}
+  constructor(private dialog: MatDialog, private $snackBar: MatSnackBar) {}
   clearStorage() {
     localStorage.removeItem(environment.tokenKey);
   }
@@ -23,10 +24,11 @@ export class UtilityService {
     localStorage.setItem(environment.tokenKey, token);
   }
   showAlert(message, type?) {
-    this._snackBar.open(message, 'Close', {
+    this.$snackBar.open(message, 'Close', {
       duration: 3000,
     });
   }
+
   trim(data) {
     for (const item in data) {
       if (typeof data[item] === 'string') {
@@ -78,5 +80,26 @@ export class UtilityService {
     })(newValueInstance);
 
     return newValueInstance;
+  }
+  open(message: string, type: 'WARNING' | 'ERROR' | 'SUCCESS' | 'DEFAULT' = 'DEFAULT', config: MatSnackBarConfig = {}) {
+    this.$snackBar.openFromComponent(PopupComponent, {
+      verticalPosition: 'top',
+      horizontalPosition: 'right',
+      data: { message, type },
+      duration: 3000,
+      ...config
+    });
+  }
+  warn(message: string, config: MatSnackBarConfig = {}) {
+    this.open(message, 'WARNING', config);
+  }
+  error(message: string, config: MatSnackBarConfig = {}) {
+    this.open(message, 'ERROR', config);
+  }
+  success(message: string, config: MatSnackBarConfig = {}) {
+    this.open(message, 'SUCCESS', config);
+  }
+  show(message: string, config: MatSnackBarConfig = {}) {
+    this.open(message, 'DEFAULT', config);
   }
 }

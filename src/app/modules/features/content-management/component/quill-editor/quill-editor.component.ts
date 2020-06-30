@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild, Input } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -6,9 +6,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
     templateUrl: './quill-editor.component.html',
     styleUrls: ['./quill-editor.component.scss']
 })
-export class QuillEditorComponent implements OnInit, AfterViewInit {
+export class QuillEditorComponent implements OnInit, AfterViewInit , OnChanges {
     @ViewChild('quillQuestion', { static: true }) quillQuestion;
     @Input() content: any;
+    @Output() onSaveContent = new EventEmitter();
     contentForm: FormGroup;
     quillConfig = {
         toolbar: {
@@ -27,11 +28,9 @@ export class QuillEditorComponent implements OnInit, AfterViewInit {
     }
 
     ngOnChanges() {
-        if (this.content) {
+        // if (this.content) {
             this.contentForm.controls['content'].setValue(this.content);
-            console.log(this.content);
-            
-        }
+        // }
     }
 
     ngAfterViewInit(): void {
@@ -51,6 +50,12 @@ export class QuillEditorComponent implements OnInit, AfterViewInit {
         });
     }
 
+    /**
+     * Save quill editor text
+     */
+    onSave() {
+       this.onSaveContent.emit(this.contentForm.value);
+    }
     /**
      * Reset quill editor text
      */

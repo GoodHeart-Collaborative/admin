@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { ContentService } from 'src/app/modules/shared/services/content.service';
+import { PopupService } from 'src/app/modules/shared/popup';
 
 @Component({
     selector: 'app-content-management',
@@ -18,11 +19,13 @@ export class ContentManagementComponent implements OnInit {
         { tabName: 'Contact Us' },
     ];
     selectedTab: any;
+    data: any;
 
     constructor(
         private activatedRoute: ActivatedRoute,
         private router: Router,
-        private $http: ContentService) {
+        private $http: ContentService,
+        private $popUp: PopupService) {
     }
 
     ngOnInit() {
@@ -63,8 +66,13 @@ export class ContentManagementComponent implements OnInit {
         const params = {
             type: (+this.selectedTab) < 2 ? (+this.selectedTab) + 1 : (+this.selectedTab) + 2
         };
-        const data = await this.$http.onGetContentDetails(params.type);
-        this.content = data;
+        this.data = await this.$http.onGetContentDetails(params.type);
+        console.log(this.data.data);
+
+        if (this.data && this.data.data.description) {
+            this.content = this.data.data.description;
+
+        }
     }
 
 
@@ -92,26 +100,31 @@ export class ContentManagementComponent implements OnInit {
     //     });
     //   }
 
-    onAddContent() {
+    onAddContent(event) {
+        console.log(event);
         const data = {
-            "title": "string",
-            "description": "string",
-            "type": "1"
+            title: this.data.data.title,
+            description: event.content,
+            type: this.data.data.type
         };
+        console.log(data);
         this.$http.onAddContentHnadler(data).then(res => {
             console.log(res);
-
-        });
+         });
     }
-    onEditContent() {
-        const data = {
-            "title": "string",
-            "description": "string",
-        };
-        this.$http.onEditContentHnadler(data).then(res => {
-            console.log(res);
 
-        });
+    onEditContent(event) {
+        const data = {
+            title: this.data.data.title,
+            description: event.content,
+        };
+        this.$http.onEditContentHnadler(this.data.data._id, data).then(res => {
+            console.log(res);
+            this.$popUp.success(res.message);
+        }).catch( (err) => {
+                console.log(err);
+                this.$popUp.success(err.message);
+         });
     }
 
     checkForInvalidCases() {
@@ -120,6 +133,5 @@ export class ContentManagementComponent implements OnInit {
             return true;
         }
         return false;
-        console.log(this.types.includes(this.selectedTab))
     }
 }
