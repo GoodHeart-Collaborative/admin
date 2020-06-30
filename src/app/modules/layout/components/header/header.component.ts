@@ -7,6 +7,8 @@ import { DataTransferService } from '../../../shared/services/data-transfer.serv
 import { CHANGE_PASSWORD } from 'src/app/constant/routes';
 import { LOGIN } from '../../../../constant/routes';
 import { IPopupData } from '../../../../models/common-models';
+import { MatDialog } from '@angular/material';
+import { ChangePasswordComponent } from 'src/app/modules/features/admin/change-password/component/change-password.component';
 
 @Component({
   selector: 'app-header',
@@ -24,7 +26,8 @@ export class HeaderComponent implements OnInit {
     private renderer: Renderer2,
     private _http: HttpService,
     private _router: Router,
-    private _dataService: DataTransferService
+    private _dataService: DataTransferService,
+    private matDailog: MatDialog
   ) {
     this.getProfileDetail();
   }
@@ -84,6 +87,11 @@ export class HeaderComponent implements OnInit {
 
   }
 
+  openDialog() {
+    const dialogRef = this.matDailog.open(ChangePasswordComponent, {
+      width: '500px',
+    });
+  }
 
   ngOnDestroy() {
     if (this.profileSubscriber) {

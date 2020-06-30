@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ChangePasswordService } from '../service/change-password.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormService } from '../../../../shared/services/form.service';
-import { PATTERN } from '../../../../../constant/patterns';
-import { VALIDATION_CRITERIA } from '../../../../../constant/validation-criteria';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-change-password',
@@ -20,7 +19,9 @@ export class ChangePasswordComponent implements OnInit {
   constructor(
     private $changePasswordService: ChangePasswordService,
     private $formBuilder: FormBuilder,
-    private $formService: FormService
+    private $formService: FormService,
+    private $dialogRef: MatDialogRef<any>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
   }
 

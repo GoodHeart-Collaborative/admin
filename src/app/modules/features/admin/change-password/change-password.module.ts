@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ChangePasswordComponent } from './component/change-password.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ValidationErrorPipeModule } from '../../../../pipes/validation-error/validation-error-pipe.module';
+import { MatDialogModule } from '@angular/material';
 const routes: Routes = [
   { path: '', component:ChangePasswordComponent },
 ]
@@ -23,8 +24,11 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    ValidationErrorPipeModule
+    ValidationErrorPipeModule,
+    MatDialogModule
   ],
-  declarations: [ChangePasswordComponent]
+  declarations: [ChangePasswordComponent],
+  exports: [ChangePasswordComponent],
+  entryComponents: [ChangePasswordComponent]
 })
 export class ChangePasswordModule { }
