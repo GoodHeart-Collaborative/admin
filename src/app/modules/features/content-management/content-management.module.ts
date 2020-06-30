@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import { MatButtonModule } from '@angular/material/button';
+// import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -14,6 +14,7 @@ import {QuillModule} from 'ngx-quill';
 import { QuillEditorComponent } from './component/quill-editor/quill-editor.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { PopupService } from '../../shared/popup';
+import { MatButtonModule } from '@angular/material';
 
 @NgModule({
     imports: [

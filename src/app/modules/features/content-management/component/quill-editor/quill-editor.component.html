@@ -2,7 +2,7 @@
   <quill-editor placeholder="Enter text" [modules]="quillConfig" formControlName="content"
                 #quillQuestion></quill-editor>
   <div class="buttons-wrapper">
-    <button mat-flat-button type="button" (click)="reset()">Reset</button>
-    <button mat-raised-button color="primary" type="button" (click)="onSave()">Save</button>
+    <button mat-stroked-button class="btn" type="button" (click)="reset()">Reset</button>
+    <button mat-stroked-button class="btn btn-primary" color="primary" type="button" (click)="onSave()">Save</button>
   </div>
 </form>
