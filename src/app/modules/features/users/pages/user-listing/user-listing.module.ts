@@ -8,6 +8,7 @@ import { UsersListingFilterComponent } from './components/users-listing-filter.c
 import { MatIconModule, MatMenuModule, MatDialogModule } from '@angular/material';
 import { DateFilterModule } from 'src/app/modules/layout/layout-shared/date-filter/date-filter.module';
 import { CustomDatePipeModule } from 'src/app/pipes/custom-date/custom-date-pipe.module';
+import { ConfirmBoxService, ConfirmBoxModule } from 'src/app/modules/shared/confirm-box';
 
 const routes: Routes = [
   {
@@ -26,8 +27,10 @@ const routes: Routes = [
     MatDialogModule,
     DateFilterModule,
     CustomDatePipeModule,
-    MatIconModule
+    MatIconModule,
+    ConfirmBoxModule
   ],
+  providers:[ConfirmBoxService],
   entryComponents: [UsersListingFilterComponent]
 })
 export class UserListingModule { }

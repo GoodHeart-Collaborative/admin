@@ -5,6 +5,7 @@ import { UsersService } from '../../../service/users.service';
 import { HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { USER_DETAIL, USER } from 'src/app/constant/routes';
+import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 
 @Component({
   selector: 'app-user-listing',
@@ -21,7 +22,8 @@ export class UserListingComponent implements OnInit {
   };
   constructor(
     private $userService: UsersService,
-    private $router: Router
+    private $router: Router,
+    private $confirmBox: ConfirmBoxService
   ) {
   }
 
@@ -73,7 +75,19 @@ export class UserListingComponent implements OnInit {
     this.updateUsers();
   }
 
-  onActionHandler(id, status) {
-
+  onActionHandler(id: string, action) {
+    this.$confirmBox.listAction('staff', action).subscribe((confirm) => {
+      if (confirm) {
+        // let status: any = 'ACTIVE';
+        // if (action === 'block') {
+        //   status = 'BLOCKED';
+        // } else if (action === 'delete') {
+        //   status = 'DELETE';
+        // }
+        this.$userService.updateStatus(id, action).then(() => {
+          this.updateUsers();
+        });
+      }
+    });
   }
 }

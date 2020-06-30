@@ -21,21 +21,25 @@ export class ChangePasswordService {
      * @description Changing Password , After that Redirect To Setting Page
      * @param data
      */
-    changePassword(data) {
-        return this.http.post(CHANGE_PASSWORD, data).pipe(
-            map(
-                response => {
-                    if (response['statusCode'] === 200) {
-                        this.$utilityService.showAlert(POPUP_MESSAGES['passwordChanged']);
-                        this.$router.navigate([SETTINGS.fullUrl]);
-                    }
-                }
-            ),
-            catchError(
-                error => {
-                    return throwError(error);
-                }
-            )
-        )
+   async changePassword(data) {
+        const msg = await this.http.post(CHANGE_PASSWORD, data).toPromise();
+        this.$utilityService.success(msg.message);
+        return msg;
+        // .pipe(
+        //     map(
+        //         response => {
+        //             if (response['statusCode'] === 200) {
+        //                 this.$utilityService.showAlert(POPUP_MESSAGES['passwordChanged']);
+        //                 this.$router.navigate([SETTINGS.fullUrl]);
+        //             }
+        //         }
+        //     ),
+        //     catchError(
+        //         error => {
+        //             return throwError(error);
+        //         }
+        //     )
+        // ).
+        // subscribe();
     }
 } 

@@ -21,6 +21,13 @@ export class UsersService {
     const {data} = await this.$http.get(`${USER_DETAILS(id)}`).toPromise();
     return data;
   }
+
+  async updateStatus(id, status) {
+    console.log(id, status);
+    
+    const {data} =  await this.$http.patch(`admin/${id}/user/${status}`, {}).toPromise();
+    return data;
+  }
 }
 
 @Injectable()

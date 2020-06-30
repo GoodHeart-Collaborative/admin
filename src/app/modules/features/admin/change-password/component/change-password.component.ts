@@ -15,7 +15,7 @@ export class ChangePasswordComponent implements OnInit {
   hideConfirmPassword = true;
   hidePassword = true;
   changePasswordForm: FormGroup;
-
+ hint = 'Password must contain a capital, a small letter, one numeric value and a special character';
   constructor(
     private $changePasswordService: ChangePasswordService,
     private $formBuilder: FormBuilder,
@@ -59,17 +59,12 @@ export class ChangePasswordComponent implements OnInit {
       oldPassword: this.changePasswordForm.value.oldPassword,
       password: this.changePasswordForm.value.password
     };
-    console.log(data);
     this.changePasswordForm.disable();
-    this.$changePasswordService.changePassword(data)
-      .subscribe(
-        response => {
-        },
-        error => {
-          this.changePasswordForm.enable();
-        }
-      );
-
+    this.$changePasswordService.changePassword(data).then(() => {
+      this.$dialogRef.close();
+     }).catch(err => {
+       this.changePasswordForm.enable();
+     });
   }
 
   onCloseHandler() {
