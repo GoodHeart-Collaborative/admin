@@ -100,7 +100,7 @@ export const FEEDBACK_DETAIL: IRoute = {
 export const SETTINGS: IRoute = {
   path: 'settings',
   get fullUrl(): string {
-    return `${ADMIN.fullUrl}/${this.path}`;
+    return `${this.path}`;
   }
 };
 
@@ -114,7 +114,7 @@ export const ADMIN_PROFILE: IRoute = {
 export const CHANGE_PASSWORD: IRoute = {
   path: 'change-password',
   get fullUrl(): string {
-    return `${SETTINGS.fullUrl}/${this.path}`;
+    return `${SETTINGS.path}/${this.path}`;
   }
 };
 

@@ -2,9 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccountGuard } from './guards/account/account.guard';
 import { HomeGuard } from './guards/home/home.guard';
-import { ADMIN, ACCOUNT , CONTENT} from './constant/routes';
-
-
+import { ADMIN, ACCOUNT , CONTENT,SETTINGS} from './constant/routes';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: ADMIN.path, pathMatch: 'full' },
@@ -19,6 +17,13 @@ const appRoutes: Routes = [
     path: ADMIN.path,
     loadChildren: () =>
       import('./modules/layout/layout.module').then((m) => m.LayoutModule),
+    canLoad: [HomeGuard],
+    canActivate: [HomeGuard],
+  },
+  {
+    path: SETTINGS.path,
+    loadChildren: () =>
+      import('./modules/features/admin/admin.module').then((m) => m.AdminModule),
     canLoad: [HomeGuard],
     canActivate: [HomeGuard],
   },
