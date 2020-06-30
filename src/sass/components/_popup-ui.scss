@@ -1,0 +1,44 @@
+@import 'abstracts/variables';
+
+.popup-ui{
+    .popup-header{
+        padding: 10px 20px;
+        background-color: $primary;
+        border-radius: 3px 3px 0px 0px;
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        .close-icon{
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 9;
+            cursor: pointer;
+            color: white;
+        }
+        h3{
+            color: white;
+            font-weight: 100;
+        }
+    }
+    .popup-body{
+        text-align: center;
+        padding: 30px 20px;
+        p{
+              margin: 0px;
+        }
+    }
+    .popup-footer{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0px 20px 30px 20px;
+        .btn{
+            &:not(:first-child){
+                margin-left: 20px;
+            }
+        }
+    } 
+}

@@ -69,4 +69,8 @@ export class ChangePasswordComponent implements OnInit {
     }
   }
 
+  onCloseHandler() {
+    this.$dialogRef.close();
+  }
+
 }

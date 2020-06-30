@@ -252,9 +252,7 @@ export class TableComponent implements OnInit {
     if (this.tableSource && this.tableSource.options && this.tableSource.options.filterComponent) {
       const subscription = this.$dialog.open(this.tableSource.options.filterComponent, {
         disableClose: true,
-        position: {
-          right: '20px',
-        },
+        panelClass: 'filter-modal',
         width: '350px',
         autoFocus: false,
         data: this.optionEvent.data.filterData

@@ -188,4 +188,10 @@
     .mat-sort-header-container{
         justify-content: center;
     }
+    .cdk-overlay-pane{
+        &.filter-modal{
+            position: fixed;
+            margin-right: 20px !important;
+        }
+    }
 }
