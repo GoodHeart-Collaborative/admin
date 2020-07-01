@@ -9,6 +9,7 @@ import { UserEventsModule } from './user-events/user-events.module';
 import { UserGratitudeJournalModule } from './user-gratitude-journal/user-gratitude-journal.module';
 import { UserShoutoutsModule } from './user-shoutouts/user-shoutouts.module';
 import { UserTopicsModule } from './user-topics/user-topics.module';
+import { EventDetailModule } from './user-events/event-detail/event-detail.module';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
     UserEventsModule,
     UserGratitudeJournalModule,
     UserShoutoutsModule,
+    EventDetailModule,
     UserTopicsModule,
     MatTabsModule,
     RouterModule.forChild(routes),

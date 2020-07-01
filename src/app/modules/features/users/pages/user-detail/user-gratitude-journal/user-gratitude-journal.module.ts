@@ -4,12 +4,7 @@ import { UserGratitudeJournalComponent } from './user-gratitude-journal.componen
 import { GratitudeJournalDetailModule } from './gratitude-journal-detail/gratitude-journal-detail.module';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [
-  // {
-  //   path: '',
-  //   component: UserGratitudeJournalComponent
-  // }
-];
+const routes: Routes = [];
 
 @NgModule({
   declarations: [UserGratitudeJournalComponent],
