@@ -7,7 +7,7 @@ export const PATTERN_ERRORS = (pattern, key) => {
         return `Please enter a valid ${key.toLowerCase()}`;
     }
     if (pattern == PATTERN.password) {
-        return `${toTitleCase(key)} can not contain blank spaces`;
+        return `${toTitleCase(key)} must fulfill the given requirements`;
     }
     if (pattern === PATTERN.name) {
         return `${toTitleCase(key)} can not be blank`;

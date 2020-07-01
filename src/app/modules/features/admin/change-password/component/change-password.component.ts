@@ -15,7 +15,7 @@ export class ChangePasswordComponent implements OnInit {
   hideConfirmPassword = true;
   hidePassword = true;
   changePasswordForm: FormGroup;
- hint = 'Password must contain a capital, a small letter, one numeric value and a special character';
+ hint = 'Password must contain an uppercase, a lowercase letter, one numeric value and a special character';
   constructor(
     private $changePasswordService: ChangePasswordService,
     private $formBuilder: FormBuilder,
