@@ -1,6 +1,13 @@
-<span class="dialog__title">{{data.title}}</span>
-<p class="dialog__body">{{data.message}}</p>
-<div class="dialog__actions" mat-dialog-actions>
-    <button mat-stroked-button color="primary" [mat-dialog-close]="false">Cancel</button>
-    <button mat-flat-button color="primary" [mat-dialog-close]="true">Confirm</button>
+<div class="confirm-box-page popup-ui">
+    <div class="popup-header">
+        <h3>{{data.title}}</h3>
+        <mat-icon class="close-icon" [mat-dialog-close]="false">close</mat-icon>
+    </div>
+    <div class="popup-body">
+        <p class="dialog__body">{{data.message}}</p>
+    </div>
+    <div class="popup-footer">
+        <button class="btn" mat-stroked-button color="primary" [mat-dialog-close]="false">Cancel</button>
+        <button class="btn btn-primary" mat-stroked-button color="primary" [mat-dialog-close]="true">Confirm</button>
+    </div>
 </div>

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ConfirmBoxComponent } from './view/confirm-box.component';
-import { MatDialogModule, MatButtonModule } from '@angular/material';
+import { MatDialogModule, MatButtonModule, MatIconModule } from '@angular/material';
 import { ConfirmBoxService } from './services/confirm-box.service';
 
 
@@ -11,7 +11,8 @@ import { ConfirmBoxService } from './services/confirm-box.service';
   imports: [
     CommonModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [
     ConfirmBoxService

@@ -9,8 +9,7 @@ export class ConfirmBoxService {
   open(data: {title: string, message: string}) {
     return this.$dialog.open(ConfirmBoxComponent, {
       disableClose: true,
-      width: '300px',
-      height: '200px',
+      width: '500px',
 
       autoFocus: false,
       data

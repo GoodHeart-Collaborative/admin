@@ -27,12 +27,11 @@
                 </i>
                 <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked')" *ngIf="user.status === 'active';else templateAction"  title="Block user">
                     blocked</i>
-                    <ng-template #templateAction>
-
-                        <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active')" title="Unblock user" >
-                            lock_open
-                        </i>
-                    </ng-template>
+                <ng-template #templateAction>
+                    <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active')" title="Unblock user" >
+                        lock_open
+                    </i>
+                </ng-template>
             </div>
         </ng-template>
     </ng-container> 

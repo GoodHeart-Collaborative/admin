@@ -24,6 +24,9 @@
     &.btn-primary {
         color: #ffffff;
         background-color: $primary !important;
+        .mat-button-wrapper{
+            color: white !important;
+        }
     }
 
     &.btn-simple {
@@ -132,17 +135,18 @@
         &.icon-delete {
             color: #ce0101;
         }
-
+        
         &.icon-edit {
             color: #0d8c69;
         }
-
+        
         &.icon-unblock {
             color: #0d8c69;
         }
-
+        
         &.icon-block {
             color: #b30000;
+            width: 20px;
         }
         font-size: 20px;
         @media screen and (max-width: 568px) {

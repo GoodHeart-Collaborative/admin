@@ -14,17 +14,18 @@ quill-editor {
 :host ::ng-deep{
 
   .ql-toolbar {
-    position: fixed;
-    top: 0;
+    // position: fixed;
+    // top: 0;
     border: 0px !important;
   }
   .ql-container{
     border: 0px;
     // border-top: 1px solid red;
+    border-top: 1px solid #dbdbdb !important;
     border-bottom: 1px solid #dbdbdb;
   }
   .ql-editor {
-    height: calc(100vh - 256px);
+    height: calc(100vh - 298px);
     overflow-y: auto;
     padding: 10px !important;
     color: #000000;

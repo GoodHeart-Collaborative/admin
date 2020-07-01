@@ -7,5 +7,7 @@ import { MAT_DIALOG_DATA } from '@angular/material';
   styleUrls: ['./confirm-box.component.scss']
 })
 export class ConfirmBoxComponent {
+  $dialogRef: any;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
 }
+
