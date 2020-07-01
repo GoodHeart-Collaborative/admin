@@ -26,6 +26,7 @@ quill-editor {
   }
   .ql-editor {
     height: calc(100vh - 298px);
+    min-height: 100px;
     overflow-y: auto;
     padding: 10px !important;
     color: #000000;
