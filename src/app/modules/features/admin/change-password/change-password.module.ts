@@ -10,6 +10,7 @@ import { ChangePasswordComponent } from './component/change-password.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ValidationErrorPipeModule } from '../../../../pipes/validation-error/validation-error-pipe.module';
 import { MatDialogModule } from '@angular/material';
+import {MatMenuModule} from '@angular/material/menu';
 const routes: Routes = [
   { path: '', component:ChangePasswordComponent },
 ]
@@ -20,6 +21,7 @@ const routes: Routes = [
     CommonModule,
     SharedModule,
     MatCardModule,
+    MatMenuModule,
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,

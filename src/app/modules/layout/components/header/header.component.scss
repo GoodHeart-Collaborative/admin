@@ -233,6 +233,13 @@
             }
         }
     }
+    .password-hint-menu{
+        max-width: 100% !important;
+        min-height: auto !important;
+        .mat-menu-content{
+            padding: 15px !important;
+        }
+    }
 }
 
 .header-indicator{
