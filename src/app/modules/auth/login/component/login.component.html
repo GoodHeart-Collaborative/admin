@@ -21,6 +21,7 @@
 					<mat-error>{{getControl('password')|validate:'password'}}</mat-error>
 					<mat-icon matSuffix (click)="hide= !hide">{{hide ? 'visibility_off' :'visibility'}}</mat-icon>
 				</mat-form-field>
+				<!-- <app-invalid-password-hint [control]="getControl('password')"></app-invalid-password-hint> -->
 
 				<div class="link-cover">
 					<a [routerLink]="'FORGOT_PASSWORD'|absolutePath">Forgot Password?</a>
