@@ -7,7 +7,7 @@ import { VALIDATION_CRITERIA } from '../../../constant/validation-criteria';
   providedIn: 'root',
 })
 export class FormService {
-  constructor() {}
+  constructor() { }
   VALIDATION = {
     name: [
       Validators.pattern(PATTERN.name),
@@ -74,8 +74,7 @@ export class FormService {
 
   minMaxRangeValidator(min: string, max: string) {
     return (fg: FormGroup) => {
-      console.log({ min, max });
-     const minValue = Number(fg.controls[min].value) || 0;
+      const minValue = Number(fg.controls[min].value) || 0;
       const maxValue = Number(fg.controls[max].value) || 0;
       if (!maxValue) {
         return fg.controls[max].setErrors(null);

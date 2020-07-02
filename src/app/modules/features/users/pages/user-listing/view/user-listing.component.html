@@ -8,6 +8,7 @@
     <ng-template appFor="status" let-user="row">
         {{ user?.status | titlecase}}
     </ng-template>
+   
 
     <ng-template appFor="name" let-user="row" >
         <a href="javascript:void(0)" (click)="onDetailsHandler(user?._id)">

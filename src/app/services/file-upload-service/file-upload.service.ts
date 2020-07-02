@@ -64,8 +64,6 @@ export class FileUploadService {
     try {
       let data = [];
       for (let i = 0; i < files.length; i++) {
-        // console.log(files[i]);
-
         data.push(this.uploadFile(files[i]));
       }
       let result = await Promise.all(data);

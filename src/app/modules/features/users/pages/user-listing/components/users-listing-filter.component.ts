@@ -16,7 +16,7 @@ export class UsersListingFilterComponent implements OnInit {
   isProcessing = true;
   constructor(
      private $fb: FormBuilder,
-     private dialogRef: MatDialogRef<any>,
+     private dialogRef: MatDialogRef<UsersListingFilterComponent>,
      @Inject(MAT_DIALOG_DATA) data: any,
   ) {
     this.getFilterForm();
@@ -39,8 +39,7 @@ export class UsersListingFilterComponent implements OnInit {
   }
 
   onApplyHandler() {
-
-    if (this.userFilterForm.valid && this.userFilterForm.touched) {
+   if (this.userFilterForm.valid && this.userFilterForm.touched) {
       this.isProcessing = false;
       const filterData = { ...this.userFilterForm.value};
       this.dialogRef.close(filterData);
@@ -50,6 +49,9 @@ export class UsersListingFilterComponent implements OnInit {
   resetFilter() {
     // if (this.userFilterForm.touched && this.userFilterForm.valid) {
     this.userFilterForm.reset();
+    const filterData = { ...this.userFilterForm.value};
+    this.dialogRef.close(filterData);
+
     // }
   }
 }

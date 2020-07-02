@@ -13,7 +13,6 @@ export class UsersService {
   ) { }
 
   async  queryData(params) {
-    console.log(params);
     return  this.$http.get(USER, params).toPromise();
   }
 
@@ -22,11 +21,9 @@ export class UsersService {
     return data;
   }
 
-  async updateStatus(id, status) {
-    console.log(id, status);
+  async updateStatus(id, status) {    
+    return await this.$http.patch(`admin/${id}/user/${status}`, {}).toPromise();
     
-    const {data} =  await this.$http.patch(`admin/${id}/user/${status}`, {}).toPromise();
-    return data;
   }
 }
 
@@ -35,9 +32,7 @@ export class UsersServiceResolve implements Resolve<any>  {
   constructor(private $UsersService: UsersService, private $router: Router) { }
   resolve(route: ActivatedRouteSnapshot) {
     const userId = route.params['id'];
-    console.log(route.params);
     return this.$UsersService.onDetailsHandler(userId).catch(err => {
-      console.log(err);
       if (err) {
         // this.$router.navigate(['admin/users']);
         return null;

@@ -66,7 +66,6 @@ export class UtilityService {
           });
         } else {
           Object.keys(data).map((key, index) => {
-            // console.log(data[key] instanceof Date);
             if (data[key] instanceof Date) {
               data[key] = new Date(data[key]).toISOString();
             }

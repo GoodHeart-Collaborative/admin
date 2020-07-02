@@ -27,7 +27,6 @@ export class DashboardComponent implements OnInit {
 
   onDrashboardHandler() {
       this.$dashboardService.onDrashboardHandler().then(res => {
-        console.log(res);
         this.data = res.data;
       });
   }

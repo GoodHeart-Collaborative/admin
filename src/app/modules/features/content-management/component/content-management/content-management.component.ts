@@ -67,49 +67,20 @@ export class ContentManagementComponent implements OnInit {
             type: (+this.selectedTab) < 2 ? (+this.selectedTab) + 1 : (+this.selectedTab) + 2
         };
         this.data = await this.$http.onGetContentDetails(params.type);
-        console.log(this.data.data);
-
         if (this.data && this.data.data.description) {
             this.content = this.data.data.description;
 
         }
     }
 
-
-    // onGetContentDetails() {
-    //     const params = {
-    //         type: (+this.selectedTab) < 2 ? (+this.selectedTab) + 1 : (+this.selectedTab) + 2
-    //     };
-    //     fetch(`http://womencomdevapi.appskeeper.com/v1/content/view?type=${params.type}`)
-
-    //         .then(response => {
-    //             if (response.ok) {
-    //                 return response.clone().text(); //then consume it again, the error happens
-    //              }
-    //            }).then(res => {
-    //             console.log(res);
-    //             this.content = res;
-    //         });
-    // }
-    // onGetContentDetails() {
-    //     const params = {
-    //         type: (+this.selectedTab) < 2 ? (+this.selectedTab) + 1 : (+this.selectedTab) + 2
-    //     }
-    //     this.$http.onContentDetailsHandler(params).then(res => {
-    //         console.log(res);
-    //     });
-    //   }
-
-    onAddContent(event) {
+ onAddContent(event) {
         console.log(event);
         const data = {
             title: this.data.data.title,
             description: event.content,
             type: this.data.data.type
         };
-        console.log(data);
         this.$http.onAddContentHnadler(data).then(res => {
-            console.log(res);
          });
     }
 
@@ -119,10 +90,8 @@ export class ContentManagementComponent implements OnInit {
             description: event.content,
         };
         this.$http.onEditContentHnadler(this.data.data._id, data).then(res => {
-            console.log(res);
             this.$popUp.success(res.message);
         }).catch( (err) => {
-                console.log(err);
                 this.$popUp.success(err.message);
          });
     }
