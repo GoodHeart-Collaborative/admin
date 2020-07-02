@@ -9,8 +9,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class UserGratitudeJournalComponent implements OnInit {
 isProcessing = false;
 @Input() data;
-  constructor(private $router: Router,
-              private $activeRoute: ActivatedRoute) {
+  constructor(private $router: Router
+              ) {
             //  this.id = this.$activeRoute.snapshot.params.id   
               }
 

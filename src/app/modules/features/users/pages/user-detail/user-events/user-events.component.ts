@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-events',
@@ -7,13 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserEventsComponent implements OnInit {
   isProcessing: boolean = false;
-
-  constructor() { }
+   @Input() data;
+  constructor(private $router: Router) { }
 
   ngOnInit() {
   }
   onClick() {
-    this.isProcessing = true;
+    this.$router.navigate([`admin/users/${this.data._id}/event`]);
+
   }
 
 }
