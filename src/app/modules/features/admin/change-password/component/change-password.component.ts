@@ -5,10 +5,7 @@ import { FormService } from '../../../../shared/services/form.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 
-export type passwrodTypes = {
-  ['uppercase']: RegExp,
-  ['lowercase']?: RegExp
-}
+
 @Component({
   selector: 'app-change-password',
   templateUrl: './change-password.component.html',
@@ -20,12 +17,7 @@ export class ChangePasswordComponent implements OnInit {
   hideConfirmPassword = true;
   hidePassword = true;
   changePasswordForm: FormGroup;
-  pattersForPassword: passwrodTypes = {
-    ['uppercase']: new RegExp('(?=.*[A-Z])'),
-    ['lowercase']: new RegExp('(?=.*[a-z])'),
 
-  }
-  hint = 'Password must contain an uppercase, a lowercase letter, one numeric value and a special character';
   constructor(
     private $changePasswordService: ChangePasswordService,
     private $formBuilder: FormBuilder,
@@ -64,6 +56,7 @@ export class ChangePasswordComponent implements OnInit {
 
   changePassword() {
     if (this.changePasswordForm.invalid) {
+      this.changePasswordForm.markAllAsTouched();
       return;
     }
     let data = {
@@ -72,9 +65,8 @@ export class ChangePasswordComponent implements OnInit {
     };
     this.changePasswordForm.disable();
     this.$changePasswordService.changePassword(data).subscribe((res) => {
-
-      this.onCloseHandler();
-      this.$utility.success(res.message);
+    this.onCloseHandler();
+    this.$utility.success(res.message);
     }, err => {
       this.changePasswordForm.enable();
     });
@@ -84,11 +76,6 @@ export class ChangePasswordComponent implements OnInit {
     this.$dialogRef.close();
   }
 
-  checkValue(type: keyof passwrodTypes, controlName: string) {
 
-    console.log(this.pattersForPassword);
-    return this.pattersForPassword[type].test(this.getControl(controlName).value);
-
-  }
 
 }

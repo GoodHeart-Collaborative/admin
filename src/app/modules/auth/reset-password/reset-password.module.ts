@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ValidationErrorPipeModule } from '../../../pipes/validation-error/validation-error-pipe.module';
 import { ResetPasswordService } from './service/reset-password.service';
+import { InvalidPasswordHintModule } from '../../shared/invalid-password-hint/invalid-password-hint.module';
 
 const routes: Routes = [
   {path: '', component: ResetPasswordComponent,canActivate:[AccountGuard] }
@@ -26,7 +27,8 @@ const routes: Routes = [
     MatIconModule,
     MatInputModule,
     ReactiveFormsModule,
-    ValidationErrorPipeModule
+    ValidationErrorPipeModule,
+    InvalidPasswordHintModule
   ],
   declarations: [ResetPasswordComponent],
   providers: [ResetPasswordService]

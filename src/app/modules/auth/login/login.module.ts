@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ValidationErrorPipeModule } from 'src/app/pipes/validation-error/validation-error-pipe.module';
 import { LoginService } from './service/login.service';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { InvalidPasswordHintModule } from '../../shared/invalid-password-hint/invalid-password-hint.module';
 
 const routes: Routes = [
   {path: '', component: LoginComponent,canActivate:[AccountGuard] }
@@ -30,7 +31,8 @@ const routes: Routes = [
     MatInputModule,
     ReactiveFormsModule,
     MatCheckboxModule,
-    ValidationErrorPipeModule
+    ValidationErrorPipeModule,
+    InvalidPasswordHintModule
   ],
   declarations: [LoginComponent],
   providers:[LoginService]
