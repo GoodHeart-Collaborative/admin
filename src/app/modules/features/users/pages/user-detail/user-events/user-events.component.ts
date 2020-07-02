@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-events.component.scss']
 })
 export class UserEventsComponent implements OnInit {
+  isProcessing: boolean = false;
 
   constructor() { }
 
   ngOnInit() {
+  }
+  onClick() {
+    this.isProcessing = true;
   }
 
 }
