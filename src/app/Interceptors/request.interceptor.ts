@@ -52,7 +52,6 @@ export class RequestInterceptor implements HttpInterceptor {
                     }
                 },
                 (err: any) => {
-                    console.log(err);
                     this.loaderService.hideLoader();
                     if (err instanceof HttpErrorResponse) {
                         let message = err.message;

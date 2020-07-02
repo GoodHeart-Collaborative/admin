@@ -90,7 +90,7 @@ export class HeaderComponent implements OnInit {
   openDialog() {
     const dialogRef = this.matDailog.open(ChangePasswordComponent, {
       width: '500px',
-    });
+    }).afterClosed().subscribe();
   }
 
   ngOnDestroy() {

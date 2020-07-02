@@ -23,7 +23,6 @@ export class GooglePlacesDirective implements OnInit {
     // @params: place - Google Autocomplete place object
     // @returns: location_obj - An address object in human readable format
     const location_obj = {};
-    console.log(place)
     for (const i of Object.keys(place.address_components)) {
       const item = place.address_components[i];
 

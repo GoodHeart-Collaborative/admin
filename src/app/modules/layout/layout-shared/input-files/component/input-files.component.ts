@@ -76,7 +76,6 @@ export class InputFilesComponent implements OnInit, OnDestroy {
           store.push(new FileData(file, _urls[index]));
         });
         this._store = store;
-        console.log(store)
       });
     });
   }

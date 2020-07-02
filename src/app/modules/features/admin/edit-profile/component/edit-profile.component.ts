@@ -1,12 +1,10 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FileUploadService } from '../../../../shared/services/file-upload.service';
 import { EditProfileService } from '../service/edit-profile.service';
 import { onSelectFile } from '../../../../../constant/file-input';
 import { invalidImageError, invalidFileSize } from '../../../../../constant/messages';
-import { PATTERN } from '../../../../../constant/patterns';
-import { VALIDATION_CRITERIA } from '../../../../../constant/validation-criteria';
 import { FormService } from '../../../../shared/services/form.service';
 
 @Component({
@@ -15,7 +13,7 @@ import { FormService } from '../../../../shared/services/form.service';
   styleUrls: ['./edit-profile.component.scss'],
   providers: [EditProfileService]
 })
-export class EditProfileComponent implements OnInit {
+export class EditProfileComponent implements OnInit,OnDestroy {
   profilePicURL: string;
   editProfileForm: FormGroup;
   minDateOfBirth = new Date();
@@ -23,10 +21,10 @@ export class EditProfileComponent implements OnInit {
   imageFile;
   profileDetail: any;
   constructor(
-    private _editProfileService: EditProfileService,
-    private _fileUploadService: FileUploadService,
-    private _formBuilder: FormBuilder,
-    private _formService:FormService
+    private $editProfileService: EditProfileService,
+    private $fileUploadService: FileUploadService,
+    private $formBuilder: FormBuilder,
+    private $formService: FormService
   ) { }
 
   ngOnInit() {
@@ -35,33 +33,31 @@ export class EditProfileComponent implements OnInit {
   }
 
   createForm() {
-    this.editProfileForm = this._formBuilder.group(
+    this.editProfileForm = this.$formBuilder.group(
       {
-        name: this._formService.getControl('name')
-      }
-    )
+        name: this.$formService.getControl('name')
+      });
   }
 
   /**
    * @description Getting Admin Profile Detail
    */
   getProfileDetail() {
-    this._editProfileService.getProfileDetail()
+    this.$editProfileService.getProfileDetail()
       .subscribe(
         (response: any) => {
-          console.log(response)
           this.profileDetail = response.data;
           this.editProfileForm.patchValue({
             name: this.profileDetail.name
-          })
+          });
           this.profilePicURL = this.profileDetail.profilePhoto;
         }, err => { }
-      )
+      );
   }
 
   /**
    * @description Getting controls of editProfileForm
-   * @param name 
+   * @param name
    */
   getControl(name) {
     return this.editProfileForm.controls[name];
@@ -78,9 +74,9 @@ export class EditProfileComponent implements OnInit {
       this.profilePicURL = result.url;
     } catch (err) {
       if (err.type) {
-        this._editProfileService.showAlert(invalidImageError());
+        this.$editProfileService.showAlert(invalidImageError());
       } else if (err.size) {
-        this._editProfileService.showAlert(invalidFileSize())
+        this.$editProfileService.showAlert(invalidFileSize())
       }
     }
   }
@@ -89,15 +85,16 @@ export class EditProfileComponent implements OnInit {
    * @description First upload the profile picture then edit the profile
    */
   async editProfile() {
-    if (this.editProfileForm.invalid)
-      return;
+    if (this.editProfileForm.invalid) {
+       return;
+    }
     if (this.imageFile) {
-      let data: any = await this._fileUploadService.uploadFile(this.imageFile);
+      let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
       this.profilePicURL = data.Location;
     }
     let body = { profilePhoto: this.profilePicURL, ...this.editProfileForm.value };
     this.editProfileForm.disable();
-    this.editProfileSubscription = this._editProfileService.editProfile(body).subscribe(
+    this.editProfileSubscription = this.$editProfileService.editProfile(body).subscribe(
       data => {
       },
       err => {
@@ -107,7 +104,8 @@ export class EditProfileComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    if (this.editProfileSubscription)
+    if (this.editProfileSubscription) {
       this.editProfileSubscription.unsubscribe();
+    }
   }
 }

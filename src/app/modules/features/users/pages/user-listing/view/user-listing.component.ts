@@ -6,6 +6,7 @@ import { HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { USER_DETAIL, USER } from 'src/app/constant/routes';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
+import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 
 @Component({
   selector: 'app-user-listing',
@@ -23,7 +24,8 @@ export class UserListingComponent implements OnInit {
   constructor(
     private $userService: UsersService,
     private $router: Router,
-    private $confirmBox: ConfirmBoxService
+    private $confirmBox: ConfirmBoxService,
+    private $utility: UtilityService
   ) {
   }
 
@@ -55,7 +57,6 @@ export class UserListingComponent implements OnInit {
       params['searchTerm'] = searchText;
     }
     this.$userService.queryData(params).then(res => {
-      console.log(res);
       this.tableSource = new UserTableDataSource({
         pageIndex,
         pageSize,
@@ -76,15 +77,10 @@ export class UserListingComponent implements OnInit {
   }
 
   onActionHandler(id: string, action) {
-    this.$confirmBox.listAction('staff', action).subscribe((confirm) => {
+    this.$confirmBox.listAction('User', action).subscribe((confirm) => {
       if (confirm) {
-        // let status: any = 'ACTIVE';
-        // if (action === 'block') {
-        //   status = 'BLOCKED';
-        // } else if (action === 'delete') {
-        //   status = 'DELETE';
-        // }
-        this.$userService.updateStatus(id, action).then(() => {
+        this.$userService.updateStatus(id, action).then((res) => {
+          this.$utility.success(res.message);
           this.updateUsers();
         });
       }

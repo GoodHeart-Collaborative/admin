@@ -9,7 +9,6 @@ import { HomeGuard } from '../../guards/home/home.guard';
 import { AccountGuard } from '../../guards/account/account.guard';
 import { FormsModule } from '@angular/forms';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
-
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -18,6 +17,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AbsoluteRoutingModule } from '../../pipes/absolute-routing/absolute-routing.module';
 import { LoaderComponent } from './components/loader/loader.component';
 import { MatIconModule } from '@angular/material';
+import { PopupModule } from './popup';
 
 @NgModule({
   imports: [
@@ -31,7 +31,8 @@ import { MatIconModule } from '@angular/material';
     HttpClientModule,
     FormsModule,
     AbsoluteRoutingModule,
-    MatIconModule
+    MatIconModule,
+    PopupModule
   ],
   declarations: [
     ConfirmationModalComponent,

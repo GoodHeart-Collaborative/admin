@@ -97,8 +97,6 @@ export class Pagination {
   resetPages() {
     this.total = 0;
     this.page = 1;
-    // console.log(this.paginator, '-----------------');
-    // this.paginator.pageIndex = 0;
   }
   getSerialNumber(i) {
     return (
@@ -109,7 +107,6 @@ export class Pagination {
   changeDateFormat(data) {
     for (let item in data) {
       if (data[item] instanceof Date) {
-        console.log(data[item]);
         data[item] = data[item].toISOString();
       }
     }

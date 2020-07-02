@@ -12,7 +12,6 @@ export class AbsoluteRoutingPipe implements PipeTransform {
       }
       return routes[route].fullUrl;
     } catch (error) {
-      console.log(route, '--------');
       return '';
     }
   }

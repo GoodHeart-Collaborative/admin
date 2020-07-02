@@ -1,5 +1,5 @@
-import {toTitleCase} from './messages';
-import {PATTERN} from './patterns';
+import { toTitleCase } from './messages';
+import { PATTERN } from './patterns';
 
 export const PATTERN_ERRORS = (pattern, key) => {
 

@@ -10,7 +10,7 @@ export class AdminProfileComponent implements OnInit {
 
   profileDetail;
   constructor(
-    private _dataService: DataTransferService
+    private $dataService: DataTransferService
   ) { }
 
   ngOnInit() {
@@ -21,10 +21,9 @@ export class AdminProfileComponent implements OnInit {
    * Getting Admin Profile Detail
    */
   getDetail() {
-    this._dataService.getProfileDetail()
+    this.$dataService.getProfileDetail()
       .subscribe(
         (response: any) => {
-          console.log(response)
           this.profileDetail = response.data;
         }, err => { }
       );
