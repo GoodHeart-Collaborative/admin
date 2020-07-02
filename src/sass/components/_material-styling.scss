@@ -46,6 +46,11 @@ mat-form-field {
             right: -9px;
         }
     }
+    &.mat-form-field-appearance-outline{
+        .mat-form-field-suffix{
+            top: 8px !important;
+        }
+    }
     .suffix {
         position: relative;
         top: -8px;
