@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-gratitude-journal',
@@ -6,13 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-gratitude-journal.component.scss']
 })
 export class UserGratitudeJournalComponent implements OnInit {
-isProcessing:Boolean= false;
-  constructor() { }
+isProcessing = false;
+@Input() data;
+  constructor(private $router: Router,
+              private $activeRoute: ActivatedRoute) {
+            //  this.id = this.$activeRoute.snapshot.params.id   
+              }
 
   ngOnInit() {
   }
 
   onClick() {
-    this.isProcessing = true;
+    this.$router.navigate([`admin/users/${this.data._id}/gratitude`])
   }
 }

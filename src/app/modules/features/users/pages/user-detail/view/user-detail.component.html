@@ -3,10 +3,9 @@
 
         <mat-tab label="Basic Details">
             <app-user-basic-detail [data]="userDetails"></app-user-basic-detail>
-
         </mat-tab>
         <mat-tab label="Gratitude Journal">
-            <app-user-gratitude-journal></app-user-gratitude-journal>
+            <app-user-gratitude-journal [data]="userDetails"></app-user-gratitude-journal>
         </mat-tab>
         <mat-tab label="Events">
             <app-user-events></app-user-events>

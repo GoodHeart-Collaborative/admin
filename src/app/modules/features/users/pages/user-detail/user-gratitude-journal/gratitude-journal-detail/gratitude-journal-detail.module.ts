@@ -4,10 +4,11 @@ import { GratitudeJournalDetailComponent } from './gratitude-journal-detail.comp
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   component: GratitudeJournalDetailComponent
-  // }
+  {
+    path: '',
+    // pathMatch: 'full',
+    component: GratitudeJournalDetailComponent
+  }
 ];
 
 @NgModule({

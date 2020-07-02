@@ -14,9 +14,10 @@ import { EventDetailModule } from './user-events/event-detail/event-detail.modul
 
 const routes: Routes = [
   {
-    path: '',
-    component: UserDetailComponent
-  }
+    path: '', redirectTo: 'details', pathMatch: 'full'
+
+  },
+  { path: 'details', component: UserDetailComponent }
 ];
 @NgModule({
   declarations: [UserDetailComponent],

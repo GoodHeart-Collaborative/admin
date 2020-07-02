@@ -70,7 +70,13 @@ export const USER_LIST: IRoute = {
 };
 
 export const USER_DETAIL: IRoute = {
-  path: `:id/details`,
+  path: `:id`,
+  get fullUrl(): string {
+    return `${USER.fullUrl}/${this.path}`;
+  }
+};
+export const GRATITUDE_DETAIL: IRoute = {
+  path: `:id/gratitude`,
   get fullUrl(): string {
     return `${USER.fullUrl}/${this.path}`;
   }
