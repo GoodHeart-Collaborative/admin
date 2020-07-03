@@ -9,6 +9,9 @@
     width: fit-content;
     margin: 0px;
     margin-bottom: 17px;
+    @media screen and (max-width: 767px){
+        margin-bottom: 12px;
+    }
     li{
         float: left;
         a{
@@ -22,23 +25,11 @@
             display: block;
             float: left;
             transition: .2s;
-            // &.chevron{
-            //     &::after{
-            //         border-style: solid;
-            //         border-width: 2px 2px 0 0;
-            //         content: "";
-            //         display: inline-block;
-            //         color: #8a8a8a;
-            //         height: 8px;
-            //         z-index: 9;
-            //         right: 0px;
-            //         position: absolute;
-            //         top: 13px;
-            //         vertical-align: top;
-            //         width: 8px;
-            //         transform: rotate(45deg);
-            //     }
-            // }
+            @media screen and (max-width: 767px){
+                padding: 5px 15px 5px 10px;
+                font-size: 10px;
+                max-width: 90px;
+            }
             &::after{
                 border-style: solid;
                 border-width: 2px 2px 0 0;
@@ -53,16 +44,34 @@
                 vertical-align: top;
                 width: 8px;
                 transform: rotate(45deg);
+                @media screen and (max-width: 767px){
+                    border-width: 1px 1px 0px 0px;
+                    height: 6px;
+                    top: 8px;
+                    width: 6px;
+                }
             }
             &:hover{
                 color: #419fbb;
                 text-decoration: underline;
+            }
+            span{
+                @media screen and (max-width: 767px){
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    max-width: 60px;
+                    display: block;
+                }
             }
         }
         &:first-child{
             a{
                 padding-left: 20px;
                 border-radius: 4px 0px 0px 4px;
+                @media screen and (max-width: 767px){
+                    padding-left: 10px;
+                }
             }
         }
         &:nth-last-child(2){
@@ -71,6 +80,9 @@
                 cursor: default !important;
                 pointer-events: none;
                 text-decoration: none;
+                @media screen and (max-width: 767px){
+                    padding-right: 10px;
+                }
                 &::after{
                     content: "";
                     border-color: transparent #ffffff;
@@ -83,18 +95,25 @@
                     z-index: 9;
                     top: 0px;
                     transform: none;
+                    @media screen and (max-width: 767px){
+                        border-width: 12px 0px 13px 10px;
+                        right: -10px;
+                    }
                 }
+
             }
         }
         &:last-child{
             a{
                 padding: 10px 20px 10px 40px;
                 color: white;
-                // background-color: #419fbb !important;
                 background: linear-gradient(323deg, #b58ecc 14%, #409fbb 98%)!important;
                 cursor: default !important;
                 pointer-events: none;
                 text-decoration: none;
+                @media screen and (max-width: 767px){
+                    padding: 5px 10px 5px 20px;
+                }
                 &::after{
                     content: "";
                     position: absolute;
@@ -105,10 +124,15 @@
                     box-sizing: border-box;
                     z-index: 0;
                     border: 13px solid transparent;
-                    // border-color: transparent transparent #419fbb #419fbb;
                     border-color: transparent transparent #a990ca #af8fcb;
                     transform: rotate(225deg);
                     box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.18);
+                    @media screen and (max-width: 767px){
+                        top: 4px;
+                        right: -8px;
+                        border: 9px solid transparent;
+                        border-color: transparent transparent #a990ca #af8fcb;
+                    }
                 }
             }
         }

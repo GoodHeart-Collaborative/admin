@@ -11,9 +11,9 @@
         transition: .3s;
         display: flex;
         align-items: center;
-        justify-content: space-between;    
-        box-shadow: 0px 2px 4px rgba(0,0,0, 0.1);
+        justify-content: space-between;
         background: linear-gradient(323deg, #b58ecc 14%, #409fbb 98%);
+        background-color: red;;
         @media screen and (max-width: 992px){
             left: 0px;
             width: 100%;
