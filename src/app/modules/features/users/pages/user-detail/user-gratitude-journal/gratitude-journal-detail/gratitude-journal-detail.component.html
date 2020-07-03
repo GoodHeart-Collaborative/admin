@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="row-2">
-                <div class="like-cover"><span class="material-icons">thumb_up</span>
+                <div class="like-cover" (click)="onlikeHandler()"><span class="material-icons">thumb_up</span>
                     <p>76</p>
                 </div>
                 <div class="like-cover"><span class="material-icons">comment</span>
@@ -36,9 +36,13 @@
                                 <p class="comment-time">2 Weeks Ago</p>
                                 <p>This is my comment and it is a Multi line comment. Therefore it wraps to the second line
                                     also.</p>
-                                <div class="like-cover"><span class="material-icons">thumb_up</span>
-                                    <p>76</p>
-                                </div>
+                                <div class="like-cover" >
+                                    
+
+                                        <span class="material-icons" >thumb_up</span>
+                                        <p>76</p>
+                                   
+                                </div> 
                             </div>
                         </div>
                         <ul class="comment-listing" >

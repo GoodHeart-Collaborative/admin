@@ -8,6 +8,10 @@
     <ng-template appFor="status" let-user="row">
         {{ user?.status | titlecase}}
     </ng-template>
+
+    <ng-template appFor="mobileNo" let-user="row">
+        {{ user?.mobileNo }}
+    </ng-template>
    
 
     <ng-template appFor="name" let-user="row" >
@@ -20,9 +24,9 @@
 
         <ng-template appFor="actions" let-user="row">
             <div class="action-icon-cover">
-                <i class="material-icons icon-edit" (click)="onEditHandler(user._id)" title="Edit">
+                <!-- <i class="material-icons icon-edit" (click)="onEditHandler(user._id)" title="Edit">
                     edit
-                </i>
+                </i> -->
                 <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')" title="Delete user">
                     delete
                 </i>
