@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
+
 
 @Component({
   selector: 'app-gratitude-journal-detail',
@@ -8,12 +10,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class GratitudeJournalDetailComponent implements OnInit {
 
-  constructor(private $activateRoute: ActivatedRoute) { 
-    //  this.id = this.$activateRoute.snapshot.params
-    // console.log(this.$activateRoute.snapshot.params);
-    
-  }
+  constructor(
+    private matDailog: MatDialog
+  ) { }
 
+  onlikeHandler() {
+    const dialogRef = this.matDailog.open(LikeActionComponent, {
+      width: '500px',
+    }).afterClosed().subscribe();
+  }
   ngOnInit() {
   }
 

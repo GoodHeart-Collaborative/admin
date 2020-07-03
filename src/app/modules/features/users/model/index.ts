@@ -29,8 +29,8 @@ export class UserTableDataSource implements Table.Source<User> {
       title: 'Mobile Number',
       id: 'phoneNo',
       sorting: false,
-      // templateBy: 'fullMobileNo'
-      resolve: (row: any) =>  `${row.mobileNo} ` || '-',
+      templateBy: 'mobileNo'
+      // resolve: (row: any) =>  `${row.mobileNo} ` || '-',
     },
     {
       title: 'Added On',
