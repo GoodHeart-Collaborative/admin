@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpService } from './http.service';
-// import { ADMIN } from 'src/app/constant/urls';
+import { ADMIN } from 'src/app/constant/urls';
 
 @Injectable({
     providedIn: 'root'
@@ -20,19 +20,19 @@ export class DataTransferService {
             if (this.profileData) {
                 observer.next(this.profileData);
                 observer.complete();
-            } 
-            // else {
-            //     this._http.get(ADMIN).subscribe(
-            //         response => {
-            //             this.profileData = response;
-            //             this.profileDetail.next({...response.data})
-            //             observer.next(response);
-            //             observer.complete();
-            //         }, error => {
-            //             observer.error(error);
-            //         }
-            //     );
-            // }
+            } else {
+                this._http.get(ADMIN).subscribe(
+                    response => {
+                        this.profileData = response;
+                        console.log(response);
+                        // this.profileDetail.next({...response.data})
+                        observer.next(response);
+                        observer.complete();
+                    }, error => {
+                        observer.error(error);
+                    }
+                );
+            }
         });
     }
 }

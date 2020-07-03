@@ -87,7 +87,7 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  openDialog() {
+  openCahngePasswordTab() {
     const dialogRef = this.matDailog.open(ChangePasswordComponent, {
       width: '500px',
     }).afterClosed().subscribe();
