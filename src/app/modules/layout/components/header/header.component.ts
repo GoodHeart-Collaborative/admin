@@ -9,7 +9,7 @@ import { LOGIN } from '../../../../constant/routes';
 import { IPopupData } from '../../../../models/common-models';
 import { MatDialog } from '@angular/material';
 import { ChangePasswordComponent } from 'src/app/modules/features/admin/change-password/component/change-password.component';
-
+import {ADMIN_PROFILE} from 'src/app/constant/routes'
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
     private _utilityService: UtilityService,
     private renderer: Renderer2,
     private _http: HttpService,
-    private _router: Router,
+    private $router: Router,
     private _dataService: DataTransferService,
     private matDailog: MatDialog
   ) {
@@ -76,12 +76,12 @@ export class HeaderComponent implements OnInit {
         //   this._http.patch(LOGOUT, {}).subscribe(
         //     response => {
         //       this._utilityService.clearStorage();
-        //       this._router.navigate([LOGIN.fullUrl]);
+        //       this.$router.navigate([LOGIN.fullUrl]);
         //     }, err => { }
         //   )
       }
       this._utilityService.clearStorage();
-      this._router.navigate([LOGIN.fullUrl]);
+      this.$router.navigate([LOGIN.fullUrl]);
 
     });
 
@@ -93,6 +93,9 @@ export class HeaderComponent implements OnInit {
     }).afterClosed().subscribe();
   }
 
+  onProfile(){
+    this.$router.navigate([ADMIN_PROFILE.fullUrl]);
+  }
   ngOnDestroy() {
     if (this.profileSubscriber) {
       this.profileSubscriber.unsubscribe();
