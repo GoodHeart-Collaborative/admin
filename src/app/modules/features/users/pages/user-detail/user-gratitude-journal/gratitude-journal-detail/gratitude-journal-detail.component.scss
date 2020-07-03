@@ -4,7 +4,37 @@
         align-items: stretch;
         flex-wrap: wrap;
         justify-content: space-between;
-        .height-fix{
+        @media screen and (max-width: 576px){
+            flex-direction: column;
+        }
+        .textual-detail{
+            width: calc(100% - 330px);
+            word-break: break-word;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            @media screen and (max-width: 992px){
+                width: calc(100% - 280px);
+            }
+            @media screen and (max-width: 576px){
+                width: 100%;
+                order: 1;
+            }
+            p{
+                @media screen and (max-width: 576px){
+                    font-size: 14px;
+                }
+                &:first-child{
+                    margin-bottom: 20px;
+                    font-size: 14px;
+                    @media screen and (max-width: 576px){
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+        }
+        .image-detail{
+            width: 310px;
             height: 100% !important;
             display: flex;
             align-items: flex-start;
@@ -16,22 +46,15 @@
                 height: auto;
                 box-shadow: 0px 0px 3px 1px rgba(0,0,0,.6);
             }
-        }
-        .textual-detail{
-            width: 65%;
-            word-break: break-word;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            p{
-                &:first-child{
-                    margin-bottom: 20px;
-                    font-size: 14px;
-                }
+            @media screen and (max-width: 992px){
+                width: 260px;
             }
-        }
-        .image-detail{
-            width: 30%;
+            @media screen and (max-width: 576px){
+                width: 100%;
+                justify-content: center;
+                order: 0;
+                margin-bottom: 20px;
+            }
         }
     }
     .row-2{
@@ -46,6 +69,7 @@
             display: flex;
             align-items: center;
             margin-right: 40px;
+            cursor: pointer;
             .material-icons{
                 color: #556080;
                 margin-right: 10px;
