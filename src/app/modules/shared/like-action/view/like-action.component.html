@@ -1,1 +1,34 @@
-<p>Shama</p>
+<div class="page-like-action popup-ui">
+    <div class="popup-header">
+        <h3>Likes</h3>
+        <mat-icon class="close-icon" [mat-dialog-close]="false">close</mat-icon>
+    </div>
+    <div class="popup-body">
+        <ul class="users-listing">
+            <li class="single-user">
+                <div class="img-cover">
+                    <img src="../../../../../assets/default-image/user.jpg" alt="Profile">
+                </div>
+                <div class="textual-cover">
+                    <h4 title="Mahatma Gandhi">Mahatma Gandhi
+                        <p class="comment-time">8 hours ago</p>
+                    </h4>
+                </div>
+                <div class="see-profile-cover">
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item>
+                            See Profile
+                        </button>
+                    </mat-menu>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- <div class="popup-footer">
+        <button class="btn" mat-stroked-button color="primary" [mat-dialog-close]="false">Cancel</button>
+        <button class="btn btn-primary" mat-stroked-button color="primary" [mat-dialog-close]="true">Confirm</button>
+    </div> -->
+</div>

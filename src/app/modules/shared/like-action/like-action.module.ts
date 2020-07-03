@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LikeActionComponent } from './view/like-action.component';
-import { MatDialogModule } from '@angular/material';
+import { MatDialogModule, MatButtonModule, MatIconModule, MatMenuModule } from '@angular/material';
 
 
 
@@ -10,6 +10,9 @@ import { MatDialogModule } from '@angular/material';
   imports: [
     CommonModule,
     MatDialogModule,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule
   ],
   exports: [LikeActionComponent],
   entryComponents: [LikeActionComponent]
