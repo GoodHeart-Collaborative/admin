@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UsersComponent } from './view/users.component';
-import { USER_LIST, USER_DETAIL ,GRATITUDE_DETAIL} from '../../../constant/routes';
+import { USER_LIST, USER_DETAIL ,GRATITUDE_DETAIL , EVENT_DETAIL} from '../../../constant/routes';
 import { UsersServiceResolve } from './service/users.service';
 
 
@@ -28,7 +28,17 @@ const routes: Routes = [
       },
       {
         path: `${GRATITUDE_DETAIL.path}`,
+        resolve: {
+          UserDetails : UsersServiceResolve
+        },
         loadChildren: () => import('./pages/user-detail/user-gratitude-journal/gratitude-journal-detail/gratitude-journal-detail.module').then( (m) => m.GratitudeJournalDetailModule),
+      },
+      {
+        path: `${EVENT_DETAIL.path}`,
+        resolve: {
+          UserDetails : UsersServiceResolve
+        },
+        loadChildren: () => import('./pages/user-detail/user-events/event-detail/event-detail.module').then( (m) => m.EventDetailModule),
       },
     ],
   },

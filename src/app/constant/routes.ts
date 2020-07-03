@@ -81,6 +81,12 @@ export const GRATITUDE_DETAIL: IRoute = {
     return `${USER.fullUrl}/${this.path}`;
   }
 };
+export const EVENT_DETAIL: IRoute = {
+  path: `:id/event`,
+  get fullUrl(): string {
+    return `${USER.fullUrl}/${this.path}`;
+  }
+};
 
 export const FEEDBACK: IRoute = {
   path: 'feedback',

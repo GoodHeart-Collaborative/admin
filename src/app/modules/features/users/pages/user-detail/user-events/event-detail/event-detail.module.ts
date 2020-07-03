@@ -5,10 +5,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   component: GratitudeJournalDetailComponent
-  // }
+  {
+    path: '',
+    component: EventDetailComponent
+  }
 ];
 
 @NgModule({
