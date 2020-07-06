@@ -10,7 +10,10 @@
     </ng-template>
 
     <ng-template appFor="mobileNo" let-user="row">
-        {{ user?.mobileNo }}
+        <div class="mobile-content" [class.verified-user]="true">
+            <span class="material-icons verified-icon">verified_user</span>
+            <span>{{ user?.mobileNo }}</span>
+        </div>
     </ng-template>
    
 

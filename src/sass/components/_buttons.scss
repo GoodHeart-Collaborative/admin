@@ -13,6 +13,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    user-select: none;
 
     @media screen and (max-width: 568px) {
         padding: 4px 8px;
@@ -116,7 +117,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
+    user-select: none;
     i {
         cursor: pointer;
 
