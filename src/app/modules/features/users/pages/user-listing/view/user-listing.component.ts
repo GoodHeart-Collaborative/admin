@@ -8,6 +8,7 @@ import { USER_DETAIL, USER } from 'src/app/constant/routes';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 
+export type ActionType = 'deleted' | 'blocked' | 'active';
 @Component({
   selector: 'app-user-listing',
   templateUrl: './user-listing.component.html',
@@ -15,6 +16,7 @@ import { UtilityService } from 'src/app/modules/shared/services/utility.service'
 })
 export class UserListingComponent implements OnInit {
   tableSource = new UserTableDataSource();
+  userData: any;
   eventData: Table.OptionData = {
     pageIndex: 0,
     pageSize: 10,
@@ -57,12 +59,8 @@ export class UserListingComponent implements OnInit {
       params['searchTerm'] = searchText;
     }
     this.$userService.queryData(params).then(res => {
-      this.tableSource = new UserTableDataSource({
-        pageIndex,
-        pageSize,
-        rows: res.data['data'],
-        total: res.data['total']
-      });
+      this.userData = res['data'];
+      this.setUpTableResource(this.userData);
     });
   }
 
@@ -76,14 +74,54 @@ export class UserListingComponent implements OnInit {
     this.updateUsers();
   }
 
-  onActionHandler(id: string, action) {
+  onActionHandler(id: string, action: ActionType) {
+    const index = this.userData.data.findIndex(user => user._id === id);
     this.$confirmBox.listAction('User', action).subscribe((confirm) => {
       if (confirm) {
         this.$userService.updateStatus(id, action).then((res) => {
-          this.$utility.success(res.message);
-          this.updateUsers();
+        this.$utility.success(res.message);
+        this.handleActions(action, index);
         });
       }
+    });
+  }
+
+  handleActions(action: ActionType, index) {
+    switch (action) {
+      case 'deleted':
+        this.userData.data.splice(index, 1);
+        this.userData.total = this.userData.total - 1;
+        break;
+      case 'active':
+        this.handleStatus(action, index);
+
+        break;
+        case 'blocked':
+        this.handleStatus(action, index);
+
+        break;
+      default:
+        break;
+    }
+    this.setUpTableResource(this.userData);
+  }
+
+  handleStatus(action: 'blocked' | 'active', index: number) {
+    this.userData.data = this.userData.data.map((user, i) => {
+      if (i === index) {
+        user.status = action;
+      }
+      return user;
+    });
+ }
+
+  setUpTableResource(userRecords) {
+    const { pageIndex, pageSize } = this.eventData;
+    this.tableSource = new UserTableDataSource({
+      pageIndex,
+      pageSize,
+      rows: userRecords['data'],
+      total: userRecords['total']
     });
   }
 }

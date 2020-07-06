@@ -64,10 +64,10 @@ export class RequestInterceptor implements HttpInterceptor {
                         }
                         if (err.status === 504 || err.status === 0) {
                             message = SLOW_INTERNET_CONNECTION;
-                        };
+                        }
                         if (err.status === 400 ) {
-                            message = err.message;
-                        };
+                            message = err.error.message;
+                        }
                         this.utilityService.errorAlert(message);
                     }
                 }

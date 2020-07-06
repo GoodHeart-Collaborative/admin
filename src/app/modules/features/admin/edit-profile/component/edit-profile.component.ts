@@ -76,7 +76,7 @@ export class EditProfileComponent implements OnInit,OnDestroy {
       if (err.type) {
         this.$editProfileService.showAlert(invalidImageError());
       } else if (err.size) {
-        this.$editProfileService.showAlert(invalidFileSize())
+        this.$editProfileService.showAlert(invalidFileSize());
       }
     }
   }
