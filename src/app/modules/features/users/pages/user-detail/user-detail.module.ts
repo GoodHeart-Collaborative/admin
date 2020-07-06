@@ -10,6 +10,7 @@ import { UserGratitudeJournalModule } from './user-gratitude-journal/user-gratit
 import { UserShoutoutsModule } from './user-shoutouts/user-shoutouts.module';
 import { UserTopicsModule } from './user-topics/user-topics.module';
 import { EventDetailModule } from './user-events/event-detail/event-detail.module';
+import { UserTopicDetailModule } from './user-topics/user-topic-detail/user-topic-detail.module';
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
     UserShoutoutsModule,
     EventDetailModule,
     UserTopicsModule,
+    UserTopicDetailModule,
     MatTabsModule,
     RouterModule.forChild(routes),
     MatIconModule,

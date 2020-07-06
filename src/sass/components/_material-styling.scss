@@ -48,7 +48,7 @@ mat-form-field {
     }
     &.mat-form-field-appearance-outline{
         .mat-form-field-suffix{
-            top: 8px !important;
+            top: 8px;
         }
     }
     .suffix {
@@ -78,6 +78,9 @@ mat-form-field {
         border-radius: 3px;
         min-width: 70px;
     }
+}
+mat-icon, .material-icons{
+    user-select: none;
 }
 .mat-option {
     &.mat-selected {
@@ -279,3 +282,14 @@ mat-form-field {
 .mat-snack-bar-container{
     height: 100%;
 }
+
+
+
+
+// .search_filter{
+//     .mat-form-field-suffix{
+//         top: 5px !important;
+//         right: -3px;
+//         cursor: pointer;
+//     }
+// }
