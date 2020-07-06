@@ -1,47 +1,34 @@
-<div class="mat-card page-heading">
-  <div class="mat-title"> Admin Profile </div>
-</div>
-
-<div class="mat-card" >
-   <div class="row info_data">
-    <div class="col-sm-3">
-      <div class="img">
-        <img [src]="(profileDetail?.profilePhoto)|customImage:'USER'|async" alt="Admin">
-      </div>
-    </div>
-    <div class="col-sm-9">
-      <div class="row">
-
-        <div class="col-sm-6">
-          <div class="label">Name</div>
-          <div class="value">{{profileDetail?.name}}</div>
-        </div>
-
-        <div class="col-sm-6">
-          <div class="label">Email</div>
-        <div class="value">{{profileDetail?.email}}</div>
-        </div>
-
-        <div class="col-sm-6">
-          <div class="label">Status</div>
-        <div class="value">{{profileDetail?.status}}</div>
-        </div>
-
-        <div class="col-sm-6">
-          <div class="label">Admin Type</div>
-        <div class="value">{{profileDetail?.adminType}}</div>
-        </div>
-
-    
-
-      </div>
-    </div>
-
-  </div>
-
-  <div class="form-btn">
-      <button mat-raised-button color="primary" (click)="openChangePasswordTab()"> Change Password</button>
-      <button mat-raised-button color="primary" (click)="onEditProfile()">Edit Profile</button>
-  </div>
-
+<div class="page-admin-profile">
+	<div class="breadcrumbnew">
+		<h4>Admin Profile</h4>
+	</div>
+	<div class="admin-profile-content">
+		<div class="row-1">
+			<div class="img-cover">
+				<img [src]="(profileDetail?.profilePhoto)|customImage:'USER'|async" alt="Admin">
+			</div>
+			<div class="profile-detail">
+				<div class="single-profile-detail">
+					<label for="">Name:</label>
+					<p>{{profileDetail?.name}}</p>
+				</div>
+				<div class="single-profile-detail">
+					<label for="">Email:</label>
+					<p>{{profileDetail?.email}}</p>
+				</div>
+				<div class="single-profile-detail">
+					<label for="">Status:</label>
+					<p>{{profileDetail?.status}}</p>
+				</div>
+				<div class="single-profile-detail">
+					<label for="">Admin Type:</label>
+					<p>{{profileDetail?.adminType}}</p>
+				</div>
+			</div>
+		</div>
+		<div class="button-row">
+			<button class="btn" mat-stroked-button (click)="openChangePasswordTab()"> Change Password</button>
+      <button class="btn btn-primary" mat-stroked-button (click)="onEditProfile()">Edit Profile</button>
+		</div>
+	</div>
 </div>
