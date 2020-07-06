@@ -16,18 +16,32 @@
           <div class="label">Name</div>
           <div class="value">{{profileDetail?.name}}</div>
         </div>
+
         <div class="col-sm-6">
           <div class="label">Email</div>
         <div class="value">{{profileDetail?.email}}</div>
         </div>
+
+        <div class="col-sm-6">
+          <div class="label">Status</div>
+        <div class="value">{{profileDetail?.status}}</div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="label">Admin Type</div>
+        <div class="value">{{profileDetail?.adminType}}</div>
+        </div>
+
+    
+
       </div>
     </div>
 
   </div>
 
   <div class="form-btn">
-      <button mat-raised-button color="primary" [routerLink]="['CHANGE_PASSWORD'|absolutePath]"> Change Password</button>
-      <button mat-raised-button color="primary" [routerLink]="['EDIT_PROFILE'|absolutePath]">Edit Profile</button>
+      <button mat-raised-button color="primary" (click)="openChangePasswordTab()"> Change Password</button>
+      <button mat-raised-button color="primary" (click)="onEditProfile()">Edit Profile</button>
   </div>
 
 </div>

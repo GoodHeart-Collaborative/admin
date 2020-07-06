@@ -10,7 +10,7 @@ import { UtilityService } from 'src/app/modules/shared/services/utility.service'
   selector: 'app-change-password',
   templateUrl: './change-password.component.html',
   styleUrls: ['./change-password.component.scss'],
-  providers: [ChangePasswordService]
+  // providers: [ChangePasswordService]
 })
 export class ChangePasswordComponent implements OnInit {
 
@@ -24,7 +24,7 @@ export class ChangePasswordComponent implements OnInit {
     private $formService: FormService,
     private $utility: UtilityService,
     private $dialogRef: MatDialogRef<ChangePasswordComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: any = {},
   ) {
   }
 

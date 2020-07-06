@@ -12,13 +12,14 @@ import { ValidationErrorPipeModule } from '../../../../pipes/validation-error/va
 import { MatDialogModule } from '@angular/material';
 import {MatMenuModule} from '@angular/material/menu';
 import { InvalidPasswordHintModule } from 'src/app/modules/shared/invalid-password-hint/invalid-password-hint.module';
+import { ChangePasswordService } from './service/change-password.service';
 const routes: Routes = [
-  { path: '', component:ChangePasswordComponent },
-]
+  { path: '', component: ChangePasswordComponent },
+];
 
 @NgModule({
+  declarations: [ChangePasswordComponent],
   imports: [
-    RouterModule.forChild(routes),
     CommonModule,
     SharedModule,
     MatCardModule,
@@ -29,10 +30,11 @@ const routes: Routes = [
     InvalidPasswordHintModule,
     ReactiveFormsModule,
     ValidationErrorPipeModule,
-    MatDialogModule
+    MatDialogModule,
+    RouterModule.forChild(routes),
   ],
-  declarations: [ChangePasswordComponent],
+  providers: [ChangePasswordService],
   exports: [ChangePasswordComponent],
-  entryComponents: [ChangePasswordComponent]
+  entryComponents: [ChangePasswordComponent],
 })
 export class ChangePasswordModule { }
