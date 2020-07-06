@@ -1,14 +1,12 @@
-<div class="mat-card page-heading">
-  <div class="mat-title">Edit Profile</div>
-</div>
-<input type="file" accept="image/x-png,image/jpeg" (change)="onSelectFile($event)" matTooltip="Change Image" />
-<div class="mat-card">
-  <form [formGroup]="editProfileForm" (ngSubmit)="editProfile()">
-    <div class="row">
-      <div class="col-sm-3">
-        <div class="img">
-          <img [src]="profilePicURL|customImage:'USER'|async" alt="">
-
+<div class="page-edit-profile">
+  <div class="breadcrumbnew">
+    <h4><span [routerLink]="['SETTINGS'|absolutePath]">JMart Admin Profile </span>> Edit Profile</h4>
+  </div>
+  <form class="edit-profile-content" [formGroup]="editProfileForm" (ngSubmit)="editProfile()">
+    <div class="row-1">
+      <div class="img-cover">
+        <img [src]="profilePicURL|customImage:'USER'|async" alt="">
+        <div class="mat-icon-cover">
           <button type="button" class="camBtn" (click)="file.click()" mat-mini-fab color="primary">
             <mat-icon>camera_alt</mat-icon>
             <input type="file" accept="image/x-png,image/jpeg" #file (change)="onSelectFile($event)"
@@ -16,22 +14,23 @@
           </button>
         </div>
       </div>
-
-      <div class="col-md-9">
-        <div class="row admin-info">
-          <div class="col-sm-6">
-            <mat-form-field>
-              <input matInput formControlName="name" placeholder="Name">
-              <mat-error>{{getControl('name')|validate:'name'}}</mat-error>
-            </mat-form-field>
-          </div>
+      <div class="profile-detail">
+        <div class="single-profile-detail">
+          <label for="">Name:</label>
+          <mat-form-field appearance="outline">
+            <input matInput formControlName="name" placeholder="Name">
+            <mat-error>{{getControl('name')|validate:'name'}}</mat-error>
+          </mat-form-field>
         </div>
-
+        <div class="single-profile-detail">
+          <label for="">Email:</label>
+          <p>putemail@here.shama</p>
+        </div>
       </div>
     </div>
-    <div class="form-btn">
-      <button mat-raised-button [routerLink]="['SETTINGS'|absolutePath]">Cancel</button>
-      <button mat-raised-button color="primary">Update</button>
+    <div class="button-row">
+      <button class="btn" mat-stroked-button [routerLink]="['SETTINGS'|absolutePath]">Cancel</button>
+      <button class="btn btn-primary" mat-stroked-button color="primary">Update</button>
     </div>
   </form>
 </div>
