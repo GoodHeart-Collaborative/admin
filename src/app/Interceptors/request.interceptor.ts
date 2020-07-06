@@ -65,7 +65,7 @@ export class RequestInterceptor implements HttpInterceptor {
                         if (err.status === 504 || err.status === 0) {
                             message = SLOW_INTERNET_CONNECTION;
                         }
-                        if (err.status === 400 ) {
+                        if (err.status === 400 || (err.status === 401 || err.error.type === 'INVALID_TOKEN') ) {
                             message = err.error.message;
                         }
                         this.utilityService.errorAlert(message);
