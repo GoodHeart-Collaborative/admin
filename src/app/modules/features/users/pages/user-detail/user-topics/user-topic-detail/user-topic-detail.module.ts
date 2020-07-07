@@ -4,10 +4,10 @@ import { UserTopicDetailComponent } from './user-topic-detail.component';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   component: UserTopicDetailComponent
-  // }
+  {
+    path: '',
+    component: UserTopicDetailComponent
+  }
 ];
 
 @NgModule({
