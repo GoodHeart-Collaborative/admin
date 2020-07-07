@@ -1,1 +1,29 @@
-<p>add-category-management works!</p>
+<div class="page-admin-profile popup-ui">
+	<div class="popup-header">
+		<h3>Add Category</h3>
+		<mat-icon class="close-icon">close</mat-icon>
+	</div>
+	<div class="popup-body">
+        <div class="img-cover">
+            <img src="../../../../../../../assets/default-image/image_placeholder.jpg" alt="">
+            <div class="mat-icon-cover">
+              <button type="button" class="camBtn" (click)="file.click()" mat-mini-fab color="primary">
+                <mat-icon>camera_alt</mat-icon>
+                <input type="file" accept="image/x-png,image/jpeg" #file (change)="onSelectFile($event)"
+                  matTooltip="Change Image" />
+              </button>
+            </div>
+          </div>
+          <div class="profile-detail">
+              <p>Enter the name of category you want to create.</p>
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Enter Category">
+                <mat-error>Put error detail here</mat-error>
+            </mat-form-field>
+          </div>
+	</div>
+	<div class="popup-footer">
+		<button class="btn" mat-stroked-button [mat-dialog-close]="false"> Cancel </button>
+		<button class="btn btn-primary" mat-stroked-button >Confirm </button>
+	</div>
+</div>
