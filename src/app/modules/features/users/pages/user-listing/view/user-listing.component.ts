@@ -78,7 +78,10 @@ export class UserListingComponent implements OnInit {
     const index = this.userData.data.findIndex(user => user._id === id);
     this.$confirmBox.listAction('User', action).subscribe((confirm) => {
       if (confirm) {
-        this.$userService.updateStatus(id, action).then((res) => {
+        const params = {
+          status : action
+        }
+        this.$userService.onVerifiedHnadler(id, params).then((res) => {
           this.$utility.success(res.message);
           this.handleActions(action, index);
         });
@@ -125,12 +128,11 @@ export class UserListingComponent implements OnInit {
     });
   }
 
-  onverifyHandler(id, status) {
+  onverifyHandler(id,) {
     this.$confirmBox.listAction('User', 'Verified').subscribe((confirm) => {
       if (confirm) {
         const params = {
           isAdminVerified: true,
-          status
         };
         this.$userService.onVerifiedHnadler(id, params).then(res => {
           if (res) {
