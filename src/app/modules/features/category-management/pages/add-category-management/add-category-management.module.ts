@@ -12,11 +12,10 @@ import { MatIconModule } from '@angular/material';
   imports: [
     CommonModule,
     SharedModule,
-    MatIconModule,
+    MatIconModule
   ],
   exports: [AddCategoryManagementComponent],
   providers : [CategoryManagementService],
-
   entryComponents: [AddCategoryManagementComponent]
 })
 export class AddCategoryManagementModule { }
