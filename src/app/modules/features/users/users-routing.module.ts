@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UsersComponent } from './view/users.component';
-import { USER_LIST, USER_DETAIL ,GRATITUDE_DETAIL , EVENT_DETAIL} from '../../../constant/routes';
+import { USER_LIST, USER_DETAIL ,GRATITUDE_DETAIL , EVENT_DETAIL, TOPIC_DETAIL} from '../../../constant/routes';
 import { UsersServiceResolve } from './service/users.service';
-
 
 const routes: Routes = [
   {
@@ -40,13 +39,13 @@ const routes: Routes = [
         },
         loadChildren: () => import('./pages/user-detail/user-events/event-detail/event-detail.module').then( (m) => m.EventDetailModule),
       },
-      // {
-      //   path: `${EVENT_DETAIL.path}`,
-      //   resolve: {
-      //     UserDetails : UsersServiceResolve
-      //   },
-      //   loadChildren: () => import('./pages/user-detail/user-events/event-detail/event-detail.module').then( (m) => m.EventDetailModule),
-      // },
+      {
+        path: `${TOPIC_DETAIL.path}`,
+        resolve: {
+          UserDetails : UsersServiceResolve
+        },
+     loadChildren: () => import('./pages/user-detail/user-topics/user-topic-detail/user-topic-detail.module').then( (m) => m.UserTopicDetailModule),
+      },
     ],
   },
 ];

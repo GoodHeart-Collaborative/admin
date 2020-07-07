@@ -5,7 +5,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { EventDetailModule } from './event-detail/event-detail.module';
 
 const routes: Routes = [
-  // {path: '' , component: UserEventsComponent}
 ];
 
 @NgModule({
@@ -13,7 +12,6 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    
   ],
   exports: [UserEventsComponent]
 })
