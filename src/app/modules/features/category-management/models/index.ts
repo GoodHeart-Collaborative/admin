@@ -1,17 +1,16 @@
 import * as Table from 'src/app/modules/commonTable/table/interfaces';
-import { UsersListingFilterComponent } from '../pages/user-listing/components/users-listing-filter.component';
-type User = any;
+type Category = any;
 
-const defaultData: Table.Data<User> = {
+const defaultData: Table.Data<Category> = {
     pageIndex: 0,
     pageSize: 10,
     total: 0,
     rows: null
 };
 
-export class UserTableDataSource implements Table.Source<User> {
-  label = 'Users Management';
-  columns: Table.Column<User>[] = [
+export class CategoryTableDataSource implements Table.Source<Category> {
+  label = 'Category Management';
+  columns: Table.Column<Category>[] = [
     {
       title: 'Name',
       id: 'name',
@@ -39,13 +38,6 @@ export class UserTableDataSource implements Table.Source<User> {
       templateBy: 'createdAt',
     },
     {
-      title: 'Is Admin Verified',
-      id: 'isAdminVerified',
-      sorting: false,
-      templateBy: 'isAdminVerified'
-      // resolve: (row: any) => row['status'] || 'NA',
-    },
-    {
       title: 'Status',
       id: 'status',
       sorting: false,
@@ -64,7 +56,7 @@ export class UserTableDataSource implements Table.Source<User> {
     selection: false,
     search: 'Search by Name, Email',
     index: true,
-    filterComponent: UsersListingFilterComponent
+    // filterComponent: UsersListingFilterComponent
   };
-  constructor(public data: Table.Data<User> = defaultData) {}
+  constructor(public data: Table.Data<Category> = defaultData) {}
 }

@@ -24,6 +24,10 @@ export class UsersService {
   async updateStatus(id, status) {
     return await this.$http.patch(`admin/${id}/user/${status}`, {}).toPromise();
   }
+
+  async onVerifiedHnadler(userId, params) {
+      return await this.$http.patch(`admin/user/${userId}/status`, params).toPromise();
+  }
 }
 
 @Injectable()

@@ -1,1 +1,46 @@
-<p>category-management-listing works!</p>
+
+<app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)">
+
+    <ng-template appFor="createdAt" let-category="row">
+        {{ category?.createdAt |customDate}}
+    </ng-template>
+
+    <ng-template appFor="status" let-category="row">
+        {{ category?.status | titlecase}}
+    </ng-template>
+<!-- 
+    <ng-template appFor="mobileNo" let-user="row">
+        <div class="mobile-content" [class.verified-user]="user?.IsAdminVerified">
+            <span class="material-icons verified-icon" *ngIf="user?.IsAdminVerified">verified_user</span>
+            <span>{{ user?.mobileNo ?  user?.mobileNo  : user?.fullMobileNo}}</span>
+        </div>
+    </ng-template>
+   
+
+    <ng-template appFor="name" let-user="row" >
+        <a href="javascript:void(0)" (click)="onDetailsHandler(user?._id)">
+            {{ user?.firstName  | titlecase}} {{ user?.lastName | titlecase}}
+         </a>
+    </ng-template> -->
+
+ <!-- <ng-container>
+
+        <ng-template appFor="actions"  let-user="row">
+            <div class="action-icon-cover">
+                <i class="material-icons icon-edit" (click)="onverifyHandler(user?._id, user?.status)" title="Edit">
+                    check
+                </i>
+                <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')" title="Delete user">
+                    delete
+                </i>
+                <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked')" *ngIf="user?.status === 'active';else templateAction"  title="Block user">
+                    blocked</i>
+                <ng-template #templateAction>
+                    <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active')" title="Unblock user" >
+                        lock_open
+                    </i>
+                </ng-template>
+            </div>
+        </ng-template>
+    </ng-container>  -->
+</app-table>

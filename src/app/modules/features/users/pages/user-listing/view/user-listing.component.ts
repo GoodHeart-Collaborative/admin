@@ -79,8 +79,8 @@ export class UserListingComponent implements OnInit {
     this.$confirmBox.listAction('User', action).subscribe((confirm) => {
       if (confirm) {
         this.$userService.updateStatus(id, action).then((res) => {
-        this.$utility.success(res.message);
-        this.handleActions(action, index);
+          this.$utility.success(res.message);
+          this.handleActions(action, index);
         });
       }
     });
@@ -96,7 +96,7 @@ export class UserListingComponent implements OnInit {
         this.handleStatus(action, index);
 
         break;
-        case 'blocked':
+      case 'blocked':
         this.handleStatus(action, index);
 
         break;
@@ -113,7 +113,7 @@ export class UserListingComponent implements OnInit {
       }
       return user;
     });
- }
+  }
 
   setUpTableResource(userRecords) {
     const { pageIndex, pageSize } = this.eventData;
@@ -122,6 +122,24 @@ export class UserListingComponent implements OnInit {
       pageSize,
       rows: userRecords['data'],
       total: userRecords['total']
+    });
+  }
+
+  onverifyHandler(id, status) {
+    this.$confirmBox.listAction('User', 'Verified').subscribe((confirm) => {
+      if (confirm) {
+        const params = {
+          isAdminVerified: true,
+          status
+        };
+        this.$userService.onVerifiedHnadler(id, params).then(res => {
+          if (res) {
+            //  this.setUpTableResource(this.userData);
+            this.updateUsers();
+          }
+        });
+
+      }
     });
   }
 }

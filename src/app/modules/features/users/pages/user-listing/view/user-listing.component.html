@@ -9,9 +9,13 @@
         {{ user?.status | titlecase}}
     </ng-template>
 
+    <ng-template appFor="isAdminVerified" let-user="row">
+        {{ user?.isAdminVerified  ? 'Verified' : 'Premium'}}
+    </ng-template>
+
     <ng-template appFor="mobileNo" let-user="row">
-        <div class="mobile-content" [class.verified-user]="user?.status==='active'">
-            <span class="material-icons verified-icon" *ngIf="user?.status==='active'">verified_user</span>
+        <div class="mobile-content" [class.verified-user]="user?.isAdminVerified">
+            <span class="material-icons verified-icon" *ngIf="user?.isAdminVerified">verified_user</span>
             <span>{{ user?.mobileNo ?  user?.mobileNo  : user?.fullMobileNo}}</span>
         </div>
     </ng-template>
@@ -27,9 +31,9 @@
 
         <ng-template appFor="actions"  let-user="row">
             <div class="action-icon-cover">
-                <!-- <i class="material-icons icon-edit" (click)="onEditHandler(user._id)" title="Edit">
-                    edit
-                </i> -->
+                <i class="material-icons icon-edit" (click)="onverifyHandler(user?._id, user?.status)" title="Edit">
+                    check
+                </i>
                 <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')" title="Delete user">
                     delete
                 </i>
