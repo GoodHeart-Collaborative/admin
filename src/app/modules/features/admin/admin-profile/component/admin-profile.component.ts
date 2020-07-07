@@ -46,12 +46,9 @@ export class AdminProfileComponent implements OnInit {
   }
 
   openEditProfileTab() {
-    const dialogRef = this.matDailog.open(EditProfileComponent, {
+    this.matDailog.open(EditProfileComponent, {
       width: '500px',
     }).afterClosed().subscribe();
   }
 
-  // onEditProfile() {
-  //     this.$router.navigate([EDIT_PROFILE.fullUrl]);
-  // }
 }

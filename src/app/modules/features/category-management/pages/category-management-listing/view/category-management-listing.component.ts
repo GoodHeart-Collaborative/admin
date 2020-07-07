@@ -8,6 +8,8 @@ import { USER } from 'src/app/constant/routes';
 import { ActionType } from 'aws-sdk/clients/codepipeline';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { CategoryManagementService } from '../../../service/category-management.service';
+import { AddCategoryManagementComponent } from '../../add-category-management/view/add-category-management.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-category-management-listing',
@@ -27,6 +29,7 @@ export class CategoryManagementListingComponent implements OnInit {
   constructor(
     private $category: CategoryManagementService,
     private $router: Router,
+    private matDailog: MatDialog,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService
   ) {
@@ -126,6 +129,10 @@ export class CategoryManagementListingComponent implements OnInit {
     });
   }
 
-
+onAddCategory() {
+  this.matDailog.open(AddCategoryManagementComponent, {
+    width: '500px',
+  }).afterClosed().subscribe();
+}
 
 }

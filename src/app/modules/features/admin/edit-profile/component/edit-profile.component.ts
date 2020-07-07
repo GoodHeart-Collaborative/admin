@@ -105,6 +105,7 @@ export class EditProfileComponent implements OnInit,OnDestroy {
       }
     );
   }
+
   onCancel() {
     this.$dialogRef.close();
   }
