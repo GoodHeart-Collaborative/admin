@@ -30,10 +30,8 @@ export class EditProfileService {
     return this._http.patch(EDIT_PROFILE, body).pipe(
       tap(
         response => {
-          // this._utilityService.showAlert(COMMON_MESSAGES.UPDATED('Profile'));
           this._utilityService.success(COMMON_MESSAGES.UPDATED('Profile'));
-
-          this._dataService.profileData.data = { ...this._dataService.profileData.data, ...body };
+           this._dataService.profileData.data = { ...this._dataService.profileData.data, ...body };
           this._dataService.profileDetail.next({ ...this._dataService.profileData.data });
           this._router.navigate([SETTINGS.fullUrl]);
         }
