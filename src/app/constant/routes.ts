@@ -95,6 +95,9 @@ export const TOPIC_DETAIL: IRoute = {
   }
 };
 
+
+
+
 export const FEEDBACK: IRoute = {
   path: 'feedback',
   get fullUrl(): string {
@@ -195,6 +198,7 @@ export const HOST: IRoute = {
     return `${ADMIN.fullUrl}/${this.path}`;
   }
 };
+
 export const HOST_LIST: IRoute = {
   path: 'list',
   get fullUrl(): string {

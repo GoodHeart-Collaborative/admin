@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout.component';
-import { USER, DASHBOARD ,CONTENT_MANAGEMENT} from '../../constant/routes';
-
+import { USER, DASHBOARD , CONTENT_MANAGEMENT , CATEGORY} from '../../constant/routes';
 
 const routes: Routes = [
   {
@@ -25,6 +24,12 @@ const routes: Routes = [
         path: CONTENT_MANAGEMENT.path,
         loadChildren: () =>
           import('../features/content-management/content-management.module').then((m) => m.ContentManagementModule),
+      },
+      {
+        path: CATEGORY.path,
+        loadChildren: () =>
+          import('../features/category-management/category-management.module').then((m) => m.CategoryManagementModule
+          ),
       },
     ],
   },
