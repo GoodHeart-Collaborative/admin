@@ -1,34 +1,21 @@
-<div class="page-admin-profile">
-	<div class="breadcrumbnew">
-		<h4>Admin Profile</h4>
+<div class="page-admin-profile popup-ui">
+	<div class="popup-header">
+		<h3>Admin Profile</h3>
+		<mat-icon class="close-icon" [mat-dialog-close]="false">close</mat-icon>
 	</div>
-	<div class="admin-profile-content">
-		<div class="row-1">
-			<div class="img-cover">
-				<img [src]="(profileDetail?.profilePicture)|customImage:'USER'|async" alt="Admin">
-			</div>
-			<div class="profile-detail">
-				<div class="single-profile-detail">
-					<label for="">Name:</label>
-					<p>{{profileDetail?.name}}</p>
-				</div>
-				<div class="single-profile-detail">
-					<label for="">Email:</label>
-					<p>{{profileDetail?.email}}</p>
-				</div>
-				<div class="single-profile-detail">
-					<label for="">Status:</label>
-					<p>{{profileDetail?.status}}</p>
-				</div>
-				<div class="single-profile-detail">
-					<label for="">Admin Type:</label>
-					<p>{{profileDetail?.adminType}}</p>
-				</div>
-			</div>
+	<div class="popup-body">
+		<div class="img-cover">
+			<img [src]="(profileDetail?.profilePicture)|customImage:'USER'|async" alt="Admin">
 		</div>
-		<div class="button-row">
-			<button class="btn" mat-stroked-button (click)="openChangePasswordTab()"> Change Password</button>
-      <button class="btn btn-primary" mat-stroked-button (click)="openEditProfileTab()">Edit Profile</button>
+		<div class="profile-detail">
+			<h3>{{profileDetail?.name}}</h3>
+			<h4>{{profileDetail?.email}}</h4>
+			<h4><span>Status:</span> {{profileDetail?.status}}</h4>
+			<h4><span>Admin Type:</span> {{profileDetail?.adminType}}</h4>
 		</div>
+	</div>
+	<div class="popup-footer">
+		<button class="btn" mat-stroked-button (click)="openChangePasswordTab()" [mat-dialog-close]="false"> Change Password</button>
+		<button class="btn btn-primary" mat-stroked-button (click)="openEditProfileTab()" [mat-dialog-close]="false">Edit Profile</button>
 	</div>
 </div>

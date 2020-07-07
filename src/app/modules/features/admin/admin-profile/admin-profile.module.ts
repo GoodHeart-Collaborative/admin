@@ -5,7 +5,7 @@ import { SharedModule } from '../../../shared/shared.module';
 import { AdminProfileComponent } from './component/admin-profile.component';
 import { CustomImageModule } from '../../../../pipes/custom-image/custom-image.module';
 import { ChangePasswordModule } from '../change-password/change-password.module';
-import { MatDialogModule } from '@angular/material';
+import { MatDialogModule, MatIconModule } from '@angular/material';
 import { ChangePasswordService } from '../change-password/service/change-password.service';
 import { ConfirmBoxModule } from 'src/app/modules/shared/confirm-box';
 import { EditProfileModule } from '../edit-profile/edit-profile.module';
@@ -22,6 +22,7 @@ const routes: Routes = [
     SharedModule,
     CustomImageModule,
     MatDialogModule,
+    MatIconModule,
     ConfirmBoxModule,
     EditProfileModule
   ],
