@@ -135,4 +135,17 @@ onAddCategory() {
   }).afterClosed().subscribe();
 }
 
+oneditHandler(id) {
+  this.$category.updateCategory(id).then(res => {
+      if (res) {
+        this.matDailog.open(AddCategoryManagementComponent, {
+          width: '500px',
+          data: res.data
+        }).afterClosed().subscribe();
+      }
+    }).catch(err => {
+       this.$utility.errorAlert(err.message);
+  });
+}
+
 }

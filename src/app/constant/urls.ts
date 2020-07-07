@@ -17,7 +17,7 @@ export const USER_DETAILS = (id) => `admin/users/${id}`;
 
 export const CATEGORY = 'admin/category';
 export const CATEGORY_LISTING = 'admin/category';
-export const CATEGORY_DETAILS = (id) => `admin/users/${id}`;
+export const CATEGORY_DETAILS = (categoryId) => `admin/category/${categoryId}`;
 
 
 

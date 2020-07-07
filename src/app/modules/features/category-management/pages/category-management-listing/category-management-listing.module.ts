@@ -8,6 +8,7 @@ import { CustomDatePipeModule } from 'src/app/pipes/custom-date/custom-date-pipe
 import { MatIconModule } from '@angular/material';
 import { ConfirmBoxModule } from 'src/app/modules/shared/confirm-box';
 import { AddCategoryManagementModule } from '../add-category-management/add-category-management.module';
+import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 
 const routes: Routes = [
   {path: '' , component: CategoryManagementListingComponent}
@@ -24,7 +25,8 @@ const routes: Routes = [
     CustomDatePipeModule,
     MatIconModule,
     ConfirmBoxModule,
-    AddCategoryManagementModule
+    AddCategoryManagementModule,
+    CustomImageModule
   ]
 })
 export class CategoryManagementListingModule { }

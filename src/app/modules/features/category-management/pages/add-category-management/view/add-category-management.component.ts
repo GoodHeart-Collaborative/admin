@@ -24,6 +24,7 @@ export class AddCategoryManagementComponent implements OnInit {
               private $fileUploadService: FileUploadService) { }
 
   ngOnInit() {
+    this.createForm();
   }
 
   createForm() {
@@ -73,6 +74,17 @@ export class AddCategoryManagementComponent implements OnInit {
       }
     );
   }
+
+
+ /**
+   * @description Getting Admin Profile Detail
+   */
+  getProfileDetail() {
+    this.categoryForm.patchValue({
+            name: this.data.name
+          });
+    this.profilePicURL = this.data.imageUrl;
+}
 
   onCancel() {
     this.$dialogRef.close();
