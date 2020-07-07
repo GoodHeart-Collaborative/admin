@@ -16,6 +16,7 @@ export const USER_DETAILS = (id) => `admin/users/${id}`;
 // CATEGORY API's //
 
 export const CATEGORY = 'admin/category';
+export const CATEGORY_LISTING = 'admin/category';
 export const CATEGORY_DETAILS = (id) => `admin/users/${id}`;
 
 

@@ -4,7 +4,6 @@ import { AddCategoryManagementComponent } from './view/add-category-management.c
 import { SharedModule } from 'src/app/modules/shared/shared.module';
 import { CategoryManagementService } from '../../service/category-management.service';
 import { MatIconModule } from '@angular/material';
-import { table } from 'console';
 
 
 
@@ -16,6 +15,8 @@ import { table } from 'console';
     MatIconModule,
   ],
   exports: [AddCategoryManagementComponent],
-  providers : [CategoryManagementService]
+  providers : [CategoryManagementService],
+
+  entryComponents: [AddCategoryManagementComponent]
 })
 export class AddCategoryManagementModule { }
