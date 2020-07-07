@@ -75,14 +75,21 @@ export const USER_DETAIL: IRoute = {
     return `${USER.fullUrl}/${this.path}`;
   }
 };
+
 export const GRATITUDE_DETAIL: IRoute = {
-  path: `:id/gratitude`,
+  path: `:id/gratitude/details`,
   get fullUrl(): string {
     return `${USER.fullUrl}/${this.path}`;
   }
 };
 export const EVENT_DETAIL: IRoute = {
-  path: `:id/event`,
+  path: `:id/event/details`,
+  get fullUrl(): string {
+    return `${USER.fullUrl}/${this.path}`;
+  }
+};
+export const TOPIC_DETAIL: IRoute = {
+  path: `:id/topic/details`,
   get fullUrl(): string {
     return `${USER.fullUrl}/${this.path}`;
   }

@@ -3,18 +3,18 @@ import { CommonModule } from '@angular/common';
 import { UserTopicDetailComponent } from './user-topic-detail.component';
 import { Routes, RouterModule } from '@angular/router';
 
-// const routes: Routes = [
-//   {
-//     path: '',
-//     component: UserTopicDetailComponent
-//   }
-// ];
+const routes: Routes = [
+  // {
+  //   path: '',
+  //   component: UserTopicDetailComponent
+  // }
+];
 
 @NgModule({
   declarations: [UserTopicDetailComponent],
   imports: [
     CommonModule,
-    // RouterModule.forChild(routes),
+    RouterModule.forChild(routes),
   ],
   exports: [UserTopicDetailComponent]
 

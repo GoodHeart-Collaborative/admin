@@ -7,7 +7,7 @@
 <ul class="breadcrumb">
   <li *ngFor="let step of routeSteps; let i = index">
     <a [ngClass]="{chevron: i > 1}" [routerLink]="step.url" routerLinkActive="disabled" title="{{step.label}}"
-      [routerLinkActiveOptions]="{exact: true }" href="javascript:void(0)">
+      [routerLinkActiveOptions]="{exact: true }" href="javascript:void(0)" >
       <span>{{step.label}}</span>
     </a>
   </li>

@@ -21,9 +21,8 @@ export class UsersService {
     return data;
   }
 
-  async updateStatus(id, status) {    
+  async updateStatus(id, status) {
     return await this.$http.patch(`admin/${id}/user/${status}`, {}).toPromise();
-    
   }
 }
 

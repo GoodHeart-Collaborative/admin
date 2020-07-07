@@ -10,6 +10,8 @@ import { IPopupData } from '../../../../models/common-models';
 import { MatDialog } from '@angular/material';
 import { ChangePasswordComponent } from 'src/app/modules/features/admin/change-password/component/change-password.component';
 import {ADMIN_PROFILE} from 'src/app/constant/routes'
+import { AdminProfileComponent } from 'src/app/modules/features/admin/admin-profile/component/admin-profile.component';
+import { EditProfileComponent } from 'src/app/modules/features/admin/edit-profile/component/edit-profile.component';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -92,6 +94,12 @@ export class HeaderComponent implements OnInit {
       width: '500px',
     }).afterClosed().subscribe();
   }
+  openAdminProfileTab() {
+    const dialogRef = this.matDailog.open(AdminProfileComponent, {
+      width: '500px',
+    }).afterClosed().subscribe();
+  }
+
 
   onProfile(){
     this.$router.navigate([ADMIN_PROFILE.fullUrl]);

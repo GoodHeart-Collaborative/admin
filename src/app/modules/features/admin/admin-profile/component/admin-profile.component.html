@@ -5,7 +5,7 @@
 	<div class="admin-profile-content">
 		<div class="row-1">
 			<div class="img-cover">
-				<img [src]="(profileDetail?.profilePhoto)|customImage:'USER'|async" alt="Admin">
+				<img [src]="(profileDetail?.profilePicture)|customImage:'USER'|async" alt="Admin">
 			</div>
 			<div class="profile-detail">
 				<div class="single-profile-detail">
@@ -28,7 +28,7 @@
 		</div>
 		<div class="button-row">
 			<button class="btn" mat-stroked-button (click)="openChangePasswordTab()"> Change Password</button>
-      <button class="btn btn-primary" mat-stroked-button (click)="onEditProfile()">Edit Profile</button>
+      <button class="btn btn-primary" mat-stroked-button (click)="openEditProfileTab()">Edit Profile</button>
 		</div>
 	</div>
 </div>

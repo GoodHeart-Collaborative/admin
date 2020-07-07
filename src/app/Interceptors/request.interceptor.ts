@@ -14,7 +14,6 @@ import { UtilityService } from '../modules/shared/services/utility.service';
 import { LoaderService } from '../modules/shared/services/loader.service';
 import { LOGIN } from '../constant/routes';
 import {
-    POPUP_MESSAGES,
     SOMETHING_WENT_WRONG,
     SLOW_INTERNET_CONNECTION,
   } from '../constant/messages';
@@ -55,17 +54,20 @@ export class RequestInterceptor implements HttpInterceptor {
                     this.loaderService.hideLoader();
                     if (err instanceof HttpErrorResponse) {
                         let message = err.message;
-                        // tslint:disable-next-line: max-line-length
-                        if ((err.status === 401 || err.error.responseType === 'UNAUTHORIZED') || (err.status === 423 || err.error.type === '"SESSION_EXPIRED"') ) {
+                        if ((err.status === 401 || err.error.responseType === 'UNAUTHORIZED') ) {
                             message = SOMETHING_WENT_WRONG;
-
+                            this.utilityService.clearStorage();
+                            this.router.navigate([LOGIN.fullUrl]);
+                        }
+                        if ((err.status === 423 || err.error.type === 'SESSION_EXPIRED') || (err.status === 403 || err.error.type === 'INCORRECT_PASSWORD') || (err.status === 401 || err.error.type === 'INVALID_TOKEN')) {
+                            message = err.error.message;
                             this.utilityService.clearStorage();
                             this.router.navigate([LOGIN.fullUrl]);
                         }
                         if (err.status === 504 || err.status === 0) {
                             message = SLOW_INTERNET_CONNECTION;
                         }
-                        if (err.status === 400 || (err.status === 401 || err.error.type === 'INVALID_TOKEN') ) {
+                        if (err.status === 400 ) {
                             message = err.error.message;
                         }
                         this.utilityService.errorAlert(message);

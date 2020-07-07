@@ -13,7 +13,7 @@ import { CustomImageModule } from '../../../../pipes/custom-image/custom-image.m
 
 const routes: Routes = [
   { path: '', component:EditProfileComponent },
-]
+];
 
 @NgModule({
   imports: [
@@ -28,6 +28,8 @@ const routes: Routes = [
     ValidationErrorPipeModule,
     CustomImageModule
   ],
-  declarations: [EditProfileComponent]
+  declarations: [EditProfileComponent],
+  entryComponents: [EditProfileComponent],
+  exports: [EditProfileComponent]
 })
 export class EditProfileModule { }

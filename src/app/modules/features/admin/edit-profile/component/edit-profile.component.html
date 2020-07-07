@@ -1,7 +1,7 @@
 <div class="page-edit-profile">
-  <div class="breadcrumbnew">
-    <h4>Edit Profile</h4>
-  </div>
+  <!-- <div class="breadcrumbnew">
+    <h4><span [routerLink]="['/','SETTINGS'|absolutePath]"> Admin Profile </span>> Edit Profile</h4>
+  </div> -->
   <form class="edit-profile-content" [formGroup]="editProfileForm" (ngSubmit)="editProfile()">
     <div class="row-1">
       <div class="img-cover">
@@ -24,13 +24,14 @@
         </div>
         <div class="single-profile-detail">
           <label for="">Email:</label>
-          <p>putemail@here.shama</p>
+          <p>{{profileDetail?.email}}</p>
         </div>
       </div>
     </div>
     <div class="button-row">
-      <button class="btn" mat-stroked-button [routerLink]="['SETTINGS'|absolutePath]">Cancel</button>
-      <button class="btn btn-primary" mat-stroked-button color="primary">Update</button>
+      <!-- <button class="btn" mat-stroked-button [routerLink]="['/','SETTINGS'|absolutePath]">Cancel</button> -->
+      <button class="btn" mat-stroked-button (click)="onCancel()" type="button">Cancel</button>
+      <button class="btn btn-primary" mat-stroked-button color="primary" type="submit">Update</button>
     </div>
   </form>
 </div>

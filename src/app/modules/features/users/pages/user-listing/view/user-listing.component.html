@@ -10,9 +10,9 @@
     </ng-template>
 
     <ng-template appFor="mobileNo" let-user="row">
-        <div class="mobile-content" [class.verified-user]="true">
-            <span class="material-icons verified-icon">verified_user</span>
-            <span>{{ user?.mobileNo }}</span>
+        <div class="mobile-content" [class.verified-user]="user?.status==='active'">
+            <span class="material-icons verified-icon" *ngIf="user?.status==='active'">verified_user</span>
+            <span>{{ user?.mobileNo ?  user?.mobileNo  : user?.fullMobileNo}}</span>
         </div>
     </ng-template>
    
@@ -33,7 +33,7 @@
                 <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')" title="Delete user">
                     delete
                 </i>
-                <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked')" *ngIf="user.status === 'active';else templateAction"  title="Block user">
+                <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked')" *ngIf="user?.status === 'active';else templateAction"  title="Block user">
                     blocked</i>
                 <ng-template #templateAction>
                     <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active')" title="Unblock user" >
