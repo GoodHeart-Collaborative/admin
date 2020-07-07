@@ -4,6 +4,9 @@ import { AddCategoryManagementComponent } from './view/add-category-management.c
 import { SharedModule } from 'src/app/modules/shared/shared.module';
 import { CategoryManagementService } from '../../service/category-management.service';
 import { MatIconModule } from '@angular/material';
+import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
+import { ValidationErrorPipeModule } from 'src/app/pipes/validation-error/validation-error-pipe.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -12,7 +15,10 @@ import { MatIconModule } from '@angular/material';
   imports: [
     CommonModule,
     SharedModule,
-    MatIconModule
+    MatIconModule,
+    CustomImageModule,
+    ValidationErrorPipeModule,
+    ReactiveFormsModule
   ],
   exports: [AddCategoryManagementComponent],
   providers : [CategoryManagementService],

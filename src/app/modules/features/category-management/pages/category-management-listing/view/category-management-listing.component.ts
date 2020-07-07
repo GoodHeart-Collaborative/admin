@@ -132,7 +132,11 @@ export class CategoryManagementListingComponent implements OnInit {
 onAddCategory() {
   this.matDailog.open(AddCategoryManagementComponent, {
     width: '500px',
-  }).afterClosed().subscribe();
+   }).afterClosed().subscribe(res => {
+    if (res) {
+        this.updateUsers();
+    }
+  });
 }
 
 oneditHandler(id) {
@@ -141,7 +145,11 @@ oneditHandler(id) {
         this.matDailog.open(AddCategoryManagementComponent, {
           width: '500px',
           data: res.data
-        }).afterClosed().subscribe();
+        }).afterClosed().subscribe(res => {
+          if (res) {
+              this.updateUsers();
+          }
+        });
       }
     }).catch(err => {
        this.$utility.errorAlert(err.message);

@@ -13,9 +13,9 @@ export class CategoryTableDataSource implements Table.Source<Category> {
   columns: Table.Column<Category>[] = [
     {
       title: 'Name',
-      id: 'name',
+      id: 'title',
       sorting: true,
-      templateBy: 'name'
+      templateBy: 'title'
       // resolve: (row: any) => `${row['firstName']} ${row['lastName']}` || 'NA',
     },
   
@@ -53,7 +53,7 @@ export class CategoryTableDataSource implements Table.Source<Category> {
   ];
   options: Table.Options = {
     selection: false,
-    // search: 'Search by Name, Id',
+    search: 'Search by Name',
     index: true,
     // filterComponent: UsersListingFilterComponent
   };

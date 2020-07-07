@@ -1,6 +1,6 @@
+@import '../../../../../../sass/abstracts/variables';
 :host{
 	@import '../../../../../../sass/components/popup-ui';
-	@import '../../../../../../sass/abstracts/variables';
 }
 .popup-body{
 	display: flex;
@@ -19,6 +19,7 @@
 		object-fit: cover;
 	}
 }
+
 .profile-detail{
 	text-align: left;
 	h3{

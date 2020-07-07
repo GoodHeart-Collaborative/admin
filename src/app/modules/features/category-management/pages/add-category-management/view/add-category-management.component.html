@@ -1,11 +1,12 @@
 <div class="page-admin-profile popup-ui">
 	<div class="popup-header">
 		<h3>Add Category</h3>
-		<mat-icon class="close-icon">close</mat-icon>
-	</div>
-	<div class="popup-body">
+		<mat-icon class="close-icon" [mat-dialog-close]="false">close</mat-icon>
+  </div>
+  <form [formGroup]="categoryForm" >
+   <div class="popup-body" >
         <div class="img-cover">
-            <img src="../../../../../../../assets/default-image/image_placeholder.jpg" alt="">
+            <img [src]="profilePicURL|customImage:'USER'|async"alt="">
             <div class="mat-icon-cover">
               <button type="button" class="camBtn" (click)="file.click()" mat-mini-fab color="primary">
                 <mat-icon>camera_alt</mat-icon>
@@ -17,13 +18,14 @@
           <div class="profile-detail">
               <p>Enter the name of category you want to create.</p>
             <mat-form-field appearance="outline">
-                <input matInput placeholder="Enter Category">
-                <mat-error>Put error detail here</mat-error>
+                <input matInput formControlName="title" placeholder="Enter Category">
+                <mat-error>{{title |validate:'Title'}}</mat-error>  
             </mat-form-field>
           </div>
 	</div>
 	<div class="popup-footer">
-		<button class="btn" mat-stroked-button [mat-dialog-close]="false"> Cancel </button>
-		<button class="btn btn-primary" mat-stroked-button >Confirm </button>
-	</div>
+		<button class="btn" mat-stroked-button  (click)="onCancel()" type="button"> Cancel </button>
+		<button class="btn btn-primary" mat-stroked-button type="button" (click)="onSubmit()">Confirm </button>
+  </div>
+</form>
 </div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/modules/shared/services/http.service';
-import { CATEGORY, CATEGORY_LISTING , CATEGORY_DETAILS} from 'src/app/constant/urls';
+import { CATEGORY, CATEGORY_LISTING , CATEGORY_DETAILS, EDIT_CATEGORY} from 'src/app/constant/urls';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 
 @Injectable({
@@ -19,6 +19,9 @@ export class CategoryManagementService {
 
   async  addCategory(params) {
     return  this.$http.post(CATEGORY, params).toPromise();
+  }
+  async  editCategory(id, params) {
+    return  this.$http.patch(EDIT_CATEGORY(id), params).toPromise();
   }
 
   async  updateCategory(id) {

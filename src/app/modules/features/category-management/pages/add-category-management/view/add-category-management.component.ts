@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { FormService } from 'src/app/modules/shared/services/form.service';
 import { CategoryManagementService } from '../../../service/category-management.service';
 import { FileUploadService } from 'src/app/modules/shared/services/file-upload.service';
@@ -19,26 +19,28 @@ export class AddCategoryManagementComponent implements OnInit {
   constructor(private $dialogRef: MatDialogRef<AddCategoryManagementComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private $formBuilder: FormBuilder,
-              private $formService: FormService,
               private $category: CategoryManagementService,
               private $fileUploadService: FileUploadService) { }
 
   ngOnInit() {
     this.createForm();
+    if (this.data) {
+      this.getCategoryDetail();
+    }
   }
 
   createForm() {
     this.categoryForm = this.$formBuilder.group(
       {
-        title: this.$formService.getControl('title')
+        title: ['', Validators.required]
       });
   }
 
+  get title() {
+    return this.categoryForm.controls['title'];
+  }
 
-  /**
- * @description This function is called when user change profile pic. Save that file
- * @param event 
- */
+
   async onSelectFile(event) {
     try {
       let result = await onSelectFile(event);
@@ -53,9 +55,7 @@ export class AddCategoryManagementComponent implements OnInit {
     }
   }
 
-  /**
-   * @description First upload the profile picture then edit the profile
-   */
+
   async onSubmit() {
     if (this.categoryForm.invalid) {
       return;
@@ -66,8 +66,22 @@ export class AddCategoryManagementComponent implements OnInit {
     }
     let body = { imageUrl: this.profilePicURL, ...this.categoryForm.value };
     this.categoryForm.disable();
+    if (this.data && this.data._id) {
+      this.$category.editCategory(this.data._id, body).then(
+        data => {
+          this.categoryForm.enable();
+          this.$dialogRef.close(data);
+        },
+        err => {
+          this.categoryForm.enable();
+        }
+      );
+      return;
+    }
     this.$category.addCategory(body).then(
       data => {
+        this.categoryForm.enable();
+        this.$dialogRef.close(data);
       },
       err => {
         this.categoryForm.enable();
@@ -76,12 +90,10 @@ export class AddCategoryManagementComponent implements OnInit {
   }
 
 
- /**
-   * @description Getting Admin Profile Detail
-   */
-  getProfileDetail() {
+
+  getCategoryDetail() {
     this.categoryForm.patchValue({
-            name: this.data.name
+            title: this.data.title
           });
     this.profilePicURL = this.data.imageUrl;
 }

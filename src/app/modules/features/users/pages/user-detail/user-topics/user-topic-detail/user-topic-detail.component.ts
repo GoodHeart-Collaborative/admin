@@ -12,4 +12,7 @@ export class UserTopicDetailComponent implements OnInit {
   ngOnInit() {
   }
 
+  onlikeHandler() {
+    
+  }
 }
