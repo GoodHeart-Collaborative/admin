@@ -39,7 +39,7 @@ export class UserTableDataSource implements Table.Source<User> {
       templateBy: 'createdAt',
     },
     {
-      title: 'Is Admin Verified',
+      title: 'Member Type',
       id: 'isAdminVerified',
       sorting: false,
       templateBy: 'isAdminVerified'

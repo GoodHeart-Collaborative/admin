@@ -18,31 +18,30 @@ export class CategoryTableDataSource implements Table.Source<Category> {
       templateBy: 'name'
       // resolve: (row: any) => `${row['firstName']} ${row['lastName']}` || 'NA',
     },
+  
+    // {
+    //   title: 'Mobile Number',
+    //   id: 'phoneNo',
+    //   sorting: false,
+    //   templateBy: 'mobileNo'
+    // },
     {
-      title: 'Email ID',
-      id: 'email',
-      sorting: false,
-      resolve: (row: any) => row['email'] || '-',
-    },
-    {
-      title: 'Mobile Number',
-      id: 'phoneNo',
-      sorting: false,
-      templateBy: 'mobileNo'
-      // resolve: (row: any) =>  `${row.mobileNo} ` || '-',
-    },
-    {
-      title: 'Added On',
+      title: 'Created At',
       id: 'createdAt',
       sorting: true,
       templateBy: 'createdAt',
     },
     {
+        title: 'Post',
+        id: 'post',
+        sorting: false,
+        resolve: (row: any) => row['post'] || '-',
+      },
+    {
       title: 'Status',
       id: 'status',
       sorting: false,
       templateBy: 'status'
-      // resolve: (row: any) => row['status'] || 'NA',
     },
 
     {
@@ -54,7 +53,7 @@ export class CategoryTableDataSource implements Table.Source<Category> {
   ];
   options: Table.Options = {
     selection: false,
-    search: 'Search by Name, Email',
+    search: 'Search by Name, Id',
     index: true,
     // filterComponent: UsersListingFilterComponent
   };

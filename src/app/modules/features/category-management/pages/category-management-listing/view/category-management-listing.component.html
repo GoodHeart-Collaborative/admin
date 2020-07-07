@@ -1,27 +1,16 @@
+<button *appFor="'header'" routerLink="add" class="list-add-btn" mat-stroked-button color="primary">
+        <mat-icon>add_circle</mat-icon>
+        <span>Category</span>
+    </button>
 
 <app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)">
-
-    <ng-template appFor="createdAt" let-category="row">
+   <ng-template appFor="createdAt" let-category="row">
         {{ category?.createdAt |customDate}}
     </ng-template>
 
     <ng-template appFor="status" let-category="row">
         {{ category?.status | titlecase}}
     </ng-template>
-<!-- 
-    <ng-template appFor="mobileNo" let-user="row">
-        <div class="mobile-content" [class.verified-user]="user?.IsAdminVerified">
-            <span class="material-icons verified-icon" *ngIf="user?.IsAdminVerified">verified_user</span>
-            <span>{{ user?.mobileNo ?  user?.mobileNo  : user?.fullMobileNo}}</span>
-        </div>
-    </ng-template>
-   
-
-    <ng-template appFor="name" let-user="row" >
-        <a href="javascript:void(0)" (click)="onDetailsHandler(user?._id)">
-            {{ user?.firstName  | titlecase}} {{ user?.lastName | titlecase}}
-         </a>
-    </ng-template> -->
 
  <!-- <ng-container>
 
