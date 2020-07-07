@@ -9,8 +9,7 @@ import { UserEventsModule } from './user-events/user-events.module';
 import { UserGratitudeJournalModule } from './user-gratitude-journal/user-gratitude-journal.module';
 import { UserShoutoutsModule } from './user-shoutouts/user-shoutouts.module';
 import { UserTopicsModule } from './user-topics/user-topics.module';
-import { EventDetailModule } from './user-events/event-detail/event-detail.module';
-import { UserTopicDetailModule } from './user-topics/user-topic-detail/user-topic-detail.module';
+import { UserBasicDetailComponent } from './user-basic-detail/user-basic-detail.component';
 
 
 const routes: Routes = [
@@ -23,14 +22,11 @@ const routes: Routes = [
 @NgModule({
   declarations: [UserDetailComponent],
   imports: [
-    CommonModule,
     UserBasicDetailModule,
     UserEventsModule,
     UserGratitudeJournalModule,
     UserShoutoutsModule,
-    EventDetailModule,
     UserTopicsModule,
-    UserTopicDetailModule,
     MatTabsModule,
     RouterModule.forChild(routes),
     MatIconModule,

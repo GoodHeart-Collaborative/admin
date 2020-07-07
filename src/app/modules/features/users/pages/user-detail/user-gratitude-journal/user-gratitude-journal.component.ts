@@ -18,6 +18,6 @@ isProcessing = false;
   }
 
   onClick() {
-    this.$router.navigate([`admin/users/${this.data._id}/gratitude`])
+    this.$router.navigate([`admin/users/${this.data._id}/gratitude/details`])
   }
 }

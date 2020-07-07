@@ -8,6 +8,7 @@ import { ChangePasswordModule } from '../change-password/change-password.module'
 import { MatDialogModule } from '@angular/material';
 import { ChangePasswordService } from '../change-password/service/change-password.service';
 import { ConfirmBoxModule } from 'src/app/modules/shared/confirm-box';
+import { EditProfileModule } from '../edit-profile/edit-profile.module';
 
 const routes: Routes = [
   { path: '', component: AdminProfileComponent }
@@ -21,7 +22,9 @@ const routes: Routes = [
     SharedModule,
     CustomImageModule,
     MatDialogModule,
-    ConfirmBoxModule
+    ConfirmBoxModule,
+    EditProfileModule
   ],
+  entryComponents: [AdminProfileComponent],
 })
 export class AdminProfileModule { }

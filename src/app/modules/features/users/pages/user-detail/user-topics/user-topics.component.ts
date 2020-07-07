@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-topics',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserTopicsComponent implements OnInit {
 
-  constructor() { }
+  isProcessing: boolean = false;
+  @Input() data;
+ constructor(private $router: Router) { }
 
-  ngOnInit() {
-  }
+ ngOnInit() {
+ }
+ onClick() {
+   this.$router.navigate([`admin/users/${this.data._id}/topic/details`]);
+
+ }
 
 }

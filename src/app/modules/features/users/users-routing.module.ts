@@ -40,6 +40,13 @@ const routes: Routes = [
         },
         loadChildren: () => import('./pages/user-detail/user-events/event-detail/event-detail.module').then( (m) => m.EventDetailModule),
       },
+      // {
+      //   path: `${EVENT_DETAIL.path}`,
+      //   resolve: {
+      //     UserDetails : UsersServiceResolve
+      //   },
+      //   loadChildren: () => import('./pages/user-detail/user-events/event-detail/event-detail.module').then( (m) => m.EventDetailModule),
+      // },
     ],
   },
 ];

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { DataTransferService } from '../../../../shared/services/data-transfer.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ChangePasswordComponent } from '../../change-password/component/change-password.component';
 import { Router } from '@angular/router';
 import { EDIT_PROFILE } from 'src/app/constant/routes';
+import { EditProfileComponent } from '../../edit-profile/component/edit-profile.component';
 
 @Component({
   selector: 'app-admin-profile',
@@ -16,7 +17,9 @@ export class AdminProfileComponent implements OnInit {
   constructor(
     private $dataService: DataTransferService,
     private matDailog: MatDialog,
-    private $router: Router
+    private $router: Router,
+    private $dialogRef: MatDialogRef<AdminProfileComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any = {},
   ) { }
 
   ngOnInit() {
@@ -42,7 +45,13 @@ export class AdminProfileComponent implements OnInit {
     }).afterClosed().subscribe();
   }
 
-  onEditProfile() {
-      this.$router.navigate([EDIT_PROFILE.fullUrl]);
+  openEditProfileTab() {
+    const dialogRef = this.matDailog.open(EditProfileComponent, {
+      width: '500px',
+    }).afterClosed().subscribe();
   }
+
+  // onEditProfile() {
+  //     this.$router.navigate([EDIT_PROFILE.fullUrl]);
+  // }
 }

@@ -15,6 +15,7 @@ import { MatSidenavModule, MatExpansionModule } from '@angular/material';
 import { CustomImageModule } from '../../pipes/custom-image/custom-image.module';
 import {BreadcrumbModule} from 'src/app/modules/shared/components/breadcrumb/breadcrumb.module'
 import { ChangePasswordModule } from '../features/admin/change-password/change-password.module';
+import { AdminProfileModule } from '../features/admin/admin-profile/admin-profile.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -30,7 +31,8 @@ import { ChangePasswordModule } from '../features/admin/change-password/change-p
     SharedModule,
     CustomImageModule,
     BreadcrumbModule,
-    ChangePasswordModule
+    ChangePasswordModule,
+    AdminProfileModule
   ],
   declarations: [
     LayoutComponent,

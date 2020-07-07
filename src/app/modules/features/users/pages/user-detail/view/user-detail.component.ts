@@ -16,7 +16,6 @@ export class UserDetailComponent implements OnInit {
     private $router: ActivatedRoute,
     private $breadcrumb: BreadcrumbService
   ) {
-    console.log(this.$router.snapshot.data.UserDetails);
     this.userDetails = this.$router.snapshot.data.UserDetails;
     this.$breadcrumb.replace(this.userDetails.id, this.userDetails['firstName']);
   }

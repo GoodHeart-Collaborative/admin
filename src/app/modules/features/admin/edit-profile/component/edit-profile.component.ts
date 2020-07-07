@@ -1,11 +1,12 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FileUploadService } from '../../../../shared/services/file-upload.service';
 import { EditProfileService } from '../service/edit-profile.service';
 import { onSelectFile } from '../../../../../constant/file-input';
 import { invalidImageError, invalidFileSize } from '../../../../../constant/messages';
 import { FormService } from '../../../../shared/services/form.service';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-edit-profile',
@@ -24,7 +25,9 @@ export class EditProfileComponent implements OnInit,OnDestroy {
     private $editProfileService: EditProfileService,
     private $fileUploadService: FileUploadService,
     private $formBuilder: FormBuilder,
-    private $formService: FormService
+    private $formService: FormService,
+    private $dialogRef: MatDialogRef<EditProfileComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any = {},
   ) { }
 
   ngOnInit() {
@@ -50,7 +53,7 @@ export class EditProfileComponent implements OnInit,OnDestroy {
           this.editProfileForm.patchValue({
             name: this.profileDetail.name
           });
-          this.profilePicURL = this.profileDetail.profilePhoto;
+          this.profilePicURL = this.profileDetail.profilePicture;
         }, err => { }
       );
   }
@@ -92,7 +95,7 @@ export class EditProfileComponent implements OnInit,OnDestroy {
       let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
       this.profilePicURL = data.Location;
     }
-    let body = { profilePhoto: this.profilePicURL, ...this.editProfileForm.value };
+    let body = { profilePicture: this.profilePicURL, ...this.editProfileForm.value };
     this.editProfileForm.disable();
     this.editProfileSubscription = this.$editProfileService.editProfile(body).subscribe(
       data => {
@@ -102,7 +105,9 @@ export class EditProfileComponent implements OnInit,OnDestroy {
       }
     );
   }
-
+  onCancel() {
+    this.$dialogRef.close();
+  }
   ngOnDestroy() {
     if (this.editProfileSubscription) {
       this.editProfileSubscription.unsubscribe();

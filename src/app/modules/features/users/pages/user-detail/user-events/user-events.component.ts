@@ -13,8 +13,9 @@ export class UserEventsComponent implements OnInit {
 
   ngOnInit() {
   }
+
   onClick() {
-    this.$router.navigate([`admin/users/${this.data._id}/event`]);
+    this.$router.navigate([`admin/users/${this.data._id}/event/details`]);
 
   }
 
