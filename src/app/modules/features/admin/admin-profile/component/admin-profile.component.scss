@@ -1,5 +1,6 @@
 :host{
 	@import '../../../../../../sass/components/popup-ui';
+	@import '../../../../../../sass/abstracts/variables';
 }
 .popup-body{
 	display: flex;
@@ -21,7 +22,7 @@
 .profile-detail{
 	text-align: left;
 	h3{
-		// color: $primary;
+		color: $primary;
 		font-size: 20px;
 		font-weight: bold;
 		text-transform: capitalize;
