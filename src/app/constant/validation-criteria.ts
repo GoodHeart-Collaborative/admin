@@ -7,7 +7,7 @@ export const VALIDATION_CRITERIA = {
   subTitleMinLength: 2,
   subTitleMaxLength: 150,
   titleMinLength: 2,
-  titleMaxLength: 60,
+  titleMaxLength: 20,
   phoneMinLength: 8,
   phoneMaxLength: 14,
   locationMinLength: 2,
@@ -15,4 +15,6 @@ export const VALIDATION_CRITERIA = {
   priceMinLength: 1,
   priceMaxLength: 10,
   maxRange: 1000,
+  descriptionMinLength: 10,
+  descriptionMaxLength: 400,
 };

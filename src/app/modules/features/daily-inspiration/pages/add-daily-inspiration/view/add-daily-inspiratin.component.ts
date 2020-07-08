@@ -1,12 +1,15 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { DailyInspirationService } from '../../../service/daily-inspiration.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { FileUploadService } from 'src/app/modules/shared/services/file-upload.service';
 import { onSelectFile } from 'src/app/constant/file-input';
 import { invalidImageError, invalidFileSize } from 'src/app/constant/messages';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
-
+import { VALIDATION_CRITERIA } from 'src/app/constant/validation-criteria'
+import { RequestInterceptor } from 'src/app/Interceptors/request.interceptor';
+import { UtilityService } from 'src/app/modules/shared/services/utility.service';
+import { DAILY_INSPIRATION } from 'src/app/constant/routes';
 @Component({
   selector: 'app-add-daily-inspiratin',
   templateUrl: './add-daily-inspiratin.component.html',
@@ -19,37 +22,51 @@ export class AddDailyInspiratinComponent implements OnInit {
   imageFile: any;
   dailyInspirationDetails: any;
   postDate: boolean = false;
+  descriptionMaxLength = VALIDATION_CRITERIA.descriptionMaxLength;
+  titleMaxLength = VALIDATION_CRITERIA.titleMaxLength;
+
   constructor(
-              private $formBuilder: FormBuilder,
-              private $daily: DailyInspirationService,
-              private $fileUploadService: FileUploadService,
-              $router: ActivatedRoute,
-              $breadcrumb: BreadcrumbService
+    private $formBuilder: FormBuilder,
+    private $daily: DailyInspirationService,
+    private $fileUploadService: FileUploadService,
+    $router: ActivatedRoute,
+    $breadcrumb: BreadcrumbService,
+    private $utility: UtilityService,
+    private $route: Router
 
-              ) {
-                if ($router.snapshot.data.dailyData && $router.snapshot.data.dailyData.data) {
+  ) {
+    if ($router.snapshot.data.dailyData && $router.snapshot.data.dailyData.data) {
 
-                  this.dailyInspirationDetails = $router.snapshot.data.dailyData.data;
-                  $breadcrumb.replace(this.dailyInspirationDetails.id, this.dailyInspirationDetails.title);
-                }
-              }
+      this.dailyInspirationDetails = $router.snapshot.data.dailyData.data;
+      $breadcrumb.replace(this.dailyInspirationDetails.id, this.dailyInspirationDetails.title);
+    }
+  }
 
   ngOnInit() {
     this.createForm();
+    this.isPostLater.valueChanges.subscribe(value => {
+      if (value) {
+        this.inspirationForm.addControl('createdAt', new FormControl('', Validators.required))
+      } else {
+        this.inspirationForm.removeControl('createdAt');
+      }
+    });
   }
 
   createForm() {
     this.inspirationForm = this.$formBuilder.group(
       {
-        title: ['', Validators.required],
+        title: ['', [Validators.required, Validators.maxLength(this.titleMaxLength)]],
         isPostLater: [false],
-        createdAt: [],
-        description: [''],
+        // createdAt: [],
+        description: ['', [Validators.required, Validators.maxLength(this.descriptionMaxLength)]],
       });
   }
-  checkMe(date) {
-    console.log(date);
-    this.postDate = true;
+form(name) {
+  return this.inspirationForm.controls[name];
+}
+  get isPostLater() {
+    return this.inspirationForm.get('isPostLater') as FormControl;
   }
 
   async onSelectFile(event) {
@@ -69,13 +86,18 @@ export class AddDailyInspiratinComponent implements OnInit {
 
   async onSubmit() {
     if (this.inspirationForm.invalid) {
+      this.inspirationForm.markAllAsTouched();
       return;
     }
     if (this.imageFile) {
       let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
       this.profilePicURL = data.Location;
     }
-    let body = { imageUrl: this.profilePicURL, ...this.inspirationForm.value };
+    const body = { imageUrl: this.profilePicURL, ...this.inspirationForm.value };
+
+    if (this.isPostLater.value) {
+      body.createdAt = new Date(this.inspirationForm.get('createdAt').value).getTime();
+    }
     this.inspirationForm.disable();
     if (this.dailyInspirationDetails && this.dailyInspirationDetails._id) {
       this.$daily.editCategory(this.dailyInspirationDetails._id, body).then(
@@ -91,21 +113,25 @@ export class AddDailyInspiratinComponent implements OnInit {
     this.$daily.addCategory(body).then(
       data => {
         this.inspirationForm.enable();
+        this.$utility.success(data.message);
+        this.$route.navigate([DAILY_INSPIRATION.fullUrl]);
       },
       err => {
         this.inspirationForm.enable();
+        this.$utility.success(err.message);
+
       }
     );
   }
 
 
 
-//   getCategoryDetail() {
-//     this.categoryForm.patchValue({
-//             title: this.data.title
-//           });
-//     this.profilePicURL = this.data.imageUrl;
-// }
+  //   getCategoryDetail() {
+  //     this.categoryForm.patchValue({
+  //             title: this.data.title
+  //           });
+  //     this.profilePicURL = this.data.imageUrl;
+  // }
 
   onCancel() {
   }

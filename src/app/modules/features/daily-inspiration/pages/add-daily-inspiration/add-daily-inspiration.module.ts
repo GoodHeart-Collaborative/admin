@@ -28,7 +28,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatDatepickerModule,
     CustomImageModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    ValidationErrorPipeModule
   ]
 })
 export class AddDailyInspirationModule { }

@@ -5,7 +5,7 @@ import { CategoryManagementService } from '../../../service/category-management.
 import { FileUploadService } from 'src/app/modules/shared/services/file-upload.service';
 import { onSelectFile } from 'src/app/constant/file-input';
 import { invalidImageError, invalidFileSize } from 'src/app/constant/messages';
-
+import {VALIDATION_CRITERIA} from 'src/app/constant/validation-criteria'
 @Component({
   selector: 'app-add-category-management',
   templateUrl: './add-category-management.component.html',
@@ -15,6 +15,7 @@ export class AddCategoryManagementComponent implements OnInit {
   categoryForm: FormGroup;
   profilePicURL: any;
   imageFile: any;
+  titleMaxLength = VALIDATION_CRITERIA.titleMaxLength;
   constructor(private $dialogRef: MatDialogRef<AddCategoryManagementComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private $formBuilder: FormBuilder,
@@ -31,7 +32,7 @@ export class AddCategoryManagementComponent implements OnInit {
   createForm() {
     this.categoryForm = this.$formBuilder.group(
       {
-        title: ['', Validators.required]
+        title: ['', [Validators.required, Validators.minLength(VALIDATION_CRITERIA.titleMinLength)]]
       });
   }
 
@@ -41,6 +42,7 @@ export class AddCategoryManagementComponent implements OnInit {
 
 
   async onSelectFile(event) {
+    debugger;
     try {
       let result = await onSelectFile(event);
       this.imageFile = result.file;

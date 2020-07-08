@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { ContentService } from 'src/app/modules/shared/services/content.service';
 import { PopupService } from 'src/app/modules/shared/popup';
+import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 
 @Component({
     selector: 'app-content-management',
@@ -25,7 +26,7 @@ export class ContentManagementComponent implements OnInit {
         private activatedRoute: ActivatedRoute,
         private router: Router,
         private $http: ContentService,
-        private $popUp: PopupService) {
+        private $popUp: UtilityService) {
     }
 
     ngOnInit() {
@@ -73,7 +74,7 @@ export class ContentManagementComponent implements OnInit {
         }
     }
 
- onAddContent(event) {
+    onAddContent(event) {
         console.log(event);
         const data = {
             title: this.data.data.title,
@@ -81,19 +82,25 @@ export class ContentManagementComponent implements OnInit {
             type: this.data.data.type
         };
         this.$http.onAddContentHnadler(data).then(res => {
-         });
+        });
     }
 
     onEditContent(event) {
+        // if(event.content.tri)
+        if (!this.getDescription(event.content)) {
+            this.$popUp.error("Content can't be empty");
+            return;
+        }
         const data = {
             title: this.data.data.title,
             description: event.content,
         };
         this.$http.onEditContentHnadler(this.data.data._id, data).then(res => {
             this.$popUp.success(res.message);
-        }).catch( (err) => {
-                this.$popUp.success(err.message);
-         });
+        }).catch((err) => {
+            console.log(err);
+
+        });
     }
 
     checkForInvalidCases() {
@@ -102,5 +109,15 @@ export class ContentManagementComponent implements OnInit {
             return true;
         }
         return false;
+    }
+
+    getDescription(htmlText) {
+        if (htmlText) {
+
+            // console.log(htmlText, (new DOMParser).parseFromString(htmlText, "text/html").documentElement.textContent.trim());
+            return (new DOMParser).parseFromString(htmlText, "text/html").documentElement.textContent.trim();
+        }
+        // return (new DOMParser).parseFromString(htmlText, "text/html").documentElement.textContent.trim()
+
     }
 }

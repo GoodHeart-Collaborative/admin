@@ -8,7 +8,7 @@
       <div class="img-cover">
         <img [src]="profilePicURL|customImage:'USER'|async" alt="">
         <div class="mat-icon-cover">
-          <button type="button" class="camBtn" (click)="file.click()" mat-mini-fab color="primary">
+          <button type="button" class="camBtn" mat-mini-fab color="primary">
             <mat-icon>camera_alt</mat-icon>
             <input type="file" accept="image/x-png,image/jpeg" #file (change)="onSelectFile($event)"
               matTooltip="Change Image" />
@@ -18,7 +18,7 @@
       <div class="profile-detail">
         <p>Enter the name of category you want to create.</p>
         <mat-form-field appearance="outline">
-          <input matInput formControlName="title" placeholder="Enter Category">
+          <input matInput formControlName="title" placeholder="Enter Category" [maxlength]="titleMaxLength">
           <mat-error>{{title |validate:'Title'}}</mat-error>
         </mat-form-field>
       </div>
