@@ -221,7 +221,9 @@ mat-icon, .material-icons{
         text-overflow: ellipsis;
     }
 }
-
+.mat-form-field-hint-wrapper{
+    flex-direction: row-reverse !important;
+}
 
 // height
 .mat-form-field-appearance-outline {
@@ -282,14 +284,3 @@ mat-icon, .material-icons{
 .mat-snack-bar-container{
     height: 100%;
 }
-
-
-
-
-// .search_filter{
-//     .mat-form-field-suffix{
-//         top: 5px !important;
-//         right: -3px;
-//         cursor: pointer;
-//     }
-// }
