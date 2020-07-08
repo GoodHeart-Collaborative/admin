@@ -1,6 +1,7 @@
 <form [formGroup]="contentForm" >
   <quill-editor placeholder="Enter text" [modules]="quillConfig" formControlName="content"
                 #quillQuestion></quill-editor>
+   <!-- <mat-error>{{contents | |validate:'Content '}}</mat-error>              -->
   <div class="buttons-wrapper">
     <button mat-stroked-button class="btn" type="button" (click)="reset()">Reset</button>
     <button mat-stroked-button class="btn btn-primary" color="primary" type="button" (click)="onSave()">Save</button>

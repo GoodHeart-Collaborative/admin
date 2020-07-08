@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild, Input, OnChanges, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-quill-editor',
@@ -46,9 +46,13 @@ export class QuillEditorComponent implements OnInit, AfterViewInit , OnChanges {
 
     createForm() {
         this.contentForm = this.formBuilder.group({
-            content: ['']
+            content: ['', Validators.maxLength(150)]
         });
     }
+
+    get contents() {
+        return this.contentForm.controls['content'];
+    } 
 
     /**
      * Save quill editor text

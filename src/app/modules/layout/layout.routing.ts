@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout.component';
-import { USER, DASHBOARD , CONTENT_MANAGEMENT , CATEGORY} from '../../constant/routes';
+import { USER, DASHBOARD , CONTENT_MANAGEMENT , CATEGORY, DAILY_INSPIRATION} from '../../constant/routes';
 
 const routes: Routes = [
   {
@@ -29,6 +29,12 @@ const routes: Routes = [
         path: CATEGORY.path,
         loadChildren: () =>
           import('../features/category-management/category-management.module').then((m) => m.CategoryManagementModule
+          ),
+      },
+      {
+        path: DAILY_INSPIRATION.path,
+        loadChildren: () =>
+          import('../features/daily-inspiration/daily-inspiration.module').then((m) => m.DailyInspirationModule
           ),
       },
     ],

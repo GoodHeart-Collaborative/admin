@@ -11,7 +11,9 @@ import { AddCategoryManagementModule } from '../add-category-management/add-cate
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 
 const routes: Routes = [
-  {path: '' , component: CategoryManagementListingComponent}
+  {path: '' , 
+   component: CategoryManagementListingComponent},
+  
 ];
 
 

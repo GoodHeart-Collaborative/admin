@@ -9,6 +9,13 @@
 			<mat-icon>filter_list</mat-icon>
 		</button>
     </div>
+    <div class="right-side-filters">
+		<button class="filter-button" *ngIf="hasAdd" matTooltip="Add"
+			 (click)="onAddHandler()">
+			<mat-icon>add</mat-icon>
+			<!-- <span>{{tableSource.options.addComponent}}</span> -->
+		</button>
+    </div>
 </div>
 
 <div class="table-container">

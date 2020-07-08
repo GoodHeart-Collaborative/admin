@@ -260,6 +260,12 @@ export const CATEGORY_LIST: IRoute = {
     return `${CATEGORY.fullUrl}/${this.path}`;
   }
 };
+// export const RELATED_CATEGORY_POST: IRoute = {
+//   path: 'id',
+//   get fullUrl(): string {
+//     return `${CATEGORY.fullUrl}/${this.path}`;
+//   }
+// };
 
 export const CATEGORY_DETAIL = {
   path: 'detail',
@@ -268,4 +274,28 @@ export const CATEGORY_DETAIL = {
   }
 };
 
-// CATEGORY ROUTES //
+// DAILY_INSPIRATION ROUTES //
+export const DAILY_INSPIRATION: IRoute = {
+  path: 'daily-inspiration',
+  get fullUrl(): string {
+    return `${ADMIN.fullUrl}/${this.path}`;
+  }
+};
+export const DAILY_INSPIRATION_LIST: IRoute = {
+  path: 'list',
+  get fullUrl(): string {
+    return `${DAILY_INSPIRATION.fullUrl}/${this.path}`;
+  }
+};
+export const ADD_DAILY_INSPIRATION: IRoute = {
+  path: 'add',
+  get fullUrl(): string {
+    return `${DAILY_INSPIRATION.fullUrl}/${this.path}`;
+  }
+};
+export const DAILY_INSPIRATION_DETAILS: IRoute = {
+  path: ':id',
+  get fullUrl(): string {
+    return `${DAILY_INSPIRATION.fullUrl}/${this.path}`;
+  }
+};

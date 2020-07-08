@@ -49,6 +49,7 @@ export class TableComponent implements OnInit {
       // }
     }
   }
+
   get tableSource() {
     return this.$tableSource;
   }
@@ -173,6 +174,9 @@ export class TableComponent implements OnInit {
   get hasFilter(): boolean {
     return this.tableSource && this.tableSource.options && !!this.tableSource.options.filterComponent;
   }
+  get hasAdd(): boolean {
+    return this.tableSource && this.tableSource.options && !!this.tableSource.options.addComponent;
+  }
   get hasPagination(): boolean {
     return this.tableSource && this.tableSource.options && this.tableSource.options.pagination;
   }
@@ -187,6 +191,8 @@ export class TableComponent implements OnInit {
   dataSource: MatTableDataSource<any> = new MatTableDataSource([]);
   @Output() selectChange: EventEmitter<any> = new EventEmitter();
   @Output() optionChange: EventEmitter<any> = new EventEmitter();
+  @Output() onAddCahnges: EventEmitter<any> = new EventEmitter();
+
   @ContentChildren(ForDirective) templates: QueryList<ForDirective>;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -339,5 +345,9 @@ export class TableComponent implements OnInit {
     console.log(this.optionEvent);
 
     this.optionChange.emit(this.optionEvent);
+  }
+
+  onAddHandler() {
+    this.onAddCahnges.emit();
   }
 }

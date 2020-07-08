@@ -8,35 +8,30 @@ const defaultData: Table.Data<Category> = {
     rows: null
 };
 
-export class CategoryTableDataSource implements Table.Source<Category> {
+export class DailyTableDataSource implements Table.Source<Category> {
   label = 'Category Management';
   columns: Table.Column<Category>[] = [
     {
-      title: 'Name',
-      id: 'title',
-      sorting: true,
-      templateBy: 'title'
-      // resolve: (row: any) => `${row['firstName']} ${row['lastName']}` || 'NA',
+        title: 'Title',
+        id: 'title',
+        sorting: false,
+        templateBy: 'title'
+        // resolve: (row: any) => row['title'] || '-',
     },
-  
-    // {
-    //   title: 'Mobile Number',
-    //   id: 'phoneNo',
-    //   sorting: false,
-    //   templateBy: 'mobileNo'
-    // },
+    {
+        title: 'Description',
+        id: 'description',
+        sorting: false,
+        templateBy: 'description'
+        // resolve: (row: any) => row['title'] || '-',
+    },
     {
       title: 'Created At',
       id: 'createdAt',
       sorting: true,
       templateBy: 'createdAt',
     },
-    {
-        title: 'Post',
-        id: 'post',
-        sorting: false,
-        resolve: (row: any) => row['post'] || '-',
-      },
+   
     {
       title: 'Status',
       id: 'status',
@@ -60,4 +55,3 @@ export class CategoryTableDataSource implements Table.Source<Category> {
   };
   constructor(public data: Table.Data<Category> = defaultData) {}
 }
-

@@ -1,15 +1,13 @@
 
 <!-- <button class="btn btn-primary btn-add-category" mat-stroked-button (click)="onAddCategory()">Add Category</button> -->
 
-<app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)" (onAddCahnges)="onAddCategory($event)">
-   <ng-template appFor="createdAt" let-category="row">
-        {{ category?.createdAt |customDate}}
+<app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)" (onAddCahnges)="onAdd()">
+   <ng-template appFor="createdAt" let-daily="row">
+        {{ daily?.createdAt |customDate}}
     </ng-template>
 
-
-
-    <ng-template appFor="status" let-category="row">
-        {{ category?.status | titlecase}}
+    <ng-template appFor="status" let-daily="row">
+        {{ daily?.status | titlecase}}
     </ng-template>
 
     <ng-template appFor="title" let-category="row">

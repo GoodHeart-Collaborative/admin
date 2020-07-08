@@ -14,6 +14,7 @@ export interface Options {
     search?: boolean | string;
     sorting?: boolean;
     filterComponent?: any;
+    addComponent?: any;
     pagination?: boolean;
 }
 export interface Data<T> {

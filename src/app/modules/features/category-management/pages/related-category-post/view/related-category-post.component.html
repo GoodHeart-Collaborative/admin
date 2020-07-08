@@ -1,30 +1,25 @@
 
-<!-- <button class="btn btn-primary btn-add-category" mat-stroked-button (click)="onAddCategory()">Add Category</button> -->
-
-<app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)" (onAddCahnges)="onAddCategory($event)">
+<app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)">
    <ng-template appFor="createdAt" let-category="row">
         {{ category?.createdAt |customDate}}
     </ng-template>
 
-
-
-    <ng-template appFor="status" let-category="row">
+   <ng-template appFor="status" let-category="row">
         {{ category?.status | titlecase}}
     </ng-template>
 
-    <ng-template appFor="title" let-category="row">
-        <a href="javascript:void(0)" (click)="relatedCategoryHandler(category?._id)">
-            {{ category?.title | titlecase}}
+    <ng-template appFor="name" let-category="row">
+        <a href="javascript:void(0)" (click)="categoryDetailsHandler(category?._id)">
+            {{ category?.name | titlecase }}
         </a>
     </ng-template>
 
   <ng-container>
-
-        <ng-template appFor="actions"  let-user="row">
+     <ng-template appFor="actions"  let-user="row">
             <div class="action-icon-cover">
-                <i class="material-icons icon-edit" (click)="oneditHandler(user?._id)" title="Edit">
+                <!-- <i class="material-icons icon-edit" (click)="oneditHandler(user?._id)" title="Edit">
                     edit
-                </i>
+                </i> -->
                 <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')" title="Delete user">
                     delete
                 </i>

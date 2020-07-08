@@ -15,6 +15,7 @@ import { QuillEditorComponent } from './component/quill-editor/quill-editor.comp
 import {ReactiveFormsModule} from '@angular/forms';
 import { PopupService } from '../../shared/popup';
 import { MatButtonModule } from '@angular/material';
+import { ValidationErrorPipeModule } from 'src/app/pipes/validation-error/validation-error-pipe.module';
 
 @NgModule({
     imports: [
@@ -30,6 +31,7 @@ import { MatButtonModule } from '@angular/material';
         MatButtonModule,
         QuillModule.forRoot(),
         ReactiveFormsModule,
+        ValidationErrorPipeModule
     ],
     declarations: [ContentManagementComponent, QuillEditorComponent],
     providers: [PopupService]

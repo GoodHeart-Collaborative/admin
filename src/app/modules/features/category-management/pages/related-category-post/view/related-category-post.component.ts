@@ -1,24 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryTableDataSource } from '../../../models';
-import { UsersService } from 'src/app/modules/features/users/service/users.service';
+import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
+import { RelatedCategoryTableDataSource } from '../model/index';
+import { CategoryManagementService } from '../../../service/category-management.service';
 import { Router } from '@angular/router';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { USER, CATEGORY } from 'src/app/constant/routes';
-import { CategoryManagementService } from '../../../service/category-management.service';
-import { AddCategoryManagementComponent } from '../../add-category-management/view/add-category-management.component';
-import { MatDialog } from '@angular/material';
-import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 
 @Component({
-  selector: 'app-category-management-listing',
-  templateUrl: './category-management-listing.component.html',
-  styleUrls: ['./category-management-listing.component.scss']
+  selector: 'app-related-category-post',
+  templateUrl: './related-category-post.component.html',
+  styleUrls: ['./related-category-post.component.scss']
 })
-export class CategoryManagementListingComponent implements OnInit {
+export class RelatedCategoryPostComponent implements OnInit {
 
-  tableSource = new CategoryTableDataSource();
+  tableSource = new RelatedCategoryTableDataSource();
   userData: any;
   eventData: Table.OptionData = {
     pageIndex: 0,
@@ -29,7 +26,6 @@ export class CategoryManagementListingComponent implements OnInit {
   constructor(
     private $category: CategoryManagementService,
     private $router: Router,
-    private matDailog: MatDialog,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService
   ) {
@@ -121,7 +117,7 @@ export class CategoryManagementListingComponent implements OnInit {
 
   setUpTableResource(userRecords) {
     const { pageIndex, pageSize } = this.eventData;
-    this.tableSource = new CategoryTableDataSource({
+    this.tableSource = new RelatedCategoryTableDataSource({
       pageIndex,
       pageSize,
       rows: userRecords['data'],
@@ -129,35 +125,8 @@ export class CategoryManagementListingComponent implements OnInit {
     });
   }
 
-onAddCategory() {
-  this.matDailog.open(AddCategoryManagementComponent, {
-    width: '500px',
-   }).afterClosed().subscribe(res => {
-    if (res) {
-        this.updateUsers();
-    }
-  });
-}
-
-oneditHandler(id) {
-  this.$category.updateCategory(id).then(res => {
-      if (res) {
-        this.matDailog.open(AddCategoryManagementComponent, {
-          width: '500px',
-          data: res.data
-        }).afterClosed().subscribe(res => {
-          if (res) {
-              this.updateUsers();
-          }
-        });
-      }
-    }).catch(err => {
-       this.$utility.errorAlert(err.message);
-  });
-}
-
-relatedCategoryHandler(id) {
-    this.$router.navigate([`${CATEGORY.fullUrl}`, id,]);
-}
+ categoryDetailsHandler(id: string) {
+    this.$router.navigate([`${CATEGORY.fullUrl}`, id,  'details']);
+  }
 
 }

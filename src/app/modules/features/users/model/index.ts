@@ -64,7 +64,8 @@ export class UserTableDataSource implements Table.Source<User> {
     selection: false,
     search: 'Search by Name, Email',
     index: true,
-    filterComponent: UsersListingFilterComponent
+    filterComponent: UsersListingFilterComponent,
+   
   };
   constructor(public data: Table.Data<User> = defaultData) {}
 }
