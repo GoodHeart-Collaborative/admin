@@ -1,11 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { DailyInspirationService } from '../../../service/daily-inspiration.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FileUploadService } from 'src/app/modules/shared/services/file-upload.service';
 import { onSelectFile } from 'src/app/constant/file-input';
 import { invalidImageError, invalidFileSize } from 'src/app/constant/messages';
-import { CategoryManagementService } from 'src/app/modules/features/category-management/service/category-management.service';
 import { ActivatedRoute } from '@angular/router';
 import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
 

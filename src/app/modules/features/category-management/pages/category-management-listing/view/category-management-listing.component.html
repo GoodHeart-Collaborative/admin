@@ -1,7 +1,7 @@
 
 <!-- <button class="btn btn-primary btn-add-category" mat-stroked-button (click)="onAddCategory()">Add Category</button> -->
 
-<app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)" (onAddCahnges)="onAddCategory($event)">
+<app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)" (onAddCahnges)="onAddCategory()">
    <ng-template appFor="createdAt" let-category="row">
         {{ category?.createdAt |customDate}}
     </ng-template>
