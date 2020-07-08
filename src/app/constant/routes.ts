@@ -299,3 +299,29 @@ export const DAILY_INSPIRATION_DETAILS: IRoute = {
     return `${DAILY_INSPIRATION.fullUrl}/${this.path}`;
   }
 };
+
+// DAILY_UNICORN ROUTES //
+export const DAILY_UNICORN: IRoute = {
+  path: 'daily-unicorn',
+  get fullUrl(): string {
+    return `${ADMIN.fullUrl}/${this.path}`;
+  }
+};
+export const DAILY_UNICORN_LIST: IRoute = {
+  path: 'list',
+  get fullUrl(): string {
+    return `${DAILY_UNICORN.fullUrl}/${this.path}`;
+  }
+};
+export const ADD_DAILY_UNICORN: IRoute = {
+  path: 'add',
+  get fullUrl(): string {
+    return `${DAILY_UNICORN.fullUrl}/${this.path}`;
+  }
+};
+export const DAILY_UNICORN_DETAILS: IRoute = {
+  path: ':id',
+  get fullUrl(): string {
+    return `${DAILY_INSPIRATION.fullUrl}/${this.path}`;
+  }
+};

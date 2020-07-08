@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DailyInspirationComponent } from './view/daily-inspiration.component';
 import {DAILY_INSPIRATION_LIST, ADD_DAILY_INSPIRATION , DAILY_INSPIRATION_DETAILS} from 'src/app/constant/routes';
+import { DailyInspirationServiceResolve } from './service/daily-inspiration.service';
 
 const routes: Routes = [
   {
@@ -26,7 +27,19 @@ const routes: Routes = [
       ),
     },
     {
-      path:`${DAILY_INSPIRATION_DETAILS.path}`,
+      path: 'edit/:id',
+      resolve : {
+        dailyData : DailyInspirationServiceResolve
+      },
+      loadChildren: () => import('./pages/add-daily-inspiration/add-daily-inspiration.module')
+      .then( (m) => m.AddDailyInspirationModule
+      ),
+    },
+    {
+      path: `${DAILY_INSPIRATION_DETAILS.path}/details`,
+      resolve : {
+        dailyData : DailyInspirationServiceResolve
+      },
       loadChildren: () => import('./pages/daily-inspiration-details/daily-inspiration-details.module')
       .then( (m) => m.DailyInspirationDetailsModule
       ),

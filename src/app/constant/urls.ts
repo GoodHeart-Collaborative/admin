@@ -20,7 +20,11 @@ export const CATEGORY_LISTING = 'admin/category';
 export const CATEGORY_DETAILS = (categoryId) => `admin/category/${categoryId}`;
 export const EDIT_CATEGORY = (categoryId) => `admin/category/${categoryId}`;
 
+// DAILY_INSPIRATION API's //
 
+export const ADD_DAILY_INSPIRATION = 'admin/post';
+export const DAILY_INSPIRATION = 'admin/inspiration';
+export const DAILY_INSPIRATION_DETAILS = (Id) => `admin/inspiration/${Id}`;
 
 // DREASHBOARD API's //
 export const DASHBOARD = 'admin/dashboard';

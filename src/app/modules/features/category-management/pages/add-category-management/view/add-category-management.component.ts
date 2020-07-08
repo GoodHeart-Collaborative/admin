@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { FormService } from 'src/app/modules/shared/services/form.service';
 import { CategoryManagementService } from '../../../service/category-management.service';
 import { FileUploadService } from 'src/app/modules/shared/services/file-upload.service';
 import { onSelectFile } from 'src/app/constant/file-input';

@@ -4,7 +4,7 @@ import { CategoryManagementService } from 'src/app/modules/features/category-man
 import { Router } from '@angular/router';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
-import { ADD_DAILY_INSPIRATION } from 'src/app/constant/routes';
+import { ADD_DAILY_INSPIRATION, DAILY_INSPIRATION } from 'src/app/constant/routes';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { DailyInspirationService } from '../../../service/daily-inspiration.service';
 export type ActionType = 'deleted' | 'blocked' | 'active';
@@ -76,7 +76,7 @@ export class DailyInspirationListingComponent implements OnInit {
     this.$confirmBox.listAction('User', action).subscribe((confirm) => {
       if (confirm) {
         this.$category.updateStatus(id, action).then((res) => {
-          // this.$utility.success(res.message);
+          this.$utility.success(res.message);
           this.handleActions(action, index);
         });
       }
@@ -126,9 +126,14 @@ export class DailyInspirationListingComponent implements OnInit {
 
 
 
-// relatedCategoryHandler(id) {
-//     this.$router.navigate([`${CATEGORY.fullUrl}`, id,]);
-// }
+  oneditHandler(id) {
+    this.$router.navigate([`${DAILY_INSPIRATION.fullUrl}`, 'edit', id]);
+  }
+
+  onDetailsHandler(id) {
+    this.$router.navigate([`${DAILY_INSPIRATION.fullUrl}`, id, 'details']);
+  }
+
 onAdd() {
     this.$router.navigate([`${ADD_DAILY_INSPIRATION.fullUrl}`]);
 }

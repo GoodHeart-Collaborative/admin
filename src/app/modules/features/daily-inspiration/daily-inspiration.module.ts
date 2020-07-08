@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { DailyInspirationRoutingModule } from './daily-inspiration-routing.module';
 import { DailyInspirationComponent } from './view/daily-inspiration.component';
+import { DailyInspirationServiceResolve } from './service/daily-inspiration.service';
 
 
 @NgModule({
@@ -10,6 +11,7 @@ import { DailyInspirationComponent } from './view/daily-inspiration.component';
   imports: [
     CommonModule,
     DailyInspirationRoutingModule
-  ]
+  ],
+  providers: [DailyInspirationServiceResolve]
 })
 export class DailyInspirationModule { }
