@@ -24,8 +24,8 @@ export class UserListingComponent implements OnInit {
     filterData: null,
   };
   constructor(
-    private $userService: UsersService,
     private $router: Router,
+    private $userService: UsersService,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService
   ) {

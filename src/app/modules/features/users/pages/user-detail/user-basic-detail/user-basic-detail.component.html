@@ -4,20 +4,16 @@
             <div class="row-1">
                 <div class="left-portion">
                     <div class="img-cover">
-                        <img src="../../../../../../../assets/default-image/user.jpg" alt="User Profile Image">
+                        <img [src]="data?.profilePicUrl[0]|customImage:'USER'|async" alt="User Profile Image">
                     </div>
                     <div class="btn-row">
-                        <button class="btn btn-block" mat-stroked-button> Block User </button>
-                        <button class="btn btn-primary btn-delete" mat-stroked-button >Delete User</button>
+                        <button class="btn btn-block" mat-stroked-button (click)="onBlockUSer()"> {{data?.status === 'active' ? 'Block' : 'Active'}} User </button>
+                        <button class="btn btn-primary btn-delete" mat-stroked-button (click)="onBlockUSer(true)">Delete User</button>
                     </div>
                 </div>
                 <div class="right-portion">
                     <div class="row">
-                        <!-- <div class="col-md-4">
-                            <p class="label">User Id</p>
-                         <p class="value">{{data.}}</p> 
-                            <p class="value">N/A</p>
-                        </div> -->
+                    
                         <div class="col-md-4">
                             <p class="label">User Name</p>
                             <p class="value">{{data?.firstName}} {{data?.lastName}}</p>
@@ -33,6 +29,10 @@
                         <div class="col-md-4">
                             <p class="label">Date of Birth</p>
                             <p class="value">{{(data?.dob | customDate) || 'None'}} </p>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="label">Status</p>
+                            <p class="value">{{data?.status | titlecase}} </p>
                         </div>
                         <div class="col-md-4">
                             <p class="label">Profession</p>
