@@ -15,11 +15,12 @@ import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/
   styleUrls: ['./add-daily-inspiratin.component.scss']
 })
 export class AddDailyInspiratinComponent implements OnInit {
-
+  today: Date = new Date();
   inspirationForm: FormGroup;
   profilePicURL: any;
   imageFile: any;
   dailyInspirationDetails: any;
+  postDate: boolean = false;
   constructor(
               private $formBuilder: FormBuilder,
               private $daily: DailyInspirationService,
@@ -48,7 +49,10 @@ export class AddDailyInspiratinComponent implements OnInit {
         description: [''],
       });
   }
-
+  checkMe(date) {
+    console.log(date);
+    this.postDate = true;
+  }
 
   async onSelectFile(event) {
     try {
