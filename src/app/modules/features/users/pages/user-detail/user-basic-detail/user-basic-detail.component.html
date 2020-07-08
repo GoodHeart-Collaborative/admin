@@ -1,48 +1,59 @@
 <div class="page-user-detail-page">
     <div class="user-detail-content">
         <div class="detail-ui">
-            <div class="row">
-                <!-- <div class="col-md-4">
-                    <p class="label">User Id</p>
-                 <p class="value">{{data.}}</p> 
-                    <p class="value">N/A</p>
-                </div> -->
-                <div class="col-md-4">
-                    <p class="label">User Name</p>
-                    <p class="value">{{data?.firstName}} {{data?.lastName}}</p>
+            <div class="row-1">
+                <div class="left-portion">
+                    <div class="img-cover">
+                        <img src="../../../../../../../assets/default-image/user.jpg" alt="User Profile Image">
+                    </div>
+                    <div class="btn-row">
+                        <button class="btn btn-block" mat-stroked-button> Block User </button>
+                        <button class="btn btn-primary btn-delete" mat-stroked-button >Delete User</button>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <p class="label">Email</p>
-                    <p class="value">{{data?.email}}</p>
+                <div class="right-portion">
+                    <div class="row">
+                        <!-- <div class="col-md-4">
+                            <p class="label">User Id</p>
+                         <p class="value">{{data.}}</p> 
+                            <p class="value">N/A</p>
+                        </div> -->
+                        <div class="col-md-4">
+                            <p class="label">User Name</p>
+                            <p class="value">{{data?.firstName}} {{data?.lastName}}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="label">Email</p>
+                            <p class="value">{{data?.email}}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="label">Phone</p>
+                            <p class="value">+{{data?.countryCode}} {{data?.mobileNo}}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="label">Date of Birth</p>
+                            <p class="value">{{(data?.dob | customDate) || 'None'}} </p>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="label">Profession</p>
+                            <p class="value">{{data?.profession || 'None'}}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="label">Industry</p>
+                            <p class="value">{{data?.industry || 'None'}}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="label">Membership Type</p>
+                            <p class="value">{{data?.membershipType || 'None'}}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="label">Bio</p>
+                            <p class="value">{{data?.bio || 'None'}} </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <p class="label">Phone</p>
-                    <p class="value">+{{data?.countryCode}} {{data?.mobileNo}}</p>
-                </div>
-                <div class="col-md-4">
-                    <p class="label">Date of Birth</p>
-                    <p class="value">{{(data?.dob | customDate) || 'None'}} </p>
-                </div>
-                <div class="col-md-4">
-                    <p class="label">Profession</p>
-                    <p class="value">{{data?.profession || 'None'}}</p>
-                </div>
-                <div class="col-md-4">
-                    <p class="label">Industry</p>
-                    <p class="value">{{data?.industry || 'None'}}</p>
-                </div>
-                <div class="col-md-4">
-                    <p class="label">Membership Type</p>
-                    <p class="value">{{data?.membershipType || 'None'}}</p>
-                </div>
-                <div class="col-md-4">
-                    <p class="label">Bio</p>
-                    <p class="value">{{data?.bio || 'None'}} </p>
-                </div>
-            </div>
-            <div class="btn-row">
-                <button class="btn" mat-stroked-button> Block User </button>
-		        <button class="btn btn-primary" mat-stroked-button >Delete User</button>
+
+
             </div>
         </div>
     </div>
