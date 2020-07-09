@@ -13,7 +13,8 @@
         align-items: center;
         justify-content: space-between;
         background: linear-gradient(323deg, #b58ecc 14%, #409fbb 98%);
-        background-color: red;;
+        background-color: red;
+        user-select: none;
         @media screen and (max-width: 992px){
             left: 0px;
             width: 100%;

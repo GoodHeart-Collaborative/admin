@@ -16,10 +16,10 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class EditProfileComponent implements OnInit,OnDestroy {
   profilePicURL: string;
+  imageFile;
   editProfileForm: FormGroup;
   minDateOfBirth = new Date();
   editProfileSubscription: Subscription;
-  imageFile;
   profileDetail: any;
   constructor(
     private $editProfileService: EditProfileService,
@@ -58,6 +58,11 @@ export class EditProfileComponent implements OnInit,OnDestroy {
       );
   }
 
+
+  setimageFile(event) {
+    console.log(event);
+    // this.imageFile = event.
+  }
   /**
    * @description Getting controls of editProfileForm
    * @param name
@@ -70,19 +75,19 @@ export class EditProfileComponent implements OnInit,OnDestroy {
    * @description This function is called when user change profile pic. Save that file
    * @param event 
    */
-  async onSelectFile(event) {
-    try {
-      let result = await onSelectFile(event);
-      this.imageFile = result.file;
-      this.profilePicURL = result.url;
-    } catch (err) {
-      if (err.type) {
-        this.$editProfileService.showAlert(invalidImageError());
-      } else if (err.size) {
-        this.$editProfileService.showAlert(invalidFileSize());
-      }
-    }
-  }
+  // async onSelectFile(event) {
+  //   try {
+  //     let result = await onSelectFile(event);
+  //     this.imageFile = result.file;
+  //     this.profilePicURL = result.url;
+  //   } catch (err) {
+  //     if (err.type) {
+  //       this.$editProfileService.showAlert(invalidImageError());
+  //     } else if (err.size) {
+  //       this.$editProfileService.showAlert(invalidFileSize());
+  //     }
+  //   }
+  // }
 
   /**
    * @description First upload the profile picture then edit the profile

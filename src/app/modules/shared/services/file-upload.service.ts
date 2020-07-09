@@ -56,4 +56,8 @@ export class FileUploadService {
             console.error(err.message);
         }
     }
+
+    showAlert(message) {
+        this._utilityService.showAlert(message);
+      }
 }

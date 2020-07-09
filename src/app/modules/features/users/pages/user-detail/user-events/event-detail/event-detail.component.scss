@@ -41,9 +41,14 @@
                     align-items: center;
                     justify-content: flex-start;
                     .material-icons{
-                        color: #565656;
                         font-size: 20px;
                         margin-right: 5px;
+                        &.going-icon{
+                            color: #10c310;
+                        }
+                        &.heart-icon{
+                            color: #f1268c;
+                        }
                     }
                 }
             }

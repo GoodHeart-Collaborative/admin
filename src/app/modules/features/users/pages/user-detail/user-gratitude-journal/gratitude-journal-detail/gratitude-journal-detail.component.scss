@@ -24,7 +24,7 @@
                 @media screen and (max-width: 576px){
                     font-size: 14px;
                 }
-                &:first-child{
+                &:not(:last-child){
                     margin-bottom: 20px;
                     font-size: 14px;
                     @media screen and (max-width: 576px){

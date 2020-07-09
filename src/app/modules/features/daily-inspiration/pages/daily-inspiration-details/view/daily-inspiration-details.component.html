@@ -1,1 +1,15 @@
-<p>daily-inspiration-details works!</p>
+<div class="page-daily-inspiration-detail">
+    <div class="daily-inspiration-content">
+        <div class="mat-card">
+            <div class="row-1">
+                <div class="textual-detail">
+                    <p>{{dailyInspirationDetails?.description}}</p>
+                    <p>{{dailyInspirationDetails?.createdAt | date : 'medium'}}</p>
+                </div>
+                <div class="image-detail">
+                    <img [src]="dailyInspirationDetails?.imageUrl | customImage:'USER'|async ">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

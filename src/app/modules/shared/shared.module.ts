@@ -18,6 +18,7 @@ import { AbsoluteRoutingModule } from '../../pipes/absolute-routing/absolute-rou
 import { LoaderComponent } from './components/loader/loader.component';
 import { MatIconModule } from '@angular/material';
 import { PopupModule } from './popup';
+import { MediaUploadModule } from './media-upload/media-upload.module';
 
 @NgModule({
   imports: [
@@ -32,7 +33,7 @@ import { PopupModule } from './popup';
     FormsModule,
     AbsoluteRoutingModule,
     MatIconModule,
-    PopupModule
+    PopupModule,
   ],
   declarations: [
     ConfirmationModalComponent,

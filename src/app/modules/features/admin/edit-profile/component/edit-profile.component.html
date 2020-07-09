@@ -4,7 +4,7 @@
     <mat-icon class="close-icon" [mat-dialog-close]="false">close</mat-icon>
   </div>
   <div class="popup-body" [formGroup]="editProfileForm" (ngSubmit)="editProfile()">
-    <div class="img-cover">
+    <!-- <div class="img-cover">
       <img [src]="profilePicURL|customImage:'USER'|async" alt="">
       <div class="mat-icon-cover">
         <button type="button" class="camBtn" mat-mini-fab color="primary">
@@ -13,7 +13,9 @@
             matTooltip="Change Image" />
         </button>
       </div> 
-    </div>
+    </div> -->
+    <media-upload (removeMedia)="setimageFile($event)"></media-upload>
+
     <div class="profile-detail">
       <div class="single-profile-detail">
         <label for="">Name:</label>
