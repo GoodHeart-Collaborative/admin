@@ -5,8 +5,8 @@ import { Router } from '@angular/router';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { ADD_DAILY_INSPIRATION, DAILY_INSPIRATION } from 'src/app/constant/routes';
-import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { DailyInspirationService } from '../../../service/daily-inspiration.service';
+import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 @Component({
   selector: 'app-daily-inspiration-listing',
@@ -14,9 +14,7 @@ export type ActionType = 'deleted' | 'blocked' | 'active';
   styleUrls: ['./daily-inspiration-listing.component.scss']
 })
 export class DailyInspirationListingComponent implements OnInit {
-
-
-  tableSource = new DailyTableDataSource();
+ tableSource = new DailyTableDataSource();
   userData: any;
   eventData: Table.OptionData = {
     pageIndex: 0,
@@ -122,11 +120,7 @@ export class DailyInspirationListingComponent implements OnInit {
     });
   }
 
-
-
-
-
-  oneditHandler(id) {
+ oneditHandler(id) {
     this.$router.navigate([`${DAILY_INSPIRATION.fullUrl}`, 'edit', id]);
   }
 

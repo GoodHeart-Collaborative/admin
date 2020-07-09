@@ -8,35 +8,35 @@ const defaultData: Table.Data<Category> = {
     rows: null
 };
 
-export class DailyTableDataSource implements Table.Source<Category> {
+export class DailyUnicornTableDataSource implements Table.Source<Category> {
   label = 'Category Management';
   columns: Table.Column<Category>[] = [
     {
-        title: 'Title',
-        id: 'title',
+        title: 'Post',
+        id: 'post',
         sorting: false,
-        templateBy: 'title'
+        templateBy: 'post'
         // resolve: (row: any) => row['title'] || '-',
     },
-    {
-        title: 'Description',
-        id: 'description',
-        sorting: false,
-        templateBy: 'description'
-        // resolve: (row: any) => row['title'] || '-',
-    },
+    // {
+    //     title: 'Description',
+    //     id: 'description',
+    //     sorting: false,
+    //     templateBy: 'description'
+    //     // resolve: (row: any) => row['title'] || '-',
+    // },
     {
       title: 'Created At',
       id: 'createdAt',
       sorting: true,
       templateBy: 'createdAt',
     },
-    {
-      title: 'Status',
-      id: 'status',
-      sorting: false,
-      templateBy: 'status'
-    },
+    // {
+    //   title: 'Status',
+    //   id: 'status',
+    //   sorting: false,
+    //   templateBy: 'status'
+    // },
 
     {
       title: 'Actions',
@@ -47,7 +47,7 @@ export class DailyTableDataSource implements Table.Source<Category> {
   ];
   options: Table.Options = {
     selection: false,
-    search: 'Search by Title',
+    search: 'Search by Post',
     index: true,
     addComponent: true
     // filterComponent: UsersListingFilterComponent

@@ -20,7 +20,7 @@ const routes: Routes = [
       ),
     },
     {
-      path: `${ADD_DAILY_UNICORN.path}`,
+      path: ADD_DAILY_UNICORN.path,
       loadChildren: () => import('./pages/add-daily-unicorm-humour/add-daily-unicorm-humour.module')
       .then( (m) => m.AddDailyUnicormHumourModule
       ),

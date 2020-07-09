@@ -36,7 +36,6 @@ export class AddDailyInspiratinComponent implements OnInit {
 
   ) {
     if ($router.snapshot.data.dailyData && $router.snapshot.data.dailyData.data) {
-
       this.dailyInspirationDetails = $router.snapshot.data.dailyData.data;
       $breadcrumb.replace(this.dailyInspirationDetails.id, this.dailyInspirationDetails.title);
     }
@@ -51,6 +50,7 @@ export class AddDailyInspiratinComponent implements OnInit {
         this.inspirationForm.removeControl('createdAt');
       }
     });
+    this.getDailyInspiration();
   }
 
   createForm() {
@@ -58,13 +58,14 @@ export class AddDailyInspiratinComponent implements OnInit {
       {
         title: ['', [Validators.required, Validators.maxLength(this.titleMaxLength)]],
         isPostLater: [false],
-        // createdAt: [],
         description: ['', [Validators.required, Validators.maxLength(this.descriptionMaxLength)]],
       });
   }
-form(name) {
-  return this.inspirationForm.controls[name];
-}
+
+  form(name) {
+    return this.inspirationForm.controls[name];
+  }
+
   get isPostLater() {
     return this.inspirationForm.get('isPostLater') as FormControl;
   }
@@ -83,6 +84,16 @@ form(name) {
     }
   }
 
+  getDailyInspiration() {
+    if (this.dailyInspirationDetails) {
+      this.inspirationForm.patchValue(this.dailyInspirationDetails);
+      this.profilePicURL = this.dailyInspirationDetails.imageUrl;
+      if (this.dailyInspirationDetails && this.dailyInspirationDetails.createdAt) {
+
+        this.inspirationForm.patchValue(new Date(this.dailyInspirationDetails.createdAt));
+      }
+    }
+  }
 
   async onSubmit() {
     if (this.inspirationForm.invalid) {
