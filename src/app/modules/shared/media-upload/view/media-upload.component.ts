@@ -11,10 +11,9 @@ import { onSelectFile } from 'src/app/constant/file-input';
   styleUrls: ['./media-upload.component.scss']
 })
 export class MediaUploadComponent implements OnInit {
-  profilePicURL: any;
   imageFile: any;
  @Output() removeMedia = new EventEmitter();
-
+ @Input() profilePicURL;
   // mediaFiles: any[] = [];
   // @Input() mediaControl: FormControl;
   // @Input() maxlength: number;

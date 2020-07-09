@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/modules/shared/services/http.service';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
+import { Router, ActivatedRouteSnapshot, Resolve } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -39,17 +40,16 @@ export class DailyUnicornHumourService {
   }
 }
 
-// @Injectable()
-// export class DailyInspirationServiceResolve implements Resolve<any>  {
-//   constructor(private $daily: DailyInspirationService, private $router: Router) { }
-//   resolve(route: ActivatedRouteSnapshot) {
-//     const userId = route.params['id'];
-//     return this.$daily.updateInspiration(userId).catch(err => {
-//       if (err) {
-//         // this.$router.navigate([DAILY_INSPIRATION]);
-//         return null;
-//       }
-//     }
-//     );
-//   }
-// }
+@Injectable()
+export class DailyUnicornHumourServiceResolve implements Resolve<any>  {
+  constructor(private $daily: DailyUnicornHumourService, private $router: Router) { }
+  resolve(route: ActivatedRouteSnapshot) {
+    const userId = route.params['id'];
+    return this.$daily.updateInspiration(userId).catch(err => {
+      if (err) {
+        return null;
+      }
+    }
+    );
+  }
+}

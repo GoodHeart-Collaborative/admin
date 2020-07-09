@@ -2,7 +2,7 @@
     <div class="add-daily-inspiration-content">
         <form [formGroup]="inspirationForm">
      <div class="row-1">
-            <div class="left-portion">
+            <!-- <div class="left-portion">
                 <div class="img-cover">
                     <img [src]="profilePicURL|customImage:'USER'|async" alt="">
                     <div class="mat-icon-cover">
@@ -12,7 +12,10 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
+
+            <media-upload (removeMedia)="setimageFile($event)" [profilePicURL]="profilePicURL"></media-upload>
+
             <div class="right-portion">
                 <mat-form-field appearance="outline">
                     <mat-label>Inspiration Title</mat-label>

@@ -14,7 +14,7 @@
         </button>
       </div> 
     </div> -->
-    <media-upload (removeMedia)="setimageFile($event)"></media-upload>
+    <media-upload (removeMedia)="setimageFile($event)" [profilePicURL]="profileDetail?.profilePicture"></media-upload>
 
     <div class="profile-detail">
       <div class="single-profile-detail">

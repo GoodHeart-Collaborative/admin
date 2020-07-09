@@ -58,11 +58,15 @@ export class EditProfileComponent implements OnInit,OnDestroy {
       );
   }
 
+/**
+   * @description set Image File in editProfileForm
+   * @param name
+   */
 
-  setimageFile(event) {
-    console.log(event);
-    // this.imageFile = event.
-  }
+ setimageFile(event) {
+    this.imageFile = event.name;
+ }
+
   /**
    * @description Getting controls of editProfileForm
    * @param name
@@ -70,24 +74,6 @@ export class EditProfileComponent implements OnInit,OnDestroy {
   getControl(name) {
     return this.editProfileForm.controls[name];
   }
-
-  /**
-   * @description This function is called when user change profile pic. Save that file
-   * @param event 
-   */
-  // async onSelectFile(event) {
-  //   try {
-  //     let result = await onSelectFile(event);
-  //     this.imageFile = result.file;
-  //     this.profilePicURL = result.url;
-  //   } catch (err) {
-  //     if (err.type) {
-  //       this.$editProfileService.showAlert(invalidImageError());
-  //     } else if (err.size) {
-  //       this.$editProfileService.showAlert(invalidFileSize());
-  //     }
-  //   }
-  // }
 
   /**
    * @description First upload the profile picture then edit the profile
@@ -114,9 +100,11 @@ export class EditProfileComponent implements OnInit,OnDestroy {
   onCancel() {
     this.$dialogRef.close();
   }
+
   ngOnDestroy() {
     if (this.editProfileSubscription) {
       this.editProfileSubscription.unsubscribe();
     }
   }
+
 }

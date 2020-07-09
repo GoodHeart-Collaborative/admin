@@ -70,29 +70,21 @@ export class AddDailyInspiratinComponent implements OnInit {
     return this.inspirationForm.get('isPostLater') as FormControl;
   }
 
-  async onSelectFile(event) {
-    try {
-      let result = await onSelectFile(event);
-      this.imageFile = result.file;
-      this.profilePicURL = result.url;
-    } catch (err) {
-      if (err.type) {
-        this.$daily.showAlert(invalidImageError());
-      } else if (err.size) {
-        this.$daily.showAlert(invalidFileSize());
-      }
-    }
-  }
-
   getDailyInspiration() {
+    console.log(this.dailyInspirationDetails.imageUrl);
     if (this.dailyInspirationDetails) {
-      this.inspirationForm.patchValue(this.dailyInspirationDetails);
       this.profilePicURL = this.dailyInspirationDetails.imageUrl;
-      if (this.dailyInspirationDetails && this.dailyInspirationDetails.createdAt) {
+      this.inspirationForm.patchValue(this.dailyInspirationDetails);
+      if (this.dailyInspirationDetails && this.dailyInspirationDetails.createdAt && this.dailyInspirationDetails.isPostLater) {
 
         this.inspirationForm.get('createdAt').patchValue(new Date(this.dailyInspirationDetails.createdAt));
       }
     }
+  }
+
+
+  setimageFile(event) {
+    this.imageFile = event.name;
   }
 
   async onSubmit() {
