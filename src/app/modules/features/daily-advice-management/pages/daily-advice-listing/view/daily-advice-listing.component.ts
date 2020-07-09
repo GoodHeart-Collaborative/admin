@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { DailyUnicornTableDataSource } from '../../../model';
+import { DailyAdviceTableDataSource } from '../../../model';
+import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
+export type ActionType = 'deleted' | 'blocked' | 'active';
+import { DAILY_ADVICE , ADD_DAILY_ADVICE } from 'src/app/constant/routes';
+import { DailyAdviceManagementService } from '../../../service/daily-advice-management.service';
 import { Router } from '@angular/router';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
-import { DailyUnicornHumourService } from '../../../service/daily-unicorn-humour.service';
-import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
-export type ActionType = 'deleted' | 'blocked' | 'active';
-import { DAILY_UNICORN , ADD_DAILY_UNICORN} from 'src/app/constant/routes';
 @Component({
-  selector: 'app-daily-unicorn-humour-listing',
-  templateUrl: './daily-unicorn-humour-listing.component.html',
-  styleUrls: ['./daily-unicorn-humour-listing.component.scss']
+  selector: 'app-daily-advice-listing',
+  templateUrl: './daily-advice-listing.component.html',
+  styleUrls: ['./daily-advice-listing.component.scss']
 })
-export class DailyUnicornHumourListingComponent implements OnInit {
-  tableSource = new DailyUnicornTableDataSource();
+export class DailyAdviceListingComponent implements OnInit {
+
+  tableSource = new DailyAdviceTableDataSource();
   userData: any;
   eventData: Table.OptionData = {
     pageIndex: 0,
@@ -22,7 +23,7 @@ export class DailyUnicornHumourListingComponent implements OnInit {
     filterData: null,
   };
   constructor(
-    private $category: DailyUnicornHumourService,
+    private $category: DailyAdviceManagementService,
     private $router: Router,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService
@@ -111,7 +112,7 @@ export class DailyUnicornHumourListingComponent implements OnInit {
 
   setUpTableResource(userRecords) {
     const { pageIndex, pageSize } = this.eventData;
-    this.tableSource = new DailyUnicornTableDataSource({
+    this.tableSource = new DailyAdviceTableDataSource({
       pageIndex,
       pageSize,
       rows: userRecords['data'],
@@ -120,15 +121,15 @@ export class DailyUnicornHumourListingComponent implements OnInit {
   }
 
  oneditHandler(id) {
-    this.$router.navigate([`${DAILY_UNICORN.fullUrl}`, 'edit', id]);
+    this.$router.navigate([`${DAILY_ADVICE.fullUrl}`, 'edit', id]);
   }
 
   onDetailsHandler(id) {
-    this.$router.navigate([`${DAILY_UNICORN.fullUrl}`, id, 'details']);
+    this.$router.navigate([`${DAILY_ADVICE.fullUrl}`, id, 'details']);
   }
 
  onAdd() {
-    this.$router.navigate([`${ADD_DAILY_UNICORN.fullUrl}`]);
+    this.$router.navigate([`${ADD_DAILY_ADVICE.fullUrl}`]);
  }
 
 }

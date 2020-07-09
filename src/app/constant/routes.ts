@@ -325,3 +325,29 @@ export const DAILY_UNICORN_DETAILS: IRoute = {
     return `${DAILY_INSPIRATION.fullUrl}/${this.path}`;
   }
 };
+
+// DAILY_ADVICE ROUTES //
+export const DAILY_ADVICE: IRoute = {
+  path: 'daily-advice',
+  get fullUrl(): string {
+    return `${ADMIN.fullUrl}/${this.path}`;
+  }
+};
+export const DAILY_ADVICE_LIST: IRoute = {
+  path: 'list',
+  get fullUrl(): string {
+    return `${DAILY_ADVICE.fullUrl}/${this.path}`;
+  }
+};
+export const ADD_DAILY_ADVICE: IRoute = {
+  path: 'add',
+  get fullUrl(): string {
+    return `${DAILY_ADVICE.fullUrl}/${this.path}`;
+  }
+};
+export const DAILY_ADVICE_DETAILS: IRoute = {
+  path: ':id',
+  get fullUrl(): string {
+    return `${DAILY_ADVICE.fullUrl}/${this.path}`;
+  }
+};
