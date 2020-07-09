@@ -14,7 +14,14 @@
             .post-later{
                 display: flex;
                 align-items: center;
-                justify-content: flex-start;
+				justify-content: flex-start;
+				mat-checkbox{
+					margin: 25px 0px;
+				}
+				.later-date-picker{
+					margin-left: 20px;
+					width: auto;
+				}
             }
         }
     }
