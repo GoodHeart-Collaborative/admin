@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { HttpService } from 'src/app/modules/shared/services/http.service';
+import { Resolve, Router, ActivatedRouteSnapshot } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -28,29 +29,25 @@ export class DailyAdviceManagementService {
     // return  this.$http.patch(EDIT_CATEGORY(id), params).toPromise();
   }
 
-
   async  updateInspiration(id) {
     // const data =  this.$http.get(DAILY_INSPIRATION_DETAILS(id)).toPromise();
     // return data;
   }
 
-  showAlert(message) {
-    this.$utilityService.showAlert(message);
-  }
 }
 
-// @Injectable()
-// export class DailyInspirationServiceResolve implements Resolve<any>  {
-//   constructor(private $daily: DailyInspirationService, private $router: Router) { }
-//   resolve(route: ActivatedRouteSnapshot) {
-//     const userId = route.params['id'];
-//     return this.$daily.updateInspiration(userId).catch(err => {
-//       if (err) {
-//         // this.$router.navigate([DAILY_INSPIRATION]);
-//         return null;
-//       }
-//     }
-//     );
-//   }
-// }
+@Injectable()
+export class DailyAdviceManagementServiceResolve implements Resolve<any>  {
+  constructor(private $daily: DailyAdviceManagementService, private $router: Router) { }
+  resolve(route: ActivatedRouteSnapshot) {
+    const userId = route.params['id'];
+    return this.$daily.updateInspiration(userId).catch(err => {
+      if (err) {
+        // this.$router.navigate([DAILY_INSPIRATION]);
+        return null;
+      }
+    }
+    );
+  }
+}
 

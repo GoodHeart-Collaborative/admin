@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
 
 @Component({
   selector: 'app-daily-advice-details',
@@ -7,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DailyAdviceDetailsComponent implements OnInit {
 
-  constructor() { }
+  adviceDetails: any;
+  constructor(
+    $router: ActivatedRoute,
+    $breadcrumb: BreadcrumbService) {
+//  this.adviceDetails = $router.snapshot.data.dailyData.data;
+//  $breadcrumb.replace(this.adviceDetails.id, this.adviceDetails.title);
+}
 
   ngOnInit() {
   }
