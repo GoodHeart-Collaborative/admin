@@ -135,6 +135,4 @@ export class AddDailyInspiratinComponent implements OnInit {
     this.$route.navigate([DAILY_INSPIRATION.fullUrl]);
   }
 
-
-
 }

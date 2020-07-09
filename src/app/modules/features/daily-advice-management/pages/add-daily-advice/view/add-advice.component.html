@@ -1,1 +1,42 @@
-<p>add-advice works!</p>
+<div class="page-add-daily-inspiration">
+    <div class="add-daily-inspiration-content">
+        <form [formGroup]="adviceForm">
+     <div class="row-1">
+            <media-upload (removeMedia)="setimageFile($event)" [profilePicURL]="profilePicURL"></media-upload>
+
+            <div class="right-portion">
+                <mat-form-field appearance="outline">
+                    <mat-label>Inspiration Title</mat-label>
+                    <input matInput placeholder="Title" formControlName="title" #input [maxlength]="titleMaxLength">
+                    <mat-hint>{{input.value.length}}/{{titleMaxLength}}</mat-hint>
+                    <mat-error>{{form('title') |validate:'Title' }}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput placeholder="Ex. It makes me feel..." formControlName="description" #description [maxlength]="descriptionMaxLength"></textarea>
+                    <mat-hint>{{description.value.length}}/{{descriptionMaxLength }}</mat-hint>
+                    <mat-error>{{form('description')  |validate:'Description'}}</mat-error>
+                 </mat-form-field>
+
+                <div class="post-later">
+                    <mat-checkbox class="example-margin" formControlName="isPostLater" >Check me!</mat-checkbox>
+                    <mat-form-field color="accent" *ngIf="inspirationForm?.contains('createdAt')" appearance="outline" >
+                        <!-- <mat-label>Inherited calendar color</mat-label> -->
+                        <input matInput [matDatepicker]="picker" [min]="today" formControlName="createdAt"
+                        (click)="picker.open()" placeholder="Date" readonly>
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    <mat-error>{{form('createdAt')  |validate:'Created At' }}</mat-error>
+                    </mat-form-field>
+
+                </div>
+            </div>
+        </div>
+      </form>
+        <div class="btn-row">
+            <button class="btn btn-simple" mat-stroked-button type="button"  (click)="onCancel()"> Cancel </button>
+            <button class="btn btn-primary" mat-stroked-button type="submit" (click)="onSubmit()">Upload </button>
+        </div>
+    </div>
+</div>

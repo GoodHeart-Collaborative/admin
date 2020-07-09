@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 import { AddDailyUnicormHumourComponent } from './view/add-daily-unicorm-humour.component';
 import { Routes, RouterModule } from '@angular/router';
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
+import { MediaUploadModule } from 'src/app/modules/shared/media-upload/media-upload.module';
+import { MatFormFieldModule, MatIconModule, MatCheckboxModule, MatDatepickerModule, MatNativeDateModule, MatInputModule } from '@angular/material';
+import { ValidationErrorPipeModule } from 'src/app/pipes/validation-error/validation-error-pipe.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 const routes: Routes = [
@@ -18,7 +22,17 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    CustomImageModule
+    CustomImageModule,
+    MediaUploadModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatCheckboxModule,
+    CustomImageModule,
+    ValidationErrorPipeModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule
   ]
 })
 export class AddDailyUnicormHumourModule { }

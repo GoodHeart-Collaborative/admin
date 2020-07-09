@@ -28,9 +28,8 @@ const routes: Routes = [
     ValidationErrorPipeModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    CustomImageModule,
     MatNativeDateModule,
-    ValidationErrorPipeModule,
+    CustomImageModule,
     MediaUploadModule
   ]
 })

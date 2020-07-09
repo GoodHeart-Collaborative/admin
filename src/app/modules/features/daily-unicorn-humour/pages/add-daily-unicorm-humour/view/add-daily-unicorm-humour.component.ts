@@ -66,7 +66,6 @@ export class AddDailyUnicormHumourComponent implements OnInit {
   }
 
   getDailyInspiration() {
-    console.log(this.unicornDetails.imageUrl);
     if (this.unicornDetails) {
       this.profilePicURL = this.unicornDetails.imageUrl;
       this.unicornForm.patchValue(this.unicornDetails);

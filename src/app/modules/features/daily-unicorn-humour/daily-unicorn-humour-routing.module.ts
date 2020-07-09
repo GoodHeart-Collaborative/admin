@@ -37,9 +37,9 @@ const routes: Routes = [
      },
     {
       path: `${DAILY_UNICORN_DETAILS.path}/details`,
-      resolve : {
-        dailyData : DailyUnicornHumourServiceResolve
-      },
+      // resolve : {
+      //   dailyData : DailyUnicornHumourServiceResolve
+      // },
       loadChildren: () => import('./pages/daily-unicorm-humour-details/daily-unicorm-humour-details.module')
       .then( (m) => m.DailyUnicormHumourDetailsModule
       ),

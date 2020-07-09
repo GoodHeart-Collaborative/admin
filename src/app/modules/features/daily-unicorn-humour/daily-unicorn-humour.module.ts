@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { DailyUnicornHumourRoutingModule } from './daily-unicorn-humour-routing.module';
 import { DailyUnicornHumourComponent } from './view/daily-unicorn-humour.component';
+import { DailyUnicornHumourServiceResolve } from './service/daily-unicorn-humour.service';
 
 
 @NgModule({
@@ -10,6 +11,7 @@ import { DailyUnicornHumourComponent } from './view/daily-unicorn-humour.compone
   imports: [
     CommonModule,
     DailyUnicornHumourRoutingModule
-  ]
+  ],
+  providers : [DailyUnicornHumourServiceResolve]
 })
 export class DailyUnicornHumourModule { }
