@@ -10,6 +10,7 @@
 	z-index: 999;
 	background-color: #5de6de;
 	background-image: linear-gradient(315deg, #b58ecc 0%, #419ebb 63%);
+	user-select: none;
 	@media screen and (max-width: 992px){
 		left: 0px;
 	}
