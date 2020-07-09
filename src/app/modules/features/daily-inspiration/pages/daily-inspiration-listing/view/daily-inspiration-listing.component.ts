@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DailyTableDataSource } from '../model';
-import { CategoryManagementService } from 'src/app/modules/features/category-management/service/category-management.service';
 import { Router } from '@angular/router';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
@@ -71,7 +70,7 @@ export class DailyInspirationListingComponent implements OnInit {
 
   onActionHandler(id: string, action: ActionType) {
     const index = this.userData.data.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('User', action).subscribe((confirm) => {
+    this.$confirmBox.listAction('Daily Inspiration', action).subscribe((confirm) => {
       if (confirm) {
         this.$category.updateStatus(id, action).then((res) => {
           this.$utility.success(res.message);

@@ -126,7 +126,7 @@ export class RelatedCategoryPostComponent implements OnInit {
   }
 
  categoryDetailsHandler(id: string) {
-    this.$router.navigate([`${CATEGORY.fullUrl}`, id,  'details']);
+    this.$router.navigate([`${CATEGORY.fullUrl}`, id, id, 'details']);
   }
 
 }

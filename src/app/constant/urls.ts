@@ -24,6 +24,7 @@ export const EDIT_CATEGORY = (categoryId) => `admin/category/${categoryId}`;
 
 export const DAILY_INSPIRATION = 'admin/inspiration';
 export const DAILY_INSPIRATION_DETAILS = (Id) => `admin/inspiration/${Id}`;
+export const EDIT_DAILY_INSPIRATION = (Id) => `admin/inspiration/${Id}`;
 
 // DREASHBOARD API's //
 export const DASHBOARD = 'admin/dashboard';

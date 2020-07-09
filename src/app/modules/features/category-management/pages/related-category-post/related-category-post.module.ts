@@ -20,8 +20,8 @@ const routes: Routes = [
     //   redirectTo: CATEGORY_LIST.path,
     //   pathMatch: 'full',
     // },
-    {path: '' , pathMatch: 'full', component: RelatedCategoryPostComponent},
-    {path: ':id', component: CategoryManagementDetailsComponent}
+    {path: '' , component: RelatedCategoryPostComponent},
+    
 //   ]
 // }
 
@@ -35,7 +35,6 @@ const routes: Routes = [
     TableModule,
     CustomDatePipeModule,
     MatIconModule,
-    CategoryManagementDetailsModule
   ],
   providers: [CategoryManagementService]
 })

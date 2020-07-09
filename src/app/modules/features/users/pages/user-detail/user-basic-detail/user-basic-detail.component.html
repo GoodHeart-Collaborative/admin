@@ -7,7 +7,7 @@
                         <img [src]="data?.profilePicUrl[0]|customImage:'USER'|async" alt="User Profile Image">
                     </div>
                     <div class="btn-row">
-                        <button class="btn btn-block" mat-stroked-button (click)="onBlockUSer()"> {{data?.status === 'active' ? 'Block' : 'Active'}} User </button>
+                        <button class="btn btn-block" mat-stroked-button (click)="onBlockUSer()"> {{data?.status === 'active' ? 'Block' : 'Unblock'}} User </button>
                         <button class="btn btn-primary btn-delete" mat-stroked-button (click)="onBlockUSer(true)">Delete User</button>
                     </div>
                 </div>

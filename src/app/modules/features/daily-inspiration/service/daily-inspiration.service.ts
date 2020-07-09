@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/modules/shared/services/http.service';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
-import {  DAILY_INSPIRATION , DAILY_INSPIRATION_DETAILS} from 'src/app/constant/urls';
+import {  DAILY_INSPIRATION , DAILY_INSPIRATION_DETAILS , EDIT_DAILY_INSPIRATION} from 'src/app/constant/urls';
 import { ActivatedRouteSnapshot, Resolve, Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
@@ -27,7 +27,7 @@ export class DailyInspirationService {
     return  this.$http.post(DAILY_INSPIRATION, params).toPromise();
   }
   async  editCategory(id, params) {
-    // return  this.$http.patch(EDIT_CATEGORY(id), params).toPromise();
+    return  this.$http.patch(EDIT_DAILY_INSPIRATION(id), params).toPromise();
   }
 
 

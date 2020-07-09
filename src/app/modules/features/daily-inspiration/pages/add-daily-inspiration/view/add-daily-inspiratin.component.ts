@@ -90,7 +90,7 @@ export class AddDailyInspiratinComponent implements OnInit {
       this.profilePicURL = this.dailyInspirationDetails.imageUrl;
       if (this.dailyInspirationDetails && this.dailyInspirationDetails.createdAt) {
 
-        this.inspirationForm.patchValue(new Date(this.dailyInspirationDetails.createdAt));
+        this.inspirationForm.get('createdAt').patchValue(new Date(this.dailyInspirationDetails.createdAt));
       }
     }
   }
@@ -114,9 +114,12 @@ export class AddDailyInspiratinComponent implements OnInit {
       this.$daily.editCategory(this.dailyInspirationDetails._id, body).then(
         data => {
           this.inspirationForm.enable();
+          this.$utility.success(data.message);
+          this.$route.navigate([DAILY_INSPIRATION.fullUrl]);
         },
         err => {
           this.inspirationForm.enable();
+          this.$utility.success(err.message);
         }
       );
       return;
@@ -136,15 +139,8 @@ export class AddDailyInspiratinComponent implements OnInit {
   }
 
 
-
-  //   getCategoryDetail() {
-  //     this.categoryForm.patchValue({
-  //             title: this.data.title
-  //           });
-  //     this.profilePicURL = this.data.imageUrl;
-  // }
-
   onCancel() {
+    this.$route.navigate([DAILY_INSPIRATION.fullUrl]);
   }
 
 
