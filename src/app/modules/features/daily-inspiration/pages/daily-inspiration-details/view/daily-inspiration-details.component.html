@@ -4,7 +4,7 @@
             <div class="row-1">
                 <div class="textual-detail">
                     <p>{{dailyInspirationDetails?.description}}</p>
-                    <p>{{dailyInspirationDetails?.createdAt | date : 'medium'}}</p>
+                    <p>Posted on: {{dailyInspirationDetails?.createdAt | date : 'medium'}}</p>
                 </div>
                 <div class="image-detail">
                     <img [src]="dailyInspirationDetails?.imageUrl | customImage:'USER'|async ">

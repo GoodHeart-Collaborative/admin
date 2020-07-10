@@ -1,5 +1,4 @@
 
-<button class="btn btn-primary btn-add-category" mat-stroked-button (click)="onDetailsHandler('sddasdasds')">Details</button>
 
 <app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)" (onAddCahnges)="onAdd()">
     <ng-template appFor="createdAt" let-daily="row">
@@ -11,10 +10,16 @@
      </ng-template>
  
  
-     <ng-template appFor="post" let-post="row">
+     <ng-template appFor="title" let-post="row">
          <a href="javascript:void(0)" (click)="onDetailsHandler(post?._id)">
-             {{ post?.post | titlecase}}
+             {{ post?.title | titlecase}}
          </a>
+     </ng-template>
+
+     <ng-template appFor="description" let-post="row">
+         <!-- <a href="javascript:void(0)" > -->
+             {{ post?.description | titlecase}}
+         <!-- </a> -->
      </ng-template>
  
    <ng-container>

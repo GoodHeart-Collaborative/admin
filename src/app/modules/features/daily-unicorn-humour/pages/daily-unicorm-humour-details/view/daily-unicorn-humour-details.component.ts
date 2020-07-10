@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
+import {  Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { DAILY_UNICORN } from 'src/app/constant/routes';
 
 @Component({
   selector: 'app-daily-unicorn-humour-details',
@@ -12,13 +12,16 @@ export class DailyUnicornHumourDetailsComponent implements OnInit {
   dailyUnicornDetails: any;
 
   constructor(
-          $breadcrumb: BreadcrumbService,
+          private $router: Router,
           private $dialogRef: MatDialogRef<DailyUnicornHumourDetailsComponent>,
           @Inject(MAT_DIALOG_DATA) public data: any ) {
             console.log(data);
-      //  $breadcrumb.replace(this.dailyUnicornDetails.id, this.dailyUnicornDetails.title);
-    }
+     }
 
   ngOnInit() {}
 
+  onEditDetails() {
+    this.$router.navigate([`${DAILY_UNICORN.fullUrl}`, 'edit', this.data._id]);
+    this.$dialogRef.close();
+    }
 }

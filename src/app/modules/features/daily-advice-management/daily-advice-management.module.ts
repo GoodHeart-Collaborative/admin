@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { DailyAdviceManagementRoutingModule } from './daily-advice-management-routing.module';
 import { DailyAdviceManagementComponent } from './view/daily-advice-management.component';
+import { DailyAdviceManagementServiceResolve, DailyAdviceManagementService } from './service/daily-advice-management.service';
 
 
 @NgModule({
@@ -10,6 +11,7 @@ import { DailyAdviceManagementComponent } from './view/daily-advice-management.c
   imports: [
     CommonModule,
     DailyAdviceManagementRoutingModule
-  ]
+  ],
+  providers : [DailyAdviceManagementServiceResolve,DailyAdviceManagementService]
 })
 export class DailyAdviceManagementModule { }
