@@ -16,4 +16,10 @@
             }
         }
     }
+    .icon-check{
+        &.verified-user{
+            cursor: not-allowed;
+            opacity: .5;
+        }
+    }
 }

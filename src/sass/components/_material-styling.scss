@@ -4,6 +4,20 @@ mat-form-field {
     .mat-form-field-wrapper {
         padding-bottom: 0px;
     }
+    .mat-form-field-flex{
+        .mat-form-field-outline{
+            div {
+                border-color: #a5a5a5;
+            }
+        }
+        &:hover{
+            .mat-form-field-outline{
+                div {
+                    border-color: black;
+                }
+            }   
+        }
+    }
     &.mat-focused {
         .mat-form-field-flex {
             .mat-form-field-outline-thick {

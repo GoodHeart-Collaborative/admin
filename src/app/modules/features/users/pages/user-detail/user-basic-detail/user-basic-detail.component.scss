@@ -25,6 +25,10 @@
                     &.btn-block{
                         border-color: #a72222 !important;
                         color: #a72222 !important;
+                        &.btn-green{
+                            border-color: green !important;
+                            color: green !important;
+                        }
                     }
                     &.btn-delete{
                         border-color: #a72222 !important;

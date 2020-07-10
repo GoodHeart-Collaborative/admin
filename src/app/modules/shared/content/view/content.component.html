@@ -1,4 +1,5 @@
-
+<div class="page-content">
+    
 <ng-container [ngSwitch]="true">
     <ng-container *ngSwitchCase="type == 1">
         <ng-container *ngTemplateOutlet="privacyTemplate">
@@ -24,21 +25,22 @@
 
 
 <ng-template #termsTemplate>
-    <h1>Terms and conditions</h1>
+    <h1 class="content-heading">Terms and conditions</h1>
     <div [innerHtml]="content"></div>
 </ng-template>
 
 <ng-template #aboutusTemplate>
-    <h1>About Us</h1>
+    <h1 class="content-heading">About Us</h1>
     <div [innerHtml]="content"></div>
 </ng-template>
 
 <ng-template #privacyTemplate>
-    <h1>Privacy </h1>
+    <h1 class="content-heading">Privacy Policy</h1>
     <div [innerHtml]="content"></div>
 </ng-template>
 
 <ng-template #contactUsTemplate>
-    <h1>Contact Us</h1>
+    <h1 class="content-heading">Contact Us</h1>
     <div [innerHtml]="content"></div>
 </ng-template>
+</div>
