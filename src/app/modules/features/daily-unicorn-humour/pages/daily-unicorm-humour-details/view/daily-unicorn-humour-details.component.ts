@@ -13,8 +13,8 @@ export class DailyUnicornHumourDetailsComponent implements OnInit {
   constructor(
           $router: ActivatedRoute,
           $breadcrumb: BreadcrumbService) {
-      //  this.dailyUnicornDetails = $router.snapshot.data.dailyData.data;
-      //  $breadcrumb.replace(this.dailyUnicornDetails.id, this.dailyUnicornDetails.title);
+       this.dailyUnicornDetails = $router.snapshot.data.dailyData.data;
+       $breadcrumb.replace(this.dailyUnicornDetails.id, this.dailyUnicornDetails.title);
     }
 
   ngOnInit() {}

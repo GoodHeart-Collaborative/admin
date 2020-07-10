@@ -70,7 +70,6 @@ export class AddDailyUnicormHumourComponent implements OnInit {
     if (this.unicornDetails) {
       this.profilePicURL = this.unicornDetails.imageUrl;
       console.log(this.profilePicURL);
-      
       this.unicornForm.patchValue(this.unicornDetails);
       if (this.unicornDetails && this.unicornDetails.createdAt && this.unicornDetails.isPostLater) {
 

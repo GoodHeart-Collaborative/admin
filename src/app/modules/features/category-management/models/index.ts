@@ -35,7 +35,7 @@ export class CategoryTableDataSource implements Table.Source<Category> {
         title: 'Post',
         id: 'post',
         sorting: false,
-        resolve: (row: any) => row['post'] || '-',
+        resolve: (row: any) => row['post'] || '0',
       },
     {
       title: 'Status',

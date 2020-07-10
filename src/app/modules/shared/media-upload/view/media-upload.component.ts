@@ -12,7 +12,7 @@ import { onSelectFile } from 'src/app/constant/file-input';
 })
 export class MediaUploadComponent implements OnInit {
   imageFile: any;
- @Output() removeMedia = new EventEmitter();
+ @Output() uploadMedia = new EventEmitter();
  @Input() profilePicURL;
   // mediaFiles: any[] = [];
   // @Input() mediaControl: FormControl;
@@ -36,7 +36,7 @@ export class MediaUploadComponent implements OnInit {
         this.$upload.showAlert(invalidFileSize());
       }
     }
-    this.removeMedia.emit(this.imageFile);
+    this.uploadMedia.emit(this.imageFile);
   }
 
   // onMarkDefault(media: any) {
@@ -46,22 +46,21 @@ export class MediaUploadComponent implements OnInit {
   //   }
   //   media.isDefault = true;
   // }
-  // async onRemoveMedia(media: any) {
 
 
-  //   const index = this.mediaFiles.findIndex(el => el.s3Url == media);
-
-  //   if (index >= 0) {
-
-  //     this.mediaFiles.splice(index, 1);
+ // async onRemoveMedia(media: any) {
+ //   const index = this.mediaFiles.findIndex(el => el.s3Url == media);
+ //   if (index >= 0) {
+ //     this.mediaFiles.splice(index, 1);
   //   }
   //   const valueOfForm = this.mediaControl.value;
   //   const indexForForm = valueOfForm.indexOf(media);
   //   valueOfForm.splice(indexForForm, 1);
   //   this.mediaControl.setValue(valueOfForm);
-
-  //   this.removeMedia.emit(media.split('/')[media.split('/').length - 1])
+ //   this.removeMedia.emit(media.split('/')[media.split('/').length - 1])
   // }
+
+
   // async onChangeHandler(input: HTMLInputElement) {
   //   const files = input.files;
   //   if (files.length > (this.maxlength - this.mediaControl.value.length)) {
