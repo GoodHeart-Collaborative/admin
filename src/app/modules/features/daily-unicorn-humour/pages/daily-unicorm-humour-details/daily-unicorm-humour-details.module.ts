@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DailyUnicornHumourDetailsComponent } from './view/daily-unicorn-humour-details.component';
 import { Routes, RouterModule } from '@angular/router';
-import { MatDialogModule } from '@angular/material';
+import { MatDialogModule, MatIconModule } from '@angular/material';
 
 // const routes: Routes = [
 //   {
@@ -15,7 +15,8 @@ import { MatDialogModule } from '@angular/material';
   declarations: [DailyUnicornHumourDetailsComponent],
   imports: [
     CommonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatIconModule
     // RouterModule.forChild(routes)
   ],
   entryComponents: [DailyUnicornHumourDetailsComponent],

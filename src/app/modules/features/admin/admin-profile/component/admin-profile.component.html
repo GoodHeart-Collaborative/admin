@@ -3,19 +3,21 @@
 		<h3>Admin Profile</h3>
 		<mat-icon class="close-icon" [mat-dialog-close]="false">close</mat-icon>
 	</div>
-	<div class="popup-body">
-		<div class="img-cover">
-			<img [src]="(profileDetail?.profilePicture)|customImage:'USER'|async" alt="Admin">
+	<div class="popup-content">
+		<div class="popup-body">
+			<div class="img-cover">
+				<img [src]="(profileDetail?.profilePicture)|customImage:'USER'|async" alt="Admin">
+			</div>
+			<div class="profile-detail">
+				<h3>{{profileDetail?.name | titlecase}}</h3>
+				<h4>{{profileDetail?.email}}</h4>
+				<h4><span>Status:</span> {{profileDetail?.status | titlecase}}</h4>
+				<h4><span>Admin Type:</span> {{profileDetail?.adminType | titlecase}}</h4>
+			</div>
 		</div>
-		<div class="profile-detail">
-			<h3>{{profileDetail?.name | titlecase}}</h3>
-			<h4>{{profileDetail?.email}}</h4>
-			<h4><span>Status:</span> {{profileDetail?.status | titlecase}}</h4>
-			<h4><span>Admin Type:</span> {{profileDetail?.adminType | titlecase}}</h4>
+		<div class="popup-footer">
+			<button class="btn" mat-stroked-button (click)="openChangePasswordTab()" [mat-dialog-close]="false"> Change Password</button>
+			<button class="btn btn-primary" mat-stroked-button (click)="openEditProfileTab()" [mat-dialog-close]="false">Edit Profile</button>
 		</div>
-	</div>
-	<div class="popup-footer">
-		<button class="btn" mat-stroked-button (click)="openChangePasswordTab()" [mat-dialog-close]="false"> Change Password</button>
-		<button class="btn btn-primary" mat-stroked-button (click)="openEditProfileTab()" [mat-dialog-close]="false">Edit Profile</button>
 	</div>
 </div>

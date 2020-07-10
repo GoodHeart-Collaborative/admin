@@ -7,7 +7,7 @@
                 <div class="right-portion">
 
                     <mat-form-field appearance="outline">
-                        <mat-label>Inspiration Title</mat-label>
+                        <mat-label>Unicorn Humour Title</mat-label>
                         <input matInput placeholder="Title" formControlName="title" #input [maxlength]="titleMaxLength">
                         <mat-hint>{{input.value.length}}/{{titleMaxLength}}</mat-hint>
                         <mat-error>{{form('title') |validate:'Title' }}</mat-error>

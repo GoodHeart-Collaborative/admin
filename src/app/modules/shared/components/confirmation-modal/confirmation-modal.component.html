@@ -3,25 +3,27 @@
     <h3>{{modalData?.title}}</h3>
     <mat-icon class="close-icon" (click)="onCloseHandler()">close</mat-icon>
   </div>
-  <div class="popup-body">
-    <div class="modal_message">
-      <p>{{modalData?.message}} </p>
-      <div *ngIf="modalData?.showTextBox" mat-dialog-actionst>
-        <h4 style="text-align:center ;margin-top: 20px;">Reason for This Action</h4>
-        <mat-form-field>
-          <textarea matInput placeholder="Type here.." [(ngModel)]="responseData.note" name="note"></textarea>
-        </mat-form-field>
+  <div class="popup-content">
+    <div class="popup-body">
+      <div class="modal_message">
+        <p>{{modalData?.message}} </p>
+        <div *ngIf="modalData?.showTextBox" mat-dialog-actionst>
+          <h4 style="text-align:center ;margin-top: 20px;">Reason for This Action</h4>
+          <mat-form-field>
+            <textarea matInput placeholder="Type here.." [(ngModel)]="responseData.note" name="note"></textarea>
+          </mat-form-field>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="popup-footer">
-    <button class="btn" mat-stroked-button *ngIf="!modalData?.hideCancelButton" (click)="onNoClick()">
-      {{modalData?.cancelButtonText}}
-    </button>
-    <button class="btn btn-primary" mat-stroked-button
-      [disabled]="(!responseData||!responseData.note||responseData.note.trim()=='') && modalData?.showTextBox"
-      [mat-dialog-close]="responseData" (click)="confirm()" cdkFocusInitial>
-      {{modalData?.confirmButtonText}}
-    </button>
+    <div class="popup-footer">
+      <button class="btn" mat-stroked-button *ngIf="!modalData?.hideCancelButton" (click)="onNoClick()">
+        {{modalData?.cancelButtonText}}
+      </button>
+      <button class="btn btn-primary" mat-stroked-button
+        [disabled]="(!responseData||!responseData.note||responseData.note.trim()=='') && modalData?.showTextBox"
+        [mat-dialog-close]="responseData" (click)="confirm()" cdkFocusInitial>
+        {{modalData?.confirmButtonText}}
+      </button>
+    </div>
   </div>
 </div>

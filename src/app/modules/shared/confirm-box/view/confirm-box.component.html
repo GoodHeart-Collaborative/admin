@@ -3,11 +3,13 @@
         <h3>{{data.title}}</h3>
         <mat-icon class="close-icon" [mat-dialog-close]="false">close</mat-icon>
     </div>
-    <div class="popup-body">
-        <p class="dialog__body">{{data.message}}</p>
-    </div>
-    <div class="popup-footer">
-        <button class="btn" mat-stroked-button color="primary" [mat-dialog-close]="false">Cancel</button>
-        <button class="btn btn-primary" mat-stroked-button color="primary" [mat-dialog-close]="true">Confirm</button>
+    <div class="popup-content">
+        <div class="popup-body">
+            <p class="dialog__body">{{data.message}}</p>
+        </div>
+        <div class="popup-footer">
+            <button class="btn" mat-stroked-button color="primary" [mat-dialog-close]="false">Cancel</button>
+            <button class="btn btn-primary" mat-stroked-button color="primary" [mat-dialog-close]="true">Confirm</button>
+        </div>
     </div>
 </div>
