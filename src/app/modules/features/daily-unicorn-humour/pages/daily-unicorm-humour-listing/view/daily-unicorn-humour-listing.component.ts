@@ -6,7 +6,10 @@ import { UtilityService } from 'src/app/modules/shared/services/utility.service'
 import { DailyUnicornHumourService } from '../../../service/daily-unicorn-humour.service';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 export type ActionType = 'deleted' | 'blocked' | 'active';
-import { DAILY_UNICORN , ADD_DAILY_UNICORN} from 'src/app/constant/routes';
+import { DAILY_UNICORN, ADD_DAILY_UNICORN } from 'src/app/constant/routes';
+import { DailyUnicormHumourDetailsModule } from '../../daily-unicorm-humour-details/daily-unicorm-humour-details.module';
+import { DailyUnicornHumourDetailsComponent } from '../../daily-unicorm-humour-details/view/daily-unicorn-humour-details.component';
+import { MatDialog } from '@angular/material';
 @Component({
   selector: 'app-daily-unicorn-humour-listing',
   templateUrl: './daily-unicorn-humour-listing.component.html',
@@ -25,7 +28,8 @@ export class DailyUnicornHumourListingComponent implements OnInit {
     private $category: DailyUnicornHumourService,
     private $router: Router,
     private $confirmBox: ConfirmBoxService,
-    private $utility: UtilityService
+    private $utility: UtilityService,
+    private $matDailog: MatDialog
   ) {
   }
 
@@ -119,16 +123,24 @@ export class DailyUnicornHumourListingComponent implements OnInit {
     });
   }
 
- oneditHandler(id) {
+  oneditHandler(id) {
     this.$router.navigate([`${DAILY_UNICORN.fullUrl}`, 'edit', id]);
   }
 
-  onDetailsHandler(id) {
-    this.$router.navigate([`${DAILY_UNICORN.fullUrl}`, id, 'details']);
+  onDetailsHandler(postDetails) {
+    // this.$router.navigate([`${DAILY_UNICORN.fullUrl}`, id, 'details']);
+    this.$matDailog.open(DailyUnicornHumourDetailsComponent, {
+      width: '500px',
+      data: postDetails
+    }).afterClosed().subscribe(res => {
+      if (res) {
+          this.updateUsers();
+      }
+    });
   }
 
- onAdd() {
+  onAdd() {
     this.$router.navigate([`${ADD_DAILY_UNICORN.fullUrl}`]);
- }
+  }
 
 }

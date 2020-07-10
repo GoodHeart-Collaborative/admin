@@ -4,6 +4,7 @@ import { DailyUnicornHumourListingComponent } from './view/daily-unicorn-humour-
 import { Routes,  RouterModule } from '@angular/router';
 import { TableModule } from 'src/app/modules/commonTable/table';
 import { CustomDatePipeModule } from 'src/app/pipes/custom-date/custom-date-pipe.module';
+import { DailyUnicormHumourDetailsModule } from '../daily-unicorm-humour-details/daily-unicorm-humour-details.module';
 
 
 const routes: Routes = [
@@ -19,7 +20,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     TableModule,
-    CustomDatePipeModule
+    CustomDatePipeModule,
+    DailyUnicormHumourDetailsModule
   ]
 })
 export class DailyUnicormHumourListingModule { }
