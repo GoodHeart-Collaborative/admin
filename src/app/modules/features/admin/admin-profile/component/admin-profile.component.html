@@ -8,10 +8,10 @@
 			<img [src]="(profileDetail?.profilePicture)|customImage:'USER'|async" alt="Admin">
 		</div>
 		<div class="profile-detail">
-			<h3>{{profileDetail?.name}}</h3>
+			<h3>{{profileDetail?.name | titlecase}}</h3>
 			<h4>{{profileDetail?.email}}</h4>
-			<h4><span>Status:</span> {{profileDetail?.status}}</h4>
-			<h4><span>Admin Type:</span> {{profileDetail?.adminType}}</h4>
+			<h4><span>Status:</span> {{profileDetail?.status | titlecase}}</h4>
+			<h4><span>Admin Type:</span> {{profileDetail?.adminType | titlecase}}</h4>
 		</div>
 	</div>
 	<div class="popup-footer">

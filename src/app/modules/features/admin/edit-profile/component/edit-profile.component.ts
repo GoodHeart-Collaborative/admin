@@ -64,7 +64,7 @@ export class EditProfileComponent implements OnInit,OnDestroy {
    */
 
  setimageFile(event) {
-    this.imageFile = event.name;
+    this.imageFile = event;
  }
 
   /**
@@ -79,6 +79,7 @@ export class EditProfileComponent implements OnInit,OnDestroy {
    * @description First upload the profile picture then edit the profile
    */
   async editProfile() {
+    console.log(this.editProfileForm);
     if (this.editProfileForm.invalid) {
        return;
     }
@@ -90,6 +91,7 @@ export class EditProfileComponent implements OnInit,OnDestroy {
     this.editProfileForm.disable();
     this.editProfileSubscription = this.$editProfileService.editProfile(body).subscribe(
       data => {
+        this.$dialogRef.close();
       },
       err => {
         this.editProfileForm.enable();

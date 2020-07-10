@@ -10,7 +10,7 @@ export class FileUploadService {
     this.bucket = new S3({
       accessKeyId: environment.config.AWS_ACCESS_KEY,
       secretAccessKey: environment.config.AWS_SECRET_KEY,
-      region: environment.config.AWS_REGION,
+      region: environment.config.REGION,
       params: {
         ContentType: "application/pdf"
       }
@@ -35,7 +35,7 @@ export class FileUploadService {
       }`;
 
       const params = {
-        Bucket: environment.config.AWS_BUCKET,
+        Bucket: environment.config.BUCKET_NAME,
         Key: `indicator/${fileName}`,
         Body: fileToUpload,
         ACL: "public-read"
