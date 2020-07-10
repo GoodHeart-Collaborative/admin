@@ -7,11 +7,11 @@ export const environment = {
   url: 'http://womencomdevapi.appskeeper.com/v1/',
   tokenKey: 'desknow-admin-token',
   config: {
-    AWS_BUCKET: 'appinventiv-development',
-    AWS_ACCESS_KEY: 'AKIA6DQMUBGG62LEXZFN',
-    AWS_SECRET_KEY: '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',
-    AWS_REGION: 'us-east-1',
-  },
+    AWS_ACCESS_KEY: 'AKIA6DQMUBGGY6CUWRG4',
+    AWS_SECRET_KEY: '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',
+    REGION: 'us-east-1',
+    BUCKET_NAME: 'appinventiv-development'
+    },
 };
 
 // S3 bucket

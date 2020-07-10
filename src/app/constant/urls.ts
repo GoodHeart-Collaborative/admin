@@ -26,6 +26,12 @@ export const DAILY_INSPIRATION = 'admin/inspiration';
 export const DAILY_INSPIRATION_DETAILS = (Id) => `admin/inspiration/${Id}`;
 export const EDIT_DAILY_INSPIRATION = (Id) => `admin/inspiration/${Id}`;
 
+// UNICORN API's //
+
+export const UNICORN = 'admin/unicorn';
+export const UNICORN_DETAILS = (Id) => `admin/unicorn/${Id}`;
+export const ACTION_UNICORN = (Id , status) => `admin/unicorn/${Id}/status/${status}`;
+
 // DREASHBOARD API's //
 export const DASHBOARD = 'admin/dashboard';
 

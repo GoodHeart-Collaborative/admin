@@ -33,7 +33,7 @@ export class EditProfileService {
           this._utilityService.success(COMMON_MESSAGES.UPDATED('Profile'));
            this._dataService.profileData.data = { ...this._dataService.profileData.data, ...body };
           this._dataService.profileDetail.next({ ...this._dataService.profileData.data });
-          this._router.navigate([SETTINGS.fullUrl]);
+          // this._router.navigate([SETTINGS.fullUrl]);
         }
       ),
       catchError(

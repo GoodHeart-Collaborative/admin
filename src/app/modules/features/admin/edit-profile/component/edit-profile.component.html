@@ -3,7 +3,10 @@
     <h3>Edit Profile</h3>
     <mat-icon class="close-icon" [mat-dialog-close]="false">close</mat-icon>
   </div>
-  <div class="popup-body" [formGroup]="editProfileForm" (ngSubmit)="editProfile()">
+  <form [formGroup]="editProfileForm" >
+
+
+  <div class="popup-body" >
     <!-- <div class="img-cover">
       <img [src]="profilePicURL|customImage:'USER'|async" alt="">
       <div class="mat-icon-cover">
@@ -30,8 +33,10 @@
       </div>
     </div>
   </div>
+
+</form>
   <div class="popup-footer">
     <button class="btn" mat-stroked-button (click)="onCancel()" type="button">Cancel</button>
-      <button class="btn btn-primary" mat-stroked-button color="primary" type="submit">Update</button>
+      <button class="btn btn-primary" mat-stroked-button color="primary" type="submit" (click)="editProfile()">Update</button>
   </div>
 </div>

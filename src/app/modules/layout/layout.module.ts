@@ -32,7 +32,8 @@ import { AdminProfileModule } from '../features/admin/admin-profile/admin-profil
     CustomImageModule,
     BreadcrumbModule,
     ChangePasswordModule,
-    AdminProfileModule
+    AdminProfileModule,
+    CustomImageModule
   ],
   declarations: [
     LayoutComponent,

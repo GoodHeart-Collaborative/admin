@@ -18,14 +18,14 @@ export class FileUploadService {
             {
                 accessKeyId: environment.config.AWS_ACCESS_KEY,
                 secretAccessKey: environment.config.AWS_SECRET_KEY,
-                region: environment.config.AWS_REGION,
+                region: environment.config.REGION,
             }
         );
     }
     async uploadFile(fileToUpload: File, loader = true) {
         try {
             const params = {
-                Bucket: environment.config.AWS_BUCKET,
+                Bucket: environment.config.BUCKET_NAME,
                 Key: fileToUpload.name || new Date().getTime() + '.png',
                 Body: fileToUpload,
                 ACL: 'public-read'

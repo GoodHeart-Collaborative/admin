@@ -37,6 +37,8 @@ export class AddDailyInspiratinComponent implements OnInit {
   ) {
     if ($router.snapshot.data.dailyData && $router.snapshot.data.dailyData.data) {
       this.dailyInspirationDetails = $router.snapshot.data.dailyData.data;
+      console.log();
+      
       $breadcrumb.replace(this.dailyInspirationDetails.id, this.dailyInspirationDetails.title);
     }
   }
@@ -84,7 +86,7 @@ export class AddDailyInspiratinComponent implements OnInit {
 
 
   setimageFile(event) {
-    this.imageFile = event.name;
+    this.imageFile = event;
   }
 
   async onSubmit() {

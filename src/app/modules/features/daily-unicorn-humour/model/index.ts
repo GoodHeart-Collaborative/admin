@@ -13,30 +13,37 @@ export class DailyUnicornTableDataSource implements Table.Source<Category> {
   columns: Table.Column<Category>[] = [
     {
         title: 'Post',
-        id: 'post',
+        id: 'title',
         sorting: false,
-        templateBy: 'post'
+        templateBy: 'title'
         // resolve: (row: any) => row['title'] || '-',
     },
-    // {
-    //     title: 'Description',
-    //     id: 'description',
-    //     sorting: false,
-    //     templateBy: 'description'
-    //     // resolve: (row: any) => row['title'] || '-',
-    // },
+    {
+        title: 'Total Comments',
+        id: 'totalComments',
+        sorting: false,
+        // templateBy: 'totalComments'
+        resolve: (row: any) => row['totalComments'] || '0',
+    },
+    {
+        title: 'Like Count',
+        id: 'likeCount',
+        sorting: false,
+        // templateBy: 'likeCount'
+        resolve: (row: any) => row['likeCount'] || '0',
+    },
     {
       title: 'Created At',
       id: 'createdAt',
       sorting: true,
       templateBy: 'createdAt',
     },
-    // {
-    //   title: 'Status',
-    //   id: 'status',
-    //   sorting: false,
-    //   templateBy: 'status'
-    // },
+    {
+      title: 'Status',
+      id: 'status',
+      sorting: false,
+      templateBy: 'status'
+    },
 
     {
       title: 'Actions',

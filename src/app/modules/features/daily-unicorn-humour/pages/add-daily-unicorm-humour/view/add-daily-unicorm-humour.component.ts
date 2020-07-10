@@ -33,6 +33,7 @@ export class AddDailyUnicormHumourComponent implements OnInit {
   ) {
     if ($router.snapshot.data.dailyData && $router.snapshot.data.dailyData.data) {
       this.unicornDetails = $router.snapshot.data.dailyData.data;
+      console.log(this.unicornDetails);
       $breadcrumb.replace(this.unicornDetails.id, this.unicornDetails.title);
     }
   }
@@ -68,6 +69,8 @@ export class AddDailyUnicormHumourComponent implements OnInit {
   getDailyInspiration() {
     if (this.unicornDetails) {
       this.profilePicURL = this.unicornDetails.imageUrl;
+      console.log(this.profilePicURL);
+      
       this.unicornForm.patchValue(this.unicornDetails);
       if (this.unicornDetails && this.unicornDetails.createdAt && this.unicornDetails.isPostLater) {
 
@@ -78,7 +81,7 @@ export class AddDailyUnicormHumourComponent implements OnInit {
 
 
   setimageFile(event) {
-    this.imageFile = event.name;
+    this.imageFile = event;
   }
 
   async onSubmit() {
@@ -88,6 +91,7 @@ export class AddDailyUnicormHumourComponent implements OnInit {
     }
     if (this.imageFile) {
       let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
+      console.log(data, 'shama');
       this.profilePicURL = data.Location;
     }
     const body = { imageUrl: this.profilePicURL, ...this.unicornForm.value };
@@ -100,7 +104,7 @@ export class AddDailyUnicormHumourComponent implements OnInit {
       this.$daily.editCategory(this.unicornDetails._id, body).then(
         data => {
           this.unicornForm.enable();
-          // this.$utility.success(data.message);
+          this.$utility.success(data.message);
           this.$route.navigate([DAILY_UNICORN.fullUrl]);
         },
         err => {
@@ -113,7 +117,7 @@ export class AddDailyUnicormHumourComponent implements OnInit {
     this.$daily.addCategory(body).then(
       data => {
         this.unicornForm.enable();
-        // this.$utility.success(data.message);
+        this.$utility.success(data.message);
         this.$route.navigate([DAILY_UNICORN.fullUrl]);
       },
       err => {

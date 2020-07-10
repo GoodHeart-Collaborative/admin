@@ -42,7 +42,6 @@ export class AddCategoryManagementComponent implements OnInit {
 
 
   async onSelectFile(event) {
-    debugger;
     try {
       let result = await onSelectFile(event);
       this.imageFile = result.file;

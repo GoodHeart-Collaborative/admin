@@ -12,7 +12,7 @@
 
 				<button mat-icon-button><mat-icon>notifications</mat-icon></button>
 				<div class="user-img-cover" [matMenuTriggerFor]="menu">
-					<img src="../../../../../assets/default-image/user.jpg" alt="">
+					<img [src]="profileDetail?.profilePicture | customImage:'USER'|async" alt="">
 				</div>
                 <mat-menu #menu="matMenu" xPosition="before">
                     <button class="drop-menu" mat-menu-item (click)="openAdminProfileTab()"> <mat-icon>person</mat-icon> My Profile </button>
