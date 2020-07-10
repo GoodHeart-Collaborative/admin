@@ -13,30 +13,42 @@ export class DailyAdviceTableDataSource implements Table.Source<Category> {
   columns: Table.Column<Category>[] = [
     {
         title: 'Post',
-        id: 'post',
+        id: 'title',
         sorting: false,
-        templateBy: 'post'
+        templateBy: 'title'
         // resolve: (row: any) => row['title'] || '-',
     },
-    // {
-    //     title: 'Description',
-    //     id: 'description',
-    //     sorting: false,
-    //     templateBy: 'description'
-    //     // resolve: (row: any) => row['title'] || '-',
-    // },
+    {
+        title: 'Description',
+        id: 'description',
+        sorting: false,
+        templateBy: 'description'
+    },
+    {
+        title: 'Like Count',
+        id: 'likeCount',
+        sorting: false,
+        resolve: (row: any) => row['likeCount'] || '0',
+      },
+    {
+        title: 'Total Comments',
+        id: 'totalComments',
+        sorting: false,
+        resolve: (row: any) => row['totalComments'] || '0',
+      },
+  
     {
       title: 'Created At',
       id: 'createdAt',
       sorting: true,
       templateBy: 'createdAt',
     },
-    // {
-    //   title: 'Status',
-    //   id: 'status',
-    //   sorting: false,
-    //   templateBy: 'status'
-    // },
+    {
+      title: 'Status',
+      id: 'status',
+      sorting: false,
+      templateBy: 'status'
+    },
 
     {
       title: 'Actions',

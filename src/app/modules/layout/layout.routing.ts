@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout.component';
-import { USER, DASHBOARD , CONTENT_MANAGEMENT , CATEGORY, DAILY_INSPIRATION, DAILY_UNICORN, DAILY_ADVICE} from '../../constant/routes';
+import { USER, DASHBOARD , CONTENT_MANAGEMENT ,
+      CATEGORY, DAILY_INSPIRATION, DAILY_UNICORN,
+      DAILY_ADVICE, MEMBER_OF_THE_DAY} from '../../constant/routes';
 
 const routes: Routes = [
   {
@@ -48,6 +50,13 @@ const routes: Routes = [
         loadChildren: () =>
           import('../features/daily-advice-management/daily-advice-management.module')
           .then((m) => m.DailyAdviceManagementModule
+          ),
+      },
+      {
+        path: MEMBER_OF_THE_DAY.path,
+        loadChildren: () =>
+          import('../features/member-of-the-day/member-of-the-day.module')
+          .then((m) => m.MemberOfTheDayModule
           ),
       },
     ],

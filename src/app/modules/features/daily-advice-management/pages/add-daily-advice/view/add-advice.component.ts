@@ -44,9 +44,9 @@ export class AddAdviceComponent implements OnInit {
     this.createForm();
     this.isPostLater.valueChanges.subscribe(value => {
       if (value) {
-        this.adviceForm.addControl('createdAt', new FormControl('', Validators.required));
+        this.adviceForm.addControl('postedAt', new FormControl('', Validators.required));
       } else {
-        this.adviceForm.removeControl('createdAt');
+        this.adviceForm.removeControl('postedAt');
       }
     });
     this.getDailyInspiration();
@@ -70,20 +70,20 @@ export class AddAdviceComponent implements OnInit {
   }
 
   getDailyInspiration() {
-    console.log(this.dailyInspirationDetails.imageUrl);
     if (this.dailyInspirationDetails) {
+      console.log(this.dailyInspirationDetails.imageUrl);
       this.profilePicURL = this.dailyInspirationDetails.imageUrl;
       this.adviceForm.patchValue(this.dailyInspirationDetails);
-      if (this.dailyInspirationDetails && this.dailyInspirationDetails.createdAt && this.dailyInspirationDetails.isPostLater) {
+      if (this.dailyInspirationDetails && this.dailyInspirationDetails.postedAt && this.dailyInspirationDetails.isPostLater) {
 
-        this.adviceForm.get('createdAt').patchValue(new Date(this.dailyInspirationDetails.createdAt));
+        this.adviceForm.get('postedAt').patchValue(new Date(this.dailyInspirationDetails.postedAt));
       }
     }
   }
 
 
   setimageFile(event) {
-    this.imageFile = event.name;
+    this.imageFile = event;
   }
 
   async onSubmit() {
@@ -98,19 +98,19 @@ export class AddAdviceComponent implements OnInit {
     const body = { imageUrl: this.profilePicURL, ...this.adviceForm.value };
 
     if (this.isPostLater.value) {
-      body.createdAt = new Date(this.adviceForm.get('createdAt').value).getTime();
+      body.postedAt = new Date(this.adviceForm.get('postedAt').value).getTime();
     }
     this.adviceForm.disable();
     if (this.dailyInspirationDetails && this.dailyInspirationDetails._id) {
+      body.status = this.dailyInspirationDetails.status;
       this.$daily.editCategory(this.dailyInspirationDetails._id, body).then(
         data => {
           this.adviceForm.enable();
-          // this.$utility.success(data.message);
+          this.$utility.success(data.message);
           this.$route.navigate([DAILY_ADVICE.fullUrl]);
         },
         err => {
           this.adviceForm.enable();
-          this.$utility.success(err.message);
         }
       );
       return;
@@ -118,12 +118,11 @@ export class AddAdviceComponent implements OnInit {
     this.$daily.addCategory(body).then(
       data => {
         this.adviceForm.enable();
-        // this.$utility.success(data.message);
+        this.$utility.success(data.message);
         this.$route.navigate([DAILY_ADVICE.fullUrl]);
       },
       err => {
         this.adviceForm.enable();
-        this.$utility.success(err.message);
 
       }
     );

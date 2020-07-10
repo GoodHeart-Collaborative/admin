@@ -7,17 +7,17 @@
         <div class="popup-content">
             <div class="popup-body">
                 <div class="img-cover">
-                    <img src="../../../../../../../assets/default-image/default.png" alt="unicorn image">
+                    <img [src]="data?.imageUrl |customImage:'USER'|async" alt="unicorn image">
                 </div>
-                <p>Here is the small detail of daily unicorn</p>
+                <p>{{data?.title}}</p>
                 <div class="like-cover"><span class="material-icons">thumb_up</span>
-                    <p>76</p>
+                    <p>{{data?.likeCount}}</p>
                 </div>
             </div>
             <div class="popup-footer">
                 <div class="btn-row">
                     <button class="btn btn-simple" mat-stroked-button type="button" [mat-dialog-close]="false">Back</button>
-                    <button class="btn btn-primary" mat-stroked-button type="button" >Edit Detail </button>
+                    <button class="btn btn-primary" mat-stroked-button type="button" (click)="onEditDetails()" >Edit Detail </button>
                 </div>
             </div>
         </div>

@@ -108,7 +108,6 @@ export class AddDailyUnicormHumourComponent implements OnInit {
         },
         err => {
           this.unicornForm.enable();
-          this.$utility.success(err.message);
         }
       );
       return;
@@ -121,7 +120,6 @@ export class AddDailyUnicormHumourComponent implements OnInit {
       },
       err => {
         this.unicornForm.enable();
-        this.$utility.success(err.message);
 
       }
     );

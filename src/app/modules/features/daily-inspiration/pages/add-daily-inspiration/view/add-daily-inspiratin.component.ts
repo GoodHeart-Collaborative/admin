@@ -113,7 +113,6 @@ export class AddDailyInspiratinComponent implements OnInit {
         },
         err => {
           this.inspirationForm.enable();
-          this.$utility.success(err.message);
         }
       );
       return;
@@ -126,7 +125,6 @@ export class AddDailyInspiratinComponent implements OnInit {
       },
       err => {
         this.inspirationForm.enable();
-        this.$utility.success(err.message);
 
       }
     );

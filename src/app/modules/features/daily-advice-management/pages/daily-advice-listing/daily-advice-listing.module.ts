@@ -4,6 +4,7 @@ import { DailyAdviceListingComponent } from './view/daily-advice-listing.compone
 import { Routes, RouterModule } from '@angular/router';
 import { CustomDatePipeModule } from 'src/app/pipes/custom-date/custom-date-pipe.module';
 import { TableModule } from 'src/app/modules/commonTable/table';
+import { DailyAdviceManagementServiceResolve } from '../../service/daily-advice-management.service';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     TableModule,
     CustomDatePipeModule
-  ]
+  ],
+  // providers : [DailyAdviceManagementServiceResolve]
 })
 export class DailyAdviceListingModule { }

@@ -351,3 +351,29 @@ export const DAILY_ADVICE_DETAILS: IRoute = {
     return `${DAILY_ADVICE.fullUrl}/${this.path}`;
   }
 };
+
+// MEMBER_OF_THE_DAY ROUTES //
+export const MEMBER_OF_THE_DAY: IRoute = {
+  path: 'member-of-the-day',
+  get fullUrl(): string {
+    return `${ADMIN.fullUrl}/${this.path}`;
+  }
+};
+export const MEMBER_OF_THE_DAY_LIST: IRoute = {
+  path: 'list',
+  get fullUrl(): string {
+    return `${MEMBER_OF_THE_DAY.fullUrl}/${this.path}`;
+  }
+};
+export const ADD_MEMBER_OF_THE_DAY: IRoute = {
+  path: 'add',
+  get fullUrl(): string {
+    return `${MEMBER_OF_THE_DAY.fullUrl}/${this.path}`;
+  }
+};
+export const MEMBER_OF_THE_DAY_DETAILS: IRoute = {
+  path: ':id',
+  get fullUrl(): string {
+    return `${MEMBER_OF_THE_DAY.fullUrl}/${this.path}`;
+  }
+};

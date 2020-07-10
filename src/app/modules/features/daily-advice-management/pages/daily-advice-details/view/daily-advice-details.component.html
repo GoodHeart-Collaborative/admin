@@ -3,25 +3,20 @@
         <div class="mat-card">
             <div class="row-1">
                 <div class="textual-detail">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-                        but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                        popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                        and more recently with desktop publishing software like Aldus PageMaker including versions of
-                        Lorem Ipsum.</p>
-                    <p>Posted on: 30th May, 2020 at 11:11 AM</p>
+                    <h1>{{adviceDetails?.title}}</h1>
+                    <p>{{adviceDetails?.description}}</p>
+                    <p>Posted on: {{adviceDetails?.createdAt | date : 'medium'}}</p>
                 </div>
                 <div class="image-detail">
-                    <img src="../../../../../../../../assets/default-image/image_placeholder.jpg">
+                    <img [src]="adviceDetails?.imageUrl | customImage:'USER'|async ">
                 </div>
             </div>
             <div class="row-2">
                 <div class="like-cover" (click)="onlikeHandler()"><span class="material-icons">thumb_up</span>
-                    <p>76</p>
+                    <p>{{adviceDetails?.likeCount}}</p>
                 </div>
                 <div class="like-cover"><span class="material-icons">comment</span>
-                    <p>76</p>
+                    <p>{{adviceDetails?.totalComments}}</p>
                 </div>
             </div>
             <div class="row-3">

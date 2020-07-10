@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DAILY_ADVICE_LIST , ADD_DAILY_ADVICE, DAILY_ADVICE_DETAILS} from 'src/app/constant/routes';
 import { DailyAdviceManagementComponent } from './view/daily-advice-management.component';
+import { DailyAdviceManagementServiceResolve } from './service/daily-advice-management.service';
 
 const routes: Routes = [
   {
@@ -27,18 +28,18 @@ const routes: Routes = [
     },
     {
       path: 'edit/:id',
-      // resolve : {
-      //   dailyData : DailyInspirationServiceResolve
-      // },
+      resolve : {
+        dailyData : DailyAdviceManagementServiceResolve
+      },
       loadChildren: () => import('./pages/add-daily-advice/add-daily-advice.module')
       .then( (m) => m.AddDailyAdviceModule
       ),
     },
     {
       path: `${DAILY_ADVICE_DETAILS.path}/details`,
-      // resolve : {
-      //   dailyData : DailyInspirationServiceResolve
-      // },
+      resolve : {
+        dailyData : DailyAdviceManagementServiceResolve
+      },
       loadChildren: () => import('./pages/daily-advice-details/daily-advice-details.module')
       .then( (m) => m.DailyAdviceDetailsModule
       ),

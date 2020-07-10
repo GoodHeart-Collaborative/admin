@@ -32,6 +32,12 @@ export const UNICORN = 'admin/unicorn';
 export const UNICORN_DETAILS = (Id) => `admin/unicorn/${Id}`;
 export const ACTION_UNICORN = (Id , status) => `admin/unicorn/${Id}/status/${status}`;
 
+// ADVICE API's //
+
+export const ADVICE = 'admin/advice';
+export const ADVICE_DETAILS = (Id) => `admin/advice/${Id}`;
+export const ACTION_ADVICE = (Id , status) => `admin/advice/${Id}/status/${status}`;
+
 // DREASHBOARD API's //
 export const DASHBOARD = 'admin/dashboard';
 

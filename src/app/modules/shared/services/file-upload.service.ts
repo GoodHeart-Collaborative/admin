@@ -12,7 +12,7 @@ export class FileUploadService {
     bucket: S3;
     constructor(
         private _loaderService: LoaderService,
-        private _utilityService:UtilityService
+        private _utilityService: UtilityService
     ) {
         this.bucket = new S3(
             {

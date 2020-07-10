@@ -13,11 +13,16 @@ export class DailyAdviceDetailsComponent implements OnInit {
   constructor(
     $router: ActivatedRoute,
     $breadcrumb: BreadcrumbService) {
-//  this.adviceDetails = $router.snapshot.data.dailyData.data;
-//  $breadcrumb.replace(this.adviceDetails.id, this.adviceDetails.title);
+ this.adviceDetails = $router.snapshot.data.dailyData.data;
+ console.log(this.adviceDetails);
+ 
+ $breadcrumb.replace(this.adviceDetails.id, this.adviceDetails.title);
 }
 
   ngOnInit() {
+  }
+  onlikeHandler() {
+    
   }
 
 }
