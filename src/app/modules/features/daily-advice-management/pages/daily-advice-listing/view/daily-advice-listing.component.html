@@ -17,16 +17,14 @@
      </ng-template>
 
      <ng-template appFor="description" let-post="row">
-         <!-- <a href="javascript:void(0)" > -->
              {{ post?.description | titlecase}}
-         <!-- </a> -->
      </ng-template>
  
    <ng-container>
  
          <ng-template appFor="actions"  let-user="row">
              <div class="action-icon-cover">
-                 <i class="material-icons icon-edit" (click)="oneditHandler(user?._id)" title="Edit">
+                 <i class="material-icons icon-edit" (click)="oneditHandler(user?._id)" title="Edit" *ngIf="user?.status === 'active'">
                      edit
                  </i>
                  <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')" title="Delete user">

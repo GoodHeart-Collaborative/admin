@@ -28,9 +28,9 @@ const routes: Routes = [
     },
     {
       path: 'edit/:id',
-      // resolve : {
-      //   dailyData : DailyInspirationServiceResolve
-      // },
+      resolve : {
+        dailyData : DailyAdviceManagementServiceResolve
+      },
       loadChildren: () => import('./pages/add-daily-advice/add-daily-advice.module')
       .then( (m) => m.AddDailyAdviceModule
       ),

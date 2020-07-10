@@ -21,5 +21,8 @@ export class DailyAdviceDetailsComponent implements OnInit {
 
   ngOnInit() {
   }
+  onlikeHandler() {
+    
+  }
 
 }
