@@ -19,21 +19,7 @@ const routes: Routes = [
       .then( (m) => m.MemberOfTheDayListingModule
       ),
     },
-    // {
-    //   path: ADD_MEMBER_OF_THE_DAY.path,
-    //   loadChildren: () => import('./pages/add-daily-unicorm-humour/add-daily-unicorm-humour.module')
-    //   .then( (m) => m.AddDailyUnicormHumourModule
-    //   ),
-    // },
-    // {
-    //   path: 'edit/:id',
-    //   resolve : {
-    //     dailyData : DailyUnicornHumourServiceResolve
-    //   },
-    //   loadChildren: () => import('./pages/add-daily-unicorm-humour/add-daily-unicorm-humour.module')
-    //   .then( (m) => m.AddDailyUnicormHumourModule
-    //   ),
-    //  },
+
     // {
     //   path: `${MEMBER_OF_THE_DAY_DETAILS.path}/details`,
     //   resolve : {

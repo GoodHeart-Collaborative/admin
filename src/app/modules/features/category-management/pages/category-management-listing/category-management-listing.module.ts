@@ -10,6 +10,7 @@ import { ConfirmBoxModule } from 'src/app/modules/shared/confirm-box';
 import { AddCategoryManagementModule } from '../add-category-management/add-category-management.module';
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 import { ListingFilterComponent } from './component/listing-filter.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {path: '' ,
@@ -32,7 +33,7 @@ const routes: Routes = [
     MatSelectModule,
     MatOptionModule,
     MatFormFieldModule,
-    
+    ReactiveFormsModule
   ],
   entryComponents: [ListingFilterComponent]
 })

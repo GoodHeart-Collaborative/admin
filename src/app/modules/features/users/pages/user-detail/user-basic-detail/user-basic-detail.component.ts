@@ -44,4 +44,21 @@ export class UserBasicDetailComponent implements OnInit {
   onDeleteUSer() {
     this.onBlockUSer(true);
   }
+
+  onverifyHandler(id, isAdminVerified) {
+    this.$confirmBox.listAction('User', (isAdminVerified  ? 'Verified' : 'Premium')).subscribe((confirm) => {
+      if (confirm) {
+        const params = {
+          isAdminVerified: isAdminVerified,
+        };
+        this.$userService.onVerifiedHnadler(id, params).then(res => {
+          if (res) {
+              // tslint:disable-next-line: no-unused-expression
+              this.data.isAdminVerified =   this.data.isAdminVerified  ? 'Verified' : 'Premium';
+            }
+        });
+
+      }
+    });
+  }
 }

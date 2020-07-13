@@ -4,6 +4,11 @@ import { MemberOfTheDayListingComponent } from './view/member-of-the-day-listing
 import { Routes, RouterModule } from '@angular/router';
 import { AddMemberOfTheDayModule } from '../add-member-of-the-day/add-member-of-the-day.module';
 import { AddMemberOfTheDayComponent } from '../add-member-of-the-day/view/add-member-of-the-day.component';
+import { TableModule } from 'src/app/modules/commonTable/table';
+import { CustomDatePipeModule } from 'src/app/pipes/custom-date/custom-date-pipe.module';
+import { DateFilterModule } from 'src/app/modules/layout/layout-shared/date-filter/date-filter.module';
+import { MatFormFieldModule, MatOptionModule, MatSelectModule } from '@angular/material';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -17,7 +22,14 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    AddMemberOfTheDayModule
+    AddMemberOfTheDayModule,
+    TableModule,
+    CustomDatePipeModule,
+    DateFilterModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    MatSelectModule,
+    ReactiveFormsModule
   ],
 })
 export class MemberOfTheDayListingModule { }

@@ -1,10 +1,12 @@
-<app-filter (apply)="onApplyHandler()" (reset)="resetFilter()" >
-    <!-- <app-date-filter [dateObject]="dateFilterObject" ></app-date-filter> -->
+<app-filter (apply)="onApplyHandler()" (reset)="resetFilter()" [disableValue]="filterForm.touched">
+    <app-date-filter [dateObject]="dateFilterObject" ></app-date-filter>
     <div>
-        <mat-form-field>
-            <mat-select placeholder="Status" formControlName="status" >
-                <mat-option [value]="item?.value" *ngFor="let item of statusList">{{item?.view}}</mat-option>
-            </mat-select>
-        </mat-form-field>
+        <form [formGroup]="filterForm">
+            <mat-form-field>
+                <mat-select  placeholder="Status" formControlName="status" >
+                    <mat-option [value]="item?.value" *ngFor="let item of statusList">{{item?.view}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </form>
     </div>
  </app-filter>

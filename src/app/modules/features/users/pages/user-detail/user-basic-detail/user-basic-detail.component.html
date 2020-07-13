@@ -7,8 +7,9 @@
                         <img [src]="data?.profilePicUrl[0]|customImage:'USER'|async" alt="User Profile Image">
                     </div>
                     <div class="btn-row">
-                        <button class="btn btn-block" mat-stroked-button (click)="onBlockUSer()" [class.btn-green]="status == inactive"> {{data?.status === 'active' ? 'Block' : 'Unblock'}} User </button>
+                        <button class="btn btn-block" mat-stroked-button (click)="onBlockUSer()" [class.btn-green]="data?.status != 'active' "> {{data?.status === 'active' ? 'Block' : 'Unblock'}} User </button>
                         <button class="btn btn-primary btn-delete" mat-stroked-button (click)="onBlockUSer(true)">Delete User</button>
+                        <button class="btn btn-primary " mat-stroked-button (click)="onverifyHandler(data?._id, data?.isAdminVerified)" [disabled]="data?.isAdminVerified">Verify User</button>
                     </div>
                 </div>
                 <div class="right-portion">
@@ -35,8 +36,16 @@
                             <p class="value">{{data?.status | titlecase}} </p>
                         </div>
                         <div class="col-md-4">
+                            <p class="label">Approve User</p>
+                            <p class="value">{{data?.isAdminVerified  ? 'Verified' : 'Premium'}} </p>
+                        </div>
+                        <div class="col-md-4">
                             <p class="label">Profession</p>
                             <p class="value">{{data?.profession || 'None'}}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="label">Experience</p>
+                            <p class="value">{{data?.experience || 'None'}}</p>
                         </div>
                         <div class="col-md-4">
                             <p class="label">Industry</p>
@@ -48,7 +57,7 @@
                         </div>
                         <div class="col-md-4">
                             <p class="label">Bio</p>
-                            <p class="value">{{data?.bio || 'None'}} </p>
+                            <p class="value">{{data?.about || 'None'}} </p>
                         </div>
                     </div>
                 </div>

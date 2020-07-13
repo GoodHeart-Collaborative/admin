@@ -26,7 +26,7 @@ export class ListingFilterComponent implements OnInit {
      @Inject(MAT_DIALOG_DATA) data: any,
   ) {
     this.getFilterForm();
-    // this.dateFilterObject = {...this.dateFilterObject, ...this.filterForm.controls};
+    this.dateFilterObject = {...this.dateFilterObject, ...this.filterForm.controls};
     if (data) {
        this.filterForm.patchValue(data);
     }
@@ -38,8 +38,8 @@ export class ListingFilterComponent implements OnInit {
   getFilterForm() {
     this.filterForm = this.$fb.group(
       {
-        // fromDate: [],
-        // toDate: [],
+        fromDate: [],
+        toDate: [],
         status: []
       },
     );

@@ -29,6 +29,7 @@ export class DailyAdviceFilterComponent implements OnInit {
     this.dateFilterObject = {...this.dateFilterObject, ...this.filterForm.controls};
     if (data) {
        this.filterForm.patchValue(data);
+       
     }
   }
 

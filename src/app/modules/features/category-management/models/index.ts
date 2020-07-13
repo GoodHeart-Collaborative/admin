@@ -57,8 +57,7 @@ export class CategoryTableDataSource implements Table.Source<Category> {
     search: 'Search by Name',
     index: true,
     addComponent: true,
-
-    // filterComponent: ListingFilterComponent
+    filterComponent: ListingFilterComponent
   };
   constructor(public data: Table.Data<Category> = defaultData) {}
 }

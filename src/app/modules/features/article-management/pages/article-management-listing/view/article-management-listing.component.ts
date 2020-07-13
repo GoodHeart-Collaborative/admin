@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { DAILY_ADVICE, ADD_DAILY_ADVICE, ADD_ARTICLES, ARTICLES } from 'src/app/constant/routes';
-import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { ArticleManagementService } from '../../../service/article-management.service';
+import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 
 @Component({

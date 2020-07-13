@@ -8,6 +8,7 @@ import { DailyAdviceManagementServiceResolve } from '../../service/daily-advice-
 import { DailyAdviceFilterComponent } from './component/daily-advice-filter.component';
 import { DateFilterModule } from 'src/app/modules/layout/layout-shared/date-filter/date-filter.module';
 import { MatFormFieldModule, MatOptionModule, MatSelectModule } from '@angular/material';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -26,7 +27,8 @@ const routes: Routes = [
     DateFilterModule,
     MatFormFieldModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    ReactiveFormsModule
   ],
   entryComponents : [DailyAdviceFilterComponent]
 })
