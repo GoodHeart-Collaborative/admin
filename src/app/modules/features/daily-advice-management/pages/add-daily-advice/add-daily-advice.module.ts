@@ -8,6 +8,7 @@ import { MatFormFieldModule, MatIconModule, MatCheckboxModule, MatDatepickerModu
 import { ValidationErrorPipeModule } from 'src/app/pipes/validation-error/validation-error-pipe.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DailyAdviceManagementServiceResolve } from '../../service/daily-advice-management.service';
+import { WhiteSpaceModule } from 'src/app/modules/shared/white-space/white-space.module';
 
 const routes: Routes = [
   {
@@ -31,7 +32,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatInputModule
+    MatInputModule,
+    WhiteSpaceModule
   ],
 })
 export class AddDailyAdviceModule { }

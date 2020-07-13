@@ -8,6 +8,7 @@ import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.modul
 import { ValidationErrorPipeModule } from 'src/app/pipes/validation-error/validation-error-pipe.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MediaUploadModule } from 'src/app/modules/shared/media-upload/media-upload.module';
+import { WhiteSpaceModule } from 'src/app/modules/shared/white-space/white-space.module';
 
 
 const routes: Routes = [
@@ -30,7 +31,8 @@ const routes: Routes = [
     MatDatepickerModule,
     MatNativeDateModule,
     CustomImageModule,
-    MediaUploadModule
+    MediaUploadModule,
+    WhiteSpaceModule
   ]
 })
 export class AddDailyInspirationModule { }

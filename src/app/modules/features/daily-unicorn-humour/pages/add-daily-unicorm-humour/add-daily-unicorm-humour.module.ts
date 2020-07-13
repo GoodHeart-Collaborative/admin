@@ -7,6 +7,7 @@ import { MediaUploadModule } from 'src/app/modules/shared/media-upload/media-upl
 import { MatFormFieldModule, MatIconModule, MatCheckboxModule, MatDatepickerModule, MatNativeDateModule, MatInputModule } from '@angular/material';
 import { ValidationErrorPipeModule } from 'src/app/pipes/validation-error/validation-error-pipe.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { WhiteSpaceModule } from 'src/app/modules/shared/white-space/white-space.module';
 
 
 const routes: Routes = [
@@ -32,7 +33,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatInputModule
+    MatInputModule,
+    WhiteSpaceModule
   ]
 })
 export class AddDailyUnicormHumourModule { }

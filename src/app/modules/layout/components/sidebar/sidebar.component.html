@@ -8,35 +8,38 @@
 
   
   <mat-list class="sidebar-list">
+
     <mat-list-item color="primary" [routerLink]="['DASHBOARD' | absolutePath]" routerLinkActive="active">
       <mat-icon>dashboard</mat-icon> Dashboard
     </mat-list-item>
+
     <mat-list-item color="primary"  [routerLink]="['USER' | absolutePath]" routerLinkActive="active">
       <mat-icon>person</mat-icon> Users
     </mat-list-item>
+
     <mat-list-item color="primary" [routerLink]="['CATEGORY' | absolutePath]" routerLinkActive="active">
       <mat-icon>category</mat-icon> Category
     </mat-list-item>
+
     <mat-list-item color="primary" [queryParams]="{ tab: '0'}" [routerLink]="['CONTENT_MANAGEMENT' | absolutePath]" routerLinkActive="active">
       <mat-icon>description</mat-icon> Content
     </mat-list-item>
+
     <mat-list-item color="primary" [routerLink]="['DAILY_INSPIRATION' | absolutePath]" routerLinkActive="active">
       <mat-icon>emoji_objects</mat-icon> Daily Inspiration
     </mat-list-item>
+
     <mat-list-item color="primary" [routerLink]="['MEMBER_OF_THE_DAY' | absolutePath]" routerLinkActive="active">
       <mat-icon>military_tech</mat-icon> Member of the Day
     </mat-list-item>
-    <mat-list-item color="primary" [routerLink]="['DAILY_UNICORN' | absolutePath]" routerLinkActive="active">
-      <mat-icon>psychology</mat-icon> Unicorm Humour
-    </mat-list-item>
-    <!-- <mat-list-item color="primary" [routerLink]="['DAILY_ADVICE' | absolutePath]" routerLinkActive="active">
-      <mat-icon>assistant</mat-icon> Advice Management
-    </mat-list-item> -->
 
-  
-    <!-- <mat-list-item color="primary" [routerLink]="['MEMBER_OF_THE_DAY' | absolutePath]" routerLinkActive="">
-      <mat-icon>view_headline</mat-icon> Member Of The Day
-    </mat-list-item> -->
+    <mat-list-item color="primary" [routerLink]="['DAILY_UNICORN' | absolutePath]" routerLinkActive="active">
+      <mat-icon>psychology</mat-icon> Unicorn Humour
+    </mat-list-item>
+
+    <mat-list-item color="primary" [routerLink]="['DAILY_ADVICE' | absolutePath]" routerLinkActive="active">
+      <mat-icon>assistant</mat-icon> Advice Management
+    </mat-list-item>
 
     <mat-list-item color="primary" [routerLink]="['USER' | absolutePath]" routerLinkActive="active">
       <mat-icon>view_headline</mat-icon> Feed
@@ -45,5 +48,6 @@
     <mat-list-item color="primary" [routerLink]="['USER' | absolutePath]" routerLinkActive=" ">
       <mat-icon>emoji_events</mat-icon> Events
     </mat-list-item>
+    
   </mat-list>
 <mat-nav-list>

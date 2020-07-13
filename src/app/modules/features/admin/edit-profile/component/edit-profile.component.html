@@ -15,7 +15,7 @@
           <div class="single-profile-detail">
             <label for="">Name:</label>
             <mat-form-field appearance="outline">
-              <input matInput formControlName="name" placeholder="Name">
+              <input matInput formControlName="name" placeholder="Name" appWhiteSpace>
               <mat-error>{{getControl('name')|validate:'name'}}</mat-error>
             </mat-form-field>
           </div>

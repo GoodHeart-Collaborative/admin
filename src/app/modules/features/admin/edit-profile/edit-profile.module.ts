@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ValidationErrorPipeModule } from '../../../../pipes/validation-error/validation-error-pipe.module';
 import { CustomImageModule } from '../../../../pipes/custom-image/custom-image.module';
 import { MediaUploadModule } from 'src/app/modules/shared/media-upload/media-upload.module';
+import { WhiteSpaceModule } from 'src/app/modules/shared/white-space/white-space.module';
 
 const routes: Routes = [
   { path: '', component:EditProfileComponent },
@@ -28,7 +29,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     ValidationErrorPipeModule,
     CustomImageModule,
-    MediaUploadModule
+    MediaUploadModule,
+    WhiteSpaceModule
   ],
   declarations: [EditProfileComponent],
   entryComponents: [EditProfileComponent],

@@ -1,4 +1,5 @@
 import * as Table from 'src/app/modules/commonTable/table/interfaces';
+import { DailyInspirationFilterComponent } from '../component/daily-inspiration-filter.component';
 type Category = any;
 
 const defaultData: Table.Data<Category> = {
@@ -49,8 +50,8 @@ export class DailyTableDataSource implements Table.Source<Category> {
     selection: false,
     search: 'Search by Title',
     index: true,
-    addComponent: true
-    // filterComponent: UsersListingFilterComponent
+    addComponent: true,
+    filterComponent: DailyInspirationFilterComponent
   };
   constructor(public data: Table.Data<Category> = defaultData) {}
 }

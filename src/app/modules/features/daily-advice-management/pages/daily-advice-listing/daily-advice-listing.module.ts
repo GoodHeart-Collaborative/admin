@@ -5,6 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { CustomDatePipeModule } from 'src/app/pipes/custom-date/custom-date-pipe.module';
 import { TableModule } from 'src/app/modules/commonTable/table';
 import { DailyAdviceManagementServiceResolve } from '../../service/daily-advice-management.service';
+import { DailyAdviceFilterComponent } from './component/daily-advice-filter.component';
+import { DateFilterModule } from 'src/app/modules/layout/layout-shared/date-filter/date-filter.module';
 
 const routes: Routes = [
   {
@@ -14,13 +16,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [DailyAdviceListingComponent],
+  declarations: [DailyAdviceListingComponent, DailyAdviceFilterComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     TableModule,
-    CustomDatePipeModule
+    CustomDatePipeModule,
+    DateFilterModule,
   ],
-  // providers : [DailyAdviceManagementServiceResolve]
+  entryComponents : [DailyAdviceFilterComponent]
 })
 export class DailyAdviceListingModule { }
