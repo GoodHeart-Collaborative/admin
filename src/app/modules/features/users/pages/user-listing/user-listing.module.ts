@@ -30,7 +30,7 @@ const routes: Routes = [
     MatIconModule,
     ConfirmBoxModule
   ],
-  providers:[ConfirmBoxService],
+  providers: [ConfirmBoxService],
   entryComponents: [UsersListingFilterComponent]
 })
 export class UserListingModule { }

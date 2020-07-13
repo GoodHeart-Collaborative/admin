@@ -377,3 +377,28 @@ export const MEMBER_OF_THE_DAY_DETAILS: IRoute = {
     return `${MEMBER_OF_THE_DAY.fullUrl}/${this.path}`;
   }
 };
+// ARTICLES ROUTES //
+export const ARTICLES: IRoute = {
+  path: 'articles',
+  get fullUrl(): string {
+    return `${ADMIN.fullUrl}/${this.path}`;
+  }
+};
+export const ARTICLES_LIST: IRoute = {
+  path: 'list',
+  get fullUrl(): string {
+    return `${ARTICLES.fullUrl}/${this.path}`;
+  }
+};
+export const ADD_ARTICLES: IRoute = {
+  path: 'add',
+  get fullUrl(): string {
+    return `${ARTICLES.fullUrl}/${this.path}`;
+  }
+};
+export const ARTICLES_DETAILS: IRoute = {
+  path: ':id',
+  get fullUrl(): string {
+    return `${ARTICLES.fullUrl}/${this.path}`;
+  }
+};

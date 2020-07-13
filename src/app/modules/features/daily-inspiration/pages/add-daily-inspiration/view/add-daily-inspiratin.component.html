@@ -19,14 +19,14 @@
             <div class="right-portion">
                 <mat-form-field appearance="outline">
                     <mat-label>Inspiration Title</mat-label>
-                    <input matInput placeholder="Title" formControlName="title" #input [maxlength]="titleMaxLength">
+                    <input matInput placeholder="Title" formControlName="title" #input [maxlength]="titleMaxLength" appWhiteSpace>
                     <mat-hint>{{input.value.length}}/{{titleMaxLength}}</mat-hint>
                     <mat-error>{{form('title') |validate:'Title' }}</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
                     <mat-label>Description</mat-label>
-                    <textarea matInput placeholder="Ex. It makes me feel..." formControlName="description" #description [maxlength]="descriptionMaxLength"></textarea>
+                    <textarea matInput placeholder="Ex. It makes me feel..." formControlName="description" #description [maxlength]="descriptionMaxLength" appWhiteSpace></textarea>
                     <mat-hint>{{description.value.length}}/{{descriptionMaxLength }}</mat-hint>
                     <mat-error>{{form('description')  |validate:'Description'}}</mat-error>
 

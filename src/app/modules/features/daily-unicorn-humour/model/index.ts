@@ -1,4 +1,5 @@
 import * as Table from 'src/app/modules/commonTable/table/interfaces';
+import { DailyUnicornFilterComponent } from '../pages/daily-unicorm-humour-listing/component/daily-unicorn-filter.component';
 type Category = any;
 
 const defaultData: Table.Data<Category> = {
@@ -56,8 +57,8 @@ export class DailyUnicornTableDataSource implements Table.Source<Category> {
     selection: false,
     search: 'Search by Post',
     index: true,
-    addComponent: true
-    // filterComponent: UsersListingFilterComponent
+    addComponent: true,
+    filterComponent: DailyUnicornFilterComponent
   };
   constructor(public data: Table.Data<Category> = defaultData) {}
 }

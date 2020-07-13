@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material';
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 import { ValidationErrorPipeModule } from 'src/app/pipes/validation-error/validation-error-pipe.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { WhiteSpaceModule } from 'src/app/modules/shared/white-space/white-space.module';
 
 
 
@@ -18,7 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
     CustomImageModule,
     ValidationErrorPipeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    WhiteSpaceModule
   ],
   exports: [AddCategoryManagementComponent],
   providers : [CategoryManagementService],

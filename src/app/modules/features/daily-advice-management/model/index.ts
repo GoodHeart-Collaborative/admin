@@ -1,4 +1,5 @@
 import * as Table from 'src/app/modules/commonTable/table/interfaces';
+import { DailyAdviceFilterComponent } from '../pages/daily-advice-listing/component/daily-advice-filter.component';
 type Category = any;
 
 const defaultData: Table.Data<Category> = {
@@ -61,8 +62,8 @@ export class DailyAdviceTableDataSource implements Table.Source<Category> {
     selection: false,
     search: 'Search by Post',
     index: true,
-    addComponent: true
-    // filterComponent: UsersListingFilterComponent
+    addComponent: true,
+    filterComponent: DailyAdviceFilterComponent
   };
   constructor(public data: Table.Data<Category> = defaultData) {}
 }

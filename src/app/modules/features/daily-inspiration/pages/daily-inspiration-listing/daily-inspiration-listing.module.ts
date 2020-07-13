@@ -5,6 +5,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { TableModule } from 'src/app/modules/commonTable/table';
 import { DailyInspirationService } from '../../service/daily-inspiration.service';
 import { CustomDatePipeModule } from 'src/app/pipes/custom-date/custom-date-pipe.module';
+import { DateFilterModule } from 'src/app/modules/layout/layout-shared/date-filter/date-filter.module';
+import { MatFormFieldModule, MatOptionModule, MatSelectModule } from '@angular/material';
+import { DailyInspirationFilterComponent } from './component/daily-inspiration-filter.component';
 
 
 const routes: Routes = [
@@ -15,13 +18,19 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [DailyInspirationListingComponent],
+  declarations: [DailyInspirationListingComponent, DailyInspirationFilterComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     TableModule,
-    CustomDatePipeModule
+    CustomDatePipeModule,
+    DateFilterModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    MatSelectModule
   ],
+  entryComponents : [DailyInspirationFilterComponent],
+
   providers: [DailyInspirationService]
 })
 export class DailyInspirationListingModule { }

@@ -1,4 +1,5 @@
 import * as Table from 'src/app/modules/commonTable/table/interfaces';
+import { ListingFilterComponent } from '../pages/category-management-listing/component/listing-filter.component';
 type Category = any;
 
 const defaultData: Table.Data<Category> = {
@@ -55,8 +56,9 @@ export class CategoryTableDataSource implements Table.Source<Category> {
     selection: false,
     search: 'Search by Name',
     index: true,
-    addComponent: true
-    // filterComponent: UsersListingFilterComponent
+    addComponent: true,
+
+    // filterComponent: ListingFilterComponent
   };
   constructor(public data: Table.Data<Category> = defaultData) {}
 }
