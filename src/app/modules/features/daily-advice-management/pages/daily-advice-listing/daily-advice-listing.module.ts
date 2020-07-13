@@ -7,6 +7,7 @@ import { TableModule } from 'src/app/modules/commonTable/table';
 import { DailyAdviceManagementServiceResolve } from '../../service/daily-advice-management.service';
 import { DailyAdviceFilterComponent } from './component/daily-advice-filter.component';
 import { DateFilterModule } from 'src/app/modules/layout/layout-shared/date-filter/date-filter.module';
+import { MatFormFieldModule, MatOptionModule, MatSelectModule } from '@angular/material';
 
 const routes: Routes = [
   {
@@ -23,6 +24,9 @@ const routes: Routes = [
     TableModule,
     CustomDatePipeModule,
     DateFilterModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   entryComponents : [DailyAdviceFilterComponent]
 })

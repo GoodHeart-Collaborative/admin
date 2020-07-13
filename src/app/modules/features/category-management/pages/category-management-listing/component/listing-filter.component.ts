@@ -3,16 +3,16 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
-  selector: 'app-daily-unicorn-filter',
-  templateUrl: './daily-unicorn-filter.component.html',
-  styleUrls: ['./daily-unicorn-filter.component.scss']
+  selector: 'app-listing-filter',
+  templateUrl: './listing-filter.component.html',
+  styleUrls: ['./listing-filter.component.scss']
 })
-export class DailyUnicornFilterComponent implements OnInit {
+export class ListingFilterComponent implements OnInit {
 
   dateFilterObject = {
-    label: 'User Date Filter',
+    label: 'Date Filter',
     maxFromDate: new Date(),
-  };
+   };
   filterForm: FormGroup;
   statusList = [{
     view: 'Active', value: 'active'},
@@ -26,7 +26,7 @@ export class DailyUnicornFilterComponent implements OnInit {
      @Inject(MAT_DIALOG_DATA) data: any,
   ) {
     this.getFilterForm();
-    this.dateFilterObject = {...this.dateFilterObject, ...this.filterForm.controls};
+    // this.dateFilterObject = {...this.dateFilterObject, ...this.filterForm.controls};
     if (data) {
        this.filterForm.patchValue(data);
     }
@@ -38,15 +38,15 @@ export class DailyUnicornFilterComponent implements OnInit {
   getFilterForm() {
     this.filterForm = this.$fb.group(
       {
-        fromDate: [],
-        toDate: [],
+        // fromDate: [],
+        // toDate: [],
         status: []
       },
     );
   }
 
   onApplyHandler() {
-   if (this.filterForm.valid && this.filterForm.touched) {
+   if (this.filterForm.valid) {
       this.isProcessing = false;
       const filterData = { ...this.filterForm.value};
       this.dialogRef.close(filterData);
@@ -58,5 +58,6 @@ export class DailyUnicornFilterComponent implements OnInit {
     const filterData = { ...this.filterForm.value};
     this.dialogRef.close(filterData);
   }
+
 
 }

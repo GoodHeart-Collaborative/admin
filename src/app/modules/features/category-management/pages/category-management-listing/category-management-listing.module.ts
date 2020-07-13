@@ -5,20 +5,20 @@ import { RouterModule, Routes } from '@angular/router';
 import { TableModule } from 'src/app/modules/commonTable/table';
 import { DateFilterModule } from 'src/app/modules/layout/layout-shared/date-filter/date-filter.module';
 import { CustomDatePipeModule } from 'src/app/pipes/custom-date/custom-date-pipe.module';
-import { MatIconModule } from '@angular/material';
+import { MatIconModule, MatSelectModule, MatOptionModule, MatFormFieldModule } from '@angular/material';
 import { ConfirmBoxModule } from 'src/app/modules/shared/confirm-box';
 import { AddCategoryManagementModule } from '../add-category-management/add-category-management.module';
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
+import { ListingFilterComponent } from './component/listing-filter.component';
 
 const routes: Routes = [
-  {path: '' , 
+  {path: '' ,
    component: CategoryManagementListingComponent},
-  
 ];
 
 
 @NgModule({
-  declarations: [CategoryManagementListingComponent],
+  declarations: [CategoryManagementListingComponent, ListingFilterComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -28,7 +28,12 @@ const routes: Routes = [
     MatIconModule,
     ConfirmBoxModule,
     AddCategoryManagementModule,
-    CustomImageModule
-  ]
+    CustomImageModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatFormFieldModule,
+    
+  ],
+  entryComponents: [ListingFilterComponent]
 })
 export class CategoryManagementListingModule { }

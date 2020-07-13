@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout.component';
 import { USER, DASHBOARD , CONTENT_MANAGEMENT ,
       CATEGORY, DAILY_INSPIRATION, DAILY_UNICORN,
-      DAILY_ADVICE, MEMBER_OF_THE_DAY} from '../../constant/routes';
+      DAILY_ADVICE, MEMBER_OF_THE_DAY, ARTICLES} from '../../constant/routes';
 
 const routes: Routes = [
   {
@@ -57,6 +57,13 @@ const routes: Routes = [
         loadChildren: () =>
           import('../features/member-of-the-day/member-of-the-day.module')
           .then((m) => m.MemberOfTheDayModule
+          ),
+      },
+      {
+        path: ARTICLES.path,
+        loadChildren: () =>
+          import('../features/article-management/article-management.module')
+          .then((m) => m.ArticleManagementModule
           ),
       },
     ],

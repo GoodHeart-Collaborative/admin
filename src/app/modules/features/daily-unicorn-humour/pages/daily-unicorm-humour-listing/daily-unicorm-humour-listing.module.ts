@@ -6,6 +6,8 @@ import { TableModule } from 'src/app/modules/commonTable/table';
 import { CustomDatePipeModule } from 'src/app/pipes/custom-date/custom-date-pipe.module';
 import { DailyUnicormHumourDetailsModule } from '../daily-unicorm-humour-details/daily-unicorm-humour-details.module';
 import { DailyUnicornFilterComponent } from './component/daily-unicorn-filter.component';
+import { DateFilterModule } from 'src/app/modules/layout/layout-shared/date-filter/date-filter.module';
+import { MatFormFieldModule, MatOptionModule, MatSelectModule } from '@angular/material';
 
 
 const routes: Routes = [
@@ -22,7 +24,12 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     TableModule,
     CustomDatePipeModule,
-    DailyUnicormHumourDetailsModule
-  ]
+    DailyUnicormHumourDetailsModule,
+    DateFilterModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    MatSelectModule
+  ],
+  entryComponents: [DailyUnicornFilterComponent]
 })
 export class DailyUnicormHumourListingModule { }
