@@ -1,4 +1,4 @@
 <div class="view-full-image-model-popup">
-    <img src="../../../../../assets/images/event-dummy-img.jpg" alt="Full-Image">
-    <mat-icon (click)="close()">close</mat-icon>
+    <img [src]="data  |customImage:'USER'|async" alt="Full-Image">
+    <mat-icon [mat-dialog-close]="false">close</mat-icon>
 </div>
