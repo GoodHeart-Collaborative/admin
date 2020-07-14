@@ -128,7 +128,7 @@ export class UserListingComponent implements OnInit {
     });
   }
 
-  onverifyHandler(id,) {
+  onverifyHandler(id) {
     this.$confirmBox.listAction('User', 'Verified').subscribe((confirm) => {
       if (confirm) {
         const params = {
@@ -136,11 +136,25 @@ export class UserListingComponent implements OnInit {
         };
         this.$userService.onVerifiedHnadler(id, params).then(res => {
           if (res) {
-            //  this.setUpTableResource(this.userData);
             this.updateUsers();
           }
         });
 
+      }
+    });
+  }
+
+  onDeclinedHandler(id) {
+    this.$confirmBox.listAction('User', 'Declined').subscribe((confirm) => {
+      if (confirm) {
+        const params = {
+          isAdminRejected: true,
+        };
+        this.$userService.onVerifiedHnadler(id, params).then(res => {
+          if (res) {
+            this.updateUsers();
+          }
+        });
       }
     });
   }

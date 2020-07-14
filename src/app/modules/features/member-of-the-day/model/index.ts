@@ -65,9 +65,9 @@ export class MemberTableDataSource implements Table.Source<Category> {
   ];
   options: Table.Options = {
     selection: false,
-    search: 'Search by Post',
+    search: 'Search by Name',
     index: true,
-    addComponent: true,
+    // addComponent: true,
     // filterComponent: DailyAdviceFilterComponent
   };
   constructor(public data: Table.Data<Category> = defaultData) {}
