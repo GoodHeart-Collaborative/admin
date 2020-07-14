@@ -11,6 +11,7 @@ import { AddCategoryManagementModule } from '../add-category-management/add-cate
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 import { ListingFilterComponent } from './component/listing-filter.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ViewFullImageModule } from 'src/app/modules/shared/view-full-image/view-full-image.module';
 
 const routes: Routes = [
   {path: '' ,
@@ -33,7 +34,9 @@ const routes: Routes = [
     MatSelectModule,
     MatOptionModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CustomImageModule,
+    ViewFullImageModule
   ],
   entryComponents: [ListingFilterComponent]
 })

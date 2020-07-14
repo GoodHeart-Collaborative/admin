@@ -13,13 +13,17 @@ export class CategoryTableDataSource implements Table.Source<Category> {
   label = 'Category Management';
   columns: Table.Column<Category>[] = [
     {
+      title: 'Image',
+      id: 'image',
+      sorting: false,
+      templateBy: 'imageUrl'
+    },
+    {
       title: 'Name',
       id: 'title',
       sorting: true,
       templateBy: 'title'
-      // resolve: (row: any) => `${row['firstName']} ${row['lastName']}` || 'NA',
     },
-  
     // {
     //   title: 'Mobile Number',
     //   id: 'phoneNo',

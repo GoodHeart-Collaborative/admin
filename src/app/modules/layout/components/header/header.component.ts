@@ -58,8 +58,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.profileSubscriber = this._dataService.profileDetail.subscribe(
       data => {
-        if (data)
-        this.profileDetail = data;
+        if (data) {
+
+          this.profileDetail = data;
+        }
       }
     );
     if (window.innerWidth < 993) {
@@ -67,6 +69,7 @@ export class HeaderComponent implements OnInit {
       this.flag = !this.flag;
     }
   }
+
   logout() {
     let data: IPopupData = {
       title: POPUP_MESSAGES.logout,
@@ -91,12 +94,12 @@ export class HeaderComponent implements OnInit {
   }
 
   openCahngePasswordTab() {
-    const dialogRef = this.matDailog.open(ChangePasswordComponent, {
+    this.matDailog.open(ChangePasswordComponent, {
       width: '500px',
     }).afterClosed().subscribe();
   }
   openAdminProfileTab() {
-    const dialogRef = this.matDailog.open(AdminProfileComponent, {
+   this.matDailog.open(AdminProfileComponent, {
       width: '500px',
     }).afterClosed().subscribe();
   }

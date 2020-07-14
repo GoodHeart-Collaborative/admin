@@ -9,6 +9,7 @@ import { CategoryManagementService } from '../../../service/category-management.
 import { AddCategoryManagementComponent } from '../../add-category-management/view/add-category-management.component';
 import { MatDialog } from '@angular/material';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
+import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 
 @Component({
@@ -17,7 +18,6 @@ export type ActionType = 'deleted' | 'blocked' | 'active';
   styleUrls: ['./category-management-listing.component.scss']
 })
 export class CategoryManagementListingComponent implements OnInit {
-
   tableSource = new CategoryTableDataSource();
   userData: any;
   eventData: Table.OptionData = {
@@ -27,12 +27,14 @@ export class CategoryManagementListingComponent implements OnInit {
     filterData: null,
     sortData: null
   };
+
   constructor(
     private $category: CategoryManagementService,
     private $router: Router,
     private matDailog: MatDialog,
     private $confirmBox: ConfirmBoxService,
-    private $utility: UtilityService
+    private $utility: UtilityService,
+  
   ) {
   }
 
@@ -159,6 +161,12 @@ oneditHandler(id) {
 
 relatedCategoryHandler(id) {
     this.$router.navigate([`${CATEGORY.fullUrl}`, id,]);
+}
+
+onImageClick() {
+  this.matDailog.open(ViewFullImageComponent, {
+    width: '500px',
+  }).afterClosed().subscribe();
 }
 
 }
