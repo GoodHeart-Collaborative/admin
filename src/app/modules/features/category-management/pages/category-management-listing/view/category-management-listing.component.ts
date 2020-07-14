@@ -165,7 +165,7 @@ relatedCategoryHandler(id) {
 
 onImageClick() {
   this.matDailog.open(ViewFullImageComponent, {
-    width: '500px',
+    panelClass: 'view-full-image-modal'
   }).afterClosed().subscribe();
 }
 
