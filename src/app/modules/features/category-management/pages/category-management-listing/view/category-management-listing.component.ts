@@ -163,9 +163,10 @@ relatedCategoryHandler(id) {
     this.$router.navigate([`${CATEGORY.fullUrl}`, id,]);
 }
 
-onImageClick() {
+onImageClick(image) {
   this.matDailog.open(ViewFullImageComponent, {
-    panelClass: 'view-full-image-modal'
+    panelClass: 'view-full-image-modal',
+    data: image
   }).afterClosed().subscribe();
 }
 
