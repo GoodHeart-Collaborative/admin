@@ -10,15 +10,16 @@
 
 			<div class="btn_group">
 
-				<button mat-icon-button><mat-icon>notifications</mat-icon></button>
-				<div class="user-img-cover" [matMenuTriggerFor]="menu">
+				<button mat-icon-button title="Notifications"><mat-icon>notifications</mat-icon></button>
+				<div class="user-img-cover" (click)="openAdminProfileTab()" title="View Profile">
 					<img [src]="profileDetail?.profilePicture | customImage:'USER'|async" alt="">
 				</div>
-                <mat-menu #menu="matMenu" xPosition="before">
+				<button mat-icon-button title="Logout" (click)="logout()"><mat-icon>exit_to_app</mat-icon></button>
+                <!-- <mat-menu #menu="matMenu" xPosition="before">
                     <button class="drop-menu" mat-menu-item (click)="openAdminProfileTab()"> <mat-icon>person</mat-icon> My Profile </button>
                     <button class="drop-menu" mat-menu-item (click)="openCahngePasswordTab()"> <mat-icon>lock</mat-icon> Change Password </button>
                     <button class="drop-menu" mat-menu-item (click)="logout()" > <mat-icon>power_settings_new</mat-icon> Logout </button>
-                </mat-menu>
+                </mat-menu> -->
 			</div>
 		</mat-toolbar-row>
 	</mat-toolbar>
