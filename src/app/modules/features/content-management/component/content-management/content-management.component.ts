@@ -15,7 +15,7 @@ export class ContentManagementComponent implements OnInit {
     content;
     contentTabs = [
         { tabName: 'Privacy Policy' },
-        { tabName: 'Term and Conditions' },
+        { tabName: 'Terms and Conditions' },
         { tabName: 'FAQs' },
         { tabName: 'Contact Us' },
     ];
@@ -86,7 +86,6 @@ export class ContentManagementComponent implements OnInit {
     }
 
     onEditContent(event) {
-        // if(event.content.tri)
         if (!this.getDescription(event.content)) {
             this.$popUp.error("Content can't be empty");
             return;

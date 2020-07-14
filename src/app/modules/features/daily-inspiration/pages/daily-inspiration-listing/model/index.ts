@@ -51,6 +51,7 @@ export class DailyTableDataSource implements Table.Source<Category> {
     search: 'Search by Title',
     index: true,
     addComponent: true,
+    sorting: true,
     filterComponent: DailyInspirationFilterComponent
   };
   constructor(public data: Table.Data<Category> = defaultData) {}

@@ -1,4 +1,5 @@
 import * as Table from 'src/app/modules/commonTable/table/interfaces';
+import { ListingFilterComponent } from '../pages/article-management-listing/component/listing-filter.component';
 type Category = any;
 
 const defaultData: Table.Data<Category> = {
@@ -14,7 +15,7 @@ export class ArticleTableDataSource implements Table.Source<Category> {
     {
         title: 'Post',
         id: 'title',
-        sorting: false,
+        sorting: true,
         templateBy: 'title'
         // resolve: (row: any) => row['title'] || '-',
     },
@@ -61,7 +62,8 @@ export class ArticleTableDataSource implements Table.Source<Category> {
     search: 'Search by Post',
     index: true,
     addComponent: true,
-    // filterComponent: DailyAdviceFilterComponent
+    sorting: true,
+    filterComponent: ListingFilterComponent
   };
   constructor(public data: Table.Data<Category> = defaultData) {}
 }

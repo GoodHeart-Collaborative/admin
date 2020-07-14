@@ -1,4 +1,5 @@
 import * as Table from 'src/app/modules/commonTable/table/interfaces';
+import { ListingFilterComponent } from '../pages/member-of-the-day-listing/component/listing-filter.component';
 type Category = any;
 
 const defaultData: Table.Data<Category> = {
@@ -14,7 +15,7 @@ export class MemberTableDataSource implements Table.Source<Category> {
     {
         title: 'Name',
         id: 'name',
-        sorting: false,
+        sorting: true,
         templateBy: 'name'
         // resolve: (row: any) => row['title'] || '-',
     },
@@ -68,7 +69,7 @@ export class MemberTableDataSource implements Table.Source<Category> {
     search: 'Search by Name',
     index: true,
     // addComponent: true,
-    // filterComponent: DailyAdviceFilterComponent
+    filterComponent: ListingFilterComponent
   };
   constructor(public data: Table.Data<Category> = defaultData) {}
 }

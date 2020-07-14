@@ -1,4 +1,3 @@
-
 <app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)">
 
     <ng-template appFor="createdAt" let-user="row">
@@ -9,9 +8,9 @@
         {{ user?.status | titlecase}}
     </ng-template>
 
-    <ng-template appFor="isAdminVerified" let-user="row">
+    <!-- <ng-template appFor="isAdminVerified" let-user="row">
         {{ user?.isAdminVerified  ? 'Verified' : 'Premium'}}
-    </ng-template>
+    </ng-template> -->
 
     <ng-template appFor="mobileNo" let-user="row">
         <div class="mobile-content" [class.verified-user]="user?.isAdminVerified">

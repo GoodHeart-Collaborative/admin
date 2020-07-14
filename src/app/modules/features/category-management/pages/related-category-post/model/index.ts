@@ -50,6 +50,7 @@ export class RelatedCategoryTableDataSource implements Table.Source<Category> {
     selection: false,
     search: 'Search by Name',
     index: true,
+    sorting: true
     // filterComponent: UsersListingFilterComponent
   };
   constructor(public data: Table.Data<Category> = defaultData) {}

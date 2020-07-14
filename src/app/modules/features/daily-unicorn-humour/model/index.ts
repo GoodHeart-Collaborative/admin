@@ -15,7 +15,7 @@ export class DailyUnicornTableDataSource implements Table.Source<Category> {
     {
         title: 'Post',
         id: 'title',
-        sorting: false,
+        sorting: true,
         templateBy: 'title'
         // resolve: (row: any) => row['title'] || '-',
     },
@@ -58,6 +58,7 @@ export class DailyUnicornTableDataSource implements Table.Source<Category> {
     search: 'Search by Post',
     index: true,
     addComponent: true,
+    sorting: true,
     filterComponent: DailyUnicornFilterComponent
   };
   constructor(public data: Table.Data<Category> = defaultData) {}

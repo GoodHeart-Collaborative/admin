@@ -38,13 +38,13 @@ export class UserTableDataSource implements Table.Source<User> {
       sorting: true,
       templateBy: 'createdAt',
     },
-    {
-      title: 'Member Type',
-      id: 'isAdminVerified',
-      sorting: false,
-      templateBy: 'isAdminVerified'
-      // resolve: (row: any) => row['status'] || 'NA',
-    },
+    // {
+    //   title: 'Member Type',
+    //   id: 'isAdminVerified',
+    //   sorting: false,
+    //   templateBy: 'isAdminVerified'
+    //   // resolve: (row: any) => row['status'] || 'NA',
+    // },
     {
       title: 'Status',
       id: 'status',
@@ -64,6 +64,7 @@ export class UserTableDataSource implements Table.Source<User> {
     selection: false,
     search: 'Search by Name, Email',
     index: true,
+    sorting: true,
     filterComponent: UsersListingFilterComponent,
    
   };

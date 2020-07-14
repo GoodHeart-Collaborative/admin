@@ -15,7 +15,7 @@ export class DailyAdviceTableDataSource implements Table.Source<Category> {
     {
         title: 'Post',
         id: 'title',
-        sorting: false,
+        sorting: true,
         templateBy: 'title'
         // resolve: (row: any) => row['title'] || '-',
     },
@@ -37,8 +37,7 @@ export class DailyAdviceTableDataSource implements Table.Source<Category> {
         sorting: false,
         resolve: (row: any) => row['totalComments'] || '0',
       },
-  
-    {
+      {
       title: 'Created At',
       id: 'createdAt',
       sorting: true,
@@ -63,6 +62,7 @@ export class DailyAdviceTableDataSource implements Table.Source<Category> {
     search: 'Search by Post',
     index: true,
     addComponent: true,
+    sorting: true,
     filterComponent: DailyAdviceFilterComponent
   };
   constructor(public data: Table.Data<Category> = defaultData) {}
