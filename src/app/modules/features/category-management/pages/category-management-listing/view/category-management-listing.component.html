@@ -4,7 +4,7 @@
     </ng-template>
 
    <ng-template appFor="imageUrl" let-category="row">
-       <img [src]="category?.imageUrl |customImage:'USER'|async" alt="" (click)="onImageClick()">
+       <img [src]="category?.imageUrl |customImage:'USER'|async" alt="" (click)="onImageClick(category?.imageUrl)">
     </ng-template>
 
     <ng-template appFor="status" let-category="row">

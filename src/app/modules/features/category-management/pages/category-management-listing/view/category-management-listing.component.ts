@@ -163,9 +163,10 @@ relatedCategoryHandler(id) {
     this.$router.navigate([`${CATEGORY.fullUrl}`, id,]);
 }
 
-onImageClick() {
+onImageClick(image) {
   this.matDailog.open(ViewFullImageComponent, {
     width: '500px',
+    data: image
   }).afterClosed().subscribe();
 }
 
