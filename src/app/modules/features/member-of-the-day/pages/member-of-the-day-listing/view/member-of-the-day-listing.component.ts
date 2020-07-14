@@ -7,8 +7,9 @@ import { Router } from '@angular/router';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
-import { MEMBER_OF_THE_DAY } from 'src/app/constant/routes';
+import {  USER } from 'src/app/constant/routes';
 export type ActionType = 'deleted' | 'blocked' | 'active';
+
 @Component({
   selector: 'app-member-of-the-day-listing',
   templateUrl: './member-of-the-day-listing.component.html',
@@ -76,46 +77,46 @@ export class MemberOfTheDayListingComponent implements OnInit {
     this.updateUsers();
   }
 
-  onActionHandler(id: string, action: ActionType) {
-    const index = this.userData.data.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('Advice', action).subscribe((confirm) => {
-      if (confirm) {
-        this.$member.updateStatus(id, action).then((res) => {
-          // this.$utility.success(res.message);
-          this.handleActions(action, index);
-        });
-      }
-    });
-  }
+  // onActionHandler(id: string, action: ActionType) {
+  //   const index = this.userData.data.findIndex(user => user._id === id);
+  //   this.$confirmBox.listAction('Advice', action).subscribe((confirm) => {
+  //     if (confirm) {
+  //       this.$member.updateStatus(id, action).then((res) => {
+  //         // this.$utility.success(res.message);
+  //         this.handleActions(action, index);
+  //       });
+  //     }
+  //   });
+  // }
 
-  handleActions(action: ActionType, index) {
-    switch (action) {
-      case 'deleted':
-        this.userData.data.splice(index, 1);
-        this.userData.total = this.userData.total - 1;
-        break;
-      case 'active':
-        this.handleStatus(action, index);
+  // handleActions(action: ActionType, index) {
+  //   switch (action) {
+  //     case 'deleted':
+  //       this.userData.data.splice(index, 1);
+  //       this.userData.total = this.userData.total - 1;
+  //       break;
+  //     case 'active':
+  //       this.handleStatus(action, index);
 
-        break;
-      case 'blocked':
-        this.handleStatus(action, index);
+  //       break;
+  //     case 'blocked':
+  //       this.handleStatus(action, index);
 
-        break;
-      default:
-        break;
-    }
-    this.setUpTableResource(this.userData);
-  }
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  //   this.setUpTableResource(this.userData);
+  // }
 
-  handleStatus(action: 'blocked' | 'active', index: number) {
-    this.userData.data = this.userData.data.map((user, i) => {
-      if (i === index) {
-        user.status = action;
-      }
-      return user;
-    });
-  }
+  // handleStatus(action: 'blocked' | 'active', index: number) {
+  //   this.userData.data = this.userData.data.map((user, i) => {
+  //     if (i === index) {
+  //       user.status = action;
+  //     }
+  //     return user;
+  //   });
+  // }
 
   setUpTableResource(userRecords) {
     const { pageIndex, pageSize } = this.eventData;
@@ -134,13 +135,13 @@ export class MemberOfTheDayListingComponent implements OnInit {
 //  }
 
   onDetails(id) {
-    this.$router.navigate([`${MEMBER_OF_THE_DAY.fullUrl}`, id, 'details']);
+    this.$router.navigate([`${USER.fullUrl}`, id, 'details']);
   }
 
-  onAdd() {
-    const dialogRef = this.$matDailog.open(AddMemberOfTheDayComponent, {
-      width: '500px',
-    }).afterClosed().subscribe();
-  }
+  // onAdd() {
+  //   const dialogRef = this.$matDailog.open(AddMemberOfTheDayComponent, {
+  //     width: '500px',
+  //   }).afterClosed().subscribe();
+  // }
 
 }

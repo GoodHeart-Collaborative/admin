@@ -21,15 +21,15 @@ const routes: Routes = [
       ),
     },
 
-    {
-      path: `${MEMBER_OF_THE_DAY_DETAILS.path}/details`,
-      resolve : {
-        dailyData : MemberOfTheDayServiceResolve
-      },
-      loadChildren: () => import('./pages/member-of-the-day-details/member-of-the-day-details.module')
-      .then( (m) => m.MemberOfTheDayDetailsModule
-      ),
-    },
+    // {
+    //   path: `${MEMBER_OF_THE_DAY_DETAILS.path}/details`,
+    //   resolve : {
+    //     dailyData : MemberOfTheDayServiceResolve
+    //   },
+    //   loadChildren: () => import('./pages/member-of-the-day-details/member-of-the-day-details.module')
+    //   .then( (m) => m.MemberOfTheDayDetailsModule
+    //   ),
+    // },
   ]
 }
 ];
