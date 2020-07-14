@@ -12,7 +12,7 @@ export class ArticleManagementService {
   ) { }
 
   async  queryData(params) {
-    // return  this.$http.get(ADVICE, params).toPromise();
+    // return  this.$http.get(ARTICLES, params).toPromise();
   }
 
   async updateStatus(id, status) {

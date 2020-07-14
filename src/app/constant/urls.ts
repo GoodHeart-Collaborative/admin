@@ -43,6 +43,11 @@ export const ACTION_ADVICE = (Id , status) => `admin/advice/${Id}/status/${statu
 export const MEMBER = 'admin/members';
 export const MEMBER_DETAILS = (Id) => `admin/members/${Id}`;
 
+// ARTICLES API's //
+
+export const ARTICLES = 'admin/articles';
+export const ARTICLES_DETAILS = (Id) => `admin/articles/${Id}`;
+
 
 // DREASHBOARD API's //
 export const DASHBOARD = 'admin/dashboard';

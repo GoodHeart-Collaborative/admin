@@ -1,24 +1,24 @@
 <div class="page-add-article-management">
     <div class="add-article-management-content">
 
-        <form [formGroup]="adviceForm">
+        <form [formGroup]="articleForm">
             <div class="row-1">
-                <!-- <media-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL"></media-upload> -->
+                <media-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL"></media-upload>
 
                 <div class="right-portion">
                     <mat-form-field appearance="outline">
                         <mat-label>Article Title</mat-label>
                         <input matInput placeholder="Title"
-                            appWhiteSpace>
-                        <!-- <mat-hint>{{input.value.length}}/{{titleMaxLength}}</mat-hint> -->
-                        <!-- <mat-error>{{form('title') |validate:'Title' }}</mat-error> -->
+                            appWhiteSpace #input>
+                        <mat-hint>{{input.value.length}}/{{titleMaxLength}}</mat-hint> 
+                         <mat-error>{{form('title') |validate:'Title' }}</mat-error>
                     </mat-form-field>
 
                     <mat-form-field appearance="outline">
                         <mat-label>Description</mat-label>
-                        <textarea matInput placeholder="Ex. It makes me feel..." appWhiteSpace></textarea>
-                        <!-- <mat-hint>{{description.value.length}}/{{descriptionMaxLength }}</mat-hint> -->
-                        <!-- <mat-error>{{form('description')  |validate:'Description'}}</mat-error> -->
+                        <textarea matInput placeholder="Ex. It makes me feel..." appWhiteSpace #description></textarea>
+                         <mat-hint>{{description.value.length}}/{{descriptionMaxLength }}</mat-hint> 
+                         <mat-error>{{form('description')  |validate:'Description'}}</mat-error> 
                     </mat-form-field>
                 </div>
             </div>
