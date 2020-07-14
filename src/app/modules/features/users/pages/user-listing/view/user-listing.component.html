@@ -30,10 +30,10 @@
 
         <ng-template appFor="actions"  let-user="row">
             <div class="action-icon-cover">
-                <i class="material-icons icon-check icon-edit" (click)="onverifyHandler(user?._id)" title="Verify User" [class.verified-user]="user?.isAdminVerified">
+                <i class="material-icons icon-check icon-edit" (click)="onverifyHandler(user?._id)" title="Verify User" [class.disabled-icon]="user?.isAdminVerified">
                     check_circle
                 </i>
-                <i class="material-icons icon-deny" title="Reject User" (click)="onDeclinedHandler(user?._id)"  [class.rejected-user]="user?.isAdminRejected">
+                <i class="material-icons icon-deny" title="Reject User" (click)="onDeclinedHandler(user?._id)"  [class.disabled-icon]="user?.isAdminRejected">
                     thumb_down_alt
                 </i>
                 <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')" title="Delete user">
