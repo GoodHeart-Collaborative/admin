@@ -59,13 +59,17 @@ export class RequestInterceptor implements HttpInterceptor {
                             this.utilityService.clearStorage();
                             this.router.navigate([LOGIN.fullUrl]);
                         }
-                        if ((err.status === 423 || err.error.type === 'SESSION_EXPIRED') || (err.status === 403 || err.error.type === 'INCORRECT_PASSWORD') || (err.status === 401 || err.error.type === 'INVALID_TOKEN')) {
+                        if ((err.status === 423 || err.error.type === 'SESSION_EXPIRED')
+                        || (err.status === 403 || err.error.type === 'INCORRECT_PASSWORD')
+                        || (err.status === 401 || err.error.type === 'INVALID_TOKEN')) {
                             message = err.error.message;
                             this.utilityService.clearStorage();
                             this.router.navigate([LOGIN.fullUrl]);
                         }
                         if (err.status === 504 || err.status === 0) {
                             message = SLOW_INTERNET_CONNECTION;
+                            this.utilityService.clearStorage();
+                            this.router.navigate([LOGIN.fullUrl]);
                         }
                         if (err.status === 400 ) {
                             message = err.error.message;

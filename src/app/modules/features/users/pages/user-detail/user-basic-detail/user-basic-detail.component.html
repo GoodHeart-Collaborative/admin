@@ -12,7 +12,7 @@
 
                     </div>
                     <div class="btn-row">
-                        <button class="btn btn-primary btn-delete" mat-stroked-button>Refute User</button>
+                        <button class="btn btn-primary btn-delete" mat-stroked-button *ngIf="data?.isAdminVerified" (click)="onverifyHandler(data?._id, data?.isAdminRejected)">Refute User</button>
                         <button class="btn btn-primary" mat-stroked-button *ngIf="!data?.isAdminVerified" (click)="onverifyHandler(data?._id, data?.isAdminVerified)">Verify User</button>
                     </div>
                 </div>
@@ -40,10 +40,6 @@
                         <div class="col-md-4">
                             <p class="label">Status</p>
                             <p class="value">{{data?.status | titlecase}} </p>
-                        </div>
-                        <div class="col-md-4">
-                            <p class="label">Approve User</p>
-                            <p class="value">{{data?.isAdminVerified  ? 'Verified' : 'Premium'}} </p>
                         </div>
                         <div class="col-md-4">
                             <p class="label">Profession</p>
