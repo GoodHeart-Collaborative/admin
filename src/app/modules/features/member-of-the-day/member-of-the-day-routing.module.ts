@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MemberOfTheDayComponent } from './view/member-of-the-day.component';
-import { MEMBER_OF_THE_DAY_LIST , ADD_MEMBER_OF_THE_DAY, MEMBER_OF_THE_DAY_DETAILS } from 'src/app/constant/routes';
+import { MEMBER_OF_THE_DAY_LIST , MEMBER_OF_THE_DAY_DETAILS } from 'src/app/constant/routes';
 
 const routes: Routes = [
   {
@@ -20,15 +20,15 @@ const routes: Routes = [
       ),
     },
 
-    // {
-    //   path: `${MEMBER_OF_THE_DAY_DETAILS.path}/details`,
-    //   resolve : {
-    //     dailyData : DailyUnicornHumourServiceResolve
-    //   },
-    //   loadChildren: () => import('./pages/daily-unicorm-humour-details/daily-unicorm-humour-details.module')
-    //   .then( (m) => m.DailyUnicormHumourDetailsModule
-    //   ),
-    // },
+    {
+      path: `${MEMBER_OF_THE_DAY_DETAILS.path}/details`,
+      // resolve : {
+      //   dailyData : DailyUnicornHumourServiceResolve
+      // },
+      loadChildren: () => import('./pages/member-of-the-day-details/member-of-the-day-details.module')
+      .then( (m) => m.MemberOfTheDayDetailsModule
+      ),
+    },
   ]
 }
 ];

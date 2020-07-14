@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/modules/shared/services/http.service';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
+import { MEMBER } from 'src/app/constant/urls';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class MemberOfTheDayService {
   ) { }
 
   async  queryData(params) {
-    // return  this.$http.get(ADVICE, params).toPromise();
+    return  this.$http.get(MEMBER, params).toPromise();
   }
 
   async updateStatus(id, status) {
