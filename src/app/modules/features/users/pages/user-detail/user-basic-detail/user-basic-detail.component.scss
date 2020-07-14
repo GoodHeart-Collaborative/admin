@@ -5,7 +5,7 @@
         align-items: flex-start;
         justify-content: flex-start;
         .left-portion{
-            width: 210px;
+            width: 220px;
             .img-cover{
                 width: 150px;
                 height: 150px;
@@ -21,6 +21,9 @@
                 }
             }
             .btn-row{
+                &:not(:first-child){
+                    margin-top: 10px;
+                }
                 button{
                     &.btn-block{
                         border-color: #a72222 !important;
@@ -38,8 +41,19 @@
             }
         }
         .right-portion{
-            width: calc(100% - 250px);
+            width: calc(100% - 260px);
             padding-left: 40px;
+            .phone-value{
+                display: flex;
+                .verified-icon{
+                    display: block;
+                    // position: absolute;
+                    // left: -24px;
+                    // top: -2px;
+                    font-size: 20px;
+                    color: green;
+                }
+            }
         }
     }
 }

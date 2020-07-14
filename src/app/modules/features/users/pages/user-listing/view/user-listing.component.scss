@@ -11,15 +11,21 @@
             color: green;
         }
         &.verified-user{
+            margin-left: 10px;
             .verified-icon{
                 display: block;
             }
         }
     }
     .icon-check{
+        color: #0b805f;
+        font-size: 21px;
         &.verified-user{
             cursor: not-allowed;
             opacity: .5;
         }
+    }
+    .icon-deny{
+        color: #cc9211;
     }
 }

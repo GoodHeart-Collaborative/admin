@@ -9,7 +9,11 @@
                     <div class="btn-row">
                         <button class="btn btn-block" mat-stroked-button (click)="onBlockUSer()" [class.btn-green]="data?.status != 'active' "> {{data?.status === 'active' ? 'Block' : 'Unblock'}} User </button>
                         <button class="btn btn-primary btn-delete" mat-stroked-button (click)="onBlockUSer(true)">Delete User</button>
-                        <button class="btn btn-primary " mat-stroked-button (click)="onverifyHandler(data?._id, data?.isAdminVerified)" [disabled]="data?.isAdminVerified">Verify User</button>
+
+                    </div>
+                    <div class="btn-row">
+                        <button class="btn btn-primary btn-delete" mat-stroked-button>Refute User</button>
+                        <button class="btn btn-primary" mat-stroked-button *ngIf="!data?.isAdminVerified" (click)="onverifyHandler(data?._id, data?.isAdminVerified)">Verify User</button>
                     </div>
                 </div>
                 <div class="right-portion">
@@ -25,7 +29,9 @@
                         </div>
                         <div class="col-md-4">
                             <p class="label">Phone</p>
-                            <p class="value">+{{data?.countryCode}} {{data?.mobileNo}}</p>
+                            <p class="value phone-value">
+                                +{{data?.countryCode}} {{data?.mobileNo}} <span class="material-icons verified-icon" *ngIf="data?.isAdminVerified">verified_user</span>
+                            </p>
                         </div>
                         <div class="col-md-4">
                             <p class="label">Date of Birth</p>
