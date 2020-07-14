@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MemberOfTheDayComponent } from './view/member-of-the-day.component';
 import { MEMBER_OF_THE_DAY_LIST , MEMBER_OF_THE_DAY_DETAILS } from 'src/app/constant/routes';
+import { MemberOfTheDayServiceResolve } from './service/member-of-the-day.service';
 
 const routes: Routes = [
   {
@@ -22,9 +23,9 @@ const routes: Routes = [
 
     {
       path: `${MEMBER_OF_THE_DAY_DETAILS.path}/details`,
-      // resolve : {
-      //   dailyData : DailyUnicornHumourServiceResolve
-      // },
+      resolve : {
+        dailyData : MemberOfTheDayServiceResolve
+      },
       loadChildren: () => import('./pages/member-of-the-day-details/member-of-the-day-details.module')
       .then( (m) => m.MemberOfTheDayDetailsModule
       ),
