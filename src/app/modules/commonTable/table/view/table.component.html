@@ -18,7 +18,7 @@
 
 <div class="table-container">
 	<div class="table-cover">
-		<table mat-table [dataSource]="dataSource" matSort [matSortDisabled]="!hasSorting" *ngIf="!!tableSource">
+		<table mat-table [dataSource]="dataSource" matSort [matSortDisabled]="!hasSorting" *ngIf="!!tableSource"  (matSortChange)="onSortHandler($event)">
 			<ng-container matColumnDef="selection">
 				<th mat-header-cell *matHeaderCellDef class="table-header">
 					<mat-checkbox (change)="onHeadSelectionChangeHandler($event)" color="primary"></mat-checkbox>

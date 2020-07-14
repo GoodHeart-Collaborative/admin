@@ -21,6 +21,7 @@ export class DailyAdviceListingComponent implements OnInit {
     pageSize: 10,
     searchText: null,
     filterData: null,
+    sortData: null
   };
   constructor(
     private $category: DailyAdviceManagementService,
@@ -35,7 +36,9 @@ export class DailyAdviceListingComponent implements OnInit {
   }
 
   updateUsers() {
-    const { pageIndex, pageSize, searchText, filterData } = this.eventData;
+    const { pageIndex, pageSize, searchText, filterData , sortData } = this.eventData;
+    console.log(this.eventData);
+    
     let params = {
       page: `${pageIndex + 1}`,
       limit: `${pageSize}`,
@@ -56,6 +59,11 @@ export class DailyAdviceListingComponent implements OnInit {
     }
     if (searchText) {
       params['searchTerm'] = searchText;
+    }
+    if (sortData) {
+      console.log(sortData);
+      params['sortOrder'] = sortData.sortOrder;
+      params['sortBy'] = sortData.sortBy;
     }
     this.$category.queryData(params).then(res => {
       this.userData = res['data'];

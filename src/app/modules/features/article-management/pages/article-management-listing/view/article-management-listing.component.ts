@@ -22,6 +22,7 @@ export class ArticleManagementListingComponent implements OnInit {
     pageSize: 10,
     searchText: null,
     filterData: null,
+    sortData: null
   };
   constructor(
     private $article: ArticleManagementService,
@@ -36,7 +37,7 @@ export class ArticleManagementListingComponent implements OnInit {
   }
 
   updateUsers() {
-    const { pageIndex, pageSize, searchText, filterData } = this.eventData;
+    const { pageIndex, pageSize, searchText, filterData , sortData} = this.eventData;
     let params = {
       page: `${pageIndex + 1}`,
       limit: `${pageSize}`,
@@ -57,6 +58,10 @@ export class ArticleManagementListingComponent implements OnInit {
     }
     if (searchText) {
       params['searchTerm'] = searchText;
+    }
+    if (sortData) {
+      params['sortOrder'] = sortData.sortOrder;
+      params['sortBy'] = sortData.sortBy;
     }
     this.$article.queryData(params).then(res => {
       this.userData = res['data'];

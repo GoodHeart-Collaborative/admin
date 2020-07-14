@@ -23,6 +23,7 @@ export class DailyUnicornHumourListingComponent implements OnInit {
     pageSize: 10,
     searchText: null,
     filterData: null,
+    sortData: null,
   };
   constructor(
     private $category: DailyUnicornHumourService,
@@ -38,7 +39,7 @@ export class DailyUnicornHumourListingComponent implements OnInit {
   }
 
   updateUsers() {
-    const { pageIndex, pageSize, searchText, filterData } = this.eventData;
+    const { pageIndex, pageSize, searchText, filterData , sortData} = this.eventData;
     let params = {
       page: `${pageIndex + 1}`,
       limit: `${pageSize}`,
@@ -56,6 +57,10 @@ export class DailyUnicornHumourListingComponent implements OnInit {
           params[key] = filterData[key];
         }
       });
+    }
+    if (sortData) {
+      params['sortOrder'] = sortData.sortOrder;
+      params['sortBy'] = sortData.sortBy;
     }
     if (searchText) {
       params['searchTerm'] = searchText;

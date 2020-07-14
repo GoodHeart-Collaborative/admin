@@ -22,6 +22,7 @@ export class RelatedCategoryPostComponent implements OnInit {
     pageSize: 10,
     searchText: null,
     filterData: null,
+    sortData: null
   };
   constructor(
     private $category: CategoryManagementService,

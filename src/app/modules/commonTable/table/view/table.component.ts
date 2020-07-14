@@ -44,9 +44,9 @@ export class TableComponent implements OnInit {
         this.paginator.pageIndex = source.data.pageIndex;
         this.paginator.pageSize = source.data.pageSize;
       }
-      // if (this.sort) {
-      //   this.dataSource.sort = this.sort;
-      // }
+      if (this.sort) {
+        this.dataSource.sort = this.sort;
+      }
     }
   }
 
@@ -207,7 +207,8 @@ export class TableComponent implements OnInit {
       pageIndex: 0,
       pageSize: 10,
       searchText: null,
-      filterData: null
+      filterData: null,
+      sortData: null
     }
   };
 
@@ -218,6 +219,8 @@ export class TableComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.tableSource);
+
     // this.checkAccessLevel();
   }
   templateOutlet(column: Table.Column<any>) {
@@ -328,9 +331,35 @@ export class TableComponent implements OnInit {
     const input = target as HTMLInputElement;
     input.value = input.value.trim();
   }
+
+  onSortHandler(event) {
+    console.log(event);
+    
+    let obj = {};
+
+    if (event.active) {
+      obj['sortBy'] = event.active;
+    }
+    if (event.direction) {
+      if (event.direction == 'asc') {
+        obj['sortOrder'] = 1;
+      }
+      if (event.direction == 'desc') {
+        obj['sortOrder'] = -1;
+      }
+    }
+    this.optionEvent = {
+      type: 'SORT',
+      data: {
+        ...this.optionEvent.data,
+        sortData: obj || null,
+        pageIndex: 0
+      }
+    };
+    this._emitOptionEvent();
+  }
   // pagination handle
   onPageHandler(event) {
-    // const page =
     this.optionEvent = {
       type: 'PAGINATION',
       data: {
@@ -339,12 +368,13 @@ export class TableComponent implements OnInit {
         pageSize: event.pageSize
       }
     };
+    console.log(this.optionEvent);
     this._emitOptionEvent();
   }
+
   private _emitOptionEvent() {
     console.log(this.optionEvent);
-
-    this.optionChange.emit(this.optionEvent);
+     this.optionChange.emit(this.optionEvent);
   }
 
   onAddHandler() {

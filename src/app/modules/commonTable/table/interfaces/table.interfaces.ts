@@ -29,13 +29,14 @@ export interface Source<T> {
     data: Data<T>;
     options?: Options;
 }
-export type OptionType = 'SEARCH' | 'FILTER' | 'PAGINATION';
+export type OptionType = 'SEARCH' | 'FILTER' | 'PAGINATION' | 'SORT';
 
 export interface OptionData {
     pageIndex: number;
     pageSize: number;
     searchText: string;
     filterData: any;
+    sortData: any
 }
 export interface OptionEvent {
     type: OptionType;
