@@ -113,3 +113,14 @@ a{
         }
     }
 }
+
+.new-password{
+    .mat-form-field-flex{
+        padding-right: 40px !important;
+        .app-invalid-password-hint{
+            position: absolute;
+            right: -52px;
+            top: 12px;
+        }
+    }
+}

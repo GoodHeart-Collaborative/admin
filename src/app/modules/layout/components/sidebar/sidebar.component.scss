@@ -127,10 +127,14 @@
 	}
 }
 
-::ng-deep {
+:host ::ng-deep {
+	.mat-list-item-content{
+		padding: 0px 12px 0px 5px !important;
+	}
 	.mat-tooltip {
 		display: none;
 	}
+
 }
 
 .sidebar-list{
