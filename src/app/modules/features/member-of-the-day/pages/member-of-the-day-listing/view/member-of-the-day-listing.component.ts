@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
+import { MEMBER_OF_THE_DAY } from 'src/app/constant/routes';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 @Component({
   selector: 'app-member-of-the-day-listing',
@@ -121,14 +122,14 @@ export class MemberOfTheDayListingComponent implements OnInit {
     });
   }
 
- oneditHandler(id) {
-   this.$matDailog.open(AddMemberOfTheDayComponent, {
-    width: '500px',
-  }).afterClosed().subscribe();
- }
+//  oneditHandler() {
+//    this.$matDailog.open(AddMemberOfTheDayComponent, {
+//     width: '500px',
+//   }).afterClosed().subscribe();
+//  }
 
   onDetails(id) {
-    // this.$router.navigate([`${ARTICLES.fullUrl}`, id, 'details']);
+    this.$router.navigate([`${MEMBER_OF_THE_DAY.fullUrl}`, id, 'details']);
   }
 
   onAdd() {

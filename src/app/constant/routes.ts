@@ -377,6 +377,7 @@ export const MEMBER_OF_THE_DAY_DETAILS: IRoute = {
     return `${MEMBER_OF_THE_DAY.fullUrl}/${this.path}`;
   }
 };
+
 // ARTICLES ROUTES //
 export const ARTICLES: IRoute = {
   path: 'articles',

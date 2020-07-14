@@ -12,29 +12,36 @@ export class MemberTableDataSource implements Table.Source<Category> {
   label = 'Member Of The  Day';
   columns: Table.Column<Category>[] = [
     {
-        title: 'Post',
-        id: 'title',
+        title: 'Name',
+        id: 'name',
         sorting: false,
-        templateBy: 'title'
+        templateBy: 'name'
         // resolve: (row: any) => row['title'] || '-',
     },
     {
-        title: 'Description',
-        id: 'description',
+        title: 'Email',
+        id: 'email',
         sorting: false,
-        templateBy: 'description'
+        resolve: (row: any) => row['email'] || '-',
+
     },
     {
-        title: 'Like Count',
-        id: 'likeCount',
+        title: 'MobileNo',
+        id: 'mobileNo',
         sorting: false,
-        resolve: (row: any) => row['likeCount'] || '0',
+        resolve: (row: any) => row['mobileNo'] || '-',
       },
     {
         title: 'Total Comments',
         id: 'totalComments',
         sorting: false,
         resolve: (row: any) => row['totalComments'] || '0',
+      },
+    {
+        title: 'Total Like',
+        id: 'likeCount',
+        sorting: false,
+        resolve: (row: any) => row['likeCount'] || '0',
       },
     {
       title: 'Created At',
@@ -49,12 +56,12 @@ export class MemberTableDataSource implements Table.Source<Category> {
       templateBy: 'status'
     },
 
-    {
-      title: 'Actions',
-      id: 'actions',
-      sorting: false,
-      templateBy: 'actions',
-    },
+    // {
+    //   title: 'Actions',
+    //   id: 'actions',
+    //   sorting: false,
+    //   templateBy: 'actions',
+    // },
   ];
   options: Table.Options = {
     selection: false,
