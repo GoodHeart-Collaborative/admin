@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ViewFullImageComponent } from './view/view-full-image.component';
-import { MatIconModule } from '@angular/material';
+import { MatIconModule, MatDialogModule } from '@angular/material';
+import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 
 
 
@@ -9,7 +10,9 @@ import { MatIconModule } from '@angular/material';
   declarations: [ViewFullImageComponent],
   imports: [
     CommonModule,
-    MatIconModule
+    MatIconModule,
+    CustomImageModule,
+    MatDialogModule
   ],
   exports : [ViewFullImageComponent],
   entryComponents: [ViewFullImageComponent]
