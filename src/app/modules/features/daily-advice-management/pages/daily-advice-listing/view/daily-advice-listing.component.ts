@@ -7,6 +7,7 @@ import { DailyAdviceManagementService } from '../../../service/daily-advice-mana
 import { Router } from '@angular/router';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
+import { HOME_TYPE } from 'src/app/constant/drawer';
 @Component({
   selector: 'app-daily-advice-listing',
   templateUrl: './daily-advice-listing.component.html',
@@ -38,10 +39,10 @@ export class DailyAdviceListingComponent implements OnInit {
   updateUsers() {
     const { pageIndex, pageSize, searchText, filterData , sortData } = this.eventData;
     console.log(this.eventData);
-    
     let params = {
       page: `${pageIndex + 1}`,
       limit: `${pageSize}`,
+      type: `${HOME_TYPE.DAILY_ADVICE}`
     };
     if (filterData) {
       const keys = Object.keys(filterData).filter(el => filterData[el]);
@@ -61,7 +62,6 @@ export class DailyAdviceListingComponent implements OnInit {
       params['searchTerm'] = searchText;
     }
     if (sortData) {
-      console.log(sortData);
       params['sortOrder'] = sortData.sortOrder;
       params['sortBy'] = sortData.sortBy;
     }

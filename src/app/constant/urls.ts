@@ -24,6 +24,7 @@ export const EDIT_CATEGORY = (categoryId) => `admin/category/${categoryId}`;
 
 export const DAILY_INSPIRATION = 'admin/inspiration';
 export const DAILY_INSPIRATION_DETAILS = (Id) => `admin/inspiration/${Id}`;
+export const DAILY_INSPIRATION_ACTION = (id) => `admin/inspiration/${id}/status`;
 export const EDIT_DAILY_INSPIRATION = (Id) => `admin/inspiration/${Id}`;
 
 // UNICORN API's //
@@ -45,8 +46,8 @@ export const MEMBER_DETAILS = (Id) => `admin/members/${Id}`;
 
 // ARTICLES API's //
 
-export const ARTICLES = 'admin/articles';
-export const ARTICLES_DETAILS = (Id) => `admin/articles/${Id}`;
+export const ARTICLES = 'admin/inspire';
+export const ARTICLES_DETAILS = (Id) => `admin/inspire/${Id}`;
 
 
 // DREASHBOARD API's //
@@ -88,3 +89,6 @@ export const CATEGORY_ADD_POST = 'admin/category/add';
 export const CATEGORY_UPDATE_POST = 'admin/category/update';
 
 // CATEGORY API's //
+export const HOME = 'admin/home';
+export const HOME_DETAILS = (Id) => `admin/home/${Id}`;
+export const ACTION_HOME = (Id , status) => `admin/home/${Id}/status/${status}`;

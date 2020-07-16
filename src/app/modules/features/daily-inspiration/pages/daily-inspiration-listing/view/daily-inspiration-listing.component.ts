@@ -6,6 +6,7 @@ import { UtilityService } from 'src/app/modules/shared/services/utility.service'
 import { ADD_DAILY_INSPIRATION, DAILY_INSPIRATION } from 'src/app/constant/routes';
 import { DailyInspirationService } from '../../../service/daily-inspiration.service';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
+import { HOME_TYPE } from 'src/app/constant/drawer';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 @Component({
   selector: 'app-daily-inspiration-listing',
@@ -35,10 +36,11 @@ export class DailyInspirationListingComponent implements OnInit {
   }
 
   updateUsers() {
-    const { pageIndex, pageSize, searchText, filterData } = this.eventData;
+    const { pageIndex, pageSize, searchText, filterData , sortData } = this.eventData;
     let params = {
       page: `${pageIndex + 1}`,
       limit: `${pageSize}`,
+      type: `${HOME_TYPE.INSPIRATION}`
     };
     if (filterData) {
       const keys = Object.keys(filterData).filter(el => filterData[el]);
@@ -53,6 +55,10 @@ export class DailyInspirationListingComponent implements OnInit {
           params[key] = filterData[key];
         }
       });
+    }
+    if (sortData) {
+      params['sortOrder'] = sortData.sortOrder;
+      params['sortBy'] = sortData.sortBy;
     }
     if (searchText) {
       params['searchTerm'] = searchText;

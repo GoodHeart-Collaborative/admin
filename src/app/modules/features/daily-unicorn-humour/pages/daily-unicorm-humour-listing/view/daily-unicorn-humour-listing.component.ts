@@ -10,6 +10,7 @@ import { DAILY_UNICORN, ADD_DAILY_UNICORN } from 'src/app/constant/routes';
 import { DailyUnicormHumourDetailsModule } from '../../daily-unicorm-humour-details/daily-unicorm-humour-details.module';
 import { DailyUnicornHumourDetailsComponent } from '../../daily-unicorm-humour-details/view/daily-unicorn-humour-details.component';
 import { MatDialog } from '@angular/material';
+import { HOME_TYPE } from 'src/app/constant/drawer';
 @Component({
   selector: 'app-daily-unicorn-humour-listing',
   templateUrl: './daily-unicorn-humour-listing.component.html',
@@ -43,6 +44,7 @@ export class DailyUnicornHumourListingComponent implements OnInit {
     let params = {
       page: `${pageIndex + 1}`,
       limit: `${pageSize}`,
+      type: `${HOME_TYPE.UNICRON}`
     };
     if (filterData) {
       const keys = Object.keys(filterData).filter(el => filterData[el]);

@@ -60,7 +60,9 @@ export class UserListingComponent implements OnInit {
       params['searchTerm'] = searchText;
     }
     if (sortData) {
-      params['sortType'] = sortData.sortOrder;
+      console.log(sortData);
+      
+      params['sortOrder'] = sortData.sortOrder;
       params['sortBy'] = sortData.sortBy;
     }
     this.$userService.queryData(params).then(res => {

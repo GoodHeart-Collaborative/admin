@@ -6,10 +6,11 @@ import { onSelectFile } from 'src/app/constant/file-input';
 import { invalidImageError, invalidFileSize } from 'src/app/constant/messages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
-import { VALIDATION_CRITERIA } from 'src/app/constant/validation-criteria'
+import { VALIDATION_CRITERIA, getTrimmed } from 'src/app/constant/validation-criteria'
 import { RequestInterceptor } from 'src/app/Interceptors/request.interceptor';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { DAILY_INSPIRATION } from 'src/app/constant/routes';
+import { HOME_TYPE, MEDIA_TYPE } from 'src/app/constant/drawer';
 @Component({
   selector: 'app-add-daily-inspiratin',
   templateUrl: './add-daily-inspiratin.component.html',
@@ -37,8 +38,6 @@ export class AddDailyInspiratinComponent implements OnInit {
   ) {
     if ($router.snapshot.data.dailyData && $router.snapshot.data.dailyData.data) {
       this.dailyInspirationDetails = $router.snapshot.data.dailyData.data;
-      console.log();
-      
       $breadcrumb.replace(this.dailyInspirationDetails.id, this.dailyInspirationDetails.title);
     }
   }
@@ -47,9 +46,9 @@ export class AddDailyInspiratinComponent implements OnInit {
     this.createForm();
     this.isPostLater.valueChanges.subscribe(value => {
       if (value) {
-        this.inspirationForm.addControl('createdAt', new FormControl('', Validators.required))
+        this.inspirationForm.addControl('postedAt', new FormControl('', Validators.required))
       } else {
-        this.inspirationForm.removeControl('createdAt');
+        this.inspirationForm.removeControl('postedAt');
       }
     });
     this.getDailyInspiration();
@@ -61,6 +60,8 @@ export class AddDailyInspiratinComponent implements OnInit {
         title: ['', [Validators.required, Validators.maxLength(this.titleMaxLength)]],
         isPostLater: [false],
         description: ['', [Validators.required, Validators.maxLength(this.descriptionMaxLength)]],
+        type: HOME_TYPE.INSPIRATION,
+        mediaType: MEDIA_TYPE.IMAGE
       });
   }
 
@@ -77,9 +78,9 @@ export class AddDailyInspiratinComponent implements OnInit {
     if (this.dailyInspirationDetails) {
       this.profilePicURL = this.dailyInspirationDetails.imageUrl;
       this.inspirationForm.patchValue(this.dailyInspirationDetails);
-      if (this.dailyInspirationDetails && this.dailyInspirationDetails.createdAt && this.dailyInspirationDetails.isPostLater) {
+      if (this.dailyInspirationDetails && this.dailyInspirationDetails.postedAt && this.dailyInspirationDetails.isPostLater) {
 
-        this.inspirationForm.get('createdAt').patchValue(new Date(this.dailyInspirationDetails.createdAt));
+        this.inspirationForm.get('postedAt').patchValue(new Date(this.dailyInspirationDetails.postedAt));
       }
     }
   }
@@ -101,8 +102,10 @@ export class AddDailyInspiratinComponent implements OnInit {
     const body = { imageUrl: this.profilePicURL, ...this.inspirationForm.value };
 
     if (this.isPostLater.value) {
-      body.createdAt = new Date(this.inspirationForm.get('createdAt').value).getTime();
+      body.postedAt = new Date(this.inspirationForm.get('postedAt').value);
+      console.log(body.postedAt);
     }
+    getTrimmed(body);
     this.inspirationForm.disable();
     if (this.dailyInspirationDetails && this.dailyInspirationDetails._id) {
       this.$daily.editCategory(this.dailyInspirationDetails._id, body).then(

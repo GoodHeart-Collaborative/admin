@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { VALIDATION_CRITERIA } from 'src/app/constant/validation-criteria';
+import { VALIDATION_CRITERIA, getTrimmed } from 'src/app/constant/validation-criteria';
 import { ArticleManagementService } from '../../../service/article-management.service';
 import { FileUploadService } from 'src/app/modules/shared/services/file-upload.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -69,6 +69,8 @@ export class AddArticleManagementComponent implements OnInit {
   }
 
   async onSubmit() {
+    console.log(this.articleForm);
+    
     if (this.articleForm.invalid) {
       this.articleForm.markAllAsTouched();
       return;
@@ -79,12 +81,13 @@ export class AddArticleManagementComponent implements OnInit {
     }
     const body = { imageUrl: this.profilePicURL, ...this.articleForm.value };
     this.articleForm.disable();
+    getTrimmed(body);
     if (this.articleDetails && this.articleDetails._id) {
       body.status = this.articleDetails.status;
       this.$daily.editCategory(this.articleDetails._id, body).then(
         data => {
           this.articleForm.enable();
-          // this.$utility.success(data.message);
+          this.$utility.success(data.message);
           this.$route.navigate([ARTICLES.fullUrl]);
         },
         err => {
@@ -96,7 +99,7 @@ export class AddArticleManagementComponent implements OnInit {
     this.$daily.addCategory(body).then(
       data => {
         this.articleForm.enable();
-        // this.$utility.success(data.message);
+        this.$utility.success(data.message);
         this.$route.navigate([ARTICLES.fullUrl]);
       },
       err => {

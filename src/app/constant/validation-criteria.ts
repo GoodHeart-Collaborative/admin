@@ -18,3 +18,14 @@ export const VALIDATION_CRITERIA = {
   descriptionMinLength: 10,
   descriptionMaxLength: 400,
 };
+
+export const getTrimmed = (body) =>{
+  for (const key in body) {
+    if (body.hasOwnProperty(key)) {
+      if (typeof body[key] == 'string') {
+        body[key] = body[key].trim();
+      }
+
+    }
+  }
+}
