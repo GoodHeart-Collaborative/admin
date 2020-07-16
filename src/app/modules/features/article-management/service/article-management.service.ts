@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/modules/shared/services/http.service';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
+import { ARTICLES, DAILY_INSPIRATION, DAILY_INSPIRATION_ACTION, DAILY_INSPIRATION_DETAILS, EDIT_DAILY_INSPIRATION } from 'src/app/constant/urls';
 
 @Injectable({
   providedIn: 'root'
@@ -12,26 +13,26 @@ export class ArticleManagementService {
   ) { }
 
   async  queryData(params) {
-    // return  this.$http.get(ARTICLES, params).toPromise();
+    return  this.$http.get(DAILY_INSPIRATION, params).toPromise();
   }
 
   async updateStatus(id, status) {
-    // const params = {
-    //   status : status
-    // };
-    // return await this.$http.patch(ACTION_ADVICE(id, status), {}).toPromise();
+    const params = {
+      status : status
+    };
+    return await this.$http.patch(DAILY_INSPIRATION_ACTION(id), params).toPromise();
   }
 
   async  addCategory(params) {
-    // return  this.$http.post(ADVICE, params).toPromise();
+    return  this.$http.post(DAILY_INSPIRATION, params).toPromise();
   }
   async  editCategory(id, params) {
-    // return  this.$http.patch(ADVICE_DETAILS(id), params).toPromise();
+    return  this.$http.patch(EDIT_DAILY_INSPIRATION(id), params).toPromise();
   }
 
   async  updateInspiration(id) {
-    // const data =  this.$http.get(ADVICE_DETAILS(id)).toPromise();
-    // return data;
+    const data =  this.$http.get(DAILY_INSPIRATION_DETAILS(id)).toPromise();
+    return data;
   }
 
 }

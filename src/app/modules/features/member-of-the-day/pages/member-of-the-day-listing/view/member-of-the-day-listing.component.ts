@@ -39,7 +39,7 @@ export class MemberOfTheDayListingComponent implements OnInit {
   }
 
   updateUsers() {
-    const { pageIndex, pageSize, searchText, filterData ,sortData} = this.eventData;
+    const { pageIndex, pageSize, searchText, filterData , sortData} = this.eventData;
     let params = {
       page: `${pageIndex + 1}`,
       limit: `${pageSize}`,

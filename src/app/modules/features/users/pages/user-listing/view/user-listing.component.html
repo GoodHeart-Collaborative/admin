@@ -8,9 +8,12 @@
         {{ user?.status | titlecase}}
     </ng-template>
 
-    <!-- <ng-template appFor="isAdminVerified" let-user="row">
-        {{ user?.isAdminVerified  ? 'Verified' : 'Premium'}}
-    </ng-template> -->
+    <!-- <ng-template appFor="imageUrl" let-category="row">
+        <div class="category-image-cover">
+         <img [src]="category?.imageUrl |customImage:'USER'|async" alt="category-image" (click)="onImageClick(category?.imageUrl)">
+        </div>
+     </ng-template> -->
+
 
     <ng-template appFor="mobileNo" let-user="row">
         <div class="mobile-content" [class.verified-user]="user?.isAdminVerified">

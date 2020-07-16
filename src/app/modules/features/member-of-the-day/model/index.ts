@@ -68,8 +68,8 @@ export class MemberTableDataSource implements Table.Source<Category> {
     selection: false,
     search: 'Search by Name',
     index: true,
-    // addComponent: true,
-    filterComponent: ListingFilterComponent
+    filterComponent: ListingFilterComponent,
+    sorting: true
   };
   constructor(public data: Table.Data<Category> = defaultData) {}
 }

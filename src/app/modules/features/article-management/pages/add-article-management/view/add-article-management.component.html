@@ -9,15 +9,15 @@
                     <mat-form-field appearance="outline">
                         <mat-label>Article Title</mat-label>
                         <input matInput placeholder="Title"
-                            appWhiteSpace #input>
-                        <mat-hint>{{input.value.length}}/{{titleMaxLength}}</mat-hint> 
+                            appWhiteSpace #input formControlName="title">
+                        <mat-hint>{{input.value.trim().length}}/{{titleMaxLength}}</mat-hint> 
                          <mat-error>{{form('title') |validate:'Title' }}</mat-error>
                     </mat-form-field>
 
                     <mat-form-field appearance="outline">
                         <mat-label>Description</mat-label>
-                        <textarea matInput placeholder="Ex. It makes me feel..." appWhiteSpace #description></textarea>
-                         <mat-hint>{{description.value.length}}/{{descriptionMaxLength }}</mat-hint> 
+                        <textarea matInput placeholder="Ex. It makes me feel..." appWhiteSpace #description formControlName="description"></textarea>
+                         <mat-hint>{{description.value.trim().length}}/{{descriptionMaxLength }}</mat-hint> 
                          <mat-error>{{form('description')  |validate:'Description'}}</mat-error> 
                     </mat-form-field>
                 </div>
@@ -25,7 +25,7 @@
         </form>
         <div class="btn-row">
             <button class="btn btn-simple" mat-stroked-button type="button" (click)="onCancel()"> Cancel </button>
-            <button class="btn btn-primary" mat-stroked-button type="submit" (click)="onSubmit()">Upload </button>
+            <button class="btn btn-primary" mat-stroked-button type="button" (click)="onSubmit()">Upload </button>
         </div>
     </div>
 </div>

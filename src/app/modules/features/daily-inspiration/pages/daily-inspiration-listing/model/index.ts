@@ -15,7 +15,7 @@ export class DailyTableDataSource implements Table.Source<Category> {
     {
         title: 'Title',
         id: 'title',
-        sorting: false,
+        sorting: true,
         templateBy: 'title'
         // resolve: (row: any) => row['title'] || '-',
     },

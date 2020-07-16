@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { DAILY_ADVICE } from 'src/app/constant/routes';
+import { HOME_TYPE, MEDIA_TYPE } from 'src/app/constant/drawer';
 
 @Component({
   selector: 'app-add-advice',
@@ -58,6 +59,8 @@ export class AddAdviceComponent implements OnInit {
         title: ['', [Validators.required, Validators.maxLength(this.titleMaxLength)]],
         isPostLater: [false],
         description: ['', [Validators.required, Validators.maxLength(this.descriptionMaxLength)]],
+        type: HOME_TYPE.DAILY_ADVICE,
+        mediaType: MEDIA_TYPE.IMAGE
       });
   }
 
@@ -98,7 +101,7 @@ export class AddAdviceComponent implements OnInit {
     const body = { imageUrl: this.profilePicURL, ...this.adviceForm.value };
 
     if (this.isPostLater.value) {
-      body.postedAt = new Date(this.adviceForm.get('postedAt').value).getTime();
+      body.postedAt = new Date(this.adviceForm.get('postedAt').value);
     }
     this.adviceForm.disable();
     if (this.dailyInspirationDetails && this.dailyInspirationDetails._id) {
