@@ -12,7 +12,6 @@ import { MatDialog } from '@angular/material';
 export class ArticleManagementDetailsComponent implements OnInit {
 
   articleDetails: any;
-
   constructor(
                $router: ActivatedRoute,
                $breadcrumb: BreadcrumbService,
@@ -21,8 +20,7 @@ export class ArticleManagementDetailsComponent implements OnInit {
       $breadcrumb.replace(this.articleDetails.id, this.articleDetails.title);
     }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onImageClick(image) {
     this.matDailog.open(ViewFullImageComponent, {
