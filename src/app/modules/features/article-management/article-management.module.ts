@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ArticleManagementRoutingModule } from './article-management-routing.module';
 import { ArticleManagementComponent } from './article-management.component';
-import { ArticleManagementService } from './service/article-management.service';
+import { ArticleManagementService, ArticleManagementServiceResolve } from './service/article-management.service';
 
 
 @NgModule({
@@ -12,6 +12,6 @@ import { ArticleManagementService } from './service/article-management.service';
     CommonModule,
     ArticleManagementRoutingModule
   ],
-  providers: [ArticleManagementService]
+  providers: [ArticleManagementService, ArticleManagementServiceResolve]
 })
 export class ArticleManagementModule { }

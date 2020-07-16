@@ -2,16 +2,13 @@
     <div class="article-management-details-content">
         <div class="row-1">
             <div class="textual-detail">
-                <h1>This is the title of my Article.</h1>
-                <p>Description of the title odf aygsd fyuags ufygas fygas ufygsuydfgs yudfgsuyfg suygf
-                    Description of the title odf aygsd fyuags ufygas fygas ufygsuydfgs yudfgsuyfg suygf
-                    Description of the title odf aygsd fyuags ufygas fygas ufygsuydfgs yudfgsuyfg suygf
-                    Description of the title odf aygsd fyuags ufygas fygas ufygsuydfgs yudfgsuyfg suygf
-                    Description of the title odf aygsd fyuags ufygas fygas ufygsuydfgs yudfgsuyfg suygf
+                <h1>{{articleDetails.title}}.</h1>
+                <p>{{articleDetails.description}}
                 </p>
             </div>
             <div class="image-detail">
-                <img src="../../../../../../../assets/default-image/default.png">
+                <img [src]="articleDetails?.imageUrl|customImage:'USER'|async" alt=" Profile Image" (click)="onImageClick(articleDetails?.imageUrl)">
+
             </div>
         </div>
     </div>

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
+import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-article-management-details',
@@ -7,9 +11,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticleManagementDetailsComponent implements OnInit {
 
-  constructor() { }
+  articleDetails: any;
+
+  constructor(
+               $router: ActivatedRoute,
+               $breadcrumb: BreadcrumbService,
+               private matDailog: MatDialog) {
+      this.articleDetails = $router.snapshot.data.dailyData.data;
+      $breadcrumb.replace(this.articleDetails.id, this.articleDetails.title);
+    }
 
   ngOnInit() {
+  }
+
+  onImageClick(image) {
+    this.matDailog.open(ViewFullImageComponent, {
+      panelClass: 'view-full-image-modal',
+      data: image
+    }).afterClosed().subscribe();
   }
 
 }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ArticleManagementComponent } from './article-management.component';
 import { ARTICLES_LIST, ADD_ARTICLES, ARTICLES_DETAILS } from 'src/app/constant/routes';
+import { ArticleManagementServiceResolve } from './service/article-management.service';
 
 
 const routes: Routes = [
@@ -37,9 +38,9 @@ const routes: Routes = [
     // },
     {
       path: `${ARTICLES_DETAILS.path}/details`,
-      // resolve : {
-      //   dailyData : DailyAdviceManagementServiceResolve
-      // },
+      resolve : {
+        dailyData : ArticleManagementServiceResolve
+      },
       loadChildren: () => import('./pages/article-management-details/article-management-details.module')
       .then( (m) => m.ArticleManagementDetailsModule
       ),
