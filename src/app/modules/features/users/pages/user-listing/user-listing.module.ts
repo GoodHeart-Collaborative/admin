@@ -9,6 +9,8 @@ import { MatIconModule, MatMenuModule, MatDialogModule } from '@angular/material
 import { DateFilterModule } from 'src/app/modules/layout/layout-shared/date-filter/date-filter.module';
 import { CustomDatePipeModule } from 'src/app/pipes/custom-date/custom-date-pipe.module';
 import { ConfirmBoxService, ConfirmBoxModule } from 'src/app/modules/shared/confirm-box';
+import { ViewFullImageModule } from 'src/app/modules/shared/view-full-image/view-full-image.module';
+import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 
 const routes: Routes = [
   {
@@ -28,7 +30,9 @@ const routes: Routes = [
     DateFilterModule,
     CustomDatePipeModule,
     MatIconModule,
-    ConfirmBoxModule
+    ConfirmBoxModule,
+    ViewFullImageModule,
+    CustomImageModule
   ],
   providers: [ConfirmBoxService],
   entryComponents: [UsersListingFilterComponent]

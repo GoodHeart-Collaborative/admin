@@ -8,17 +8,17 @@
         {{ user?.status | titlecase}}
     </ng-template>
 
-    <!-- <ng-template appFor="imageUrl" let-category="row">
+    <ng-template appFor="profilePicUrl" let-category="row">
         <div class="category-image-cover">
-         <img [src]="category?.imageUrl |customImage:'USER'|async" alt="category-image" (click)="onImageClick(category?.imageUrl)">
+         <img [src]="category?.profilePicUrl[0] |customImage:'USER'|async" alt="category-image" (click)="onImageClick(category?.profilePicUrl[0])">
         </div>
-     </ng-template> -->
+     </ng-template>
 
 
     <ng-template appFor="mobileNo" let-user="row">
         <div class="mobile-content" [class.verified-user]="user?.isAdminVerified">
-            <span class="material-icons verified-icon" *ngIf="user?.isAdminVerified">verified_user</span>
-            <span>{{ user?.mobileNo ?  user?.mobileNo  : user?.fullMobileNo}}</span>
+            <span class="material-icons verified-icon" *ngIf="user?.isAdminVerified && (user?.mobileNo || user?.fullMobileNo)">verified_user</span>
+            <span>{{ user?.mobileNo ?  user?.mobileNo  : (user?.fullMobileNo || '-' )}}</span>
         </div>
     </ng-template>
    

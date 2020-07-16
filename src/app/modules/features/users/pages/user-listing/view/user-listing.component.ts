@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { USER_DETAIL, USER } from 'src/app/constant/routes';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
+import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
+import { MatDialog } from '@angular/material';
 
 export type ActionType = 'deleted' | 'blocked' | 'active';
 @Component({
@@ -28,7 +30,8 @@ export class UserListingComponent implements OnInit {
     private $router: Router,
     private $userService: UsersService,
     private $confirmBox: ConfirmBoxService,
-    private $utility: UtilityService
+    private $utility: UtilityService,
+    private matDailog: MatDialog
   ) {
   }
 
@@ -164,5 +167,12 @@ export class UserListingComponent implements OnInit {
         });
       }
     });
+  }
+
+  onImageClick(image) {
+    this.matDailog.open(ViewFullImageComponent, {
+      panelClass: 'view-full-image-modal',
+      data: image
+    }).afterClosed().subscribe();
   }
 }

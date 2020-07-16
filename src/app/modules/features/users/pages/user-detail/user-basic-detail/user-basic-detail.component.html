@@ -4,7 +4,7 @@
             <div class="row-1">
                 <div class="left-portion">
                     <div class="img-cover">
-                        <img [src]="data?.profilePicUrl[0]|customImage:'USER'|async" alt="User Profile Image">
+                        <img [src]="data?.profilePicUrl[0]|customImage:'USER'|async" alt="User Profile Image" (click)="onImageClick(data?.profilePicUrl[0])">
                     </div>
                     <div class="btn-row">
                         <button class="btn btn-block" mat-stroked-button (click)="onBlockUSer()" [class.btn-green]="data?.status != 'active' "> {{data?.status === 'active' ? 'Block' : 'Unblock'}} User </button>

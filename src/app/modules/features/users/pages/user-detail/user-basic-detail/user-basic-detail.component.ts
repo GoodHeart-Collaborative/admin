@@ -4,6 +4,8 @@ import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { Router } from '@angular/router';
 import { USER } from 'src/app/constant/routes';
+import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-user-basic-detail',
@@ -16,7 +18,9 @@ export class UserBasicDetailComponent implements OnInit {
     private $userService: UsersService,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
-    private $router: Router) { }
+    private $router: Router,
+    private matDailog: MatDialog
+    ) { }
 
   ngOnInit() {
   }
@@ -64,5 +68,10 @@ export class UserBasicDetailComponent implements OnInit {
       }
     });
   }
-
+  onImageClick(image) {
+    this.matDailog.open(ViewFullImageComponent, {
+      panelClass: 'view-full-image-modal',
+      data: image
+    }).afterClosed().subscribe();
+  }
 }
