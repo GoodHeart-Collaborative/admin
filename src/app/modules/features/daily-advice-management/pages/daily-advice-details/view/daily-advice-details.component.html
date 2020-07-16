@@ -1,82 +1,85 @@
 <div class="page-daily-advice-details">
     <div class="daily-advice-details-content">
-        <div class="mat-card">
-            <div class="row-1">
-                <div class="textual-detail">
+        <div class="row-1">
+            <div class="textual-detail">
+                <div>
                     <h1>{{adviceDetails?.title}}</h1>
                     <p>{{adviceDetails?.description}}</p>
-                    <p>Posted on: {{adviceDetails?.createdAt | date : 'medium'}}</p>
                 </div>
-                <div class="image-detail">
-                    <img [src]="adviceDetails?.imageUrl | customImage:'USER'|async ">
-                </div>
+                <p>Posted on: {{adviceDetails?.createdAt | date : 'medium'}}</p>
             </div>
-            <div class="row-2">
-                <div class="like-cover" (click)="onlikeHandler()"><span class="material-icons">thumb_up</span>
-                    <p>{{adviceDetails?.likeCount}}</p>
-                </div>
-                <div class="like-cover"><span class="material-icons">comment</span>
-                    <p>{{adviceDetails?.totalComments}}</p>
-                </div>
+            <div class="image-detail">
+                <img [src]="adviceDetails?.imageUrl | customImage:'USER'|async ">
             </div>
-            <div class="row-3">
-                <ul class="users-listing">
-                    <li class="single-user">
-                        <div class="li-content">
-                            <div class="img-cover">
-                                <img src="../../../../../../../../assets/default-image/user.jpg" alt="Profile">
-                            </div>
-                            <div class="textual-cover">
-                                <h4>Tiger Woods <span class="material-icons more-icon">more_horiz</span></h4>
-                                <p class="comment-time">2 Weeks Ago</p>
-                                <p>This is my comment and it is a Multi line comment. Therefore it wraps to the second line
-                                    also.</p>
-                                <div class="like-cover" >
-                                    
-
-                                        <span class="material-icons" >thumb_up</span>
-                                        <p>76</p>
-                                   
-                                </div> 
-                            </div>
+        </div>
+        <div class="row-2">
+            <div class="like-cover" (click)="onlikeHandler()"><span class="material-icons">thumb_up</span>
+                <p>{{adviceDetails?.likeCount}}</p>
+            </div>
+            <div class="like-cover"><span class="material-icons">comment</span>
+                <p>{{adviceDetails?.totalComments}}</p>
+            </div>
+        </div>
+        <div class="row-3">
+            <ul class="users-listing">
+                <li class="single-user">
+                    <div class="li-content">
+                        <div class="img-cover">
+                            <img src="../../../../../../../../assets/default-image/user.jpg" alt="Profile">
                         </div>
-                        <ul class="comment-listing" >
-                            <li class="single-comment">
-                                <div class="li-content">
-                                    <div class="img-cover">
-                                        <img src="../../../../../../../../assets/default-image/user.jpg" alt="Profile">
-                                    </div>
-                                    <div class="textual-cover">
-                                        <h4>Ronaldo <span class="material-icons more-icon">more_horiz</span></h4>
+                        <div class="textual-cover">
+                            <h4>Tiger Woods
+                                <p class="comment-time">2 Weeks Ago</p>
+                            </h4>
+                            <p>This is my comment and it is a Multi line comment. Therefore it wraps to the second line
+                                also.</p>
+                            <div class="like-cover" >
+                                
+
+                                    <span class="material-icons" >thumb_up</span>
+                                    <p>76</p>
+                               
+                            </div> 
+                        </div>
+                    </div>
+                    <ul class="comment-listing" >
+                        <li class="single-comment">
+                            <div class="li-content">
+                                <div class="img-cover">
+                                    <img src="../../../../../../../../assets/default-image/user.jpg" alt="Profile">
+                                </div>
+                                <div class="textual-cover">
+                                    <h4>Ronaldo 
                                         <p class="comment-time">2 Weeks Ago</p>
-                                        <p>This is my comment and it is a Multi line comment. Therefore it wraps to the
-                                            second line also.</p>
-                                        <div class="like-cover"><span class="material-icons">thumb_up</span>
-                                            <p>76</p>
-                                        </div>
+                                    </h4>
+                                    <p>This is my comment and it is a Multi line comment. Therefore it wraps to the
+                                        second line also.</p>
+                                    <div class="like-cover"><span class="material-icons">thumb_up</span>
+                                        <p>76</p>
                                     </div>
                                 </div>
-                            </li>
-                            <li class="single-comment">
-                                <div class="li-content">
-                                    <div class="img-cover">
-                                        <img src="../../../../../../../../assets/default-image/user.jpg" alt="Profile">
-                                    </div>
-                                    <div class="textual-cover">
-                                        <h4>Ronaldo <span class="material-icons more-icon">more_horiz</span></h4>
+                            </div>
+                        </li>
+                        <li class="single-comment">
+                            <div class="li-content">
+                                <div class="img-cover">
+                                    <img src="../../../../../../../../assets/default-image/user.jpg" alt="Profile">
+                                </div>
+                                <div class="textual-cover">
+                                    <h4>Ronaldo 
                                         <p class="comment-time">2 Weeks Ago</p>
-                                        <p>This is my comment and it is a Multi line comment. Therefore it wraps to the
-                                            second line also.</p>
-                                        <div class="like-cover"><span class="material-icons">thumb_up</span>
-                                            <p>76</p>
-                                        </div>
+                                    </h4>
+                                    <p>This is my comment and it is a Multi line comment. Therefore it wraps to the
+                                        second line also.</p>
+                                    <div class="like-cover"><span class="material-icons">thumb_up</span>
+                                        <p>76</p>
                                     </div>
                                 </div>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

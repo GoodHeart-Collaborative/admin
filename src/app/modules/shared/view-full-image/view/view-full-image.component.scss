@@ -7,8 +7,8 @@
     img{
         height: auto;
         width: auto;
-        max-width: 90vw;
-        max-height: 90vh;
+        max-width: calc(100vw - 140px);
+        max-height: calc(100vh - 120px);
         border-radius: 4px;
     }
     mat-icon{
