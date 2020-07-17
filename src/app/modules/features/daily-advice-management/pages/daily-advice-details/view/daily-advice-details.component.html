@@ -9,7 +9,7 @@
                 <p>Posted on: {{adviceDetails?.createdAt | date : 'medium'}}</p>
             </div>
             <div class="image-detail">
-                <img [src]="adviceDetails?.imageUrl | customImage:'USER'|async ">
+                <img [src]="adviceDetails?.thumbnailUrl | customImage:'USER'|async ">
             </div>
         </div>
         <div class="row-2">

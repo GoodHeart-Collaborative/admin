@@ -36,7 +36,7 @@
                     <mat-checkbox formControlName="isPostLater" >Check me!</mat-checkbox>
                     <mat-form-field class="later-date-picker" color="accent" *ngIf="inspirationForm?.contains('postedAt')" appearance="outline" >
                         <!-- <mat-label>Inherited calendar color</mat-label> -->
-                        <input matInput [matDatepicker]="picker" [min]="today" formControlName="postedAt"
+                        <input matInput [matDatepicker]="picker" [min]="dailyInspirationDetails  ? null : today" formControlName="postedAt"
                         (click)="picker.open()" placeholder="Date" readonly>
                       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                       <mat-datepicker #picker></mat-datepicker>

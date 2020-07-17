@@ -18,13 +18,10 @@ export class DailyInspirationService {
   }
 
   async updateStatus(id, status) {
-    // const params = {
-    //   status : status
-    // };
     return await this.$http.patch(ACTION_HOME(id, status), {}).toPromise();
   }
   async  addCategory(params) {
-    return  this.$http.post(HOME_DETAILS, params).toPromise();
+    return  this.$http.post(HOME, params).toPromise();
   }
   async  editCategory(id, params) {
     return  this.$http.patch(HOME_DETAILS(id), params).toPromise();

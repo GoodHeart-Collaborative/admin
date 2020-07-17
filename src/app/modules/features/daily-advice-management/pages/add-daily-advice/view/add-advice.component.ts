@@ -74,8 +74,8 @@ export class AddAdviceComponent implements OnInit {
 
   getDailyInspiration() {
     if (this.dailyInspirationDetails) {
-      console.log(this.dailyInspirationDetails.imageUrl);
-      this.profilePicURL = this.dailyInspirationDetails.imageUrl;
+      console.log(this.dailyInspirationDetails.thumbnailUrl);
+      this.profilePicURL = this.dailyInspirationDetails.thumbnailUrl;
       this.adviceForm.patchValue(this.dailyInspirationDetails);
       if (this.dailyInspirationDetails && this.dailyInspirationDetails.postedAt && this.dailyInspirationDetails.isPostLater) {
 
@@ -98,14 +98,16 @@ export class AddAdviceComponent implements OnInit {
       let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
       this.profilePicURL = data.Location;
     }
-    const body = { imageUrl: this.profilePicURL, ...this.adviceForm.value };
+    const body = { thumbnailUrl: this.profilePicURL, ...this.adviceForm.value };
 
     if (this.isPostLater.value) {
       body.postedAt = new Date(this.adviceForm.get('postedAt').value);
     }
     this.adviceForm.disable();
     if (this.dailyInspirationDetails && this.dailyInspirationDetails._id) {
-      body.status = this.dailyInspirationDetails.status;
+      // body.status = this.dailyInspirationDetails.status;
+      delete body.type;
+      delete body.status;
       this.$daily.editCategory(this.dailyInspirationDetails._id, body).then(
         data => {
           this.adviceForm.enable();

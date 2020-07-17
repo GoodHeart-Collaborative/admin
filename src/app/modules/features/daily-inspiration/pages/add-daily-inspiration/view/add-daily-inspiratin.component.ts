@@ -74,13 +74,13 @@ export class AddDailyInspiratinComponent implements OnInit {
   }
 
   getDailyInspiration() {
-    console.log(this.dailyInspirationDetails.imageUrl);
+    console.log(this.dailyInspirationDetails.thumbnailUrl);
     if (this.dailyInspirationDetails) {
-      this.profilePicURL = this.dailyInspirationDetails.imageUrl;
+      this.profilePicURL = this.dailyInspirationDetails.thumbnailUrl;
       this.inspirationForm.patchValue(this.dailyInspirationDetails);
       if (this.dailyInspirationDetails && this.dailyInspirationDetails.postedAt && this.dailyInspirationDetails.isPostLater) {
 
-        this.inspirationForm.get('postedAt').patchValue(new Date(this.dailyInspirationDetails.postedAt));
+        this.inspirationForm.get('postedAt').patchValue(this.dailyInspirationDetails.postedAt);
       }
     }
   }
@@ -99,7 +99,7 @@ export class AddDailyInspiratinComponent implements OnInit {
       let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
       this.profilePicURL = data.Location;
     }
-    const body = { imageUrl: this.profilePicURL, ...this.inspirationForm.value };
+    const body = { thumbnailUrl: this.profilePicURL, ...this.inspirationForm.value };
 
     if (this.isPostLater.value) {
       body.postedAt = new Date(this.inspirationForm.get('postedAt').value);
@@ -108,6 +108,7 @@ export class AddDailyInspiratinComponent implements OnInit {
     getTrimmed(body);
     this.inspirationForm.disable();
     if (this.dailyInspirationDetails && this.dailyInspirationDetails._id) {
+      delete body.type;
       this.$daily.editCategory(this.dailyInspirationDetails._id, body).then(
         data => {
           this.inspirationForm.enable();

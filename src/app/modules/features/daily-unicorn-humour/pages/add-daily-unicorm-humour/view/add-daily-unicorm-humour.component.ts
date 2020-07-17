@@ -75,7 +75,7 @@ export class AddDailyUnicormHumourComponent implements OnInit {
 
   getDailyInspiration() {
     if (this.unicornDetails) {
-      this.profilePicURL = this.unicornDetails.imageUrl;
+      this.profilePicURL = this.unicornDetails.thumbnailUrl;
       this.unicornForm.patchValue(this.unicornDetails);
       if (this.unicornDetails && this.unicornDetails.postedAt && this.unicornDetails.isPostLater) {
         this.unicornForm.get('postedAt').patchValue(new Date(this.unicornDetails.postedAt));
@@ -97,7 +97,7 @@ export class AddDailyUnicormHumourComponent implements OnInit {
       let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
       this.profilePicURL = data.Location;
     }
-    const body = { imageUrl: this.profilePicURL, ...this.unicornForm.value };
+    const body = { thumbnailUrl: this.profilePicURL, ...this.unicornForm.value };
 
     if (this.isPostLater.value) {
       body.postedAt = new Date(this.unicornForm.get('postedAt').value);
@@ -106,6 +106,7 @@ export class AddDailyUnicormHumourComponent implements OnInit {
     getTrimmed(body);
     this.unicornForm.disable();
     if (this.unicornDetails && this.unicornDetails._id) {
+      delete body.type;
       this.$daily.editCategory(this.unicornDetails._id, body).then(
         data => {
           this.unicornForm.enable();
