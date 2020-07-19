@@ -15,7 +15,7 @@ export class GratitudeJournalDetailComponent implements OnInit {
   ) { }
 
   onlikeHandler() {
-    const dialogRef = this.matDailog.open(LikeActionComponent, {
+    this.matDailog.open(LikeActionComponent, {
       width: '500px',
     }).afterClosed().subscribe();
   }

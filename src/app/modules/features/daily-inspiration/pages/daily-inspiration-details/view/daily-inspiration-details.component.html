@@ -7,7 +7,7 @@
                     <p>Posted on: {{dailyInspirationDetails?.createdAt | date : 'medium'}}</p>
                 </div>
                 <div class="image-detail">
-                    <img [src]="dailyInspirationDetails?.thumbnailUrl | customImage:'USER'|async ">
+                    <img [src]="dailyInspirationDetails?.mediaUrl | customImage:'USER'|async ">
                 </div>
             </div>
         </div>

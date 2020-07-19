@@ -5,14 +5,14 @@
     </div>
     <div class="popup-content">
         <div class="popup-body">
-            <ul class="users-listing">
-                <li class="single-user">
+            <ul class="users-listing" >
+                <li class="single-user" *ngFor="let item of like">
                     <div class="img-cover">
-                        <img src="../../../../../assets/default-image/user.jpg" alt="Profile">
+                        <img [src]="item?.users?.profilePicture |customImage:'USER'|async" alt="Profile">
                     </div>
                     <div class="textual-cover">
-                        <h4 title="Mahatma Gandhi">Mahatma Gandhi
-                            <p class="comment-time">8 hours ago</p>
+                        <h4 title="Mahatma Gandhi">{{item?.users?.name}}
+                            <p class="comment-time">{{item?.createdAt | customDate}}</p>
                         </h4>
                     </div>
                     <div class="see-profile-cover">
@@ -20,17 +20,16 @@
                             <mat-icon>more_vert</mat-icon>
                         </button>
                         <mat-menu #menu="matMenu">
-                            <button mat-menu-item>
+                            <button mat-menu-item (click)="onViewPic(item?.users?.profilePicture )">
                                 See Profile
                             </button>
                         </mat-menu>
                     </div>
                 </li>
             </ul>
+            <div *ngIf="!like?.length">
+                <p>No Like </p>
+            </div>
         </div>
-        <!-- <div class="popup-footer">
-            <button class="btn" mat-stroked-button color="primary" [mat-dialog-close]="false">Cancel</button>
-            <button class="btn btn-primary" mat-stroked-button color="primary" [mat-dialog-close]="true">Confirm</button>
-        </div> -->
     </div>
 </div>

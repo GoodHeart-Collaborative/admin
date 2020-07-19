@@ -7,7 +7,6 @@ import { DailyUnicornHumourService } from '../../../service/daily-unicorn-humour
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 import { DAILY_UNICORN, ADD_DAILY_UNICORN } from 'src/app/constant/routes';
-import { DailyUnicormHumourDetailsModule } from '../../daily-unicorm-humour-details/daily-unicorm-humour-details.module';
 import { DailyUnicornHumourDetailsComponent } from '../../daily-unicorm-humour-details/view/daily-unicorn-humour-details.component';
 import { MatDialog } from '@angular/material';
 import { HOME_TYPE } from 'src/app/constant/drawer';
@@ -38,9 +37,11 @@ export class DailyUnicornHumourListingComponent implements OnInit {
   ngOnInit() {
     this.updateUsers();
   }
-
+  /**
+   * User listing Handler
+   */
   updateUsers() {
-    const { pageIndex, pageSize, searchText, filterData , sortData} = this.eventData;
+    const { pageIndex, pageSize, searchText, filterData, sortData } = this.eventData;
     let params = {
       page: `${pageIndex + 1}`,
       limit: `${pageSize}`,
@@ -73,12 +74,20 @@ export class DailyUnicornHumourListingComponent implements OnInit {
     });
   }
 
-
+  /**
+   * Listing Pagination Hnadler
+   * @param event
+   */
   onOptionChange(event: Table.OptionEvent) {
     this.eventData = event.data;
     this.updateUsers();
   }
 
+  /**
+   * User Action Handler
+   * @param id
+   * @param action
+   */
   onActionHandler(id: string, action: ActionType) {
     const index = this.userData.data.findIndex(user => user._id === id);
     this.$confirmBox.listAction('Unicorn', action).subscribe((confirm) => {
@@ -90,7 +99,11 @@ export class DailyUnicornHumourListingComponent implements OnInit {
       }
     });
   }
-
+  /**
+   * Action Update Handler
+   * @param action
+   * @param index
+   */
   handleActions(action: ActionType, index) {
     switch (action) {
       case 'deleted':
@@ -110,7 +123,11 @@ export class DailyUnicornHumourListingComponent implements OnInit {
     }
     this.setUpTableResource(this.userData);
   }
-
+  /**
+   *
+   * @param action
+   * @param index
+   */
   handleStatus(action: 'blocked' | 'active', index: number) {
     this.userData.data = this.userData.data.map((user, i) => {
       if (i === index) {
@@ -120,6 +137,10 @@ export class DailyUnicornHumourListingComponent implements OnInit {
     });
   }
 
+  /**
+   * User Set Up Table Handler
+   * @param userRecords
+   */
   setUpTableResource(userRecords) {
     const { pageIndex, pageSize } = this.eventData;
     this.tableSource = new DailyUnicornTableDataSource({
@@ -129,23 +150,31 @@ export class DailyUnicornHumourListingComponent implements OnInit {
       total: userRecords['total']
     });
   }
-
+  /**
+   * User Edit Handler
+   * @param id
+   */
   oneditHandler(id) {
     this.$router.navigate([`${DAILY_UNICORN.fullUrl}`, 'edit', id]);
   }
 
+  /***
+   * User Details Handler
+   */
   onDetailsHandler(postDetails) {
-    // this.$router.navigate([`${DAILY_UNICORN.fullUrl}`, id, 'details']);
     this.$matDailog.open(DailyUnicornHumourDetailsComponent, {
       width: '500px',
       data: postDetails
     }).afterClosed().subscribe(res => {
       if (res) {
-          this.updateUsers();
+        this.updateUsers();
       }
     });
   }
 
+  /**
+   * User Add Handler
+   */
   onAdd() {
     this.$router.navigate([`${ADD_DAILY_UNICORN.fullUrl}`]);
   }

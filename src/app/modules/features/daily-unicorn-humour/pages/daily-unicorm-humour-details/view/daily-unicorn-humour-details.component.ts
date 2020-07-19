@@ -19,7 +19,9 @@ export class DailyUnicornHumourDetailsComponent implements OnInit {
      }
 
   ngOnInit() {}
-
+/**
+ * User Edit Handler
+ */
   onEditDetails() {
     this.$router.navigate([`${DAILY_UNICORN.fullUrl}`, 'edit', this.data._id]);
     this.$dialogRef.close();

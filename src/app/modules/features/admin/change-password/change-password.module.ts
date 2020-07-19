@@ -13,6 +13,7 @@ import { MatDialogModule } from '@angular/material';
 import {MatMenuModule} from '@angular/material/menu';
 import { InvalidPasswordHintModule } from 'src/app/modules/shared/invalid-password-hint/invalid-password-hint.module';
 import { ChangePasswordService } from './service/change-password.service';
+import { WhiteSpaceModule } from 'src/app/modules/shared/white-space/white-space.module';
 const routes: Routes = [
   { path: '', component: ChangePasswordComponent },
 ];
@@ -32,6 +33,7 @@ const routes: Routes = [
     ValidationErrorPipeModule,
     MatDialogModule,
     RouterModule.forChild(routes),
+    WhiteSpaceModule
   ],
   providers: [ChangePasswordService],
   exports: [ChangePasswordComponent],

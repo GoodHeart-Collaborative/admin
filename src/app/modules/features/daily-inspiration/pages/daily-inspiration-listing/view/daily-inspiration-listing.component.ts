@@ -34,7 +34,9 @@ export class DailyInspirationListingComponent implements OnInit {
   ngOnInit() {
     this.updateUsers();
   }
-
+/**
+ * User listing Handler
+ */
   updateUsers() {
     const { pageIndex, pageSize, searchText, filterData , sortData } = this.eventData;
     let params = {
@@ -69,12 +71,20 @@ export class DailyInspirationListingComponent implements OnInit {
     });
   }
 
-
+/**
+ * Listing Pagination Hnadler
+ * @param event
+ */
   onOptionChange(event: Table.OptionEvent) {
     this.eventData = event.data;
     this.updateUsers();
   }
 
+  /**
+   * User Action Handler
+   * @param id
+   * @param action
+   */
   onActionHandler(id: string, action: ActionType) {
     const index = this.userData.data.findIndex(user => user._id === id);
     this.$confirmBox.listAction('Daily Inspiration', action).subscribe((confirm) => {
@@ -87,6 +97,11 @@ export class DailyInspirationListingComponent implements OnInit {
     });
   }
 
+  /**
+   * Action Update Handler
+   * @param action
+   * @param index
+   */
   handleActions(action: ActionType, index) {
     switch (action) {
       case 'deleted':
@@ -116,6 +131,10 @@ export class DailyInspirationListingComponent implements OnInit {
     });
   }
 
+  /**
+   * User Set Up Table Handler
+   * @param userRecords
+   */
   setUpTableResource(userRecords) {
     const { pageIndex, pageSize } = this.eventData;
     this.tableSource = new DailyTableDataSource({
@@ -126,14 +145,25 @@ export class DailyInspirationListingComponent implements OnInit {
     });
   }
 
+  /**
+   * Edit Handler
+   * @param id
+   */
  oneditHandler(id) {
     this.$router.navigate([`${DAILY_INSPIRATION.fullUrl}`, 'edit', id]);
   }
 
+  /**
+   * Details Handler
+   * @param id
+   */
   onDetailsHandler(id) {
     this.$router.navigate([`${DAILY_INSPIRATION.fullUrl}`, id, 'details']);
   }
 
+  /**
+   * Add Handler
+   */
 onAdd() {
     this.$router.navigate([`${ADD_DAILY_INSPIRATION.fullUrl}`]);
 }

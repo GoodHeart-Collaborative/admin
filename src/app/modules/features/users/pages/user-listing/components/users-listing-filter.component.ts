@@ -47,11 +47,8 @@ export class UsersListingFilterComponent implements OnInit {
   }
 
   resetFilter() {
-    // if (this.userFilterForm.touched && this.userFilterForm.valid) {
     this.userFilterForm.reset();
     const filterData = { ...this.userFilterForm.value};
     this.dialogRef.close(filterData);
-
-    // }
   }
 }

@@ -34,11 +34,9 @@ export class AddDailyUnicormHumourComponent implements OnInit {
   ) {
     if ($router.snapshot.data.dailyData && $router.snapshot.data.dailyData.data) {
       this.unicornDetails = $router.snapshot.data.dailyData.data;
-      console.log(this.unicornDetails);
-      $breadcrumb.replace(this.unicornDetails.id, this.unicornDetails.title);
+      $breadcrumb.replace(this.unicornDetails.id, this.unicornDetails.description);
 
     }
-    console.log(this.mediaType);
   }
 
   ngOnInit() {
@@ -53,29 +51,36 @@ export class AddDailyUnicormHumourComponent implements OnInit {
     this.getDailyInspiration();
   }
 
+  /**
+   * Creating Form
+   */
   createForm() {
     this.unicornForm = this.$formBuilder.group(
       {
-        title: ['', [Validators.required, Validators.maxLength(this.titleMaxLength)]],
+        description: ['', [Validators.required, Validators.maxLength(this.titleMaxLength)]],
         isPostLater: [false],
         type: HOME_TYPE.UNICRON,
         mediaType: MEDIA_TYPE.IMAGE
       });
   }
-
+/**
+ *  Getter
+ * @param name
+ */
   form(name) {
     return this.unicornForm.controls[name];
   }
-
-
 
   get isPostLater() {
     return this.unicornForm.get('isPostLater') as FormControl;
   }
 
+  /**
+   * Patch Value in Form
+   */
   getDailyInspiration() {
     if (this.unicornDetails) {
-      this.profilePicURL = this.unicornDetails.thumbnailUrl;
+      this.profilePicURL = this.unicornDetails.mediaUrl;
       this.unicornForm.patchValue(this.unicornDetails);
       if (this.unicornDetails && this.unicornDetails.postedAt && this.unicornDetails.isPostLater) {
         this.unicornForm.get('postedAt').patchValue(new Date(this.unicornDetails.postedAt));
@@ -83,11 +88,16 @@ export class AddDailyUnicormHumourComponent implements OnInit {
     }
   }
 
-
+/**
+ * setting Image in ImageFile
+ * @param event
+ */
   setimageFile(event) {
     this.imageFile = event;
   }
-
+/**
+ * Submit Form
+ */
   async onSubmit() {
     if (this.unicornForm.invalid) {
       this.unicornForm.markAllAsTouched();
@@ -97,7 +107,7 @@ export class AddDailyUnicormHumourComponent implements OnInit {
       let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
       this.profilePicURL = data.Location;
     }
-    const body = { thumbnailUrl: this.profilePicURL, ...this.unicornForm.value };
+    const body = { mediaUrl: this.profilePicURL, ...this.unicornForm.value };
 
     if (this.isPostLater.value) {
       body.postedAt = new Date(this.unicornForm.get('postedAt').value);
@@ -134,7 +144,6 @@ export class AddDailyUnicormHumourComponent implements OnInit {
     );
   }
 
- 
 
   onCancel() {
     this.$route.navigate([DAILY_UNICORN.fullUrl]);

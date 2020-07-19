@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserTableDataSource } from '../../../model/index';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { UsersService } from '../../../service/users.service';
-import { HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { USER_DETAIL, USER } from 'src/app/constant/routes';
+import { USER } from 'src/app/constant/routes';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
@@ -38,7 +37,9 @@ export class UserListingComponent implements OnInit {
   ngOnInit() {
     this.updateUsers();
   }
-
+/**
+ * User listing Handler
+ */
   updateUsers() {
     const { pageIndex, pageSize, searchText, filterData , sortData} = this.eventData;
     let params = {
@@ -63,8 +64,6 @@ export class UserListingComponent implements OnInit {
       params['searchTerm'] = searchText;
     }
     if (sortData) {
-      console.log(sortData);
-      
       params['sortOrder'] = sortData.sortOrder;
       params['sortBy'] = sortData.sortBy;
     }
@@ -74,16 +73,26 @@ export class UserListingComponent implements OnInit {
     });
   }
 
-
+/**
+ * Detail User
+ * @param id
+ */
   onDetailsHandler(id) {
     this.$router.navigate([USER.fullUrl, id, 'details']);
   }
-
+/**
+ * Listing Pagination Hnadler
+ * @param event
+ */
   onOptionChange(event: Table.OptionEvent) {
     this.eventData = event.data;
     this.updateUsers();
   }
-
+/**
+ * User Action Handler
+ * @param id
+ * @param action
+ */
   onActionHandler(id: string, action: ActionType) {
     const index = this.userData.data.findIndex(user => user._id === id);
     this.$confirmBox.listAction('User', action).subscribe((confirm) => {
@@ -98,7 +107,11 @@ export class UserListingComponent implements OnInit {
       }
     });
   }
-
+/**
+ * Action Update Handler
+ * @param action
+ * @param index
+ */
   handleActions(action: ActionType, index) {
     switch (action) {
       case 'deleted':
@@ -127,7 +140,10 @@ export class UserListingComponent implements OnInit {
       return user;
     });
   }
-
+/**
+ * User Set Up Table Handler
+ * @param userRecords
+ */
   setUpTableResource(userRecords) {
     const { pageIndex, pageSize } = this.eventData;
     this.tableSource = new UserTableDataSource({
@@ -137,7 +153,10 @@ export class UserListingComponent implements OnInit {
       total: userRecords['total']
     });
   }
-
+/**
+ * Verify User Handler
+ * @param id
+ */
   onverifyHandler(id) {
     this.$confirmBox.listAction('User', 'Verified').subscribe((confirm) => {
       if (confirm) {
@@ -154,6 +173,10 @@ export class UserListingComponent implements OnInit {
     });
   }
 
+/**
+ * Declined User Handler
+ * @param id
+ */
   onDeclinedHandler(id) {
     this.$confirmBox.listAction('User', 'Declined').subscribe((confirm) => {
       if (confirm) {
@@ -169,6 +192,10 @@ export class UserListingComponent implements OnInit {
     });
   }
 
+/**
+ * View Fill Image
+ * @param image
+ */
   onImageClick(image) {
     this.matDailog.open(ViewFullImageComponent, {
       panelClass: 'view-full-image-modal',

@@ -2,8 +2,6 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { DailyInspirationService } from '../../../service/daily-inspiration.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { FileUploadService } from 'src/app/modules/shared/services/file-upload.service';
-import { onSelectFile } from 'src/app/constant/file-input';
-import { invalidImageError, invalidFileSize } from 'src/app/constant/messages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
 import { VALIDATION_CRITERIA, getTrimmed } from 'src/app/constant/validation-criteria'
@@ -53,6 +51,9 @@ export class AddDailyInspiratinComponent implements OnInit {
     });
     this.getDailyInspiration();
   }
+ /**
+  * Creating Form
+  */
 
   createForm() {
     this.inspirationForm = this.$formBuilder.group(
@@ -72,11 +73,13 @@ export class AddDailyInspiratinComponent implements OnInit {
   get isPostLater() {
     return this.inspirationForm.get('isPostLater') as FormControl;
   }
-
+ /**
+  * Patch Value in Form
+  */
   getDailyInspiration() {
-    console.log(this.dailyInspirationDetails.thumbnailUrl);
+    console.log(this.dailyInspirationDetails.mediaUrl);
     if (this.dailyInspirationDetails) {
-      this.profilePicURL = this.dailyInspirationDetails.thumbnailUrl;
+      this.profilePicURL = this.dailyInspirationDetails.mediaUrl;
       this.inspirationForm.patchValue(this.dailyInspirationDetails);
       if (this.dailyInspirationDetails && this.dailyInspirationDetails.postedAt && this.dailyInspirationDetails.isPostLater) {
 
@@ -90,6 +93,9 @@ export class AddDailyInspiratinComponent implements OnInit {
     this.imageFile = event;
   }
 
+  /**
+   * Submit Form
+   */
   async onSubmit() {
     if (this.inspirationForm.invalid) {
       this.inspirationForm.markAllAsTouched();
@@ -99,7 +105,7 @@ export class AddDailyInspiratinComponent implements OnInit {
       let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
       this.profilePicURL = data.Location;
     }
-    const body = { thumbnailUrl: this.profilePicURL, ...this.inspirationForm.value };
+    const body = { mediaUrl: this.profilePicURL, ...this.inspirationForm.value };
 
     if (this.isPostLater.value) {
       body.postedAt = new Date(this.inspirationForm.get('postedAt').value);

@@ -38,6 +38,9 @@ export class MemberOfTheDayListingComponent implements OnInit {
     this.updateUsers();
   }
 
+  /**
+   * User listing Handler
+   */
   updateUsers() {
     const { pageIndex, pageSize, searchText, filterData , sortData} = this.eventData;
     let params = {
@@ -71,7 +74,10 @@ export class MemberOfTheDayListingComponent implements OnInit {
     });
   }
 
-
+/**
+ *  Listing Pagination Hnadler
+ * @param event
+ */
   onOptionChange(event: Table.OptionEvent) {
     this.eventData = event.data;
     this.updateUsers();
@@ -118,6 +124,10 @@ export class MemberOfTheDayListingComponent implements OnInit {
   //   });
   // }
 
+  /**
+   * User Set Up Table Handler
+   * @param userRecords
+   */
   setUpTableResource(userRecords) {
     const { pageIndex, pageSize } = this.eventData;
     this.tableSource = new MemberTableDataSource({
@@ -134,6 +144,10 @@ export class MemberOfTheDayListingComponent implements OnInit {
 //   }).afterClosed().subscribe();
 //  }
 
+/**
+ * Details Handler
+ * @param id
+ */
   onDetails(id) {
     this.$router.navigate([`${USER.fullUrl}`, id, 'details']);
   }

@@ -9,40 +9,36 @@
                 <p>Posted on: {{adviceDetails?.createdAt | date : 'medium'}}</p>
             </div>
             <div class="image-detail">
-                <img [src]="adviceDetails?.thumbnailUrl | customImage:'USER'|async ">
+                <img [src]="adviceDetails?.mediaUrl | customImage:'USER'|async ">
             </div>
         </div>
         <div class="row-2">
-            <div class="like-cover" (click)="onlikeHandler()"><span class="material-icons">thumb_up</span>
+            <div class="like-cover" (click)="onlikeHandler(adviceDetails.id)"><span class="material-icons">thumb_up</span>
                 <p>{{adviceDetails?.likeCount}}</p>
             </div>
             <div class="like-cover"><span class="material-icons">comment</span>
-                <p>{{adviceDetails?.totalComments}}</p>
+                <p>{{adviceDetails?.commentCount}}</p>
             </div>
         </div>
         <div class="row-3">
-            <ul class="users-listing">
-                <li class="single-user">
+            <ul class="users-listing" >
+                <li class="single-user"  *ngFor="let item of comments">
                     <div class="li-content">
                         <div class="img-cover">
-                            <img src="../../../../../../../../assets/default-image/user.jpg" alt="Profile">
+                            <img [src]="item?.users?.profilePicUrl[0] |customImage:'USER'|async" alt="Profile">
                         </div>
                         <div class="textual-cover">
-                            <h4>Tiger Woods
-                                <p class="comment-time">2 Weeks Ago</p>
+                            <h4>{{item?.users?.firstName || 'String' }} {{item?.users?.lastName || '' }} 
+                                <p class="comment-time">{{item?.created | customDate}}</p>
                             </h4>
-                            <p>This is my comment and it is a Multi line comment. Therefore it wraps to the second line
-                                also.</p>
-                            <div class="like-cover" >
-                                
-
-                                    <span class="material-icons" >thumb_up</span>
-                                    <p>76</p>
-                               
+                            <p>{{item?.comment}}</p>
+                            <div class="like-cover" (click)="onlikeHandler(item?._id)">
+                                 <span class="material-icons" >thumb_up</span>
+                                    <p>{{item?.likeCount}}</p>
                             </div> 
                         </div>
                     </div>
-                    <ul class="comment-listing" >
+                    <!-- <ul class="comment-listing" >
                         <li class="single-comment">
                             <div class="li-content">
                                 <div class="img-cover">
@@ -77,7 +73,7 @@
                                 </div>
                             </div>
                         </li>
-                    </ul>
+                    </ul> -->
                 </li>
             </ul>
         </div>

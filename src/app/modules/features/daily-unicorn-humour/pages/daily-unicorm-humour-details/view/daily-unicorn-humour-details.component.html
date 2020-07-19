@@ -7,9 +7,9 @@
         <div class="popup-content">
             <div class="popup-body">
                 <div class="img-cover">
-                    <img [src]="data?.thumbnailUrl |customImage:'USER'|async" alt="unicorn image">
+                    <img [src]="data?.mediaUrl |customImage:'USER'|async" alt="unicorn image">
                 </div>
-                <p>{{data?.title}}</p>
+                <p>{{data?.description}}</p>
                 <div class="like-cover"><span class="material-icons">thumb_up</span>
                     <p>{{data?.likeCount}}</p>
                 </div>

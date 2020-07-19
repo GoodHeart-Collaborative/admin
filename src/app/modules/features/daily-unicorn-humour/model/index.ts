@@ -14,9 +14,9 @@ export class DailyUnicornTableDataSource implements Table.Source<Category> {
   columns: Table.Column<Category>[] = [
     {
         title: 'Post',
-        id: 'title',
+        id: 'description',
         sorting: true,
-        templateBy: 'title'
+        templateBy: 'description'
         // resolve: (row: any) => row['title'] || '-',
     },
     {

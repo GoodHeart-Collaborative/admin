@@ -91,4 +91,6 @@ export const CATEGORY_UPDATE_POST = 'admin/category/update';
 // CATEGORY API's //
 export const HOME = 'admin/home';
 export const HOME_DETAILS = (Id) => `admin/home/${Id}`;
+export const HOME_LIKE = `admin/like`;
+export const HOME_COMMENT = `admin/comment`;
 export const ACTION_HOME = (Id , status) => `admin/home/${Id}/status/${status}`;
