@@ -1,7 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {  Router } from '@angular/router';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { DAILY_UNICORN } from 'src/app/constant/routes';
+import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
 
 @Component({
   selector: 'app-daily-unicorn-humour-details',
@@ -14,7 +15,8 @@ export class DailyUnicornHumourDetailsComponent implements OnInit {
   constructor(
           private $router: Router,
           private $dialogRef: MatDialogRef<DailyUnicornHumourDetailsComponent>,
-          @Inject(MAT_DIALOG_DATA) public data: any ) {
+          @Inject(MAT_DIALOG_DATA) public data: any ,
+          private $matDailog: MatDialog) {
             console.log(data);
      }
 
@@ -26,4 +28,16 @@ export class DailyUnicornHumourDetailsComponent implements OnInit {
     this.$router.navigate([`${DAILY_UNICORN.fullUrl}`, 'edit', this.data._id]);
     this.$dialogRef.close();
     }
+ 
+/**
+ * user Like Handler
+ * @param id
+ */
+onlikeHandler(id) {
+  this.$matDailog.open(LikeActionComponent, {
+    width: '500px',
+    data: id
+  }).afterClosed().subscribe();
+  }
+
 }
