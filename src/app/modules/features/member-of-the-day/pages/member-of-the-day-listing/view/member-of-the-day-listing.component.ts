@@ -152,10 +152,10 @@ export class MemberOfTheDayListingComponent implements OnInit {
     this.$router.navigate([`${USER.fullUrl}`, id, 'details']);
   }
 
-  // onAdd() {
-  //   const dialogRef = this.$matDailog.open(AddMemberOfTheDayComponent, {
-  //     width: '500px',
-  //   }).afterClosed().subscribe();
-  // }
+  onAdd() {
+    const dialogRef = this.$matDailog.open(AddMemberOfTheDayComponent, {
+      width: '500px',
+    }).afterClosed().subscribe();
+  }
 
 }
