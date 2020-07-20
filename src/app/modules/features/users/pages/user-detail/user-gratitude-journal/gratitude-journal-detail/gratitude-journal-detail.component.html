@@ -38,15 +38,13 @@
                                 <p>This is my comment and it is a Multi line comment. Therefore it wraps to the second line
                                     also.</p>
                                 <div class="like-cover" >
-                                    
-
-                                        <span class="material-icons" >thumb_up</span>
-                                        <p>76</p>
-                                   
+                                    <span class="material-icons" >thumb_up</span>
+                                    <p>76</p>
+                                    <a class="see-hide-replies" (click)="toggleReplies()">{{hideShowReplies? "Hide" : "See"}} Replies (8)</a>
                                 </div> 
                             </div>
                         </div>
-                        <ul class="comment-listing" >
+                        <ul class="comment-listing" *ngIf="hideShowReplies">
                             <li class="single-comment">
                                 <div class="li-content">
                                     <div class="img-cover">

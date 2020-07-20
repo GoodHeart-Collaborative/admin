@@ -31,6 +31,23 @@
                         margin-bottom: 10px;
                     }
                 }
+                &.posted-on-date{
+                    margin-bottom: 0px;
+                }
+            }
+            .like-cover{
+                display: flex;
+                align-items: center;
+                margin-right: 40px;
+                cursor: pointer;
+                .material-icons{
+                    color: #556080;
+                    margin-right: 10px;
+                    font-size: 16px;
+                }
+                p{
+                    font-size: 14px;
+                }
             }
         }
         .image-detail{
