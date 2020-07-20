@@ -10,16 +10,24 @@ import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/lik
 })
 export class GratitudeJournalDetailComponent implements OnInit {
 
+  public hideShowReplies: boolean = false;
+  
   constructor(
     private matDailog: MatDialog
-  ) { }
-
+    ) { }
+    
   onlikeHandler() {
     this.matDailog.open(LikeActionComponent, {
       width: '500px',
     }).afterClosed().subscribe();
   }
   ngOnInit() {
+  }
+
+  toggleReplies(){
+    console.log(this.hideShowReplies);
+    this.hideShowReplies = !this.hideShowReplies;
+    console.log(this.hideShowReplies);
   }
 
 }
