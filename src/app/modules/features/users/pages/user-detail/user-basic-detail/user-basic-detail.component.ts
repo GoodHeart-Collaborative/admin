@@ -54,7 +54,7 @@ export class UserBasicDetailComponent implements OnInit {
       if (confirm) {
         let   params = {};
         if (!isAdminVerified) {
-          params['isAdminRejected'] =  true;
+          params['isAdminVerified'] =  true;
         } else {
           params['isAdminVerified'] = true;
         }
@@ -64,8 +64,25 @@ export class UserBasicDetailComponent implements OnInit {
               this.data.isAdminVerified =   this.data.isAdminVerified  ? false : true;
             }
         });
+        }
+    });
+  }
 
-      }
+  onRefuteHandler(id, isAdminRejected) {
+    this.$confirmBox.listAction('User', (isAdminRejected ? 'Refute'  : 'Verified')).subscribe((confirm) => {
+      if (confirm) {
+        let   params = {};
+        if (isAdminRejected) {
+          params['isAdminRejected'] =  false;
+        } else {
+          params['isAdminRejected'] = true;
+        }
+        this.$userService.onVerifiedHnadler(id, params).then(res => {
+          if (res) {
+              this.data.isAdminRejected = this.data.isAdminRejected  ? false : true;
+            }
+        });
+        }
     });
   }
   onImageClick(image) {
