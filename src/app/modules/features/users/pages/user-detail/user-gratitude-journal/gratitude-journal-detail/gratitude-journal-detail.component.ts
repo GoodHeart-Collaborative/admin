@@ -25,9 +25,7 @@ export class GratitudeJournalDetailComponent implements OnInit {
   }
 
   toggleReplies(){
-    console.log(this.hideShowReplies);
     this.hideShowReplies = !this.hideShowReplies;
-    console.log(this.hideShowReplies);
   }
 
 }

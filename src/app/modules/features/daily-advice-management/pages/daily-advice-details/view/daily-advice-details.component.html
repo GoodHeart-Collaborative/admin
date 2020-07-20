@@ -32,13 +32,14 @@
                                 <p class="comment-time">{{item?.created | customDate}}</p>
                             </h4>
                             <p>{{item?.comment}}</p>
-                            <div class="like-cover" (click)="onlikeHandler(item?._id)">
-                                 <span class="material-icons" >thumb_up</span>
-                                    <p>{{item?.likeCount}}</p>
+                            <div class="like-cover" >
+                                <span class="material-icons" (click)="onlikeHandler(item?._id)">thumb_up</span>
+                                <p (click)="onlikeHandler(item?._id)">{{item?.likeCount}}</p>
+                                <a class="see-hide-replies" (click)="toggleReplies()">{{hideShowReplies? "Hide" : "See"}} Replies (8)</a>
                             </div> 
                         </div>
                     </div>
-                    <!-- <ul class="comment-listing" >
+                    <ul class="comment-listing" *ngIf="hideShowReplies">
                         <li class="single-comment">
                             <div class="li-content">
                                 <div class="img-cover">
@@ -73,7 +74,7 @@
                                 </div>
                             </div>
                         </li>
-                    </ul>  -->
+                    </ul> 
                 </li>
             </ul>
         </div>
