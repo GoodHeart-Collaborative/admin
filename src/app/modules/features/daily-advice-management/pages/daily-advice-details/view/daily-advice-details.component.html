@@ -6,7 +6,7 @@
                     <h1>{{adviceDetails?.title}}</h1>
                     <p>{{adviceDetails?.description}}</p>
                 </div>
-                <p>Posted on: {{adviceDetails?.createdAt | date : 'medium'}}</p>
+                <p>Posted on: {{adviceDetails?.postedAt | date : 'medium'}}</p>
             </div>
             <div class="image-detail">
                 <img [src]="adviceDetails?.mediaUrl | customImage:'USER'|async ">
