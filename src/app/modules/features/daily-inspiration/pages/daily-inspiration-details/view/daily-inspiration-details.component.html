@@ -1,20 +1,29 @@
-<div class="page-daily-inspiration-detail">
+<div class="page-daily-inspiration-detail common-detail-page-ui">
     <div class="daily-inspiration-content">
-        <div class="mat-card">
-            <div class="row-1">
-                <div class="textual-detail">
+        <div class="row-1">
+            <div class="textual-detail">
+                <div>
                     <h1>{{dailyInspirationDetails?.title}}</h1>
                     <p>{{dailyInspirationDetails?.description}}</p>
+<<<<<<< HEAD
                     <div>
                         <p class="posted-on-date">Posted on: {{dailyInspirationDetails?.postedAt | date : 'medium'}}</p>
                         <div class="like-cover" (click)="onlikeHandler(dailyInspirationDetails._id)"><span class="material-icons">thumb_up</span>
                             <p>{{dailyInspirationDetails?.likeCount}}</p>
                         </div>
                     </div>
+=======
+>>>>>>> 573a2310b2fd39919eacc2fe59fe52ce3ea4cf24
                 </div>
-                <div class="image-detail">
-                    <img [src]="dailyInspirationDetails?.mediaUrl | customImage:'USER'|async ">
+                <div>
+                    <p class="posted-on-date">Posted on: {{dailyInspirationDetails?.createdAt | date : 'medium'}}</p>
+                    <div class="like-cover" (click)="onlikeHandler(dailyInspirationDetails._id)"><span class="material-icons">thumb_up</span>
+                        <p>{{dailyInspirationDetails?.likeCount}}</p>
+                    </div>
                 </div>
+            </div>
+            <div class="image-detail">
+                <img [src]="dailyInspirationDetails?.mediaUrl | customImage:'USER'|async ">
             </div>
         </div>
     </div>
