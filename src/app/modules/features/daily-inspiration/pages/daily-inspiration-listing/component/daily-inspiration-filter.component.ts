@@ -16,7 +16,6 @@ export class DailyInspirationFilterComponent implements OnInit {
   statusList = [{
     view: 'Active', value: 'active'},
     {view: 'Blocked', value: 'blocked'},
-   { view: 'Deleted', value: 'deleted'},
   ];
   isProcessing = true;
   constructor(

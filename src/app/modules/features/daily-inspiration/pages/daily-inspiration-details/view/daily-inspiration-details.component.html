@@ -7,8 +7,8 @@
                     <p>{{dailyInspirationDetails?.description}}</p>
                     <div>
                         <p class="posted-on-date">Posted on: {{dailyInspirationDetails?.createdAt | date : 'medium'}}</p>
-                        <div class="like-cover" (click)="onlikeHandler()"><span class="material-icons">thumb_up</span>
-                            <p>76</p>
+                        <div class="like-cover" (click)="onlikeHandler(dailyInspirationDetails._id)"><span class="material-icons">thumb_up</span>
+                            <p>{{dailyInspirationDetails?.likeCount}}</p>
                         </div>
                     </div>
                 </div>
@@ -16,14 +16,6 @@
                     <img [src]="dailyInspirationDetails?.mediaUrl | customImage:'USER'|async ">
                 </div>
             </div>
-            <!-- <div class="row-2">
-                <div class="like-cover" (click)="onlikeHandler()"><span class="material-icons">thumb_up</span>
-                    <p>76</p>
-                </div>
-                <div class="like-cover"><span class="material-icons">comment</span>
-                    <p>76</p>
-                </div>
-            </div> -->
         </div>
     </div>
 </div>
