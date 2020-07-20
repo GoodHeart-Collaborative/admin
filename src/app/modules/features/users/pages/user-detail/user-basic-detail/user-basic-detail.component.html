@@ -12,7 +12,7 @@
 
                     </div>
                     <div class="btn-row">
-                        <button class="btn btn-primary btn-delete" mat-stroked-button *ngIf="!data?.isAdminRejected" (click)="onverifyHandler(data?._id, data?.isAdminRejected)">Reject User</button>
+                        <button class="btn btn-primary btn-delete" mat-stroked-button *ngIf="!data?.isAdminRejected" (click)="onRefuteHandler(data?._id, data?.isAdminRejected)">Reject User</button>
                         <button class="btn btn-primary" mat-stroked-button *ngIf="!data?.isAdminVerified" (click)="onverifyHandler(data?._id, data?.isAdminVerified)">Verify User</button>
                     </div>
                 </div>
@@ -63,8 +63,6 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
