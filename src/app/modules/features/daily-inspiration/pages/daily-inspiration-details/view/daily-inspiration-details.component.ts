@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
 import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
 
 @Component({
   selector: 'app-daily-inspiration-details',
@@ -12,7 +14,8 @@ export class DailyInspirationDetailsComponent implements OnInit {
 
   constructor(
                $router: ActivatedRoute,
-               $breadcrumb: BreadcrumbService) {
+               $breadcrumb: BreadcrumbService,
+               private $matDailog: MatDialog) {
       this.dailyInspirationDetails = $router.snapshot.data.dailyData.data;
       $breadcrumb.replace(this.dailyInspirationDetails.id, this.dailyInspirationDetails.title);
     }
@@ -20,4 +23,10 @@ export class DailyInspirationDetailsComponent implements OnInit {
   ngOnInit() {
   }
 
+  onlikeHandler(id) {
+    this.$matDailog.open(LikeActionComponent, {
+      width: '500px',
+      data: id
+    }).afterClosed().subscribe();
+  }
 }

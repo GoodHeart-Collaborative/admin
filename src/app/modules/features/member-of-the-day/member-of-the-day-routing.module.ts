@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MemberOfTheDayComponent } from './view/member-of-the-day.component';
-import { MEMBER_OF_THE_DAY_LIST , MEMBER_OF_THE_DAY_DETAILS } from 'src/app/constant/routes';
+import { MEMBER_OF_THE_DAY_LIST , ADD_MEMBER_OF_THE_DAY } from 'src/app/constant/routes';
 import { MemberOfTheDayServiceResolve } from './service/member-of-the-day.service';
 
 const routes: Routes = [
@@ -18,6 +18,13 @@ const routes: Routes = [
       path: MEMBER_OF_THE_DAY_LIST.path,
       loadChildren: () => import('./pages/member-of-the-day-listing/member-of-the-day-listing.module')
       .then( (m) => m.MemberOfTheDayListingModule
+      ),
+    },
+
+    {
+      path: ADD_MEMBER_OF_THE_DAY.path,
+      loadChildren: () => import('./pages/add-member-of-the-day/add-member-of-the-day.module')
+      .then( (m) => m.AddMemberOfTheDayModule
       ),
     },
 

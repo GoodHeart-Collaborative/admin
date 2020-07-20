@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  // url: 'http://womencomqaapi.appskeeper.com/v1/',
   url: 'http://womencomdevapi.appskeeper.com/v1/',
   tokenKey: 'desknow-admin-token',
   config: {
