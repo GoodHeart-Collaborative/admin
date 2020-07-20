@@ -16,6 +16,10 @@ export class DailyAdviceDetailsComponent implements OnInit {
   adviceDetails: any;
   comments: any;
   like: any;
+
+  public hideShowReplies: boolean = false;
+
+
   constructor(
     $router: ActivatedRoute,
     $breadcrumb: BreadcrumbService,
@@ -56,6 +60,10 @@ export class DailyAdviceDetailsComponent implements OnInit {
       width: '500px',
       data: id
     }).afterClosed().subscribe();
+  }
+
+  toggleReplies(){
+    this.hideShowReplies = !this.hideShowReplies;
   }
 
 }

@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserTopicDetailComponent implements OnInit {
 
+  public hideShowReplies: boolean = false;
+  
   constructor() { }
 
   ngOnInit() {
@@ -14,5 +16,9 @@ export class UserTopicDetailComponent implements OnInit {
 
   onlikeHandler() {
     
+  }
+
+  toggleReplies(){
+    this.hideShowReplies = !this.hideShowReplies;
   }
 }
