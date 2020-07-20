@@ -5,6 +5,7 @@ import { ChangePasswordComponent } from '../../change-password/component/change-
 import { Router } from '@angular/router';
 import { EDIT_PROFILE } from 'src/app/constant/routes';
 import { EditProfileComponent } from '../../edit-profile/component/edit-profile.component';
+import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
 
 @Component({
   selector: 'app-admin-profile',
@@ -48,6 +49,13 @@ export class AdminProfileComponent implements OnInit {
   openEditProfileTab() {
     this.matDailog.open(EditProfileComponent, {
       width: '500px',
+    }).afterClosed().subscribe();
+  }
+
+  onImageClick(image) {
+    this.matDailog.open(ViewFullImageComponent, {
+      panelClass: 'view-full-image-modal',
+      data: image
     }).afterClosed().subscribe();
   }
 

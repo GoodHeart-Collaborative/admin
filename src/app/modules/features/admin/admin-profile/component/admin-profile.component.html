@@ -6,7 +6,7 @@
 	<div class="popup-content">
 		<div class="popup-body">
 			<div class="img-cover">
-				<img [src]="(profileDetail?.profilePicture)|customImage:'USER'|async" alt="Admin">
+				<img [src]="(profileDetail?.profilePicture)|customImage:'USER'|async" alt="Admin" (click)="onImageClick(profileDetail?.profilePicture)">
 			</div>
 			<div class="profile-detail">
 				<h3>{{profileDetail?.name | titlecase}}</h3>

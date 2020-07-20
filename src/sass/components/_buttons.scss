@@ -143,11 +143,14 @@
         
         &.icon-unblock {
             color: #0d8c69;
+            width: 21px;
+            font-size: 21px;
         }
         
         &.icon-block {
             color: #b30000;
-            width: 20px;
+            width: 21px;
+            font-size: 21px;
         }
         &.disabled-icon{
             cursor: not-allowed;
