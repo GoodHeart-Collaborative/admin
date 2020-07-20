@@ -4,6 +4,7 @@ import { DailyUnicornHumourDetailsComponent } from './view/daily-unicorn-humour-
 import { Routes, RouterModule } from '@angular/router';
 import { MatDialogModule, MatIconModule } from '@angular/material';
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
+import { LikeActionModule } from 'src/app/modules/shared/like-action/like-action.module';
 
 // const routes: Routes = [
 //   {
@@ -18,7 +19,9 @@ import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.modul
     CommonModule,
     MatDialogModule,
     MatIconModule,
-    CustomImageModule
+    CustomImageModule,
+    LikeActionModule,
+    MatDialogModule
     // RouterModule.forChild(routes)
   ],
   entryComponents: [DailyUnicornHumourDetailsComponent],
