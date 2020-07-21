@@ -39,7 +39,7 @@ export class FileUploadService {
                         if (loader) {
                             this._loaderService.loader.next(false);
                         }
-                        this._utilityService.showAlert(SOMETHING_WENT_WRONG);
+                        this._utilityService.error(SOMETHING_WENT_WRONG);
                         reject(err);
                     } else {
                         if (loader) {
@@ -58,6 +58,6 @@ export class FileUploadService {
     }
 
     showAlert(message) {
-        this._utilityService.showAlert(message);
+        this._utilityService.error(message);
       }
 }

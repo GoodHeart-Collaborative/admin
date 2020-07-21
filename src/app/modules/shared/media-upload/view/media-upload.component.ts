@@ -19,7 +19,9 @@ export class MediaUploadComponent implements OnInit {
   // @Input() maxlength: number;
   // currentMediaCounts = 0;
   // @Output() removeMedia = new EventEmitter();
-  constructor(private $popup: PopupService, private $upload: FileUploadService) { }
+  constructor(
+    private $popup: PopupService, 
+    private $upload: FileUploadService) { }
 
   ngOnInit() {
   }

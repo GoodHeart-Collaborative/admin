@@ -60,58 +60,26 @@
             </div>
             <div class="mod-cover">
                   <div class="listings">
+                        <!-- <nook-paginator (pageChange)="onPageChange($event)" [totalPage]="totalPage" 
+                        [activePage]="activePage" *ngIf="totalPage > 1">
+                        </nook-paginator> -->
                         <div class="list-section-heading">
-                              <span class="material-icons icon-left">chevron_left</span>
+                              <button class="material-icons icon-left" (click)="onPrevPage()" [disabled]="params?.page <= 1">chevron_left</button>
                               <h6>Member of the day</h6>
-                              <span class="material-icons icon-right">chevron_right</span>
+                              <button class="material-icons icon-right" (click)="onNextPage()" [disabled]="params?.page >= totalPage">chevron_right</button>
                         </div>
                         <div class="list-section-body">
                               <ul class="users-listing">
-                                    <li class="single-user">
+                                    <li class="single-user" *ngFor="let item of memberList?.data">
                                           <div class="img-cover">
-                                                <img src="../../../../../assets/images/img_avatar3.png" alt="Profile">
+                                                <img [src]="item?.profilePicUrl[0] |customImage:'USER'|async" alt="Profile">
                                           </div>
                                           <div class="textual-cover">
-                                                <h6>Angel Markel</h6>
-                                                <p>July 21, 2020</p>
+                                                <h6>{{item?.firstName || 'String'}}{{item?.lastName || ''}}</h6>
+                                                <p>{{item?.memberCreatedAt | customDate}}</p>
                                           </div>
                                     </li>
-                                   <!-- <li class="single-user">
-                                          <div class="img-cover">
-                                                <img src="../../../../../assets/default-image/user.jpg" alt="Profile">
-                                          </div>
-                                          <div class="textual-cover">
-                                                <h6>Mother Terasa</h6>
-                                                <p>July 20, 2020</p>
-                                          </div>
-                                    </li>
-                                     <li class="single-user">
-                                          <div class="img-cover">
-                                                <img src="../../../../../assets/images/img_avatar3.png" alt="Profile">
-                                          </div>
-                                          <div class="textual-cover">
-                                                <h6>Ellen DeGeneres</h6>
-                                                <p>July 19, 2020</p>
-                                          </div>
-                                    </li> -->
-                                    <!-- <li class="single-user">
-                                          <div class="img-cover">
-                                                <img src="../../../../../assets/default-image/user.jpg" alt="Profile">
-                                          </div>
-                                          <div class="textual-cover">
-                                                <h6>Oprah Winfrey</h6>
-                                                <p>July 18, 2020</p>
-                                          </div>
-                                    </li>
-                                    <li class="single-user">
-                                          <div class="img-cover">
-                                                <img src="../../../../../assets/images/inspiration.jpg" alt="Profile">
-                                          </div>
-                                          <div class="textual-cover">
-                                                <h6>Malala Yousafzai</h6>
-                                                <p>July 17, 2020</p>
-                                          </div>
-                                    </li> -->
+                     
                               </ul>
                         </div>
                   </div>

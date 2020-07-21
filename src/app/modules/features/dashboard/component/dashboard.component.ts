@@ -16,7 +16,13 @@ export class DashboardComponent implements OnInit {
   filterObject;
   minDate: Date;
   data: any;
-
+  memberList: unknown;
+  params = {
+    page: 1,
+    limit: 2,
+  };
+  totalPage: number;
+  activePage: number;
   constructor(
     private $dashboardService: DashboardService,
     private $member: MemberOfTheDayService) {
@@ -34,6 +40,27 @@ export class DashboardComponent implements OnInit {
   }
 
   memberOfTheDayList() {
-    // this.$member.queryData()
+    this.$member.queryData(this.params).then(res => {
+      console.log(res.data);
+      this.memberList = res.data;
+      this.totalPage = res.data['totalPage'];
+    });
+  }
+
+  onPrevPage() {
+    if (this.params.page > 1) {
+      this.params.page --;
+      this.memberOfTheDayList();
+    }
+    console.log(this.params);
+  }
+
+  onNextPage() {
+    if (this.params.page  < this.totalPage) {
+      this.params.page ++;
+      this.memberOfTheDayList();
+    }
+    console.log(this.params);
+
   }
 }

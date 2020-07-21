@@ -24,6 +24,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { CheckNullPipeModule } from 'src/app/pipes/check-null/check-null-pipe.module';
 import { CustomDatePipeModule } from 'src/app/pipes/custom-date/custom-date-pipe.module';
 import { DropdownFilterModule } from '../../layout/layout-shared/dropdown-filter/dropdown-filter.module';
+import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 
 
 @NgModule({
@@ -32,27 +33,8 @@ import { DropdownFilterModule } from '../../layout/layout-shared/dropdown-filter
     CommonModule,
     DashboardRoutingModule,
     MatCardModule,
-    MatFormFieldModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatTableModule,
-    SharedModule,
-    // SearchFilterModule,
-    MatIconModule,
-    MatTooltipModule,
-    MatSelectModule,
-    MatOptionModule,
-    MatPaginatorModule,
-    MatExpansionModule,
-    CheckNullPipeModule,
     CustomDatePipeModule,
-    MatInputModule,
-    MatCheckboxModule,
-    MatSortModule,
-    DateFilterModule,
-    DropdownFilterModule
+    CustomImageModule
   ],
   exports: [DashboardComponent],
   providers: [
