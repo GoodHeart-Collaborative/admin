@@ -16,8 +16,8 @@
 
 
     <ng-template appFor="mobileNo" let-user="row">
-        <div class="mobile-content" [class.verified-user]="user?.isAdminVerified">
-            <span class="material-icons verified-icon" *ngIf="user?.isAdminVerified && (user?.mobileNo || user?.fullMobileNo)">verified_user</span>
+        <div class="mobile-content" [class.verified-user]="user?.isMobileVerified">
+            <span class="material-icons verified-icon" *ngIf="(user?.isMobileVerified) && (user?.mobileNo || user?.fullMobileNo)">verified_user</span>
             <span>{{ user?.mobileNo ?  user?.mobileNo  : (user?.fullMobileNo || '-' )}}</span>
         </div>
     </ng-template>
@@ -33,10 +33,10 @@
 
         <ng-template appFor="actions"  let-user="row">
             <div class="action-icon-cover">
-                <i class="material-icons icon-check icon-edit" (click)="onverifyHandler(user?._id)" title="Verify User" [class.disabled-icon]="user?.isAdminVerified">
+                <i class="material-icons icon-check icon-edit" (click)="onverifyHandler(user?._id, 'verified' )" title="Verify User" [class.disabled-icon]="(user?.adminStatus == 'verified')">
                     check_circle
                 </i>
-                <i class="material-icons icon-deny" title="Reject User" (click)="onDeclinedHandler(user?._id)"  [class.disabled-icon]="user?.isAdminRejected">
+                <i class="material-icons icon-deny" title="Reject User" (click)="onverifyHandler(user?._id, 'rejected')"  [class.disabled-icon]="(user?.adminStatus == 'rejected')">
                     thumb_down_alt
                 </i>
                 <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')" title="Delete user">

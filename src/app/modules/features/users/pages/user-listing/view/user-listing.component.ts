@@ -157,11 +157,11 @@ export class UserListingComponent implements OnInit {
  * Verify User Handler
  * @param id
  */
-  onverifyHandler(id) {
-    this.$confirmBox.listAction('User', 'Verified').subscribe((confirm) => {
+  onverifyHandler(id, status) {
+    this.$confirmBox.listAction('User', `${status}`).subscribe((confirm) => {
       if (confirm) {
         const params = {
-          isAdminVerified: true,
+          adminStatus: status
         };
         this.$userService.onVerifiedHnadler(id, params).then(res => {
           if (res) {
@@ -177,20 +177,20 @@ export class UserListingComponent implements OnInit {
  * Declined User Handler
  * @param id
  */
-  onDeclinedHandler(id) {
-    this.$confirmBox.listAction('User', 'Declined').subscribe((confirm) => {
-      if (confirm) {
-        const params = {
-          isAdminRejected: true,
-        };
-        this.$userService.onVerifiedHnadler(id, params).then(res => {
-          if (res) {
-            this.updateUsers();
-          }
-        });
-      }
-    });
-  }
+  // onDeclinedHandler(id) {
+  //   this.$confirmBox.listAction('User', 'Declined').subscribe((confirm) => {
+  //     if (confirm) {
+  //       const params = {
+  //         isAdminRejected: true,
+  //       };
+  //       this.$userService.onVerifiedHnadler(id, params).then(res => {
+  //         if (res) {
+  //           this.updateUsers();
+  //         }
+  //       });
+  //     }
+  //   });
+  // }
 
 /**
  * View Fill Image

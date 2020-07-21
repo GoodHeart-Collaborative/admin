@@ -56,13 +56,6 @@ export class MemberTableDataSource implements Table.Source<Category> {
       sorting: false,
       templateBy: 'status'
     },
-
-    // {
-    //   title: 'Actions',
-    //   id: 'actions',
-    //   sorting: false,
-    //   templateBy: 'actions',
-    // },
   ];
   options: Table.Options = {
     selection: false,
@@ -70,7 +63,7 @@ export class MemberTableDataSource implements Table.Source<Category> {
     index: true,
     filterComponent: ListingFilterComponent,
     sorting: true,
-    addComponent: true
+    // addComponent: true
   };
   constructor(public data: Table.Data<Category> = defaultData) {}
 }

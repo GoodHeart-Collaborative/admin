@@ -49,18 +49,14 @@ export class UserBasicDetailComponent implements OnInit {
     this.onBlockUSer(true);
   }
 
-  onverifyHandler(id, isAdminVerified) {
-    this.$confirmBox.listAction('User', (isAdminVerified ? 'Refute'  : 'Verified')).subscribe((confirm) => {
+  onverifyHandler(id, status) {
+    this.$confirmBox.listAction('User', `${status}`).subscribe((confirm) => {
       if (confirm) {
-        let   params = {};
-        if (!isAdminVerified) {
-          params['isAdminVerified'] =  true;
-        } else {
-          params['isAdminVerified'] = true;
-        }
+        const params = {
+          adminStatus: status
+        };
         this.$userService.onVerifiedHnadler(id, params).then(res => {
           if (res) {
-              // tslint:disable-next-line: no-unused-expression
               this.data.isAdminVerified =   this.data.isAdminVerified  ? false : true;
             }
         });
