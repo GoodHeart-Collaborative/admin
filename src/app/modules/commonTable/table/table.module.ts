@@ -29,6 +29,7 @@ import { SearchFilterModule } from '../search-filter/search-filter.module';
     MatSortModule,
     MatTableModule,
     MatIconModule,
+    MatButtonModule,
     MatInputModule,
     MatCheckboxModule,
     MatFormFieldModule,

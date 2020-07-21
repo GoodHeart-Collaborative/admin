@@ -27,6 +27,7 @@ import { ValidationErrorPipeModule } from 'src/app/pipes/validation-error/valida
         MatTooltipModule,
         MatListModule,
         MatTabsModule,
+        MatButtonModule,
         ContentManagementRouting,
         MatButtonModule,
         QuillModule.forRoot(),
