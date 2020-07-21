@@ -50,37 +50,37 @@ export class UserBasicDetailComponent implements OnInit {
   }
 
   onverifyHandler(id, status) {
-    this.$confirmBox.listAction('User', `${status}`).subscribe((confirm) => {
+    this.$confirmBox.listAction('User', `${status  == 'verified'  ? 'Verify' : 'Reject'}`).subscribe((confirm) => {
       if (confirm) {
         const params = {
           adminStatus: status
         };
         this.$userService.onVerifiedHnadler(id, params).then(res => {
           if (res) {
-              this.data.isAdminVerified =   this.data.isAdminVerified  ? false : true;
+              this.data.adminStatus =   status  ;
             }
         });
         }
     });
   }
 
-  onRefuteHandler(id, isAdminRejected) {
-    this.$confirmBox.listAction('User', (isAdminRejected ? 'Refute'  : 'Verified')).subscribe((confirm) => {
-      if (confirm) {
-        let   params = {};
-        if (isAdminRejected) {
-          params['isAdminRejected'] =  false;
-        } else {
-          params['isAdminRejected'] = true;
-        }
-        this.$userService.onVerifiedHnadler(id, params).then(res => {
-          if (res) {
-              this.data.isAdminRejected = this.data.isAdminRejected  ? false : true;
-            }
-        });
-        }
-    });
-  }
+  // onRefuteHandler(id, isAdminRejected) {
+  //   this.$confirmBox.listAction('User', (isAdminRejected ? 'Refute'  : 'Verified')).subscribe((confirm) => {
+  //     if (confirm) {
+  //       let   params = {};
+  //       if (isAdminRejected) {
+  //         params['isAdminRejected'] =  false;
+  //       } else {
+  //         params['isAdminRejected'] = true;
+  //       }
+  //       this.$userService.onVerifiedHnadler(id, params).then(res => {
+  //         if (res) {
+  //             this.data.isAdminRejected = this.data.isAdminRejected  ? false : true;
+  //           }
+  //       });
+  //       }
+  //   });
+  // }
   onImageClick(image) {
     this.matDailog.open(ViewFullImageComponent, {
       panelClass: 'view-full-image-modal',
