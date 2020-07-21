@@ -77,7 +77,6 @@ export class AddDailyInspiratinComponent implements OnInit {
   * Patch Value in Form
   */
   getDailyInspiration() {
-    console.log(this.dailyInspirationDetails);
     if (this.dailyInspirationDetails) {
       this.profilePicURL = this.dailyInspirationDetails.mediaUrl;
       this.inspirationForm.patchValue(this.dailyInspirationDetails);

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../service/dashboard.service';
 import { FormGroup } from '@angular/forms';
+import { MemberOfTheDayService } from '../../member-of-the-day/service/member-of-the-day.service';
 
 
 @Component({
@@ -16,13 +17,14 @@ export class DashboardComponent implements OnInit {
   minDate: Date;
   data: any;
 
-  constructor(private $dashboardService: DashboardService) {
-    // this.dashboardForm = this._dashboardService.getFilterForm();
-    // this.filterObject = this._dashboardService.createFilterObject(this.dashboardForm);
+  constructor(
+    private $dashboardService: DashboardService,
+    private $member: MemberOfTheDayService) {
      this.onDrashboardHandler();
   }
 
   ngOnInit() {
+    this.memberOfTheDayList();
   }
 
   onDrashboardHandler() {
@@ -31,4 +33,7 @@ export class DashboardComponent implements OnInit {
       });
   }
 
+  memberOfTheDayList() {
+    // this.$member.queryData()
+  }
 }
