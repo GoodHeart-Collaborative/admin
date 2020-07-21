@@ -81,6 +81,7 @@ export class UserBasicDetailComponent implements OnInit {
   //       }
   //   });
   // }
+
   onImageClick(image) {
     this.matDailog.open(ViewFullImageComponent, {
       panelClass: 'view-full-image-modal',
