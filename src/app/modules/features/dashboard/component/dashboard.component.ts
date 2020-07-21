@@ -42,7 +42,7 @@ export class DashboardComponent implements OnInit {
   memberOfTheDayList() {
     this.$member.queryData(this.params).then(res => {
       console.log(res.data);
-      this.memberList = res.data;
+      this.memberList = res.data['data'];
       this.totalPage = res.data['totalPage'];
     });
   }

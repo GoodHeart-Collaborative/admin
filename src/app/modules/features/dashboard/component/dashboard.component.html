@@ -82,7 +82,7 @@
                         </div>
                         <div class="list-section-body">
                               <ul class="users-listing">
-                                    <li class="single-user" *ngFor="let item of memberList?.data">
+                                    <li class="single-user" *ngFor="let item of memberList">
                                           <div class="img-cover">
                                                 <img [src]="item?.profilePicUrl[0] |customImage:'USER'|async" alt="Profile">
                                           </div>
