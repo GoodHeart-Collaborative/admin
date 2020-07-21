@@ -12,8 +12,8 @@
 
                     </div>
                     <div class="btn-row">
-                        <button class="btn btn-primary btn-delete" mat-stroked-button *ngIf="(data?.adminStatus == 'rejected')" (click)="onverifyHandler(data?._id, 'rejected')">Reject User</button>
-                        <button class="btn btn-primary" mat-stroked-button *ngIf="(data?.adminStatus == 'verified' ) || (data?.adminStatus == 'pending')" (click)="onverifyHandler(data?._id, 'verified')">Verify User</button>
+                        <button class="btn btn-primary btn-delete" mat-stroked-button *ngIf="(data?.adminStatus == 'verified')" (click)="onverifyHandler(data?._id, 'rejected')">Reject User</button>
+                        <button class="btn btn-primary" mat-stroked-button *ngIf="(data?.adminStatus == 'rejected' ) || (data?.adminStatus == 'pending')" (click)="onverifyHandler(data?._id, 'verified')">Verify User</button>
                     </div>
                 </div>
                 <div class="right-portion">

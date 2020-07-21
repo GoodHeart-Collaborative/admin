@@ -23,7 +23,10 @@ export class DailyInspirationDetailsComponent implements OnInit {
   ngOnInit() {
   }
 
-  onlikeHandler(id) {
+  onlikeHandler(id: string, likesCount: number) {
+    if (!likesCount) {
+      return;
+    }
     this.$matDailog.open(LikeActionComponent, {
       width: '500px',
       data: id

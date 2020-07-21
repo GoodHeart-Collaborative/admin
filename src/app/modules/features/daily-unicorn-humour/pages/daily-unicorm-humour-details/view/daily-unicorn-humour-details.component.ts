@@ -33,7 +33,10 @@ export class DailyUnicornHumourDetailsComponent implements OnInit {
  * user Like Handler
  * @param id
  */
-onlikeHandler(id) {
+onlikeHandler(id: string, likesCount: number) {
+  if (!likesCount) {
+    return;
+  }
   this.$matDailog.open(LikeActionComponent, {
     width: '500px',
     data: id

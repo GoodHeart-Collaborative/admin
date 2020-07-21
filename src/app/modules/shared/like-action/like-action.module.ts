@@ -5,6 +5,7 @@ import { MatDialogModule, MatButtonModule, MatIconModule, MatMenuModule } from '
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 import {CustomDatePipeModule} from 'src/app/pipes/custom-date/custom-date-pipe.module';
 import { ViewFullImageModule } from '../view-full-image/view-full-image.module';
+import { TimePipeModule } from 'src/app/pipes/time-pipe/time-pipe.module';
 
 
 @NgModule({
@@ -16,7 +17,7 @@ import { ViewFullImageModule } from '../view-full-image/view-full-image.module';
     MatIconModule,
     MatMenuModule,
     CustomImageModule,
-    CustomDatePipeModule,
+    TimePipeModule,
     ViewFullImageModule
   ],
   exports: [LikeActionComponent],

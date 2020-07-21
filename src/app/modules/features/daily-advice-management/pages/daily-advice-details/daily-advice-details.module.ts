@@ -6,6 +6,7 @@ import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.modul
 import { CommonService } from 'src/app/modules/shared/services/common.service';
 import { LikeActionModule } from 'src/app/modules/shared/like-action/like-action.module';
 import { CustomDatePipeModule } from 'src/app/pipes/custom-date/custom-date-pipe.module';
+import { TimePipeModule } from 'src/app/pipes/time-pipe/time-pipe.module';
 
 
 const routes: Routes = [
@@ -21,8 +22,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     CustomImageModule,
     LikeActionModule,
-    CustomDatePipeModule,
-    CustomImageModule
+    CustomImageModule,
+    TimePipeModule
   ],
   providers: [CommonService]
 })
