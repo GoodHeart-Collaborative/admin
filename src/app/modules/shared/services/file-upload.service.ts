@@ -53,7 +53,7 @@ export class FileUploadService {
             });
         } catch (err) {
             this._loaderService.loader.next(false);
-            console.error(err.message);
+            console.error(err);
         }
     }
 
