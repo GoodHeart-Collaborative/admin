@@ -77,13 +77,12 @@ export class AddDailyInspiratinComponent implements OnInit {
   * Patch Value in Form
   */
   getDailyInspiration() {
-    console.log(this.dailyInspirationDetails.mediaUrl);
+    console.log(this.dailyInspirationDetails);
     if (this.dailyInspirationDetails) {
       this.profilePicURL = this.dailyInspirationDetails.mediaUrl;
       this.inspirationForm.patchValue(this.dailyInspirationDetails);
       if (this.dailyInspirationDetails && this.dailyInspirationDetails.postedAt && this.dailyInspirationDetails.isPostLater) {
-
-        this.inspirationForm.get('postedAt').patchValue(this.dailyInspirationDetails.postedAt);
+         this.inspirationForm.get('postedAt').patchValue(this.dailyInspirationDetails.postedAt);
       }
     }
   }

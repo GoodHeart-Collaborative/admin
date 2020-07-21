@@ -35,11 +35,12 @@
                             <div class="like-cover" >
                                 <span class="material-icons" (click)="onlikeHandler(item?._id)">thumb_up</span>
                                 <p (click)="onlikeHandler(item?._id)">{{item?.likeCount}}</p>
-                                <a class="see-hide-replies" (click)="toggleReplies()">{{hideShowReplies? "Hide" : "See"}} Replies (8)</a>
+                                <a class="see-hide-replies" (click)="toggleReplies(item?._id)">{{hideShowReplies? "Hide" : "See"}} Replies (8)</a>
                             </div> 
                         </div>
+                        <!-- (click)="onNestedComment()" -->
                     </div>
-                    <ul class="comment-listing" *ngIf="hideShowReplies">
+                    <ul class="comment-listing" *ngIf="hideShowReplies" >
                         <li class="single-comment">
                             <div class="li-content">
                                 <div class="img-cover">

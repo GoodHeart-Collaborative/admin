@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
-import { DailyAdviceManagementService } from '../../../service/daily-advice-management.service';
 import { CommonService } from 'src/app/modules/shared/services/common.service';
 import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
 import { MatDialog } from '@angular/material';
@@ -16,8 +15,7 @@ export class DailyAdviceDetailsComponent implements OnInit {
   adviceDetails: any;
   comments: any;
   like: any;
-
-  public hideShowReplies: boolean = false;
+public hideShowReplies: boolean = false;
 
 
   constructor(
@@ -27,12 +25,10 @@ export class DailyAdviceDetailsComponent implements OnInit {
     private $matDailog: MatDialog) {
     this.adviceDetails = $router.snapshot.data.dailyData.data;
     $breadcrumb.replace(this.adviceDetails.id, this.adviceDetails.title);
-    // this.likeHandler();
-
   }
 
   ngOnInit() {
-    this.getLikeCommentHandler();
+    this.getCommentHandler(this.adviceDetails.id);
   }
 
 
@@ -40,17 +36,17 @@ export class DailyAdviceDetailsComponent implements OnInit {
   /**
    * user Comment Handler
    */
-  getLikeCommentHandler() {
+  getCommentHandler(id) {
     const params = {
       pageNo: 1,
       limit: 100,
-      postId: '5f0ff1e7fd8bfe1c64e69f4e'
+      postId: id
     };
     this.$common.onCommentHandler(params).then(res => {
       this.comments = res.data['list'];
-      console.log(this.comments);
      });
   }
+
 /**
  * user Like Handler
  * @param id
@@ -62,8 +58,14 @@ export class DailyAdviceDetailsComponent implements OnInit {
     }).afterClosed().subscribe();
   }
 
-  toggleReplies(){
+  /**
+   * Show nested comment
+   * @param id
+   */
+  toggleReplies(id) {
+    this.getCommentHandler(id);
     this.hideShowReplies = !this.hideShowReplies;
+
   }
 
 }
