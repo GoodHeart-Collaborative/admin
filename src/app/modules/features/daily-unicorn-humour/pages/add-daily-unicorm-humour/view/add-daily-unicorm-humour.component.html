@@ -15,7 +15,7 @@
 
 
                     <div class="post-later">
-                        <mat-checkbox formControlName="isPostLater">Check me!</mat-checkbox>
+                        <mat-checkbox formControlName="isPostLater">Post Later!</mat-checkbox>
                         <mat-form-field class="later-date-picker" color="accent"
                             *ngIf="unicornForm?.contains('postedAt')" appearance="outline">
                             <input matInput [matDatepicker]="picker" [min]="unicornDetails ? (unicornDetails.postedAt ?  unicornDetails.postedAt : today)  : today" formControlName="postedAt"
