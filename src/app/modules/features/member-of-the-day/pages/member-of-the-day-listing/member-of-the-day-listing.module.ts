@@ -10,6 +10,7 @@ import { DateFilterModule } from 'src/app/modules/layout/layout-shared/date-filt
 import { MatFormFieldModule, MatOptionModule, MatSelectModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ListingFilterComponent } from '../member-of-the-day-listing/component/listing-filter.component';
+import { LikeActionModule } from 'src/app/modules/shared/like-action/like-action.module';
 
 const routes: Routes = [
   {
@@ -30,7 +31,8 @@ const routes: Routes = [
     MatFormFieldModule,
     MatOptionModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LikeActionModule
   ],
   entryComponents: [ListingFilterComponent,]
 })

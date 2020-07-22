@@ -20,10 +20,10 @@
                             <mat-icon>more_vert</mat-icon>
                         </button>
                         <mat-menu #menu="matMenu">
-                            <button mat-menu-item >
+                            <button mat-menu-item (click)="onDetails(item?._id)">
                                 See Profile
                             </button>
-                            <button mat-menu-item >
+                            <button mat-menu-item (click)="onActionHandler(item?._id, item?.users?.status )">
                                 Block User
                             </button>
                         </mat-menu>

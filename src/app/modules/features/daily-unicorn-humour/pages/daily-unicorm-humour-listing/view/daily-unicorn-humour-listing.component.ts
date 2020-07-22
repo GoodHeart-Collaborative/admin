@@ -11,6 +11,7 @@ import { DailyUnicornHumourDetailsComponent } from '../../daily-unicorm-humour-d
 import { MatDialog } from '@angular/material';
 import { HOME_TYPE } from 'src/app/constant/drawer';
 import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
+import { CommentsComponent } from 'src/app/modules/shared/comments/view/comments/comments.component';
 @Component({
   selector: 'app-daily-unicorn-humour-listing',
   templateUrl: './daily-unicorn-humour-listing.component.html',
@@ -189,6 +190,16 @@ export class DailyUnicornHumourListingComponent implements OnInit {
       return;
     }
     this.$matDailog.open(LikeActionComponent, {
+      width: '500px',
+      data: id
+    }).afterClosed().subscribe();
+  }
+
+  onCommentsHandler(id: string, commentCount: number) {
+    if (!commentCount) {
+      return;
+    }
+    this.$matDailog.open(CommentsComponent, {
       width: '500px',
       data: id
     }).afterClosed().subscribe();
