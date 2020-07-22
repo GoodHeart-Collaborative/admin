@@ -1,0 +1,112 @@
+:host{
+    @import 'components/popup-ui';
+    // @import 'components/common-detail-page-ui';
+}
+
+.users-listing{
+    padding: 0px;
+    margin: 0px;
+    .single-user{
+        &:not(:first-child){
+            padding-top: 10px;
+        }
+        &:not(:last-child){
+            padding-bottom: 10px;
+        }
+        .li-content{
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            text-align: left;
+            .img-cover{
+                width: 35px;
+                height: 35px;
+                overflow: hidden;
+                border-radius: 35px;
+                box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.1);
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .textual-cover{
+                padding-left: 10px;
+                width: calc(100% - 35px);
+                display: block;
+                h4{
+                    margin: 0px;
+                    font-size: 14px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    max-width: 100%;
+                    position: relative;
+                    padding-right: 100px;
+                    .more-icon{
+                        position: absolute;
+                        right: 0px;
+                        top: 2px;
+                        cursor: pointer;
+                    }
+                    p{
+                        &.comment-time{
+                            position: absolute;
+                            right: 0px;
+                            top: 2px;
+                            font-size: 10px;
+                        }
+                    }
+                }
+                p{
+                    margin: 0px;
+                    font-size: 12px;
+                    color: #868686;
+                    word-break: break-word;
+                    &.comment-time{
+                        font-size: 10px;
+                    }
+                }
+                .like-cover{
+                    display: flex;
+                    align-items: center;
+                    .material-icons{
+                        color: #556080;
+                        margin-right: 10px;
+                        font-size: 16px;
+                    }
+                    p{
+                        font-size: 14px;
+                    }
+                    .see-hide-replies{
+                        text-decoration: none;
+                        cursor: pointer;
+                        color: black;
+                        margin-left: 50px;
+                        font-size: 11px;
+                    }
+                }
+            }
+        }
+        .comment-listing{
+            width: 100%;
+            padding: 3px 0px 3px 45px;
+            .single-comment{
+                .li-content{
+                    padding: 3px 0px;
+                    width: 100%;
+                    .img-cover{
+                        width: 25px;
+                        height: 25px;
+                    }
+                    .textual-cover{
+                        padding-left: 10px;
+                        width: calc(100% - 25px);
+                        p{
+                            word-break: break-word;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

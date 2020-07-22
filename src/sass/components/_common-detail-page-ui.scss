@@ -101,11 +101,16 @@
             padding: 0px;
             margin: 0px;
             .single-user{
+                &:not(:first-child){
+                    padding-top: 10px;
+                }
+                &:not(:last-child){
+                    padding-bottom: 10px;
+                }
                 .li-content{
                     display: flex;
                     align-items: flex-start;
                     justify-content: space-between;
-                    padding: 5px 0px;
                     .img-cover{
                         width: 35px;
                         height: 35px;
@@ -149,7 +154,7 @@
                             margin: 0px;
                             font-size: 12px;
                             color: #868686;
-                            word-break: break-all;
+                            word-break: break-word;
                             &.comment-time{
                                 font-size: 10px;
                             }
@@ -190,7 +195,7 @@
                                 padding-left: 10px;
                                 width: calc(100% - 25px);
                                 p{
-                                    word-break: break-all;
+                                    word-break: break-word;
                                 }
                             }
                         }
