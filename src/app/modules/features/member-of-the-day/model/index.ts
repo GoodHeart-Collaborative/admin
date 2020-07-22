@@ -42,7 +42,8 @@ export class MemberTableDataSource implements Table.Source<Category> {
         title: 'Total Like',
         id: 'likeCount',
         sorting: false,
-        resolve: (row: any) => row['likeCount'] || '0',
+        templateBy: "likeCount"
+        // resolve: (row: any) => row['likeCount'] || '0',
       },
     {
       title: 'Created At',

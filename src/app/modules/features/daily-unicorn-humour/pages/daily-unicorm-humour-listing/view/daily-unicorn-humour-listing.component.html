@@ -1,5 +1,3 @@
-
-
 <app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)" (onAddCahnges)="onAdd()">
     <ng-template appFor="createdAt" let-daily="row">
          {{ daily?.createdAt |customDate}}
@@ -8,8 +6,13 @@
      <ng-template appFor="status" let-daily="row">
          {{ daily?.status | titlecase}}
      </ng-template>
- 
- 
+
+     <ng-template appFor="likeCount" let-daily="row">
+         <a (click)="onlikeHandler(daily._id, daily?.likeCount)" [class.color-black]="daily?.likeCount < 1">
+             {{ daily?.likeCount}}
+         </a>
+     </ng-template>
+  
      <ng-template appFor="description" let-post="row">
          <a href="javascript:void(0)" (click)="onDetailsHandler(post)">
              {{ post?.description | titlecase}}
