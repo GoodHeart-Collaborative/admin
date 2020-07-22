@@ -13,6 +13,7 @@ export const NOTIFICATION = 'notification';
 // USER API's //
 export const USER = 'admin/users';
 export const USER_DETAILS = (id) => `admin/users/${id}`;
+export const ACTION_USER = (Id , status) => `admin/${Id}/user/${status}`;
 // CATEGORY API's //
 
 export const CATEGORY = 'admin/category';

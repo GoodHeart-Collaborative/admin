@@ -139,11 +139,6 @@ export class MemberOfTheDayListingComponent implements OnInit {
     });
   }
 
-//  oneditHandler() {
-//    this.$matDailog.open(AddMemberOfTheDayComponent, {
-//     width: '500px',
-//   }).afterClosed().subscribe();
-//  }
 
 /**
  * Details Handler

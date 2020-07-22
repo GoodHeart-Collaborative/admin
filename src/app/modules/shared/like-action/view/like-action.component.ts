@@ -2,6 +2,9 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { ViewFullImageComponent } from '../../view-full-image/view/view-full-image.component';
 import { CommonService } from '../../services/common.service';
+import { UtilityService } from '../../services/utility.service';
+import { Router } from '@angular/router';
+import { USER } from 'src/app/constant/routes';
 @Component({
   selector: 'app-like-action',
   templateUrl: './like-action.component.html',
@@ -14,7 +17,9 @@ export class LikeActionComponent implements OnInit {
     private $dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private matDailog: MatDialog,
-    private $common: CommonService
+    private $common: CommonService,
+    private $utility: UtilityService,
+    private $router: Router
     ) {
       this.likeHandler();
      }
@@ -41,8 +46,20 @@ export class LikeActionComponent implements OnInit {
     };
     this.$common.onLikeHandler(params).then(res => {
       this.like = res.data['list'];
-      console.log(this.like);
-      
      });
+  }
+
+  /**
+   * Block and Unblock User
+   */
+
+  onActionHandler(id: string, status: string ) {
+      this.$common.updateStatus(id, status).then(res => {
+        this.$utility.success(res.message);
+      });
+  }
+
+  onDetails(id) {
+    this.$router.navigate([`${USER.fullUrl}`, id, 'details']);
   }
 }

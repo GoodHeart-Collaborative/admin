@@ -99,7 +99,7 @@ export class UserListingComponent implements OnInit {
       if (confirm) {
         const params = {
           status : action
-        }
+        };
         this.$userService.onVerifiedHnadler(id, params).then((res) => {
           this.$utility.success(res.message);
           this.handleActions(action, index);
