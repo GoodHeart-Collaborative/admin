@@ -88,9 +88,14 @@ export const CATEGORY_DETAIL_GET = (categoryId) =>
 export const CATEGORY_ADD_POST = 'admin/category/add';
 export const CATEGORY_UPDATE_POST = 'admin/category/update';
 
-// CATEGORY API's //
+// HOME API's //
 export const HOME = 'admin/home';
 export const HOME_DETAILS = (Id) => `admin/home/${Id}`;
 export const HOME_LIKE = `admin/like`;
 export const HOME_COMMENT = `admin/comment`;
 export const ACTION_HOME = (Id , status) => `admin/home/${Id}/status/${status}`;
+
+// GRATITUDE API's //
+export const GRATITUDE = 'admin/gratitude';
+export const GRATITUDE_DETAILS = (Id) => `admin/gratitude/${Id}`;
+export const ACTION_GRATITUDE = (Id , status) => `admin/gratitude/${Id}/status/${status}`;

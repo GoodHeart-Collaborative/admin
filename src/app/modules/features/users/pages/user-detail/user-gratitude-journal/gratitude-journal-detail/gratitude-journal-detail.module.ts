@@ -4,6 +4,8 @@ import { GratitudeJournalDetailComponent } from './gratitude-journal-detail.comp
 import { RouterModule, Routes } from '@angular/router';
 import { LikeActionModule } from 'src/app/modules/shared/like-action/like-action.module';
 import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
+import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
+import { TimePipeModule } from 'src/app/pipes/time-pipe/time-pipe.module';
 
 const routes: Routes = [
   {
@@ -17,7 +19,9 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    LikeActionModule
+    LikeActionModule,
+    CustomImageModule,
+    TimePipeModule
   ],
   exports : [GratitudeJournalDetailComponent],
 })

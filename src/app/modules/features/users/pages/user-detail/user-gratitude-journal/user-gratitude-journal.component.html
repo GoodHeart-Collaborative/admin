@@ -1,4 +1,38 @@
-<!-- <h2 style="text-align: center; margin-top: 80px;">Under Development</h2> -->
-<button class="btn btn-primary" (click)="onClick()" *ngIf="!isProcessing">Button For Gratitude Journal detail</button>
+<!-- <button class="btn btn-primary" (click)="onClick()" *ngIf="!isProcessing">Button For Gratitude Journal detail</button> -->
 
-<!-- <app-gratitude-journal-detail [hidden]="!isProcessing"></app-gratitude-journal-detail> -->
+
+<app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)">
+
+    <ng-template appFor="createdAt" let-user="row">
+        {{ user?.createdAt |customDate}}
+    </ng-template>
+
+    <ng-template appFor="status" let-user="row">
+        {{ user?.status | titlecase}}
+    </ng-template>
+
+
+    <ng-template appFor="description" let-user="row" >
+        <a href="javascript:void(0)" (click)="onDetailsHandler(user?._id)">
+            {{ (user?.description  | titlecase) || 'String'}}
+         </a>
+    </ng-template>
+
+ <ng-container>
+
+        <ng-template appFor="actions"  let-user="row">
+            <div class="action-icon-cover">
+                <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')" title="Delete user">
+                    delete
+                </i>
+                <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked')" *ngIf="user?.status === 'active';else templateAction"  title="Block user">
+                    blocked</i>
+                <ng-template #templateAction>
+                    <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active')" title="Unblock user" >
+                        lock_open
+                    </i>
+                </ng-template>
+            </div>
+        </ng-template>
+    </ng-container> 
+</app-table>

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserTableDataSource } from '../../../model/index';
-import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { UsersService } from '../../../service/users.service';
 import { Router } from '@angular/router';
 import { USER } from 'src/app/constant/routes';
@@ -10,6 +9,7 @@ import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/v
 import { MatDialog } from '@angular/material';
 
 export type ActionType = 'deleted' | 'blocked' | 'active';
+import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 @Component({
   selector: 'app-user-listing',
   templateUrl: './user-listing.component.html',
