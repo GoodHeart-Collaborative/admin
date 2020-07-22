@@ -55,12 +55,6 @@ export class DailyAdviceDetailsComponent implements OnInit {
     return await this.$common.onCommentHandler(params).then(res => {
       return res.data['list'];
     });
-    return new Promise((resolve, reject) => {
-
-    })
-    this.$common.onCommentHandler(params).then(res => {
-      this.comments = res.data['list'];
-    });
   }
 
   /**
@@ -83,12 +77,10 @@ export class DailyAdviceDetailsComponent implements OnInit {
    */
   async toggleReplies(commentId: string, commenIndex: number) {
     if (!this.comments[commenIndex].showReply) {
-
-      this.comments[commenIndex].replies = await this.getCommentHandler(this.adviceDetails.id, commentId)
+        this.comments[commenIndex].replies = await this.getCommentHandler(this.adviceDetails.id, commentId)
     }
     this.comments[commenIndex]['showReply'] = !this.comments[commenIndex]['showReply']
     this.hideShowReplies = !this.hideShowReplies;
-
   }
 
 }

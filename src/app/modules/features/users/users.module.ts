@@ -9,6 +9,7 @@ import { DropdownFilterModule } from '../../layout/layout-shared/dropdown-filter
 import { UsersComponent } from './view/users.component';
 import { MinMaxFilterModule } from '../../layout/layout-shared/min-max-filter/min-max-filter.module';
 import { UsersServiceResolve } from './service/users.service';
+import { UserGratitudeJournalServiceResolve } from './pages/user-detail/user-gratitude-journal/service/user-gratitude-journal.service';
 
 
 @NgModule({
@@ -23,6 +24,6 @@ import { UsersServiceResolve } from './service/users.service';
     RouterModule,
     DropdownFilterModule,
   ],
-  providers: [UsersServiceResolve]
+  providers: [UsersServiceResolve, UserGratitudeJournalServiceResolve]
 })
 export class UsersModule { }

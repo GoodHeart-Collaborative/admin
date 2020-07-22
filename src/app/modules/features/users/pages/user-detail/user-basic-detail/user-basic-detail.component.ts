@@ -64,23 +64,6 @@ export class UserBasicDetailComponent implements OnInit {
     });
   }
 
-  // onRefuteHandler(id, isAdminRejected) {
-  //   this.$confirmBox.listAction('User', (isAdminRejected ? 'Refute'  : 'Verified')).subscribe((confirm) => {
-  //     if (confirm) {
-  //       let   params = {};
-  //       if (isAdminRejected) {
-  //         params['isAdminRejected'] =  false;
-  //       } else {
-  //         params['isAdminRejected'] = true;
-  //       }
-  //       this.$userService.onVerifiedHnadler(id, params).then(res => {
-  //         if (res) {
-  //             this.data.isAdminRejected = this.data.isAdminRejected  ? false : true;
-  //           }
-  //       });
-  //       }
-  //   });
-  // }
 
   onImageClick(image) {
     this.matDailog.open(ViewFullImageComponent, {
@@ -88,4 +71,5 @@ export class UserBasicDetailComponent implements OnInit {
       data: image
     }).afterClosed().subscribe();
   }
+
 }
