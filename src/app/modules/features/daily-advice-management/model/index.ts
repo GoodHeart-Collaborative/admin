@@ -13,7 +13,7 @@ export class DailyAdviceTableDataSource implements Table.Source<Category> {
   label = 'Category Management';
   columns: Table.Column<Category>[] = [
     {
-        title: 'Post',
+        title: 'Title',
         id: 'title',
         sorting: true,
         templateBy: 'title'
@@ -59,7 +59,7 @@ export class DailyAdviceTableDataSource implements Table.Source<Category> {
   ];
   options: Table.Options = {
     selection: false,
-    search: 'Search by Post',
+    search: 'Search by Title',
     index: true,
     addComponent: true,
     sorting: true,

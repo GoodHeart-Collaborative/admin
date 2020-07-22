@@ -39,7 +39,7 @@ export class MemberTableDataSource implements Table.Source<Category> {
         resolve: (row: any) => row['totalComments'] || '0',
       },
     {
-        title: 'Total Like',
+        title: 'Total Likes',
         id: 'likeCount',
         sorting: false,
         templateBy: "likeCount"

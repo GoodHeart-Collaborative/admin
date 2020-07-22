@@ -102,10 +102,10 @@
             margin: 0px;
             .single-user{
                 &:not(:first-child){
-                    padding-top: 10px;
+                    padding-top: 6px;
                 }
                 &:not(:last-child){
-                    padding-bottom: 10px;
+                    padding-bottom: 6px;
                 }
                 .li-content{
                     display: flex;
@@ -161,6 +161,7 @@
                         }
                         .like-cover{
                             display: flex;
+                            margin-top: 4px;
                             align-items: center;
                             .material-icons{
                                 color: #556080;
@@ -182,10 +183,15 @@
                 }
                 .comment-listing{
                     width: 100%;
-                    padding: 3px 0px 3px 45px;
+                    padding: 10px 0px 0px 45px;
                     .single-comment{
+                        &:not(:first-child){
+                            padding-top: 5px;
+                        }
+                        &:not(:last-child){
+                            padding-bottom: 5px;
+                        }
                         .li-content{
-                            padding: 3px 0px;
                             width: 100%;
                             .img-cover{
                                 width: 25px;
