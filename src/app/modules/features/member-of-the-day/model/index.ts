@@ -20,14 +20,14 @@ export class MemberTableDataSource implements Table.Source<Category> {
         // resolve: (row: any) => row['title'] || '-',
     },
     {
-        title: 'Email',
+        title: 'Email Id',
         id: 'email',
         sorting: false,
         resolve: (row: any) => row['email'] || '-',
 
     },
     {
-        title: 'MobileNo',
+        title: 'Mobile Number',
         id: 'mobileNo',
         sorting: false,
         resolve: (row: any) => row['mobileNo'] || '-',
@@ -60,7 +60,7 @@ export class MemberTableDataSource implements Table.Source<Category> {
   ];
   options: Table.Options = {
     selection: false,
-    search: 'Search by Name',
+    search: 'Search by Name, Email Id',
     index: true,
     filterComponent: ListingFilterComponent,
     sorting: true,
