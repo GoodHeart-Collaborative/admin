@@ -11,18 +11,19 @@ const defaultData: Table.Data<User> = {
 export class GratitudeTableDataSource implements Table.Source<User> {
   label = 'Users Management';
   columns: Table.Column<User>[] = [
-    {
-      title: 'Title',
-      id: 'title',
-      sorting: true,
-      templateBy: 'title'
-    //   resolve: (row: any) => `${row['firstName']} ${row['lastName']}` || 'NA',
-    },
+    // {
+    //   title: 'Title',
+    //   id: 'title',
+    //   sorting: true,
+    //   templateBy: 'title'
+    // //   resolve: (row: any) => `${row['firstName']} ${row['lastName']}` || 'NA',
+    // },
     {
       title: 'Description',
       id: 'description',
       sorting: false,
-      resolve: (row: any) => row['description'] || '-',
+      templateBy: 'description'
+      // resolve: (row: any) => row['description'] || '-',
     },
     {
       title: 'Privacy',

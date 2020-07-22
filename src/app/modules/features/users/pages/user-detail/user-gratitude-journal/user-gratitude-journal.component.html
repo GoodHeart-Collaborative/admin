@@ -1,4 +1,4 @@
-<button class="btn btn-primary" (click)="onClick()" *ngIf="!isProcessing">Button For Gratitude Journal detail</button>
+<!-- <button class="btn btn-primary" (click)="onClick()" *ngIf="!isProcessing">Button For Gratitude Journal detail</button> -->
 
 
 <app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)">
@@ -11,17 +11,10 @@
         {{ user?.status | titlecase}}
     </ng-template>
 
-    <!-- <ng-template appFor="profilePicUrl" let-category="row">
-        <div class="category-image-cover">
-         <img [src]="category?.profilePicUrl[0] |customImage:'USER'|async" alt="category-image" (click)="onImageClick(category?.profilePicUrl[0])">
-        </div>
-     </ng-template> -->
 
-   
-
-    <ng-template appFor="title" let-user="row" >
+    <ng-template appFor="description" let-user="row" >
         <a href="javascript:void(0)" (click)="onDetailsHandler(user?._id)">
-            {{ (user?.title  | titlecase) || 'String'}}
+            {{ (user?.description  | titlecase) || 'String'}}
          </a>
     </ng-template>
 
