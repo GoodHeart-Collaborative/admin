@@ -30,8 +30,8 @@ export class DailyUnicornTableDataSource implements Table.Source<Category> {
         title: 'Like Count',
         id: 'likeCount',
         sorting: false,
-        // templateBy: 'likeCount'
-        resolve: (row: any) => row['likeCount'] || '0',
+        templateBy: 'likeCount'
+        // resolve: (row: any) => row['likeCount'] || '0',
     },
     {
       title: 'Created At',

@@ -10,6 +10,7 @@ import { DAILY_UNICORN, ADD_DAILY_UNICORN } from 'src/app/constant/routes';
 import { DailyUnicornHumourDetailsComponent } from '../../daily-unicorm-humour-details/view/daily-unicorn-humour-details.component';
 import { MatDialog } from '@angular/material';
 import { HOME_TYPE } from 'src/app/constant/drawer';
+import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
 @Component({
   selector: 'app-daily-unicorn-humour-listing',
   templateUrl: './daily-unicorn-humour-listing.component.html',
@@ -177,6 +178,20 @@ export class DailyUnicornHumourListingComponent implements OnInit {
    */
   onAdd() {
     this.$router.navigate([`${ADD_DAILY_UNICORN.fullUrl}`]);
+  }
+
+  /**
+   * user Like Handler
+   * @param id
+   */
+  onlikeHandler(id: string, likesCount: number) {
+    if (!likesCount) {
+      return;
+    }
+    this.$matDailog.open(LikeActionComponent, {
+      width: '500px',
+      data: id
+    }).afterClosed().subscribe();
   }
 
 }

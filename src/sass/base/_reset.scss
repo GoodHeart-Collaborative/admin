@@ -69,48 +69,11 @@ body {
 }
 
 a{
-    text-decoration: underline;
+    text-decoration: none;
     color: $primary;
-}
-
-.primary-detail{
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    mat-form-field,
-    app-dropdown-filter,
-    app-mobile-number,
-    app-input,
-    .price-cover {
-        width: 25%;
-        &:not(:nth-child(4n)) {
-            padding-right: 25px;
-        }
-        @media screen and (max-width: 1250px){
-            width: 33.33%;
-            &:not(:nth-child(4n)) {
-                padding-right: 0px;
-            }
-            &:not(:nth-child(3n)) {
-                padding-right: 20px;
-            }
-        }
-        @media screen and (max-width: 768px){
-            width: 50%;
-            &:not(:nth-child(3n)) {
-                padding-right: 0px;
-            }
-            &:not(:nth-child(2n)) {
-                padding-right: 15px;
-            }
-        }
-        @media screen and (max-width: 568px){
-            width: 100%;
-            &:not(:nth-child(2n)) {
-                padding-right: 0px;
-            }
-        }
+    cursor: pointer;
+    &:hover{
+        text-decoration: underline;
     }
 }
 

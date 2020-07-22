@@ -8,10 +8,10 @@
             <ul class="users-listing" >
                 <li class="single-user" *ngFor="let item of like">
                     <div class="img-cover">
-                        <img [src]="item?.users?.profilePicture |customImage:'USER'|async" alt="Profile">
+                        <img [src]="item?.users?.profilePicture |customImage:'USER'|async" alt="Profile" (click)="onViewPic(item?.users?.profilePicture)">
                     </div>
                     <div class="textual-cover">
-                        <h4 title="Mahatma Gandhi">{{item?.users?.name}}
+                        <h4 title="{{item?.users?.name}}">{{item?.users?.name}}
                             <p class="comment-time">{{item?.createdAt | time}}</p>
                         </h4>
                     </div>
@@ -20,8 +20,11 @@
                             <mat-icon>more_vert</mat-icon>
                         </button>
                         <mat-menu #menu="matMenu">
-                            <button mat-menu-item (click)="onViewPic(item?.users?.profilePicture )">
+                            <button mat-menu-item >
                                 See Profile
+                            </button>
+                            <button mat-menu-item >
+                                Block User
                             </button>
                         </mat-menu>
                     </div>

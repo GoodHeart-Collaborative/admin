@@ -8,6 +8,7 @@ import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import {  USER } from 'src/app/constant/routes';
+import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 
 @Component({
@@ -158,4 +159,18 @@ export class MemberOfTheDayListingComponent implements OnInit {
     }).afterClosed().subscribe();
   }
 
+  /**
+   * user Like Handler
+   * @param id
+   */
+  onlikeHandler(id: string, likesCount: number) {
+    if (!likesCount) {
+      return;
+    }
+    this.$matDailog.open(LikeActionComponent, {
+      width: '500px',
+      data: id
+    }).afterClosed().subscribe();
+  }
+  
 }

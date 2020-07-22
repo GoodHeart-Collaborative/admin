@@ -32,6 +32,6 @@ const routes: Routes = [
     MatSelectModule,
     ReactiveFormsModule
   ],
-  entryComponents: [ListingFilterComponent]
+  entryComponents: [ListingFilterComponent,]
 })
 export class MemberOfTheDayListingModule { }
