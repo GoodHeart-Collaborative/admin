@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CommentsComponent } from './view/comments/comments.component';
-import { MatDialogModule } from '@angular/material';
+import { MatDialogModule, MatIconModule } from '@angular/material';
 
 
 
@@ -10,6 +10,7 @@ import { MatDialogModule } from '@angular/material';
   imports: [
     CommonModule,
     MatDialogModule,
+    MatIconModule
   ],
   exports: [CommentsComponent],
   entryComponents: [CommentsComponent]

@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 })
 export class CommentsComponent implements OnInit {
 
+  public hideShowReplies: boolean = false;
+  
   constructor(
     private $dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -21,6 +23,10 @@ export class CommentsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+
+  toggleReplies(){
+    this.hideShowReplies = !this.hideShowReplies;
   }
 
 }

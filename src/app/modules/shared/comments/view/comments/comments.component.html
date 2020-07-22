@@ -1,1 +1,80 @@
-<p>comments works!</p>
+<div class="page-comments popup-ui">
+    <div class="popup-header">
+        <h3>Comments</h3>
+        <mat-icon class="close-icon" [mat-dialog-close]="false">close</mat-icon>
+    </div>
+    <div class="popup-content">
+        <div class="popup-body">
+            <ul class="users-listing">
+                <li class="single-user">
+                    <div class="li-content">
+                        <div class="img-cover">
+                            <img src="../../../../../../../../assets/default-image/user.jpg" alt="Profile">
+                        </div>
+                        <div class="textual-cover">
+                            <h4>Tiger Woods <p class="comment-time">2 Weeks Ago</p></h4>
+                            
+                            <p>This is my comment and it is a Multi line comment. Therefore it wraps to the second line
+                                also.</p>
+                            <div class="like-cover" >
+                                <span class="material-icons" >thumb_up</span>
+                                <p>76</p>
+                                <a class="see-hide-replies" (click)="toggleReplies()">{{hideShowReplies? "Hide" : "See"}} Replies (8)</a>
+                            </div> 
+                        </div>
+                    </div>
+                    <ul class="comment-listing" *ngIf="hideShowReplies">
+                        <li class="single-comment">
+                            <div class="li-content">
+                                <div class="img-cover">
+                                    <img src="../../../../../../../../assets/default-image/user.jpg" alt="Profile">
+                                </div>
+                                <div class="textual-cover">
+                                    <h4>Ronaldo <p class="comment-time">2 Weeks Ago</p></h4>
+                                    <p>This is my comment and it is a Multi line comment. Therefore it wraps to the
+                                        second line also.</p>
+                                    <div class="like-cover"><span class="material-icons">thumb_up</span>
+                                        <p>76</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="single-comment">
+                            <div class="li-content">
+                                <div class="img-cover">
+                                    <img src="../../../../../../../../assets/default-image/user.jpg" alt="Profile">
+                                </div>
+                                <div class="textual-cover">
+                                    <h4>Ronaldo <p class="comment-time">2 Weeks Ago</p></h4>
+                                    <p>This is my comment and it is a Multi line comment. Therefore it wraps to the
+                                        second line also.</p>
+                                    <div class="like-cover"><span class="material-icons">thumb_up</span>
+                                        <p>76</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="single-user">
+                    <div class="li-content">
+                        <div class="img-cover">
+                            <img src="../../../../../../../../assets/default-image/user.jpg" alt="Profile">
+                        </div>
+                        <div class="textual-cover">
+                            <h4>Tiger Woods <p class="comment-time">2 Weeks Ago</p></h4>
+                            
+                            <p>This is my comment and it is a Multi line comment. Therefore it wraps to the second line
+                                also.</p>
+                            <div class="like-cover" >
+                                <span class="material-icons" >thumb_up</span>
+                                <p>76</p>
+                                <!-- <a class="see-hide-replies" (click)="toggleReplies()">{{hideShowReplies? "Hide" : "See"}} Replies (8)</a> -->
+                            </div> 
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
