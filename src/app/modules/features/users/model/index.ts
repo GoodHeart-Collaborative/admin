@@ -13,7 +13,7 @@ export class UserTableDataSource implements Table.Source<User> {
   label = 'Users Management';
   columns: Table.Column<User>[] = [
     {
-      title: 'Profile Image',
+      title: 'Image',
       id: 'profilePicUrl',
       sorting: true,
       templateBy: 'profilePicUrl'
