@@ -29,13 +29,16 @@ export class DailyAdviceTableDataSource implements Table.Source<Category> {
         title: 'Like Count',
         id: 'likeCount',
         sorting: false,
-        resolve: (row: any) => row['likeCount'] || '0',
+        templateBy: 'likeCount'
+        // resolve: (row: any) => row['likeCount'] || '0',
       },
     {
         title: 'Total Comments',
-        id: 'totalComments',
+        id: 'commentCount',
         sorting: false,
-        resolve: (row: any) => row['totalComments'] || '0',
+        templateBy: 'commentCount',
+
+        // resolve: (row: any) => row['totalComments'] || '0',
       },
       {
       title: 'Created At',

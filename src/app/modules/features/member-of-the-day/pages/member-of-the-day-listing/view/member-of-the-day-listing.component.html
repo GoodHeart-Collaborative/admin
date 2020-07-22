@@ -25,6 +25,13 @@
      <ng-template appFor="description" let-post="row">
              {{ post?.description | titlecase}}
      </ng-template>
+
+     <ng-template appFor="mobileNo" let-user="row">
+        <div class="mobile-content" [class.verified-user]="user?.isMobileVerified">
+            <span class="material-icons verified-icon" *ngIf="(user?.isMobileVerified) && (user?.mobileNo || user?.fullMobileNo)">verified_user</span>
+            <span>{{ user?.mobileNo ?  user?.mobileNo  : (user?.fullMobileNo || '-' )}}</span>
+        </div>
+    </ng-template>
  
    <ng-container>
  

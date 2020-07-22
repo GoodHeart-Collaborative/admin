@@ -30,7 +30,8 @@ export class MemberTableDataSource implements Table.Source<Category> {
         title: 'Mobile Number',
         id: 'mobileNo',
         sorting: false,
-        resolve: (row: any) => row['mobileNo'] || '-',
+        templateBy: 'mobileNo'
+        // resolve: (row: any) => row['mobileNo'] || '-',
       },
     {
         title: 'Total Comments',

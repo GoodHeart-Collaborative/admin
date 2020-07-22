@@ -16,6 +16,18 @@
          </a>
      </ng-template>
 
+     <ng-template appFor="likeCount" let-daily="row">
+        <a (click)="onlikeHandler(daily?._id, daily?.likeCount)" [class.color-black]="daily?.likeCount < 1">
+            {{ daily?.likeCount}}
+        </a>
+    </ng-template>
+
+    <ng-template appFor="commentCount" let-daily="row">
+        <a (click)="onCommentsHandler(daily?._id, daily?.commentCount)" [class.color-black]="daily?.commentCount < 1">
+            {{ daily?.commentCount}}
+        </a>
+    </ng-template>
+
      <!-- <ng-template appFor="description" let-post="row">
              {{ post?.description | titlecase}}
      </ng-template> -->

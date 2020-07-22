@@ -6,9 +6,11 @@ import { TableModule } from 'src/app/modules/commonTable/table';
 import { DailyInspirationService } from '../../service/daily-inspiration.service';
 import { CustomDatePipeModule } from 'src/app/pipes/custom-date/custom-date-pipe.module';
 import { DateFilterModule } from 'src/app/modules/layout/layout-shared/date-filter/date-filter.module';
-import { MatFormFieldModule, MatOptionModule, MatSelectModule } from '@angular/material';
+import { MatFormFieldModule, MatOptionModule, MatSelectModule, MatDialogModule } from '@angular/material';
 import { DailyInspirationFilterComponent } from './component/daily-inspiration-filter.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LikeActionModule } from 'src/app/modules/shared/like-action/like-action.module';
+import { CommentsModule } from 'src/app/modules/shared/comments/comments.module';
 
 
 const routes: Routes = [
@@ -29,7 +31,10 @@ const routes: Routes = [
     MatFormFieldModule,
     MatOptionModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule,
+    LikeActionModule,
+    CommentsModule
   ],
   entryComponents : [DailyInspirationFilterComponent],
 

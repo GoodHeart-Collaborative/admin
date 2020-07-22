@@ -7,6 +7,9 @@ import { ADD_DAILY_INSPIRATION, DAILY_INSPIRATION } from 'src/app/constant/route
 import { DailyInspirationService } from '../../../service/daily-inspiration.service';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { HOME_TYPE } from 'src/app/constant/drawer';
+import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
+import { CommentsComponent } from 'src/app/modules/shared/comments/view/comments/comments.component';
+import { MatDialog } from '@angular/material';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 @Component({
   selector: 'app-daily-inspiration-listing',
@@ -27,7 +30,8 @@ export class DailyInspirationListingComponent implements OnInit {
     private $category: DailyInspirationService,
     private $router: Router,
     private $confirmBox: ConfirmBoxService,
-    private $utility: UtilityService
+    private $utility: UtilityService,
+    private $matDailog: MatDialog
   ) {
   }
 
@@ -167,6 +171,31 @@ export class DailyInspirationListingComponent implements OnInit {
 onAdd() {
     this.$router.navigate([`${ADD_DAILY_INSPIRATION.fullUrl}`]);
 }
+
+
+  /**
+   * user Like Handler
+   * @param id
+   */
+  onlikeHandler(id: string, likesCount: number) {
+    if (!likesCount) {
+      return;
+    }
+    this.$matDailog.open(LikeActionComponent, {
+      width: '500px',
+      data: id
+    }).afterClosed().subscribe();
+  }
+
+  onCommentsHandler(id: string, commentCount: number) {
+    if (!commentCount) {
+      return;
+    }
+    this.$matDailog.open(CommentsComponent, {
+      width: '500px',
+      data: id
+    }).afterClosed().subscribe();
+  }
 
 
 }

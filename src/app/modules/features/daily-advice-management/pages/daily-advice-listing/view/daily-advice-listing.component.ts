@@ -8,6 +8,9 @@ import { Router } from '@angular/router';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { HOME_TYPE } from 'src/app/constant/drawer';
+import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
+import { CommentsComponent } from 'src/app/modules/shared/comments/view/comments/comments.component';
+import { MatDialog } from '@angular/material';
 @Component({
   selector: 'app-daily-advice-listing',
   templateUrl: './daily-advice-listing.component.html',
@@ -28,7 +31,8 @@ export class DailyAdviceListingComponent implements OnInit {
     private $category: DailyAdviceManagementService,
     private $router: Router,
     private $confirmBox: ConfirmBoxService,
-    private $utility: UtilityService
+    private $utility: UtilityService,
+    private $matDailog: MatDialog
   ) {
   }
 
@@ -139,5 +143,29 @@ export class DailyAdviceListingComponent implements OnInit {
  onAdd() {
     this.$router.navigate([`${ADD_DAILY_ADVICE.fullUrl}`]);
  }
+
+  /**
+   * user Like Handler
+   * @param id
+   */
+  onlikeHandler(id: string, likesCount: number) {
+    if (!likesCount) {
+      return;
+    }
+    this.$matDailog.open(LikeActionComponent, {
+      width: '500px',
+      data: id
+    }).afterClosed().subscribe();
+  }
+
+  onCommentsHandler(id: string, commentCount: number) {
+    if (!commentCount) {
+      return;
+    }
+    this.$matDailog.open(CommentsComponent, {
+      width: '500px',
+      data: id
+    }).afterClosed().subscribe();
+  }
 
 }

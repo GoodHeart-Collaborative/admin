@@ -27,6 +27,20 @@ export class DailyTableDataSource implements Table.Source<Category> {
         // resolve: (row: any) => row['title'] || '-',
     },
     {
+      title: 'Total Comments',
+      id: 'commentCount',
+      sorting: false,
+      templateBy: 'commentCount'
+      // resolve: (row: any) => row['totalComments'] || '0',
+  },
+  {
+      title: 'Like Count',
+      id: 'likeCount',
+      sorting: false,
+      templateBy: 'likeCount'
+      // resolve: (row: any) => row['likeCount'] || '0',
+  },
+    {
       title: 'Created At',
       id: 'createdAt',
       sorting: true,
