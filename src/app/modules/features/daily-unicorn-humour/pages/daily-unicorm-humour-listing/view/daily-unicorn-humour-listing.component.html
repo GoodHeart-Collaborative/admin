@@ -12,6 +12,12 @@
              {{ daily?.likeCount}}
          </a>
      </ng-template>
+
+     <ng-template appFor="commentCount" let-daily="row">
+         <a (click)="onCommentsHandler(daily._id, daily?.commentCount)" [class.color-black]="daily?.commentCount < 1">
+             {{ daily?.commentCount}}
+         </a>
+     </ng-template>
   
      <ng-template appFor="description" let-post="row">
          <a href="javascript:void(0)" (click)="onDetailsHandler(post)">

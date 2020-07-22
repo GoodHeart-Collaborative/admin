@@ -9,6 +9,7 @@ import { DailyUnicornFilterComponent } from './component/daily-unicorn-filter.co
 import { DateFilterModule } from 'src/app/modules/layout/layout-shared/date-filter/date-filter.module';
 import { MatFormFieldModule, MatOptionModule, MatSelectModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CommentsModule } from 'src/app/modules/shared/comments/comments.module';
 
 
 const routes: Routes = [
@@ -30,7 +31,8 @@ const routes: Routes = [
     MatFormFieldModule,
     MatOptionModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommentsModule
   ],
   entryComponents: [DailyUnicornFilterComponent]
 })

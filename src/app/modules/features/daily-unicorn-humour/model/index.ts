@@ -21,10 +21,10 @@ export class DailyUnicornTableDataSource implements Table.Source<Category> {
     },
     {
         title: 'Total Comments',
-        id: 'totalComments',
+        id: 'commentCount',
         sorting: false,
-        // templateBy: 'totalComments'
-        resolve: (row: any) => row['totalComments'] || '0',
+        templateBy: 'commentCount'
+        // resolve: (row: any) => row['totalComments'] || '0',
     },
     {
         title: 'Like Count',
