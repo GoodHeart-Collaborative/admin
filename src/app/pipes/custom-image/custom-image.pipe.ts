@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
 export class CustomImagePipe implements PipeTransform {
 
   defaultImages = {
-    USER: '/assets/default-image/user.jpg'
+    USER: '/assets/default-image/user.jpg',
+    IMAGE_PLACEHOLDER: '/assets/default-image/image_placeholder.jpg',
   }
   constructor() {
 
