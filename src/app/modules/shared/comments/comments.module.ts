@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CommentsComponent } from './view/comments/comments.component';
 import { MatDialogModule, MatIconModule } from '@angular/material';
+import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
+import { TimePipeModule } from 'src/app/pipes/time-pipe/time-pipe.module';
 
 
 
@@ -10,7 +12,9 @@ import { MatDialogModule, MatIconModule } from '@angular/material';
   imports: [
     CommonModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    CustomImageModule,
+    TimePipeModule
   ],
   exports: [CommentsComponent],
   entryComponents: [CommentsComponent]

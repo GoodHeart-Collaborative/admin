@@ -5,74 +5,44 @@
     </div>
     <div class="popup-content">
         <div class="popup-body">
-            <ul class="users-listing">
-                <li class="single-user">
+            <ul class="users-listing" >
+                <li class="single-user"  *ngFor="let item of comments; let commentIndex = index">
                     <div class="li-content">
                         <div class="img-cover">
-                            <img src="../../../../../../../../assets/default-image/user.jpg" alt="Profile">
+                            <img [src]="item?.users?.profilePicUrl[0] |customImage:'USER'|async" alt="Profile">
                         </div>
                         <div class="textual-cover">
-                            <h4>Tiger Woods <p class="comment-time">2 Weeks Ago</p></h4>
-                            
-                            <p>This is my comment and it is a Multi line comment. Therefore it wraps to the second line
-                                also.</p>
+                            <h4>{{item?.users?.firstName || 'String' }} {{item?.users?.lastName || '' }} 
+                                <p class="comment-time">{{item?.created | time}}</p>
+                            </h4>
+                            <p>{{item?.comment}}</p>
                             <div class="like-cover" >
-                                <span class="material-icons" >thumb_up</span>
-                                <p>76</p>
-                                <a class="see-hide-replies" (click)="toggleReplies()">{{hideShowReplies? "Hide" : "See"}} Replies (8)</a>
+                                <span class="material-icons" (click)="onlikeHandler(item?._id, item?.likeCount)">thumb_up</span>
+                                <p >{{item?.likeCount}}</p>
+                                <a class="see-hide-replies" (click)="toggleReplies(item?._id, commentIndex)">{{item?.showReply? "Hide" : "See"}} Replies ({{item?.commentCount}})</a>
                             </div> 
                         </div>
+                        <!-- (click)="onNestedComment()" -->
                     </div>
-                    <ul class="comment-listing" *ngIf="hideShowReplies">
-                        <li class="single-comment">
+                    <ul class="comment-listing" *ngIf="item?.showReply" >
+                        <li class="single-comment" *ngFor="let reply of item?.replies">
                             <div class="li-content">
                                 <div class="img-cover">
-                                    <img src="../../../../../../../../assets/default-image/user.jpg" alt="Profile">
+                                    <img [src]="reply?.users?.profilePicUrl[0] |customImage:'USER'|async" alt="Profile">
                                 </div>
                                 <div class="textual-cover">
-                                    <h4>Ronaldo <p class="comment-time">2 Weeks Ago</p></h4>
-                                    <p>This is my comment and it is a Multi line comment. Therefore it wraps to the
-                                        second line also.</p>
+                                    <h4>{{reply?.users?.firstName }}  {{reply?.users?.lastName || '' }} 
+                                        <p class="comment-time">{{reply?.createdAt | time}}</p>
+                                    </h4>
+                                    <p>{{reply?.comment}}</p>
                                     <div class="like-cover"><span class="material-icons">thumb_up</span>
-                                        <p>76</p>
+                                        <p>{{reply?.likeCount}}</p>
                                     </div>
                                 </div>
                             </div>
                         </li>
-                        <li class="single-comment">
-                            <div class="li-content">
-                                <div class="img-cover">
-                                    <img src="../../../../../../../../assets/default-image/user.jpg" alt="Profile">
-                                </div>
-                                <div class="textual-cover">
-                                    <h4>Ronaldo <p class="comment-time">2 Weeks Ago</p></h4>
-                                    <p>This is my comment and it is a Multi line comment. Therefore it wraps to the
-                                        second line also.</p>
-                                    <div class="like-cover"><span class="material-icons">thumb_up</span>
-                                        <p>76</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-                <li class="single-user">
-                    <div class="li-content">
-                        <div class="img-cover">
-                            <img src="../../../../../../../../assets/default-image/user.jpg" alt="Profile">
-                        </div>
-                        <div class="textual-cover">
-                            <h4>Tiger Woods <p class="comment-time">2 Weeks Ago</p></h4>
-                            
-                            <p>This is my comment and it is a Multi line comment. Therefore it wraps to the second line
-                                also.</p>
-                            <div class="like-cover" >
-                                <span class="material-icons" >thumb_up</span>
-                                <p>76</p>
-                                <!-- <a class="see-hide-replies" (click)="toggleReplies()">{{hideShowReplies? "Hide" : "See"}} Replies (8)</a> -->
-                            </div> 
-                        </div>
-                    </div>
+                       
+                    </ul> 
                 </li>
             </ul>
         </div>

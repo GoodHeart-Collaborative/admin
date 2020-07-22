@@ -55,6 +55,18 @@ export class DailyAdviceDetailsComponent implements OnInit {
   }
 
   /**
+   * Show nested comment
+   * @param id
+   */
+  async toggleReplies(commentId: string, commenIndex: number) {
+    if (!this.comments[commenIndex].showReply) {
+        this.comments[commenIndex].replies = await this.getCommentHandler(this.adviceDetails.id, commentId)
+    }
+    this.comments[commenIndex]['showReply'] = !this.comments[commenIndex]['showReply']
+    this.hideShowReplies = !this.hideShowReplies;
+  }
+
+  /**
    * user Like Handler
    * @param id
    */
@@ -66,18 +78,6 @@ export class DailyAdviceDetailsComponent implements OnInit {
       width: '500px',
       data: id
     }).afterClosed().subscribe();
-  }
-
-  /**
-   * Show nested comment
-   * @param id
-   */
-  async toggleReplies(commentId: string, commenIndex: number) {
-    if (!this.comments[commenIndex].showReply) {
-        this.comments[commenIndex].replies = await this.getCommentHandler(this.adviceDetails.id, commentId)
-    }
-    this.comments[commenIndex]['showReply'] = !this.comments[commenIndex]['showReply']
-    this.hideShowReplies = !this.hideShowReplies;
   }
 
 }
