@@ -34,11 +34,8 @@ export class DailyAdviceDetailsComponent implements OnInit {
       comment['replies'] = [];
       comment['showReply'] = false;
       return comment;
-    })
-
+    });
   }
-
-
 
   /**
    * user Comment Handler

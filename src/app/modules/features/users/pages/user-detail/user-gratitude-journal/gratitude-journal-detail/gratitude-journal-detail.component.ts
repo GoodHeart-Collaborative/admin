@@ -41,19 +41,18 @@ export class GratitudeJournalDetailComponent implements OnInit {
 
 
   async ngOnInit() {
-    this.comments = await this.getCommentHandler(this.gratitudeDetails.id);
+    this.comments = await this.getCommentHandler(this.gratitudeDetails._id);
     console.log(this.comments);
     this.comments = this.comments.map(comment => {
       comment['replies'] = [];
       comment['showReply'] = false;
       return comment;
-    })
-
+    });
   }
 
   async toggleReplies(commentId: string, commenIndex: number) {
     if (!this.comments[commenIndex].showReply) {
-        this.comments[commenIndex].replies = await this.getCommentHandler(this.gratitudeDetails.id, commentId);
+        this.comments[commenIndex].replies = await this.getCommentHandler(this.gratitudeDetails._id, commentId);
     }
     this.comments[commenIndex]['showReply'] = !this.comments[commenIndex]['showReply']
     this.hideShowReplies = !this.hideShowReplies;
