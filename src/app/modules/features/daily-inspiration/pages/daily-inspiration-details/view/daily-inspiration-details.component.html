@@ -6,6 +6,7 @@
                     <h1>{{dailyInspirationDetails?.title}}</h1>
                     <p>{{dailyInspirationDetails?.description}}</p>
                 </div>
+                <!-- <img src="../../../../../../../assets/default-image/image_placeholder.jpg" alt=""> -->
                 <div>
                     <p class="posted-on-date">Posted on: {{dailyInspirationDetails?.createdAt | date : 'medium'}}</p>
                     <div class="like-cover" (click)="onlikeHandler(dailyInspirationDetails._id, dailyInspirationDetails?.likeCount)"><span class="material-icons">thumb_up</span>
