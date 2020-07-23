@@ -95,7 +95,7 @@ export class UserListingComponent implements OnInit {
  */
   onActionHandler(id: string, action: ActionType) {
     const index = this.userData.data.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('User', action).subscribe((confirm) => {
+    this.$confirmBox.listAction('user', action == 'active'  ?  'active' : ( action == 'deleted' ? 'delete' : 'block')).subscribe((confirm) => {
       if (confirm) {
         const params = {
           status : action
