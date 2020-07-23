@@ -10,7 +10,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        // redirectTo: ARTICLES_LIST.path,
+        redirectTo: EXPERT_LIST.path,
         pathMatch: 'full',
       },
       {
