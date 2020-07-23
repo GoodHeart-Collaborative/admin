@@ -56,7 +56,9 @@ export class DailyAdviceListingComponent implements OnInit {
           if (key === 'toDate' && value) {
             value.setHours(23, 59, 59, 999);
           }
-          params[key] = `${new Date(value).getTime()}`;
+          params[key] = `${new Date(value).toISOString()}`;
+          console.log(params[key]);
+          
         } else {
           params[key] = filterData[key];
         }

@@ -42,6 +42,7 @@ export class UsersListingFilterComponent implements OnInit {
    if (this.userFilterForm.valid && this.userFilterForm.touched) {
       this.isProcessing = false;
       const filterData = { ...this.userFilterForm.value};
+    
       this.dialogRef.close(filterData);
     }
   }

@@ -48,6 +48,7 @@ export class ListingFilterComponent implements OnInit {
    if (this.filterForm.valid) {
       this.isProcessing = false;
       const filterData = { ...this.filterForm.value};
+    
       this.dialogRef.close(filterData);
     }
   }

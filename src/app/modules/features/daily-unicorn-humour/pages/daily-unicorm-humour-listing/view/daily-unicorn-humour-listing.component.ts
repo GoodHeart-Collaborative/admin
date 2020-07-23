@@ -57,7 +57,7 @@ export class DailyUnicornHumourListingComponent implements OnInit {
           if (key === 'toDate' && value) {
             value.setHours(23, 59, 59, 999);
           }
-          params[key] = `${new Date(value).getTime()}`;
+          params[key] = `${new Date(value).toISOString()}`;
         } else {
           params[key] = filterData[key];
         }

@@ -48,6 +48,7 @@ export class DailyUnicornFilterComponent implements OnInit {
    if (this.filterForm.valid && this.filterForm.touched) {
       this.isProcessing = false;
       const filterData = { ...this.filterForm.value};
+     
       this.dialogRef.close(filterData);
     }
   }
