@@ -10,10 +10,12 @@
         height: 64px;
         transition: .3s;
         display: flex;
+        // box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12), 0 1px 5px 0 rgba(0,0,0,.2);
         align-items: center;
         justify-content: space-between;
-        background: linear-gradient(323deg, #b58ecc 14%, #409fbb 98%);
-        background-color: red;
+        // background: linear-gradient(323deg, #b58ecc 14%, #409fbb 98%);
+        background: white;
         user-select: none;
         @media screen and (max-width: 992px){
             left: 0px;
@@ -26,13 +28,13 @@
             .close-sidebar-icon{
                 position: absolute;
                 left: -210px;
-                color: white;
+                color: $primary;
                 top: 20px;
                 font-size: 25px;
                 cursor: pointer;
             }
             .hamburger-icon{
-                color: white;
+                color: $primary;
                 font-size: 28px;
                 cursor: pointer;
                 @media screen and (max-width: 576px){
@@ -87,11 +89,11 @@
             height: 40px;
             padding: 0;
             border-radius: 50%;
-            color: white !important;
+            color: $primary !important;
             padding: 0px !important;
             .mat-icon{
                 width: auto;
-                color: white;
+                color: $primary;
             }
         }
     }
