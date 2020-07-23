@@ -1,3 +1,45 @@
 <!-- <p>expert-listing works!</p> -->
-<button (click)="onAdd()">Add</button>
-<button (click)="onDetails('sdfsdf334342342341asc')">Details</button>
+<!-- <button (click)="onAdd()">Add</button>
+<button (click)="onDetails('sdfsdf334342342341asc')">Details</button> -->
+
+<app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)" (onAddCahnges)="onAdd()">
+    <ng-template appFor="createdAt" let-daily="row">
+         {{ daily?.createdAt |customDate}}
+     </ng-template>
+ 
+     <ng-template appFor="status" let-daily="row">
+         {{ daily?.status | titlecase}}
+     </ng-template>
+ 
+ 
+     <ng-template appFor="title" let-post="row">
+         <a href="javascript:void(0)" (click)="onDetails(post?._id)">
+             {{ post?.title | titlecase}}
+         </a>
+     </ng-template>
+
+     <ng-template appFor="description" let-post="row">
+             {{ post?.description | titlecase}}
+     </ng-template>
+ 
+   <ng-container>
+ 
+         <ng-template appFor="actions"  let-user="row">
+             <div class="action-icon-cover">
+                 <i class="material-icons icon-edit" (click)="oneditHandler(user?._id)" title="Edit" >
+                     edit
+                 </i>
+                 <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')" title="Delete user">
+                     delete
+                 </i>
+                 <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked')" *ngIf="user?.status === 'active';else templateAction"  title="Block user">
+                     blocked</i>
+                 <ng-template #templateAction>
+                     <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active')" title="Unblock user" >
+                         lock_open
+                     </i>
+                 </ng-template>
+             </div>
+         </ng-template>
+     </ng-container>  
+ </app-table>

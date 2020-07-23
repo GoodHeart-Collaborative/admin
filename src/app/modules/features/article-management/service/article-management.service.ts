@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/modules/shared/services/http.service';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
-import { ARTICLES, DAILY_INSPIRATION, DAILY_INSPIRATION_ACTION, DAILY_INSPIRATION_DETAILS, EDIT_DAILY_INSPIRATION } from 'src/app/constant/urls';
+import { ARTICLES, DAILY_INSPIRATION, 
+  DAILY_INSPIRATION_ACTION, DAILY_INSPIRATION_DETAILS,
+   EDIT_DAILY_INSPIRATION } from 'src/app/constant/urls';
 import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
 
 @Injectable({
