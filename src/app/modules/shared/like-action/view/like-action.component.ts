@@ -5,6 +5,9 @@ import { CommonService } from '../../services/common.service';
 import { UtilityService } from '../../services/utility.service';
 import { Router } from '@angular/router';
 import { USER } from 'src/app/constant/routes';
+import { ConfirmBoxService } from '../../confirm-box';
+export type ActionType = 'blocked' | 'active';
+
 @Component({
   selector: 'app-like-action',
   templateUrl: './like-action.component.html',
@@ -19,10 +22,11 @@ export class LikeActionComponent implements OnInit {
     private matDailog: MatDialog,
     private $common: CommonService,
     private $utility: UtilityService,
-    private $router: Router
-    ) {
-      this.likeHandler();
-     }
+    private $router: Router,
+    private $confirmBox: ConfirmBoxService,
+  ) {
+    this.likeHandler();
+  }
 
   ngOnInit() {
   }
@@ -34,10 +38,10 @@ export class LikeActionComponent implements OnInit {
     }).afterClosed().subscribe();
   }
 
-/**
- * ON LIKE Handler
- * @param id
- */
+  /**
+   * ON LIKE Handler
+   * @param id
+   */
   likeHandler() {
     const params = {
       pageNo: 1,
@@ -46,20 +50,31 @@ export class LikeActionComponent implements OnInit {
     };
     this.$common.onLikeHandler(params).then(res => {
       this.like = res.data['list'];
-     });
+    });
   }
 
   /**
    * Block and Unblock User
    */
 
-  onActionHandler(id: string, status: string ) {
-      this.$common.updateStatus(id, status).then(res => {
-        this.$utility.success(res.message);
-      });
+  onActionHandler(id: string, status: ActionType) {
+    this.$confirmBox.listAction('User', status == 'active' ? 'blocked' : 'active').subscribe((confirm) => {
+      if (confirm) {
+        const params = {
+          status: status == 'active' ? 'blocked' : 'active'
+        };
+        this.$common.updateStatus(id, params).then(res => {
+          this.$utility.success(res.message);
+          this.$dialogRef.close();
+        });
+      }
+    });
+
   }
 
-  onDetails(id) {
+  onDetails(id: string) {
     this.$router.navigate([`${USER.fullUrl}`, id, 'details']);
+    this.$dialogRef.close();
   }
+
 }
