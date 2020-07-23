@@ -3,7 +3,7 @@
         <div class="row-1">
             <div class="textual-detail">
                 <div>
-                    <h1>{{adviceDetails?.title}}</h1>
+                    <h1>{{adviceDetails?.title | titlecase}}</h1>
                     <p>{{adviceDetails?.description}}</p>
                 </div>
                 <p>Posted on: {{adviceDetails?.postedAt | date : 'medium'}}</p>

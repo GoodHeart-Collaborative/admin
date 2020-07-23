@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchFilterComponent } from './search-filter.component';
 import { MatIconModule, MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/material';
+import { WhiteSpaceModule } from '../../shared/white-space/white-space.module';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { MatIconModule, MatFormFieldModule, MatInputModule, MatButtonModule } fr
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    WhiteSpaceModule
   ],
   declarations: [
     SearchFilterComponent,
