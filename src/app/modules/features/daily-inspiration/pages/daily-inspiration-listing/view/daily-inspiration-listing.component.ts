@@ -91,7 +91,8 @@ export class DailyInspirationListingComponent implements OnInit {
    */
   onActionHandler(id: string, action: ActionType) {
     const index = this.userData.data.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('Daily Inspiration', action).subscribe((confirm) => {
+    this.$confirmBox.listAction('inspiration', action == 'active'  ?  'active' : ( action == 'deleted' ? 'delete' : 'block'))
+    .subscribe((confirm) => {
       if (confirm) {
         this.$category.updateStatus(id, action).then((res) => {
           this.$utility.success(res.message);

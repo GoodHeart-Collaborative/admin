@@ -88,7 +88,8 @@ export class UserGratitudeJournalComponent implements OnInit {
  */
   onActionHandler(id: string, action: ActionType) {
     const index = this.userData.data.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('User', action).subscribe((confirm) => {
+    this.$confirmBox.listAction('gratitude', action == 'active'  ?  'Active' : ( action == 'deleted' ? 'Delete' : 'Block'))
+    .subscribe((confirm) => {
       if (confirm) {
         const params = {
           status : action

@@ -403,3 +403,28 @@ export const ARTICLES_DETAILS: IRoute = {
     return `${ARTICLES.fullUrl}/${this.path}`;
   }
 };
+// EXPERT ROUTES //
+export const EXPERT: IRoute = {
+  path: 'expert',
+  get fullUrl(): string {
+    return `${ADMIN.fullUrl}/${this.path}`;
+  }
+};
+export const EXPERT_LIST: IRoute = {
+  path: 'list',
+  get fullUrl(): string {
+    return `${EXPERT.fullUrl}/${this.path}`;
+  }
+};
+export const ADD_EXPERT: IRoute = {
+  path: 'add',
+  get fullUrl(): string {
+    return `${EXPERT.fullUrl}/${this.path}`;
+  }
+};
+export const EXPERT_DETAILS: IRoute = {
+  path: ':id',
+  get fullUrl(): string {
+    return `${EXPERT.fullUrl}/${this.path}`;
+  }
+};

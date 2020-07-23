@@ -1,28 +1,30 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ExpertComponent } from './expert.component';
+import {EXPERT_LIST, ADD_EXPERT , EXPERT_DETAILS} from 'src/app/constant/routes';
 
 const routes: Routes = [
-  //   {
-  //     path: '',
-  //   component: ArticleManagementComponent,
-  //   children: [
-  //     {
-  //       path: '',
-  //       // redirectTo: ARTICLES_LIST.path,
-  //       pathMatch: 'full',
-  //     },
-  //     {
-  //       path: ARTICLES_LIST.path,
-  //       loadChildren: () => import('./pages/article-management-listing/article-management-listing.module')
-  //       .then( (m) => m.ArticleManagementListingModule
-  //       ),
-  //     },
-  //     {
-  //       path: ADD_ARTICLES.path,
-  //       loadChildren: () => import('./pages/add-article-management/add-article-management.module')
-  //       .then( (m) => m.AddArticleManagementModule
-  //       ),
-  //    },
+    {
+      path: '',
+    component: ExpertComponent,
+    children: [
+      {
+        path: '',
+        // redirectTo: ARTICLES_LIST.path,
+        pathMatch: 'full',
+      },
+      {
+        path: EXPERT_LIST.path,
+        loadChildren: () => import('./pages/expert-listing/expert-listing.module')
+        .then( (m) => m.ExpertListingModule
+        ),
+      },
+      {
+        path: ADD_EXPERT.path,
+        loadChildren: () => import('./pages/add-expert/add-expert.module')
+        .then( (m) => m.AddExpertModule
+        ),
+     },
   //     // {
   //     //   path: 'edit/:id',
   //     //   resolve : {
@@ -32,17 +34,17 @@ const routes: Routes = [
   //     //   .then( (m) => m.AddDailyAdviceModule
   //     //   ),
   //     // },
-  //     {
-  //       path: `${ARTICLES_DETAILS.path}/details`,
-  //       resolve : {
-  //         dailyData : ArticleManagementServiceResolve
-  //       },
-  //       loadChildren: () => import('./pages/article-management-details/article-management-details.module')
-  //       .then( (m) => m.ArticleManagementDetailsModule
-  //       ),
-  //     },
-  //    ]
-  //   }
+      {
+        path: `${EXPERT_DETAILS.path}/details`,
+        // resolve : {
+        //   dailyData : ArticleManagementServiceResolve
+        // },
+        loadChildren: () => import('./pages/expert-details/expert-details.module')
+        .then( (m) => m.ExpertDetailsModule
+        ),
+      },
+     ]
+   }
 ];
 
 @NgModule({

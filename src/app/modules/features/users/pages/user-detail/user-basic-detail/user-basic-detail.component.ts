@@ -26,7 +26,7 @@ export class UserBasicDetailComponent implements OnInit {
   }
 
   onBlockUSer(isDelete = false) {
-    this.$confirmBox.listAction('User', isDelete ? 'delete' : (this.data.status === 'blocked' ? 'active' : 'block'))
+    this.$confirmBox.listAction('user', isDelete ? 'delete' : (this.data.status === 'blocked' ? 'active' : 'block'))
     .subscribe((confirm) => {
       if (confirm) {
         const params = {
@@ -50,7 +50,7 @@ export class UserBasicDetailComponent implements OnInit {
   }
 
   onverifyHandler(id, status) {
-    this.$confirmBox.listAction('User', `${status  == 'verified'  ? 'Verify' : 'Reject'}`).subscribe((confirm) => {
+    this.$confirmBox.listAction('user', `${status  == 'verified'  ? 'verify' : 'reject'}`).subscribe((confirm) => {
       if (confirm) {
         const params = {
           adminStatus: status

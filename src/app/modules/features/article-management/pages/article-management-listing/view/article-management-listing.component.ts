@@ -77,7 +77,8 @@ export class ArticleManagementListingComponent implements OnInit {
 
   onActionHandler(id: string, action: ActionType) {
     const index = this.userData.data.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('Advice', action).subscribe((confirm) => {
+    this.$confirmBox.listAction('advice', action == 'active'  ?  'Active' : ( action == 'deleted' ? 'Delete' : 'Block'))
+    .subscribe((confirm) => {
       if (confirm) {
         this.$article.updateStatus(id, action).then((res) => {
           // this.$utility.success(res.message);

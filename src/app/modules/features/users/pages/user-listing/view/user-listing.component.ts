@@ -95,7 +95,8 @@ export class UserListingComponent implements OnInit {
  */
   onActionHandler(id: string, action: ActionType) {
     const index = this.userData.data.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('User', action).subscribe((confirm) => {
+    this.$confirmBox.listAction('user', action == 'active'  ?  'Active' : ( action == 'deleted' ? 'Delete' : 'Block'))
+    .subscribe((confirm) => {
       if (confirm) {
         const params = {
           status : action
@@ -158,7 +159,7 @@ export class UserListingComponent implements OnInit {
  * @param id
  */
   onverifyHandler(id, status) {
-    this.$confirmBox.listAction('User', `${status}`).subscribe((confirm) => {
+    this.$confirmBox.listAction('user', `${status  == 'verified'  ? 'verify' : 'reject'}`).subscribe((confirm) => {
       if (confirm) {
         const params = {
           adminStatus: status

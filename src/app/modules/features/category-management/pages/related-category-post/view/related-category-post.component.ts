@@ -77,7 +77,8 @@ export class RelatedCategoryPostComponent implements OnInit {
 
   onActionHandler(id: string, action: ActionType) {
     const index = this.userData.data.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('User', action).subscribe((confirm) => {
+    this.$confirmBox.listAction('category', action == 'active'  ?  'Active' : ( action == 'deleted' ? 'Delete' : 'Block'))
+    .subscribe((confirm) => {
       if (confirm) {
         this.$category.updateStatus(id, action).then((res) => {
           this.$utility.success(res.message);
