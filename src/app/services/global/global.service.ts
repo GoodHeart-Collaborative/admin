@@ -17,16 +17,16 @@ export class GlobalService {
   constructor(private $http: HttpService) {
     // this.fetchRegions();
   }
-  // async fetchRegions() {
-  //   if (!this.$regions.getValue()) {
-  //     const { data } = await this.$http.get(`~/content/regions`);
-  //     this.$regions.next(data);
-  //   }
-  // }
-  // async fetauredCities() {
-  //   const { data } = await this.$http.get(`~/cities/featured`);
-  //   return data;
-  // }
+  async fetchRegions() {
+    if (!this.$regions.getValue()) {
+      const { data } = await this.$http.get(`~/content/regions`);
+      this.$regions.next(data);
+    }
+  }
+  async fetauredCities() {
+    const { data } = await this.$http.get(`~/cities/featured`);
+    return data;
+  }
   encodeData(data: any) {
     return window.btoa(JSON.stringify(data));
   }
@@ -42,10 +42,10 @@ export class GlobalService {
       }
     });
   }
-  // async queryBanks() {
-  //   if (!this.$banks.getValue()) {
-  //     const { data } = await this.$http.get(`~/banks/shuffle`);
-  //     this.$banks.next(data);
-  //   }
-  // }
+  async queryBanks() {
+    if (!this.$banks.getValue()) {
+      const { data } = await this.$http.get(`~/banks/shuffle`);
+      this.$banks.next(data);
+    }
+  }
 }
