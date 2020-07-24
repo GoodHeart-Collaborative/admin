@@ -147,7 +147,11 @@
 	.mat-tooltip {
 		display: none;
 	}
-
+	.active{
+		.mat-list-item-content{
+			font-weight: 600;
+		}
+	}
 }
 
 .sidebar-list{
