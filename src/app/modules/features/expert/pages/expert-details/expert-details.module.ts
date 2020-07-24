@@ -8,6 +8,10 @@ import { ExpertBasicDetailsModule } from './pages/expert-basic-details/expert-ba
 import { AddExpertContentModule } from '../add-expert-content/add-expert-content.module';
 import { AddExpertContentComponent } from '../add-expert-content/view/add-expert-content.component';
 import { DetailsComponent } from './details/details.component';
+import { ExpertImageModule } from './pages/expert-image/expert-image.module';
+import { ExpertVideoModule } from './pages/expert-video/expert-video.module';
+import { ExpertArticleModule } from './pages/expert-article/expert-article.module';
+import { ExpertVoiceNotesModule } from './pages/expert-voice-notes/expert-voice-notes.module';
 
 // const routes: Routes = [
 //   {
@@ -23,17 +27,9 @@ const routes: Routes = [
       {path: '', redirectTo: 'details', pathMatch: 'full'},
       { path: 'details', component: ExpertDetailsComponent },
       {path: 'add', component: AddExpertContentComponent }
-      
     ]
-
   },
 
-  // {
-  //   path: 'add',
-  //   loadChildren: () => import('../add-expert-content/add-expert-content.module')
-  //     .then((m) => m.AddExpertContentModule
-  //     ),
-  // },
 
 ];
 @NgModule({
@@ -47,8 +43,12 @@ const routes: Routes = [
     MatInputModule,
     MatSelectModule,
     FormsModule,
-    ExpertBasicDetailsModule, 
-    AddExpertContentModule
+    AddExpertContentModule,
+    ExpertBasicDetailsModule,
+    ExpertImageModule,
+    ExpertVideoModule,
+    ExpertArticleModule,
+    ExpertVoiceNotesModule
   ]
 })
 export class ExpertDetailsModule { }
