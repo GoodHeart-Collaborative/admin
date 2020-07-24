@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-add-expert',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-expert.component.scss']
 })
 export class AddExpertComponent implements OnInit {
-
+  expertForm: FormGroup;
   constructor() { }
 
   ngOnInit() {
