@@ -7,6 +7,7 @@ import { UtilityService } from 'src/app/modules/shared/services/utility.service'
 import {ExpertTableDataSource} from '../models/index';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { from } from 'rxjs';
+import { GlobalService } from 'src/app/services/global/global.service';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 @Component({
   selector: 'app-expert-listing',
@@ -29,7 +30,8 @@ export class ExpertListingComponent implements OnInit {
     private $article: ExpertService,
     private $router: Router,
     private $confirmBox: ConfirmBoxService,
-    private $utility: UtilityService
+    private $utility: UtilityService,
+    private $global: GlobalService
   ) {
   }
 
@@ -66,8 +68,7 @@ export class ExpertListingComponent implements OnInit {
     }
     this.$article.queryData(params).then(res => {
       this.userData = res['data'];
-      console.log(this.userData);
-      
+      console.log(this.userData.list);
       this.setUpTableResource(this.userData);
     });
   }
@@ -103,7 +104,6 @@ export class ExpertListingComponent implements OnInit {
         break;
       case 'blocked':
         this.handleStatus(action, index);
-
         break;
       default:
         break;
@@ -133,8 +133,13 @@ export class ExpertListingComponent implements OnInit {
  oneditHandler(id) {
     this.$router.navigate([`${EXPERT.fullUrl}`, 'edit', id]);
   }
-  onDetails(id) {
-    this.$router.navigate([`${EXPERT.fullUrl}`, id, 'details']);
+  onDetails(id, data) {
+    const application = this.$global.encodeData(data);
+
+    this.$router.navigate([`${EXPERT.fullUrl}`, id, 'details'],
+    {
+       queryParams: { application }
+    });
   }
 
  onAdd() {

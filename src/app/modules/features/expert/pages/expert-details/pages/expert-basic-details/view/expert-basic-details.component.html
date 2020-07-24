@@ -11,44 +11,39 @@
                     <div class="row">
                         <div class="col-md-4">
                             <p class="label">Expert Name</p>
-                            <p class="value">Expert Name here</p>
+                            <p class="value">{{data?.name}}</p>
                         </div>
                         <div class="col-md-4">
                             <p class="label">Email</p>
-                            <p class="value">abc@example.com</p>
+                            <p class="value">{{data?.email}}</p>
                         </div>
                         <div class="col-md-4">
                             <p class="label">Phone</p>
                             <p class="value phone-value">
-                                +91 989899887
-                                <span class="material-icons verified-icon">verified_user</span>
+                                {{data?.mob || 'none'}}
+                                <!-- <span class="material-icons verified-icon">verified_user</span> -->
                             </p>
                         </div>
-                        <div class="col-md-4">
+                        <!-- <div class="col-md-4">
                             <p class="label">Date of Birth</p>
-                            <p class="value">13 July, 1985</p>
-                        </div>
+                            <p class="value">{{data?.dob || 'none'}}</p>
+                        </div> -->
                         <div class="col-md-4">
                             <p class="label">Profession</p>
-                            <p class="value">Yoga Teacher</p>
+                            <p class="value">{{data?.profession}}</p>
                         </div>
                         <div class="col-md-4">
                             <p class="label">Industry</p>
-                            <p class="value">Professional service</p>
+                            <p class="value">{{data?.industry}}</p>
                         </div>
                         <div class="col-md-4">
                             <p class="label">Category</p>
-                            <p class="value">Self Care and Self Love</p>
+                            <p class="value">{{data?.category || 'none'}}</p>
                         </div>
                         <div class="col-md-12">
                             <p class="label">Bio</p>
                             <p class="value">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s, when an unknown
-                                printer took a galley of type and scrambled it to make a type specimen book. It has
-                                survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged. It was popularised in the 1960s with the release of
-                                Letraset sheets containing Lorem Ipsum passages,
+                                {{data?.bio}}
                             </p>
                         </div>
                     </div>
