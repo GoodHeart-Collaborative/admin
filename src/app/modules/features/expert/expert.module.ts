@@ -8,7 +8,7 @@ import { ExpertComponent } from './expert.component';
   declarations: [ExpertComponent],
   imports: [
     CommonModule,
-    ExpertRoutingModule
+    ExpertRoutingModule,
   ]
 })
 export class ExpertModule { }

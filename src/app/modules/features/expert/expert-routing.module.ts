@@ -8,7 +8,11 @@ const routes: Routes = [
       path: '',
     component: ExpertComponent,
     children: [
-     
+      {
+        path: '',
+        redirectTo: EXPERT_LIST.path,
+        pathMatch: 'full',
+      },
       {
         path: EXPERT_LIST.path,
         loadChildren: () => import('./pages/expert-listing/expert-listing.module')
@@ -37,14 +41,8 @@ const routes: Routes = [
         loadChildren: () => import('./pages/expert-details/expert-details.module')
         .then( (m) => m.ExpertDetailsModule
         ),
-
       },
-      {
-        path: ':id/add',
-        loadChildren: () => import('./pages/add-expert-content/add-expert-content.module')
-        .then( (m) => m.AddExpertContentModule
-        ),
-     },
+   
      ]
    }
 ];
