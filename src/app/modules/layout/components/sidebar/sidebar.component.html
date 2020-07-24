@@ -9,7 +9,7 @@
   
   <mat-list class="sidebar-list">
 
-    <mat-list-item color="primary" [routerLink]="['DASHBOARD' | absolutePath]" routerLinkActive="active">
+    <mat-list-item color="primary" [routerLink]="['DASHBOARD' | absolutePath]" routerLinkActive="active" (click)="onClick()">
       <mat-icon>dashboard</mat-icon> Dashboard
     </mat-list-item>
 

@@ -1,6 +1,6 @@
 <!-- <p>expert-listing works!</p> -->
 <!-- <button (click)="onAdd()">Add</button> -->
-<button (click)="onDetails('sdfsdf334342342341asc')">Details</button> 
+<!-- <button (click)="onDetails('sdfsdf334342/342341asc')">Details</button>  -->
 
 <app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)" (onAddCahnges)="onAdd()">
     <ng-template appFor="createdAt" let-daily="row">
@@ -14,7 +14,7 @@
  
      <ng-template appFor="title" let-post="row">
          <a href="javascript:void(0)" (click)="onDetails(post?._id)">
-             {{ post?.title | titlecase}}
+             {{ (post?.title | titlecase) || 'String'}}
          </a>
      </ng-template>
 
