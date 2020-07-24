@@ -9,14 +9,15 @@
  
  
      <ng-template appFor="name" let-post="row">
-         <a href="javascript:void(0)" (click)="onDetails(post?._id)">
+         <a href="javascript:void(0)" (click)="onDetails(post?._id, post)">
              {{ (post?.name | titlecase) || 'String'}}
          </a>
      </ng-template>
  
      <ng-template appFor="categoryData" let-post="row">
-         
-             {{ post?.categoryData[name] | titlecase}}
+         <span *ngFor="let item of post?.categoryData">
+             {{ item?.name | titlecase}}
+         </span>
      </ng-template>
  
    <ng-container>
@@ -29,13 +30,13 @@
                  <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')" title="Delete user">
                      delete
                  </i>
-                 <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked')" *ngIf="user?.status === 'active';else templateAction"  title="Block user">
+                 <!-- <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked')" *ngIf="user?.status === 'active';else templateAction"  title="Block user">
                      blocked</i>
                  <ng-template #templateAction>
                      <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active')" title="Unblock user" >
                          lock_open
                      </i>
-                 </ng-template>
+                 </ng-template> -->
              </div>
          </ng-template>
      </ng-container>  

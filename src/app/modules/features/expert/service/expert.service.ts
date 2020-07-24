@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/modules/shared/services/http.service';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { EXPERT } from 'src/app/constant/urls';
+import { Resolve, Router, ActivatedRouteSnapshot } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -37,17 +38,16 @@ export class ExpertService {
 
 }
 
-// @Injectable()
-// export class ArticleManagementServiceResolve implements Resolve<any>  {
-//   constructor(private $daily: ArticleManagementService, private $router: Router) { }
-//   resolve(route: ActivatedRouteSnapshot) {
-//     const userId = route.params['id'];
-//     return this.$daily.updateDetails(userId).catch(err => {
-//       if (err) {
-//         // this.$router.navigate([DAILY_INSPIRATION]);
-//         return null;
-//       }
-//     }
-//     );
-//   }
-// }
+@Injectable()
+export class ExpertServiceResolve implements Resolve<any>  {
+  constructor(private $daily: ExpertService, private $router: Router) { }
+  resolve(route: ActivatedRouteSnapshot) {
+    const userId = route.params['id'];
+    return this.$daily.updateDetails(userId).catch(err => {
+      if (err) {
+        return null;
+      }
+    }
+    );
+  }
+}
