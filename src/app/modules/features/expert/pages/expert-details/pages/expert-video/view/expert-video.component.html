@@ -42,10 +42,12 @@
     <div class="comments-section">
         <div class="post-action-buttons">
             <button mat-button class="button-post-action" aria-label="Like">
-                <mat-icon>favorite</mat-icon> 12 Likes
+                <!-- <mat-icon>favorite</mat-icon>  -->
+                12 Likes
             </button>
             <button mat-button class="button-post-action" aria-label="Comment">
-                <mat-icon>mode_comment</mat-icon> 2 Comments
+                <!-- <mat-icon>mode_comment</mat-icon>  -->
+                2 Comments
             </button>
         </div>
         <div class="add-comment-wrapper">
@@ -53,9 +55,9 @@
                 <figure class="image-cover">
                     <img class="img-cover-fit" src="assets/images/img_avatar3.png" alt="">
                 </figure>
-                <mat-form-field appearance="fill">
-                    <input matInput placeholder="Add your comment">
-                </mat-form-field>
+                <div class="input-field-wrapper">
+                    <input type="text" class="input-form-control" placeholder="Add your comment">
+                </div>
             </div>
         </div>
 
