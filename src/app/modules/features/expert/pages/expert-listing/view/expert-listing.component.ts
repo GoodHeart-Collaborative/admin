@@ -51,7 +51,7 @@ export class ExpertListingComponent implements OnInit {
           if (key === 'toDate' && value) {
             value.setHours(23, 59, 59, 999);
           }
-          params[key] = `${new Date(value).getTime()}`;
+          params[key] = `${new Date(value).toISOString()}`;
         } else {
           params[key] = filterData[key];
         }
@@ -66,6 +66,8 @@ export class ExpertListingComponent implements OnInit {
     }
     this.$article.queryData(params).then(res => {
       this.userData = res['data'];
+      console.log(this.userData);
+      
       this.setUpTableResource(this.userData);
     });
   }
@@ -123,7 +125,7 @@ export class ExpertListingComponent implements OnInit {
     this.tableSource = new ExpertTableDataSource({
       pageIndex,
       pageSize,
-      rows: userRecords['data'],
+      rows: userRecords['list'],
       total: userRecords['total']
     });
   }

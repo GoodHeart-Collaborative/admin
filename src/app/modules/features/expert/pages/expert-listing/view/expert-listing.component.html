@@ -8,14 +8,15 @@
      </ng-template>
  
  
-     <ng-template appFor="title" let-post="row">
+     <ng-template appFor="name" let-post="row">
          <a href="javascript:void(0)" (click)="onDetails(post?._id)">
-             {{ (post?.title | titlecase) || 'String'}}
+             {{ (post?.name | titlecase) || 'String'}}
          </a>
      </ng-template>
-
-     <ng-template appFor="description" let-post="row">
-             {{ post?.description | titlecase}}
+ 
+     <ng-template appFor="categoryData" let-post="row">
+         
+             {{ post?.categoryData[name] | titlecase}}
      </ng-template>
  
    <ng-container>

@@ -14,10 +14,9 @@ export class ExpertTableDataSource implements Table.Source<Category> {
   columns: Table.Column<Category>[] = [
     {
         title: 'Name',
-        id: 'title',
+        id: 'name',
         sorting: true,
-        templateBy: 'title'
-        // resolve: (row: any) => row['title'] || '-',
+        templateBy: 'name'
     },
 
     {
@@ -29,21 +28,21 @@ export class ExpertTableDataSource implements Table.Source<Category> {
 
     {
         title: 'Category',
-        id: 'description',
+        id: 'categoryData',
         sorting: false,
-        templateBy: 'description'
+        templateBy: 'categoryData'
     },
     {
         title: 'Email Address',
-        id: 'likeCount',
+        id: 'email',
         sorting: false,
-        resolve: (row: any) => row['likeCount'] || '0',
+        resolve: (row: any) => row['email'],
       },
     {
         title: 'Total Post',
-        id: 'totalComments',
+        id: 'totalPost',
         sorting: false,
-        resolve: (row: any) => row['totalComments'] || '0',
+        resolve: (row: any) => row['totalPost'] || '0',
       },
 
     // {

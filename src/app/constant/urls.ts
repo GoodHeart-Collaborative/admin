@@ -101,7 +101,8 @@ export const GRATITUDE_DETAILS = (Id) => `admin/gratitude/${Id}`;
 export const ACTION_GRATITUDE = (Id , status) => `admin/gratitude/${Id}/status/${status}`;
 
 // EXPERT API's //
-export const EXPERT = 'admin/expertPost';
+export const EXPERT = 'admin/expert';
+export const EXPERT_POST = 'admin/expertPost';
 export const EXPERT_DETAILS = (Id) => `admin/expert/${Id}`;
 export const ADD_EXPERT = `admin/expert`;
 export const ACTION_EXPERT = (Id , status) => `admin/expert/${Id}/status/${status}`;
