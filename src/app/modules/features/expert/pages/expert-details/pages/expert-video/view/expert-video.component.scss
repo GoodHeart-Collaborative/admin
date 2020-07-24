@@ -22,6 +22,10 @@
         }
     }
     .comments-section {
+        .post-action-buttons{
+            border-bottom: 1px solid #dddddd;
+            padding-bottom: 12px;
+        }
         .comment_card {
             margin-bottom: 15px;
             .card_header_container {
@@ -38,17 +42,25 @@
         }
         .add-comment-wrapper {
             position: relative;
-            padding: 20px 15px 5px;
+            margin: 15px 0;
             .add-comment-field {
                 width: 100%;
                 flex: 1;
                 display: flex;
                 align-items: center;
-                .mat-form-field-flex {
-                    border-radius: 25px;
-                    background-color: #f1f3f4;
-                    border-color: #f1f3f4;
-                    .mat-input-element {
+                .input-field-wrapper {
+                    flex: 1;
+                    margin-left: 14px;
+                    .input-form-control {
+                        width: 100%;
+                        border-radius: 25px;
+                        background-color: #f1f3f4;
+                        border: 0;
+                        height: 40px;
+                        padding: 10px 20px;
+                        font-size: 14px;
+                        box-sizing: border-box;
+                        font-family: $font;
                         &::placeholder {
                             color: #616b78;
                         }
