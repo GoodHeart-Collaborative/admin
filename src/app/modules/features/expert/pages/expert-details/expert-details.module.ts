@@ -5,7 +5,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { MatTabsModule, MatIconModule, MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { ExpertBasicDetailsModule } from './pages/expert-basic-details/expert-basic-details.module';
-import { ADD_EXPERT_CONTENT } from 'src/app/constant/routes';
+import { AddExpertContentModule } from '../add-expert-content/add-expert-content.module';
+import { AddExpertContentComponent } from '../add-expert-content/view/add-expert-content.component';
+import { DetailsComponent } from './details/details.component';
 
 // const routes: Routes = [
 //   {
@@ -17,10 +19,14 @@ import { ADD_EXPERT_CONTENT } from 'src/app/constant/routes';
 
 const routes: Routes = [
   {
-    path: '', redirectTo: 'details', pathMatch: 'full'
+    path: '', component: DetailsComponent, children: [
+      {path: '', redirectTo: 'details', pathMatch: 'full'},
+      { path: 'details', component: ExpertDetailsComponent },
+      {path: 'add', component: AddExpertContentComponent }
+      
+    ]
 
   },
-  { path: 'details', component: ExpertDetailsComponent },
 
   // {
   //   path: 'add',
@@ -31,7 +37,7 @@ const routes: Routes = [
 
 ];
 @NgModule({
-  declarations: [ExpertDetailsComponent],
+  declarations: [ExpertDetailsComponent, DetailsComponent],
   imports: [
     CommonModule,
     MatTabsModule,
@@ -41,7 +47,8 @@ const routes: Routes = [
     MatInputModule,
     MatSelectModule,
     FormsModule,
-    ExpertBasicDetailsModule
+    ExpertBasicDetailsModule, 
+    AddExpertContentModule
   ]
 })
 export class ExpertDetailsModule { }
