@@ -23,10 +23,10 @@ export class ExpertService {
     // return await this.$http.patch(DAILY_INSPIRATION_ACTION(id), params).toPromise();
   }
 
-  async  addCategory(params) {
+  async  add(params) {
     // return  this.$http.post(DAILY_INSPIRATION, params).toPromise();
   }
-  async  editCategory(id, params) {
+  async  edit(id, params) {
     // return  this.$http.patch(EDIT_DAILY_INSPIRATION(id), params).toPromise();
   }
 

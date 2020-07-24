@@ -9,7 +9,7 @@
   
   <mat-list class="sidebar-list">
 
-    <mat-list-item color="primary" [routerLink]="['DASHBOARD' | absolutePath]" routerLinkActive="active">
+    <mat-list-item color="primary" [routerLink]="['DASHBOARD' | absolutePath]" routerLinkActive="active" (click)="onClick()">
       <mat-icon>dashboard</mat-icon> Dashboard
     </mat-list-item>
 
@@ -25,7 +25,7 @@
       <mat-icon>description</mat-icon> Content Management
     </mat-list-item>
 
-    <mat-list-item color="primary" [routerLink]="['EXPERT' | absolutePath]" routerLinkActive="active">
+    <mat-list-item color="primary" [routerLink]="['EXPERT_LIST' | absolutePath]" routerLinkActive="active">
       <mat-icon class="bulb-icon">star</mat-icon> Expert
     </mat-list-item>
 

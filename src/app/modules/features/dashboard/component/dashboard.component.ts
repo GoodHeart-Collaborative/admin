@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../service/dashboard.service';
 import { FormGroup } from '@angular/forms';
 import { MemberOfTheDayService } from '../../member-of-the-day/service/member-of-the-day.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -23,10 +24,18 @@ export class DashboardComponent implements OnInit {
   };
   totalPage: number;
   activePage: number;
+  isFlag: boolean;
   constructor(
     private $dashboardService: DashboardService,
-    private $member: MemberOfTheDayService) {
-     this.onDrashboardHandler();
+    private $member: MemberOfTheDayService,
+    router: Router) {
+    console.log(router.url.split('/').slice(-1)[0]);
+    if (router.url.split('/').slice(-1)[0] == 'dashboard') {
+      this.isFlag = true;
+    } else {
+      this.isFlag = false;
+    } 
+    this.onDrashboardHandler();
   }
 
   ngOnInit() {
@@ -34,9 +43,9 @@ export class DashboardComponent implements OnInit {
   }
 
   onDrashboardHandler() {
-      this.$dashboardService.onDrashboardHandler().then(res => {
-        this.data = res.data;
-      });
+    this.$dashboardService.onDrashboardHandler().then(res => {
+      this.data = res.data;
+    });
   }
 
   memberOfTheDayList() {
@@ -49,15 +58,15 @@ export class DashboardComponent implements OnInit {
 
   onPrevPage() {
     if (this.params.page > 1) {
-      this.params.page --;
+      this.params.page--;
       this.memberOfTheDayList();
     }
     console.log(this.params);
   }
 
   onNextPage() {
-    if (this.params.page  < this.totalPage) {
-      this.params.page ++;
+    if (this.params.page < this.totalPage) {
+      this.params.page++;
       this.memberOfTheDayList();
     }
     console.log(this.params);

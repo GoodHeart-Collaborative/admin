@@ -19,6 +19,7 @@ const routes: Routes = [
   },
   { path: 'details', component: UserDetailComponent }
 ];
+
 @NgModule({
   declarations: [UserDetailComponent],
   imports: [
