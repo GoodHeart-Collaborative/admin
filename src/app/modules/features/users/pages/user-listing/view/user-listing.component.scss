@@ -1,3 +1,4 @@
+@import 'abstracts/variables';
 :host{
     .mobile-content{
         position: relative;
@@ -18,7 +19,7 @@
         }
     }
     .icon-check{
-        color: #0b805f;
+        color: $primary;
         font-size: 21px;
     }
     .icon-deny{
