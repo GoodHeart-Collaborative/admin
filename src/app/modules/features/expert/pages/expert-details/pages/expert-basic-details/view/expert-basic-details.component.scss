@@ -1,0 +1,60 @@
+@import "components/detail-ui";
+
+.detail-ui {
+    .row-1 {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        .left-portion {
+            width: 220px;
+            .img-cover {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                overflow: hidden;
+                margin-right: 20px;
+                margin: auto;
+                margin-bottom: 25px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    cursor: pointer;
+                }
+            }
+            .btn-row {
+                &:not(:first-child) {
+                    margin-top: 10px;
+                }
+                button {
+                    &.btn-block {
+                        border-color: #a72222 !important;
+                        color: #a72222 !important;
+                        &.btn-green {
+                            border-color: green !important;
+                            color: green !important;
+                        }
+                    }
+                    &.btn-delete {
+                        border-color: #a72222 !important;
+                        background-color: #a72222 !important;
+                    }
+                }
+            }
+        }
+        .right-portion {
+            width: calc(100% - 260px);
+            padding-left: 40px;
+            .phone-value {
+                display: flex;
+                .verified-icon {
+                    display: block;
+                    font-size: 20px;
+                    color: green;
+                    margin-top: -3px;
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+}

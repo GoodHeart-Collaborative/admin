@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-expert-details',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExpertDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private $router: Router) { }
 
   ngOnInit() {
+  }
+
+  onAddContent() {
+      this.$router.navigate([`admin/expert/${'ddfdfsdfsddcscsc'}` , 'add']);
   }
 
 }
