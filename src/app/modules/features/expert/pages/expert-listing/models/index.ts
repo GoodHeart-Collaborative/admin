@@ -13,42 +13,45 @@ export class ExpertTableDataSource implements Table.Source<Category> {
   label = 'Category Management';
   columns: Table.Column<Category>[] = [
     {
-        title: 'Title',
+        title: 'Name',
         id: 'title',
         sorting: true,
         templateBy: 'title'
         // resolve: (row: any) => row['title'] || '-',
     },
+
     {
-        title: 'Description',
+      title: 'Added On',
+      id: 'createdAt',
+      sorting: true,
+      templateBy: 'createdAt',
+    },
+
+    {
+        title: 'Category',
         id: 'description',
         sorting: false,
         templateBy: 'description'
     },
     {
-        title: 'Like Count',
+        title: 'Email Address',
         id: 'likeCount',
         sorting: false,
         resolve: (row: any) => row['likeCount'] || '0',
       },
     {
-        title: 'Total Comments',
+        title: 'Total Post',
         id: 'totalComments',
         sorting: false,
         resolve: (row: any) => row['totalComments'] || '0',
       },
-    {
-      title: 'Created At',
-      id: 'createdAt',
-      sorting: true,
-      templateBy: 'createdAt',
-    },
-    {
-      title: 'Status',
-      id: 'status',
-      sorting: false,
-      templateBy: 'status'
-    },
+
+    // {
+    //   title: 'Status',
+    //   id: 'status',
+    //   sorting: false,
+    //   templateBy: 'status'
+    // },
 
     {
       title: 'Actions',

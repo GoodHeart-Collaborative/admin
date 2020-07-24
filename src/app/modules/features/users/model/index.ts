@@ -15,7 +15,7 @@ export class UserTableDataSource implements Table.Source<User> {
     {
       title: 'Image',
       id: 'profilePicUrl',
-      sorting: true,
+      sorting: false,
       templateBy: 'profilePicUrl'
       // resolve: (row: any) => `${row['firstName']} ${row['lastName']}` || 'NA',
     },
