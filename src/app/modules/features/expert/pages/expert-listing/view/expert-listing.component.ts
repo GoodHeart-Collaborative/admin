@@ -4,7 +4,7 @@ import { EXPERT, ADD_EXPERT } from 'src/app/constant/routes';
 import { ExpertService } from '../../../service/expert.service';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
-import {ExpertTableDataSource} from '../models/index';
+import { ExpertTableDataSource } from '../models/index';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { from } from 'rxjs';
 import { GlobalService } from 'src/app/services/global/global.service';
@@ -40,7 +40,7 @@ export class ExpertListingComponent implements OnInit {
   }
 
   updateUsers() {
-    const { pageIndex, pageSize, searchText, filterData , sortData} = this.eventData;
+    const { pageIndex, pageSize, searchText, filterData, sortData } = this.eventData;
     let params = {
       page: `${pageIndex + 1}`,
       limit: `${pageSize}`,
@@ -81,15 +81,15 @@ export class ExpertListingComponent implements OnInit {
 
   onActionHandler(id: string, action: ActionType) {
     const index = this.userData.data.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('advice', action == 'active'  ?  'Active' : ( action == 'deleted' ? 'Delete' : 'Block'))
-    .subscribe((confirm) => {
-      if (confirm) {
-        this.$article.updateStatus(id, action).then((res) => {
-          // this.$utility.success(res.message);
-          this.handleActions(action, index);
-        });
-      }
-    });
+    this.$confirmBox.listAction('advice', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
+      .subscribe((confirm) => {
+        if (confirm) {
+          this.$article.updateStatus(id, action).then((res) => {
+            // this.$utility.success(res.message);
+            this.handleActions(action, index);
+          });
+        }
+      });
   }
 
   handleActions(action: ActionType, index) {
@@ -130,20 +130,19 @@ export class ExpertListingComponent implements OnInit {
     });
   }
 
- oneditHandler(id) {
+  oneditHandler(id) {
     this.$router.navigate([`${EXPERT.fullUrl}`, 'edit', id]);
   }
   onDetails(id, data) {
     const application = this.$global.encodeData(data);
-
     this.$router.navigate([`${EXPERT.fullUrl}`, id, 'details'],
-    {
-       queryParams: { application }
-    });
+      {
+        queryParams: { application }
+      });
   }
 
- onAdd() {
+  onAdd() {
     this.$router.navigate([`${ADD_EXPERT.fullUrl}`]);
- }
+  }
 
 }
