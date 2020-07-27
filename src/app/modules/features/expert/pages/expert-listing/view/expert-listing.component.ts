@@ -6,9 +6,8 @@ import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { ExpertTableDataSource } from '../models/index';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
-import { from } from 'rxjs';
-import { GlobalService } from 'src/app/services/global/global.service';
 export type ActionType = 'deleted' | 'blocked' | 'active';
+import { GlobalService } from 'src/app/services/global/global.service';
 @Component({
   selector: 'app-expert-listing',
   templateUrl: './expert-listing.component.html',
@@ -67,8 +66,8 @@ export class ExpertListingComponent implements OnInit {
       params['sortBy'] = sortData.sortBy;
     }
     this.$article.queryData(params).then(res => {
-      this.userData = res['data'];
-      console.log(this.userData.list);
+      this.userData = res.data['list'];
+      // console.log(res.data['list']);
       this.setUpTableResource(this.userData);
     });
   }
@@ -80,12 +79,13 @@ export class ExpertListingComponent implements OnInit {
   }
 
   onActionHandler(id: string, action: ActionType) {
-    const index = this.userData.data.findIndex(user => user._id === id);
+    console.log(this.userData);
+    const index = this.userData.findIndex(user => user._id === id);
     this.$confirmBox.listAction('advice', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
       .subscribe((confirm) => {
         if (confirm) {
           this.$article.updateStatus(id, action).then((res) => {
-            // this.$utility.success(res.message);
+            this.$utility.success(res.message);
             this.handleActions(action, index);
           });
         }
@@ -125,7 +125,7 @@ export class ExpertListingComponent implements OnInit {
     this.tableSource = new ExpertTableDataSource({
       pageIndex,
       pageSize,
-      rows: userRecords['list'],
+      rows: userRecords,
       total: userRecords['total']
     });
   }
@@ -133,6 +133,7 @@ export class ExpertListingComponent implements OnInit {
   oneditHandler(id) {
     this.$router.navigate([`${EXPERT.fullUrl}`, 'edit', id]);
   }
+
   onDetails(id, data) {
     const application = this.$global.encodeData(data);
     this.$router.navigate([`${EXPERT.fullUrl}`, id, 'details'],

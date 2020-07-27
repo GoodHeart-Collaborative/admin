@@ -12,6 +12,7 @@ import { ExpertImageModule } from './pages/expert-image/expert-image.module';
 import { ExpertVideoModule } from './pages/expert-video/expert-video.module';
 import { ExpertArticleModule } from './pages/expert-article/expert-article.module';
 import { ExpertVoiceNotesModule } from './pages/expert-voice-notes/expert-voice-notes.module';
+import { ExpertDetailsListingModule } from './pages/expert-details-listing/expert-details-listing.module';
 
 // const routes: Routes = [
 //   {
@@ -48,7 +49,8 @@ const routes: Routes = [
     ExpertImageModule,
     ExpertVideoModule,
     ExpertArticleModule,
-    ExpertVoiceNotesModule
+    ExpertVoiceNotesModule,
+    ExpertDetailsListingModule
   ]
 })
 export class ExpertDetailsModule { }
