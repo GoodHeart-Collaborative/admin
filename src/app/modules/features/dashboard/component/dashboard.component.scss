@@ -6,12 +6,64 @@
     align-items: flex-start;
     justify-content: space-between;
     flex-wrap: wrap;
+    user-select: none;
     @media screen and (max-width: 576px){
         flex-direction: column;
     }
+    .graph-cover{
+        text-align: center;
+        padding: 65px 20px;
+    }
     .row{
         margin-bottom: 20px;
-        .mod-list{
+        .mat-card{
+            padding: 24px;
+        }
+        .user-statistics-card{
+            .incline-decline{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .incline-decline-content{
+                    width: 50%;
+                    padding: 0px 20px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    .icon-cover{
+                        width: 45px;
+                        height: 45px;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-right: 20px;
+                        .material-icons{
+                            font-size: 28px;
+                            color: white;
+                        }
+                    }
+                    p{
+                        font-size: 14px;
+                        color: #808080;
+                    }
+                    h3{
+                        font-size: 22px;
+                    }
+                    &.this-year{
+                        .icon-cover{
+                            background-color: #ff4181;
+                        }
+                    }
+                    &.last-year{
+                        .icon-cover{
+                            background-color: #aa01ff;
+                        }
+                    }
+                }
+            }
+        }
+        .mod-list-card{
             .users-listing {
                 padding: 0px;
                 margin: 0px;
@@ -21,10 +73,10 @@
                     align-items: center;
                     justify-content: space-between;
                     &:not(:first-child){
-                        padding-top: 5px;
+                        padding-top: 10px;
                     }
                     &:not(:last-child){
-                        padding-bottom: 5px;
+                        padding-bottom: 10px;
                     }
 
                     .img-cover {
@@ -46,8 +98,11 @@
                         display: block;
 
                         h6 {
-                            margin: 0px;
-                            font-size: 13px;
+                            margin-bottom: 3px;
+                            font-size: 16px;
+                            font-weight: bold;
+                            text-transform: capitalize;
+                            color: #6c7082;
                             white-space: nowrap;
                             overflow: hidden;
                             text-overflow: ellipsis;
@@ -55,8 +110,8 @@
 
                         p {
                             margin: 0px;
-                            font-size: 12px;
-                            color: #868686;
+                            font-size: 13px;
+                            color: #787b8c;
                             white-space: nowrap;
                             overflow: hidden;
                             text-overflow: ellipsis;
@@ -64,6 +119,18 @@
                     }
                 }
             }
+        }
+        .conversion-ratio-card{
+           .conversion-ratio-content{
+               text-align: center;
+               p{
+                font-size: 14px;
+                color: #808080;
+            }
+               h3{
+                   font-size: 22px;
+               }
+           } 
         }
     }
 }

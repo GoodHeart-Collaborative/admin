@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   memberList: unknown;
   params = {
     page: 1,
-    limit: 5,
+    limit: 3,
   };
   totalPage: number;
   activePage: number;
