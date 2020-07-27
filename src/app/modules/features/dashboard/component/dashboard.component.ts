@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DashboardService } from '../service/dashboard.service';
 import { FormGroup } from '@angular/forms';
 import { MemberOfTheDayService } from '../../member-of-the-day/service/member-of-the-day.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CommonService } from 'src/app/modules/shared/services/common.service';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
   dashboardForm: FormGroup;
   displayValue: string;
   displayValueList = ['Daily', 'Weekly', 'Monthly', 'Yearly'];
@@ -28,13 +29,15 @@ export class DashboardComponent implements OnInit {
   constructor(
     private $dashboardService: DashboardService,
     private $member: MemberOfTheDayService,
+    private $common: CommonService,
     router: Router) {
     console.log(router.url.split('/').slice(-1)[0]);
     if (router.url.split('/').slice(-1)[0] == 'dashboard') {
       this.isFlag = true;
-    } else {
-      this.isFlag = false;
-    } 
+    }
+
+    this.$common.dashBoardFlag$.next(true);
+    console.log(this.isFlag, 'drashbord');
     this.onDrashboardHandler();
   }
 
@@ -72,4 +75,9 @@ export class DashboardComponent implements OnInit {
     console.log(this.params);
 
   }
+
+  ngOnDestroy() {
+    this.$common.dashBoardFlag$.next(false);
+  }
+
 }

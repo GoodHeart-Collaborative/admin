@@ -9,13 +9,13 @@ import { Router } from '@angular/router';
 export class UserTopicsComponent implements OnInit {
 
   isProcessing: boolean = false;
-  @Input() data;
+  @Input() userDetails;
  constructor(private $router: Router) { }
 
  ngOnInit() {
  }
  onClick() {
-   this.$router.navigate([`admin/users/${this.data._id}/topic/details`]);
+   this.$router.navigate([`admin/users/${this.userDetails._id}/topic/details`]);
 
  }
 

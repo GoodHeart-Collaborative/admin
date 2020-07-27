@@ -24,7 +24,7 @@ export class UserGratitudeJournalComponent implements OnInit {
     sortData: null
   };
   isProcessing = false;
-  @Input() data;
+  @Input() userDetails;
   constructor(
     private $router: Router,
     private $userService: UserGratitudeJournalService,
@@ -35,52 +35,11 @@ export class UserGratitudeJournalComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.updateUsers();
-  }
-/**
- * User listing Handler
- */
-  updateUsers() {
-    const { pageIndex, pageSize, searchText, filterData , sortData} = this.eventData;
-    let params = {
-      page: `${pageIndex + 1}`,
-      limit: `${pageSize}`,
-    };
-    if (filterData) {
-      const keys = Object.keys(filterData).filter(el => filterData[el]);
-      keys.forEach((key: string) => {
-        if (key === 'fromDate' || key === 'toDate') {
-          const value: Date = filterData[key];
-          if (key === 'toDate' && value) {
-            value.setHours(23, 59, 59, 999);
-          }
-          params[key] = `${new Date(value).getTime()}`;
-        } else {
-          params[key] = filterData[key];
-        }
-      });
-    }
-    if (searchText) {
-      params['searchTerm'] = searchText;
-    }
-    if (sortData) {
-      params['sortOrder'] = sortData.sortOrder;
-      params['sortBy'] = sortData.sortBy;
-    }
-    this.$userService.queryData(params).then(res => {
-      this.userData = res['data'];
-      this.setUpTableResource(this.userData);
-    });
+    // this.updateUsers();
   }
 
-/**
- * Listing Pagination Hnadler
- * @param event
- */
-  onOptionChange(event: Table.OptionEvent) {
-    this.eventData = event.data;
-    this.updateUsers();
-  }
+
+
 /**
  * User Action Handler
  * @param id
