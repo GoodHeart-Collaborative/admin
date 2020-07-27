@@ -54,11 +54,10 @@ export class GratitudeTableDataSource implements Table.Source<User> {
   ];
   options: Table.Options = {
     selection: false,
-    search: 'Search by Title',
+    search: 'Search by Description',
     index: true,
     sorting: true,
     // filterComponent: UsersListingFilterComponent,
-   
   };
   constructor(public data: Table.Data<User> = defaultData) {}
 }

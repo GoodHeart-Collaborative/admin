@@ -44,6 +44,7 @@ updateUsers() {
   let params = {
     page: `${pageIndex + 1}`,
     limit: `${pageSize}`,
+    userId: `${this.userDetails.id}`
   };
   if (filterData) {
     const keys = Object.keys(filterData).filter(el => filterData[el]);
@@ -67,8 +68,8 @@ updateUsers() {
     params['sortBy'] = sortData.sortBy;
   }
   this.$userService.queryData(params).then(res => {
-    this.userData = res['data'];
-    // this.setUpTableResource(this.userData);
+    console.log(res);
+    this.userData = res.data;
   });
  }
 
@@ -76,8 +77,8 @@ updateUsers() {
  * Listing Pagination Hnadler
  * @param event
  */
-onOptionChange(event: Table.OptionEvent) {
-  this.eventData = event.data;
+onOptionChange(event) {
+  this.eventData = event;
   this.updateUsers();
-}
+  }
 }

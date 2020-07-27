@@ -109,9 +109,4 @@ export class ExpertDetailsComponent implements OnInit {
   }
 
 
-  // onChangeLis(event) {
-  //     console.log(event);
-  //     this.updateList();
-  // }
-
 }
