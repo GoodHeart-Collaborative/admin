@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpParams, HttpClient, HttpHeaders } from '@angular/common/http';
-import { Api } from 'aws-sdk/clients/apigatewayv2';
 
 interface Options {
   headers?: HttpHeaders;

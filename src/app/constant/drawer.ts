@@ -37,3 +37,13 @@ export const MEDIA_TYPE = {
     IMAGE: 1,
     VIDEO: 2
 };
+
+export const INDUSTRY_TYPE = {
+    Experts_in_Executive_Burnout:
+    'Experts in Executive Burnout',
+    Nonprofit_Resiliency_Coaches: 'Nonprofit Resiliency Coaches',
+    Wellness_Coaches: 'Wellness Coaches',
+    Licensed_Therapists_specializing_in_Vicarious_and_Secondary_Trauma:
+     'Licensed Therapists specializing in Vicarious and Secondary Trauma',
+    Compassion_Fatigue: 'Compassion Fatigue'
+};
