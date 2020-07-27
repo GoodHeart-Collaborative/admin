@@ -3,17 +3,28 @@
             <div class="row">
                   <div class="col-md-5 animate__animated animate__bounceInLeft">
                         <div class="mat-card">
-                              sdfhsdkf
+                              <h3 style="margin-bottom: 20px;">User Statistics</h3>
                         </div>
                   </div>
                   <div class="col-md-4 animate__animated animate__flipInX">
-                        <div class="mat-card">
-                              sdfhsdkf
+                        <div class="mat-card mod-list">
+                              <h3 style="margin-bottom: 20px;">Member of the Day</h3>
+                              <ul class="users-listing">
+                                    <li class="single-user" *ngFor="let item of memberList">
+                                          <div class="img-cover">
+                                                <img [src]="item?.profilePicUrl[0] |customImage:'USER'|async" alt="Profile">
+                                          </div>
+                                          <div class="textual-cover">
+                                                <h6>{{item?.firstName || 'String'}}{{item?.lastName || ''}}</h6>
+                                                <p>{{item?.memberCreatedAt | customDate}}</p>
+                                          </div>
+                                    </li>
+                              </ul>
                         </div>
                   </div>
                   <div class="col-md-3 animate__animated animate__bounceInRight">
                         <div class="mat-card">
-                              sdfhsdkf
+                              <h3 style="margin-bottom: 20px;">Conversion Ratio</h3>
                         </div>
                   </div>
             </div>
