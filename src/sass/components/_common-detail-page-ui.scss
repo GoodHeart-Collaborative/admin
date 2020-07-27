@@ -1,71 +1,80 @@
-.common-detail-page-ui{
+.common-detail-page-ui {
     padding: 15px;
     box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.2);
-    .row-1{
+    background-color: white;
+    .row-1 {
         display: flex;
         align-items: stretch;
         flex-wrap: wrap;
         justify-content: space-between;
-        @media screen and (max-width: 576px){
+        @media screen and (max-width: 576px) {
             flex-direction: column;
         }
-        .textual-detail{
+        .textual-detail {
             width: calc(100% - 330px);
             word-break: break-word;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            @media screen and (max-width: 992px){
+            @media screen and (max-width: 992px) {
                 width: calc(100% - 280px);
             }
-            @media screen and (max-width: 576px){
+            @media screen and (max-width: 576px) {
                 width: 100%;
                 order: 1;
             }
-            p{
-                @media screen and (max-width: 576px){
+            h1 {
+                margin-bottom: 5px;
+            }
+            p {
+                font-size: 14px;
+                line-height: 22px;
+                @media screen and (max-width: 576px) {
                     font-size: 14px;
                 }
-                &:not(:last-child){
+                &:not(:last-child) {
                     margin-bottom: 20px;
                     font-size: 14px;
-                    @media screen and (max-width: 576px){
+                    @media screen and (max-width: 576px) {
                         margin-bottom: 10px;
                     }
                 }
             }
-            .like-cover{
+            .date-stamp{
+                font-size: 14px;
+            }
+            .like-cover {
                 display: flex;
                 align-items: center;
                 margin-right: 40px;
                 cursor: pointer;
-                .material-icons{
+                .material-icons {
                     color: #556080;
                     margin-right: 10px;
                     font-size: 16px;
                 }
-                p{
+                p {
                     font-size: 14px;
                 }
             }
         }
-        .image-detail{
+        .image-detail {
             width: 310px;
             height: 100% !important;
             display: flex;
             align-items: flex-start;
             justify-content: flex-end;
-            img{
+            img {
                 max-width: 100%;
                 max-height: 100%;
                 width: auto;
                 height: auto;
-                box-shadow: 0px 0px 3px 1px rgba(0,0,0,.6);
+                box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.6);
             }
-            @media screen and (max-width: 992px){
+            @media screen and (max-width: 992px) {
                 width: 260px;
             }
-            @media screen and (max-width: 576px){
+            @media screen and (max-width: 576px) {
                 width: 100%;
                 justify-content: center;
                 order: 0;
@@ -73,7 +82,7 @@
             }
         }
     }
-    .row-2{
+    .row-2 {
         display: flex;
         align-items: center;
         justify-content: flex-start;
@@ -81,68 +90,85 @@
         margin: 20px -16px;
         border-top: 1px solid #dcdcdc;
         border-bottom: 1px solid #dcdcdc;
-        .like-cover{
+        .like-cover {
             display: flex;
             align-items: center;
             margin-right: 40px;
             cursor: pointer;
-            .material-icons{
+            .material-icons {
                 color: #556080;
                 margin-right: 10px;
                 font-size: 16px;
             }
-            p{
+            p {
                 font-size: 14px;
             }
         }
     }
-    .row-3{
-        .users-listing{
+    .row-3 {
+        .users-listing {
             padding: 0px;
             margin: 0px;
-            .single-user{
-                &:not(:first-child){
+            .single-user {
+                &:not(:first-child) {
                     padding-top: 6px;
                 }
-                &:not(:last-child){
+                &:not(:last-child) {
                     padding-bottom: 6px;
                 }
-                .li-content{
+                .li-content {
                     display: flex;
                     align-items: flex-start;
                     justify-content: space-between;
-                    .img-cover{
-                        width: 35px;
-                        height: 35px;
+                    .img-cover {
+                        width: 40px;
+                        height: 40px;
                         overflow: hidden;
-                        border-radius: 35px;
+                        border-radius: 50%;
                         box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.1);
-                        img{
+                        img {
                             width: 100%;
                             height: 100%;
                         }
                     }
-                    .textual-cover{
-                        padding-left: 10px;
-                        width: calc(100% - 35px);
+                    .textual-cover {
+                        margin-left: 20px;
                         display: block;
-                        h4{
-                            margin: 0px;
+                        padding: 10px;
+                        background-color: #f2f2f2;
+                        border-radius: 5px;
+                        position: relative;
+                        flex: 1;
+                        &::before {
+                            content: "";
+                            display: block;
+                            width: 0;
+                            height: 0;
+                            position: absolute;
+                            top: 12px;
+                            right: 100%;
+                            border-top: 10px solid transparent;
+                            border-right: 10px solid #f2f2f2;
+                            border-bottom: 10px solid transparent;
+                        }
+                        h4 {
+                            margin: 0 0 6px 0;
                             font-size: 14px;
                             white-space: nowrap;
                             overflow: hidden;
                             text-overflow: ellipsis;
+                            font-weight: 600;
                             max-width: 100%;
                             position: relative;
                             padding-right: 100px;
-                            .more-icon{
+                            .more-icon {
                                 position: absolute;
                                 right: 0px;
                                 top: 2px;
                                 cursor: pointer;
                             }
-                            p{
-                                &.comment-time{
+                            p {
+                                &.comment-time {
                                     position: absolute;
                                     right: 0px;
                                     top: 2px;
@@ -150,28 +176,31 @@
                                 }
                             }
                         }
-                        p{
-                            margin: 0px;
-                            font-size: 12px;
+                        p {
+                            margin: 0;
+                            font-size: 13px;
                             color: #868686;
                             word-break: break-word;
-                            &.comment-time{
+                            &.comment-time {
                                 font-size: 10px;
                             }
+                            &.comment {
+                                margin: 0 0 6px 0;
+                            }
                         }
-                        .like-cover{
+                        .like-cover {
                             display: flex;
                             margin-top: 4px;
                             align-items: center;
-                            .material-icons{
+                            .material-icons {
                                 color: #556080;
                                 margin-right: 10px;
                                 font-size: 16px;
                             }
-                            p{
+                            p {
                                 font-size: 14px;
                             }
-                            .see-hide-replies{
+                            .see-hide-replies {
                                 text-decoration: none;
                                 cursor: pointer;
                                 color: black;
@@ -181,26 +210,26 @@
                         }
                     }
                 }
-                .comment-listing{
+                .comment-listing {
                     width: 100%;
-                    padding: 10px 0px 0px 45px;
-                    .single-comment{
-                        &:not(:first-child){
+                    padding: 10px 0px 0px 60px;
+                    .single-comment {
+                        &:not(:first-child) {
                             padding-top: 5px;
                         }
-                        &:not(:last-child){
+                        &:not(:last-child) {
                             padding-bottom: 5px;
                         }
-                        .li-content{
+                        .li-content {
                             width: 100%;
-                            .img-cover{
-                                width: 25px;
-                                height: 25px;
+                            .img-cover {
+                                width: 32px;
+                                height: 32px;
                             }
-                            .textual-cover{
+                            .textual-cover {
                                 padding-left: 10px;
-                                width: calc(100% - 25px);
-                                p{
+                                width: calc(100% - 32px);
+                                p {
                                     word-break: break-word;
                                 }
                             }

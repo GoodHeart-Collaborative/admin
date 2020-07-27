@@ -1,102 +1,97 @@
-<div class="card-bg post_card">
-    <div class="post-card-content-row row">
-        <div class="column column-media">
-            <div class="video-wrapper">
-                <!-- <iframe class="video-frame" width="100%" height="100%" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-                </iframe> -->
-            </div>
-        </div>
-        <!-- <div class="column column-other-content">
-            <div class="card_header_container profile_header">
-                <div class="card_header">
-                    <figure mat-card-avatar class="image-cover">
-                        <img class="img-cover-fit" src="assets/images/img_avatar3.png" alt="">
-                    </figure>
-                    <h3 class="small_heading">
-                        <a href="javascript:void()">User name</a>
-                    </h3>
-                    <p>12 July, 2020</p>
-                </div>
-                <button mat-icon-button class="button-icon" [matMenuTriggerFor]="cardMenu">
-                    <mat-icon class="align-center">more_vert</mat-icon>
-                    <mat-menu #cardMenu="matMenu" class="small_menu card_menu">
-                        <button mat-menu-item color="primary">Edit</button>
-                    </mat-menu>
-                </button>
-            </div>
-            <div class="post-content">
-                <p class="paraText">
-                    There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                    alteration in some form, by injected humour, or randomised words which don't look even slightly
-                    believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't
-                    anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet
-                    tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.
-                    It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures,
-                    to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free
-                    from repetition, injected humour, or non-characteristic words etc.
-                </p>
-            </div>
-        </div> -->
-    </div>
-
-    <div class="comments-section">
-        <div class="post-action-buttons">
-            <button mat-button class="button-post-action" aria-label="Like">
-                <!-- <mat-icon>favorite</mat-icon>  -->
-                12 Likes
-            </button>
-            <button mat-button class="button-post-action" aria-label="Comment">
-                <!-- <mat-icon>mode_comment</mat-icon>  -->
-                2 Comments
-            </button>
-        </div>
-        <div class="add-comment-wrapper">
-            <div class="add-comment-field no-error-field form-field field-h-40">
-                <figure class="image-cover">
-                    <img class="img-cover-fit" src="assets/images/img_avatar3.png" alt="">
-                </figure>
-                <div class="input-field-wrapper">
-                    <input type="text" class="input-form-control" placeholder="Add your comment">
-                </div>
-            </div>
-        </div>
-
-        <div *ngFor="let comment of [1,2,3,4,5]" class="comment_card">
-
-            <div class="card_header_container profile_header with_content">
-                <div class="mat-card-header">
-                    <figure class="image-cover">
-                        <img src="assets/images/img_avatar3.png" alt="">
-                    </figure>
-
-                    <div class="card-content">
-                        <div class="content_row_1 reply_content_row">
-                            <h3 class="small_heading user_name">
-                                User Name
-                            </h3>
-                            <p class="paraText">
-
-                                Material is an adaptable system of guidelines, components, and tools that support the
-                                best practices of user interface design. Backed by open-source code.
-                            </p>
-                            <span class="paraText time-stamp">
-                                12 July
-                            </span>
+<div class="page-gratitude-journal-detail common-detail-page-ui">
+    <div class="gratitude-journal-content">
+        <div class="row-1">
+            <div class="textual-detail">
+                <div class="card_header_container profile_header">
+                    <div class="card_header">
+                        <figure mat-card-avatar class="image-cover">
+                            <img class="img-cover-fit" src="assets/images/img_avatar3.png" alt="">
+                        </figure>
+                        <div class="heading-cover">
+                            <a class="user_name" href="javascript:void()">User name</a>
+                            <p>12 July, 2020</p>
                         </div>
                     </div>
+                    <p>
+                        Material is an adaptable system of guidelines, components, and tools that
+                        support the
+                        best practices of user interface design. Backed by open-source code.aterial is an adaptable
+                        system
+                        of guidelines, components, and tools that
+                        support the
+                        best practices of user interface design. Backed by open-source code.aterial is an adaptable
+                        system
+                        of guidelines, components, and tools that
+                        support the
+                        best practices of user interface design. Backed by open-source code.
+                    </p>
                 </div>
-
-
-                <button mat-icon-button class="button-icon" [matMenuTriggerFor]="commentMenu">
-                    <mat-icon class="align-center">more_vert</mat-icon>
-                    <mat-menu #commentMenu="matMenu" class="small_menu card_menu">
-                        <button mat-menu-item color="primary">Delete</button>
-                    </mat-menu>
-                </button>
-
+                <p class="date-stamp">Posted on: 12 July</p>
+            </div>
+            <div class="image-detail">
+                <img src="assets/images/img_avatar3.png" alt="">
             </div>
         </div>
+        <div class="row-2">
+            <div class="like-cover"><span class="material-icons">thumb_up</span>
+                <p>12</p>
+            </div>
+            <div class="like-cover"><span class="material-icons">comment</span>
+                <p>4</p>
+            </div>
+        </div>
+        <div class="row-3">
+            <ul class="users-listing">
+                <li class="single-user" *ngFor="let item of [1,2,3,4,5]">
+                    <div class="li-content">
+                        <div class="img-cover">
+                            <img src="assets/images/img_avatar3.png" alt="Profile">
+                        </div>
+                        <div class="textual-cover">
+                            <h4>User name
+                                <p class="comment-time">3 days ago</p>
+                            </h4>
+                            <p class="comment">
+                                Material is an adaptable system of guidelines, components, and tools that
+                                support the
+                                best practices of user interface design. Backed by open-source code.
+                            </p>
+                            <div class="like-cover">
+                                <span class="material-icons">thumb_up</span>
+                                <p>2</p>
+                                <a class="see-hide-replies">See
+                                    Replies (2)</a>
+                            </div>
+                        </div>
+                        <!-- (click)="onNestedComment()" -->
+                    </div>
+                    <ul class="comment-listing">
+                        <li class="single-comment">
+                            <div class="li-content">
+                                <div class="img-cover">
+                                    <img src="assets/images/img_avatar3.png" alt="Profile">
+                                </div>
+                                <div class="textual-cover">
+                                    <h4>User name
+                                        <p class="comment-time">3 days ago</p>
+                                    </h4>
+                                    <p>
+                                        Material is an adaptable system of guidelines, components, and tools that
+                                        support the
+                                        best practices of user interface design. Backed by open-source code.
+                                    </p>
+                                    <div class="like-cover"><span class="material-icons">thumb_up</span>
+                                        <p>
+                                            3
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
 
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-
 </div>
