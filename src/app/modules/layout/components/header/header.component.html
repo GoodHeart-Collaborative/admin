@@ -10,12 +10,19 @@
 
 			<div class="btn_group">
 
-				<button mat-icon-button title="Notifications"><mat-icon>notifications</mat-icon></button>
+				<button mat-icon-button aria-label="Notifications" [matMenuTriggerFor]="nofication">
+					<mat-icon matBadge="2" matBadgePosition="after">
+						notifications
+					</mat-icon>
+				</button>
+
 				<div class="user-img-cover" (click)="openAdminProfileTab()" title="View Profile">
 					<img [src]="profileDetail?.profilePicture | customImage:'USER'|async" alt="">
 				</div>
-				<button mat-icon-button title="Logout" (click)="logout()"><mat-icon>exit_to_app</mat-icon></button>
-                <!-- <mat-menu #menu="matMenu" xPosition="before">
+				<button mat-icon-button title="Logout" (click)="logout()">
+					<mat-icon>exit_to_app</mat-icon>
+				</button>
+				<!-- <mat-menu #menu="matMenu" xPosition="before">
                     <button class="drop-menu" mat-menu-item (click)="openAdminProfileTab()"> <mat-icon>person</mat-icon> My Profile </button>
                     <button class="drop-menu" mat-menu-item (click)="openCahngePasswordTab()"> <mat-icon>lock</mat-icon> Change Password </button>
                     <button class="drop-menu" mat-menu-item (click)="logout()" > <mat-icon>power_settings_new</mat-icon> Logout </button>
@@ -24,3 +31,48 @@
 		</mat-toolbar-row>
 	</mat-toolbar>
 </div>
+
+<mat-menu #nofication="matMenu" class="notification-dropdown" backdropClass="notificationBackdrop">
+	<div class="dropdown-box-header">
+		<p class="dropdown-box-header-title">Notifications</p>
+		<button type="button" mat-button class="mark-all-as-read-button">Mark all as read</button>
+	</div>
+	<ul class="dropdown-box-list">
+		<li class="list-item" *ngFor="let i of [1,2,3,4]">
+			<div class="user-status notification">
+				<a href="javascript:void()" class="user-status-avatar">
+					<img src="assets/images/img_avatar3.png" alt="User Profile">
+				</a>
+				<div class="user-status-info">
+					<p class="user-status-title">
+						<a href="javascript:void()" class="bold">User Name</a>
+						posted a comment on your
+						<a href="javascript:void()" class="highlighted">status update</a>
+					</p>
+					<span class="user-status-timestamp">17 minutes ago</span>
+				</div>
+				<div class="user-status-icon">
+					<mat-icon class="align-center">comment</mat-icon>
+				</div>
+			</div>
+		</li>
+		<li class="list-item">
+			<div class="user-status notification">
+				<a href="javascript:void()" class="user-status-avatar">
+					<img src="assets/images/img_avatar3.png" alt="User Profile">
+				</a>
+				<div class="user-status-info">
+					<p class="user-status-title">
+						<a href="javascript:void()" class="bold">User Name</a>
+						left a like reaction on your
+						<a href="javascript:void()" class="highlighted">status update</a>
+					</p>
+					<span class="user-status-timestamp">12 seconds ago</span>
+				</div>
+				<div class="user-status-icon">
+					<mat-icon class="align-center">thumb_up</mat-icon>
+				</div>
+			</div>
+		</li>
+	</ul>
+</mat-menu>

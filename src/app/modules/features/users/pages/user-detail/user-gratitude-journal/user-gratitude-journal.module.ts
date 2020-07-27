@@ -17,7 +17,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     TableModule,
     CustomDatePipeModule
-    
   ],
   providers: [UsersService],
   exports : [UserGratitudeJournalComponent]

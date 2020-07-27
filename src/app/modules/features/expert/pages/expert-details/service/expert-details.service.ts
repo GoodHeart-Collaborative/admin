@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/modules/shared/services/http.service';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
-import { EXPERT_POST } from 'src/app/constant/urls';
+import { EXPERT_POST, ACTION_EXPERT_POST } from 'src/app/constant/urls';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,6 @@ import { EXPERT_POST } from 'src/app/constant/urls';
 export class ExpertDetailsService {
   constructor(
     private $http: HttpService,
-    private $utilityService: UtilityService
   ) { }
 
   async  queryData(params) {
@@ -17,10 +16,7 @@ export class ExpertDetailsService {
   }
 
   async updateStatus(id, status) {
-    // const params = {
-    //   status : status
-    // };
-    // return await this.$http.patch(ACTION_EXPERT(id , status), {}).toPromise();
+    return await this.$http.patch(ACTION_EXPERT_POST(id , status), {}).toPromise();
   }
 
   async  add(params) {

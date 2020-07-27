@@ -1,9 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output,EventEmitter, OnChanges } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { UsersService } from '../../../service/users.service';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
-import { MatDialog } from '@angular/material';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { GratitudeTableDataSource } from './model';
@@ -13,9 +11,8 @@ import { UserGratitudeJournalService } from './service/user-gratitude-journal.se
   templateUrl: './user-gratitude-journal.component.html',
   styleUrls: ['./user-gratitude-journal.component.scss']
 })
-export class UserGratitudeJournalComponent implements OnInit {
+export class UserGratitudeJournalComponent implements OnInit, OnChanges {
   tableSource = new GratitudeTableDataSource();
-  userData: any;
   eventData: Table.OptionData = {
     pageIndex: 0,
     pageSize: 10,
@@ -24,21 +21,28 @@ export class UserGratitudeJournalComponent implements OnInit {
     sortData: null
   };
   isProcessing = false;
-  @Input() userDetails;
+  @Input() userData;
+  @Output() changeHandler = new EventEmitter();
+
   constructor(
     private $router: Router,
     private $userService: UserGratitudeJournalService,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
   ) {
-    // this.id = this.$activeRoute.snapshot.params.id
   }
 
   ngOnInit() {
-    // this.updateUsers();
   }
 
+  ngOnChanges() {
+    this.setUpTableResource(this.userData);
+  }
 
+ onOptionChange(event: Table.OptionEvent) {
+    this.eventData = event.data;
+    this.changeHandler.emit(this.eventData);
+  }
 
 /**
  * User Action Handler
@@ -93,17 +97,18 @@ export class UserGratitudeJournalComponent implements OnInit {
       return user;
     });
   }
+
 /**
  * User Set Up Table Handler
  * @param userRecords
  */
-  setUpTableResource(userRecords: string) {
+  setUpTableResource(userDetails: any) {
     const { pageIndex, pageSize } = this.eventData;
     this.tableSource = new GratitudeTableDataSource({
       pageIndex,
       pageSize,
-      rows: userRecords['data'],
-      total: userRecords['total']
+      rows: userDetails.data,
+      total: userDetails.total
     });
   }
 
@@ -114,6 +119,8 @@ export class UserGratitudeJournalComponent implements OnInit {
   onDetailsHandler(id: string) {
     this.$router.navigate([`admin/users/${id}/gratitude/details`]);
   }
+
+
 }
 
 
