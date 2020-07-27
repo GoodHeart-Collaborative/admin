@@ -129,6 +129,15 @@ mat-icon,
     }
 }
 
+.checkbox-wrapper {
+    .mat-checkbox-frame {
+        border-color: #a5a5a5;
+    }
+    .mat-checkbox-label {
+        font-size: 14px;
+    }
+}
+
 .mat-form-field-infix {
     .mat-input-element {
         min-height: 21px;
