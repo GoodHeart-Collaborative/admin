@@ -284,7 +284,7 @@ export const EVENTS_LIST: IRoute = {
 };
 
 export const EVENTS_DETAIL = {
-  path: 'detail',
+  path: ':id',
   fullUrl() {
     return `${EVENTS.fullUrl}/${this.path}`;
 

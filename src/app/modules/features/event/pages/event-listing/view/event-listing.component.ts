@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ADD_EVENTS } from 'src/app/constant/routes';
+import { ADD_EVENTS, EVENTS } from 'src/app/constant/routes';
 
 @Component({
   selector: 'app-event-listing',
@@ -15,7 +15,7 @@ export class EventListingComponent implements OnInit {
   }
 
   onDetails() {
-    this.$router.navigate([`${ADD_EVENTS.fullUrl}`, '443412412414dasdsdasds', 'details']);
+    this.$router.navigate([`${EVENTS.fullUrl}`, '443412412414dasdsdasds', 'details']);
 
   }
 
