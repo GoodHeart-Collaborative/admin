@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { DashboardService } from '../service/dashboard.service';
 import { FormGroup } from '@angular/forms';
 import { MemberOfTheDayService } from '../../member-of-the-day/service/member-of-the-day.service';
@@ -30,12 +30,17 @@ export class DashboardComponent implements OnInit, OnDestroy {
   isFlag: boolean;
   rightSideScrollerFixed: boolean;
 
+  // @ViewChild('rightSideHeight') rightSideHeight: ElementRef;
+  rightSideHeightValue: any;
+  rightSideHeight: any;
+
+
   @HostListener('window:scroll', ['$event']) 
     scrollHandler(event) {
       console.log("Scroll Event");
     }
 
-    
+
   constructor(
     private $dashboardService: DashboardService,
     private $member: MemberOfTheDayService,
@@ -53,9 +58,21 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.memberOfTheDayList();
-    console.log('Jasmeet');
-    // window.addEventListener('scroll', this.scrolling, true)
   }
+
+  
+
+  // @HostListener("window:scroll", [])
+  // onScroll(): void {
+  //   if (window.pageYOffset > 10) {
+  //     this.rightSideScrollerFixed = true;
+  //   } else {
+  //     this.rightSideScrollerFixed = false;
+  //   }
+  // }
+
+
+
   // scrolling=(s)=>{
   //   let sc = s.target.scrollingElement.scrollTop;
   //   console.log();
