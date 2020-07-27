@@ -2,13 +2,39 @@
       <div class="dashboard-content">
             <div class="row">
                   <div class="col-md-5 animate__animated animate__bounceInLeft">
-                        <div class="mat-card">
+                        <div class="mat-card user-statistics-card">
                               <h3 style="margin-bottom: 20px;">User Statistics</h3>
+                              <div class="incline-decline">
+                                    <div class="incline-decline-content this-year">
+                                          <div class="icon-cover">
+                                                <span class="material-icons">trending_up</span>
+                                                <span class="material-icons" *ngIf="false">trending_down</span>
+                                          </div>
+                                          <div class="this-year-stat">
+                                                <p>This Year</p>
+                                                <h3>60%</h3>
+                                          </div>
+                                    </div>
+                                    <div class="incline-decline-content last-year">
+                                          <div class="icon-cover">
+                                                <span class="material-icons" *ngIf="false">trending_up</span>
+                                                <span class="material-icons">trending_down</span>
+                                          </div>
+                                          <div class="previous-year-stat">
+                                                <p>Last Year</p>
+                                                <h3>40%</h3>
+                                          </div>
+                                    </div>
+                              </div>
+                              <div class="graph-cover">
+                                    <h3>Put Graph Here</h3>
+                              </div>
                         </div>
                   </div>
                   <div class="col-md-4 animate__animated animate__flipInX">
-                        <div class="mat-card mod-list">
-                              <h3 style="margin-bottom: 20px;">Member of the Day</h3>
+                        <div class="mat-card mod-list-card">
+                              <h3 style="margin-bottom: 10px;">Member of the Day</h3>
+                              <p class="latest-text" style="font-size: 14px;margin-bottom: 15px; color: #777b8b;">Latest Three</p>
                               <ul class="users-listing">
                                     <li class="single-user" *ngFor="let item of memberList">
                                           <div class="img-cover">
@@ -23,13 +49,20 @@
                         </div>
                   </div>
                   <div class="col-md-3 animate__animated animate__bounceInRight">
-                        <div class="mat-card">
+                        <div class="mat-card conversion-ratio-card">
                               <h3 style="margin-bottom: 20px;">Conversion Ratio</h3>
+                              <div class="graph-cover">
+                                    <h3>Put Graph Here</h3>
+                              </div>
+                              <div class="conversion-ratio-content">
+                                    <p>This month conversion ratio</p>
+                                    <h3>20%</h3>
+                              </div>
                         </div>
                   </div>
             </div>
             <div class="counters-listing-cover">
-                  <ul class="counter-listing">
+                  <!-- <ul class="counter-listing">
                         <li class="single-counter">
                               <div class="counter-content">
                                     <div class="textual-area">
@@ -96,33 +129,7 @@
                                     </div>
                               </div>
                         </li>
-                  </ul>
-            </div>
-            <div class="mod-cover">
-                  <div class="listings">
-                        <!-- <nook-paginator (pageChange)="onPageChange($event)" [totalPage]="totalPage" 
-                        [activePage]="activePage" *ngIf="totalPage > 1">
-                        </nook-paginator> -->
-                        <div class="list-section-heading">
-                              <button class="material-icons icon-left" (click)="onPrevPage()" [disabled]="params?.page <= 1">chevron_left</button>
-                              <h6>Member of the day</h6>
-                              <button class="material-icons icon-right" (click)="onNextPage()" [disabled]="params?.page >= totalPage">chevron_right</button>
-                        </div>
-                        <div class="list-section-body">
-                              <ul class="users-listing">
-                                    <li class="single-user" *ngFor="let item of memberList">
-                                          <div class="img-cover">
-                                                <img [src]="item?.profilePicUrl[0] |customImage:'USER'|async" alt="Profile">
-                                          </div>
-                                          <div class="textual-cover">
-                                                <h6>{{item?.firstName || 'String'}}{{item?.lastName || ''}}</h6>
-                                                <p>{{item?.memberCreatedAt | customDate}}</p>
-                                          </div>
-                                    </li>
-                     
-                              </ul>
-                        </div>
-                  </div>
+                  </ul> -->
             </div>
       </div>
 </div>
