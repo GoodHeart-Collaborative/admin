@@ -186,7 +186,7 @@ export const DASHBOARD: IRoute = {
   path: 'dashboard',
   get fullUrl(): string {
     return `${ADMIN.fullUrl}/${this.path}`;
-      // return `/${this.path}`;
+    // return `/${this.path}`;
   }
 };
 
@@ -295,6 +295,29 @@ export const ADD_EVENTS: IRoute = {
   path: 'add',
   get fullUrl(): string {
     return `${EVENTS.fullUrl}/${this.path}`;
+  }
+};
+
+
+// NOTIFICATIONS
+export const NOTIFICATIONS: IRoute = {
+  path: 'notifications',
+  get fullUrl(): string {
+    return `${ADMIN.fullUrl}/${this.path}`;
+  }
+};
+
+export const NOTIFICATIONS_LIST: IRoute = {
+  path: 'list',
+  get fullUrl(): string {
+    return `${NOTIFICATIONS.fullUrl}/${this.path}`;
+  }
+};
+
+export const ADD_NOTIFICATIONS: IRoute = {
+  path: 'add',
+  get fullUrl(): string {
+    return `${NOTIFICATIONS.fullUrl}/${this.path}`;
   }
 };
 
