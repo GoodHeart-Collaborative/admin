@@ -53,6 +53,13 @@
             width: 100%;
         }
     }
+    .col-md-8{
+        width: calc((100% / 12) * 8);
+        padding: 0px 10px;
+        @media screen and (max-width: 768px){
+            width: 100%;
+        }
+    }
     .col-md-12{
         width: 100%;
         padding: 0px 10px;

@@ -10,26 +10,175 @@
     @media screen and (max-width: 576px){
         flex-direction: column;
     }
-    .graph-cover{
-        text-align: center;
-        padding: 65px 20px;
-    }
+    --animate-duration: 1.3s;
     .row{
-        margin-bottom: 20px;
+        margin-bottom: 30px;
         .mat-card{
             padding: 24px;
-        }
-        .user-statistics-card{
-            .incline-decline{
+            color: #333333;
+            p{
+                color: #6b6f82;
+                line-height: 1.5;
+            }
+            .graph-cover{
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
-                .incline-decline-content{
-                    width: 50%;
-                    padding: 0px 20px;
+                justify-content: center;
+                text-align: center;
+            }
+        }
+        &.section-1{
+            .current-balance-card{
+                .graph-cover{
+                    position: relative;
+                    .content-on-balance-graph{
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+                .current-balance-content{
+                    text-align: center;
+                    margin-top: 20px;
+                }
+            }
+            .total-transaction-card{
+                .graph-cover{
+                    text-align: center;
+                    padding: 97px 20px;
+                }
+            }
+        }
+        &.section-2{
+            .graph-cover{
+                text-align: center;
+                padding: 66px 20px;
+            }
+            .user-statistics-card{
+                .incline-decline{
                     display: flex;
                     align-items: center;
-                    justify-content: flex-start;
+                    justify-content: space-between;
+                    .incline-decline-content{
+                        width: 50%;
+                        padding: 0px 20px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+                        .icon-cover{
+                            width: 45px;
+                            height: 45px;
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            margin-right: 20px;
+                            .material-icons{
+                                font-size: 28px;
+                                color: white;
+                            }
+                        }
+                        p{
+                            font-size: 14px;
+                        }
+                        h3{
+                            font-size: 22px;
+                        }
+                        &.this-year{
+                            .icon-cover{
+                                background-color: $secondary;
+                            }
+                        }
+                        &.last-year{
+                            .icon-cover{
+                                background-color: #aa01ff;
+                            }
+                        }
+                    }
+                }
+            }
+            .new-users-card{
+                .users-listing {
+                    padding: 0px;
+                    margin: 0px;
+    
+                    .single-user {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        &:not(:first-child){
+                            padding-top: 10px;
+                        }
+                        &:not(:last-child){
+                            padding-bottom: 10px;
+                        }
+    
+                        .img-cover {
+                            width: 45px;
+                            height: 45px;
+                            overflow: hidden;
+                            border-radius: 45px;
+                            box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.1);
+    
+                            img {
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+    
+                        .textual-cover {
+                            margin-left: 15px;
+                            width: calc(100% - 60px);
+                            display: block;
+    
+                            h6 {
+                                margin-bottom: 3px;
+                                font-size: 16px;
+                                font-weight: bold;
+                                text-transform: capitalize;
+                                color: #6c7082;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                            }
+    
+                            p {
+                                margin: 0px;
+                                font-size: 13px;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                            }
+                        }
+                    }
+                }
+            }
+            .conversion-ratio-card{
+               .conversion-ratio-content{
+                   text-align: center;
+                   p{
+                    font-size: 14px;
+                }
+                   h3{
+                       font-size: 22px;
+                   }
+               } 
+            }
+        }
+        &.section-3{
+            .graph-cover{
+                text-align: center;
+                padding: 65px 20px;
+            }
+            .total-users-card{
+                .row-1, .row-2{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    &:first-child{
+                        margin-bottom: 20px;
+                    }
                     .icon-cover{
                         width: 45px;
                         height: 45px;
@@ -37,333 +186,80 @@
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        margin-right: 20px;
+                        background: $secondary;
                         .material-icons{
                             font-size: 28px;
                             color: white;
                         }
                     }
-                    p{
-                        font-size: 14px;
-                        color: #808080;
-                    }
-                    h3{
-                        font-size: 22px;
-                    }
-                    &.this-year{
-                        .icon-cover{
-                            background-color: #ff4181;
+                }
+            }
+            .mod-list-card{
+                padding-bottom: 0px;
+                --animate-delay: 3s;
+                .table-cover{
+                    margin: 0px -24px;
+                    table{
+                        width: 100%;
+                        border-collapse: collapse;
+                        th,td{
+                            padding-top: 15px;
+                            padding-bottom: 15px;
+                            &:first-child{
+                                padding-left: 24px;
+                            }
+                            &:last-child{
+                                padding-right: 24px;
+                                text-align: center;
+                            }
+                            &:not(:first-child){
+                                padding-left: 10px;
+                            }
+                            &:not(:last-child){
+                                padding-right: 10px;
+                            }
                         }
-                    }
-                    &.last-year{
-                        .icon-cover{
-                            background-color: #aa01ff;
+                        thead{
+                            tr{
+                                th{
+                                    font-weight: bold;
+                                }
+                            }
                         }
-                    }
-                }
-            }
-        }
-        .mod-list-card{
-            .users-listing {
-                padding: 0px;
-                margin: 0px;
-
-                .single-user {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    &:not(:first-child){
-                        padding-top: 10px;
-                    }
-                    &:not(:last-child){
-                        padding-bottom: 10px;
-                    }
-
-                    .img-cover {
-                        width: 45px;
-                        height: 45px;
-                        overflow: hidden;
-                        border-radius: 45px;
-                        box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.1);
-
-                        img {
-                            width: 100%;
-                            height: 100%;
-                        }
-                    }
-
-                    .textual-cover {
-                        margin-left: 15px;
-                        width: calc(100% - 60px);
-                        display: block;
-
-                        h6 {
-                            margin-bottom: 3px;
-                            font-size: 16px;
-                            font-weight: bold;
-                            text-transform: capitalize;
-                            color: #6c7082;
-                            white-space: nowrap;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                        }
-
-                        p {
-                            margin: 0px;
-                            font-size: 13px;
-                            color: #787b8c;
-                            white-space: nowrap;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                        }
-                    }
-                }
-            }
-        }
-        .conversion-ratio-card{
-           .conversion-ratio-content{
-               text-align: center;
-               p{
-                font-size: 14px;
-                color: #808080;
-            }
-               h3{
-                   font-size: 22px;
-               }
-           } 
-        }
-    }
-}
-
-.counters-listing-cover{
-    width: calc(100% - 320px);
-    padding: 10px 15px;
-    box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.2);
-    @media screen and (max-width: 576px){
-        width: 100%;
-        padding: 10px;
-    }
-    .counter-listing {
-        display: flex;
-        justify-content: flex-start;
-        text-align: center;
-        flex-wrap: wrap;
-        .single-counter{
-            margin: 10px 0px;
-            @media screen and (min-width: 1900px){
-                width: calc(100% / 6);
-            }
-            @media screen and (max-width: 1900px){
-                width: calc(100% / 5);
-            }
-            @media screen and (max-width: 1700px){
-                width: calc(100% / 4);
-            }
-            @media screen and (max-width: 1470px){
-                width: calc(100% / 3);
-            }
-            @media screen and (max-width: 1250px){
-                width: calc(100% / 2);
-            }
-            @media screen and (max-width: 750px){
-                width: calc(100% / 1);
-            }
-            @media screen and (max-width: 576px){
-                width: calc(100% / 2);
-            }
-            @media screen and (max-width: 360px){
-                width: calc(100% / 1);
-            }
-            .counter-content {
-                width: 200px;
-                margin: auto;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 17px 15px;
-                box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.08), 0 1px 20px 0 rgba(0, 0, 0, 0.07), 0px 1px 11px 0px rgba(0, 0, 0, 0.07);    
-                color: white;
-                border-radius: 5px;
-                @media screen and (max-width: 1050px){
-                    width: 180px;
-                }
-                @media screen and (max-width: 800px){
-                    width: 170px;
-                }
-                @media screen and (max-width: 750px){
-                    width: 200px;
-                }
-                @media screen and (max-width: 620px){
-                    width: 180px;
-                }
-                @media screen and (max-width: 500px){
-                    width: 160px;
-                }
-                @media screen and (max-width: 400px){
-                    width: 150px;
-                    padding: 12px 10px;
-                }
-                .textual-area{
-                    width: calc(100% - 55px);
-                    text-align: left;
-                    @media screen and (max-width: 400px){
-                        width: calc(100% - 45px);
-                    }
-                    p{
-                        font-size: 12px;
-                        margin-bottom: 0px;
-                    }
-                }
-                .img-cover{
-                    width: 50px;
-                    height: auto;
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-end;
-                    @media screen and (max-width: 400px){
-                        width: 40px;
-                    }
-                    i{
-                        font-size: 45px;
-                        @media screen and (max-width: 400px){
-                            width: 40px;
-                        }
-                        &.fa-user{
-                            font-size: 40px;
-                            @media screen and (max-width: 400px){
-                                font-size: 35px;
+                        tbody{
+                            tr{
+                                td{
+                                    border-top: 1px solid #e0e0e0;
+                                    &.status-cell{
+                                        span{
+                                            padding: 1px 5px;
+                                            &.active{
+                                                background-color: rgba($secondary, 0.15);
+                                                color: $secondary;
+                                            }
+                                            &.in-active{
+                                                background-color: rgba(green, 0.15);
+                                                color: green;
+                                            }
+                                        }
+                                    }
+                                    &:last-child{
+                                        .material-icons{
+                                            color: $secondary;
+                                            cursor: pointer;
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
                 }
             }
-            &:nth-child(3n + 1){
-                .counter-content{
-                    background-image: linear-gradient(to right, #f94b4a, #940054);
-                }
-            }
-            &:nth-child(3n + 2){
-                .counter-content{
-                    background-image: linear-gradient(to right, #1887af, #062467);
-                }
-            }
-            &:nth-child(3n + 3){
-                .counter-content{
-                    background: linear-gradient(to right, #ffa225, #e66d59);
-                }
-            }
-            &:hover{
-                .counter-content{
-                    animation: gradient 2s ease infinite;
-                    background-size: 200% 200%;
-                }
-            }
         }
+        
+        
     }
-}
 
-.mod-cover{
-    width: 300px;
-    @media screen and (max-width: 576px){
-        width: 100%;
-    }
-    .listings {
-        width: 100%;
-        box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12), 0 1px 5px 0 rgba(0,0,0,.2);
-        margin: 0px 0px 20px;
-
-        .list-section-heading {
-            position: relative;
-            padding: 15px 20px;
-            box-shadow: 0px 3px 7px 1px rgba(0, 0, 0, 0.1);
-
-            h6 {
-                font-size: 13px;
-                font-weight: 600;
-                margin: 0px;
-                text-align: center;
-            }
-
-            .material-icons {
-                top: 0px;
-                font-size: 25px;
-                position: absolute;
-                cursor: pointer;
-                height: 100%;
-                border: none;
-                background: none;
-                &.icon-left {
-                    left: 0px;
-                }
-
-                &.icon-right {
-                    right: 0px;
-                }
-            }
-        }
-
-        .list-section-body {
-            width: 100%;
-            padding: 10px 20px;
-
-            @media screen and (max-width: 1250px) {
-                padding: 10px;
-            }
-
-            .users-listing {
-                padding: 0px;
-                margin: 0px;
-
-                .single-user {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    &:not(:first-child){
-                        padding-top: 5px;
-                    }
-                    &:not(:last-child){
-                        padding-bottom: 5px;
-                    }
-
-                    .img-cover {
-                        width: 45px;
-                        height: 45px;
-                        overflow: hidden;
-                        border-radius: 45px;
-                        box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.1);
-
-                        img {
-                            width: 100%;
-                            height: 100%;
-                        }
-                    }
-
-                    .textual-cover {
-                        margin-left: 15px;
-                        width: calc(100% - 60px);
-                        display: block;
-
-                        h6 {
-                            margin: 0px;
-                            font-size: 13px;
-                            white-space: nowrap;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                        }
-
-                        p {
-                            margin: 0px;
-                            font-size: 12px;
-                            color: #868686;
-                            white-space: nowrap;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                        }
-                    }
-                }
-            }
-        }
-    }
 }
 
 @keyframes gradient {
@@ -381,7 +277,27 @@
 }
 
 :host ::ng-deep{
-    .main-content{
-        background-color: red !important;
+    .mat-card{
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12), 0 1px 5px 0 rgba(0,0,0,.2) !important;
     }
+    .current-balance-card{
+        .balance-graph{
+            width: 150px !important;
+            height: 150px !important;
+            svg{
+                width: 150px !important;
+                height: 150px !important;
+                circle{
+                    stroke-width: 5% !important;
+                    stroke: $secondary !important;
+                }
+            }
+        }
+        .mat-progress-bar-buffer{
+            background: #E4E8EB;
+        }
+    }
+    :root {
+        --animate-delay: 50000ms !important;
+      }
 }

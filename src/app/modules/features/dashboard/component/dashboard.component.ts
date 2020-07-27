@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { DashboardService } from '../service/dashboard.service';
 import { FormGroup } from '@angular/forms';
 import { MemberOfTheDayService } from '../../member-of-the-day/service/member-of-the-day.service';
@@ -18,14 +18,24 @@ export class DashboardComponent implements OnInit, OnDestroy {
   filterObject;
   minDate: Date;
   data: any;
+  sectionFeatures: boolean = false;
   memberList: unknown;
   params = {
     page: 1,
     limit: 3,
   };
+  scroll:boolean=false;
   totalPage: number;
   activePage: number;
   isFlag: boolean;
+  rightSideScrollerFixed: boolean;
+
+  @HostListener('window:scroll', ['$event']) 
+    scrollHandler(event) {
+      console.log("Scroll Event");
+    }
+
+    
   constructor(
     private $dashboardService: DashboardService,
     private $member: MemberOfTheDayService,
@@ -43,7 +53,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.memberOfTheDayList();
+    console.log('Jasmeet');
+    // window.addEventListener('scroll', this.scrolling, true)
   }
+  // scrolling=(s)=>{
+  //   let sc = s.target.scrollingElement.scrollTop;
+  //   console.log();
+  //   if(sc >=100){this.scroll=true}
+  //   else{this.scroll=false}
+  // }
 
   onDrashboardHandler() {
     this.$dashboardService.onDrashboardHandler().then(res => {
@@ -80,4 +98,47 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.$common.dashBoardFlag$.next(false);
   }
 
+  // @HostListener("window:scroll(event)", [])
+  // onScroll(event: any){
+  //   if (window.pageYOffset > 20) {
+  //     console.log('offset' +  event.target.offsetHeight);
+  //     console.log('top' + event.target.scrollTop);
+  //     console.log(window.scrollY);
+  //     // console.log(window.scrollTop);
+  //     this.sectionFeatures = true;
+  //     console.log(this.sectionFeatures);
+  //   }
+  // }
+
+  // @HostListener("window:scroll", ["$event"])
+  //   onWindowScroll() {
+  //   let pos = (document.documentElement.scrollTop || document.body.scrollTop) + document.documentElement.offsetHeight;
+  //   let max = document.documentElement.scrollHeight;
+  //   console.log('max');
+  // }
+
+
+  // @HostListener("window:scroll", [])
+  // onScroll(): void {
+  //   console.log('sefhydgsduyf');
+  //   if (window.pageYOffset > 20) {
+  //     this.sectionFeatures = true;
+  //   } else {
+  //     this.sectionFeatures = false;
+  //   }
+  // }
+
+  // @HostListener('scroll', ['$event.target'])
+  // onClick(btn) {
+  //   console.log('button', btn, 'number of clicks:');
+  // }
+
+  
+
+  // @HostListener('window:scroll', ['$event']) 
+  // doSomething(event) {
+  //   console.debug("Scroll Event", window.pageYOffset );
+  //   }
+
+  
 }
