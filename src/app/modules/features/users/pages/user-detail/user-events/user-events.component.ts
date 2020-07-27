@@ -8,14 +8,14 @@ import { Router } from '@angular/router';
 })
 export class UserEventsComponent implements OnInit {
   isProcessing: boolean = false;
-   @Input() data;
+   @Input() userDetails;
   constructor(private $router: Router) { }
 
   ngOnInit() {
   }
 
   onClick() {
-    this.$router.navigate([`admin/users/${this.data._id}/event/details`]);
+    this.$router.navigate([`admin/users/${this.userDetails._id}/event/details`]);
 
   }
 

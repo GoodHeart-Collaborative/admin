@@ -2,16 +2,16 @@
     <mat-tab-group>
 
         <mat-tab label="Basic Details">
-            <app-user-basic-detail [data]="userDetails"></app-user-basic-detail>
+            <app-user-basic-detail [userDetails]="userDetails"></app-user-basic-detail>
         </mat-tab>
         <mat-tab label="Gratitude Journal">
-            <app-user-gratitude-journal [data]="userDetails"></app-user-gratitude-journal>
+            <app-user-gratitude-journal [userDetails]="userDetails"></app-user-gratitude-journal>
         </mat-tab>
         <mat-tab label="Events">
-            <app-user-events [data]="userDetails"></app-user-events>
+            <app-user-events [userDetails]="userDetails"></app-user-events>
         </mat-tab>
         <mat-tab label="Topics">
-            <app-user-topics [data]="userDetails"></app-user-topics>
+            <app-user-topics [userDetails]="userDetails"></app-user-topics>
         </mat-tab>
         <mat-tab label="Shoutouts">
             <app-user-shoutouts ></app-user-shoutouts>

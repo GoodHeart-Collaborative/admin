@@ -40,10 +40,34 @@ export const MEDIA_TYPE = {
 
 export const INDUSTRY_TYPE = {
     Experts_in_Executive_Burnout:
-    'Experts in Executive Burnout',
+        'Experts in Executive Burnout',
     Nonprofit_Resiliency_Coaches: 'Nonprofit Resiliency Coaches',
     Wellness_Coaches: 'Wellness Coaches',
     Licensed_Therapists_specializing_in_Vicarious_and_Secondary_Trauma:
-     'Licensed Therapists specializing in Vicarious and Secondary Trauma',
+        'Licensed Therapists specializing in Vicarious and Secondary Trauma',
     Compassion_Fatigue: 'Compassion Fatigue'
 };
+
+export const EXPERT_CONTENT_TYPE = {
+    VIDEO: {
+        TYPE: 'video',
+        VALUE: 1,
+        DISPLAY_NAME: 'VIDEO'
+    },
+    ARTICLE: {
+        TYPE: 'article',
+        VALUE: 2,
+        DISPLAY_NAME: 'ARTICLE'
+    },
+    IMAGE: {
+        TYPE: 'image',
+        VALUE: 3,
+        DISPLAY_NAME: 'IMAGE'
+    },
+    VOICE_NOTE: {
+        TYPE: 'voice_note',
+        VALUE: 4,
+        DISPLAY_NAME: 'VOICE_NOTE'
+    }
+};
+

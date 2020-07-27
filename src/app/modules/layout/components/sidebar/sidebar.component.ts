@@ -7,7 +7,6 @@ import { Component, OnInit, Renderer2, Output, EventEmitter } from '@angular/cor
 })
 export class SidebarComponent implements OnInit {
   flag = true;
- @Output() isTrue = new EventEmitter();
   constructor(
     private renderer: Renderer2,
   ) { }
@@ -25,8 +24,5 @@ export class SidebarComponent implements OnInit {
     }
   }
 
-  onClick() {
-    this.isTrue.emit(true);
-  }
 
 }
