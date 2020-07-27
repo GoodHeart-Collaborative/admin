@@ -1,4 +1,4 @@
-<app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)" (onAddCahnges)="onAdd()">
+<app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)" >
     <ng-template appFor="createdAt" let-daily="row">
          {{ daily?.createdAt |customDate}}
      </ng-template>
