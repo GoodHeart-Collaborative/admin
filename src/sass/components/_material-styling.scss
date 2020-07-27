@@ -182,7 +182,7 @@ mat-icon,
 .mat-radio-button {
     // margin-left: 20px;
     .mat-radio-label-content {
-        font-size: 15px;
+        font-size: 14px;
     }
     &.mat-radio-checked {
         .mat-radio-label {
@@ -203,6 +203,21 @@ mat-icon,
                     background-color: $primary;
                 }
             }
+        }
+    }
+}
+
+.radio-buttons-wrapper {
+    margin-bottom: 30px;
+    .radio-buttons-heading {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: #333333;
+    }
+    .mat-radio-button {
+        &:not(:nth-last-of-type(1)) {
+            margin-right: 20px;
         }
     }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ADD_NOTIFICATIONS } from 'src/app/constant/routes';
+import { ADD_NOTIFICATIONS, NOTIFICATIONS } from 'src/app/constant/routes';
 
 @Component({
   selector: 'app-notification-listing',
@@ -15,7 +15,11 @@ export class NotificationListingComponent implements OnInit {
   }
 
   onAdd() {
-      this.$route.navigate([ADD_NOTIFICATIONS.fullUrl]);
+    this.$route.navigate([ADD_NOTIFICATIONS.fullUrl]);
+  }
+
+  onDetails() {
+    this.$route.navigate([`${NOTIFICATIONS.fullUrl}`, '443412412414dasdsdasds', 'details']);
   }
 
 }
