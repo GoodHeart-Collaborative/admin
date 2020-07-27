@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddEventComponent } from './view/add-event.component';
 import { Routes, RouterModule } from '@angular/router';
+import { MatFormFieldModule, MatInputModule, MatSelectModule, MatCheckboxModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { MediaUploadModule } from 'src/app/modules/shared/media-upload/media-upload.module';
 
 
 const routes: Routes = [
@@ -15,7 +17,14 @@ const routes: Routes = [
   declarations: [AddEventComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MediaUploadModule, 
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ]
 })
 
