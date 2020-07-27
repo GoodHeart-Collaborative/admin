@@ -61,7 +61,7 @@ export class ExpertTableDataSource implements Table.Source<Category> {
   ];
   options: Table.Options = {
     selection: false,
-    search: 'Search by Title',
+    search: 'Search by Name',
     index: true,
     addComponent: true,
     sorting: true,

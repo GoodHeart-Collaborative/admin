@@ -38,7 +38,7 @@ export const MEDIA_TYPE = {
     VIDEO: 2
 };
 
-export const INDUSTRY_TYPE = {
+export const INDUSTRY_TYP = {
     Experts_in_Executive_Burnout:
         'Experts in Executive Burnout',
     Nonprofit_Resiliency_Coaches: 'Nonprofit Resiliency Coaches',
@@ -47,6 +47,21 @@ export const INDUSTRY_TYPE = {
         'Licensed Therapists specializing in Vicarious and Secondary Trauma',
     Compassion_Fatigue: 'Compassion Fatigue'
 };
+export const INDUSTRY_TYPE = [
+    {value: 'Experts_in_Executive_Burnout' , viewValue: 'Experts in Executive Burnout'},
+    {value: 'Nonprofit_Resiliency_Coaches' , viewValue: 'Nonprofit Resiliency Coaches'},
+    {value: 'Wellness_Coaches' , viewValue: 'Wellness Coaches'},
+    {value: 'Compassion_Fatigue' , viewValue: 'Compassion Fatigue'},
+    {value: 'Licensed_Therapists_specializing_in_Vicarious_and_Secondary_Trauma' , 
+    viewValue: 'Licensed Therapists specializing in Vicarious and Secondary Trauma'},
+];
+
+export const EXPERIENCE = [
+    {value: 'junior' , viewValue: 'Junior'},
+    {value: 'mid' , viewValue: 'Mid'},
+    {value: 'senior' , viewValue: 'Senior'},
+
+]
 
 export const EXPERT_CONTENT_TYPE = {
     VIDEO: {

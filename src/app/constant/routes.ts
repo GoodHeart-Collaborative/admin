@@ -186,7 +186,7 @@ export const DASHBOARD: IRoute = {
   path: 'dashboard',
   get fullUrl(): string {
     return `${ADMIN.fullUrl}/${this.path}`;
-      // return `/${this.path}`;
+    // return `/${this.path}`;
   }
 };
 
@@ -260,17 +260,72 @@ export const CATEGORY_LIST: IRoute = {
     return `${CATEGORY.fullUrl}/${this.path}`;
   }
 };
-// export const RELATED_CATEGORY_POST: IRoute = {
-//   path: 'id',
-//   get fullUrl(): string {
-//     return `${CATEGORY.fullUrl}/${this.path}`;
-//   }
-// };
 
 export const CATEGORY_DETAIL = {
   path: 'detail',
   fullUrl(categoryId) {
     return `${CATEGORY.fullUrl}/${categoryId}/${this.path}`;
+  }
+};
+
+// EVENT ROUTES //
+
+export const EVENTS: IRoute = {
+  path: 'event',
+  get fullUrl(): string {
+    return `${ADMIN.fullUrl}/${this.path}`;
+  }
+};
+export const EVENTS_LIST: IRoute = {
+  path: 'list',
+  get fullUrl(): string {
+    return `${EVENTS.fullUrl}/${this.path}`;
+  }
+};
+
+export const EVENTS_DETAIL = {
+  path: ':id',
+  fullUrl() {
+    return `${EVENTS.fullUrl}/${this.path}`;
+
+  }
+};
+
+export const ADD_EVENTS: IRoute = {
+  path: 'add',
+  get fullUrl(): string {
+    return `${EVENTS.fullUrl}/${this.path}`;
+  }
+};
+
+
+// NOTIFICATIONS
+export const NOTIFICATIONS: IRoute = {
+  path: 'notifications',
+  get fullUrl(): string {
+    return `${ADMIN.fullUrl}/${this.path}`;
+  }
+};
+
+export const NOTIFICATIONS_LIST: IRoute = {
+  path: 'list',
+  get fullUrl(): string {
+    return `${NOTIFICATIONS.fullUrl}/${this.path}`;
+  }
+};
+
+export const ADD_NOTIFICATIONS: IRoute = {
+  path: 'add',
+  get fullUrl(): string {
+    return `${NOTIFICATIONS.fullUrl}/${this.path}`;
+  }
+};
+
+export const NOTIFICATIONS_DETAIL = {
+  path: ':id',
+  fullUrl() {
+    return `${NOTIFICATIONS.fullUrl}/${this.path}`;
+
   }
 };
 
@@ -352,6 +407,8 @@ export const DAILY_ADVICE_DETAILS: IRoute = {
   }
 };
 
+
+
 // MEMBER_OF_THE_DAY ROUTES //
 export const MEMBER_OF_THE_DAY: IRoute = {
   path: 'member-of-the-day',
@@ -377,6 +434,8 @@ export const MEMBER_OF_THE_DAY_DETAILS: IRoute = {
     return `${MEMBER_OF_THE_DAY.fullUrl}/${this.path}`;
   }
 };
+
+
 
 // ARTICLES ROUTES //
 export const ARTICLES: IRoute = {

@@ -5,7 +5,7 @@ import { CategoryManagementService } from '../../../service/category-management.
 import { FileUploadService } from 'src/app/modules/shared/services/file-upload.service';
 import { onSelectFile } from 'src/app/constant/file-input';
 import { invalidImageError, invalidFileSize } from 'src/app/constant/messages';
-import {VALIDATION_CRITERIA} from 'src/app/constant/validation-criteria'
+import {VALIDATION_CRITERIA} from 'src/app/constant/validation-criteria';
 @Component({
   selector: 'app-add-category-management',
   templateUrl: './add-category-management.component.html',
