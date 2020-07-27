@@ -12,7 +12,6 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class LayoutComponent implements OnInit, OnDestroy {
   $destroy = new Subject();
-
   opened = true;
   @ViewChild('sidenav', { static: true }) sidenav: MatSidenav;
   isFlag = false;
@@ -22,16 +21,13 @@ export class LayoutComponent implements OnInit, OnDestroy {
       .subscribe(
         flag => {
           this.isFlag = flag;
-        }
-      )
+          console.log(this.isFlag, 'layout');
+
+        });
   }
   ngOnInit() {
-    console.log(this.isFlag, 'layout');
   }
 
-  // onApplyDrashbord(event) {
-  //   this.isFlag = event;
-  // }
 
   ngOnDestroy() {
     this.$destroy.next();
