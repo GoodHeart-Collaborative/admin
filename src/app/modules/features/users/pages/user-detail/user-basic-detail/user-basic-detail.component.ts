@@ -13,7 +13,7 @@ import { MatDialog } from '@angular/material';
   styleUrls: ['./user-basic-detail.component.scss']
 })
 export class UserBasicDetailComponent implements OnInit {
-  @Input() data;
+  @Input() userDetails;
   constructor(
     private $userService: UsersService,
     private $confirmBox: ConfirmBoxService,
@@ -26,19 +26,19 @@ export class UserBasicDetailComponent implements OnInit {
   }
 
   onBlockUSer(isDelete = false) {
-    this.$confirmBox.listAction('user', isDelete ? 'delete' : (this.data.status === 'blocked' ? 'active' : 'block'))
+    this.$confirmBox.listAction('user', isDelete ? 'delete' : (this.userDetails.status === 'blocked' ? 'active' : 'block'))
     .subscribe((confirm) => {
       if (confirm) {
         const params = {
-          status: isDelete ? 'deleted' : (this.data.status === 'blocked' ? 'active' : 'blocked')
+          status: isDelete ? 'deleted' : (this.userDetails.status === 'blocked' ? 'active' : 'blocked')
         };
-        this.$userService.onVerifiedHnadler(this.data.id, params).then((res) => {
+        this.$userService.onVerifiedHnadler(this.userDetails.id, params).then((res) => {
           this.$utility.success(res.message);
           if (isDelete) {
             this.$router.navigate([USER.fullUrl]);
           } else {
 
-            this.data.status = this.data.status === 'blocked' ? 'active' : 'blocked';
+            this.userDetails.status = this.userDetails.status === 'blocked' ? 'active' : 'blocked';
           }
         });
       }
@@ -57,7 +57,7 @@ export class UserBasicDetailComponent implements OnInit {
         };
         this.$userService.onVerifiedHnadler(id, params).then(res => {
           if (res) {
-              this.data.adminStatus =   status  ;
+              this.userDetails.adminStatus =   status  ;
             }
         });
         }

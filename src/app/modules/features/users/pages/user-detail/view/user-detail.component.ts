@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from '../../../service/users.service';
 import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
+import { UserGratitudeJournalService } from '../user-gratitude-journal/service/user-gratitude-journal.service';
+import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 
 @Component({
   selector: 'app-user-detail',
@@ -11,15 +13,71 @@ import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/
 export class UserDetailComponent implements OnInit {
   id: string;
   userDetails: any;
+  eventData: Table.OptionData = {
+    pageIndex: 0,
+    pageSize: 10,
+    searchText: null,
+    filterData: null,
+    sortData: null
+  };
+  userData: unknown;
 
   constructor(
     private $router: ActivatedRoute,
-    private $breadcrumb: BreadcrumbService
+    private $breadcrumb: BreadcrumbService,
+    private $userService: UserGratitudeJournalService,
   ) {
     this.userDetails = this.$router.snapshot.data.UserDetails;
     this.$breadcrumb.replace(this.userDetails.id, this.userDetails['firstName']);
   }
-  ngOnInit() { }
+  ngOnInit() {
+    this.updateUsers();
+  }
 
 
+
+/**
+ * User listing Handler
+ */
+updateUsers() {
+  const { pageIndex, pageSize, searchText, filterData , sortData} = this.eventData;
+  let params = {
+    page: `${pageIndex + 1}`,
+    limit: `${pageSize}`,
+  };
+  if (filterData) {
+    const keys = Object.keys(filterData).filter(el => filterData[el]);
+    keys.forEach((key: string) => {
+      if (key === 'fromDate' || key === 'toDate') {
+        const value: Date = filterData[key];
+        if (key === 'toDate' && value) {
+          value.setHours(23, 59, 59, 999);
+        }
+        params[key] = `${new Date(value).getTime()}`;
+      } else {
+        params[key] = filterData[key];
+      }
+    });
+  }
+  if (searchText) {
+    params['searchTerm'] = searchText;
+  }
+  if (sortData) {
+    params['sortOrder'] = sortData.sortOrder;
+    params['sortBy'] = sortData.sortBy;
+  }
+  this.$userService.queryData(params).then(res => {
+    this.userData = res['data'];
+    // this.setUpTableResource(this.userData);
+  });
+ }
+
+/**
+ * Listing Pagination Hnadler
+ * @param event
+ */
+onOptionChange(event: Table.OptionEvent) {
+  this.eventData = event.data;
+  this.updateUsers();
+}
 }

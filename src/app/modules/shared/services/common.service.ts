@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
 import {HOME_LIKE, HOME_COMMENT,} from 'src/app/constant/urls';
+import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class CommonService {
-
+dashBoardFlag$ =  new BehaviorSubject(false);
   constructor(private $http: HttpService) { }
 
  async onLikeHandler(params) {
