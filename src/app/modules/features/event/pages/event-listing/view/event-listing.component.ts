@@ -16,12 +16,10 @@ export class EventListingComponent implements OnInit {
 
   onDetails() {
     this.$router.navigate([`${EVENTS.fullUrl}`, '443412412414dasdsdasds', 'details']);
-
-  }
+   }
 
   onAdd() {
     this.$router.navigate([`${ADD_EVENTS.fullUrl}`]);
-
-  }
+   }
 
 }

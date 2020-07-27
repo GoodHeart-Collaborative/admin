@@ -17,6 +17,10 @@ export const VALIDATION_CRITERIA = {
   maxRange: 1000,
   descriptionMinLength: 10,
   descriptionMaxLength: 400,
+  bioMinLength: 10,
+  bioMaxLength: 200,
+  professionMinLength: 3,
+  professionMaxLength: 20,
 };
 
 export const getTrimmed = (body) =>{

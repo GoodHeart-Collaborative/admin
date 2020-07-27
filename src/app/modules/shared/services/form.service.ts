@@ -11,6 +11,7 @@ export class FormService {
   VALIDATION = {
     name: [
       Validators.pattern(PATTERN.name),
+      Validators.required,
       Validators.minLength(VALIDATION_CRITERIA.nameMinLength),
       Validators.maxLength(VALIDATION_CRITERIA.nameMaxLength),
     ],
@@ -22,6 +23,7 @@ export class FormService {
     ],
     email: [
       Validators.pattern(PATTERN.email),
+      Validators.required,
       Validators.maxLength(VALIDATION_CRITERIA.emailMaxLength),
     ],
     description: [
