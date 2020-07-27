@@ -106,3 +106,4 @@ export const EXPERT_POST = 'admin/expertPost';
 export const EXPERT_DETAILS = (Id) => `admin/expert/${Id}`;
 export const ADD_EXPERT = `admin/expert`;
 export const ACTION_EXPERT = (expertId , status) => `admin/expert/${expertId}/status/${status}`;
+export const ACTION_EXPERT_POST = (postId , status) => `admin/expertpost/${postId}/status/${status}`;

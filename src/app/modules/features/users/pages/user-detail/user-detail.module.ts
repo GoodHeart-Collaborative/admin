@@ -8,6 +8,7 @@ import { UserEventsModule } from './user-events/user-events.module';
 import { UserGratitudeJournalModule } from './user-gratitude-journal/user-gratitude-journal.module';
 import { UserShoutoutsModule } from './user-shoutouts/user-shoutouts.module';
 import { UserTopicsModule } from './user-topics/user-topics.module';
+import { CommonModule } from '@angular/common';
 
 
 const routes: Routes = [
@@ -33,6 +34,7 @@ const routes: Routes = [
     MatInputModule,
     MatSelectModule,
     FormsModule,
+    CommonModule
   ]
 })
 export class UserDetailModule { }
