@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FileUploadService } from '../../services/file-upload.service';
 import { PopupService } from '../../popup';
@@ -12,8 +12,11 @@ import { onSelectFile } from 'src/app/constant/file-input';
 })
 export class MediaUploadComponent implements OnInit {
   imageFile: any;
+  @ViewChild('file', { static: false }) img;
+
  @Output() uploadMedia = new EventEmitter();
  @Input() profilePicURL;
+  imageChangedEvent: any;
   // mediaFiles: any[] = [];
   // @Input() mediaControl: FormControl;
   // @Input() maxlength: number;
@@ -30,7 +33,9 @@ export class MediaUploadComponent implements OnInit {
     try {
       let result = await onSelectFile(event);
       this.imageFile = result.file;
-      this.profilePicURL = result.url;
+      this.imageSelectedFromInput(event);
+
+      // this.profilePicURL = result.url;
     } catch (err) {
       if (err.type) {
         this.$upload.showAlert(invalidImageError());
@@ -38,7 +43,6 @@ export class MediaUploadComponent implements OnInit {
         this.$upload.showAlert(invalidFileSize());
       }
     }
-    this.uploadMedia.emit(this.imageFile);
   }
 
   // onMarkDefault(media: any) {
@@ -104,6 +108,24 @@ export class MediaUploadComponent implements OnInit {
   //   input.value = '';
   // }
 
+  imageSelectedFromInput(event) {
+    this.imageChangedEvent = event;
+    console.log(this.imageChangedEvent);
+
+  }
+
+  imageSelected(event) {
+    console.log(event);
+    this.profilePicURL = event.base64;
+    console.log(this.imageChangedEvent.target.files[0]);
+    this.uploadMedia.emit(event.file);
+
+  }
+
+  closeCropper() {
+    this.img.nativeElement.value = null;
+    this.imageChangedEvent = null;
+  }
 
 
 

@@ -37,7 +37,7 @@
                             <mat-form-field appearance="outline">
                                 <mat-label>Industry</mat-label>
                                 <mat-select formControlName="industry">
-                                    <mat-option *ngFor="let type of industryType" [value]="type?.value">{{type?.viewValue}}</mat-option>
+                                    <mat-option *ngFor="let type of industryType" [value]="type?.viewValue">{{type?.viewValue}}</mat-option>
                                 </mat-select>
                                 <mat-error>{{form('industry') |validate:'Industry' }}</mat-error>
                             </mat-form-field>
@@ -86,7 +86,7 @@
                             <h4>&nbsp;</h4>
                             <mat-form-field appearance="outline">
                                 <mat-label>Category</mat-label>
-                                <mat-select formControlName="categoryId">
+                                <mat-select formControlName="categoryId" multiple>
                                     <mat-option *ngFor="let data of categoryData" [value]="data?._id">{{data?.name}}</mat-option>
                                 </mat-select>
                                 <mat-error>{{form('categoryId') |validate:'Category' }}</mat-error>

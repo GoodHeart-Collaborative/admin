@@ -76,3 +76,25 @@
         align-items: center;
     }
 }
+
+// radius 
+@mixin radius($radius) {
+    border-radius: $radius;
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+}
+// 
+@mixin transform($property) {
+    transform: $property;
+    -webkit-transform: $property;
+    -moz-transform: $property;
+    -ms-transform: $property;
+    -o-transform: $property;
+}
+
+@mixin circle($size) {
+    width: $size + px;
+    height: $size + px;
+    @include radius (50%);
+}
+

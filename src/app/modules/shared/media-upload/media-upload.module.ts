@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MediaUploadComponent } from './view/media-upload.component';
 import { MatIconModule, MatButtonModule, MatTooltipModule } from '@angular/material';
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
+import { ImageCropModule } from '../image-crop/image-crop.module';
 
 @NgModule({
   declarations: [MediaUploadComponent],
@@ -11,7 +12,8 @@ import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.modul
     MatIconModule,
     MatButtonModule,
     MatTooltipModule,
-    CustomImageModule
+    CustomImageModule,
+    ImageCropModule
   ],
   exports: [
     MediaUploadComponent

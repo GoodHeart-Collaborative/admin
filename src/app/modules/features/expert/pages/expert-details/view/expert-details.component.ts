@@ -100,8 +100,8 @@ export class ExpertDetailsComponent implements OnInit {
   }
 
 /**
-  * Changes on List event
-   * @param event
+ * Changes on List event
+ * @param event
  */
   onOptionChange(event) {
     this.eventData = event;
