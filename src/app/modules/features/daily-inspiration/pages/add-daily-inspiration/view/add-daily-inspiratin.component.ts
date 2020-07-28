@@ -51,9 +51,9 @@ export class AddDailyInspiratinComponent implements OnInit {
     });
     this.getDailyInspiration();
   }
- /**
-  * Creating Form
-  */
+  /**
+   * Creating Form
+   */
 
   createForm() {
     this.inspirationForm = this.$formBuilder.group(
@@ -62,7 +62,7 @@ export class AddDailyInspiratinComponent implements OnInit {
         isPostLater: [false],
         description: ['', [Validators.required, Validators.maxLength(this.descriptionMaxLength)]],
         type: HOME_TYPE.INSPIRATION,
-        mediaType: MEDIA_TYPE.IMAGE
+        mediaType: [1]
       });
   }
 
@@ -73,21 +73,23 @@ export class AddDailyInspiratinComponent implements OnInit {
   get isPostLater() {
     return this.inspirationForm.get('isPostLater') as FormControl;
   }
- /**
-  * Patch Value in Form
-  */
+  /**
+   * Patch Value in Form
+   */
   getDailyInspiration() {
     if (this.dailyInspirationDetails) {
       this.profilePicURL = this.dailyInspirationDetails.mediaUrl;
       this.inspirationForm.patchValue(this.dailyInspirationDetails);
       if (this.dailyInspirationDetails && this.dailyInspirationDetails.postedAt && this.dailyInspirationDetails.isPostLater) {
-         this.inspirationForm.get('postedAt').patchValue(this.dailyInspirationDetails.postedAt);
+        this.inspirationForm.get('postedAt').patchValue(this.dailyInspirationDetails.postedAt);
       }
     }
   }
 
 
   setimageFile(event) {
+    console.log(event);
+
     this.imageFile = event;
   }
 
@@ -99,12 +101,22 @@ export class AddDailyInspiratinComponent implements OnInit {
       this.inspirationForm.markAllAsTouched();
       return;
     }
+    const body = { ...this.inspirationForm.value };
     if (this.imageFile) {
-      let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
+      let data: any = await this.$fileUploadService.uploadFile(this.imageFile.file);
       this.profilePicURL = data.Location;
-    }
-    const body = { mediaUrl: this.profilePicURL, ...this.inspirationForm.value };
 
+      if (this.imageFile && this.imageFile.type == 1) {
+        body['mediaUrl'] = this.profilePicURL;
+        body.mediaType = this.imageFile.type;
+      }
+      if (this.imageFile && this.imageFile.type == 2) {
+        body['thumbnailUrl'] = this.profilePicURL;
+        body.mediaType = this.imageFile.type;
+      }
+    } else {
+       
+    }
     if (this.isPostLater.value) {
       body.postedAt = new Date(this.inspirationForm.get('postedAt').value);
       console.log(body.postedAt);

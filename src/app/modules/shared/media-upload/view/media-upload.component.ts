@@ -144,9 +144,12 @@ export class MediaUploadComponent implements OnInit {
     console.log(event);
     this.profilePicURL = event.base64;
     console.log(this.imageChangedEvent.target.files[0]);
-    this.uploadMedia.emit(event.file);
-
-  }
+    this.uploadMedia.emit( 
+      {
+        file: event.file,
+        type: 1
+      });
+ }
 
   closeCropper() {
     this.img.nativeElement.value = null;
@@ -169,10 +172,7 @@ export class MediaUploadComponent implements OnInit {
       this.$popup.show('Please select any video mp4/x-m4v/3gp format file.')
 
     } else if (size > 1024 * 50) {
-
-      this.$popup.show('Image size must be less then 50 MB')
-
-
+       this.$popup.show('Image size must be less then 50 MB')
     } else {
       const reader = new FileReader();
 
@@ -181,7 +181,10 @@ export class MediaUploadComponent implements OnInit {
       reader.onload = (event) => { // called once readAsDataURL is completed
         this.videoSrc = event.target['result'];
        };
-      this.uploadMedia.emit(event.target.files[0]);
+      this.uploadMedia.emit({
+       file: event.target.files[0],
+       type: 2
+      });
       }
     event.target.value = '';
   }
