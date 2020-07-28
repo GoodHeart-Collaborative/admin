@@ -1,14 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { SiderComponent } from './view/sider.component';
+// import { NgModule } from '@angular/core';
+// import { CommonModule } from '@angular/common';
+// import { SiderComponent } from './view/sider.component';
 
 
 
-@NgModule({
-  declarations: [SiderComponent],
-  imports: [
-    CommonModule
-  ],
-  export: [SiderComponent]
-})
-export class SiderModule { }
+// @NgModule({
+//   declarations: [SiderComponent],
+//   imports: [
+//     CommonModule
+//   ],
+//   export: [SiderComponent]
+// })
+// export class SiderModule { }

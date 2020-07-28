@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+// import { Component, OnInit } from '@angular/core';
 
-@Component({
-  selector: 'app-sider',
-  templateUrl: './sider.component.html',
-  styleUrls: ['./sider.component.scss']
-})
-export class SiderComponent implements OnInit {
+// @Component({
+//   selector: 'app-sider',
+//   templateUrl: './sider.component.html',
+//   styleUrls: ['./sider.component.scss']
+// })
+// export class SiderComponent implements OnInit {
 
-  constructor() { }
+//   constructor() { }
 
-  ngOnInit() {
-  }
+//   ngOnInit() {
+//   }
 
-}
+// }
