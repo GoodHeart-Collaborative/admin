@@ -5,6 +5,7 @@ import { CustomDatePipeModule } from 'src/app/pipes/custom-date/custom-date-pipe
 import { MatButtonModule } from '@angular/material';
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 import { ViewFullImageModule } from 'src/app/modules/shared/view-full-image/view-full-image.module';
+import { SliderModule } from 'src/app/modules/shared/slider/slider.module';
 
 
 
@@ -15,7 +16,8 @@ import { ViewFullImageModule } from 'src/app/modules/shared/view-full-image/view
     CustomDatePipeModule,
     MatButtonModule,
     CustomImageModule,
-    ViewFullImageModule
+    ViewFullImageModule,
+    SliderModule
   ],
   exports: [UserBasicDetailComponent]
 })

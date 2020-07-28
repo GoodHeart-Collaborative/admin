@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { USER } from 'src/app/constant/routes';
 import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
 import { MatDialog } from '@angular/material';
+import { SliderComponent } from 'src/app/modules/shared/slider/view/slider.component';
 
 @Component({
   selector: 'app-user-basic-detail',
@@ -66,10 +67,16 @@ export class UserBasicDetailComponent implements OnInit {
 
 
   onImageClick(image) {
-    this.matDailog.open(ViewFullImageComponent, {
+    this.matDailog.open(SliderComponent, {
       panelClass: 'view-full-image-modal',
-      data: image
+      // data: image
     }).afterClosed().subscribe();
   }
+  // onImageClick(image) {
+  //   this.matDailog.open(ViewFullImageComponent, {
+  //     panelClass: 'view-full-image-modal',
+  //     data: image
+  //   }).afterClosed().subscribe();
+  // }
 
 }
