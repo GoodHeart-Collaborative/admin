@@ -25,7 +25,7 @@
     <ng-template appFor="email" let-user="row">
         <div class="mobile-content" [class.verified-user]="user?.isEmailVerified">
             <span class="material-icons verified-icon" *ngIf="(user?.isEmailVerified) && (user?.email)">verified_user</span>
-            <span title="{{ user?.email}}">{{ user?.email}}</span>
+            <span >{{ user?.email}}</span>
         </div>
     </ng-template>
    
