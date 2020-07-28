@@ -17,6 +17,7 @@
         <div class="right-portion">
           <p>Enter the name of category you want to create.</p>
           <mat-form-field appearance="outline">
+            <mat-label>Category</mat-label>
             <input matInput formControlName="title" placeholder="Enter Category" [maxlength]="titleMaxLength"
               appWhiteSpace>
             <mat-error>{{title |validate:'Title'}}</mat-error>

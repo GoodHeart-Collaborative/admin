@@ -2,26 +2,34 @@
     <div class="user-topic-content">
         <div class="row-1">
             <div class="textual-detail">
-                <div class="topic-info">
-                    <div class="img-cover">
-                        <img src="../../../../../../../../assets/default-image/user.jpg" alt="Profile">
+                <div class="card_header_container profile_header">
+                    <div class="card_header">
+                        <figure mat-card-avatar class="image-cover">
+                            <img class="img-cover-fit" src="assets/images/img_avatar3.png" alt="">
+                        </figure>
+                        <div class="heading-cover">
+                            <a class="user_name" href="javascript:void()">User name</a>
+                            <p class="posted-on-date">Posted on: 12 July, 2020</p>
+                        </div>
                     </div>
-                    <div class="textual-cover">
-                        <h3>Alec Benjamin</h3>
-                        <p>30th May 2020 at 11:12 AM</p>
-                        <p>Category: Mental Health , Empower and Advocate</p>
-                    </div>
+                    <h1>Title here</h1>
+                    <p>
+                        Material is an adaptable system of guidelines, components, and tools that
+                        support the
+                        best practices of user interface design. Backed by open-source code.aterial is an adaptable
+                        system
+                        of guidelines, components, and tools that
+                        support the
+                        best practices of user interface design. Backed by open-source code.aterial is an adaptable
+                        system
+                        of guidelines, components, and tools that
+                        support the
+                        best practices of user interface design. Backed by open-source code.
+                    </p>
                 </div>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                    the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                    of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-                    but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                    popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                    and more recently with desktop publishing software like Aldus PageMaker including versions of
-                    Lorem Ipsum.</p>
             </div>
             <div class="image-detail">
-                <img src="../../../../../../../../assets/default-image/image_placeholder.jpg">
+                <img src="assets/images/img_avatar3.png" alt="">
             </div>
         </div>
         <div class="row-2">
@@ -40,15 +48,17 @@
                             <img src="../../../../../../../../assets/default-image/user.jpg" alt="Profile">
                         </div>
                         <div class="textual-cover">
-                            <h4>Tiger Woods <p class="comment-time">2 Weeks Ago</p></h4>
-                            
+                            <h4>Tiger Woods <p class="comment-time">2 Weeks Ago</p>
+                            </h4>
+
                             <p>This is my comment and it is a Multi line comment. Therefore it wraps to the second line
                                 also.</p>
-                            <div class="like-cover" >
-                                <span class="material-icons" >thumb_up</span>
+                            <div class="like-cover">
+                                <span class="material-icons">thumb_up</span>
                                 <p>76</p>
-                                <a class="see-hide-replies" (click)="toggleReplies()" >{{hideShowReplies? "Hide" : "See"}} Replies (8)</a>
-                            </div> 
+                                <a class="see-hide-replies"
+                                    (click)="toggleReplies()">{{hideShowReplies? "Hide" : "See"}} Replies (8)</a>
+                            </div>
                         </div>
                     </div>
                     <ul class="comment-listing" *ngIf="hideShowReplies">
@@ -58,7 +68,8 @@
                                     <img src="../../../../../../../../assets/default-image/user.jpg" alt="Profile">
                                 </div>
                                 <div class="textual-cover">
-                                    <h4>Ronaldo <p class="comment-time">2 Weeks Ago</p></h4>
+                                    <h4>Ronaldo <p class="comment-time">2 Weeks Ago</p>
+                                    </h4>
                                     <p>This is my comment and it is a Multi line comment. Therefore it wraps to the
                                         second line also.</p>
                                     <div class="like-cover"><span class="material-icons">thumb_up</span>
@@ -73,7 +84,8 @@
                                     <img src="../../../../../../../../assets/default-image/user.jpg" alt="Profile">
                                 </div>
                                 <div class="textual-cover">
-                                    <h4>Ronaldo <p class="comment-time">2 Weeks Ago</p></h4>
+                                    <h4>Ronaldo <p class="comment-time">2 Weeks Ago</p>
+                                    </h4>
                                     <p>This is my comment and it is a Multi line comment. Therefore it wraps to the
                                         second line also.</p>
                                     <div class="like-cover"><span class="material-icons">thumb_up</span>
