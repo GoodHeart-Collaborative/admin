@@ -20,11 +20,11 @@
                             <mat-icon>more_vert</mat-icon>
                         </button>
                         <mat-menu #menu="matMenu">
-                            <button mat-menu-item (click)="onDetails(item?.user?.userId)">
+                            <button mat-menu-item (click)="onDetails(item?.user?._id)">
                                 See Profile
                             </button>
-                            <button mat-menu-item (click)="onActionHandler(item?.user?.userId, item?.user?.status )">
-                                {{item?.user?.status}} User
+                            <button mat-menu-item (click)="onActionHandler(item?.user?._id, item?.user?.status )">
+                                {{item?.user?.status | titlecase}} User
                             </button>
                         </mat-menu>
                     </div>

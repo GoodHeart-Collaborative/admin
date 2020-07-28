@@ -14,16 +14,19 @@ export class MediaUploadComponent implements OnInit {
   imageFile: any;
   @ViewChild('file', { static: false }) img;
 
- @Output() uploadMedia = new EventEmitter();
- @Input() profilePicURL;
+  @Output() uploadMedia = new EventEmitter();
+  @Input() profilePicURL;
   imageChangedEvent: any;
+  isImage: boolean;
+  isVideo: boolean;
+  videoSrc: string | ArrayBuffer;
   // mediaFiles: any[] = [];
   // @Input() mediaControl: FormControl;
   // @Input() maxlength: number;
   // currentMediaCounts = 0;
   // @Output() removeMedia = new EventEmitter();
   constructor(
-    private $popup: PopupService, 
+    private $popup: PopupService,
     private $upload: FileUploadService) { }
 
   ngOnInit() {
@@ -31,17 +34,38 @@ export class MediaUploadComponent implements OnInit {
 
   async onSelectFile(event) {
     try {
-      let result = await onSelectFile(event);
-      this.imageFile = result.file;
-      this.imageSelectedFromInput(event);
+      this.checkMediaType(event.target.files[0]);
+      // Image Upload 
+      if (this.isImage) {
+        console.log(this.isImage);
+        let result = await onSelectFile(event);
+        this.imageFile = result.file;
+        this.imageSelectedFromInput(event);
+      }
 
-      // this.profilePicURL = result.url;
+      // Video Upload    
     } catch (err) {
       if (err.type) {
         this.$upload.showAlert(invalidImageError());
       } else if (err.size) {
         this.$upload.showAlert(invalidFileSize());
       }
+    }
+  }
+
+  /**
+   * Check media file
+   * @param file
+   */
+  checkMediaType(file) {
+    if (file.type.split('/')[0] == 'image') {
+      this.isImage = true;
+    } else if (file.type.split('/')[0].toLowerCase() == 'video') {
+      // return 'video';
+      this.isVideo = true;
+
+    } else {
+      return null;
     }
   }
 
@@ -54,16 +78,16 @@ export class MediaUploadComponent implements OnInit {
   // }
 
 
- // async onRemoveMedia(media: any) {
- //   const index = this.mediaFiles.findIndex(el => el.s3Url == media);
- //   if (index >= 0) {
- //     this.mediaFiles.splice(index, 1);
+  // async onRemoveMedia(media: any) {
+  //   const index = this.mediaFiles.findIndex(el => el.s3Url == media);
+  //   if (index >= 0) {
+  //     this.mediaFiles.splice(index, 1);
   //   }
   //   const valueOfForm = this.mediaControl.value;
   //   const indexForForm = valueOfForm.indexOf(media);
   //   valueOfForm.splice(indexForForm, 1);
   //   this.mediaControl.setValue(valueOfForm);
- //   this.removeMedia.emit(media.split('/')[media.split('/').length - 1])
+  //   this.removeMedia.emit(media.split('/')[media.split('/').length - 1])
   // }
 
 
@@ -125,6 +149,47 @@ export class MediaUploadComponent implements OnInit {
   closeCropper() {
     this.img.nativeElement.value = null;
     this.imageChangedEvent = null;
+  }
+
+  videoSelected(event) {
+
+    let file: File = event.target.files[0];
+
+    let size;
+    let type;
+    if (file) {
+      size = Math.round(file.size / 1024);
+      type = file.type;
+
+    }
+    if (type !== "video/mp4" && type !== "video/x-m4v" &&
+      type !== "video/3gpp" && file) {
+
+      this.$popup.show('Please select any video mp4/x-m4v/3gp format file.')
+
+    } else if (size > 1024 * 50) {
+
+      this.$popup.show('Image size must be less then 50 MB')
+
+
+    } else {
+
+
+
+
+      const reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event) => { // called once readAsDataURL is completed
+        this.videoSrc = event.target['result'];
+      }
+      // this.videoData.emit(event);
+
+    }
+
+    event.target.value = '';
+
   }
 
 

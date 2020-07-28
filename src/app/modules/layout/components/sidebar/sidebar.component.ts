@@ -1,4 +1,5 @@
 import { Component, OnInit, Renderer2, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,7 +10,10 @@ export class SidebarComponent implements OnInit {
   flag = true;
   constructor(
     private renderer: Renderer2,
-  ) { }
+    public $router: Router 
+  ) { 
+    
+  }
 
   ngOnInit() {
   }

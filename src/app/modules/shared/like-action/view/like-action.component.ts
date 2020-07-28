@@ -58,7 +58,7 @@ export class LikeActionComponent implements OnInit {
    */
 
   onActionHandler(id: string, status: ActionType) {
-    this.$confirmBox.listAction('User', status == 'active' ? 'blocked' : 'active').subscribe((confirm) => {
+    this.$confirmBox.listAction('user', status == 'active' ? 'block' : 'active').subscribe((confirm) => {
       if (confirm) {
         const params = {
           status: status == 'active' ? 'blocked' : 'active'

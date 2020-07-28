@@ -21,7 +21,7 @@
       <mat-icon>category</mat-icon> Category
     </mat-list-item>
 
-    <mat-list-item color="primary" [queryParams]="{ tab: '0'}" [routerLink]="['CONTENT_MANAGEMENT' | absolutePath]" routerLinkActive="active">
+    <mat-list-item color="primary" [queryParams]="{ tab: '0'}" [routerLink]="['CONTENT_MANAGEMENT' | absolutePath]"  [ngClass]="{'active': $router.url.includes('content-management')}">
       <mat-icon>description</mat-icon> Content Management
     </mat-list-item>
 
