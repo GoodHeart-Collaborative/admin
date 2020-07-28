@@ -22,6 +22,7 @@ export class AddDailyUnicormHumourComponent implements OnInit {
   postDate: boolean = false;
   titleMaxLength = VALIDATION_CRITERIA.titleMaxLength;
   mediaType = MEDIA_TYPE;
+  thumbnailUrl: any;
   constructor(
     private $formBuilder: FormBuilder,
     private $daily: DailyUnicornHumourService,
@@ -81,6 +82,10 @@ export class AddDailyUnicormHumourComponent implements OnInit {
   getDailyInspiration() {
     if (this.unicornDetails) {
       this.profilePicURL = this.unicornDetails.mediaUrl;
+      if (this.unicornDetails.mediaType == 2) {
+        this.thumbnailUrl = this.unicornDetails.mediaUrl;
+
+      }
       this.unicornForm.patchValue(this.unicornDetails);
       if (this.unicornDetails && this.unicornDetails.postedAt && this.unicornDetails.isPostLater) {
         this.unicornForm.get('postedAt').patchValue(new Date(this.unicornDetails.postedAt));
@@ -93,6 +98,7 @@ export class AddDailyUnicormHumourComponent implements OnInit {
  * @param event
  */
   setimageFile(event) {
+    event.type === 1 ? this.thumbnailUrl = '' : this.profilePicURL = '';
     this.imageFile = event;
   }
 /**
@@ -103,11 +109,31 @@ export class AddDailyUnicormHumourComponent implements OnInit {
       this.unicornForm.markAllAsTouched();
       return;
     }
+    const body = { ...this.unicornForm.value };
     if (this.imageFile) {
-      let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
-      this.profilePicURL = data.Location;
+      if (this.imageFile && this.imageFile.type == 1) {
+        const data: any = await this.$fileUploadService.uploadFile(this.imageFile.file);
+        const url = data.Location;
+        body['mediaUrl'] = url;
+        body.mediaType = this.imageFile.type;
+      }
+      if (this.imageFile && this.imageFile.type == 2) {
+        const dataForVideo: any = await this.$fileUploadService.uploadFile(this.imageFile.videoFile);
+        const dataForThumb: any = await this.$fileUploadService.uploadFile(this.imageFile.thumbNailFile);
+        body['mediaUrl'] = dataForVideo.Location;
+        body['thumbnailUrl'] = dataForThumb.Location;
+        body.mediaType = this.imageFile.type;
+      }
+    } else if (this.unicornDetails) {
+      if (this.unicornDetails.mediaType == 1) {
+        body['mediaUrl'] = this.profilePicURL;
+        body.mediaType = this.unicornDetails.mediaType;
+      }
+      if (this.unicornDetails.mediaType == 2) {
+        body['thumbnailUrl'] = this.thumbnailUrl;
+        body.mediaType = this.unicornDetails.mediaType;
+      }
     }
-    const body = { mediaUrl: this.profilePicURL, ...this.unicornForm.value };
 
     if (this.isPostLater.value) {
       body.postedAt = new Date(this.unicornForm.get('postedAt').value);

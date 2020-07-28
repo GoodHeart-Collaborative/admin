@@ -8,13 +8,18 @@ import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.modul
 import { ValidationErrorPipeModule } from 'src/app/pipes/validation-error/validation-error-pipe.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { WhiteSpaceModule } from 'src/app/modules/shared/white-space/white-space.module';
+import { Routes, RouterModule } from '@angular/router';
 
-
+const routes: Routes = [
+  {path: '' ,
+   component: AddCategoryManagementComponent},
+];
 
 @NgModule({
   declarations: [AddCategoryManagementComponent],
   imports: [
     CommonModule,
+    RouterModule.forChild(routes),
     SharedModule,
     MatIconModule,
     CustomImageModule,
@@ -22,8 +27,6 @@ import { WhiteSpaceModule } from 'src/app/modules/shared/white-space/white-space
     ReactiveFormsModule,
     WhiteSpaceModule
   ],
-  exports: [AddCategoryManagementComponent],
   providers : [CategoryManagementService],
-  entryComponents: [AddCategoryManagementComponent]
 })
 export class AddCategoryManagementModule { }

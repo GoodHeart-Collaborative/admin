@@ -20,10 +20,11 @@ export class AddAdviceComponent implements OnInit {
   adviceForm: FormGroup;
   profilePicURL: any;
   imageFile: any;
-  dailyInspirationDetails: any;
+  adviceDetails: any;
   postDate: boolean = false;
   descriptionMaxLength = VALIDATION_CRITERIA.descriptionMaxLength;
   titleMaxLength = VALIDATION_CRITERIA.titleMaxLength;
+  thumbnailUrl: any;
 
   constructor(
     private $formBuilder: FormBuilder,
@@ -36,8 +37,8 @@ export class AddAdviceComponent implements OnInit {
 
   ) {
     if ($router.snapshot.data.dailyData && $router.snapshot.data.dailyData.data) {
-      this.dailyInspirationDetails = $router.snapshot.data.dailyData.data;
-      $breadcrumb.replace(this.dailyInspirationDetails.id, this.dailyInspirationDetails.title);
+      this.adviceDetails = $router.snapshot.data.dailyData.data;
+      $breadcrumb.replace(this.adviceDetails.id, this.adviceDetails.title);
     }
   }
 
@@ -73,20 +74,26 @@ export class AddAdviceComponent implements OnInit {
   }
 
   getDailyInspiration() {
-    if (this.dailyInspirationDetails) {
-      console.log(this.dailyInspirationDetails.mediaUrl);
-      this.profilePicURL = this.dailyInspirationDetails.mediaUrl;
-      this.adviceForm.patchValue(this.dailyInspirationDetails);
-      if (this.dailyInspirationDetails && this.dailyInspirationDetails.postedAt && this.dailyInspirationDetails.isPostLater) {
+    if (this.adviceDetails) {
+      this.profilePicURL = this.adviceDetails.mediaUrl;
+      if (this.adviceDetails.mediaType == 2) {
+        this.thumbnailUrl = this.adviceDetails.mediaUrl;
 
-        this.adviceForm.get('postedAt').patchValue(new Date(this.dailyInspirationDetails.postedAt));
+      }
+      this.adviceForm.patchValue(this.adviceDetails);
+      if (this.adviceDetails && this.adviceDetails.postedAt && this.adviceDetails.isPostLater) {
+
+        this.adviceForm.get('postedAt').patchValue(new Date(this.adviceDetails.postedAt));
       }
     }
   }
 
 
   setimageFile(event) {
+
     this.imageFile = event;
+    console.log(event);
+
   }
 
   async onSubmit() {
@@ -94,21 +101,40 @@ export class AddAdviceComponent implements OnInit {
       this.adviceForm.markAllAsTouched();
       return;
     }
+    const body = { ...this.adviceForm.value };
     if (this.imageFile) {
-      let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
-      this.profilePicURL = data.Location;
+      if (this.imageFile && this.imageFile.type == 1) {
+        const data: any = await this.$fileUploadService.uploadFile(this.imageFile.file);
+        const url = data.Location;
+        body['mediaUrl'] = url;
+        body.mediaType = this.imageFile.type;
+      }
+      if (this.imageFile && this.imageFile.type == 2) {
+        const dataForVideo: any = await this.$fileUploadService.uploadFile(this.imageFile.videoFile);
+        const dataForThumb: any = await this.$fileUploadService.uploadFile(this.imageFile.thumbNailFile);
+        body['mediaUrl'] = dataForVideo.Location;
+        body['thumbnailUrl'] = dataForThumb.Location;
+        body.mediaType = this.imageFile.type;
+      }
+    } else if (this.adviceDetails) {
+      if (this.adviceDetails.mediaType == 1) {
+        body['mediaUrl'] = this.profilePicURL;
+        body.mediaType = this.adviceDetails.mediaType;
+      }
+      if (this.adviceDetails.mediaType == 2) {
+        body['thumbnailUrl'] = this.thumbnailUrl;
+        body.mediaType = this.adviceDetails.mediaType;
+      }
     }
-    const body = { mediaUrl: this.profilePicURL, ...this.adviceForm.value };
 
     if (this.isPostLater.value) {
       body.postedAt = new Date(this.adviceForm.get('postedAt').value);
     }
     this.adviceForm.disable();
-    if (this.dailyInspirationDetails && this.dailyInspirationDetails._id) {
-      // body.status = this.dailyInspirationDetails.status;
+    if (this.adviceDetails && this.adviceDetails._id) {
       delete body.type;
       delete body.status;
-      this.$daily.editCategory(this.dailyInspirationDetails._id, body).then(
+      this.$daily.editCategory(this.adviceDetails._id, body).then(
         data => {
           this.adviceForm.enable();
           this.$utility.success(data.message);

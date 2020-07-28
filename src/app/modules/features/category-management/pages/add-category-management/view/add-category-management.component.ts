@@ -15,9 +15,9 @@ export class AddCategoryManagementComponent implements OnInit {
   categoryForm: FormGroup;
   profilePicURL: any;
   imageFile: any;
+  data;
   titleMaxLength = VALIDATION_CRITERIA.titleMaxLength;
-  constructor(private $dialogRef: MatDialogRef<AddCategoryManagementComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any,
+  constructor(
               private $formBuilder: FormBuilder,
               private $category: CategoryManagementService,
               private $fileUploadService: FileUploadService) { }
@@ -70,7 +70,7 @@ export class AddCategoryManagementComponent implements OnInit {
       this.$category.editCategory(this.data._id, body).then(
         data => {
           this.categoryForm.enable();
-          this.$dialogRef.close(data);
+          // this.$dialogRef.close(data);
         },
         err => {
           this.categoryForm.enable();
@@ -81,7 +81,7 @@ export class AddCategoryManagementComponent implements OnInit {
     this.$category.addCategory(body).then(
       data => {
         this.categoryForm.enable();
-        this.$dialogRef.close(data);
+        // this.$dialogRef.close(data);
       },
       err => {
         this.categoryForm.enable();
@@ -99,7 +99,7 @@ export class AddCategoryManagementComponent implements OnInit {
 }
 
   onCancel() {
-    this.$dialogRef.close();
+    // this.$dialogRef.close();
   }
 
 

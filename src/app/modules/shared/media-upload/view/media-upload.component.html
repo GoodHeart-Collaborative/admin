@@ -1,9 +1,16 @@
 <div class="page-media-upload">
   <div class="img-cover">
-    <img [src]="profilePicURL |customImage:'IMAGE_PLACEHOLDER'|async" alt="" *ngIf="!videoSrc">
+    <img [src]="profilePicURL |customImage:'IMAGE_PLACEHOLDER'|async" alt=""  *ngIf="!videoSrc">
 
-    <video muted [src]="videoSrc" [hidden]='!videoSrc' loop id="video">Your browser does not support the
+    <video #myVideo muted [src]="videoSrc" *ngIf="videoSrc" loop id="video"  controls
+    (canplay)="onCanPlayHandler( $event.currentTarget)">Your browser does not support the
       video tag.</video>
+
+      <!-- <img [src]="profilePicURL" *ngIf="!videoSrc" alt=""> -->
+
+    <!-- <video *ngIf="videoSrc" id="upload-video" [src]="videoSrc"  #myVideo controls
+      (canplay)="onCanPlayHandler(fileData, $event.currentTarget)"> -->
+      
     <div class="mat-icon-cover">
       
       <button type="button" class="camBtn" mat-mini-fab color="primary">
