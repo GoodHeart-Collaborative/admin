@@ -260,6 +260,12 @@ export const CATEGORY_LIST: IRoute = {
     return `${CATEGORY.fullUrl}/${this.path}`;
   }
 };
+export const ADD_CATEGORY: IRoute = {
+  path: 'add',
+  get fullUrl(): string {
+    return `${CATEGORY.fullUrl}/${this.path}`;
+  }
+};
 
 export const CATEGORY_DETAIL = {
   path: 'detail',

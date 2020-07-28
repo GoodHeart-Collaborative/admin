@@ -4,7 +4,7 @@ import { CategoryManagementDetailsComponent } from './view/category-management-d
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  {path: '' ,  component:CategoryManagementDetailsComponent },
+  {path: '' ,  component: CategoryManagementDetailsComponent },
 ];
 
 @NgModule({
