@@ -9,6 +9,5 @@ import { SiderComponent } from './view/sider.component';
   imports: [
     CommonModule
   ],
-  export: [SiderComponent]
 })
 export class SiderModule { }

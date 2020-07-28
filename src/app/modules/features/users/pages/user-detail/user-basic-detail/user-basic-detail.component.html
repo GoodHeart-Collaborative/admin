@@ -25,7 +25,7 @@
                         </div>
                         <div class="col-md-4">
                             <p class="label">Email</p>
-                            <p class="value">{{userDetails?.email}}</p>
+                            <p class="value">{{userDetails?.email}} <span class="material-icons verified-icon" *ngIf="userDetails?.isEmailVerified">verified_user</span></p>
                         </div>
                         <div class="col-md-4">
                             <p class="label">Phone</p>

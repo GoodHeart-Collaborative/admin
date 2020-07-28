@@ -30,7 +30,8 @@ export class UserTableDataSource implements Table.Source<User> {
       title: 'Email Id',
       id: 'email',
       sorting: false,
-      resolve: (row: any) => row['email'] || '-',
+      templateBy: 'email'
+      // resolve: (row: any) => row['email'] || '-',
     },
     {
       title: 'Mobile Number',
