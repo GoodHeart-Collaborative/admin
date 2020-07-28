@@ -18,6 +18,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   filterObject;
   minDate: Date;
   data: any;
+  color;
+  mode;
   sectionFeatures: boolean = false;
   memberList: unknown;
   params = {

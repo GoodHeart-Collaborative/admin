@@ -107,6 +107,10 @@ THE SOFTWARE.
 
 @angular/material/paginator
 
+@angular/material/progress-spinner
+
+@angular/material/radio
+
 @angular/material/select
 
 @angular/material/snack-bar
@@ -486,6 +490,9 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
+
+ngx-image-cropper
+MIT
 
 ngx-quill
 MIT
