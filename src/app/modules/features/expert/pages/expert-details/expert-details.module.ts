@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExpertDetailsComponent } from './view/expert-details.component';
 import { Routes, RouterModule } from '@angular/router';
-import { MatTabsModule, MatIconModule, MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
+import { MatTabsModule, MatIconModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatButtonModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { ExpertBasicDetailsModule } from './pages/expert-basic-details/expert-basic-details.module';
 import { AddExpertContentModule } from '../add-expert-content/add-expert-content.module';
@@ -41,6 +41,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MatIconModule,
     MatFormFieldModule,
+    MatButtonModule,
     MatInputModule,
     MatSelectModule,
     FormsModule,
