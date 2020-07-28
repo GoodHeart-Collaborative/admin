@@ -19,13 +19,13 @@ export class DailyTableDataSource implements Table.Source<Category> {
         templateBy: 'title'
         // resolve: (row: any) => row['title'] || '-',
     },
-    {
-        title: 'Description',
-        id: 'description',
-        sorting: false,
-        templateBy: 'description'
-        // resolve: (row: any) => row['title'] || '-',
-    },
+    // {
+    //     title: 'Description',
+    //     id: 'description',
+    //     sorting: false,
+    //     templateBy: 'description'
+    //     // resolve: (row: any) => row['title'] || '-',
+    // },
     {
       title: 'Total Comments',
       id: 'commentCount',

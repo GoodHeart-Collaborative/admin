@@ -1,14 +1,12 @@
-$primary :#419ebb;
-
-
 $primary : #419ebb;
+$secondary : #ff4da6;
 
 $primary-light : lighten($primary, 43%);
 $primary-dark : darken($primary, 40%);
 
-$secondary: #3d82ab;
-$secondary-light : lighten($secondary, 50%);
-$secondary-dark : darken($secondary, 40%);
+// $secondary: #3d82ab;
+// $secondary-light : lighten($secondary, 50%);
+// $secondary-dark : darken($secondary, 40%);
     
 /* default colors */
 

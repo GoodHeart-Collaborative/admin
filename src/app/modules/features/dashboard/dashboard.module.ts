@@ -25,6 +25,7 @@ import { CheckNullPipeModule } from 'src/app/pipes/check-null/check-null-pipe.mo
 import { CustomDatePipeModule } from 'src/app/pipes/custom-date/custom-date-pipe.module';
 import { DropdownFilterModule } from '../../layout/layout-shared/dropdown-filter/dropdown-filter.module';
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
+import { MatProgressSpinnerModule } from '@angular/material';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.modul
     DashboardRoutingModule,
     MatCardModule,
     CustomDatePipeModule,
-    CustomImageModule
+    CustomImageModule,
+    MatProgressSpinnerModule
   ],
   exports: [DashboardComponent],
   providers: [

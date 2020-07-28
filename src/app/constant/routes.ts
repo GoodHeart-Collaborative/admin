@@ -321,6 +321,14 @@ export const ADD_NOTIFICATIONS: IRoute = {
   }
 };
 
+export const NOTIFICATIONS_DETAIL = {
+  path: ':id',
+  fullUrl() {
+    return `${NOTIFICATIONS.fullUrl}/${this.path}`;
+
+  }
+};
+
 // DAILY_INSPIRATION ROUTES //
 export const DAILY_INSPIRATION: IRoute = {
   path: 'daily-inspiration',

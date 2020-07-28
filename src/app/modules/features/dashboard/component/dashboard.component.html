@@ -1,12 +1,44 @@
-<div class="page-dashboard" [class.on-dashboard-page]="true">
-      <div class="dashboard-content">
-            <div class="row">
-                  <div class="col-md-5 animate__animated animate__bounceInLeft">
+
+<div class="page-dashboard">
+      <div class="dashboard-content"  [class.aaaaaaaaaaaaa]="rightSideScrollerFixed">
+
+            <div class="section-1 row" [class.aaaaaaaaaaa]="sectionFeatures">
+                  <div class="col-md-4" >
+                        <div class="mat-card current-balance-card animate__animated animate__bounceInLeft">
+                              <h3 style="margin-bottom: 10px;">Current Balance</h3>
+                              <p class="latest-text" style="font-size: 14px;margin-bottom: 15px; color: #777b8b;">This billing Cycle</p>
+                              <div class="graph-cover">
+                                    <mat-progress-spinner class="balance-graph" [color]="color" [mode]="mode" value="80" aria-value="80"></mat-progress-spinner>
+                                    <div class="content-on-balance-graph">
+                                          <p>Balance</p>
+                                          <h3>$ 10k</h3>
+                                    </div>
+                              </div>
+                              <div class="current-balance-content">
+                                    <h3>$ 50,345.00</h3>
+                                    <p>Used balance this billing cycle</p>
+                              </div>
+
+                        </div>
+                  </div>
+                  <div class="col-md-8">
+                        <div class="mat-card total-transaction-card animate__animated animate__bounceInRight ">
+                              <h3 style="margin-bottom: 10px;">Total Transaction</h3>
+                              <p class="latest-text" style="font-size: 14px;margin-bottom: 15px; color: #777b8b;">This month transaction</p>
+                              <div class="graph-cover">
+                                    <h3>Put Graph Here</h3>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+
+            <div class="section-2 row">
+                  <div class="col-md-5 animate__animated animate__bounceInRight">
                         <div class="mat-card user-statistics-card">
                               <h3 style="margin-bottom: 20px;">User Statistics</h3>
                               <div class="incline-decline">
                                     <div class="incline-decline-content this-year">
-                                          <div class="icon-cover">
+                                          <div class="icon-cover animate__animated animate__bounceInDown animate__delay-1s">
                                                 <span class="material-icons">trending_up</span>
                                                 <span class="material-icons" *ngIf="false">trending_down</span>
                                           </div>
@@ -15,8 +47,8 @@
                                                 <h3>60%</h3>
                                           </div>
                                     </div>
-                                    <div class="incline-decline-content last-year">
-                                          <div class="icon-cover">
+                                    <div class="incline-decline-content last-year ">
+                                          <div class="icon-cover animate__animated animate__bounceInDown animate__delay-1s">
                                                 <span class="material-icons" *ngIf="false">trending_up</span>
                                                 <span class="material-icons">trending_down</span>
                                           </div>
@@ -32,8 +64,8 @@
                         </div>
                   </div>
                   <div class="col-md-4 animate__animated animate__flipInX">
-                        <div class="mat-card mod-list-card">
-                              <h3 style="margin-bottom: 10px;">Member of the Day</h3>
+                        <div class="mat-card new-users-card">
+                              <h3 style="margin-bottom: 10px;">Recent Users</h3>
                               <p class="latest-text" style="font-size: 14px;margin-bottom: 15px; color: #777b8b;">Latest Three</p>
                               <ul class="users-listing">
                                     <li class="single-user" *ngFor="let item of memberList">
@@ -48,7 +80,7 @@
                               </ul>
                         </div>
                   </div>
-                  <div class="col-md-3 animate__animated animate__bounceInRight">
+                  <div class="col-md-3 animate__animated animate__bounceInLeft">
                         <div class="mat-card conversion-ratio-card">
                               <h3 style="margin-bottom: 20px;">Conversion Ratio</h3>
                               <div class="graph-cover">
@@ -61,75 +93,115 @@
                         </div>
                   </div>
             </div>
-            <div class="counters-listing-cover">
-                  <!-- <ul class="counter-listing">
-                        <li class="single-counter">
-                              <div class="counter-content">
-                                    <div class="textual-area">
-                                          <h4>{{data?.totalUsers}}</h4>
-                                          <p>Total Users</p>
+
+            <div class="section-3 row">
+                  <div class="col-md-4" >
+                        <div class="mat-card total-users-card animate__animated animate__bounceInRight" style="margin-bottom: 20px;">
+                              <div class="row-1">
+                                    <div class="first-half">
+                                          <h3>{{data?.newUser}}</h3>
+                                          <p>New</p>
                                     </div>
-                                    <div class="img-cover">
-                                          <i class="fa fa-user" aria-hidden="true"></i>
-                                    </div>
-                              </div>
-                        </li>
-                        <li class="single-counter">
-                              <div class="counter-content">
-                                    <div class="textual-area">
-                                          <h4>{{data?.newUser}}</h4>
-                                          <p>New Users</p>
-                                    </div>
-                                    <div class="img-cover">
-                                          <i class="fa fa-user" aria-hidden="true"></i>
+                                    <div class="second-half">
+                                          <div class="icon-cover">
+                                                <span class="material-icons">person</span>
+                                          </div>
                                     </div>
                               </div>
-                        </li>
-                        <li class="single-counter">
-                              <div class="counter-content">
-                                    <div class="textual-area">
-                                          <h4>0</h4>
-                                          <p>Total Journals</p>
-                                    </div>
-                                    <div class="img-cover">
-                                          <i class="fa fa-user" aria-hidden="true"></i>
-                                    </div>
+                              <div class="row-2">
+                                    <p>{{data?.totalUsers}}</p>
+                                    <p>Total Users</p>
                               </div>
-                        </li>
-                        <li class="single-counter">
-                              <div class="counter-content">
-                                    <div class="textual-area">
-                                          <h4>0</h4>
-                                          <p>Total Posts</p>
-                                    </div>
-                                    <div class="img-cover">
-                                          <i class="fa fa-user" aria-hidden="true"></i>
-                                    </div>
+                        </div>
+                        <div class="mat-card todays-revenue-card animate__animated animate__bounceInRight" >
+                              <h3 class="margin-bottom: 10px">Today's Revenue</h3>
+                              <p class="latest-text" style="font-size: 14px;margin-bottom: 15px; color: #777b8b;">$43,343</p>
+                              <div class="graph-cover">
+                                    <h3>Put Graph Here</h3>
                               </div>
-                        </li>
-                        <li class="single-counter">
-                              <div class="counter-content">
-                                    <div class="textual-area">
-                                          <h4>0</h4>
-                                          <p>Total Feeds</p>
-                                    </div>
-                                    <div class="img-cover">
-                                          <i class="fa fa-user" aria-hidden="true"></i>
-                                    </div>
+                        </div>
+                  </div>
+                  <div class="col-md-8">
+                        <div class="mat-card mod-list-card animate__animated animate__bounceInLeft ">
+                              <h3 style="margin-bottom: 20px;">Member of the Day List</h3>
+                              <div class="table-cover">
+                                    <table>
+                                          <thead>
+                                                <tr>
+                                                      <th>Name</th>
+                                                      <th>Company</th>
+                                                      <th>Start Date</th>
+                                                      <th>Status</th>
+                                                      <th>Amount</th>
+                                                      <th>Action</th>
+                                                </tr>
+                                          </thead>
+                                          <tbody>
+                                                <tr>
+                                                      <td>Michael Austin</td>
+                                                      <td>ABC Fintech LTD.</td>
+                                                      <td>Jan 1, 2020</td>
+                                                      <td class="status-cell">
+                                                            <span class="active">Active</span>
+                                                      </td>
+                                                      <td>$ 12,087</td>
+                                                      <td>
+                                                            <span class="material-icons">close</span>
+                                                      </td>
+                                                </tr>
+                                                <tr>
+                                                      <td>Michael Austin</td>
+                                                      <td>ABC Fintech LTD.</td>
+                                                      <td>Jan 1, 2020</td>
+                                                      <td class="status-cell">
+                                                            <span class="in-active">In-active</span>
+                                                      </td>
+                                                      <td>$ 12,087</td>
+                                                      <td>
+                                                            <span class="material-icons">close</span>
+                                                      </td>
+                                                </tr>
+                                                <tr>
+                                                      <td>Michael Austin</td>
+                                                      <td>ABC Fintech LTD.</td>
+                                                      <td>Jan 1, 2020</td>
+                                                      <td class="status-cell">
+                                                            <span class="active">Active</span>
+                                                      </td>
+                                                      <td>$ 12,087</td>
+                                                      <td>
+                                                            <span class="material-icons">close</span>
+                                                      </td>
+                                                </tr>
+                                                <tr>
+                                                      <td>Michael Austin</td>
+                                                      <td>ABC Fintech LTD.</td>
+                                                      <td>Jan 1, 2020</td>
+                                                      <td class="status-cell">
+                                                            <span class="active">Active</span>
+                                                      </td>
+                                                      <td>$ 12,087</td>
+                                                      <td>
+                                                            <span class="material-icons">close</span>
+                                                      </td>
+                                                </tr>
+                                                <tr>
+                                                      <td>Michael Austin</td>
+                                                      <td>ABC Fintech LTD.</td>
+                                                      <td>Jan 1, 2020</td>
+                                                      <td class="status-cell">
+                                                            <span class="in-active">In-active</span>
+                                                      </td>
+                                                      <td>$ 12,087</td>
+                                                      <td>
+                                                            <span class="material-icons">close</span>
+                                                      </td>
+                                                </tr>
+                                          </tbody>
+                                    </table>
                               </div>
-                        </li>
-                        <li class="single-counter">
-                              <div class="counter-content">
-                                    <div class="textual-area">
-                                          <h4>0</h4>
-                                          <p>Total Events</p>
-                                    </div>
-                                    <div class="img-cover">
-                                          <i class="fa fa-user" aria-hidden="true"></i>
-                                    </div>
-                              </div>
-                        </li>
-                  </ul> -->
+                        </div>
+                  </div>
             </div>
       </div>
 </div>
