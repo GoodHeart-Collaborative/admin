@@ -4,7 +4,7 @@ import { UsersService } from 'src/app/modules/features/users/service/users.servi
 import { Router } from '@angular/router';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
-import { USER, CATEGORY } from 'src/app/constant/routes';
+import { USER, CATEGORY, ADD_CATEGORY } from 'src/app/constant/routes';
 import { CategoryManagementService } from '../../../service/category-management.service';
 import { AddCategoryManagementComponent } from '../../add-category-management/view/add-category-management.component';
 import { MatDialog } from '@angular/material';
@@ -139,34 +139,35 @@ export class CategoryManagementListingComponent implements OnInit {
   }
 
 onAddCategory() {
-  this.matDailog.open(AddCategoryManagementComponent, {
-    width: '500px',
-   }).afterClosed().subscribe(res => {
-    if (res) {
-        this.updateUsers();
-    }
-  });
+  // this.matDailog.open(AddCategoryManagementComponent, {
+  //   width: '500px',
+  //  }).afterClosed().subscribe(res => {
+  //   if (res) {
+  //       this.updateUsers();
+  //   }
+  // });
+  this.$router.navigate([ADD_CATEGORY.fullUrl]);
 }
 
 oneditHandler(id) {
-  this.$category.updateCategory(id).then(res => {
-      if (res) {
-        this.matDailog.open(AddCategoryManagementComponent, {
-          width: '500px',
-          data: res.data
-        }).afterClosed().subscribe(res => {
-          if (res) {
-              this.updateUsers();
-          }
-        });
-      }
-    }).catch(err => {
-       this.$utility.errorAlert(err.message);
-  });
+  // this.$category.updateCategory(id).then(res => {
+  //     if (res) {
+  //       this.matDailog.open(AddCategoryManagementComponent, {
+  //         width: '500px',
+  //         data: res.data
+  //       }).afterClosed().subscribe(res => {
+  //         if (res) {
+  //             this.updateUsers();
+  //         }
+  //       });
+  //     }
+  //   }).catch(err => {
+  //      this.$utility.errorAlert(err.message);
+  // });
 }
 
 relatedCategoryHandler(id) {
-    this.$router.navigate([`${CATEGORY.fullUrl}`, id,]);
+    this.$router.navigate([`${CATEGORY.fullUrl}`, id]);
 }
 
 onImageClick(image) {

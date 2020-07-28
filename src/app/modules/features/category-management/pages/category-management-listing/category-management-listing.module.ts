@@ -29,7 +29,6 @@ const routes: Routes = [
     CustomDatePipeModule,
     MatIconModule,
     ConfirmBoxModule,
-    AddCategoryManagementModule,
     CustomImageModule,
     MatSelectModule,
     MatOptionModule,

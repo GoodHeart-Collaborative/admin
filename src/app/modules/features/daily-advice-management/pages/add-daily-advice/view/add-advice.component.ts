@@ -75,10 +75,11 @@ export class AddAdviceComponent implements OnInit {
 
   getDailyInspiration() {
     if (this.adviceDetails) {
-      console.log(this.adviceDetails.mediaUrl);
-      this.adviceDetails.mediaType == 1 ?
-        this.profilePicURL = this.adviceDetails.mediaUrl :
-        this.thumbnailUrl = this.adviceDetails.thumbnailUrl;
+      this.profilePicURL = this.adviceDetails.mediaUrl;
+      if (this.adviceDetails.mediaType == 2) {
+        this.thumbnailUrl = this.adviceDetails.mediaUrl;
+
+      }
       this.adviceForm.patchValue(this.adviceDetails);
       if (this.adviceDetails && this.adviceDetails.postedAt && this.adviceDetails.isPostLater) {
 
@@ -89,10 +90,10 @@ export class AddAdviceComponent implements OnInit {
 
 
   setimageFile(event) {
-    event.type === 1 ? this.thumbnailUrl = '' : this.profilePicURL = '';
+
     this.imageFile = event;
     console.log(event);
-    
+
   }
 
   async onSubmit() {
@@ -102,8 +103,6 @@ export class AddAdviceComponent implements OnInit {
     }
     const body = { ...this.adviceForm.value };
     if (this.imageFile) {
-
-
       if (this.imageFile && this.imageFile.type == 1) {
         const data: any = await this.$fileUploadService.uploadFile(this.imageFile.file);
         const url = data.Location;
@@ -113,10 +112,7 @@ export class AddAdviceComponent implements OnInit {
       if (this.imageFile && this.imageFile.type == 2) {
         const dataForVideo: any = await this.$fileUploadService.uploadFile(this.imageFile.videoFile);
         const dataForThumb: any = await this.$fileUploadService.uploadFile(this.imageFile.thumbNailFile);
-
-
         body['mediaUrl'] = dataForVideo.Location;
-
         body['thumbnailUrl'] = dataForThumb.Location;
         body.mediaType = this.imageFile.type;
       }
