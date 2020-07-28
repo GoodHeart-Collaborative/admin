@@ -52,32 +52,24 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
 
     this.$common.dashBoardFlag$.next(true);
-    console.log(this.isFlag, 'drashbord');
+    console.log(this.isFlag, 'dashbord');
     this.onDrashboardHandler();
   }
 
   ngOnInit() {
     this.memberOfTheDayList();
+
+    alert;
   }
 
-  
-
-  // @HostListener("window:scroll", [])
-  // onScroll(): void {
-  //   if (window.pageYOffset > 10) {
-  //     this.rightSideScrollerFixed = true;
-  //   } else {
-  //     this.rightSideScrollerFixed = false;
+  // @HostListener('window:scroll', ['$event']) onWindowScroll(e) {
+  //   if(window.pageYOffset > 20){
+  //     this.sectionFeatures = true;
+  //     console.log('scroll-value' + window.pageYOffset);
   //   }
-  // }
-
-
-
-  // scrolling=(s)=>{
-  //   let sc = s.target.scrollingElement.scrollTop;
-  //   console.log();
-  //   if(sc >=100){this.scroll=true}
-  //   else{this.scroll=false}
+  //   else{
+  //     this.sectionFeatures = false;
+  //   }
   // }
 
   onDrashboardHandler() {
@@ -114,48 +106,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.$common.dashBoardFlag$.next(false);
   }
-
-  // @HostListener("window:scroll(event)", [])
-  // onScroll(event: any){
-  //   if (window.pageYOffset > 20) {
-  //     console.log('offset' +  event.target.offsetHeight);
-  //     console.log('top' + event.target.scrollTop);
-  //     console.log(window.scrollY);
-  //     // console.log(window.scrollTop);
-  //     this.sectionFeatures = true;
-  //     console.log(this.sectionFeatures);
-  //   }
-  // }
-
-  // @HostListener("window:scroll", ["$event"])
-  //   onWindowScroll() {
-  //   let pos = (document.documentElement.scrollTop || document.body.scrollTop) + document.documentElement.offsetHeight;
-  //   let max = document.documentElement.scrollHeight;
-  //   console.log('max');
-  // }
-
-
-  // @HostListener("window:scroll", [])
-  // onScroll(): void {
-  //   console.log('sefhydgsduyf');
-  //   if (window.pageYOffset > 20) {
-  //     this.sectionFeatures = true;
-  //   } else {
-  //     this.sectionFeatures = false;
-  //   }
-  // }
-
-  // @HostListener('scroll', ['$event.target'])
-  // onClick(btn) {
-  //   console.log('button', btn, 'number of clicks:');
-  // }
-
-  
-
-  // @HostListener('window:scroll', ['$event']) 
-  // doSomething(event) {
-  //   console.debug("Scroll Event", window.pageYOffset );
-  //   }
 
   
 }
