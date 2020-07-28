@@ -8,7 +8,8 @@ import { MatFormFieldModule,
          MatButtonModule,
         MatDatepickerModule,
         MatInputModule,
-       MatSelectModule } from '@angular/material';
+       MatSelectModule, 
+       MatIconModule} from '@angular/material';
 import { ValidationErrorPipeModule } from 'src/app/pipes/validation-error/validation-error-pipe.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { WhiteSpaceModule } from 'src/app/modules/shared/white-space/white-space.module';
@@ -35,7 +36,9 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatDatepickerModule,
     MatInputModule,
-    WhiteSpaceModule
+    WhiteSpaceModule,
+    CustomImageModule,
+    MatIconModule
   ]
 })
 export class AddExpertModule { }

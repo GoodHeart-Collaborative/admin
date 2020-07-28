@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FileUploadService } from '../../services/file-upload.service';
 import { PopupService } from '../../popup';
@@ -13,7 +13,7 @@ import { onSelectFile } from 'src/app/constant/file-input';
 export class MediaUploadComponent implements OnInit {
   imageFile: any;
   @ViewChild('file', { static: false }) img;
-
+  @ViewChild('videoEle', { static: false }) video: ElementRef<HTMLVideoElement>;
   @Output() uploadMedia = new EventEmitter();
   @Input() profilePicURL;
   imageChangedEvent: any;
@@ -143,13 +143,15 @@ export class MediaUploadComponent implements OnInit {
   imageSelected(event) {
     console.log(event);
     this.profilePicURL = event.base64;
+
     console.log(this.imageChangedEvent.target.files[0]);
-    this.uploadMedia.emit( 
+
+    this.uploadMedia.emit(
       {
         file: event.file,
         type: 1
       });
- }
+  }
 
   closeCropper() {
     this.img.nativeElement.value = null;
@@ -169,10 +171,10 @@ export class MediaUploadComponent implements OnInit {
     if (type !== "video/mp4" && type !== "video/x-m4v" &&
       type !== "video/3gpp" && file) {
 
-      this.$popup.show('Please select any video mp4/x-m4v/3gp format file.')
+      this.$upload.showAlert('Please select any video mp4/x-m4v/3gp format file.')
 
     } else if (size > 1024 * 50) {
-       this.$popup.show('Image size must be less then 50 MB')
+      this.$upload.showAlert('Image size must be less then 50 MB')
     } else {
       const reader = new FileReader();
 
@@ -180,12 +182,35 @@ export class MediaUploadComponent implements OnInit {
 
       reader.onload = (event) => { // called once readAsDataURL is completed
         this.videoSrc = event.target['result'];
-       };
-      this.uploadMedia.emit({
-       file: event.target.files[0],
-       type: 2
-      });
-      }
+        console.log(this.video);
+
+
+      };
+      // let getvideoDom=document.getElementsByTagName('video');
+      // console.log(getvideoDom);
+      console.log(this.$upload.capture(this.video.nativeElement, event.target.files[0]));
+      console.log();
+      this.$upload.capture(this.video.nativeElement, event.target.files[0]).then(res => {
+        console.log(res);
+        this.videoSrc = '';
+        this.profilePicURL = res.base64;
+        console.log(file, this.profilePicURL);
+        
+        this.uploadMedia.emit({
+          type: 2,
+          videoFile: file,
+          thumbNailFile: res.file
+        });
+     });
+
+
+
+      // console.log(getvideoDom)
+      // this.uploadMedia.emit({
+      //   file: event.target.files[0],
+      //   type: 2
+      // });
+    }
     event.target.value = '';
   }
 
