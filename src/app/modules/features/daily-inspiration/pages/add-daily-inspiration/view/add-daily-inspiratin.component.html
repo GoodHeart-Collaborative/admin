@@ -1,53 +1,47 @@
 <div class="page-add-daily-inspiration">
     <div class="add-daily-inspiration-content">
         <form [formGroup]="inspirationForm">
-     <div class="row-1">
-            <!-- <div class="left-portion">
-                <div class="img-cover">
-                    <img [src]="profilePicURL|customImage:'USER'|async" alt="">
-                    <div class="mat-icon-cover">
-                        <button type="button" class="camBtn" mat-mini-fab color="primary"  >
-                            <mat-icon>camera_alt</mat-icon>
-                            <input type="file" accept="image/x-png,image/jpeg" #file matTooltip="Change Image" (change)="onSelectFile($event)"/>
-                        </button>
-                    </div>
-                </div>
-            </div> -->
+            <div class="row-1">
 
-            <media-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL" [videoSrc]="thumbnailUrl"></media-upload>
+                <media-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL"
+                    [videoSrc]="thumbnailUrl"></media-upload>
 
-            <div class="right-portion">
-                <mat-form-field appearance="outline">
-                    <mat-label>Inspiration Title</mat-label>
-                    <input matInput placeholder="Title" formControlName="title" #input [maxlength]="titleMaxLength" appWhiteSpace>
-                    <mat-hint>{{input.value.trim().length}}/{{titleMaxLength}}</mat-hint>
-                    <mat-error>{{form('title') |validate:'Title' }}</mat-error>
-                </mat-form-field>
+                <div class="right-portion">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Inspiration Title</mat-label>
+                        <input matInput placeholder="Title" formControlName="title" #input [maxlength]="titleMaxLength"
+                            appWhiteSpace>
+                        <mat-hint>{{input.value.trim().length}}/{{titleMaxLength}}</mat-hint>
+                        <mat-error>{{form('title') |validate:'Title' }}</mat-error>
+                    </mat-form-field>
 
-                <mat-form-field appearance="outline">
-                    <mat-label>Description</mat-label>
-                    <textarea matInput placeholder="Ex. It makes me feel..." formControlName="description" #description [maxlength]="descriptionMaxLength" appWhiteSpace></textarea>
-                    <mat-hint>{{description.value.trim().length}}/{{descriptionMaxLength }}</mat-hint>
-                    <mat-error>{{form('description')  |validate:'Description'}}</mat-error>
-
-                </mat-form-field>
-
-                <div class="post-later">
-                    <mat-checkbox formControlName="isPostLater" >Post Later!</mat-checkbox>
-                    <mat-form-field class="later-date-picker" color="accent" *ngIf="inspirationForm?.contains('postedAt')" appearance="outline" >
-                        <input matInput [matDatepicker]="picker" [min]="dailyInspirationDetails  ? (dailyInspirationDetails.postedAt ?  dailyInspirationDetails.postedAt : today)  : today" formControlName="postedAt"
-                        (click)="picker.open()" placeholder="Date" readonly>
-                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                      <mat-datepicker #picker></mat-datepicker>
-                    <mat-error>{{form('postedAt')  |validate:'posted at' }}</mat-error>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Description</mat-label>
+                        <textarea matInput placeholder="Ex. It makes me feel..." formControlName="description"
+                            #description [maxlength]="descriptionMaxLength" appWhiteSpace></textarea>
+                        <mat-hint>{{description.value.trim().length}}/{{descriptionMaxLength }}</mat-hint>
+                        <mat-error>{{form('description')  |validate:'Description'}}</mat-error>
 
                     </mat-form-field>
+
+                    <div class="post-later">
+                        <mat-checkbox formControlName="isPostLater">Post Later!</mat-checkbox>
+                        <mat-form-field class="later-date-picker" color="accent"
+                            *ngIf="inspirationForm?.contains('postedAt')" appearance="outline">
+                            <input matInput [matDatepicker]="picker"
+                                [min]="dailyInspirationDetails  ? (dailyInspirationDetails.postedAt ?  dailyInspirationDetails.postedAt : today)  : today"
+                                formControlName="postedAt" (click)="picker.open()" placeholder="Date" readonly>
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-error>{{form('postedAt')  |validate:'posted at' }}</mat-error>
+
+                        </mat-form-field>
+                    </div>
                 </div>
             </div>
-        </div>
-      </form>
+        </form>
         <div class="btn-row">
-            <button class="btn btn-simple" mat-stroked-button type="button"  (click)="onCancel()"> Cancel </button>
+            <button class="btn btn-simple" mat-stroked-button type="button" (click)="onCancel()"> Cancel </button>
             <button class="btn btn-primary" mat-stroked-button type="submit" (click)="onSubmit()">Upload </button>
         </div>
     </div>
