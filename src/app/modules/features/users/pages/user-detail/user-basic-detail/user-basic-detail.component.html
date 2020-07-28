@@ -3,34 +3,45 @@
         <div class="detail-ui">
             <div class="row-1">
                 <div class="left-portion">
-                    <div class="img-cover">
-                        <img [src]="userDetails?.profilePicUrl[0]|customImage:'USER'|async" alt="User Profile Image" (click)="onImageClick(userDetails?.profilePicUrl[0])">
+                    <div class="img-cover" (click)="onImageClick(userDetails?.profilePicUrl[0])">
+                        <img [src]="userDetails?.profilePicUrl[0]|customImage:'USER'|async" alt="User Profile Image">
+                        <div class="img-overlay">+2</div>
                     </div>
                     <div class="btn-row">
-                        <button class="btn btn-block" mat-stroked-button (click)="onBlockUSer()" [class.btn-green]="userDetails?.status != 'active' "> {{userDetails?.status === 'active' ? 'Block' : 'Unblock'}} User </button>
-                        <button class="btn btn-primary btn-delete" mat-stroked-button (click)="onBlockUSer(true)">Delete User</button>
+                        <button class="btn btn-block" mat-stroked-button (click)="onBlockUSer()"
+                            [class.btn-green]="userDetails?.status != 'active' ">
+                            {{userDetails?.status === 'active' ? 'Block' : 'Unblock'}} User </button>
+                        <button class="btn btn-primary btn-delete" mat-stroked-button (click)="onBlockUSer(true)">Delete
+                            User</button>
 
                     </div>
                     <div class="btn-row">
-                        <button class="btn btn-primary btn-delete" mat-stroked-button *ngIf="(userDetails?.adminStatus == 'verified')" (click)="onverifyHandler(userDetails?._id, 'rejected')">Reject User</button>
-                        <button class="btn btn-primary" mat-stroked-button *ngIf="(userDetails?.adminStatus == 'rejected' ) || (userDetails?.adminStatus == 'pending')" (click)="onverifyHandler(userDetails?._id, 'verified')">Verify User</button>
+                        <button class="btn btn-primary btn-delete" mat-stroked-button
+                            *ngIf="(userDetails?.adminStatus == 'verified')"
+                            (click)="onverifyHandler(userDetails?._id, 'rejected')">Reject User</button>
+                        <button class="btn btn-primary" mat-stroked-button
+                            *ngIf="(userDetails?.adminStatus == 'rejected' ) || (userDetails?.adminStatus == 'pending')"
+                            (click)="onverifyHandler(userDetails?._id, 'verified')">Verify User</button>
                     </div>
                 </div>
                 <div class="right-portion">
                     <div class="row">
-                    
+
                         <div class="col-md-4">
                             <p class="label">User Name</p>
                             <p class="value">{{userDetails?.firstName}} {{userDetails?.lastName}}</p>
                         </div>
                         <div class="col-md-4">
                             <p class="label">Email</p>
-                            <p class="value">{{userDetails?.email}} <span class="material-icons verified-icon" *ngIf="userDetails?.isEmailVerified">verified_user</span></p>
+                            <p class="value">{{userDetails?.email}} <span class="material-icons verified-icon"
+                                    *ngIf="userDetails?.isEmailVerified">verified_user</span></p>
                         </div>
                         <div class="col-md-4">
                             <p class="label">Phone</p>
                             <p class="value phone-value">
-                                +{{userDetails?.countryCode}} {{userDetails?.mobileNo}} <span class="material-icons verified-icon" *ngIf="userDetails?.isMobileVerified">verified_user</span>
+                                +{{userDetails?.countryCode}} {{userDetails?.mobileNo}} <span
+                                    class="material-icons verified-icon"
+                                    *ngIf="userDetails?.isMobileVerified">verified_user</span>
                             </p>
                         </div>
                         <div class="col-md-4">
