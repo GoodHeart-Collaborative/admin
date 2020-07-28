@@ -14,6 +14,12 @@ import { ImageCropModule } from '../image-crop/image-crop.module';
     MatTooltipModule,
     CustomImageModule,
     ImageCropModule
+
+
+
+
+
+    
   ],
   exports: [
     MediaUploadComponent
