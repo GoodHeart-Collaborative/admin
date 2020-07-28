@@ -1,7 +1,27 @@
-<div class="cropresizePanel">
+<div class="image-crop-page popup-ui">
+    <div class="popup-header">
+      <h3>Image Cropper</h3>
+      <mat-icon class="close-icon" (click)="cancelCropper()">close</mat-icon>
+    </div>
+    <div class="popup-content">
+      <div class="popup-body">
+        <image-cropper [imageChangedEvent]="imageChangedEvent" [roundCropper]='roundCropper' [maintainAspectRatio]="true" [aspectRatio]="aspectRatio" [resizeToWidth]="528" imageQuality=92 format="png" (imageCropped)="imageCropped($event)"></image-cropper>
+      </div>
+      <div class="popup-footer">
+        <button class="btn btn-simple" mat-stroked-button (click)="cancelCropper()">Cancel</button>
+        <button class="btn btn-primary" mat-flat-button (click)="crop()">Crop & Upload</button>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+<!-- <div class="cropresizePanel">
     <div class="cropperBox">
         <div class="flex-row">
-            <div class="flex-col-50">
+            <div class="flex-col-100">
                 <h3>Original Image</h3>
                 <div class="crop-preview">
                     <image-cropper [imageChangedEvent]="imageChangedEvent" [roundCropper]='roundCropper' [maintainAspectRatio]="true" [aspectRatio]="aspectRatio" [resizeToWidth]="528" imageQuality=92 format="png" (imageCropped)="imageCropped($event)"></image-cropper>
@@ -16,8 +36,4 @@
             </div>
         </div>
     </div>
-    <div class="filterBtns">
-        <button mat-stroked-button class="cancel" (click)="cancelCropper()">Cancel </button>
-        <button mat-flat-button class="ml20" (click)="crop()" autofocus>Done</button>
-    </div>
-</div>
+</div> -->

@@ -12,7 +12,7 @@
                             <img [src]="item?.users?.profilePicUrl[0] |customImage:'USER'|async" alt="Profile">
                         </div>
                         <div class="textual-cover">
-                            <h4>{{item?.users?.firstName || 'String' }} {{item?.users?.lastName || '' }} 
+                            <h4><span title="{{item?.users?.firstName || 'String' }} {{item?.users?.lastName || '' }}S">{{item?.users?.firstName || 'String' }} {{item?.users?.lastName || '' }}</span>
                                 <p class="comment-time">{{item?.created | time}}</p>
                             </h4>
                             <p>{{item?.comment}}</p>
