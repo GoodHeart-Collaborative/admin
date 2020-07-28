@@ -11,6 +11,9 @@ import { EXPERT } from 'src/app/constant/routes';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
 import { GlobalService } from 'src/app/services/global/global.service';
+import { onSelectFile } from 'src/app/constant/file-input';
+import { invalidImageError, invalidFileSize } from 'src/app/constant/messages';
+
 @Component({
   selector: 'app-add-expert',
   templateUrl: './add-expert.component.html',
@@ -74,8 +77,18 @@ export class AddExpertComponent implements OnInit {
     return this.expertForm.controls[name];
   }
 
-  setimageFile(event) {
-    this.imageFile = event;
+  async onSelectFile(event) {
+    try {
+      let result = await onSelectFile(event);
+      this.imageFile = result.file;
+      this.profilePicURL = result.url;
+    } catch (err) {
+      if (err.type) {
+        this.$category.showAlert(invalidImageError());
+      } else if (err.size) {
+        this.$category.showAlert(invalidFileSize());
+      }
+    }
   }
 
   /**

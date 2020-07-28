@@ -3,8 +3,17 @@
 
         <form [formGroup]="expertForm">
             <div class="row-1">
-                <media-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL"></media-upload>
-
+                <!-- <media-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL"></media-upload> -->
+                <div class="img-cover">
+                    <img [src]="profilePicURL|customImage:'USER'|async" alt="">
+                    <div class="mat-icon-cover">
+                      <button type="button" class="camBtn" mat-mini-fab color="primary">
+                        <mat-icon>camera_alt</mat-icon>
+                        <input type="file" accept="image/x-png,image/jpeg" #file (change)="onSelectFile($event)"
+                          matTooltip="Change Image" />
+                      </button>
+                    </div>
+                  </div>
                 <div class="right-portion">
                     <div class="row">
                         <div class="col-md-6">
