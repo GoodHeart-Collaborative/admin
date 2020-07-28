@@ -1,0 +1,26 @@
+.view-full-image-model-popup{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100%;
+    img{
+        height: auto;
+        width: auto;
+        max-width: calc(100vw - 140px);
+        max-height: calc(100vh - 120px);
+        border-radius: 4px;
+    }
+    mat-icon{
+        position: absolute;
+        color: white;
+        right: 24px;
+        background-color: rgba(0, 0, 0, 1);
+        top: 17px;
+        font-size: 30px;
+        height: auto;
+        width: auto;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+}
