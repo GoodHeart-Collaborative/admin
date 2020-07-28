@@ -68,7 +68,7 @@ export class UserBasicDetailComponent implements OnInit {
 
   onImageClick(image) {
     this.matDailog.open(SliderComponent, {
-      panelClass: 'view-full-image-modal',
+      panelClass: 'slider-modal',
       // data: image
     }).afterClosed().subscribe();
   }
