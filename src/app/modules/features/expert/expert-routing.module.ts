@@ -27,20 +27,14 @@ const routes: Routes = [
           .then( (m) => m.AddExpertModule
           ),
        },
-      //     // {
-      //     //   path: 'edit/:id',
-      //     //   resolve : {
-      //     //     dailyData : Daily AdviceManagementServiceResolve
-      //     //   },
-      //     //   loadChildren: () => import('./pages/add-daily-advice/add-daily-advice.module')
-      //     //   .then( (m) => m.AddDailyAdviceModule
-      //     //   ),
-      //     // },
+        {
+           path: 'edit/:id',
+            loadChildren: () => import('./pages/add-expert/add-expert.module')
+          .then( (m) => m.AddExpertModule
+          ),
+          },
       {
         path: `${EXPERT_DETAILS.path}`,
-        // resolve : {
-        //  expertDetail :ExpertServiceResolve
-        // },
         loadChildren: () => import('./pages/expert-details/expert-details.module')
           .then((m) => m.ExpertDetailsModule
           ),

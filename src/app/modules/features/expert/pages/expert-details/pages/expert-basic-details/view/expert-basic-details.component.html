@@ -4,46 +4,50 @@
             <div class="row-1">
                 <div class="left-portion">
                     <div class="img-cover">
-                        <img src="assets/images/img_avatar3.png" alt="User Profile Image">
+                        <img [src]="data?.profilePicUrl |customImage:'IMAGE_PLACEHOLDER'|async" alt="User Profile Image">
                     </div>
                 </div>
                 <div class="right-portion">
                     <div class="row">
                         <div class="col-md-4">
                             <p class="label">Expert Name</p>
-                            <p class="value">{{data?.name}}</p>
+                            <p class="value">{{data?.name | titlecase}}</p>
                         </div>
                         <div class="col-md-4">
                             <p class="label">Email</p>
                             <p class="value">{{data?.email}}</p>
                         </div>
-                        <div class="col-md-4">
+                        <!-- <div class="col-md-4">
                             <p class="label">Phone</p>
                             <p class="value phone-value">
                                 {{data?.mob || 'none'}}
-                                <!-- <span class="material-icons verified-icon">verified_user</span> -->
+                             <span class="material-icons verified-icon">verified_user</span> 
                             </p>
-                        </div>
+                        </div> -->
                         <!-- <div class="col-md-4">
                             <p class="label">Date of Birth</p>
                             <p class="value">{{data?.dob || 'none'}}</p>
                         </div> -->
                         <div class="col-md-4">
                             <p class="label">Profession</p>
-                            <p class="value">{{data?.profession}}</p>
+                            <p class="value">{{data?.profession | titlecase}}</p>
                         </div>
                         <div class="col-md-4">
                             <p class="label">Industry</p>
-                            <p class="value">{{data?.industry}}</p>
+                            <p class="value">{{data?.industry | titlecase}}</p>
                         </div>
                         <!-- <div class="col-md-4">
                             <p class="label">Category</p>
                             <p class="value">{{data?.category || 'none'}}</p>
                         </div> -->
+                        <div class="col-md-4">
+                            <p class="label">Experience</p>
+                            <p class="value">{{(data?.experience | titlecase) || 'none'}}</p>
+                        </div>
                         <div class="col-md-12">
                             <p class="label">Bio</p>
                             <p class="value">
-                                {{data?.bio}}
+                                {{data?.bio | titlecase}}
                             </p>
                         </div>
                     </div>

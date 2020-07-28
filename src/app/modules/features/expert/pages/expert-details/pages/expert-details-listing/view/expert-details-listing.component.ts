@@ -81,6 +81,5 @@ export class ExpertDetailsListingComponent implements OnInit, OnChanges {
     });
   }
 
-  
 
 }

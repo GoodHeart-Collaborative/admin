@@ -95,7 +95,7 @@ export class ExpertListingComponent implements OnInit {
   handleActions(action: ActionType, index) {
     switch (action) {
       case 'deleted':
-        this.userData.data.splice(index, 1);
+        this.userData.splice(index, 1);
         this.userData.total = this.userData.total - 1;
         break;
       case 'active':
@@ -112,7 +112,7 @@ export class ExpertListingComponent implements OnInit {
   }
 
   handleStatus(action: 'blocked' | 'active', index: number) {
-    this.userData.data = this.userData.data.map((user, i) => {
+    this.userData = this.userData.map((user, i) => {
       if (i === index) {
         user.status = action;
       }
@@ -130,8 +130,13 @@ export class ExpertListingComponent implements OnInit {
     });
   }
 
-  oneditHandler(id) {
-    this.$router.navigate([`${EXPERT.fullUrl}`, 'edit', id]);
+  oneditHandler(id , data) {
+    const application = this.$global.encodeData(data);
+    this.$router.navigate([`${EXPERT.fullUrl}`, 'edit', id],
+      {
+        queryParams: { application }
+      });
+    // this.$router.navigate([`${EXPERT.fullUrl}`, 'edit', id]);
   }
 
   onDetails(id, data) {

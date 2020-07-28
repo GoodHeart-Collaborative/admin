@@ -6,6 +6,11 @@ import { CategoryManagementService } from 'src/app/modules/features/category-man
 import { INDUSTRY_TYPE, EXPERIENCE } from 'src/app/constant/drawer';
 import { FileUploadService } from 'src/app/modules/shared/services/file-upload.service';
 import { ExpertService } from '../../../service/expert.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { EXPERT } from 'src/app/constant/routes';
+import { UtilityService } from 'src/app/modules/shared/services/utility.service';
+import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
+import { GlobalService } from 'src/app/services/global/global.service';
 @Component({
   selector: 'app-add-expert',
   templateUrl: './add-expert.component.html',
@@ -18,14 +23,35 @@ export class AddExpertComponent implements OnInit {
   experienceType = EXPERIENCE;
   categoryData: any;
   profilePicURL: any;
+  details: any;
   constructor(
     private $fb: FormBuilder,
     private $formService: FormService,
     private $category: CategoryManagementService,
     private $fileUploadService: FileUploadService,
-    private $service: ExpertService
+    private $service: ExpertService,
+    private $route: Router,
+    private $utility: UtilityService,
+    activateRoute: ActivatedRoute,
+    $breadcrumb: BreadcrumbService,
+    global: GlobalService,
   ) {
     this.createForm();
+
+    activateRoute.queryParams.subscribe(({ application }) => {
+      if (!application) {
+        return;
+      }
+      if (application) {
+        this.details = global.decodeData(application);
+        console.log(this.details);
+        $breadcrumb.replace(this.details._id, this.details.contentDisplayName);
+        this.expertForm.patchValue(this.details);
+        if (this.details && this.details.profilePicUrl) {
+            this.profilePicURL = this.details.profilePicUrl;
+        }
+      }
+    });
   }
 
   ngOnInit() {
@@ -67,7 +93,8 @@ export class AddExpertComponent implements OnInit {
     });
   }
 
-async onSubmit() {
+
+  async onSubmit() {
     if (this.expertForm.invalid) {
       return;
     }
@@ -75,20 +102,37 @@ async onSubmit() {
       let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
       this.profilePicURL = data.Location;
     }
-    let body = { imageUrl: this.profilePicURL, ...this.expertForm.value };
+    let body = { profilePicUrl: [this.profilePicURL], ...this.expertForm.value };
     console.log(body);
-    
-    // this.$service.add(body).then(
-    //   data => {
-    //     this.expertForm.enable();
-    //   },
-    //   err => {
-    //     this.expertForm.enable();
-    //   });
+    if (this.details && this.details._id) {
+      delete body.type;
+      this.$service.edit(this.details._id, body).then(
+        data => {
+          this.expertForm.enable();
+          this.$utility.success(data.message);
+          this.$route.navigate([EXPERT.fullUrl]);
+        },
+        err => {
+          this.expertForm.enable();
+        }
+      );
+      return;
+    }
+    this.$service.add(body).then(
+      data => {
+        this.expertForm.enable();
+        this.$utility.success(data.message);
+
+        this.$route.navigate([EXPERT.fullUrl]);
+
+      },
+      err => {
+        this.expertForm.enable();
+      });
   }
 
   onCancel() {
-    
+    this.$route.navigate([EXPERT.fullUrl]);
   }
 
 }

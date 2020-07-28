@@ -5,9 +5,14 @@
       
       <button type="button" class="camBtn" mat-mini-fab color="primary">
         <mat-icon>camera_alt</mat-icon>
+        <!-- <app-image-crop></app-image-crop> -->
         <input type="file" accept="image/x-png,image/jpeg" #file (change)="onSelectFile($event)"
           matTooltip="Change Image" />
       </button>
     </div>
   </div>
+</div>
+
+<div class="croppabelWrap" *ngIf="imageChangedEvent" [class.active]="imageChangedEvent">
+  <app-image-crop (imageData)="imageSelected($event)" [imageChangedEvent]="imageChangedEvent" [roundCropper]='true' [aspectRatio]="4 / 4" (closeCropper)="closeCropper()"></app-image-crop>
 </div>

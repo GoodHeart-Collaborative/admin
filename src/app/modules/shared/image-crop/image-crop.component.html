@@ -1,0 +1,23 @@
+<div class="cropresizePanel">
+    <div class="cropperBox">
+        <div class="flex-row">
+            <div class="flex-col-50">
+                <h3>Original Image</h3>
+                <div class="crop-preview">
+                    <image-cropper [imageChangedEvent]="imageChangedEvent" [roundCropper]='roundCropper' [maintainAspectRatio]="true" [aspectRatio]="aspectRatio" [resizeToWidth]="528" imageQuality=92 format="png" (imageCropped)="imageCropped($event)"></image-cropper>
+                </div>
+            </div>
+            <div class="flex-col-50">
+                <h3>Preview Image</h3>
+                <div class="crop-preview border" *ngIf="croppedImage">
+                    <img *ngIf="roundCropper" style="border-radius: 100%;" [src]="croppedImage">
+                    <img *ngIf="!roundCropper" [src]="croppedImage">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="filterBtns">
+        <button mat-stroked-button class="cancel" (click)="cancelCropper()">Cancel </button>
+        <button mat-flat-button class="ml20" (click)="crop()" autofocus>Done</button>
+    </div>
+</div>

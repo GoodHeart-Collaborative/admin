@@ -45,12 +45,12 @@ export class ExpertTableDataSource implements Table.Source<Category> {
         resolve: (row: any) => row['totalPost'] || '0',
       },
 
-    // {
-    //   title: 'Status',
-    //   id: 'status',
-    //   sorting: false,
-    //   templateBy: 'status'
-    // },
+    {
+      title: 'Status',
+      id: 'status',
+      sorting: false,
+      templateBy: 'status'
+    },
 
     {
       title: 'Actions',

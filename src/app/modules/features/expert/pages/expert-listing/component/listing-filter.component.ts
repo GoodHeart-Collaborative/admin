@@ -39,7 +39,6 @@ export class ListingFilterComponent implements OnInit {
       {
         fromDate: [],
         toDate: [],
-        status: []
       },
     );
   }
