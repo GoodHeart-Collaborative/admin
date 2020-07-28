@@ -1,1 +1,11 @@
-<p style="color: white;">slider works!</p>
+<div class="view-full-image-model-popup">
+    <div class="slideshow-container">
+        <div class="mySlides fade" *ngFor="let i of [1,2,3]">
+            <img src="assets/images/img_avatar3.png" style="width:100%">
+        </div>
+
+        <a class="prev" role="button" tabindex="0">&#10094;</a>
+        <a class="next" role="button" tabindex="0">&#10095;</a>
+    </div>
+    <mat-icon [mat-dialog-close]="false">close</mat-icon>
+</div>
