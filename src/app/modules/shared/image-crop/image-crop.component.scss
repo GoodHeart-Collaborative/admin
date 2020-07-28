@@ -1,64 +1,26 @@
-@import '../../../../sass/abstracts/mixins';
-// @import 'page-mixin';
-// @import 'var';
+@import 'abstracts/mixins';
+@import 'components/popup-ui';
 
-/* Comment */
-
-.cropresizePanel {
-    width: 1200px;
-    max-width: 100%;
-    background: #ffffff;
-    box-shadow: 0 11px 15px -7px rgba(0, 0, 0, .2), 0 24px 38px 3px rgba(0, 0, 0, .14), 0 9px 46px 8px rgba(0, 0, 0, .12);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9;
-    .cropperBox {
-        position: relative;
-        padding: 0 15px 20px;
-        h3 {
-            text-align: center;
-            font-size: 20px;
-            margin: 0;
-            padding: 20px 0;
-            // font-family: $font_b;
-        }
+.image-crop-page{
+    background-color: transparent;
+    width: 800px;
+    margin: auto;
+    margin-top: 20px;
+    max-width: 90%;
+    .popup-body{
+        padding: 20px !important;
+    }
+    .popup-footer{
+        padding-bottom: 20px !important;
     }
 }
 
-.cropperBox {
-    max-height: calc(100vh - 120px);
-}
 
-.crop-preview {
-    background: #f0f1f2;
-    max-height: calc(100vh - 210px);
-    height: 300px;
-    img {
-        max-height: 100%;
-        margin: 0 auto;
+:host ::ng-deep{
+    .source-image{
+        max-height: calc(100vh - 180px) !important;
     }
-}
-
-.filterBtns {
-    text-align: center;
-    padding: 20px;
-    border-top: solid 1px #eaeaea;
-    .cancel {
-        margin-right: 20px;
-    }
-}
-
-.flex-row {
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
-    .flex-col-50 {
-        -webkit-box-flex: 0;
-        flex: 0 0 50%;
-        max-width: 50%;
-        padding: 0 15px;
+    image-cropper{
+        padding: 0px;
     }
 }

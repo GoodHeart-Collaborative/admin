@@ -27,6 +27,7 @@
     .popup-content{
         max-height: calc(100vh - 70px);
         overflow: auto;
+        background-color: white;
         .popup-body{
             text-align: center;
             padding: 30px 20px;

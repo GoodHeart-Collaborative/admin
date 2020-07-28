@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ImageCropComponent } from './image-crop.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material';
+import { MatButtonModule, MatIconModule } from '@angular/material';
 
 @NgModule({
   declarations: [ImageCropComponent],
@@ -11,7 +11,9 @@ import { MatButtonModule } from '@angular/material';
     CommonModule,
     ImageCropperModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule,
+    MatButtonModule,
   ],
   exports: [ImageCropComponent]
 })
