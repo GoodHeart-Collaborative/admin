@@ -54,9 +54,16 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="row">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Experience</mat-label>
+                                <mat-select formControlName="experience">
+                                    <mat-option *ngFor="let type of experienceType" [value]="type?.value">{{type?.viewValue}}</mat-option>
+                                </mat-select>
+                                <mat-error>{{form('experience') |validate:'Experience' }}</mat-error>
+                            </mat-form-field>
+                            <!-- <div class="row">
                                 <div class="col-md-6">
-                                    <!-- <mat-form-field appearance="outline">
+                                    <mat-form-field appearance="outline">
                                         <mat-label>Select Years</mat-label>
                                         <mat-select formControlName="experience">
                                             <mat-option>0</mat-option>
@@ -66,17 +73,11 @@
                                             <mat-option>4</mat-option>
                                         </mat-select>
                                         <mat-error>Error</mat-error>
-                                    </mat-form-field> -->
-                                    <mat-form-field appearance="outline">
-                                        <mat-label>Experience</mat-label>
-                                        <mat-select formControlName="experience">
-                                            <mat-option *ngFor="let type of experienceType" [value]="type?.value">{{type?.viewValue}}</mat-option>
-                                        </mat-select>
-                                        <mat-error>{{form('experience') |validate:'Experience' }}</mat-error>
                                     </mat-form-field>
+                                    
                                 </div>
 
-                                <!-- <div class="col-md-6">
+                                <div class="col-md-6">
                                     <mat-form-field appearance="outline">
                                         <mat-label>Select Months</mat-label>
                                         <mat-select>
@@ -88,11 +89,10 @@
                                         </mat-select>
                                         <mat-error>Error</mat-error>
                                     </mat-form-field>
-                                </div> -->
-                            </div>
+                                </div>
+                            </div> -->
                         </div>
                         <div class="col-md-6">
-                            <h4>&nbsp;</h4>
                             <mat-form-field appearance="outline">
                                 <mat-label>Category</mat-label>
                                 <mat-select formControlName="categoryId" multiple>

@@ -1,1 +1,12 @@
-<p>slider works!</p>
+<div class="view-full-image-model-popup slider-cover">
+    <div class="slideshow-container">
+        <ng-container *ngFor="let item of testArr;let index=index">
+            <div class="mySlides fade">
+                <img [src]="item" style="width:100%">
+            </div>
+        </ng-container>
+    </div>
+    <button class="prev" (click)="plusSlides(1)">&#10094;</button>
+    <button class="next" (click)="plusSlides(-1)">&#10095;</button>
+    <mat-icon [mat-dialog-close]="false">close</mat-icon>
+</div>

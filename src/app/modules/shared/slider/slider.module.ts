@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SliderComponent } from './view/slider.component';
-import { MatDialogModule } from '@angular/material';
+import { MatDialogModule, MatIconModule } from '@angular/material';
 
 
 
@@ -9,8 +9,10 @@ import { MatDialogModule } from '@angular/material';
   declarations: [SliderComponent],
   imports: [
     CommonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatIconModule,
   ],
+  exports : [SliderComponent],
   entryComponents: [SliderComponent]
 })
 export class SliderModule { }
