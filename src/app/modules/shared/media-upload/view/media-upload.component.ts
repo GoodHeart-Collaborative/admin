@@ -171,45 +171,26 @@ export class MediaUploadComponent implements OnInit {
     if (type !== "video/mp4" && type !== "video/x-m4v" &&
       type !== "video/3gpp" && file) {
 
-      this.$upload.showAlert('Please select any video mp4/x-m4v/3gp format file.')
+      this.$upload.showAlert('Please select any video mp4/x-m4v/3gp format file.');
 
     } else if (size > 1024 * 50) {
-      this.$upload.showAlert('Image size must be less then 50 MB')
+      this.$upload.showAlert('Image size must be less then 50 MB');
     } else {
       const reader = new FileReader();
-
       reader.readAsDataURL(event.target.files[0]); // read file as data url
-
       reader.onload = (event) => { // called once readAsDataURL is completed
         this.videoSrc = event.target['result'];
-        console.log(this.video);
-
-
-      };
-      // let getvideoDom=document.getElementsByTagName('video');
-      // console.log(getvideoDom);
-      console.log(this.$upload.capture(this.video.nativeElement, event.target.files[0]));
-      console.log();
+       };
       this.$upload.capture(this.video.nativeElement, event.target.files[0]).then(res => {
         console.log(res);
         this.videoSrc = '';
         this.profilePicURL = res.base64;
-        console.log(file, this.profilePicURL);
-        
         this.uploadMedia.emit({
           type: 2,
           videoFile: file,
           thumbNailFile: res.file
         });
      });
-
-
-
-      // console.log(getvideoDom)
-      // this.uploadMedia.emit({
-      //   file: event.target.files[0],
-      //   type: 2
-      // });
     }
     event.target.value = '';
   }
