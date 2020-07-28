@@ -10,11 +10,11 @@ export class SliderComponent implements OnInit {
 
   slideIndex: number = 1;
 
-  testArr: any[] = [
-    "assets/images/imagePlaceholder.png",
-    "assets/images/inspiration.jpg",
-    "assets/images/user.png",
-  ]
+  // testArr: any[] = [
+  //   "assets/images/imagePlaceholder.png",
+  //   "assets/images/inspiration.jpg",
+  //   "assets/images/user.png",
+  // ]
 
   constructor(
     private $dialogRef: MatDialogRef<SliderComponent>,

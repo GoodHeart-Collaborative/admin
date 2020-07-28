@@ -21,6 +21,7 @@ export const VALIDATION_CRITERIA = {
   bioMaxLength: 200,
   professionMinLength: 3,
   professionMaxLength: 20,
+  topicMaxLength: 20,
 };
 
 export const getTrimmed = (body) =>{

@@ -23,8 +23,39 @@
                 width: 100%;
                 order: 1;
             }
+
+            .card_header_container {
+                &.profile_header {
+                    .card_header {
+                        display: flex;
+                        margin-bottom: 10px;
+                        align-items: center;
+                        .image-cover {
+                            margin: 0 10px 0 0;
+                            height: 45px;
+                            width: 45px;
+                            border-radius: 50%;
+                            flex-shrink: 0;
+                            img {
+                                max-width: 100%;
+                                border-radius: 50%;
+                            }
+                        }
+                        .heading-cover {
+                            margin-top: 3px;
+                            .user_name {
+                                font-size: 15px;
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                }
+            }
             h1 {
                 margin-bottom: 5px;
+                margin-top: 15px;
+                font-size: 18px;
+                font-weight: 600;
             }
             p {
                 font-size: 14px;
@@ -40,7 +71,7 @@
                     }
                 }
             }
-            .date-stamp{
+            .date-stamp {
                 font-size: 14px;
             }
             .like-cover {
@@ -87,7 +118,7 @@
         align-items: center;
         justify-content: flex-start;
         padding: 10px 15px;
-        margin: 20px -16px;
+        margin: 20px -16px -16px;
         border-top: 1px solid #dcdcdc;
         border-bottom: 1px solid #dcdcdc;
         .like-cover {
@@ -106,6 +137,7 @@
         }
     }
     .row-3 {
+        margin-top: 32px;
         .users-listing {
             padding: 0px;
             margin: 0px;
@@ -152,8 +184,8 @@
                             border-bottom: 10px solid transparent;
                         }
                         h4 {
-                            margin: 0 0 6px 0;
-                            font-size: 14px;
+                            margin: 0 0 10px 0;
+                            font-size: 15px;
                             white-space: nowrap;
                             overflow: hidden;
                             text-overflow: ellipsis;
@@ -178,19 +210,20 @@
                         }
                         p {
                             margin: 0;
-                            font-size: 13px;
+                            font-size: 14px;
+                            line-height: 18px;
                             color: #868686;
                             word-break: break-word;
                             &.comment-time {
                                 font-size: 10px;
                             }
                             &.comment {
-                                margin: 0 0 6px 0;
+                                margin: 0 0 8px 0;
                             }
                         }
                         .like-cover {
                             display: flex;
-                            margin-top: 4px;
+                            margin-top: 8px;
                             align-items: center;
                             .material-icons {
                                 color: #556080;

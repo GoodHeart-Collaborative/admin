@@ -17,6 +17,7 @@ export class MediaUploadComponent implements OnInit {
   @ViewChild('myVideo', { static: false }) video: ElementRef<HTMLVideoElement>;
   @Output() uploadMedia = new EventEmitter();
   @Input() profilePicURL;
+  @Input() contentId;
   imageChangedEvent: any;
   isImage: boolean;
   file: File;
@@ -67,9 +68,9 @@ export class MediaUploadComponent implements OnInit {
    * @param file
    */
   checkMediaType(file, event) {
-    if (file.type.split('/')[0] == 'image') {
+    if (file.type.split('/')[0] == 'image' && this.checkContentType(1)) {
       this.isImage = true;
-    } else if (file.type.split('/')[0].toLowerCase() == 'video') {
+    } else if (file.type.split('/')[0].toLowerCase() == 'video' && this.checkContentType(2)) {
       // return 'video';
       this.isVideo = true;
       this.videoSelected(event);
@@ -159,7 +160,8 @@ export class MediaUploadComponent implements OnInit {
         file: event.file,
         type: 1
       });
-      this.videoSrc = '';
+    this.videoSrc = '';
+    this.isVideo = false;
   }
   ngOnChanges() {
     console.log(this.videoSrc);
@@ -203,7 +205,7 @@ export class MediaUploadComponent implements OnInit {
     event.target.value = '';
   }
 
-  onCanPlayHandler( video: HTMLVideoElement) {
+  onCanPlayHandler(video: HTMLVideoElement) {
     if (!this.file) {
       return;
     }
@@ -215,7 +217,7 @@ export class MediaUploadComponent implements OnInit {
           videoFile: this.file,
           thumbNailFile: thumbnail
         });
-
+        this.isImage = false;
       });
     } catch (err) {
 
@@ -236,5 +238,44 @@ export class MediaUploadComponent implements OnInit {
       });
     } catch (err) {
     }
+  }
+
+  checkContentType(mediaType: number) {
+    if (this.contentId) {
+      console.log(this.contentId);
+      
+      switch (mediaType) {
+        case 1:
+          if ([2, 3].includes(this.contentId)) {
+
+            return true;
+          } else {
+            this.$upload.showAlert('Invalid content type selected');
+            return false;
+          }
+          break;
+        case 2:
+          if ([1].includes(this.contentId)) {
+
+            return true;
+          } else {
+            this.$upload.showAlert('Invalid content type selected');
+            return false;
+          }
+          break;
+        case 3:
+          if ([4].includes(this.contentId)) {
+            return true;
+          } else {
+            this.$upload.showAlert('Invalid content type selected');
+            return false;
+          }
+          break;
+
+        default:
+          break;
+      }
+    }
+    return true;
   }
 }

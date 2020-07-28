@@ -1,33 +1,33 @@
-<div class="page-add-category-management popup-ui">
-  <div class="popup-header">
-    <h3>Add Category</h3>
-    <mat-icon class="close-icon" [mat-dialog-close]="false">close</mat-icon>
-  </div>
-  <div class="popup-content">
-    <div class="popup-body">
-      <form [formGroup]="categoryForm">
-        <div class="img-cover">
-          <img [src]="profilePicURL|customImage:'IMAGE_PLACEHOLDER'|async" alt="">
-          <div class="mat-icon-cover">
-            <button type="button" class="camBtn" mat-mini-fab color="primary">
-              <mat-icon>camera_alt</mat-icon>
-              <input type="file" accept="image/x-png,image/jpeg" #file (change)="onSelectFile($event)"
-                matTooltip="Change Image" />
-            </button>
+<div class="page-add-category-management">
+  <div class="add-category-mangement-content">
+    <form [formGroup]="categoryForm">
+      <div class="row-1">
+        <div class="left-portion">
+          <div class="img-cover">
+            <img [src]="profilePicURL|customImage:'IMAGE_PLACEHOLDER'|async" alt="" style="width: 100%;">
+            <div class="mat-icon-cover">
+              <button type="button" class="camBtn" mat-mini-fab color="primary">
+                <mat-icon>camera_alt</mat-icon>
+                <input type="file" accept="image/x-png,image/jpeg" #file (change)="onSelectFile($event)"
+                  matTooltip="Change Image" />
+              </button>
+            </div>
           </div>
         </div>
-        <div class="profile-detail">
+        <div class="right-portion">
           <p>Enter the name of category you want to create.</p>
           <mat-form-field appearance="outline">
-            <input matInput formControlName="title" placeholder="Enter Category" [maxlength]="titleMaxLength" appWhiteSpace>
+            <mat-label>Category</mat-label>
+            <input matInput formControlName="title" placeholder="Enter Category" [maxlength]="titleMaxLength"
+              appWhiteSpace>
             <mat-error>{{title |validate:'Title'}}</mat-error>
           </mat-form-field>
         </div>
-      </form>
-    </div>
-    <div class="popup-footer">
-      <button class="btn" mat-stroked-button (click)="onCancel()" type="button"> Cancel </button>
-      <button class="btn btn-primary" mat-stroked-button type="button" (click)="onSubmit()">Confirm </button>
+      </div>
+    </form>
+    <div class="btn-row">
+      <button class="btn btn-simple" mat-stroked-button (click)="onCancel()" type="button">Cancel</button>
+      <button class="btn btn-primary" mat-stroked-button type="button" (click)="onSubmit()">Confirm</button>
     </div>
   </div>
 </div>

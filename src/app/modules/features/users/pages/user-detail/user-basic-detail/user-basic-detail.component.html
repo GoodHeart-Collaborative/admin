@@ -3,7 +3,7 @@
         <div class="detail-ui">
             <div class="row-1">
                 <div class="left-portion">
-                    <div class="img-cover" (click)="onImageClick(userDetails?.profilePicUrl[0])">
+                    <div class="img-cover" (click)="onImageClick(userDetails?.profilePicUrl)">
                         <img [src]="userDetails?.profilePicUrl[0]|customImage:'USER'|async" alt="User Profile Image" >
                         <div class="img-overlay">+2</div>
                     </div>

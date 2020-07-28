@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { FormService } from 'src/app/modules/shared/services/form.service';
 import { VALIDATION_CRITERIA } from 'src/app/constant/validation-criteria';
 import { CategoryManagementService } from 'src/app/modules/features/category-management/service/category-management.service';
-import { INDUSTRY_TYPE, EXPERIENCE } from 'src/app/constant/drawer';
+import { INDUSTRY_TYPE, EXPERIENCE , PROFESSION} from 'src/app/constant/drawer';
 import { FileUploadService } from 'src/app/modules/shared/services/file-upload.service';
 import { ExpertService } from '../../../service/expert.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -24,6 +24,7 @@ export class AddExpertComponent implements OnInit {
   imageFile: any;
   industryType = INDUSTRY_TYPE;
   experienceType = EXPERIENCE;
+  professionType = PROFESSION;
   categoryData: any;
   profilePicURL: any;
   details: any;
