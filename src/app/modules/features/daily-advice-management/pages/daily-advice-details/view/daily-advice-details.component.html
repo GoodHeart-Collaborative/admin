@@ -2,52 +2,65 @@
     <div class="daily-advice-details-content">
         <div class="row-1">
             <div class="textual-detail">
-                <div>
+                <div class="card_header_container profile_header">
+                    <div class="card_header">
+                        <figure mat-card-avatar class="image-cover">
+                            <img class="img-cover-fit" src="assets/images/img_avatar3.png" alt="">
+                        </figure>
+                        <div class="heading-cover">
+                            <a class="user_name" href="javascript:void()">User name</a>
+                            <p class="posted-on-date" *ngIf="adviceDetails?.postedAt">Posted on:
+                                {{adviceDetails?.postedAt | date : 'medium'}}</p>
+                        </div>
+                    </div>
                     <h1>{{adviceDetails?.title | titlecase}}</h1>
                     <p>{{adviceDetails?.description}}</p>
                 </div>
-                <p>Posted on: {{adviceDetails?.postedAt | date : 'medium'}}</p>
             </div>
             <div class="image-detail">
                 <img [src]="adviceDetails?.mediaUrl | customImage:'IMAGE_PLACEHOLDER'|async ">
             </div>
         </div>
         <div class="row-2">
-            <div class="like-cover" (click)="onlikeHandler(adviceDetails.id, adviceDetails?.likeCount)"><span class="material-icons">thumb_up</span>
+            <div class="like-cover" (click)="onlikeHandler(adviceDetails.id, adviceDetails?.likeCount)"><span
+                    class="material-icons">thumb_up</span>
                 <p>{{adviceDetails?.likeCount}}</p>
             </div>
             <div class="like-cover"><span class="material-icons">comment</span>
                 <p>{{adviceDetails?.commentCount}}</p>
             </div>
         </div>
-        <div class="row-3">
-            <ul class="users-listing" >
-                <li class="single-user"  *ngFor="let item of comments; let commentIndex = index">
+        <div class="row-3" *ngIf="comments && comments.length > 0">
+            <ul class="users-listing">
+                <li class="single-user" *ngFor="let item of comments; let commentIndex = index">
                     <div class="li-content">
                         <div class="img-cover">
                             <img [src]="item?.users?.profilePicUrl[0] |customImage:'USER'|async" alt="Profile">
                         </div>
                         <div class="textual-cover">
-                            <h4>{{item?.users?.firstName || 'String' }} {{item?.users?.lastName || '' }} 
+                            <h4>{{item?.users?.firstName || 'String' }} {{item?.users?.lastName || '' }}
                                 <p class="comment-time">{{item?.created | time}}</p>
                             </h4>
                             <p>{{item?.comment}}</p>
-                            <div class="like-cover" >
-                                <span class="material-icons" (click)="onlikeHandler(item?._id, item?.likeCount)">thumb_up</span>
-                                <p >{{item?.likeCount}}</p>
-                                <a class="see-hide-replies" (click)="toggleReplies(item?._id, commentIndex)" *ngIf="item?.commentCount">{{item?.showReply? "Hide" : "See"}} Replies ({{item?.commentCount}})</a>
-                            </div> 
+                            <div class="like-cover">
+                                <span class="material-icons"
+                                    (click)="onlikeHandler(item?._id, item?.likeCount)">thumb_up</span>
+                                <p>{{item?.likeCount}}</p>
+                                <a class="see-hide-replies" (click)="toggleReplies(item?._id, commentIndex)"
+                                    *ngIf="item?.commentCount">{{item?.showReply? "Hide" : "See"}} Replies
+                                    ({{item?.commentCount}})</a>
+                            </div>
                         </div>
                         <!-- (click)="onNestedComment()" -->
                     </div>
-                    <ul class="comment-listing" *ngIf="item?.showReply" >
+                    <ul class="comment-listing" *ngIf="item?.showReply">
                         <li class="single-comment" *ngFor="let reply of item?.replies">
                             <div class="li-content">
                                 <div class="img-cover">
                                     <img [src]="reply?.users?.profilePicUrl[0] |customImage:'USER'|async" alt="Profile">
                                 </div>
                                 <div class="textual-cover">
-                                    <h4>{{reply?.users?.firstName }}  {{reply?.users?.lastName || '' }} 
+                                    <h4>{{reply?.users?.firstName }} {{reply?.users?.lastName || '' }}
                                         <p class="comment-time">{{reply?.createdAt | time}}</p>
                                     </h4>
                                     <p>{{reply?.comment}}</p>
@@ -57,8 +70,8 @@
                                 </div>
                             </div>
                         </li>
-                       
-                    </ul> 
+
+                    </ul>
                 </li>
             </ul>
         </div>
