@@ -23,6 +23,7 @@ export class AddDailyInspiratinComponent implements OnInit {
   postDate: boolean = false;
   descriptionMaxLength = VALIDATION_CRITERIA.descriptionMaxLength;
   titleMaxLength = VALIDATION_CRITERIA.titleMaxLength;
+  thumbnailUrl: any;
 
   constructor(
     private $formBuilder: FormBuilder,
@@ -79,6 +80,8 @@ export class AddDailyInspiratinComponent implements OnInit {
   getDailyInspiration() {
     if (this.dailyInspirationDetails) {
       this.profilePicURL = this.dailyInspirationDetails.mediaUrl;
+      this.thumbnailUrl = this.dailyInspirationDetails.thumbnailUrl;
+      // if(this.dailyInspirationDetails.mediaType)
       this.inspirationForm.patchValue(this.dailyInspirationDetails);
       if (this.dailyInspirationDetails && this.dailyInspirationDetails.postedAt && this.dailyInspirationDetails.isPostLater) {
         this.inspirationForm.get('postedAt').patchValue(this.dailyInspirationDetails.postedAt);
@@ -103,19 +106,26 @@ export class AddDailyInspiratinComponent implements OnInit {
     }
     const body = { ...this.inspirationForm.value };
     if (this.imageFile) {
-      let data: any = await this.$fileUploadService.uploadFile(this.imageFile.file);
-      this.profilePicURL = data.Location;
+      const data: any = await this.$fileUploadService.uploadFile(this.imageFile.file);
+      const url = data.Location;
 
       if (this.imageFile && this.imageFile.type == 1) {
-        body['mediaUrl'] = this.profilePicURL;
+        body['mediaUrl'] = url;
         body.mediaType = this.imageFile.type;
       }
       if (this.imageFile && this.imageFile.type == 2) {
-        body['thumbnailUrl'] = this.profilePicURL;
+        body['thumbnailUrl'] = url;
         body.mediaType = this.imageFile.type;
       }
-    } else {
-       
+    } else if(this.dailyInspirationDetails) {
+      if (this.dailyInspirationDetails.mediaType == 1) {
+        body['mediaUrl'] = this.profilePicURL;
+        body.mediaType = this.dailyInspirationDetails.mediaType;
+      }
+      if (this.dailyInspirationDetails.mediaType == 2) {
+        body['thumbnailUrl'] = this.thumbnailUrl;
+        body.mediaType = this.dailyInspirationDetails.mediaType;
+      }
     }
     if (this.isPostLater.value) {
       body.postedAt = new Date(this.inspirationForm.get('postedAt').value);

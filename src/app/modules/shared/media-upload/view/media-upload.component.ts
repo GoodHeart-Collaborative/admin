@@ -19,7 +19,7 @@ export class MediaUploadComponent implements OnInit {
   imageChangedEvent: any;
   isImage: boolean;
   isVideo: boolean;
-  videoSrc: string | ArrayBuffer;
+  @Input() videoSrc: string | ArrayBuffer;
   // mediaFiles: any[] = [];
   // @Input() mediaControl: FormControl;
   // @Input() maxlength: number;
