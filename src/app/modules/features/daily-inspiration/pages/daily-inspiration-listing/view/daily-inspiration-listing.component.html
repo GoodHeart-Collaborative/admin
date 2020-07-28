@@ -10,12 +10,12 @@
         {{ daily?.status | titlecase}}
     </ng-template>
 
-    <ng-template appFor="description" let-daily="row">
+    <!-- <ng-template appFor="description" let-daily="row">
         {{ daily?.description | titlecase}}
-    </ng-template>
+    </ng-template> -->
 
     <ng-template appFor="title" let-category="row">
-        <a href="javascript:void(0)" (click)="onDetailsHandler(category?._id)">
+        <a href="javascript:void(0)" (click)="onDetailsHandler(category?._id)" title="{{ category?.title | titlecase}}">
             {{ category?.title | titlecase}}
         </a>
     </ng-template>

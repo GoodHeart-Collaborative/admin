@@ -21,6 +21,13 @@
             <span>{{ user?.mobileNo ?  user?.mobileNo  : (user?.fullMobileNo || '-' )}}</span>
         </div>
     </ng-template>
+
+    <ng-template appFor="email" let-user="row">
+        <div class="mobile-content" [class.verified-user]="user?.isEmailVerified">
+            <span class="material-icons verified-icon" *ngIf="(user?.isEmailVerified) && (user?.email)">verified_user</span>
+            <span>{{ user?.email}}</span>
+        </div>
+    </ng-template>
    
 
     <ng-template appFor="name" let-user="row" >
