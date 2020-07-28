@@ -1,56 +1,77 @@
-@import 'components/detail-ui';
-.detail-ui{
-    .row-1{
+@import "components/detail-ui";
+.detail-ui {
+    .row-1 {
         display: flex;
         align-items: flex-start;
         justify-content: flex-start;
-        .left-portion{
+        .left-portion {
             width: 220px;
-            .img-cover{
+            .img-cover {
                 width: 150px;
                 height: 150px;
-                border-radius: 50%;
+                border-radius: 10px;
                 overflow: hidden;
                 margin-right: 20px;
                 margin: auto;
                 margin-bottom: 25px;
-                img{
+                position: relative;
+                img {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
                     cursor: pointer;
                 }
+                .img-overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    background-color: rgba(0, 0, 0, 0.65);
+                    color: white;
+                    cursor: pointer;
+                    font-size: 45px;
+                    display: none;
+                    align-items: center;
+                    justify-content: center;
+                    transition: 0.5s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+                }
+                &:hover {
+                    .img-overlay {
+                        display: flex;
+                    }
+                }
             }
-            .btn-row{
-                &:not(:first-child){
+            .btn-row {
+                &:not(:first-child) {
                     margin-top: 10px;
                 }
-                button{
-                    &.btn-block{
+                button {
+                    &.btn-block {
                         border-color: #a72222 !important;
                         color: #a72222 !important;
-                        &.btn-green{
+                        &.btn-green {
                             border-color: green !important;
                             color: green !important;
                         }
                     }
-                    &.btn-delete{
+                    &.btn-delete {
                         border-color: #a72222 !important;
                         background-color: #a72222 !important;
                     }
                 }
             }
         }
-        .right-portion{
+        .right-portion {
             width: calc(100% - 260px);
             padding-left: 40px;
-            .phone-value{
+            .phone-value {
                 display: flex;
-                .verified-icon{
+                .verified-icon {
                     display: block;
                     font-size: 20px;
                     color: green;
-                    margin-top: -3px;
+                    margin-top: -1px;
                     margin-left: 5px;
                 }
             }

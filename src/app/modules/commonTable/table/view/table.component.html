@@ -4,11 +4,11 @@
 		</app-search-filter>
     </div>
     <div class="right-side-filters">
-		<button class="filter-button" *ngIf="hasFilter" matTooltip="Filter"
+		<button class="filter-button" *ngIf="hasFilter" title="Filter"
 			 (click)="onFilterHandler()">
 			<mat-icon>filter_list</mat-icon>
 		</button>
-		<button class="filter-button" *ngIf="hasAdd" matTooltip="Add"
+		<button class="filter-button" *ngIf="hasAdd" title="Add"
 			 (click)="onAddHandler()">
 			<mat-icon>add</mat-icon>
 			<!-- <span>{{tableSource.options.addComponent}}</span> -->

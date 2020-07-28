@@ -11,7 +11,7 @@
  
  
      <ng-template appFor="title" let-post="row">
-         <a href="javascript:void(0)" (click)="onDetailsHandler(post?._id)">
+         <a href="javascript:void(0)" (click)="onDetailsHandler(post?._id)" title="{{ post?.title | titlecase}}">
              {{ post?.title | titlecase}}
          </a>
      </ng-template>

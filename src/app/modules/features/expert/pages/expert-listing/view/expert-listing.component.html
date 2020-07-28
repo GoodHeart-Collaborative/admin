@@ -9,13 +9,13 @@
  
  
      <ng-template appFor="name" let-post="row">
-         <a href="javascript:void(0)" (click)="onDetails(post?._id, post)">
+         <a href="javascript:void(0)" (click)="onDetails(post?._id, post)" title="{{ (post?.name | titlecase) || 'String'}}">
              {{ (post?.name | titlecase) || 'String'}}
          </a>
      </ng-template>
  
      <ng-template appFor="categoryData" let-post="row">
-         <span *ngFor="let item of post?.categoryData">
+         <span *ngFor="let item of post?.categoryData" title="{{ item?.name | titlecase}}">
              {{ item?.name | titlecase}}
          </span>
      </ng-template>
