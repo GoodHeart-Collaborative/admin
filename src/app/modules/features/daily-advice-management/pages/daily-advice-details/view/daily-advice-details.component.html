@@ -9,7 +9,10 @@
                 <p>Posted on: {{adviceDetails?.postedAt | date : 'medium'}}</p>
             </div>
             <div class="image-detail">
-                <img [src]="adviceDetails?.mediaUrl | customImage:'IMAGE_PLACEHOLDER'|async ">
+                <img [src]="adviceDetails?.mediaUrl | customImage:'IMAGE_PLACEHOLDER'|async " *ngIf="adviceDetails?.mediaType == 1">
+                <video #myVideo muted [src]="adviceDetails?.mediaUrl" *ngIf="adviceDetails?.mediaType == 2" loop id="video"  controls
+                >Your browser does not support the
+                  video tag.</video>
             </div>
         </div>
         <div class="row-2">

@@ -15,7 +15,10 @@
                 </div>
             </div>
             <div class="image-detail">
-                <img [src]="dailyInspirationDetails?.mediaUrl | customImage:'IMAGE_PLACEHOLDER'|async ">
+                <img [src]="dailyInspirationDetails?.mediaUrl | customImage:'IMAGE_PLACEHOLDER'|async " *ngIf="dailyInspirationDetails?.mediaType == 1">
+                <video #myVideo muted [src]="dailyInspirationDetails?.mediaUrl" *ngIf="dailyInspirationDetails?.mediaType == 2" loop id="video"  controls
+                >Your browser does not support the
+                  video tag.</video>
             </div>
         </div>
     </div>

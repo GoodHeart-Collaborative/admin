@@ -7,7 +7,10 @@
         <div class="popup-content">
             <div class="popup-body">
                 <div class="img-cover">
-                    <img [src]="data?.mediaUrl |customImage:'IMAGE_PLACEHOLDER'|async" alt="unicorn image">
+                    <img [src]="data?.mediaUrl |customImage:'IMAGE_PLACEHOLDER'|async" alt="unicorn image"  *ngIf="data?.mediaType == 2">
+                    <video #myVideo muted [src]="data?.mediaUrl" *ngIf="data?.mediaType == 2" loop id="video"  controls
+                    >Your browser does not support the
+                      video tag.</video>
                 </div>
                 <p>{{data?.description}}</p>
                 <div class="like-cover" (click)="onlikeHandler(data._id, data?.likeCount)"><span class="material-icons">thumb_up</span>
