@@ -34,7 +34,7 @@ export class MediaUploadComponent implements OnInit {
 
   async onSelectFile(event) {
     try {
-      this.checkMediaType(event.target.files[0]);
+      this.checkMediaType(event.target.files[0], event);
       // Image Upload 
       if (this.isImage) {
         console.log(this.isImage);
@@ -51,18 +51,20 @@ export class MediaUploadComponent implements OnInit {
         this.$upload.showAlert(invalidFileSize());
       }
     }
+
   }
 
   /**
    * Check media file
    * @param file
    */
-  checkMediaType(file) {
+  checkMediaType(file, event) {
     if (file.type.split('/')[0] == 'image') {
       this.isImage = true;
     } else if (file.type.split('/')[0].toLowerCase() == 'video') {
       // return 'video';
       this.isVideo = true;
+      this.videoSelected(event);
 
     } else {
       return null;
@@ -152,7 +154,6 @@ export class MediaUploadComponent implements OnInit {
   }
 
   videoSelected(event) {
-
     let file: File = event.target.files[0];
 
     let size;
@@ -173,23 +174,16 @@ export class MediaUploadComponent implements OnInit {
 
 
     } else {
-
-
-
-
       const reader = new FileReader();
 
       reader.readAsDataURL(event.target.files[0]); // read file as data url
 
       reader.onload = (event) => { // called once readAsDataURL is completed
         this.videoSrc = event.target['result'];
+       };
+      this.uploadMedia.emit(event.target.files[0]);
       }
-      // this.videoData.emit(event);
-
-    }
-
     event.target.value = '';
-
   }
 
 
