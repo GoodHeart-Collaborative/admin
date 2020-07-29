@@ -7,6 +7,7 @@ import { CommonService } from 'src/app/modules/shared/services/common.service';
 import { LikeActionModule } from 'src/app/modules/shared/like-action/like-action.module';
 import { CustomDatePipeModule } from 'src/app/pipes/custom-date/custom-date-pipe.module';
 import { TimePipeModule } from 'src/app/pipes/time-pipe/time-pipe.module';
+import { CommentsShowModule } from 'src/app/modules/shared/comments-show/comments-show.module';
 
 
 const routes: Routes = [
@@ -20,10 +21,10 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    CustomImageModule,
     LikeActionModule,
     CustomImageModule,
-    TimePipeModule
+    TimePipeModule,
+    CommentsShowModule
   ],
   providers: [CommonService]
 })

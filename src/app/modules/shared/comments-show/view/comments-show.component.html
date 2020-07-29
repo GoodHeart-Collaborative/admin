@@ -1,0 +1,45 @@
+<div class="row-3" *ngIf="comments && comments.length > 0">
+<ul class="users-listing">
+    <li class="single-user" *ngFor="let item of comments; let commentIndex = index">
+        <div class="li-content">
+            <div class="img-cover">
+                <img [src]="item?.users?.profilePicUrl[0] |customImage:'USER'|async" alt="Profile">
+            </div>
+            <div class="textual-cover">
+                <h4>{{item?.users?.firstName || 'String' }} {{item?.users?.lastName || '' }}
+                    <p class="comment-time">{{item?.created | time}}</p>
+                </h4>
+                <p>{{item?.comment}}</p>
+                <div class="like-cover">
+                    <span class="material-icons"
+                        (click)="onlikeHandler(item?._id, item?.likeCount)">thumb_up</span>
+                    <p>{{item?.likeCount}}</p>
+                    <a class="see-hide-replies" (click)="toggleReplies(item?._id, commentIndex)"
+                        *ngIf="item?.commentCount">{{item?.showReply? "Hide" : "See"}} Replies
+                        ({{item?.commentCount}})</a>
+                </div>
+            </div>
+            <!-- (click)="onNestedComment()" -->
+        </div>
+        <ul class="comment-listing" *ngIf="item?.showReply">
+            <li class="single-comment" *ngFor="let reply of item?.replies">
+                <div class="li-content">
+                    <div class="img-cover">
+                        <img [src]="reply?.users?.profilePicUrl[0] |customImage:'USER'|async" alt="Profile">
+                    </div>
+                    <div class="textual-cover">
+                        <h4>{{reply?.users?.firstName }} {{reply?.users?.lastName || '' }}
+                            <p class="comment-time">{{reply?.createdAt | time}}</p>
+                        </h4>
+                        <p>{{reply?.comment}}</p>
+                        <div class="like-cover"><span class="material-icons">thumb_up</span>
+                            <p>{{reply?.likeCount}}</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </li>
+</ul>
+</div>

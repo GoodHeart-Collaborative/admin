@@ -27,44 +27,44 @@ export class DailyAdviceDetailsComponent implements OnInit {
     $breadcrumb.replace(this.adviceDetails.id, this.adviceDetails.title);
   }
 
-  async ngOnInit() {
-    this.comments = await this.getCommentHandler(this.adviceDetails.id);
-    console.log(this.comments);
-    this.comments = this.comments.map(comment => {
-      comment['replies'] = [];
-      comment['showReply'] = false;
-      return comment;
-    });
+  ngOnInit() {
+    // this.comments = await this.getCommentHandler(this.adviceDetails.id);
+    // console.log(this.comments);
+    // this.comments = this.comments.map(comment => {
+    //   comment['replies'] = [];
+    //   comment['showReply'] = false;
+    //   return comment;
+    // });
   }
 
   /**
    * user Comment Handler
    */
-  async getCommentHandler(id, commentId?) {
-    const params = {
-      pageNo: 1,
-      limit: 100,
-      postId: id
-    };
-    if (commentId) {
-      params['commentId'] = commentId;
-    }
-    return await this.$common.onCommentHandler(params).then(res => {
-      return res.data['list'];
-    });
-  }
+  // async getCommentHandler(id, commentId?) {
+  //   const params = {
+  //     pageNo: 1,
+  //     limit: 100,
+  //     postId: id
+  //   };
+  //   if (commentId) {
+  //     params['commentId'] = commentId;
+  //   }
+  //   return await this.$common.onCommentHandler(params).then(res => {
+  //     return res.data['list'];
+  //   });
+  // }
 
   /**
    * Show nested comment
    * @param id
    */
-  async toggleReplies(commentId: string, commenIndex: number) {
-    if (!this.comments[commenIndex].showReply) {
-        this.comments[commenIndex].replies = await this.getCommentHandler(this.adviceDetails.id, commentId)
-    }
-    this.comments[commenIndex]['showReply'] = !this.comments[commenIndex]['showReply']
-    this.hideShowReplies = !this.hideShowReplies;
-  }
+  // async toggleReplies(commentId: string, commenIndex: number) {
+  //   if (!this.comments[commenIndex].showReply) {
+  //       this.comments[commenIndex].replies = await this.getCommentHandler(this.adviceDetails.id, commentId)
+  //   }
+  //   this.comments[commenIndex]['showReply'] = !this.comments[commenIndex]['showReply']
+  //   this.hideShowReplies = !this.hideShowReplies;
+  // }
 
   /**
    * user Like Handler

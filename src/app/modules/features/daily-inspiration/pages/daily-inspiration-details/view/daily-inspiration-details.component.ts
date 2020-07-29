@@ -32,4 +32,6 @@ export class DailyInspirationDetailsComponent implements OnInit {
       data: id
     }).afterClosed().subscribe();
   }
+
+  
 }

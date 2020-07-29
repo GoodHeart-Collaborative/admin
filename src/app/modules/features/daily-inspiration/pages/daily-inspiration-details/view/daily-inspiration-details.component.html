@@ -9,14 +9,14 @@
                         </figure>
                         <div class="heading-cover">
                             <a class="user_name" href="javascript:void()">User name</a>
-                            <p class="posted-on-date">Posted on: {{dailyInspirationDetails?.createdAt | date : 'medium'}}</p>
+                            <p class="posted-on-date">Posted on: {{dailyInspirationDetails?.postedAt | date : 'medium'}}</p>
                         </div>
                     </div>
                     <h1>{{dailyInspirationDetails?.title | titlecase}}</h1>
                     <p>{{dailyInspirationDetails?.description}}</p>
                 </div>
                 <!-- <div>
-                    <p class="posted-on-date">Posted on: {{dailyInspirationDetails?.createdAt | date : 'medium'}}</p>
+                    <p class="posted-on-date">Posted on: {{dailyInspirationDetails?.postedAt | date : 'medium'}}</p>
                     <div class="like-cover" (click)="onlikeHandler(dailyInspirationDetails._id, dailyInspirationDetails?.likeCount)"><span class="material-icons">thumb_up</span>
                         <p>{{dailyInspirationDetails?.likeCount}}</p>
                     </div>
