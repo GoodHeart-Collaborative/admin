@@ -9,13 +9,13 @@
                     </div>
                     <div class="slide-show">
                         <div class="slide-img-cover">
-                            <img src="assets/images/inspiration.jpg" alt="">
+                            <img [src]="userDetails?.profilePicUrl[0]|customImage:'USER'|async" alt="">
                         </div>
                         <div class="slide-img-cover">
-                            <img  src="assets/images/user.png" alt="">
+                            <img  [src]="userDetails?.profilePicUrl[1]|customImage:'USER'|async" alt="">
                         </div>
                         <div class="slide-img-cover">
-                            <img  src="assets/images/img_avatar3.png" alt="">
+                            <img  [src]="userDetails?.profilePicUrl[2]|customImage:'USER'|async" alt="">
                         </div>
                     </div>
                     <!-- <div class="btn-row">

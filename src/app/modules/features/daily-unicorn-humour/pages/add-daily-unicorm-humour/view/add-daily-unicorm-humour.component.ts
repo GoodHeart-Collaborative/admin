@@ -33,6 +33,7 @@ export class AddDailyUnicormHumourComponent implements OnInit {
     private $route: Router
 
   ) {
+    this.today = new Date(new Date(new Date().setHours(0,0,0)).setDate(new Date().getDate() + 1));
     if ($router.snapshot.data.dailyData && $router.snapshot.data.dailyData.data) {
       this.unicornDetails = $router.snapshot.data.dailyData.data;
       $breadcrumb.replace(this.unicornDetails.id, this.unicornDetails.description);
@@ -64,10 +65,10 @@ export class AddDailyUnicormHumourComponent implements OnInit {
         mediaType: MEDIA_TYPE.IMAGE
       });
   }
-/**
- *  Getter
- * @param name
- */
+  /**
+   *  Getter
+   * @param name
+   */
   form(name) {
     return this.unicornForm.controls[name];
   }
@@ -93,19 +94,26 @@ export class AddDailyUnicormHumourComponent implements OnInit {
     }
   }
 
-/**
- * setting Image in ImageFile
- * @param event
- */
+  /**
+   * setting Image in ImageFile
+   * @param event
+   */
   setimageFile(event) {
     event.type === 1 ? this.thumbnailUrl = '' : this.profilePicURL = '';
     this.imageFile = event;
   }
-/**
- * Submit Form
- */
+  /**
+   * Submit Form
+   */
   async onSubmit() {
+    console.log(new Date(this.unicornForm.get('postedAt').value).getTime() , new Date(this.today).getTime());
     if (this.unicornForm.invalid) {
+      if (this.unicornForm.get('postedAt').value && 
+      new Date(this.unicornForm.get('postedAt').value).getTime() 
+      < new Date(this.today).getTime()) {
+        this.$utility.error('Invalid date selected');
+
+      }
       this.unicornForm.markAllAsTouched();
       return;
     }
