@@ -1,56 +1,78 @@
-<app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)">
+<div class="users-status-count">
+    <button class="btn btn-primary" mat-stroked-button>Active Users
+        <span class="badge-count">30</span>
+    </button>
+    <button class="btn btn-primary" mat-stroked-button>Pending
+        <span class="badge-count">30</span>
+    </button>
+    <button class="btn btn-primary" mat-stroked-button>Declined
+        <span class="badge-count">30</span>
+    </button>
+</div>
 
-    <ng-template appFor="createdAt" let-user="row">
-        {{ user?.createdAt |customDate}}
-    </ng-template>
+<div class="users-listing-page">
+    <app-table [tableSource]="tableSource" (optionChange)="onOptionChange($event)">
 
-    <ng-template appFor="status" let-user="row">
-        {{ user?.status | titlecase}}
-    </ng-template>
+        <ng-template appFor="createdAt" let-user="row">
+            {{ user?.createdAt |customDate}}
+        </ng-template>
 
-    <ng-template appFor="profilePicUrl" let-category="row">
-        <div class="category-image-cover">
-         <img [src]="category?.profilePicUrl[0] |customImage:'USER'|async" alt="category-image" (click)="onImageClick(category?.profilePicUrl[0])">
-        </div>
-     </ng-template>
+        <ng-template appFor="status" let-user="row">
+            {{ user?.status | titlecase}}
+        </ng-template>
 
-
-    <ng-template appFor="mobileNo" let-user="row">
-        <span>{{ user?.mobileNo ?  user?.mobileNo  : (user?.fullMobileNo || '-' )}}</span>
-    </ng-template>
-
-    <ng-template appFor="email" let-user="row">
-        <span >{{ user?.email}}</span>
-    </ng-template>
-   
-
-    <ng-template appFor="name" let-user="row" >
-        <a href="javascript:void(0)" (click)="onDetailsHandler(user?._id)" title="{{ user?.firstName  | titlecase}} {{ user?.lastName | titlecase}}">
-            {{ user?.firstName  | titlecase}} {{ user?.lastName | titlecase}}
-         </a>
-    </ng-template>
-
- <ng-container>
-
-        <ng-template appFor="actions"  let-user="row">
-            <div class="action-icon-cover">
-                <i class="material-icons icon-check icon-edit" (click)="onverifyHandler(user?._id, 'verified' )" title="Verify User" [class.disabled-icon]="(user?.adminStatus == 'verified')">
-                    check_circle
-                </i>
-                <i class="material-icons icon-deny" title="Reject User" (click)="onverifyHandler(user?._id, 'rejected')"  [class.disabled-icon]="(user?.adminStatus == 'rejected')">
-                    cancel
-                </i>
-                <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked')" *ngIf="user?.status === 'active';else templateAction"  title="Block user">
-                    blocked</i>
-                <ng-template #templateAction>
-                    <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active')" title="Unblock user" >
-                        lock_open
-                    </i>
-                </ng-template>
-                <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')" title="Delete user">
-                    delete
-                </i>
+        <ng-template appFor="profilePicUrl" let-category="row">
+            <div class="category-image-cover">
+                <img [src]="category?.profilePicUrl[0] |customImage:'USER'|async" alt="category-image"
+                    (click)="onImageClick(category?.profilePicUrl[0])">
             </div>
         </ng-template>
-    </ng-container> 
-</app-table>
+
+
+        <ng-template appFor="mobileNo" let-user="row">
+            <span>{{ user?.mobileNo ?  user?.mobileNo  : (user?.fullMobileNo || '-' )}}</span>
+        </ng-template>
+
+        <ng-template appFor="email" let-user="row">
+            <span>{{ user?.email}}</span>
+        </ng-template>
+
+
+        <ng-template appFor="name" let-user="row">
+            <a href="javascript:void(0)" (click)="onDetailsHandler(user?._id)"
+                title="{{ user?.firstName  | titlecase}} {{ user?.lastName | titlecase}}">
+                {{ user?.firstName  | titlecase}} {{ user?.lastName | titlecase}}
+            </a>
+        </ng-template>
+
+        <ng-container>
+
+            <ng-template appFor="actions" let-user="row">
+                <div class="action-icon-cover">
+                    <i class="material-icons icon-check icon-edit" (click)="onverifyHandler(user?._id, 'verified' )"
+                        title="Verify User" [class.disabled-icon]="(user?.adminStatus == 'verified')">
+                        check_circle
+                    </i>
+                    <i class="material-icons icon-deny" title="Reject User"
+                        (click)="onverifyHandler(user?._id, 'rejected')"
+                        [class.disabled-icon]="(user?.adminStatus == 'rejected')">
+                        cancel
+                    </i>
+                    <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked')"
+                        *ngIf="user?.status === 'active';else templateAction" title="Block user">
+                        blocked</i>
+                    <ng-template #templateAction>
+                        <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active')"
+                            title="Unblock user">
+                            lock_open
+                        </i>
+                    </ng-template>
+                    <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')"
+                        title="Delete user">
+                        delete
+                    </i>
+                </div>
+            </ng-template>
+        </ng-container>
+    </app-table>
+</div>
