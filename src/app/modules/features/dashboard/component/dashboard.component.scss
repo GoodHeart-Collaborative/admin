@@ -167,11 +167,16 @@
             }
         }
         &.section-3{
+            min-height: 300px;
             .graph-cover{
                 text-align: center;
                 padding: 65px 20px;
             }
             .total-users-card{
+                display: none;
+                &.animate__bounceInLeft{
+                    display: block;
+                }
                 .row-1, .row-2{
                     display: flex;
                     align-items: center;
@@ -194,9 +199,18 @@
                     }
                 }
             }
+            .todays-revenue-card{
+                display: none;
+                &.animate__bounceInLeft{
+                    display: block;
+                }
+            }
             .mod-list-card{
                 padding-bottom: 0px;
-                --animate-delay: 3s;
+                display: none;
+                &.animate__bounceInRight{
+                    display: block;
+                }
                 .table-cover{
                     margin: 0px -24px;
                     table{
@@ -297,7 +311,4 @@
             background: #E4E8EB;
         }
     }
-    :root {
-        --animate-delay: 50000ms !important;
-      }
 }

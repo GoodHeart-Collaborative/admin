@@ -28,6 +28,8 @@
             @include scroller(6px , $primary);
             &.on-dashboard-page{
                 background-color: #f9f9f9;
+                overflow: inherit;
+                height: auto;
                 app-breadcrumb{
                     display: none;
                 }
@@ -38,66 +40,3 @@
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// .page-layout-screen{
-//     .content-cover{
-//         display: flex;
-//         height: calc(100vh - 64px);
-//         @media screen and (max-width: 1600px){
-//             height: calc(100vh - 50px);
-//         }
-//         .sidebar{
-//             width: 220px;
-//             transition: .5s;
-//             z-index: 9;
-//             @media screen and (max-width: 1600px){
-//                 width: 200px;
-//             }
-//             @media screen and (max-width: 992px){
-//                 position: fixed;
-//             }
-//         }
-//         .main-content{
-//             padding: 15px 20px;
-//             width: calc(100% - 220px);
-//             transition: .5s;
-//             max-height: calc(100vh - 64px);
-//             @include scroller(6px , $primary);
-
-//             @media screen and (max-width: 1600px){
-//                 max-height: calc(100vh - 50px);
-//                 width: calc(100% - 200px);
-//                 padding: 12px 15px;
-                
-//             }
-//             @media screen and (max-width: 992px){
-//                 margin-left: 55px;
-//                 width: calc(100% - 55px);
-//             }
-//             @media screen and (max-width: 568px){
-//                 margin-left: 0px;
-//                 width: 100%;
-//             }
-//         }
-//     }
-// }

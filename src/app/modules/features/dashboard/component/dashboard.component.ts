@@ -20,7 +20,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   data: any;
   color;
   mode;
-  sectionFeatures: boolean = false;
+  tableAnimate: boolean = false;
+  totalUsersCardAnimate: boolean = false;
   memberList: unknown;
   params = {
     page: 1,
@@ -60,19 +61,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.memberOfTheDayList();
-
-    alert;
   }
 
-  // @HostListener('window:scroll', ['$event']) onWindowScroll(e) {
-  //   if(window.pageYOffset > 20){
-  //     this.sectionFeatures = true;
-  //     console.log('scroll-value' + window.pageYOffset);
-  //   }
-  //   else{
-  //     this.sectionFeatures = false;
-  //   }
-  // }
+  @HostListener('window:scroll', ['$event']) onWindowScroll(e) {
+    if(window.pageYOffset > 320){
+      this.tableAnimate = true;
+      this.totalUsersCardAnimate = true;
+    }
+  }
 
   onDrashboardHandler() {
     this.$dashboardService.onDrashboardHandler().then(res => {
