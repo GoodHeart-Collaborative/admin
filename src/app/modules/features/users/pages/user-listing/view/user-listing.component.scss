@@ -33,12 +33,12 @@
     justify-content: flex-end;
     margin-top: -56px;
     padding-bottom: 16px;
-    .btn-primary {
+    .btn {
         height: 40px;
         .badge-count {
             padding: 1px 8px;
-            background-color: white;
-            color: $primary;
+            background-color: $primary;
+            color: white;
             display: inline-block;
             margin-left: 10px;
             border-radius: 10px;
@@ -47,6 +47,12 @@
         }
         &:not(:nth-last-of-type(1)) {
             margin-right: 15px;
+        }
+        &.btn-primary{
+            .badge-count{
+                background-color: white;
+                color: $primary;
+            }
         }
     }
 }

@@ -1,11 +1,11 @@
 <div class="users-status-count">
-    <button class="btn btn-primary" mat-stroked-button (click)="onAdminStatusHandler('verified')">Verified
+    <button class="btn" mat-stroked-button (click)="onAdminStatusHandler('verified')">Verified
         <span class="badge-count">{{statusCount?.verifiedCount || 0}}</span>
     </button>
     <button class="btn btn-primary" mat-stroked-button (click)="onAdminStatusHandler('pending')">Pending
         <span class="badge-count">{{statusCount?.pendingCount || 0}}</span>
     </button>
-    <button class="btn btn-primary" mat-stroked-button (click)="onAdminStatusHandler('rejected')">Declined
+    <button class="btn" mat-stroked-button (click)="onAdminStatusHandler('rejected')">Declined
         <span class="badge-count">{{statusCount?.rejectedCount || 0}}</span>
     </button>
 </div>
