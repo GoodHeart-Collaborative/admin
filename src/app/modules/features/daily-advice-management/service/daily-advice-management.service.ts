@@ -42,6 +42,7 @@ export class DailyAdviceManagementServiceResolve implements Resolve<any>  {
     const userId = route.params['id'];
     return this.$daily.updateInspiration(userId).catch(err => {
       if (err) {
+        debugger
         // this.$router.navigate([DAILY_INSPIRATION]);
         return null;
       }

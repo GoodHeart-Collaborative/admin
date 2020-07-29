@@ -57,8 +57,6 @@ export class DailyAdviceListingComponent implements OnInit {
             value.setHours(23, 59, 59, 999);
           }
           params[key] = `${new Date(value).toISOString()}`;
-          console.log(params[key]);
-          
         } else {
           params[key] = filterData[key];
         }
@@ -144,7 +142,8 @@ export class DailyAdviceListingComponent implements OnInit {
   }
 
  onAdd() {
-    this.$router.navigate([`${ADD_DAILY_ADVICE.fullUrl}`]);
+    // this.$router.navigate([`${ADD_DAILY_ADVICE.fullUrl}`]);
+    this.$router.navigate([`${DAILY_ADVICE.fullUrl}`, 'add']);
  }
 
   /**

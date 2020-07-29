@@ -5,10 +5,10 @@
                 <div class="card_header_container profile_header">
                     <div class="card_header">
                         <figure mat-card-avatar class="image-cover">
-                            <img class="img-cover-fit" src="assets/images/img_avatar3.png" alt="">
+                            <img class="img-cover-fit" [src]="dailyInspirationDetails?.addedBy?.profilePicture | customImage:'USERS'|async " alt="">
                         </figure>
                         <div class="heading-cover">
-                            <a class="user_name" href="javascript:void()">User name</a>
+                            <a class="user_name" href="javascript:void()">{{dailyInspirationDetails?.addedBy?.name}}</a>
                             <p class="posted-on-date">Posted on: {{dailyInspirationDetails?.postedAt | date : 'medium'}}</p>
                         </div>
                     </div>
@@ -36,9 +36,40 @@
                 <p>{{dailyInspirationDetails?.likeCount}}</p>
             </div>
         </div>
-        <div class="row-3">
-            <ul class="users-listing">
-                <li class="single-user" *ngFor="let item of [1,2,3,4,5]">
+        <app-comments-show [commentId]="dailyInspirationDetails?.id"></app-comments-show>
+
+    </div>
+</div>
+
+
+
+<!-- <div class="row-3">
+    <ul class="users-listing">
+        <li class="single-user" *ngFor="let item of [1,2,3,4,5]">
+            <div class="li-content">
+                <div class="img-cover">
+                    <img src="assets/images/img_avatar3.png" alt="Profile">
+                </div>
+                <div class="textual-cover">
+                    <h4>User name
+                        <p class="comment-time">3 days ago</p>
+                    </h4>
+                    <p class="comment">
+                        Material is an adaptable system of guidelines, components, and tools that
+                        support the
+                        best practices of user interface design. Backed by open-source code.
+                    </p>
+                    <div class="like-cover">
+                        <span class="material-icons">thumb_up</span>
+                        <p>2</p>
+                        <a class="see-hide-replies">See
+                            Replies (2)</a>
+                    </div>
+                </div> -->
+                <!-- (click)="onNestedComment()" -->
+            <!-- </div>
+            <ul class="comment-listing">
+                <li class="single-comment">
                     <div class="li-content">
                         <div class="img-cover">
                             <img src="assets/images/img_avatar3.png" alt="Profile">
@@ -47,47 +78,21 @@
                             <h4>User name
                                 <p class="comment-time">3 days ago</p>
                             </h4>
-                            <p class="comment">
+                            <p>
                                 Material is an adaptable system of guidelines, components, and tools that
                                 support the
                                 best practices of user interface design. Backed by open-source code.
                             </p>
-                            <div class="like-cover">
-                                <span class="material-icons">thumb_up</span>
-                                <p>2</p>
-                                <a class="see-hide-replies">See
-                                    Replies (2)</a>
+                            <div class="like-cover"><span class="material-icons">thumb_up</span>
+                                <p>
+                                    3
+                                </p>
                             </div>
                         </div>
-                        <!-- (click)="onNestedComment()" -->
                     </div>
-                    <ul class="comment-listing">
-                        <li class="single-comment">
-                            <div class="li-content">
-                                <div class="img-cover">
-                                    <img src="assets/images/img_avatar3.png" alt="Profile">
-                                </div>
-                                <div class="textual-cover">
-                                    <h4>User name
-                                        <p class="comment-time">3 days ago</p>
-                                    </h4>
-                                    <p>
-                                        Material is an adaptable system of guidelines, components, and tools that
-                                        support the
-                                        best practices of user interface design. Backed by open-source code.
-                                    </p>
-                                    <div class="like-cover"><span class="material-icons">thumb_up</span>
-                                        <p>
-                                            3
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                    </ul>
                 </li>
+
             </ul>
-        </div>
-    </div>
-</div>
+        </li>
+    </ul>
+</div> -->

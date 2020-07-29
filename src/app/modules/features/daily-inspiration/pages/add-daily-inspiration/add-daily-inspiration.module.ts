@@ -9,6 +9,7 @@ import { ValidationErrorPipeModule } from 'src/app/pipes/validation-error/valida
 import { ReactiveFormsModule } from '@angular/forms';
 import { MediaUploadModule } from 'src/app/modules/shared/media-upload/media-upload.module';
 import { WhiteSpaceModule } from 'src/app/modules/shared/white-space/white-space.module';
+import { EditProfileService } from '../../../admin/edit-profile/service/edit-profile.service';
 
 
 const routes: Routes = [
@@ -32,7 +33,9 @@ const routes: Routes = [
     MatNativeDateModule,
     CustomImageModule,
     MediaUploadModule,
-    WhiteSpaceModule
-  ]
+    WhiteSpaceModule,
+    
+  ],
+  providers: [EditProfileService]
 })
 export class AddDailyInspirationModule { }

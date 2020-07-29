@@ -12,6 +12,7 @@ import { DailyAdviceManagementServiceResolve, DailyAdviceManagementService } fro
     CommonModule,
     DailyAdviceManagementRoutingModule
   ],
-  providers : [DailyAdviceManagementServiceResolve,DailyAdviceManagementService]
+  providers : [DailyAdviceManagementServiceResolve,
+               DailyAdviceManagementService]
 })
 export class DailyAdviceManagementModule { }

@@ -9,6 +9,7 @@ import { RequestInterceptor } from 'src/app/Interceptors/request.interceptor';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { DAILY_INSPIRATION } from 'src/app/constant/routes';
 import { HOME_TYPE, MEDIA_TYPE } from 'src/app/constant/drawer';
+import { EditProfileService } from 'src/app/modules/features/admin/edit-profile/service/edit-profile.service';
 @Component({
   selector: 'app-add-daily-inspiratin',
   templateUrl: './add-daily-inspiratin.component.html',
@@ -24,6 +25,7 @@ export class AddDailyInspiratinComponent implements OnInit {
   descriptionMaxLength = VALIDATION_CRITERIA.descriptionMaxLength;
   titleMaxLength = VALIDATION_CRITERIA.titleMaxLength;
   thumbnailUrl: any;
+  profileDetail: any;
   constructor(
     private $formBuilder: FormBuilder,
     private $daily: DailyInspirationService,
@@ -31,15 +33,16 @@ export class AddDailyInspiratinComponent implements OnInit {
     $router: ActivatedRoute,
     $breadcrumb: BreadcrumbService,
     private $utility: UtilityService,
-    private $route: Router
+    private $route: Router,
+    private $editProfileService: EditProfileService
 
   ) {
-    this.today = new Date(new Date(new Date().setHours(0,0,0)).setDate(new Date().getDate() + 1));
-
+    this.today = new Date(new Date(new Date().setHours(0, 0, 0)).setDate(new Date().getDate() + 1));
     if ($router.snapshot.data.dailyData && $router.snapshot.data.dailyData.data) {
       this.dailyInspirationDetails = $router.snapshot.data.dailyData.data;
       $breadcrumb.replace(this.dailyInspirationDetails.id, this.dailyInspirationDetails.title);
     }
+    this.getProfileDetail();
   }
 
   ngOnInit() {
@@ -64,7 +67,8 @@ export class AddDailyInspiratinComponent implements OnInit {
         isPostLater: [false],
         description: ['', [Validators.required, Validators.maxLength(this.descriptionMaxLength)]],
         type: HOME_TYPE.INSPIRATION,
-        mediaType: [1]
+        mediaType: [1],
+        addedBy: ['']
       });
   }
 
@@ -103,16 +107,23 @@ export class AddDailyInspiratinComponent implements OnInit {
    * Submit Form
    */
   async onSubmit() {
-    if (this.inspirationForm.invalid) { 
-      if (this.inspirationForm.get('postedAt').value && 
-      new Date(this.inspirationForm.get('postedAt').value).getTime() 
-      < new Date(this.today).getTime()) {
+    if (this.inspirationForm.invalid) {
+      if (this.inspirationForm.get('postedAt').value &&
+        new Date(this.inspirationForm.get('postedAt').value).getTime()
+        < new Date(this.today).getTime()) {
         this.$utility.error('Invalid date selected');
-       }
+      }
       this.inspirationForm.markAllAsTouched();
       return;
     }
     const body = { ...this.inspirationForm.value };
+    if (this.profileDetail) {
+
+      body.addedBy = {
+        name: this.profileDetail.name,
+        profilePicture: this.profileDetail.profilePicture
+      };
+    }
     if (this.imageFile) {
       if (this.imageFile && this.imageFile.type == 1) {
         const data: any = await this.$fileUploadService.uploadFile(this.imageFile.file);
@@ -173,6 +184,18 @@ export class AddDailyInspiratinComponent implements OnInit {
 
   onCancel() {
     this.$route.navigate([DAILY_INSPIRATION.fullUrl]);
+  }
+
+  /**
+ * @description Getting Admin Profile Detail
+ */
+  getProfileDetail() {
+    this.$editProfileService.getProfileDetail()
+      .subscribe(
+        (response: any) => {
+          this.profileDetail = response.data;
+        }, err => { }
+      );
   }
 
 }

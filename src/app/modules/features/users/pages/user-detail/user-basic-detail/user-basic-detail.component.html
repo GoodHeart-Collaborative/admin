@@ -4,19 +4,13 @@
             <div class="row-1">
                 <div class="left-portion">
                     <div class="img-cover" (click)="onImageClick(userDetails?.profilePicUrl)">
-                        <img [src]="userDetails?.profilePicUrl[0]|customImage:'USER'|async" alt="User Profile Image">
+                        <img [src]="userDetails?.profilePicUrl[selectedIndex]|customImage:'USER'|async" alt="User Profile Image">
                         <div class="img-overlay">+2</div>
                     </div>
-                    <div class="slide-show">
-                        <div class="slide-img-cover active">
-                            <img [src]="userDetails?.profilePicUrl[0]|customImage:'USER'|async" alt="">
-                        </div>
-                        <div class="slide-img-cover">
-                            <img  [src]="userDetails?.profilePicUrl[1]|customImage:'USER'|async" alt="">
-                        </div>
-                        <div class="slide-img-cover">
-                            <img  [src]="userDetails?.profilePicUrl[2]|customImage:'USER'|async" alt="">
-                        </div>
+                    <div class="slide-show" >
+                        <div class="slide-img-cover active" *ngFor="let item of userDetails?.profilePicUrl; let i= index" (click)="selectedIndex = i">
+                            <img [src]="item|customImage:'USER'|async" alt="">
+                        </div> 
                     </div>
 
                 </div>

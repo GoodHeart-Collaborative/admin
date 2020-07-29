@@ -15,6 +15,7 @@ import { SliderComponent } from 'src/app/modules/shared/slider/view/slider.compo
 })
 export class UserBasicDetailComponent implements OnInit {
   @Input() userDetails;
+  selectedIndex  = 0;
   constructor(
     private $userService: UsersService,
     private $confirmBox: ConfirmBoxService,

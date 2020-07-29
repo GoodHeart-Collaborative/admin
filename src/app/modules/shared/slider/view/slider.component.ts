@@ -30,10 +30,7 @@ export class SliderComponent implements OnInit {
   // showSlides(slideIndex);
 
   plusSlides(n) {
-
     const index = this.slideIndex += n;
-    
-
     if (this.data[index]) {
       this.visibleImges = [this.data[index]];
 
