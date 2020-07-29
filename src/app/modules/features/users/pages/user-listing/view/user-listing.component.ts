@@ -25,6 +25,7 @@ export class UserListingComponent implements OnInit {
     filterData: null,
     sortData: null
   };
+  statusCount: unknown;
   constructor(
     private $router: Router,
     private $userService: UsersService,
@@ -68,7 +69,8 @@ export class UserListingComponent implements OnInit {
       params['sortBy'] = sortData.sortBy;
     }
     this.$userService.queryData(params).then(res => {
-      this.userData = res['data'];
+      this.statusCount = res.data
+      this.userData = res.data['data'];
       this.setUpTableResource(this.userData);
     });
   }
@@ -86,12 +88,15 @@ export class UserListingComponent implements OnInit {
  */
   onOptionChange(event: Table.OptionEvent) {
     this.eventData = event.data;
+    console.log(this.eventData);
+    
     this.updateUsers();
   }
+
 /**
  * User Action Handler
- * @param id
- * @param action
+ *
+ *
  */
   onActionHandler(id: string, action: ActionType) {
     const index = this.userData.data.findIndex(user => user._id === id);
@@ -110,10 +115,9 @@ export class UserListingComponent implements OnInit {
       }
     });
   }
+
 /**
  * Action Update Handler
- * @param action
- * @param index
  */
   handleActions(action: ActionType, index) {
     switch (action) {
@@ -145,7 +149,7 @@ export class UserListingComponent implements OnInit {
   }
 /**
  * User Set Up Table Handler
- * @param userRecords
+ *
  */
   setUpTableResource(userRecords) {
     const { pageIndex, pageSize } = this.eventData;
@@ -158,7 +162,7 @@ export class UserListingComponent implements OnInit {
   }
 /**
  * Verify User Handler
- * @param id
+ *
  */
   onverifyHandler(id, status) {
     this.$confirmBox.listAction('user', `${status  == 'verified'  ? 'verify' : 'reject'}`).subscribe((confirm) => {
@@ -177,27 +181,19 @@ export class UserListingComponent implements OnInit {
   }
 
 /**
- * Declined User Handler
- * @param id
+ * Apply  User Status  filter
+ *
  */
-  // onDeclinedHandler(id) {
-  //   this.$confirmBox.listAction('User', 'Declined').subscribe((confirm) => {
-  //     if (confirm) {
-  //       const params = {
-  //         isAdminRejected: true,
-  //       };
-  //       this.$userService.onVerifiedHnadler(id, params).then(res => {
-  //         if (res) {
-  //           this.updateUsers();
-  //         }
-  //       });
-  //     }
-  //   });
-  // }
+  onAdminStatusHandler(status: string) {
+    this.eventData.filterData = {
+      adminStatus: status
+    };
+    this.updateUsers();
+  }
 
 /**
  * View Fill Image
- * @param image
+ *
  */
   onImageClick(image) {
     this.matDailog.open(ViewFullImageComponent, {
