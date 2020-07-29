@@ -20,7 +20,7 @@ export class MemberTableDataSource implements Table.Source<Category> {
         // resolve: (row: any) => row['title'] || '-',
     },
     {
-        title: 'Email Id',
+        title: 'Email Address',
         id: 'email',
         sorting: false,
         resolve: (row: any) => row['email'] || '-',
@@ -61,7 +61,7 @@ export class MemberTableDataSource implements Table.Source<Category> {
   ];
   options: Table.Options = {
     selection: false,
-    search: 'Search by Name, Email Id',
+    search: 'Search by Name, Email Address',
     index: true,
     filterComponent: ListingFilterComponent,
     sorting: true,
