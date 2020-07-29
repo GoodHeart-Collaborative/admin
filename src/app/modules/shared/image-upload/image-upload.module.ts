@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ImageUploadComponent } from './view/image-upload.component';
-import { MatDialogModule } from '@angular/material';
+import { MatDialogModule, MatIconModule, MatButtonModule, MatTooltipModule } from '@angular/material';
+import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
+import { ImageCropModule } from '../image-crop/image-crop.module';
 
 
 
@@ -9,8 +11,12 @@ import { MatDialogModule } from '@angular/material';
   declarations: [ImageUploadComponent],
   imports: [
     CommonModule,
-    MatDialogModule
+    MatIconModule,
+    MatButtonModule,
+    MatTooltipModule,
+    CustomImageModule,
+    ImageCropModule
   ],
-  entryComponents: [ImageUploadComponent]
+  exports: [ImageUploadComponent]
 })
 export class ImageUploadModule { }

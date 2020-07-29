@@ -90,7 +90,6 @@ export class AddAdviceComponent implements OnInit {
 
 
   setimageFile(event) {
-
     this.imageFile = event;
     console.log(event);
 

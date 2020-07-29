@@ -2,7 +2,7 @@
   <div class="add-category-mangement-content">
     <form [formGroup]="categoryForm">
       <div class="row-1">
-        <div class="left-portion">
+        <!-- <div class="left-portion">
           <div class="img-cover">
             <img [src]="profilePicURL|customImage:'IMAGE_PLACEHOLDER'|async" alt="" style="width: 100%;">
             <div class="mat-icon-cover">
@@ -13,7 +13,8 @@
               </button>
             </div>
           </div>
-        </div>
+        </div> -->
+        <app-image-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL"></app-image-upload>
         <div class="right-portion">
           <p>Enter the name of category you want to create.</p>
           <mat-form-field appearance="outline">
