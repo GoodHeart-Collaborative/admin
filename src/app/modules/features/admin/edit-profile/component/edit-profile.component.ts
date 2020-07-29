@@ -58,15 +58,18 @@ export class EditProfileComponent implements OnInit,OnDestroy {
       );
   }
 
-/**
-   * @description set Image File in editProfileForm
-   * @param name
+  /**
+   *  set Image File in editProfileForm
+   * 
    */
 
  setimageFile(event) {
-    this.imageFile = event;
-    console.log(this.imageFile);
-    
+  if (!event) {
+    this.imageFile = null;
+    this.profilePicURL = '';
+    return;
+  }
+  this.imageFile = event;
  }
 
   /**

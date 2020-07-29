@@ -47,18 +47,19 @@ export const INDUSTRY_TYP = {
         'Licensed Therapists specializing in Vicarious and Secondary Trauma',
     Compassion_Fatigue: 'Compassion Fatigue'
 };
+
 export const INDUSTRY_TYPE = [
-    {value: 'Experts_in_Executive_Burnout' , viewValue: 'Experts in Executive Burnout'},
-    {value: 'Nonprofit_Resiliency_Coaches' , viewValue: 'Nonprofit Resiliency Coaches'},
-    {value: 'Wellness_Coaches' , viewValue: 'Wellness Coaches'},
+    // {value: 'Experts_in_Executive_Burnout' , viewValue: 'Experts in Executive Burnout'},
+    // {value: 'Nonprofit_Resiliency_Coaches' , viewValue: 'Nonprofit Resiliency Coaches'},
+    // {value: 'Wellness_Coaches' , viewValue: 'Wellness Coaches'},
     {value: 'Nonprofit' , viewValue: 'Nonprofit'},
     {value: 'Emergency_Services' , viewValue: 'Emergency Services'},
     {value: 'Social_And_Community_Services' , viewValue: 'Social And Community Services'},
     {value: 'Law_Enforcement' , viewValue: 'Law Enforcement'},
     {value: 'Healthcare_And_Community_Medical_Services' , viewValue: 'Healthcare And Community Medical Services'},
-    {value: 'Compassion_Fatigue' , viewValue: 'Compassion Fatigue'},
-    {value: 'Licensed_Therapists_specializing_in_Vicarious_and_Secondary_Trauma' , 
-    viewValue: 'Licensed Therapists specializing in Vicarious and Secondary Trauma'},
+    // {value: 'Compassion_Fatigue' , viewValue: 'Compassion Fatigue'},
+    // {value: 'Licensed_Therapists_specializing_in_Vicarious_and_Secondary_Trauma' , 
+    // viewValue: 'Licensed Therapists specializing in Vicarious and Secondary Trauma'},
 ];
 
 export const EXPERIENCE = [
@@ -82,6 +83,7 @@ export const EXPERT_CONTENT_TYPE =  [
     { value : 3 , viewValue: 'Image', disabled: false},
     { value : 4 , viewValue: 'Voice Note', disabled: false}
 ];
+
 export const PRAVICY =  [
     { value : 'private', viewValue: 'Private'},
     { value : 'protected', viewValue: 'Protected'},

@@ -1,5 +1,7 @@
 <div class="page-image-upload">
   <div class="img-cover" title="Image: JPEG, PNG formats are allowed">
+    <button (click)="removeMedia()" type="button" *ngIf="profilePicURL">close</button>
+
     <img [src]="profilePicURL|customImage:'IMAGE_PLACEHOLDER'|async" alt="" style="width: 100%;">
     <div class="mat-icon-cover">
       <button type="button" class="camBtn" mat-mini-fab color="primary">

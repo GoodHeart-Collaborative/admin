@@ -52,6 +52,11 @@ export class AddCategoryManagementComponent implements OnInit {
   }
 
   setimageFile(event) {
+    if (!event) {
+      this.imageFile = null;
+      this.profilePicURL = '';
+      return;
+    }
     this.imageFile = event;
   }
 
@@ -91,8 +96,6 @@ export class AddCategoryManagementComponent implements OnInit {
 
 
   getCategoryDetail() {
-    console.log(this.categoryDetails);
-    
     this.categoryForm.patchValue({
             title: this.categoryDetails.title
           });

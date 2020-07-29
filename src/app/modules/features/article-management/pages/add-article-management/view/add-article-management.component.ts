@@ -65,12 +65,15 @@ export class AddArticleManagementComponent implements OnInit {
 
 
   setimageFile(event) {
+    if (!event) {
+      this.imageFile = null;
+      this.profilePicURL = '';
+      return;
+    }
     this.imageFile = event;
   }
 
   async onSubmit() {
-    console.log(this.articleForm);
-    
     if (this.articleForm.invalid) {
       this.articleForm.markAllAsTouched();
       return;

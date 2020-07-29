@@ -96,6 +96,12 @@ export class AddAdviceComponent implements OnInit {
 
 
   setimageFile(event) {
+    if (!event) {
+      this.imageFile = null;
+      this.profilePicURL = '';
+      this.thumbnailUrl = '';
+      return;
+    }
     this.imageFile = event;
     console.log(event);
 
@@ -135,13 +141,20 @@ export class AddAdviceComponent implements OnInit {
         body.mediaType = this.imageFile.type;
       }
     } else if (this.adviceDetails) {
-      if (this.adviceDetails.mediaType == 1) {
+      if (this.adviceDetails.mediaType == 1 && this.profilePicURL) {
         body['mediaUrl'] = this.profilePicURL;
         body.mediaType = this.adviceDetails.mediaType;
+      } else {
+        delete body.mediaType;
+        body['mediaUrl'] = '';
       }
-      if (this.adviceDetails.mediaType == 2) {
+      if (this.adviceDetails.mediaType == 2 && this.thumbnailUrl) {
         body['thumbnailUrl'] = this.thumbnailUrl;
         body.mediaType = this.adviceDetails.mediaType;
+      } else {
+        delete body.mediaType;
+        body['mediaUrl'] = '';
+        body['thumbnailUrl'] = '';
       }
     }
 

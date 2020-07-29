@@ -1,7 +1,8 @@
 <div class="page-media-upload">
   <div class="img-cover" title="Image: JPEG, PNG | Video: MP4, 3GP formats are allowed">
-    <img [src]="profilePicURL |customImage:'IMAGE_PLACEHOLDER'|async" alt=""  *ngIf="!videoSrc">
+    <button (click)="removeMedia()" type="button" *ngIf="videoSrc || profilePicURL">close</button>
 
+    <img [src]="profilePicURL |customImage:'IMAGE_PLACEHOLDER'|async" alt=""  *ngIf="!videoSrc">
     <video #myVideo muted [src]="videoSrc" *ngIf="videoSrc" loop id="video"  controls
     (canplay)="onCanPlayHandler( $event.currentTarget)">Your browser does not support the
       video tag.</video>

@@ -4,7 +4,9 @@
         <form [formGroup]="expertForm">
             <div class="row-1">
                 <!-- <media-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL"></media-upload> -->
-                <div class="img-cover">
+                <app-image-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL"></app-image-upload>
+
+                <!-- <div class="img-cover">
                     <img [src]="profilePicURL|customImage:'USER'|async" alt="">
                     <div class="mat-icon-cover">
                       <button type="button" class="camBtn" mat-mini-fab color="primary">
@@ -13,7 +15,7 @@
                           matTooltip="Change Image" />
                       </button>
                     </div>
-                  </div>
+                  </div> -->
                 <div class="right-portion">
                     <div class="row">
                         <div class="col-md-6">

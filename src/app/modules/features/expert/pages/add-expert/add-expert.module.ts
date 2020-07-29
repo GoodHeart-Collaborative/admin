@@ -13,6 +13,7 @@ import { MatFormFieldModule,
 import { ValidationErrorPipeModule } from 'src/app/pipes/validation-error/validation-error-pipe.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { WhiteSpaceModule } from 'src/app/modules/shared/white-space/white-space.module';
+import { ImageUploadModule } from 'src/app/modules/shared/image-upload/image-upload.module';
 
 const routes: Routes = [
   {
@@ -38,7 +39,8 @@ const routes: Routes = [
     MatInputModule,
     WhiteSpaceModule,
     CustomImageModule,
-    MatIconModule
+    MatIconModule,
+    ImageUploadModule
   ]
 })
 export class AddExpertModule { }

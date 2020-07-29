@@ -38,11 +38,11 @@ export class UserListingComponent implements OnInit {
   ngOnInit() {
     this.updateUsers();
   }
-/**
- * User listing Handler
- */
+  /**
+   * User listing Handler
+   */
   updateUsers() {
-    const { pageIndex, pageSize, searchText, filterData , sortData} = this.eventData;
+    const { pageIndex, pageSize, searchText, filterData, sortData } = this.eventData;
     let params = {
       page: `${pageIndex + 1}`,
       limit: `${pageSize}`,
@@ -75,50 +75,50 @@ export class UserListingComponent implements OnInit {
     });
   }
 
-/**
- * Detail User
- * @param id
- */
+  /**
+   * Detail User
+   * @param id
+   */
   onDetailsHandler(id) {
     this.$router.navigate([USER.fullUrl, id, 'details']);
   }
-/**
- * Listing Pagination Hnadler
- * @param event
- */
+  /**
+   * Listing Pagination Hnadler
+   * @param event
+   */
   onOptionChange(event: Table.OptionEvent) {
     this.eventData = event.data;
     console.log(this.eventData);
-    
+
     this.updateUsers();
   }
 
-/**
- * User Action Handler
- *
- *
- */
+  /**
+   * User Action Handler
+   *
+   *
+   */
   onActionHandler(id: string, action: ActionType) {
     const index = this.userData.data.findIndex(user => user._id === id);
     this.$confirmBox.listAction('user',
-    (action == 'active')  ?  'active' :
-    ( action == 'deleted' ? 'delete' : 'block'))
-    .subscribe((confirm) => {
-      if (confirm) {
-        const params = {
-          status : action
-        };
-        this.$userService.onVerifiedHnadler(id, params).then((res) => {
-          this.$utility.success(res.message);
-          this.handleActions(action, index);
-        });
-      }
-    });
+      (action == 'active') ? 'active' :
+        (action == 'deleted' ? 'delete' : 'block'))
+      .subscribe((confirm) => {
+        if (confirm) {
+          const params = {
+            status: action
+          };
+          this.$userService.onVerifiedHnadler(id, params).then((res) => {
+            this.$utility.success(res.message);
+            this.handleActions(action, index);
+          });
+        }
+      });
   }
 
-/**
- * Action Update Handler
- */
+  /**
+   * Action Update Handler
+   */
   handleActions(action: ActionType, index) {
     switch (action) {
       case 'deleted':
@@ -147,10 +147,10 @@ export class UserListingComponent implements OnInit {
       return user;
     });
   }
-/**
- * User Set Up Table Handler
- *
- */
+  /**
+   * User Set Up Table Handler
+   *
+   */
   setUpTableResource(userRecords) {
     const { pageIndex, pageSize } = this.eventData;
     this.tableSource = new UserTableDataSource({
@@ -160,12 +160,12 @@ export class UserListingComponent implements OnInit {
       total: userRecords['total']
     });
   }
-/**
- * Verify User Handler
- *
- */
+  /**
+   * Verify User Handler
+   *
+   */
   onverifyHandler(id, status) {
-    this.$confirmBox.listAction('user', `${status  == 'verified'  ? 'verify' : 'reject'}`).subscribe((confirm) => {
+    this.$confirmBox.listAction('user', `${status == 'verified' ? 'verify' : 'reject'}`).subscribe((confirm) => {
       if (confirm) {
         const params = {
           adminStatus: status
@@ -180,21 +180,26 @@ export class UserListingComponent implements OnInit {
     });
   }
 
-/**
- * Apply  User Status  filter
- *
- */
+  /**
+   * Apply  User Status  filter
+   *
+   */
   onAdminStatusHandler(status: string) {
-    this.eventData.filterData = {
-      adminStatus: status
-    };
+    if (this.eventData.filterData.adminStatus && this.eventData.filterData.adminStatus == status) {
+      delete this.eventData.filterData.adminStatus;
+    } else {
+       this.eventData.filterData = {
+        ...this.eventData.filterData,
+        adminStatus: status
+      };
+    }
     this.updateUsers();
   }
 
-/**
- * View Fill Image
- *
- */
+  /**
+   * View Fill Image
+   *
+   */
   onImageClick(image) {
     this.matDailog.open(ViewFullImageComponent, {
       panelClass: 'view-full-image-modal',
