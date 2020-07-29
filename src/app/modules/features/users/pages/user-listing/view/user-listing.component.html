@@ -16,17 +16,11 @@
 
 
     <ng-template appFor="mobileNo" let-user="row">
-        <div class="mobile-content" [class.verified-user]="user?.isMobileVerified">
-            <span class="material-icons verified-icon" *ngIf="(user?.isMobileVerified) && (user?.mobileNo || user?.fullMobileNo)">verified_user</span>
-            <span>{{ user?.mobileNo ?  user?.mobileNo  : (user?.fullMobileNo || '-' )}}</span>
-        </div>
+        <span>{{ user?.mobileNo ?  user?.mobileNo  : (user?.fullMobileNo || '-' )}}</span>
     </ng-template>
 
     <ng-template appFor="email" let-user="row">
-        <div class="mobile-content" [class.verified-user]="user?.isEmailVerified">
-            <span class="material-icons verified-icon" *ngIf="(user?.isEmailVerified) && (user?.email)">verified_user</span>
-            <span >{{ user?.email}}</span>
-        </div>
+        <span >{{ user?.email}}</span>
     </ng-template>
    
 
@@ -44,10 +38,7 @@
                     check_circle
                 </i>
                 <i class="material-icons icon-deny" title="Reject User" (click)="onverifyHandler(user?._id, 'rejected')"  [class.disabled-icon]="(user?.adminStatus == 'rejected')">
-                    thumb_down_alt
-                </i>
-                <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')" title="Delete user">
-                    delete
+                    cancel
                 </i>
                 <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked')" *ngIf="user?.status === 'active';else templateAction"  title="Block user">
                     blocked</i>
@@ -56,6 +47,9 @@
                         lock_open
                     </i>
                 </ng-template>
+                <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')" title="Delete user">
+                    delete
+                </i>
             </div>
         </ng-template>
     </ng-container> 

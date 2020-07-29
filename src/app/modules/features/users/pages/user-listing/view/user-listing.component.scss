@@ -1,29 +1,11 @@
 @import 'abstracts/variables';
 :host{
-    .mobile-content{
-        position: relative;
-        display: inline-block;
-        .verified-icon{
-            display: none;
-            position: absolute;
-            left: -24px;
-            top: -3px;
-            font-size: 20px;
-            color: green;
-        }
-        &.verified-user{
-            margin-left: 10px;
-            .verified-icon{
-                display: block;
-            }
-        }
-    }
     .icon-check{
         color: $primary;
         font-size: 21px;
     }
     .icon-deny{
-        color: #cc9211;
+        color: #ce0000;
     }
 }
 
