@@ -62,9 +62,9 @@ export const INDUSTRY_TYPE = [
 ];
 
 export const EXPERIENCE = [
-    {value: 'junior' , viewValue: 'Junior'},
-    {value: 'mid' , viewValue: 'Mid'},
-    {value: 'senior' , viewValue: 'Senior'},
+    {value: 'Junior' , viewValue: 'Junior'},
+    {value: 'Mid' , viewValue: 'Mid'},
+    {value: 'Senior' , viewValue: 'Senior'},
 
 ]
 export const PROFESSION = [
@@ -73,35 +73,12 @@ export const PROFESSION = [
     {value: 'Executive Director' , viewValue: 'Executive Director'},
     {value: 'Managing Director' , viewValue: 'Managing Director'},
 
-]
+];
  
-
-export const EXPERT_CONTENT = {
-    VIDEO: {
-        TYPE: 'video',
-        VALUE: 1,
-        DISPLAY_NAME: 'VIDEO'
-    },
-    ARTICLE: {
-        TYPE: 'article',
-        VALUE: 2,
-        DISPLAY_NAME: 'ARTICLE'
-    },
-    IMAGE: {
-        TYPE: 'image',
-        VALUE: 3,
-        DISPLAY_NAME: 'IMAGE'
-    },
-    VOICE_NOTE: {
-        TYPE: 'voice_note',
-        VALUE: 4,
-        DISPLAY_NAME: 'VOICE_NOTE'
-    }
-};
 
 export const EXPERT_CONTENT_TYPE =  [
     { value : 1 , viewValue: 'Video', disabled: false},
     { value : 2 , viewValue: 'Article', disabled: false},
     { value : 3 , viewValue: 'Image', disabled: false},
     { value : 4 , viewValue: 'Voice Note', disabled: false}
-]
+];

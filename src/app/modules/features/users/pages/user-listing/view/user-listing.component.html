@@ -1,5 +1,5 @@
 <div class="users-status-count">
-    <button class="btn btn-primary" mat-stroked-button>Active
+    <button class="btn btn-primary" mat-stroked-button (click)="onAdminStatusHandler(user?._id , 'Active')">Active
         <span class="badge-count">{{user?.active || 10}}</span>
     </button>
     <button class="btn btn-primary" mat-stroked-button>Pending
@@ -18,7 +18,7 @@
         </ng-template>
 
         <ng-template appFor="status" let-user="row">
-            {{ user?.status | titlecase}}
+            {{ user?.adminStatus | titlecase}}
         </ng-template>
 
         <ng-template appFor="profilePicUrl" let-category="row">

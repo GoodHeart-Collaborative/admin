@@ -4,7 +4,8 @@ import { CategoryManagementService } from '../../../service/category-management.
 import { FileUploadService } from 'src/app/modules/shared/services/file-upload.service';
 import {VALIDATION_CRITERIA} from 'src/app/constant/validation-criteria';
 import {CATEGORY} from 'src/app/constant/routes';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
 @Component({
   selector: 'app-add-category-management',
   templateUrl: './add-category-management.component.html',
@@ -16,15 +17,25 @@ export class AddCategoryManagementComponent implements OnInit {
   imageFile: any;
   data;
   titleMaxLength = VALIDATION_CRITERIA.titleMaxLength;
+  categoryDetails: any;
   constructor(
               private $formBuilder: FormBuilder,
               private $category: CategoryManagementService,
               private $fileUploadService: FileUploadService,
-              private $router: Router) { }
+              private $router: Router,
+              $activateRoute: ActivatedRoute,
+              $breadcrumb: BreadcrumbService
+              ) {
+                if ($activateRoute.snapshot.data.categoryDetails && $activateRoute.snapshot.data.categoryDetails.data) {
+                  this.categoryDetails = $activateRoute.snapshot.data.categoryDetails.data;
+                  $breadcrumb.replace(this.categoryDetails._id, this.categoryDetails.title);
+                  console.log(this.categoryDetails );
+                }
+               }
 
   ngOnInit() {
     this.createForm();
-    if (this.data) {
+    if (this.categoryDetails && this.categoryDetails._id) {
       this.getCategoryDetail();
     }
   }
@@ -40,25 +51,8 @@ export class AddCategoryManagementComponent implements OnInit {
     return this.categoryForm.controls['title'];
   }
 
-
-  // async onSelectFile(event) {
-  //   try {
-  //     let result = await onSelectFile(event);
-  //     this.imageFile = result.file;
-  //     this.profilePicURL = result.url;
-  //   } catch (err) {
-  //     if (err.type) {
-  //       this.$category.showAlert(invalidImageError());
-  //     } else if (err.size) {
-  //       this.$category.showAlert(invalidFileSize());
-  //     }
-  //   }
-  // }
-
   setimageFile(event) {
     this.imageFile = event;
-    console.log(event);
-
   }
 
   async onSubmit() {
@@ -71,8 +65,8 @@ export class AddCategoryManagementComponent implements OnInit {
     }
     let body = { imageUrl: this.profilePicURL, ...this.categoryForm.value };
     this.categoryForm.disable();
-    if (this.data && this.data._id) {
-      this.$category.editCategory(this.data._id, body).then(
+    if (this.categoryDetails && this.categoryDetails._id) {
+      this.$category.editCategory(this.categoryDetails._id, body).then(
         data => {
           this.categoryForm.enable();
           this.$router.navigate([CATEGORY.fullUrl]);
@@ -97,14 +91,16 @@ export class AddCategoryManagementComponent implements OnInit {
 
 
   getCategoryDetail() {
+    console.log(this.categoryDetails);
+    
     this.categoryForm.patchValue({
-            title: this.data.title
+            title: this.categoryDetails.title
           });
-    this.profilePicURL = this.data.imageUrl;
+    this.profilePicURL = this.categoryDetails.imageUrl;
 }
 
   onCancel() {
-    // this.$dialogRef.close();
+    this.$router.navigate([CATEGORY.fullUrl]);
   }
 
 

@@ -38,7 +38,7 @@ export class ExpertDetailsComponent implements OnInit {
       if (application) {
         this.details = global.decodeData(application);
         console.log( this.details);
-        $breadcrumb.replace(this.details._id, this.details.contentDisplayName);
+        $breadcrumb.replace(this.details._id, this.details.name);
       }
     });
   }
