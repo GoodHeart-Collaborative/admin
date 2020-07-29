@@ -4,6 +4,7 @@ import { DailyInspirationDetailsComponent } from './view/daily-inspiration-detai
 import { RouterModule, Routes } from '@angular/router';
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 import { LikeActionModule } from 'src/app/modules/shared/like-action/like-action.module';
+import { CommentsShowModule } from 'src/app/modules/shared/comments-show/comments-show.module';
 
 const routes: Routes = [
   {
@@ -18,7 +19,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     CustomImageModule,
-    LikeActionModule
+    LikeActionModule,
+    CommentsShowModule
   ]
 })
 export class DailyInspirationDetailsModule { }

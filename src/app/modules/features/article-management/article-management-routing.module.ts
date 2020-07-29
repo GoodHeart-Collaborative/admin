@@ -27,15 +27,7 @@ const routes: Routes = [
       .then( (m) => m.AddArticleManagementModule
       ),
    },
-    // {
-    //   path: 'edit/:id',
-    //   resolve : {
-    //     dailyData : DailyAdviceManagementServiceResolve
-    //   },
-    //   loadChildren: () => import('./pages/add-daily-advice/add-daily-advice.module')
-    //   .then( (m) => m.AddDailyAdviceModule
-    //   ),
-    // },
+
     {
       path: `${ARTICLES_DETAILS.path}/details`,
       resolve : {

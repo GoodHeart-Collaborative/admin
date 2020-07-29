@@ -42,7 +42,8 @@ const routes: Routes = [
       {
         path: DAILY_UNICORN.path,
         loadChildren: () =>
-          import('../features/daily-unicorn-humour/daily-unicorn-humour.module').then((m) => m.DailyUnicornHumourModule
+          import('../features/daily-unicorn-humour/daily-unicorn-humour.module')
+          .then((m) => m.DailyUnicornHumourModule
           ),
       },
       {

@@ -8,6 +8,7 @@ import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { DAILY_UNICORN } from 'src/app/constant/routes';
 import { HOME_TYPE, MEDIA_TYPE } from 'src/app/constant/drawer';
+import { EditProfileService } from 'src/app/modules/features/admin/edit-profile/service/edit-profile.service';
 @Component({
   selector: 'app-add-daily-unicorm-humour',
   templateUrl: './add-daily-unicorm-humour.component.html',
@@ -23,6 +24,7 @@ export class AddDailyUnicormHumourComponent implements OnInit {
   titleMaxLength = VALIDATION_CRITERIA.titleMaxLength;
   mediaType = MEDIA_TYPE;
   thumbnailUrl: any;
+  profileDetail: any;
   constructor(
     private $formBuilder: FormBuilder,
     private $daily: DailyUnicornHumourService,
@@ -30,15 +32,16 @@ export class AddDailyUnicormHumourComponent implements OnInit {
     $router: ActivatedRoute,
     $breadcrumb: BreadcrumbService,
     private $utility: UtilityService,
-    private $route: Router
+    private $route: Router,
+    private $editProfileService: EditProfileService
 
   ) {
     this.today = new Date(new Date(new Date().setHours(0,0,0)).setDate(new Date().getDate() + 1));
     if ($router.snapshot.data.dailyData && $router.snapshot.data.dailyData.data) {
       this.unicornDetails = $router.snapshot.data.dailyData.data;
       $breadcrumb.replace(this.unicornDetails.id, this.unicornDetails.description);
-
     }
+    this.getProfileDetail();
   }
 
   ngOnInit() {
@@ -62,7 +65,8 @@ export class AddDailyUnicormHumourComponent implements OnInit {
         description: ['', [Validators.required, Validators.maxLength(this.titleMaxLength)]],
         isPostLater: [false],
         type: HOME_TYPE.UNICRON,
-        mediaType: MEDIA_TYPE.IMAGE
+        mediaType: MEDIA_TYPE.IMAGE,
+        addedBy: ['']
       });
   }
   /**
@@ -118,6 +122,13 @@ export class AddDailyUnicormHumourComponent implements OnInit {
       return;
     }
     const body = { ...this.unicornForm.value };
+    if (this.profileDetail) {
+
+      body.addedBy = {
+        name: this.profileDetail.name,
+        profilePicture: this.profileDetail.profilePicture
+      };
+    }
     if (this.imageFile) {
       if (this.imageFile && this.imageFile.type == 1) {
         const data: any = await this.$fileUploadService.uploadFile(this.imageFile.file);
@@ -129,7 +140,7 @@ export class AddDailyUnicormHumourComponent implements OnInit {
         const dataForVideo: any = await this.$fileUploadService.uploadFile(this.imageFile.videoFile);
         const dataForThumb: any = await this.$fileUploadService.uploadFile(this.imageFile.thumbNailFile);
         body['mediaUrl'] = dataForVideo.Location;
-        body['thumbnailUrl'] = dataForThumb.Location;
+        // body['thumbnailUrl'] = dataForThumb.Location;
         body.mediaType = this.imageFile.type;
       }
     } else if (this.unicornDetails) {
@@ -138,7 +149,7 @@ export class AddDailyUnicormHumourComponent implements OnInit {
         body.mediaType = this.unicornDetails.mediaType;
       }
       if (this.unicornDetails.mediaType == 2) {
-        body['thumbnailUrl'] = this.thumbnailUrl;
+        // body['thumbnailUrl'] = this.thumbnailUrl;
         body.mediaType = this.unicornDetails.mediaType;
       }
     }
@@ -183,5 +194,17 @@ export class AddDailyUnicormHumourComponent implements OnInit {
     this.$route.navigate([DAILY_UNICORN.fullUrl]);
   }
 
+
+  /**
+   * @description Getting Admin Profile Detail
+   */
+  getProfileDetail() {
+    this.$editProfileService.getProfileDetail()
+      .subscribe(
+        (response: any) => {
+          this.profileDetail = response.data;
+        }, err => { }
+      );
+  }
 
 }

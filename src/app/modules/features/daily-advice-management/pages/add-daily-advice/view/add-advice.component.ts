@@ -8,6 +8,7 @@ import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { DAILY_ADVICE } from 'src/app/constant/routes';
 import { HOME_TYPE, MEDIA_TYPE } from 'src/app/constant/drawer';
+import { EditProfileService } from 'src/app/modules/features/admin/edit-profile/service/edit-profile.service';
 
 @Component({
   selector: 'app-add-advice',
@@ -25,6 +26,7 @@ export class AddAdviceComponent implements OnInit {
   descriptionMaxLength = VALIDATION_CRITERIA.descriptionMaxLength;
   titleMaxLength = VALIDATION_CRITERIA.titleMaxLength;
   thumbnailUrl: any;
+  profileDetail: any;
 
   constructor(
     private $formBuilder: FormBuilder,
@@ -33,15 +35,16 @@ export class AddAdviceComponent implements OnInit {
     $router: ActivatedRoute,
     $breadcrumb: BreadcrumbService,
     private $utility: UtilityService,
-    private $route: Router
+    private $route: Router,
+    private $editProfileService: EditProfileService
 
   ) {
-    this.today = new Date(new Date(new Date().setHours(0,0,0)).setDate(new Date().getDate() + 1));
-
+    this.today = new Date(new Date(new Date().setHours(0, 0, 0)).setDate(new Date().getDate() + 1));
     if ($router.snapshot.data.dailyData && $router.snapshot.data.dailyData.data) {
       this.adviceDetails = $router.snapshot.data.dailyData.data;
       $breadcrumb.replace(this.adviceDetails.id, this.adviceDetails.title);
     }
+    this.getProfileDetail();
   }
 
   ngOnInit() {
@@ -63,7 +66,8 @@ export class AddAdviceComponent implements OnInit {
         isPostLater: [false],
         description: ['', [Validators.required, Validators.maxLength(this.descriptionMaxLength)]],
         type: HOME_TYPE.DAILY_ADVICE,
-        mediaType: MEDIA_TYPE.IMAGE
+        mediaType: MEDIA_TYPE.IMAGE,
+        addedBy: ['']
       });
   }
 
@@ -98,16 +102,24 @@ export class AddAdviceComponent implements OnInit {
   }
 
   async onSubmit() {
+    console.log(this.adviceForm);
     if (this.adviceForm.invalid) {
       if (this.adviceForm.get('postedAt').value &&
-      new Date(this.adviceForm.get('postedAt').value).getTime()
-      < new Date(this.today).getTime()) {
+        new Date(this.adviceForm.get('postedAt').value).getTime()
+        < new Date(this.today).getTime()) {
         this.$utility.error('Invalid date selected');
-       }
+      }
       this.adviceForm.markAllAsTouched();
       return;
     }
     const body = { ...this.adviceForm.value };
+    if (this.profileDetail) {
+
+      body.addedBy = {
+        name: this.profileDetail.name,
+        profilePicture: this.profileDetail.profilePicture
+      };
+    }
     if (this.imageFile) {
       if (this.imageFile && this.imageFile.type == 1) {
         const data: any = await this.$fileUploadService.uploadFile(this.imageFile.file);
@@ -136,6 +148,7 @@ export class AddAdviceComponent implements OnInit {
     if (this.isPostLater.value) {
       body.postedAt = new Date(this.adviceForm.get('postedAt').value);
     }
+
     this.adviceForm.disable();
     if (this.adviceDetails && this.adviceDetails._id) {
       delete body.type;
@@ -152,6 +165,8 @@ export class AddAdviceComponent implements OnInit {
       );
       return;
     }
+    console.log(body);
+
     this.$daily.addCategory(body).then(
       data => {
         this.adviceForm.enable();
@@ -162,12 +177,24 @@ export class AddAdviceComponent implements OnInit {
         this.adviceForm.enable();
 
       }
-    );
+     );
   }
 
 
   onCancel() {
     this.$route.navigate([DAILY_ADVICE.fullUrl]);
+  }
+
+  /**
+   * @description Getting Admin Profile Detail
+   */
+  getProfileDetail() {
+    this.$editProfileService.getProfileDetail()
+      .subscribe(
+        (response: any) => {
+          this.profileDetail = response.data;
+        }, err => { }
+      );
   }
 
 }
