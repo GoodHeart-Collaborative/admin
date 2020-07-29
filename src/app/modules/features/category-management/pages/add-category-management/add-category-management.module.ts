@@ -9,6 +9,7 @@ import { ValidationErrorPipeModule } from 'src/app/pipes/validation-error/valida
 import { ReactiveFormsModule } from '@angular/forms';
 import { WhiteSpaceModule } from 'src/app/modules/shared/white-space/white-space.module';
 import { Routes, RouterModule } from '@angular/router';
+import { ImageUploadModule } from 'src/app/modules/shared/image-upload/image-upload.module';
 
 const routes: Routes = [
   {path: '' ,
@@ -25,7 +26,9 @@ const routes: Routes = [
     CustomImageModule,
     ValidationErrorPipeModule,
     ReactiveFormsModule,
-    WhiteSpaceModule
+    WhiteSpaceModule,
+    ImageUploadModule,
+  
   ],
   providers : [CategoryManagementService],
 })

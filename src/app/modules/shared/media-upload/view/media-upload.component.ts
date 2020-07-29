@@ -46,7 +46,6 @@ export class MediaUploadComponent implements OnInit {
       this.checkMediaType(event.target.files[0], event);
       // Image Upload 
       if (this.isImage) {
-        console.log(this.isImage);
         let result = await onSelectFile(event);
         this.imageFile = result.file;
         this.imageSelectedFromInput(event);
@@ -120,7 +119,6 @@ export class MediaUploadComponent implements OnInit {
   //       };
   //       reader.readAsDataURL(file);
 
-  //       console.log(this.mediaFiles, media.dataUrl);
 
   //       if (!this.mediaFiles.find(med => med.dataUrl === media.dataUrl)) {
   //         if (!this.mediaFiles.length) {
@@ -145,16 +143,10 @@ export class MediaUploadComponent implements OnInit {
 
   imageSelectedFromInput(event) {
     this.imageChangedEvent = event;
-    console.log(this.imageChangedEvent);
-
   }
 
   imageSelected(event) {
-    console.log(event);
     this.profilePicURL = event.base64;
-
-    console.log(this.imageChangedEvent.target.files[0]);
-
     this.uploadMedia.emit(
       {
         file: event.file,
@@ -163,10 +155,7 @@ export class MediaUploadComponent implements OnInit {
     this.videoSrc = '';
     this.isVideo = false;
   }
-  ngOnChanges() {
-    console.log(this.videoSrc);
 
-  }
 
   closeCropper() {
     this.img.nativeElement.value = null;
@@ -197,7 +186,6 @@ export class MediaUploadComponent implements OnInit {
 
       reader.onload = (event) => { // called once readAsDataURL is completed
         this.videoSrc = event.target['result'];
-        console.log(this.videoSrc);
         this.profilePicURL = ''
 
       };
@@ -242,14 +230,14 @@ export class MediaUploadComponent implements OnInit {
 
   checkContentType(mediaType: number) {
     if (this.contentId) {
-      console.log(this.contentId);
-      
       switch (mediaType) {
         case 1:
           if ([2, 3].includes(this.contentId)) {
 
             return true;
           } else {
+            this.img.nativeElement.value = null;
+
             this.$upload.showAlert('Invalid content type selected');
             return false;
           }
@@ -259,6 +247,8 @@ export class MediaUploadComponent implements OnInit {
 
             return true;
           } else {
+            this.img.nativeElement.value = null;
+
             this.$upload.showAlert('Invalid content type selected');
             return false;
           }
@@ -267,6 +257,8 @@ export class MediaUploadComponent implements OnInit {
           if ([4].includes(this.contentId)) {
             return true;
           } else {
+            this.img.nativeElement.value = null;
+
             this.$upload.showAlert('Invalid content type selected');
             return false;
           }

@@ -1,10 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CategoryManagementService } from '../../../service/category-management.service';
 import { FileUploadService } from 'src/app/modules/shared/services/file-upload.service';
-import { onSelectFile } from 'src/app/constant/file-input';
-import { invalidImageError, invalidFileSize } from 'src/app/constant/messages';
 import {VALIDATION_CRITERIA} from 'src/app/constant/validation-criteria';
 @Component({
   selector: 'app-add-category-management',
@@ -41,20 +38,25 @@ export class AddCategoryManagementComponent implements OnInit {
   }
 
 
-  async onSelectFile(event) {
-    try {
-      let result = await onSelectFile(event);
-      this.imageFile = result.file;
-      this.profilePicURL = result.url;
-    } catch (err) {
-      if (err.type) {
-        this.$category.showAlert(invalidImageError());
-      } else if (err.size) {
-        this.$category.showAlert(invalidFileSize());
-      }
-    }
-  }
+  // async onSelectFile(event) {
+  //   try {
+  //     let result = await onSelectFile(event);
+  //     this.imageFile = result.file;
+  //     this.profilePicURL = result.url;
+  //   } catch (err) {
+  //     if (err.type) {
+  //       this.$category.showAlert(invalidImageError());
+  //     } else if (err.size) {
+  //       this.$category.showAlert(invalidFileSize());
+  //     }
+  //   }
+  // }
 
+  setimageFile(event) {
+    this.imageFile = event;
+    console.log(event);
+
+  }
 
   async onSubmit() {
     if (this.categoryForm.invalid) {
