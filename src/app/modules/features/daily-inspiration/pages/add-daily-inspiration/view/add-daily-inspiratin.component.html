@@ -29,7 +29,7 @@
                         <mat-form-field class="later-date-picker" color="accent"
                             *ngIf="inspirationForm?.contains('postedAt')" appearance="outline">
                             <input matInput [matDatepicker]="picker"
-                                [min]="dailyInspirationDetails  ? (dailyInspirationDetails.postedAt ?  dailyInspirationDetails.postedAt : today)  : today"
+                                [min]="today"
                                 formControlName="postedAt" (click)="picker.open()" placeholder="Date" readonly>
                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                             <mat-datepicker #picker></mat-datepicker>
