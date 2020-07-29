@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/modules/shared/services/http.service';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
-import { EXPERT, ACTION_EXPERT, ADD_EXPERT , EXPERT_DETAILS} from 'src/app/constant/urls';
+import { EXPERT, ACTION_EXPERT, ADD_EXPERT , EXPERT_DETAILS, EXPERT_POST} from 'src/app/constant/urls';
 import { Resolve, Router, ActivatedRouteSnapshot } from '@angular/router';
 
 @Injectable({
@@ -23,6 +23,9 @@ export class ExpertService {
 
   async  add(params) {
     return  this.$http.post(ADD_EXPERT, params).toPromise();
+  }
+  async  addContent(params) {
+    return  this.$http.post(EXPERT_POST, params).toPromise();
   }
   async  edit(id, params) {
     return  this.$http.patch(EXPERT_DETAILS(id), params).toPromise();

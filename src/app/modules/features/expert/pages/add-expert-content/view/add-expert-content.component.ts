@@ -7,6 +7,7 @@ import { EXPERT_DETAILS } from 'src/app/constant/routes';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { ExpertService } from '../../../service/expert.service';
 import { EXPERT_CONTENT_TYPE } from 'src/app/constant/drawer';
+import { FileUploadService } from 'src/app/modules/shared/services/file-upload.service';
 
 @Component({
   selector: 'app-add-expert-content',
@@ -28,6 +29,7 @@ export class AddExpertContentComponent implements OnInit {
     private $router: Router,
     private $service: ExpertService,
     private $utility: UtilityService,
+    private $fileUploadService: FileUploadService
   ) {
     this.expertContentId = $activatedRoute.snapshot.parent.params.id;
     this.createForm();
@@ -62,7 +64,7 @@ export class AddExpertContentComponent implements OnInit {
     console.log(event);
     switch (event.type) {
       case 1:
-        this.contentType = this.getUpdatedTypes([2,3]);
+        this.contentType = this.getUpdatedTypes([2, 3]);
         break;
       case 2:
         this.contentType = this.getUpdatedTypes([1]);
@@ -82,14 +84,14 @@ export class AddExpertContentComponent implements OnInit {
 
   getUpdatedTypes(validTypes: number[]) {
     return EXPERT_CONTENT_TYPE.map(type => {
-      if(validTypes.includes(type.value)){
+      if (validTypes.includes(type.value)) {
         type.disabled = false;
-      } else{
+      } else {
         type.disabled = true;
 
       }
       return type;
-    })
+    });
   }
   /**
    * API hit for Category
@@ -105,14 +107,37 @@ export class AddExpertContentComponent implements OnInit {
   }
 
   async onSubmit() {
+    console.log(this.expertContentForm);
+
     if (this.expertContentForm.invalid) {
       return;
     }
-    if (this.imageFile) {
-      // let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
-      // this.profilePicURL = data.Location;
-    }
     let body = { ...this.expertContentForm.value };
+    if (this.imageFile) {
+      if (this.imageFile && this.imageFile.type == 1) {
+        const data: any = await this.$fileUploadService.uploadFile(this.imageFile.file);
+        const url = data.Location;
+        body['mediaUrl'] = url;
+        body.mediaType = this.imageFile.type;
+      }
+      if (this.imageFile && this.imageFile.type == 2) {
+        const dataForVideo: any = await this.$fileUploadService.uploadFile(this.imageFile.videoFile);
+        const dataForThumb: any = await this.$fileUploadService.uploadFile(this.imageFile.thumbNailFile);
+        body['mediaUrl'] = dataForVideo.Location;
+        body['thumbnailUrl'] = dataForThumb.Location;
+        body.mediaType = this.imageFile.type;
+      }
+    };
+    // else if (this.adviceDetails) {
+    //   if (this.adviceDetails.mediaType == 1) {
+    //     body['mediaUrl'] = this.profilePicURL;
+    //     body.mediaType = this.adviceDetails.mediaType;
+    //   }
+    //   if (this.adviceDetails.mediaType == 2) {
+    //     body['thumbnailUrl'] = this.thumbnailUrl;
+    //     body.mediaType = this.adviceDetails.mediaType;
+    //   }
+    // }
     console.log(body);
     // if (this.details && this.details._id) {
     //   delete body.type;
@@ -128,7 +153,7 @@ export class AddExpertContentComponent implements OnInit {
     //   );
     //   return;
     // }
-    this.$service.add(body).then(
+    this.$service.addContent(body).then(
       data => {
         this.expertContentForm.enable();
         this.$utility.success(data.message);
