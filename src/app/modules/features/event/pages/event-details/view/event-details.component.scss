@@ -43,6 +43,11 @@
         }
         .right-portion{
             width: 300px;
+            p{
+                &.value{
+                    margin-top: 3px;
+                }
+            }
             .event-info{
                 width: 100%;
                 .like-cover{
@@ -60,28 +65,6 @@
                         }
                     }
                 }
-            }
-        }
-    }
-    .row-2{
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        padding: 10px 15px;
-        margin: 20px -16px;
-        border-top: 1px solid #dcdcdc;
-        border-bottom: 1px solid #dcdcdc;
-        .like-cover{
-            display: flex;
-            align-items: center;
-            margin-right: 40px;
-            .material-icons{
-                color: #556080;
-                margin-right: 10px;
-                font-size: 16px;
-            }
-            p{
-                font-size: 14px;
             }
         }
     }

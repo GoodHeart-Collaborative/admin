@@ -27,7 +27,7 @@ export class UserTableDataSource implements Table.Source<User> {
       // resolve: (row: any) => `${row['firstName']} ${row['lastName']}` || 'NA',
     },
     {
-      title: 'Email Id',
+      title: 'Email Address',
       id: 'email',
       sorting: false,
       templateBy: 'email'
@@ -70,7 +70,7 @@ export class UserTableDataSource implements Table.Source<User> {
   ];
   options: Table.Options = {
     selection: false,
-    search: 'Search by Name, Email Id',
+    search: 'Search by Name, Email Address',
     index: true,
     sorting: true,
     filterComponent: UsersListingFilterComponent,

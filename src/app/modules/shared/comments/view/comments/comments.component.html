@@ -17,10 +17,12 @@
                             </h4>
                             <p>{{item?.comment}}</p>
                             <div class="like-cover" >
+                            </div> 
+                            <div *ngIf="item.likeCount > 0">
                                 <span class="material-icons" (click)="onlikeHandler(item?._id, item?.likeCount)">thumb_up</span>
                                 <p >{{item?.likeCount}}</p>
-                                <a class="see-hide-replies" (click)="toggleReplies(item?._id, commentIndex)" *ngIf="item?.commentCount">{{item?.showReply? "Hide" : "See"}} Replies ({{item?.commentCount}})</a>
-                            </div> 
+                            </div>
+                            <a class="see-hide-replies" (click)="toggleReplies(item?._id, commentIndex)" *ngIf="item?.commentCount">{{item?.showReply? "Hide" : "See"}} Replies ({{item?.commentCount}})</a>
                         </div>
                         <!-- (click)="onNestedComment()" -->
                     </div>

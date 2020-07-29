@@ -13,7 +13,7 @@ export const POPUP_MESSAGES = {
   save: "Save",
   passwordResetTitle: "Reset Password",
   passwordResetLink:
-    "Password reset link has been sent to registered email id. Please follow the link to reset password.",
+    "Password reset link has been sent to registered Email address. Please follow the link to reset password.",
   passwordChanged: "Password has been changed successfully.",
   logout: "Logout",
   logoutConfirmation: "Are you sure you want to logout?",

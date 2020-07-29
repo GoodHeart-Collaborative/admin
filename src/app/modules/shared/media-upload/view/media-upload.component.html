@@ -1,5 +1,5 @@
 <div class="page-media-upload">
-  <div class="img-cover">
+  <div class="img-cover" title="Image: JPEG, PNG | Video: MP4, 3GP formats are allowed">
     <img [src]="profilePicURL |customImage:'IMAGE_PLACEHOLDER'|async" alt=""  *ngIf="!videoSrc">
 
     <video #myVideo muted [src]="videoSrc" *ngIf="videoSrc" loop id="video"  controls
@@ -11,13 +11,11 @@
       <button type="button" class="camBtn" mat-mini-fab color="primary">
         <mat-icon>camera_alt</mat-icon>
         <input  type="file"  #file (change)="onSelectFile($event)"
-          matTooltip="Change file"  accept="image/*,video/*" />
+          matTooltip="Upload file"  accept="image/*,video/*" />
           
       </button>
     </div>
-  </div> 
-  <span>jpeg, png image formats are allowed.</span>
-  <span>mp4 , 3gp video formats are allowed.</span>
+  </div>
 
 </div>
 

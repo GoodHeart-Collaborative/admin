@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ImageUploadComponent } from './view/image-upload.component';
-import { MatDialogModule, MatIconModule, MatButtonModule, MatTooltipModule } from '@angular/material';
+import { MatDialogModule, MatIconModule, MatButtonModule, MatTooltipModule, MatProgressSpinnerModule } from '@angular/material';
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 import { ImageCropModule } from '../image-crop/image-crop.module';
 
@@ -15,7 +15,8 @@ import { ImageCropModule } from '../image-crop/image-crop.module';
     MatButtonModule,
     MatTooltipModule,
     CustomImageModule,
-    ImageCropModule
+    ImageCropModule,
+    MatProgressSpinnerModule,
   ],
   exports: [ImageUploadComponent]
 })
