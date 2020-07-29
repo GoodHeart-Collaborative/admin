@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CategoryManagementService } from '../../../service/category-management.service';
 import { FileUploadService } from 'src/app/modules/shared/services/file-upload.service';
 import {VALIDATION_CRITERIA} from 'src/app/constant/validation-criteria';
+import {CATEGORY} from 'src/app/constant/routes';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-category-management',
   templateUrl: './add-category-management.component.html',
@@ -17,7 +19,8 @@ export class AddCategoryManagementComponent implements OnInit {
   constructor(
               private $formBuilder: FormBuilder,
               private $category: CategoryManagementService,
-              private $fileUploadService: FileUploadService) { }
+              private $fileUploadService: FileUploadService,
+              private $router: Router) { }
 
   ngOnInit() {
     this.createForm();
@@ -72,7 +75,7 @@ export class AddCategoryManagementComponent implements OnInit {
       this.$category.editCategory(this.data._id, body).then(
         data => {
           this.categoryForm.enable();
-          // this.$dialogRef.close(data);
+          this.$router.navigate([CATEGORY.fullUrl]);
         },
         err => {
           this.categoryForm.enable();
@@ -83,7 +86,7 @@ export class AddCategoryManagementComponent implements OnInit {
     this.$category.addCategory(body).then(
       data => {
         this.categoryForm.enable();
-        // this.$dialogRef.close(data);
+        this.$router.navigate([CATEGORY.fullUrl]);
       },
       err => {
         this.categoryForm.enable();

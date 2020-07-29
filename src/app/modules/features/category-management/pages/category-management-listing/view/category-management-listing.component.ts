@@ -34,7 +34,7 @@ export class CategoryManagementListingComponent implements OnInit {
     private matDailog: MatDialog,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
-  
+
   ) {
   }
 
@@ -43,7 +43,7 @@ export class CategoryManagementListingComponent implements OnInit {
   }
 
   updateUsers() {
-    const { pageIndex, pageSize, searchText, filterData , sortData} = this.eventData;
+    const { pageIndex, pageSize, searchText, filterData, sortData } = this.eventData;
     let params = {
       page: `${pageIndex + 1}`,
       limit: `${pageSize}`,
@@ -88,15 +88,15 @@ export class CategoryManagementListingComponent implements OnInit {
 
   onActionHandler(id: string, action: ActionType) {
     const index = this.userData.data.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('category', action == 'active'  ?  'active' : ( action == 'deleted' ? 'delete' : 'block'))
-    .subscribe((confirm) => {
-      if (confirm) {
-        this.$category.updateStatus(id, action).then((res) => {
-          this.$utility.success(res.message);
-          this.handleActions(action, index);
-        });
-      }
-    });
+    this.$confirmBox.listAction('category', action == 'active' ? 'active' : (action == 'deleted' ? 'delete' : 'block'))
+      .subscribe((confirm) => {
+        if (confirm) {
+          this.$category.updateStatus(id, action).then((res) => {
+            this.$utility.success(res.message);
+            this.handleActions(action, index);
+          });
+        }
+      });
   }
 
   handleActions(action: ActionType, index) {
@@ -138,43 +138,46 @@ export class CategoryManagementListingComponent implements OnInit {
     });
   }
 
-onAddCategory() {
-  // this.matDailog.open(AddCategoryManagementComponent, {
-  //   width: '500px',
-  //  }).afterClosed().subscribe(res => {
-  //   if (res) {
-  //       this.updateUsers();
-  //   }
-  // });
-  this.$router.navigate([ADD_CATEGORY.fullUrl]);
-}
+  onAddCategory() {
+    // this.matDailog.open(AddCategoryManagementComponent, {
+    //   width: '500px',
+    //  }).afterClosed().subscribe(res => {
+    //   if (res) {
+    //       this.updateUsers();
+    //   }
+    // });
+    this.$router.navigate([ADD_CATEGORY.fullUrl]);
+  }
 
-oneditHandler(id) {
-  // this.$category.updateCategory(id).then(res => {
-  //     if (res) {
-  //       this.matDailog.open(AddCategoryManagementComponent, {
-  //         width: '500px',
-  //         data: res.data
-  //       }).afterClosed().subscribe(res => {
-  //         if (res) {
-  //             this.updateUsers();
-  //         }
-  //       });
-  //     }
-  //   }).catch(err => {
-  //      this.$utility.errorAlert(err.message);
-  // });
-}
+  oneditHandler(id) {
+    // this.$category.updateCategory(id).then(res => {
+    //     if (res) {
+    //       this.matDailog.open(AddCategoryManagementComponent, {
+    //         width: '500px',
+    //         data: res.data
+    //       }).afterClosed().subscribe(res => {
+    //         if (res) {
+    //             this.updateUsers();
+    //         }
+    //       });
+    //     }
+    //   }).catch(err => {
+    //      this.$utility.errorAlert(err.message);
+    // });
+  }
 
-relatedCategoryHandler(id) {
+  relatedCategoryHandler(id) {
     this.$router.navigate([`${CATEGORY.fullUrl}`, id]);
-}
+  }
 
-onImageClick(image) {
-  this.matDailog.open(ViewFullImageComponent, {
-    panelClass: 'view-full-image-modal',
-    data: image
-  }).afterClosed().subscribe();
-}
+  onImageClick(image) {
+    if (!image) {
+      return;
+    }
+    this.matDailog.open(ViewFullImageComponent, {
+      panelClass: 'view-full-image-modal',
+      data: image
+    }).afterClosed().subscribe();
+  }
 
 }

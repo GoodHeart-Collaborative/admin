@@ -38,7 +38,7 @@ export class ImageUploadComponent implements OnInit {
 
   imageSelected(event) {
     this.profilePicURL = event.base64;
-    this.uploadMedia.emit(this.profilePicURL);
+    this.uploadMedia.emit(event.file);
   }
 
   imageSelectedFromInput(event) {

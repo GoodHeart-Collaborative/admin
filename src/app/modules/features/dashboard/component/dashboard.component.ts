@@ -64,7 +64,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   @HostListener('window:scroll', ['$event']) onWindowScroll(e) {
-    if(window.pageYOffset > 320){
+    if(window.pageYOffset > 200){
       this.tableAnimate = true;
       this.totalUsersCardAnimate = true;
     }

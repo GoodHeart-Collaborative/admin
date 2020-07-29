@@ -8,8 +8,10 @@
 
     <div class="popup-body">
       <form [formGroup]="editProfileForm">
-        <media-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profileDetail?.profilePicture">
-        </media-upload>
+        <!-- <media-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profileDetail?.profilePicture">
+        </media-upload> -->
+
+        <app-image-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profileDetail?.profilePicture"></app-image-upload>
 
         <div class="profile-detail">
           <div class="single-profile-detail">

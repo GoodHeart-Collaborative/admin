@@ -8,7 +8,7 @@ import { UtilityService } from 'src/app/modules/shared/services/utility.service'
 import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
 import { MatDialog } from '@angular/material';
 
-export type ActionType = 'deleted' | 'blocked' | 'active';
+export type ActionType = 'deleted' | 'blocked' | 'active' | 'pending';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 @Component({
   selector: 'app-user-listing',
@@ -95,7 +95,9 @@ export class UserListingComponent implements OnInit {
  */
   onActionHandler(id: string, action: ActionType) {
     const index = this.userData.data.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('user', action == 'active'  ?  'active' : ( action == 'deleted' ? 'delete' : 'block'))
+    this.$confirmBox.listAction('user',
+    (action == 'active')  ?  'active' :
+    ( action == 'deleted' ? 'delete' : 'block'))
     .subscribe((confirm) => {
       if (confirm) {
         const params = {

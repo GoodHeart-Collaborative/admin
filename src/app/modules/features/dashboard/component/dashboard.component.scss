@@ -12,7 +12,9 @@
     }
     --animate-duration: 1.3s;
     .row{
-        margin-bottom: 30px;
+        &:not(:last-child){
+            margin-bottom: 30px;
+        }
         .mat-card{
             padding: 24px;
             color: #333333;
@@ -31,6 +33,7 @@
             .current-balance-card{
                 .graph-cover{
                     position: relative;
+                    padding: 3px 0px;
                     .content-on-balance-graph{
                         position: absolute;
                         top: 50%;
@@ -46,16 +49,21 @@
             .total-transaction-card{
                 .graph-cover{
                     text-align: center;
-                    padding: 97px 20px;
+                    padding: 00px 20px;
+                    img{
+                        width: 100%;    
+                    }
                 }
             }
         }
         &.section-2{
-            .graph-cover{
-                text-align: center;
-                padding: 66px 20px;
-            }
             .user-statistics-card{
+                .graph-cover{
+                    padding: 16px 23px 0px;
+                    img{
+                        width: 100%;
+                    }
+                }
                 .incline-decline{
                     display: flex;
                     align-items: center;
@@ -155,6 +163,12 @@
                 }
             }
             .conversion-ratio-card{
+                .graph-cover{
+                    padding: 0px 9px 0px;
+                    img{
+                        width: 100%;
+                    }
+                }
                .conversion-ratio-content{
                    text-align: center;
                    p{
@@ -168,10 +182,6 @@
         }
         &.section-3{
             min-height: 300px;
-            .graph-cover{
-                text-align: center;
-                padding: 65px 20px;
-            }
             .total-users-card{
                 display: none;
                 &.animate__bounceInLeft{
@@ -201,6 +211,14 @@
             }
             .todays-revenue-card{
                 display: none;
+                .graph-cover{
+                    text-align: center;
+                    padding: 45px 20px;
+                }
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: bottom;
+                background-image: url('../../../../../assets/graph4.png');
                 &.animate__bounceInLeft{
                     display: block;
                 }

@@ -4,7 +4,7 @@
             <div class="row-1">
                 <div class="left-portion">
                     <div class="img-cover" (click)="onImageClick(userDetails?.profilePicUrl)">
-                        <img [src]="userDetails?.profilePicUrl[0]|customImage:'USER'|async" alt="User Profile Image" >
+                        <img [src]="userDetails?.profilePicUrl[0]|customImage:'USER'|async" alt="User Profile Image">
                         <div class="img-overlay">+2</div>
                     </div>
                     <div class="slide-show">
@@ -18,23 +18,7 @@
                             <img  [src]="userDetails?.profilePicUrl[2]|customImage:'USER'|async" alt="">
                         </div>
                     </div>
-                    <!-- <div class="btn-row">
-                        <button class="btn btn-block" mat-stroked-button (click)="onBlockUSer()"
-                            [class.btn-green]="userDetails?.status != 'active' ">
-                            {{userDetails?.status === 'active' ? 'Block' : 'Unblock'}} User </button>
-                        <button class="btn btn-primary btn-delete" mat-stroked-button (click)="onBlockUSer(true)">Delete
-                            User</button>
 
-                    </div>
-                    <div class="btn-row">
-                        <button class="btn btn-primary btn-delete" mat-stroked-button
-                            *ngIf="(userDetails?.adminStatus == 'verified')"
-                            (click)="onverifyHandler(userDetails?._id, 'rejected')">Reject User</button>
-                        <button class="btn btn-primary" mat-stroked-button
-                            *ngIf="(userDetails?.adminStatus == 'rejected' ) || (userDetails?.adminStatus == 'pending')"
-                            (click)="onverifyHandler(userDetails?._id, 'verified')">Verify User</button>
-                    </div> -->
-                    
                 </div>
                 <div class="right-portion">
                     <div class="row">
@@ -85,8 +69,29 @@
                             <p class="value">{{userDetails?.about || 'None'}} </p>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="btn-wrap">
+                            <button class="btn btn-block" mat-stroked-button (click)="onBlockUSer()"
+                                [class.btn-green]="userDetails?.status != 'active' ">
+                                {{(userDetails?.status === 'active' || userDetails?.status === 'pending') ? 'Block' : 'Unblock'}} User </button>
+                        </div>
+                        <div class="btn-wrap">
+                            <button class="btn  btn-delete" mat-stroked-button (click)="onBlockUSer(true)">Delete
+                                User</button>
+                        </div>
+                        <div class="btn-wrap">
+                            <button class="btn  btn-delete" mat-stroked-button
+                                *ngIf="(userDetails?.adminStatus == 'verified')"
+                                (click)="onverifyHandler(userDetails?._id, 'rejected')">Reject User</button>
+                        </div>
+                        <div class="btn-wrap">
+                            <button class="btn " mat-stroked-button
+                                *ngIf="(userDetails?.adminStatus == 'rejected' ) || (userDetails?.adminStatus == 'pending')"
+                                (click)="onverifyHandler(userDetails?._id, 'verified')">Verify User</button>
+                        </div>
+                    </div>
                 </div>
-                <button mat-icon-button class="action-button" [matMenuTriggerFor]="cardMenu">
+                <!-- <button mat-icon-button class="action-button" [matMenuTriggerFor]="cardMenu">
                     <mat-icon class="align-center">more_vert</mat-icon>
                     <mat-menu #cardMenu="matMenu" class="small_menu card_menu">
                         <button mat-menu-item *ngIf="(userDetails?.adminStatus == 'verified')"
@@ -100,7 +105,7 @@
                         <button mat-menu-item (click)="onBlockUSer(true)">Delete
                             User</button>
                     </mat-menu>
-                </button>
+                </button> -->
             </div>
         </div>
     </div>

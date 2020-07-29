@@ -6,7 +6,8 @@ export type passwrodTypes = {
   ['special']: RegExp,
   ['numeric']: RegExp,
   ['length']: RegExp,
-}
+  // ['space']: RegExp,
+};
 
 @Component({
   selector: 'app-invalid-password-hint',
@@ -21,7 +22,8 @@ export class InvalidPasswordHintComponent implements OnInit {
     ['special']: new RegExp('(?=.*[!@#$%&*()_+=|<>?{}\\[\\]~-])'),
     ['numeric']: new RegExp('(?=.*[0-9])'),
     ['length']: new RegExp('(?=.{8,})'),
-  }
+    // ['space']: new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'),
+  };
   constructor() { }
 
   ngOnInit() {

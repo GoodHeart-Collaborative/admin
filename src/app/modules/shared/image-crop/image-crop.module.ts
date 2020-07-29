@@ -14,6 +14,7 @@ import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.modul
     ReactiveFormsModule,
     MatButtonModule,
     MatIconModule,
+    CustomImageModule,
     MatButtonModule,
     CustomImageModule,
     MatIconModule
