@@ -36,6 +36,8 @@ export class AddAdviceComponent implements OnInit {
     private $route: Router
 
   ) {
+    this.today = new Date(new Date(new Date().setHours(0,0,0)).setDate(new Date().getDate() + 1));
+
     if ($router.snapshot.data.dailyData && $router.snapshot.data.dailyData.data) {
       this.adviceDetails = $router.snapshot.data.dailyData.data;
       $breadcrumb.replace(this.adviceDetails.id, this.adviceDetails.title);
@@ -97,6 +99,11 @@ export class AddAdviceComponent implements OnInit {
 
   async onSubmit() {
     if (this.adviceForm.invalid) {
+      if (this.adviceForm.get('postedAt').value &&
+      new Date(this.adviceForm.get('postedAt').value).getTime()
+      < new Date(this.today).getTime()) {
+        this.$utility.error('Invalid date selected');
+       }
       this.adviceForm.markAllAsTouched();
       return;
     }

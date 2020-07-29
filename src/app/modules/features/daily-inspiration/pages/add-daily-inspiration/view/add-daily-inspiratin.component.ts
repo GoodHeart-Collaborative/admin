@@ -24,7 +24,6 @@ export class AddDailyInspiratinComponent implements OnInit {
   descriptionMaxLength = VALIDATION_CRITERIA.descriptionMaxLength;
   titleMaxLength = VALIDATION_CRITERIA.titleMaxLength;
   thumbnailUrl: any;
-
   constructor(
     private $formBuilder: FormBuilder,
     private $daily: DailyInspirationService,
@@ -35,6 +34,8 @@ export class AddDailyInspiratinComponent implements OnInit {
     private $route: Router
 
   ) {
+    this.today = new Date(new Date(new Date().setHours(0,0,0)).setDate(new Date().getDate() + 1));
+
     if ($router.snapshot.data.dailyData && $router.snapshot.data.dailyData.data) {
       this.dailyInspirationDetails = $router.snapshot.data.dailyData.data;
       $breadcrumb.replace(this.dailyInspirationDetails.id, this.dailyInspirationDetails.title);
@@ -102,7 +103,12 @@ export class AddDailyInspiratinComponent implements OnInit {
    * Submit Form
    */
   async onSubmit() {
-    if (this.inspirationForm.invalid) {
+    if (this.inspirationForm.invalid) { 
+      if (this.inspirationForm.get('postedAt').value && 
+      new Date(this.inspirationForm.get('postedAt').value).getTime() 
+      < new Date(this.today).getTime()) {
+        this.$utility.error('Invalid date selected');
+       }
       this.inspirationForm.markAllAsTouched();
       return;
     }

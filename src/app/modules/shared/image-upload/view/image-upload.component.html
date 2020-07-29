@@ -6,9 +6,10 @@
           <mat-icon>camera_alt</mat-icon>
           <input type="file" accept="image/x-png,image/jpeg" #file (change)="onSelectFile($event)"
             matTooltip="Change Image" />
-        </button>
+          </button>
+        </div>
       </div>
-    </div>
+      <span>jpeg, png formats are allowed.</span>
   </div>
 
   <div class="croppabelWrap" *ngIf="imageChangedEvent" [class.active]="imageChangedEvent">
