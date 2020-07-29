@@ -4,6 +4,7 @@ import { ImageCropComponent } from './image-crop.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatIconModule } from '@angular/material';
+import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 
 @NgModule({
   declarations: [ImageCropComponent],
@@ -13,6 +14,7 @@ import { MatButtonModule, MatIconModule } from '@angular/material';
     ReactiveFormsModule,
     MatButtonModule,
     MatIconModule,
+    CustomImageModule,
     MatButtonModule,
   ],
   exports: [ImageCropComponent]
