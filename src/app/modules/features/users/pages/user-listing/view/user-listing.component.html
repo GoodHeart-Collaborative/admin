@@ -22,7 +22,7 @@
         </ng-template>
 
         <ng-template appFor="profilePicUrl" let-category="row">
-            <div class="category-image-cover">
+            <div class="category-image-cover" title="Click to see the image">
                 <img [src]="category?.profilePicUrl[0] |customImage:'USER'|async" alt="category-image"
                     (click)="onImageClick(category?.profilePicUrl[0])">
             </div>

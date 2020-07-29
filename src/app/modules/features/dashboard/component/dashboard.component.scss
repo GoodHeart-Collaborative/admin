@@ -12,9 +12,7 @@
     }
     --animate-duration: 1.3s;
     .row{
-        &:not(:last-child){
-            margin-bottom: 30px;
-        }
+        margin-bottom: 30px;
         .mat-card{
             padding: 24px;
             color: #333333;
@@ -52,6 +50,7 @@
                     padding: 00px 20px;
                     img{
                         width: 100%;    
+                        height: 236px;
                     }
                 }
             }
@@ -62,6 +61,7 @@
                     padding: 16px 23px 0px;
                     img{
                         width: 100%;
+                        height: 138px;
                     }
                 }
                 .incline-decline{
@@ -167,6 +167,7 @@
                     padding: 0px 9px 0px;
                     img{
                         width: 100%;
+                        height: 154px;
                     }
                 }
                .conversion-ratio-content{
@@ -215,7 +216,7 @@
                     text-align: center;
                     padding: 45px 20px;
                 }
-                background-size: contain;
+                background-size: cover;
                 background-repeat: no-repeat;
                 background-position: bottom;
                 background-image: url('../../../../../assets/graph4.png');
@@ -292,6 +293,22 @@
         
     }
 
+}
+
+.dashboard-footer{
+    border-top: 1px solid #d2d2d2;
+    padding: 15px 20px;
+    background: #eaeaea;
+    margin: 0px -20px -20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    p{
+        span{
+            color: $secondary;
+            font-weight: 700;
+        }
+    }
 }
 
 @keyframes gradient {

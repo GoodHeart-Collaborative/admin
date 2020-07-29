@@ -4,7 +4,7 @@
     </ng-template>
 
    <ng-template appFor="imageUrl" let-category="row">
-       <div class="category-image-cover">
+       <div class="category-image-cover" title="Click to see the image">
         <img [src]="category?.imageUrl |customImage:'IMAGE_PLACEHOLDER'|async" alt="category-image" (click)="onImageClick(category?.imageUrl)">
        </div>
     </ng-template>
