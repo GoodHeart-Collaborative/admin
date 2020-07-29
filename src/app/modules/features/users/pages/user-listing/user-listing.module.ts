@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { TableModule } from 'src/app/modules/commonTable/table';
 import { SearchFilterModule } from 'src/app/modules/commonTable/search-filter/search-filter.module';
 import { UsersListingFilterComponent } from './components/users-listing-filter.component';
-import { MatIconModule, MatMenuModule, MatDialogModule } from '@angular/material';
+import { MatIconModule, MatMenuModule, MatDialogModule, MatButtonModule } from '@angular/material';
 import { DateFilterModule } from 'src/app/modules/layout/layout-shared/date-filter/date-filter.module';
 import { CustomDatePipeModule } from 'src/app/pipes/custom-date/custom-date-pipe.module';
 import { ConfirmBoxService, ConfirmBoxModule } from 'src/app/modules/shared/confirm-box';
@@ -32,7 +32,8 @@ const routes: Routes = [
     MatIconModule,
     ConfirmBoxModule,
     ViewFullImageModule,
-    CustomImageModule
+    CustomImageModule,
+    MatButtonModule,
   ],
   providers: [ConfirmBoxService],
   entryComponents: [UsersListingFilterComponent]
