@@ -150,20 +150,8 @@ export class CategoryManagementListingComponent implements OnInit {
   }
 
   oneditHandler(id) {
-    // this.$category.updateCategory(id).then(res => {
-    //     if (res) {
-    //       this.matDailog.open(AddCategoryManagementComponent, {
-    //         width: '500px',
-    //         data: res.data
-    //       }).afterClosed().subscribe(res => {
-    //         if (res) {
-    //             this.updateUsers();
-    //         }
-    //       });
-    //     }
-    //   }).catch(err => {
-    //      this.$utility.errorAlert(err.message);
-    // });
+    this.$router.navigate([`${CATEGORY.fullUrl}`,'edit', id ]);
+
   }
 
   relatedCategoryHandler(id) {

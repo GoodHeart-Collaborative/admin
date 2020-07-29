@@ -38,17 +38,16 @@ export class CategoryManagementService {
   }
 }
 
-// @Injectable()
-// export class UsersServiceResolve implements Resolve<any>  {
-//   constructor(private $category: CategoryManagementService, private $router: Router) { }
-//   resolve(route: ActivatedRouteSnapshot) {
-//     const userId = route.params['id'];
-//     return this.$category.on(userId).catch(err => {
-//       if (err) {
-//         // this.$router.navigate(['admin/users']);
-//         return null;
-//       }
-//     }
-//     );
-//   }
-// }
+@Injectable()
+export class CategoryManagementServiceResolve implements Resolve<any>  {
+  constructor(private $category: CategoryManagementService, private $router: Router) { }
+  resolve(route: ActivatedRouteSnapshot) {
+    const userId = route.params['id'];
+    return this.$category.updateCategory(userId).catch(err => {
+      if (err) {
+        return null;
+      }
+    }
+    );
+  }
+}

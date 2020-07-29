@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CategoryManagementRoutingModule } from './category-management-routing.module';
-import { CategoryManagementService } from './service/category-management.service';
+import { CategoryManagementService, CategoryManagementServiceResolve } from './service/category-management.service';
 
 
 @NgModule({
@@ -9,6 +9,6 @@ import { CategoryManagementService } from './service/category-management.service
     CommonModule,
     CategoryManagementRoutingModule,
   ],
-  providers: [CategoryManagementService]
+  providers: [CategoryManagementService, CategoryManagementServiceResolve]
 })
 export class CategoryManagementModule { }

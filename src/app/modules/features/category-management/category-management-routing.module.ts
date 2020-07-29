@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CategoryManagementComponent } from './view/category-management.component';
 import { CATEGORY_LIST, CATEGORY, ADD_CATEGORY , } from 'src/app/constant/routes';
+import { CategoryManagementServiceResolve } from './service/category-management.service';
 
 
 const routes: Routes = [
@@ -22,6 +23,15 @@ const routes: Routes = [
     },
     {
       path: ADD_CATEGORY.path,
+      loadChildren: () => import('./pages/add-category-management/add-category-management.module')
+      .then( (m) => m.AddCategoryManagementModule
+      ),
+    },
+    {
+      path: 'edit/:id',
+      resolve: {
+        categoryDetails: CategoryManagementServiceResolve
+      },
       loadChildren: () => import('./pages/add-category-management/add-category-management.module')
       .then( (m) => m.AddCategoryManagementModule
       ),
