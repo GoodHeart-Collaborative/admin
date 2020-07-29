@@ -25,7 +25,7 @@ export class UserListingComponent implements OnInit {
     filterData: null,
     sortData: null
   };
-  statusCount: unknown;
+  statusCount: any;
   constructor(
     private $router: Router,
     private $userService: UsersService,
@@ -95,7 +95,6 @@ export class UserListingComponent implements OnInit {
 
   /**
    * User Action Handler
-   *
    *
    */
   onActionHandler(id: string, action: ActionType) {

@@ -13,7 +13,7 @@ export class DailyUnicornTableDataSource implements Table.Source<Category> {
   label = 'Category Management';
   columns: Table.Column<Category>[] = [
     {
-        title: 'Title',
+        title: 'Description',
         id: 'description',
         sorting: true,
         templateBy: 'description'
@@ -55,7 +55,7 @@ export class DailyUnicornTableDataSource implements Table.Source<Category> {
   ];
   options: Table.Options = {
     selection: false,
-    search: 'Search by Title',
+    search: 'Search by Description',
     index: true,
     addComponent: true,
     sorting: true,
