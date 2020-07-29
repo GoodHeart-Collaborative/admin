@@ -5,11 +5,6 @@
     <video #myVideo muted [src]="videoSrc" *ngIf="videoSrc" loop id="video"  controls
     (canplay)="onCanPlayHandler( $event.currentTarget)">Your browser does not support the
       video tag.</video>
-
-      <!-- <img [src]="profilePicURL" *ngIf="!videoSrc" alt=""> -->
-
-    <!-- <video *ngIf="videoSrc" id="upload-video" [src]="videoSrc"  #myVideo controls
-      (canplay)="onCanPlayHandler(fileData, $event.currentTarget)"> -->
       
     <div class="mat-icon-cover">
       
