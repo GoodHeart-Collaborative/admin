@@ -54,6 +54,11 @@ export class RequestInterceptor implements HttpInterceptor {
                     this.loaderService.hideLoader();
                     if (err instanceof HttpErrorResponse) {
                         let message = err.message;
+                        if (err.status === 400 ) {
+                            message = err.error.message;
+                            this.utilityService.errorAlert(message);
+                            return;
+                        }
                         if ((err.status === 401 || err.error.responseType === 'UNAUTHORIZED' ) || err.status === 504 ) {
                             message = SOMETHING_WENT_WRONG;
                             // this.utilityService.clearStorage();
@@ -72,11 +77,6 @@ export class RequestInterceptor implements HttpInterceptor {
                         this.utilityService.errorAlert(message);
                         this.utilityService.clearStorage();
                         this.router.navigate([LOGIN.fullUrl]);
-                        if (err.status === 400 ) {
-                            message = err.error.message;
-                            this.utilityService.errorAlert(message);
-                            return;
-                        }
                     }
                 }
          ));

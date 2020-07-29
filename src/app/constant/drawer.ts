@@ -82,3 +82,9 @@ export const EXPERT_CONTENT_TYPE =  [
     { value : 3 , viewValue: 'Image', disabled: false},
     { value : 4 , viewValue: 'Voice Note', disabled: false}
 ];
+export const PRAVICY =  [
+    { value : 'private', viewValue: 'Private'},
+    { value : 'protected', viewValue: 'Protected'},
+    { value : 'public', viewValue: 'Public'},
+
+];

@@ -16,7 +16,7 @@
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Category</mat-label>
-                                <mat-select formControlName="categoryId" multiple>
+                                <mat-select formControlName="categoryId">
                                     <mat-option *ngFor="let data of categoryData" [value]="data?._id">{{data?.name}}</mat-option>
                                 </mat-select>
                                 <mat-error>{{form('categoryId') |validate:'Category' }}</mat-error>
@@ -27,8 +27,9 @@
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Privacy</mat-label>
-                                <input matInput placeholder="Topic" appWhiteSpace #privacy formControlName="privacy">
-                                <mat-hint>{{privacy.value.trim().length}}/20</mat-hint>
+                                <mat-select formControlName="privacy">
+                                    <mat-option *ngFor="let data of privacyData" [value]="data?.value">{{data?.viewValue}}</mat-option>
+                                </mat-select>
                                 <mat-error>{{form('privacy') |validate:'Privacy' }}</mat-error>
                             </mat-form-field>
                         </div>

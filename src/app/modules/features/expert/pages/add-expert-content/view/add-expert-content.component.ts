@@ -3,10 +3,10 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { CategoryManagementService } from 'src/app/modules/features/category-management/service/category-management.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VALIDATION_CRITERIA } from 'src/app/constant/validation-criteria';
-import { EXPERT_DETAILS } from 'src/app/constant/routes';
+import { EXPERT_DETAILS, EXPERT } from 'src/app/constant/routes';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { ExpertService } from '../../../service/expert.service';
-import { EXPERT_CONTENT_TYPE } from 'src/app/constant/drawer';
+import { EXPERT_CONTENT_TYPE , PRAVICY} from 'src/app/constant/drawer';
 import { FileUploadService } from 'src/app/modules/shared/services/file-upload.service';
 
 @Component({
@@ -19,6 +19,7 @@ export class AddExpertContentComponent implements OnInit {
   categoryData: any;
   expertContentId: string;
   contentType = EXPERT_CONTENT_TYPE;
+  privacyData = PRAVICY;
   imageFile: any;
   thumbnailUrl: string;
   profilePicURL: string;
@@ -158,7 +159,7 @@ export class AddExpertContentComponent implements OnInit {
         this.expertContentForm.enable();
         this.$utility.success(data.message);
 
-        this.$router.navigate([EXPERT_DETAILS.fullUrl]);
+        this.$router.navigate([`${EXPERT.fullUrl}`]);
 
       },
       err => {
@@ -167,6 +168,7 @@ export class AddExpertContentComponent implements OnInit {
   }
 
   onCancel() {
-    this.$router.navigate([EXPERT_DETAILS.fullUrl]);
+    // this.$router.navigate([`${EXPERT_DETAILS.fullUrl}`, this.expertContentId]);
+    this.$router.navigate([`${EXPERT.fullUrl}`]);
   }
 }
