@@ -65,6 +65,8 @@ export class EditProfileComponent implements OnInit,OnDestroy {
 
  setimageFile(event) {
     this.imageFile = event;
+    console.log(this.imageFile);
+    
  }
 
   /**

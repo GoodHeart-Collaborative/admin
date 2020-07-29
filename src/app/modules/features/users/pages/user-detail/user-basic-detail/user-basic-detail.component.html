@@ -73,7 +73,7 @@
                         <div class="btn-wrap">
                             <button class="btn btn-block" mat-stroked-button (click)="onBlockUSer()"
                                 [class.btn-green]="userDetails?.status != 'active' ">
-                                {{userDetails?.status === 'active' ? 'Block' : 'Unblock'}} User </button>
+                                {{(userDetails?.status === 'active' || userDetails?.status === 'pending') ? 'Block' : 'Unblock'}} User </button>
                         </div>
                         <div class="btn-wrap">
                             <button class="btn btn-delete" mat-stroked-button (click)="onBlockUSer(true)">Delete
