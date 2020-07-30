@@ -48,9 +48,9 @@ export class MemberTableDataSource implements Table.Source<Category> {
     },
     {
       title: 'Added On',
-      id: 'createdAt',
+      id: 'memberCreatedAt',
       sorting: true,
-      templateBy: 'createdAt',
+      templateBy: 'memberCreatedAt',
     },
     {
       title: 'Status',

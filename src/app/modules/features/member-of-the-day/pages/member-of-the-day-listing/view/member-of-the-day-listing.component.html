@@ -1,6 +1,6 @@
 <app-table [tableSource]="tableSource" (optionChange)="onOptionChange($event)" (onAddCahnges)="onAdd()">
-    <ng-template appFor="createdAt" let-daily="row">
-        {{ daily?.createdAt |customDate}}
+    <ng-template appFor="memberCreatedAt" let-daily="row">
+        {{ daily?.memberCreatedAt |customDate}}
     </ng-template>
 
     <ng-template appFor="status" let-daily="row">

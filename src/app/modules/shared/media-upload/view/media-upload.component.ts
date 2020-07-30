@@ -206,7 +206,10 @@ export class MediaUploadComponent implements OnInit {
     this.isImage = false;
     this.isVideo = false;
     this.imageChangedEvent = null;
-    this.saveEvent.target.value = null;
+    if (this.saveEvent) {
+      this.saveEvent.target.value = null;
+     }
+    // this.saveEvent.target.value = null;
     this.profilePicURL = '';
     this.videoSrc = '';
     this.uploadMedia.emit(null);
