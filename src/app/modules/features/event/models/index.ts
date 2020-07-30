@@ -1,5 +1,4 @@
 import * as Table from 'src/app/modules/commonTable/table/interfaces';
-import { ListingFilterComponent } from '../pages/category-management-listing/component/listing-filter.component';
 type Category = any;
 
 const defaultData: Table.Data<Category> = {
@@ -9,39 +8,43 @@ const defaultData: Table.Data<Category> = {
     rows: null
 };
 
-export class CategoryTableDataSource implements Table.Source<Category> {
+export class EventTableDataSource implements Table.Source<Category> {
   label = 'Category Management';
   columns: Table.Column<Category>[] = [
     {
-      title: 'Image',
-      id: 'image',
-      sorting: false,
-      templateBy: 'imageUrl'
-    },
-    {
-      title: 'Title',
-      id: 'title',
-      sorting: true,
-      templateBy: 'title'
+        title: 'Title',
+        id: 'title',
+        sorting: true,
+        templateBy: 'title'
+        // resolve: (row: any) => row['title'] || '-',
     },
     // {
-    //   title: 'Mobile Number',
-    //   id: 'phoneNo',
-    //   sorting: false,
-    //   templateBy: 'mobileNo'
+    //     title: 'Description',
+    //     id: 'description',
+    //     sorting: false,
+    //     templateBy: 'description'
+    //     // resolve: (row: any) => row['title'] || '-',
     // },
+    {
+        title: 'Total Likes',
+        id: 'likeCount',
+        sorting: false,
+        templateBy: 'likeCount'
+        // resolve: (row: any) => row['likeCount'] || '0',
+    },
+    {
+      title: 'Total Comments',
+      id: 'commentCount',
+      sorting: false,
+      templateBy: 'commentCount'
+      // resolve: (row: any) => row['totalComments'] || '0',
+  },
     {
       title: 'Added On',
       id: 'createdAt',
       sorting: true,
       templateBy: 'createdAt',
     },
-    // {
-    //     title: 'Post',
-    //     id: 'post',
-    //     sorting: false,
-    //     resolve: (row: any) => row['post'] || '0',
-    //   },
     {
       title: 'Status',
       id: 'status',
@@ -61,9 +64,8 @@ export class CategoryTableDataSource implements Table.Source<Category> {
     search: 'Search by Title',
     index: true,
     addComponent: true,
-    filterComponent: ListingFilterComponent,
     sorting: true,
+    // filterComponent: DailyInspirationFilterComponent
   };
   constructor(public data: Table.Data<Category> = defaultData) {}
 }
-
