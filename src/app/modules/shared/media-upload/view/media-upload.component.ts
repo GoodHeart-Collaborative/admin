@@ -108,7 +108,7 @@ export class MediaUploadComponent implements OnInit {
       type !== "video/3gpp" && this.file) {
       this.$upload.showAlert('Please select any video mp4/x-m4v/3gp format file.')
     } else if (size > 1024 * 10) {
-      this.$upload.showAlert('Image size must be less then 10 MB')
+      this.$upload.showAlert('File size should not be greater then 10 MB')
     } else {
       const reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]); // read file as data url

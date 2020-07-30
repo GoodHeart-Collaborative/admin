@@ -4,20 +4,3 @@
     cursor: pointer;
     top: 140px;
 }
-.category-image-cover{
-    width: 40px;
-    height: 37px;
-    border-radius: 3px;
-    margin: auto;
-    display: flex;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-    img{
-        width: 100%;
-        height: 100%;
-        border-radius: 3px;
-        object-fit: cover;
-        box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
-    }
-}
