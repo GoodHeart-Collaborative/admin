@@ -7,7 +7,7 @@ export const VALIDATION_CRITERIA = {
   subTitleMinLength: 2,
   subTitleMaxLength: 150,
   titleMinLength: 2,
-  titleMaxLength: 20,
+  titleMaxLength: 50,
   phoneMinLength: 8,
   phoneMaxLength: 14,
   locationMinLength: 2,
@@ -20,8 +20,8 @@ export const VALIDATION_CRITERIA = {
   bioMinLength: 10,
   bioMaxLength: 200,
   professionMinLength: 3,
-  professionMaxLength: 20,
-  topicMaxLength: 20,
+  professionMaxLength: 50,
+  topicMaxLength: 50,
 };
 
 export const getTrimmed = (body) =>{

@@ -9,7 +9,7 @@
                             <mat-form-field appearance="outline">
                                 <mat-label>Topic</mat-label>
                                 <input matInput placeholder="Topic" appWhiteSpace #name formControlName="topic">
-                                <mat-hint>{{name.value.trim().length}}/20</mat-hint>
+                                <mat-hint>{{name.value.trim().length}}/50</mat-hint>
                                 <mat-error>{{form('topic') |validate:'Topic' }}</mat-error>
                             </mat-form-field>
                         </div>
