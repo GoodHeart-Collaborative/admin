@@ -3,8 +3,8 @@
 
     <div class="img-cover" *ngIf="profilePicURL || videoSrc">
       <div class="remove-cover">
-        <span style="z-index: 10000;" class="material-icons" (click)="$event.stopPropagation(); removeMedia()"
-          type="button">delete</span>
+        <span class="material-icons" (click)="$event.stopPropagation(); removeMedia()"
+          type="button">close</span>
       </div>
       <img [src]="profilePicURL |customImage:'IMAGE_PLACEHOLDER'|async" alt=" uploaded-image" *ngIf="!videoSrc">
       <video #myVideo muted [src]="videoSrc" *ngIf="videoSrc" loop id="video" controls
