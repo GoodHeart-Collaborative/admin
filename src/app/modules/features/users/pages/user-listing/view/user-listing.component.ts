@@ -165,7 +165,7 @@ export class UserListingComponent implements OnInit {
    */
   onverifyHandler(id, status, checkStatus) {
     if (checkStatus == status) {
-       return;
+      return;
     }
     this.$confirmBox.listAction('user', `${status == 'verified' ? 'verify' : 'reject'}`).subscribe((confirm) => {
       if (confirm) {
@@ -190,7 +190,7 @@ export class UserListingComponent implements OnInit {
     if (this.eventData.filterData && this.eventData.filterData.adminStatus && this.eventData.filterData.adminStatus == status) {
       delete this.eventData.filterData.adminStatus;
     } else {
-       this.eventData.filterData = {
+      this.eventData.filterData = {
         ...this.eventData.filterData,
         adminStatus: status
       };
@@ -203,6 +203,9 @@ export class UserListingComponent implements OnInit {
    *
    */
   onImageClick(image) {
+    if (!image) {
+      return;
+    }
     this.matDailog.open(ViewFullImageComponent, {
       panelClass: 'view-full-image-modal',
       data: image

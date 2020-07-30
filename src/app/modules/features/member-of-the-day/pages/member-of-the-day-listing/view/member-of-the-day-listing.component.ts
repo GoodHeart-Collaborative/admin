@@ -174,6 +174,9 @@ export class MemberOfTheDayListingComponent implements OnInit {
    *
    */
   onImageClick(image) {
+    if (!image) {
+      return;
+    }
     this.$matDailog.open(ViewFullImageComponent, {
       panelClass: 'view-full-image-modal',
       data: image

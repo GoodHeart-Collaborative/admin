@@ -68,6 +68,9 @@ export class UserBasicDetailComponent implements OnInit {
 
 
   onImageClick(image) {
+    if (!image) {
+      return;
+    }
     this.matDailog.open(SliderComponent, {
       panelClass: 'slider-modal',
       data: image
