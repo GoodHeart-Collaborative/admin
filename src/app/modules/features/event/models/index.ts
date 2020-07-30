@@ -1,5 +1,4 @@
 import * as Table from 'src/app/modules/commonTable/table/interfaces';
-import { DailyAdviceFilterComponent } from '../pages/daily-advice-listing/component/daily-advice-filter.component';
 type Category = any;
 
 const defaultData: Table.Data<Category> = {
@@ -9,7 +8,7 @@ const defaultData: Table.Data<Category> = {
     rows: null
 };
 
-export class DailyAdviceTableDataSource implements Table.Source<Category> {
+export class EventTableDataSource implements Table.Source<Category> {
   label = 'Category Management';
   columns: Table.Column<Category>[] = [
     {
@@ -24,6 +23,7 @@ export class DailyAdviceTableDataSource implements Table.Source<Category> {
     //     id: 'description',
     //     sorting: false,
     //     templateBy: 'description'
+    //     // resolve: (row: any) => row['title'] || '-',
     // },
     {
         title: 'Total Likes',
@@ -31,16 +31,15 @@ export class DailyAdviceTableDataSource implements Table.Source<Category> {
         sorting: false,
         templateBy: 'likeCount'
         // resolve: (row: any) => row['likeCount'] || '0',
-      },
+    },
     {
-        title: 'Total Comments',
-        id: 'commentCount',
-        sorting: false,
-        templateBy: 'commentCount',
-
-        // resolve: (row: any) => row['totalComments'] || '0',
-      },
-      {
+      title: 'Total Comments',
+      id: 'commentCount',
+      sorting: false,
+      templateBy: 'commentCount'
+      // resolve: (row: any) => row['totalComments'] || '0',
+  },
+    {
       title: 'Added On',
       id: 'createdAt',
       sorting: true,
@@ -66,7 +65,7 @@ export class DailyAdviceTableDataSource implements Table.Source<Category> {
     index: true,
     addComponent: true,
     sorting: true,
-    filterComponent: DailyAdviceFilterComponent
+    // filterComponent: DailyInspirationFilterComponent
   };
   constructor(public data: Table.Data<Category> = defaultData) {}
 }

@@ -47,7 +47,7 @@ export class MemberTableDataSource implements Table.Source<Category> {
       resolve: (row: any) => row['totalComments'] || '0',
     },
     {
-      title: 'Created At',
+      title: 'Added On',
       id: 'createdAt',
       sorting: true,
       templateBy: 'createdAt',

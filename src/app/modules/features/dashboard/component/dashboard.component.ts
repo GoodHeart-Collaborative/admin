@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { DashboardService } from '../service/dashboard.service';
 import { FormGroup } from '@angular/forms';
-import { MemberOfTheDayService } from '../../member-of-the-day/service/member-of-the-day.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonService } from 'src/app/modules/shared/services/common.service';
 
@@ -35,10 +34,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
   rightSideHeightValue: any;
   rightSideHeight: any;
   userList: any;
+  year = new Date().getFullYear();
   @HostListener('window:scroll', ['$event'])
-  scrollHandler(event) {
-    console.log("Scroll Event");
-  }
+  scrollHandler(event) {}
 
 
   constructor(

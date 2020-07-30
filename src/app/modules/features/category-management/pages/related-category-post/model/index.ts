@@ -33,7 +33,7 @@ export class RelatedCategoryTableDataSource implements Table.Source<Category> {
         // resolve: (row: any) => row['title'] || '-',
     },
     {
-      title: 'Created At',
+      title: 'Added On',
       id: 'createdAt',
       sorting: true,
       templateBy: 'createdAt',

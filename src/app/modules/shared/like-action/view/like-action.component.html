@@ -23,7 +23,8 @@
                             <button mat-menu-item (click)="onDetails(item?.user?._id)">
                                 See Profile
                             </button>
-                            <button mat-menu-item (click)="onActionHandler(item?.user?._id, item?.user?.status )">
+                            <!-- (click)="onActionHandler(item?.user?._id, item?.user?.status )" -->
+                            <button mat-menu-item >
                                 {{item?.user?.status | titlecase}} User
                             </button>
                         </mat-menu>

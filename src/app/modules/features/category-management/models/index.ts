@@ -31,7 +31,7 @@ export class CategoryTableDataSource implements Table.Source<Category> {
     //   templateBy: 'mobileNo'
     // },
     {
-      title: 'Created At',
+      title: 'Added On',
       id: 'createdAt',
       sorting: true,
       templateBy: 'createdAt',
