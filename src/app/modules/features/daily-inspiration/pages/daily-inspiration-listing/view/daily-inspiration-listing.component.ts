@@ -10,6 +10,7 @@ import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/lik
 import { CommentsComponent } from 'src/app/modules/shared/comments/view/comments/comments.component';
 import { MatDialog } from '@angular/material';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
+import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 @Component({
   selector: 'app-daily-inspiration-listing',
@@ -199,4 +200,14 @@ onAdd() {
   }
 
 
+  /**
+   * View Fill Image
+   *
+   */
+  onImageClick(image) {
+    this.$matDailog.open(ViewFullImageComponent, {
+      panelClass: 'view-full-image-modal',
+      data: image
+    }).afterClosed().subscribe();
+  }
 }

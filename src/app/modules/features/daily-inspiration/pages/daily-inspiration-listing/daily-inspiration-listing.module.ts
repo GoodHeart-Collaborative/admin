@@ -11,6 +11,8 @@ import { DailyInspirationFilterComponent } from './component/daily-inspiration-f
 import { ReactiveFormsModule } from '@angular/forms';
 import { LikeActionModule } from 'src/app/modules/shared/like-action/like-action.module';
 import { CommentsModule } from 'src/app/modules/shared/comments/comments.module';
+import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
+import { ViewFullImageModule } from 'src/app/modules/shared/view-full-image/view-full-image.module';
 
 
 const routes: Routes = [
@@ -34,7 +36,9 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatDialogModule,
     LikeActionModule,
-    CommentsModule
+    CommentsModule,
+    CustomImageModule,
+    ViewFullImageModule
   ],
   entryComponents : [DailyInspirationFilterComponent],
 
