@@ -184,7 +184,7 @@ export class UserListingComponent implements OnInit {
    *
    */
   onAdminStatusHandler(status: string) {
-    if (this.eventData.filterData.adminStatus && this.eventData.filterData.adminStatus == status) {
+    if (this.eventData.filterData && this.eventData.filterData.adminStatus && this.eventData.filterData.adminStatus == status) {
       delete this.eventData.filterData.adminStatus;
     } else {
        this.eventData.filterData = {
