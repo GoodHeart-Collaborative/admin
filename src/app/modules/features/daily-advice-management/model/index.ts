@@ -26,7 +26,7 @@ export class DailyAdviceTableDataSource implements Table.Source<Category> {
     //     templateBy: 'description'
     // },
     {
-        title: 'Like Count',
+        title: 'Total Likes',
         id: 'likeCount',
         sorting: false,
         templateBy: 'likeCount'

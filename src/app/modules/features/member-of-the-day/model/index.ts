@@ -3,49 +3,49 @@ import { ListingFilterComponent } from '../pages/member-of-the-day-listing/compo
 type Category = any;
 
 const defaultData: Table.Data<Category> = {
-    pageIndex: 0,
-    pageSize: 10,
-    total: 0,
-    rows: null
+  pageIndex: 0,
+  pageSize: 10,
+  total: 0,
+  rows: null
 };
 
 export class MemberTableDataSource implements Table.Source<Category> {
   label = 'Member Of The  Day';
   columns: Table.Column<Category>[] = [
     {
-        title: 'Name',
-        id: 'name',
-        sorting: true,
-        templateBy: 'name'
-        // resolve: (row: any) => row['title'] || '-',
+      title: 'Name',
+      id: 'name',
+      sorting: true,
+      templateBy: 'name'
+      // resolve: (row: any) => row['title'] || '-',
     },
     {
-        title: 'Email Address',
-        id: 'email',
-        sorting: false,
-        resolve: (row: any) => row['email'] || '-',
+      title: 'Email Address',
+      id: 'email',
+      sorting: false,
+      resolve: (row: any) => row['email'] || '-',
 
     },
     {
-        title: 'Mobile Number',
-        id: 'mobileNo',
-        sorting: false,
-        templateBy: 'mobileNo'
-        // resolve: (row: any) => row['mobileNo'] || '-',
-      },
+      title: 'Mobile Number',
+      id: 'mobileNo',
+      sorting: false,
+      templateBy: 'mobileNo'
+      // resolve: (row: any) => row['mobileNo'] || '-',
+    },
     {
-        title: 'Total Comments',
-        id: 'totalComments',
-        sorting: false,
-        resolve: (row: any) => row['totalComments'] || '0',
-      },
+      title: 'Total Likes',
+      id: 'likeCount',
+      sorting: false,
+      templateBy: "likeCount"
+      // resolve: (row: any) => row['likeCount'] || '0',
+    },
     {
-        title: 'Total Likes',
-        id: 'likeCount',
-        sorting: false,
-        templateBy: "likeCount"
-        // resolve: (row: any) => row['likeCount'] || '0',
-      },
+      title: 'Total Comments',
+      id: 'totalComments',
+      sorting: false,
+      resolve: (row: any) => row['totalComments'] || '0',
+    },
     {
       title: 'Created At',
       id: 'createdAt',
@@ -67,5 +67,5 @@ export class MemberTableDataSource implements Table.Source<Category> {
     sorting: true,
     // addComponent: true
   };
-  constructor(public data: Table.Data<Category> = defaultData) {}
+  constructor(public data: Table.Data<Category> = defaultData) { }
 }

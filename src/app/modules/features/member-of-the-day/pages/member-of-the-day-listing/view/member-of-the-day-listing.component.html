@@ -1,57 +1,60 @@
-
-
-<app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)" (onAddCahnges)="onAdd()">
+<app-table [tableSource]="tableSource" (optionChange)="onOptionChange($event)" (onAddCahnges)="onAdd()">
     <ng-template appFor="createdAt" let-daily="row">
-         {{ daily?.createdAt |customDate}}
-     </ng-template>
- 
-     <ng-template appFor="status" let-daily="row">
-         {{ daily?.status | titlecase}}
-     </ng-template>
-     
-     <ng-template appFor="likeCount" let-daily="row">
-        <a  [class.color-black]="daily?.likeCount < 1"  (click)="onlikeHandler(daily._id, daily?.likeCount)">
+        {{ daily?.createdAt |customDate}}
+    </ng-template>
+
+    <ng-template appFor="status" let-daily="row">
+        {{ daily?.status | titlecase}}
+    </ng-template>
+
+    <ng-template appFor="likeCount" let-daily="row">
+        <a [class.color-black]="daily?.likeCount < 1" (click)="onlikeHandler(daily._id, daily?.likeCount)">
             {{ daily?.likeCount}}
         </a>
-     </ng-template>
- 
- 
-     <ng-template appFor="name" let-post="row">
-        <a href="javascript:void(0)" (click)="onDetails(post?._id)" title="{{ post?.firstName  | titlecase}} {{ post?.lastName | titlecase}}">
-            {{ post?.firstName  | titlecase}} {{ post?.lastName | titlecase}}
-         </a>
-     </ng-template>
+    </ng-template>
 
-     <!-- <ng-template appFor="description" let-post="row">
+
+    <ng-template appFor="name" let-post="row">
+        <a href="javascript:void(0)" (click)="onDetails(post?._id)"
+            title="{{ post?.firstName  | titlecase}} {{ post?.lastName | titlecase}}">
+            {{ post?.firstName  | titlecase}} {{ post?.lastName | titlecase}}
+        </a>
+    </ng-template>
+
+    <!-- <ng-template appFor="description" let-post="row">
              {{ post?.description | titlecase}}
      </ng-template> -->
 
-     <ng-template appFor="mobileNo" let-user="row">
+    <ng-template appFor="mobileNo" let-user="row">
         <div class="mobile-content" [class.verified-user]="user?.isMobileVerified">
-            <span class="material-icons verified-icon" *ngIf="(user?.isMobileVerified) && (user?.mobileNo || user?.fullMobileNo)">verified_user</span>
+            <span class="material-icons verified-icon"
+                *ngIf="(user?.isMobileVerified) && (user?.mobileNo || user?.fullMobileNo)">verified_user</span>
             <span>{{ user?.mobileNo ?  user?.mobileNo  : (user?.fullMobileNo || '-' )}}</span>
         </div>
     </ng-template>
- 
-   <ng-container>
- 
-         <ng-template appFor="actions"  let-user="row">
-             <div class="action-icon-cover">
-                 <!-- <i class="material-icons icon-edit" (click)="oneditHandler(user?._id)" title="Edit" *ngIf="user?.status === 'active'">
+
+    <ng-container>
+
+        <ng-template appFor="actions" let-user="row">
+            <div class="action-icon-cover">
+                <!-- <i class="material-icons icon-edit" (click)="oneditHandler(user?._id)" title="Edit" *ngIf="user?.status === 'active'">
                      edit
                  </i> -->
-                 <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')" title="Delete user">
-                     delete
-                 </i>
-                 <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked')" *ngIf="user?.status === 'active';else templateAction"  title="Block user">
-                     blocked</i>
-                 <ng-template #templateAction>
-                     <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active')" title="Unblock user" >
-                         lock_open
-                     </i>
-                 </ng-template>
-             </div>
-         </ng-template>
-     </ng-container>  
- </app-table>
- 
+
+                <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked')"
+                    *ngIf="user?.status === 'active';else templateAction" title="Block user">
+                    blocked</i>
+                <ng-template #templateAction>
+                    <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active')"
+                        title="Unblock user">
+                        lock_open
+                    </i>
+                </ng-template>
+                <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')"
+                    title="Delete user">
+                    delete
+                </i>
+            </div>
+        </ng-template>
+    </ng-container>
+</app-table>

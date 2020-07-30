@@ -3,35 +3,35 @@ import { DailyUnicornFilterComponent } from '../pages/daily-unicorm-humour-listi
 type Category = any;
 
 const defaultData: Table.Data<Category> = {
-    pageIndex: 0,
-    pageSize: 10,
-    total: 0,
-    rows: null
+  pageIndex: 0,
+  pageSize: 10,
+  total: 0,
+  rows: null
 };
 
 export class DailyUnicornTableDataSource implements Table.Source<Category> {
   label = 'Category Management';
   columns: Table.Column<Category>[] = [
     {
-        title: 'Description',
-        id: 'description',
-        sorting: true,
-        templateBy: 'description'
-        // resolve: (row: any) => row['title'] || '-',
+      title: 'Description',
+      id: 'description',
+      sorting: true,
+      templateBy: 'description'
+      // resolve: (row: any) => row['title'] || '-',
     },
     {
-        title: 'Total Comments',
-        id: 'commentCount',
-        sorting: false,
-        templateBy: 'commentCount'
-        // resolve: (row: any) => row['totalComments'] || '0',
+      title: 'Total Likes',
+      id: 'likeCount',
+      sorting: false,
+      templateBy: 'likeCount'
+      // resolve: (row: any) => row['likeCount'] || '0',
     },
     {
-        title: 'Like Count',
-        id: 'likeCount',
-        sorting: false,
-        templateBy: 'likeCount'
-        // resolve: (row: any) => row['likeCount'] || '0',
+      title: 'Total Comments',
+      id: 'commentCount',
+      sorting: false,
+      templateBy: 'commentCount'
+      // resolve: (row: any) => row['totalComments'] || '0',
     },
     {
       title: 'Created At',
@@ -61,5 +61,5 @@ export class DailyUnicornTableDataSource implements Table.Source<Category> {
     sorting: true,
     filterComponent: DailyUnicornFilterComponent
   };
-  constructor(public data: Table.Data<Category> = defaultData) {}
+  constructor(public data: Table.Data<Category> = defaultData) { }
 }

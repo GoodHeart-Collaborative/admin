@@ -26,7 +26,7 @@ export class ArticleTableDataSource implements Table.Source<Category> {
         templateBy: 'description'
     },
     {
-        title: 'Like Count',
+        title: 'Total Likes',
         id: 'likeCount',
         sorting: false,
         resolve: (row: any) => row['likeCount'] || '0',
