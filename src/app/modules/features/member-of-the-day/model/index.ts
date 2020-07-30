@@ -13,9 +13,9 @@ export class MemberTableDataSource implements Table.Source<Category> {
   label = 'Member Of The  Day';
   columns: Table.Column<Category>[] = [
     {
-      title: 'Profile Pic',
+      title: 'Image',
       id: 'profilePicUrl',
-      sorting: true,
+      sorting: false,
       templateBy: 'profilePicUrl'
       // resolve: (row: any) => row['title'] || '-',
     },

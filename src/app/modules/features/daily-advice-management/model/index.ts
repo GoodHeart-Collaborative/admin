@@ -15,7 +15,7 @@ export class DailyAdviceTableDataSource implements Table.Source<Category> {
     {
       title: 'Image',
       id: 'mediaUrl',
-      sorting: true,
+      sorting: false,
       templateBy: 'mediaUrl'
       // resolve: (row: any) => row['title'] || '-',
     },
