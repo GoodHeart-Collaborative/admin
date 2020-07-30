@@ -13,6 +13,13 @@ export class DailyTableDataSource implements Table.Source<Category> {
   label = 'Category Management';
   columns: Table.Column<Category>[] = [
     {
+      title: 'Image',
+      id: 'mediaUrl',
+      sorting: false,
+      templateBy: 'mediaUrl'
+      // resolve: (row: any) => row['title'] || '-',
+    },
+    {
         title: 'Title',
         id: 'title',
         sorting: true,
