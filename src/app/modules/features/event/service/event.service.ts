@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/modules/shared/services/http.service';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
-import { HOME } from 'src/app/constant/urls';
+import { HOME, EXPERT } from 'src/app/constant/urls';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class EventService {
   ) { }
 
   async  queryData(params) {
-    // return  this.$http.get(HOME, params).toPromise();
+    return  this.$http.get(EXPERT, params).toPromise();
   }
 
   async updateStatus(id, status) {
