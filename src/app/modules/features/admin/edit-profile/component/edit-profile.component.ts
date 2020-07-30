@@ -3,8 +3,6 @@ import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FileUploadService } from '../../../../shared/services/file-upload.service';
 import { EditProfileService } from '../service/edit-profile.service';
-import { onSelectFile } from '../../../../../constant/file-input';
-import { invalidImageError, invalidFileSize } from '../../../../../constant/messages';
 import { FormService } from '../../../../shared/services/form.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
