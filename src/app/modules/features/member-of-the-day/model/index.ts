@@ -13,6 +13,13 @@ export class MemberTableDataSource implements Table.Source<Category> {
   label = 'Member Of The  Day';
   columns: Table.Column<Category>[] = [
     {
+      title: 'Image',
+      id: 'profilePicUrl',
+      sorting: false,
+      templateBy: 'profilePicUrl'
+      // resolve: (row: any) => row['title'] || '-',
+    },
+    {
       title: 'Name',
       id: 'name',
       sorting: true,
@@ -48,9 +55,9 @@ export class MemberTableDataSource implements Table.Source<Category> {
     },
     {
       title: 'Added On',
-      id: 'createdAt',
+      id: 'memberCreatedAt',
       sorting: true,
-      templateBy: 'createdAt',
+      templateBy: 'memberCreatedAt',
     },
     {
       title: 'Status',

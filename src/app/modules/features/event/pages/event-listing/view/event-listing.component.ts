@@ -66,12 +66,11 @@ export class EventListingComponent implements OnInit {
      if (searchText) {
        params['searchTerm'] = searchText;
      }
-     this.$event.queryData(params).then(res => {
-       this.userData = res['data'];
-       this.setUpTableResource(this.userData);
-     });
+    //  this.$event.queryData(params).then(res => {
+    //    this.userData = res['data'];
+    //    this.setUpTableResource(this.userData);
+    //  });
    }
- 
  /**
   * Listing Pagination Hnadler
   * @param event

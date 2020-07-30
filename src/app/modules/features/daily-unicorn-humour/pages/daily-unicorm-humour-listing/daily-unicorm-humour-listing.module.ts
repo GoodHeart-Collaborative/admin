@@ -10,6 +10,8 @@ import { DateFilterModule } from 'src/app/modules/layout/layout-shared/date-filt
 import { MatFormFieldModule, MatOptionModule, MatSelectModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommentsModule } from 'src/app/modules/shared/comments/comments.module';
+import { ViewFullImageModule } from 'src/app/modules/shared/view-full-image/view-full-image.module';
+import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 
 
 const routes: Routes = [
@@ -32,7 +34,9 @@ const routes: Routes = [
     MatOptionModule,
     MatSelectModule,
     ReactiveFormsModule,
-    CommentsModule
+    CommentsModule,
+    ViewFullImageModule,
+    CustomImageModule
   ],
   entryComponents: [DailyUnicornFilterComponent]
 })

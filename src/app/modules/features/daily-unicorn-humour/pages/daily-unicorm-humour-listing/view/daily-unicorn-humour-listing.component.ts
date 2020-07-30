@@ -12,6 +12,7 @@ import { MatDialog } from '@angular/material';
 import { HOME_TYPE } from 'src/app/constant/drawer';
 import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
 import { CommentsComponent } from 'src/app/modules/shared/comments/view/comments/comments.component';
+import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
 @Component({
   selector: 'app-daily-unicorn-humour-listing',
   templateUrl: './daily-unicorn-humour-listing.component.html',
@@ -206,4 +207,15 @@ export class DailyUnicornHumourListingComponent implements OnInit {
     }).afterClosed().subscribe();
   }
 
+
+  /**
+   * View Fill Image
+   *
+   */
+  onImageClick(image) {
+    this.$matDailog.open(ViewFullImageComponent, {
+      panelClass: 'view-full-image-modal',
+      data: image
+    }).afterClosed().subscribe();
+  }
 }

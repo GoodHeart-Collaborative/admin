@@ -11,6 +11,7 @@ import { HOME_TYPE } from 'src/app/constant/drawer';
 import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
 import { CommentsComponent } from 'src/app/modules/shared/comments/view/comments/comments.component';
 import { MatDialog } from '@angular/material';
+import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
 @Component({
   selector: 'app-daily-advice-listing',
   templateUrl: './daily-advice-listing.component.html',
@@ -167,6 +168,18 @@ export class DailyAdviceListingComponent implements OnInit {
     this.$matDailog.open(CommentsComponent, {
       width: '500px',
       data: id
+    }).afterClosed().subscribe();
+  }
+
+
+  /**
+   * View Fill Image
+   *
+   */
+  onImageClick(image) {
+    this.$matDailog.open(ViewFullImageComponent, {
+      panelClass: 'view-full-image-modal',
+      data: image
     }).afterClosed().subscribe();
   }
 

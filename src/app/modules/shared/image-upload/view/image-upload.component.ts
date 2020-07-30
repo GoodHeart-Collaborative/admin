@@ -56,8 +56,10 @@ export class ImageUploadComponent implements OnInit {
 
   removeMedia() {
     // this.img.nativeElement.value = null;
-    this.saveEvent.target.value = null;
-    this.profilePicURL = '';    
+    if (this.saveEvent) {
+      this.saveEvent.target.value = null;
+     }
+    this.profilePicURL = '';
     this.imageChangedEvent = null;
     this.uploadMedia.emit(null);
   }
