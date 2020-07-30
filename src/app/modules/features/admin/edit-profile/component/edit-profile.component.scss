@@ -1,21 +1,6 @@
 :host{
 	@import '../../../../../../sass/components/popup-ui';
 }
-:host ::ng-deep{
-			.page-media-upload{
-				.img-cover{
-					border-radius: 50% !important;
-					img{
-						border-radius: 50% !important;
-					}
-					.mat-icon-cover{
-						bottom: 0px !important;
-						right: 0px !important;
-					}
-				}
-			}
-	
-}
 
 
 .profile-detail {
@@ -66,4 +51,16 @@
 
 input [ type=file] {
 	cursor: pointer !important;
+}
+
+:host ::ng-deep{
+	.image-upload-content{
+		border-radius: 50% !important;
+		.img-cover{
+			img{
+				border-radius: 50% !important;
+			}
+		}
+	}
+	
 }
