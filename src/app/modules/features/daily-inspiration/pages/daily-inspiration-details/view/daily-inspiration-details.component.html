@@ -9,7 +9,7 @@
                         </figure>
                         <div class="heading-cover">
                             <a class="user_name" href="javascript:void()">{{dailyInspirationDetails?.addedBy?.name}}</a>
-                            <p class="posted-on-date">Posted on: {{dailyInspirationDetails?.postedAt | date : 'medium'}}</p>
+                            <p class="posted-on-date">Posted on: {{dailyInspirationDetails?.createdAt | date : 'medium'}}</p>
                         </div>
                     </div>
                     <h1>{{dailyInspirationDetails?.title | titlecase}}</h1>
