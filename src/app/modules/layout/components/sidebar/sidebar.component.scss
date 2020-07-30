@@ -176,7 +176,7 @@
 			padding: 0px !important;
 			height: 40px !important;
 			&:hover{
-				background: rgba(0, 0, 0, 0.04) !important;
+				background: rgba(0, 0, 0, 0.04);
 			}
 			.mat-expansion-indicator {
 				position: absolute;
@@ -188,6 +188,7 @@
 				}
 			}
 			&.mat-expanded {
+				background: rgba(0,0,0,0.2);
 				.mat-expansion-indicator {
 					top: 12px;
 				}
