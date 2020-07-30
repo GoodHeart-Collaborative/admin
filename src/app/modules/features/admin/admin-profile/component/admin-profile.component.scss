@@ -1,7 +1,5 @@
-:host{
-	@import '../../../../../../sass/abstracts/variables';
-	@import '../../../../../../sass/components/popup-ui';
-}
+@import '../../../../../../sass/abstracts/variables';
+@import '../../../../../../sass/components/popup-ui';
 .popup-body{
 	display: flex;
 	align-items: center;
