@@ -57,13 +57,16 @@ export class ExpertDetailsComponent implements OnInit {
   onTabChange(event: MatTabChangeEvent) {
     this.index = event.index;
     console.log(this.index);
-    this.updateList();
+    this.updateList(this.index);
 
   }
 /**
  * API Hit for List
  */
-  updateList() {
+  updateList(index?: number) {
+    if (!index ) {
+        return;
+    }
     const { pageIndex, pageSize, searchText, filterData, sortData } = this.eventData;
     let params = {
       page: `${pageIndex + 1}`,

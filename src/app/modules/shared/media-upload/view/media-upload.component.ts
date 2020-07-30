@@ -52,6 +52,7 @@ export class MediaUploadComponent implements OnInit {
       }
      // Video Upload
     } catch (err) {
+      this.img.nativeElement.value = null;
       if (err.type) {
         this.$upload.showAlert(invalidImageError());
       } else if (err.size) {

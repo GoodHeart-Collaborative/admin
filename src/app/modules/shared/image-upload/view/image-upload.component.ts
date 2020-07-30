@@ -28,6 +28,7 @@ export class ImageUploadComponent implements OnInit {
       this.imageFile = result.file;
       this.imageSelectedFromInput(event);
     } catch (err) {
+      this.img.nativeElement.value = null;
       if (err.type) {
         this.$upload.showAlert(invalidImageError());
       } else if (err.size) {
