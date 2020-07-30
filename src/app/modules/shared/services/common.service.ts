@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
-import {HOME_LIKE, HOME_COMMENT,} from 'src/app/constant/urls';
+import {HOME_LIKE, HOME_COMMENT, MEMBER, USER} from 'src/app/constant/urls';
 import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,10 @@ dashBoardFlag$ =  new BehaviorSubject(false);
   async updateStatus(userId: string, params) {
     return await this.$http.patch(`admin/user/${userId}/status`, params).toPromise();
    }
-
-
+ async  querymemberData(params) {
+    return  this.$http.get(MEMBER, params).toPromise();
+  }
+ async  queryUserData(params) {
+    return  this.$http.get(USER, params).toPromise();
+  }
 }

@@ -68,13 +68,13 @@
                               <h3 style="margin-bottom: 10px;">Recent Users</h3>
                               <p class="latest-text" style="font-size: 14px;margin-bottom: 15px; color: #777b8b;">Latest Three</p>
                               <ul class="users-listing">
-                                    <li class="single-user" *ngFor="let item of memberList">
+                                    <li class="single-user" *ngFor="let item of userList">
                                           <div class="img-cover">
                                                 <img [src]="item?.profilePicUrl[0] |customImage:'USER'|async" alt="Profile">
                                           </div>
                                           <div class="textual-cover">
-                                                <h6>{{item?.firstName || 'String'}}{{item?.lastName || ''}}</h6>
-                                                <p>{{item?.memberCreatedAt | customDate}}</p>
+                                                <h6>{{item?.firstName || 'String'}} {{item?.lastName || ''}}</h6>
+                                                <p>{{item?.createdAt | customDate}}</p>
                                           </div>
                                     </li>
                               </ul>
@@ -136,53 +136,17 @@
                                                       <th>Action</th>
                                                 </tr>
                                           </thead>
-                                          <tbody>
+                                          <tbody *ngFor="let item of memberList">
                                                 <tr>
-                                                      <td>Michael Austin</td>
-                                                      <td>ABC Fintech LTD.</td>
-                                                      <td>Jan 1, 2020</td>
+                                                      <td>{{item?.firstName || 'String'}} {{item?.lastName || ''}}</td>
+                                                      <td>{{item?.Company || 'dummy data'}}</td>
+                                                      <td>{{item?.memberCreatedAt | customDate}}</td>
                                                       <td class="status-cell">
-                                                            <span class="active">Active</span>
+                                                            <span class="active">{{item?.status}}</span>
                                                       </td>
-                                                      <td>$ 12,087</td>
+                                                      <td>$ {{item?.amount || 0}}</td>
                                                       <td>
-                                                            <span class="material-icons">close</span>
-                                                      </td>
-                                                </tr>
-                                                <tr>
-                                                      <td>Michael Austin</td>
-                                                      <td>ABC Fintech LTD.</td>
-                                                      <td>Jan 1, 2020</td>
-                                                      <td class="status-cell">
-                                                            <span class="in-active">In-active</span>
-                                                      </td>
-                                                      <td>$ 12,087</td>
-                                                      <td>
-                                                            <span class="material-icons">close</span>
-                                                      </td>
-                                                </tr>
-                                                <tr>
-                                                      <td>Michael Austin</td>
-                                                      <td>ABC Fintech LTD.</td>
-                                                      <td>Jan 1, 2020</td>
-                                                      <td class="status-cell">
-                                                            <span class="active">Active</span>
-                                                      </td>
-                                                      <td>$ 12,087</td>
-                                                      <td>
-                                                            <span class="material-icons">close</span>
-                                                      </td>
-                                                </tr>
-                                                <tr>
-                                                      <td>Michael Austin</td>
-                                                      <td>ABC Fintech LTD.</td>
-                                                      <td>Jan 1, 2020</td>
-                                                      <td class="status-cell">
-                                                            <span class="active">Active</span>
-                                                      </td>
-                                                      <td>$ 12,087</td>
-                                                      <td>
-                                                            <span class="material-icons">close</span>
+                                                            <span class="material-icons" (click)="onCloseMember(item?._id)">close</span>
                                                       </td>
                                                 </tr>
                                           </tbody>

@@ -22,26 +22,23 @@ export class DashboardComponent implements OnInit, OnDestroy {
   mode;
   tableAnimate: boolean = false;
   totalUsersCardAnimate: boolean = false;
-  memberList: unknown;
+  memberList: any;
   params = {
     page: 1,
     limit: 3,
   };
-  scroll:boolean=false;
+  scroll: boolean = false;
   totalPage: number;
   activePage: number;
   isFlag: boolean;
   rightSideScrollerFixed: boolean;
-
-  // @ViewChild('rightSideHeight') rightSideHeight: ElementRef;
   rightSideHeightValue: any;
   rightSideHeight: any;
-
-
-  @HostListener('window:scroll', ['$event']) 
-    scrollHandler(event) {
-      console.log("Scroll Event");
-    }
+  userList: any;
+  @HostListener('window:scroll', ['$event'])
+  scrollHandler(event) {
+    console.log("Scroll Event");
+  }
 
 
   constructor(
@@ -49,22 +46,21 @@ export class DashboardComponent implements OnInit, OnDestroy {
     private $member: MemberOfTheDayService,
     private $common: CommonService,
     router: Router) {
-    console.log(router.url.split('/').slice(-1)[0]);
-    if (router.url.split('/').slice(-1)[0] == 'dashboard') {
-      this.isFlag = true;
-    }
-
+    // console.log(router.url.split('/').slice(-1)[0]);
+    // if (router.url.split('/').slice(-1)[0] == 'dashboard') {
+    //   this.isFlag = true;
+    // }
     this.$common.dashBoardFlag$.next(true);
-    console.log(this.isFlag, 'dashbord');
     this.onDrashboardHandler();
   }
 
   ngOnInit() {
+    this.recentUserList();
     this.memberOfTheDayList();
   }
 
   @HostListener('window:scroll', ['$event']) onWindowScroll(e) {
-    if(window.pageYOffset > 200){
+    if (window.pageYOffset > 200) {
       this.tableAnimate = true;
       this.totalUsersCardAnimate = true;
     }
@@ -76,34 +72,49 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
   }
 
-  memberOfTheDayList() {
-    this.$member.queryData(this.params).then(res => {
-      console.log(res.data);
+  memberOfTheDayList(id?: string) {
+    this.$common.querymemberData(this.params).then(res => {
+      if (id) {
+        this.memberList = res.data['data'].filter(el => el._id != id);
+        return;
+      }
       this.memberList = res.data['data'];
-      this.totalPage = res.data['totalPage'];
+      // this.totalPage = res.data['totalPage'];
     });
   }
 
-  onPrevPage() {
-    if (this.params.page > 1) {
-      this.params.page--;
-      this.memberOfTheDayList();
-    }
-    console.log(this.params);
+  recentUserList() {
+    this.$common.queryUserData(this.params).then(res => {
+      this.userList = res.data['data'].data;
+      // this.totalPage = res.data['totalPage'];
+    });
   }
 
-  onNextPage() {
-    if (this.params.page < this.totalPage) {
-      this.params.page++;
-      this.memberOfTheDayList();
-    }
-    console.log(this.params);
-
+  onCloseMember(id: string) {
+    this.params.limit = 4;
+    this.memberOfTheDayList(id);
   }
 
   ngOnDestroy() {
     this.$common.dashBoardFlag$.next(false);
   }
 
-  
 }
+
+
+  // onPrevPage() {
+  //   if (this.params.page > 1) {
+  //     this.params.page--;
+  //     this.memberOfTheDayList();
+  //   }
+  //   console.log(this.params);
+  // }
+
+  // onNextPage() {
+  //   if (this.params.page < this.totalPage) {
+  //     this.params.page++;
+  //     this.memberOfTheDayList();
+  //   }
+  //   console.log(this.params);
+
+  // }
