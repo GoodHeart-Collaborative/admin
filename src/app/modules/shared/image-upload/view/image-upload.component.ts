@@ -52,11 +52,9 @@ export class ImageUploadComponent implements OnInit {
   }
 
   removeMedia() {
-    // this.isImage = false;
-    this.imageChangedEvent = null;
     this.img.nativeElement.value = null;
-    this.profilePicURL = '';
-    // this.videoSrc = '';
+    this.profilePicURL = '';    
+    this.imageChangedEvent = null;
     this.uploadMedia.emit(null);
   }
 }
