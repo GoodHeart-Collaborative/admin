@@ -1,10 +1,9 @@
-
-<app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)">
-   <ng-template appFor="createdAt" let-category="row">
+<app-table [tableSource]="tableSource" (optionChange)="onOptionChange($event)">
+    <ng-template appFor="createdAt" let-category="row">
         {{ category?.createdAt |customDate}}
     </ng-template>
 
-   <ng-template appFor="status" let-category="row">
+    <ng-template appFor="status" let-category="row">
         {{ category?.status | titlecase}}
     </ng-template>
 
@@ -14,23 +13,26 @@
         </a>
     </ng-template>
 
-  <ng-container>
-     <ng-template appFor="actions"  let-user="row">
+    <ng-container>
+        <ng-template appFor="actions" let-user="row">
             <div class="action-icon-cover">
                 <!-- <i class="material-icons icon-edit" (click)="oneditHandler(user?._id)" title="Edit">
                     edit
                 </i> -->
-                <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')" title="Delete user">
-                    delete
-                </i>
-                <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked')" *ngIf="user?.status === 'active';else templateAction"  title="Block user">
+                <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked')"
+                    *ngIf="user?.status === 'active';else templateAction" title="Block user">
                     blocked</i>
                 <ng-template #templateAction>
-                    <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active')" title="Unblock user" >
+                    <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active')"
+                        title="Unblock user">
                         lock_open
                     </i>
                 </ng-template>
+                <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')"
+                    title="Delete user">
+                    delete
+                </i>
             </div>
         </ng-template>
-    </ng-container>  
+    </ng-container>
 </app-table>

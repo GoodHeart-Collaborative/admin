@@ -1,72 +1,74 @@
 <div class="page-sidebar">
-  <div class="profile-view-cover">
-    <span class="material-icons close-sidebar-icon" (click)="sidebarCollaped()">arrow_back</span>
-    <div class="img-cover">
-      <img src="../../../../../assets/images/logo-white.png" alt="">
-    </div>
-  </div>
+	<div class="profile-view-cover">
+		<span class="material-icons close-sidebar-icon" (click)="sidebarCollaped()">arrow_back</span>
+		<div class="img-cover">
+			<img src="../../../../../assets/images/logo-white.png" alt="">
+		</div>
+	</div>
 
-  
-  <mat-list class="sidebar-list">
+	<mat-list class="sidebar-list">
 
-    <mat-list-item color="primary" [routerLink]="['DASHBOARD' | absolutePath]" routerLinkActive="active">
-      <mat-icon>dashboard</mat-icon> Dashboard
-    </mat-list-item>
+		<mat-list-item color="primary" [routerLink]="['DASHBOARD' | absolutePath]" routerLinkActive="active">
+			<mat-icon>dashboard</mat-icon> Dashboard
+		</mat-list-item>
 
-    <mat-list-item color="primary"  [routerLink]="['USER' | absolutePath]" routerLinkActive="active">
-      <mat-icon class="user-icon">person</mat-icon> Users
-    </mat-list-item>
+		<mat-list-item color="primary" [routerLink]="['USER' | absolutePath]" routerLinkActive="active">
+			<mat-icon class="user-icon">person</mat-icon> Users
+		</mat-list-item>
 
-    <mat-list-item color="primary" [routerLink]="['CATEGORY' | absolutePath]" routerLinkActive="active">
-      <mat-icon>category</mat-icon> Category
-    </mat-list-item>
 
-    <mat-list-item color="primary" [queryParams]="{ tab: '0'}" [routerLink]="['CONTENT_MANAGEMENT' | absolutePath]"  [ngClass]="{'active': $router.url.includes('content-management')}">
-      <mat-icon>description</mat-icon> Content Management
-    </mat-list-item>
+		<!-- THIS IS EXPANDABLE MENU USE WHEN NEEDED -->
+		<mat-expansion-panel>
+			<mat-expansion-panel-header>
+				<mat-list-item matRipple routerLinkActive="active">
+					<mat-icon>dynamic_feed</mat-icon> Home Feeds
+				</mat-list-item>
+			</mat-expansion-panel-header>
 
-    <!-- <mat-list-item color="primary"  routerLinkActive="active">
-      <mat-icon class="bulb-icon">star</mat-icon> Expert
-    </mat-list-item> -->
-    <mat-list-item color="primary" [routerLink]="['EXPERT' | absolutePath]" routerLinkActive="active">
-      <mat-icon class="bulb-icon">star</mat-icon> Expert
-    </mat-list-item>
+			<mat-list-item color="primary" [routerLink]="['MEMBER_OF_THE_DAY' | absolutePath]"
+				routerLinkActive="active">
+				<mat-icon class="medal-icon">military_tech</mat-icon> Member of the Day
+			</mat-list-item>
 
-    <mat-list-item color="primary" [routerLink]="['DAILY_INSPIRATION' | absolutePath]" routerLinkActive="active">
-      <mat-icon class="bulb-icon">emoji_objects</mat-icon> Daily Inspiration
-    </mat-list-item>
+			<mat-list-item color="primary" [routerLink]="['DAILY_INSPIRATION' | absolutePath]"
+				routerLinkActive="active">
+				<mat-icon class="bulb-icon">emoji_objects</mat-icon> Daily Inspiration
+			</mat-list-item>
 
-    <mat-list-item color="primary" [routerLink]="['MEMBER_OF_THE_DAY' | absolutePath]" routerLinkActive="active">
-      <mat-icon class="medal-icon">military_tech</mat-icon> Member of the Day
-    </mat-list-item>
+			<mat-list-item color="primary" [routerLink]="['DAILY_UNICORN' | absolutePath]" routerLinkActive="active">
+				<mat-icon class="brain-icon">psychology</mat-icon> Unicorn Humour
+			</mat-list-item>
 
-    <mat-list-item color="primary" [routerLink]="['DAILY_UNICORN' | absolutePath]" routerLinkActive="active">
-      <mat-icon class="brain-icon">psychology</mat-icon> Unicorn Humour
-    </mat-list-item>
+			<mat-list-item color="primary" [routerLink]="['DAILY_ADVICE' | absolutePath]" routerLinkActive="active">
+				<mat-icon>assistant</mat-icon> Advice Management
+			</mat-list-item>
 
-    <mat-list-item color="primary" [routerLink]="['DAILY_ADVICE' | absolutePath]" routerLinkActive="active">
-      <mat-icon>assistant</mat-icon> Advice Management
-    </mat-list-item>
+			<mat-list-item color="primary" routerLinkActive="active">
+				<mat-icon>assignment</mat-icon> Article Management
+			</mat-list-item>
 
-    <mat-list-item color="primary"  routerLinkActive="active">
-      <mat-icon>dynamic_feed</mat-icon> Feed
-    </mat-list-item>
+		</mat-expansion-panel>
 
-    <mat-list-item color="primary"routerLinkActive="active">
-      <mat-icon>assignment</mat-icon> Article Management
-    </mat-list-item>
-    <!-- <mat-list-item color="primary" routerLinkActive="active">
-      <mat-icon>emoji_events</mat-icon> Events
-    </mat-list-item> -->
-    <mat-list-item color="primary" [routerLink]="['EVENTS' | absolutePath]" routerLinkActive="active">
-      <mat-icon>emoji_events</mat-icon> Events
-    </mat-list-item>
-    <!-- <mat-list-item color="primary" [routerLink]="['NOTIFICATIONS' | absolutePath]" routerLinkActive="active">
-      <mat-icon> notifications </mat-icon> Notifications
-    </mat-list-item> -->
-    <mat-list-item color="primary"  routerLinkActive="active">
-      <mat-icon> notifications </mat-icon> Notifications
-    </mat-list-item>
-    
-  </mat-list>
-<mat-nav-list>
+		<mat-list-item color="primary" [routerLink]="['EXPERT' | absolutePath]" routerLinkActive="active">
+			<mat-icon class="bulb-icon">star</mat-icon> Experts
+		</mat-list-item>
+
+		<mat-list-item color="primary" routerLinkActive="active">
+			<mat-icon>emoji_events</mat-icon> Events
+		</mat-list-item>
+
+		<mat-list-item color="primary" [routerLink]="['CATEGORY' | absolutePath]" routerLinkActive="active">
+			<mat-icon>category</mat-icon> Category
+		</mat-list-item>
+
+		<mat-list-item color="primary" [queryParams]="{ tab: '0'}" [routerLink]="['CONTENT_MANAGEMENT' | absolutePath]"
+			[ngClass]="{'active': $router.url.includes('content-management')}">
+			<mat-icon>description</mat-icon> Content Management
+		</mat-list-item>
+
+		<mat-list-item color="primary" routerLinkActive="active">
+			<mat-icon> notifications </mat-icon> Notifications
+		</mat-list-item>
+
+	</mat-list>
+</div>

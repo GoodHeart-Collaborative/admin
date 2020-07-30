@@ -1,4 +1,4 @@
-@import 'abstracts/mixins';
+@import "abstracts/mixins";
 
 .page-sidebar {
 	box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.1);
@@ -6,21 +6,21 @@
 	position: fixed;
 	top: 0px;
 	bottom: 0px;
-	transition: .3s;
+	transition: 0.3s;
 	z-index: 999;
 	background-color: $primary;
 	// background-image: linear-gradient(315deg, #b58ecc 0%, #419ebb 63%);
 	user-select: none;
-	@media screen and (max-width: 992px){
+	@media screen and (max-width: 992px) {
 		left: 0px;
 	}
-	.profile-view-cover{
+	.profile-view-cover {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		padding: 20px 0px;
-		box-shadow: -2px 0px 4px 0px rgba(0,0,0,0.4);
-		.close-sidebar-icon{
+		box-shadow: -2px 0px 4px 0px rgba(0, 0, 0, 0.4);
+		.close-sidebar-icon {
 			position: absolute;
 			left: 10px;
 			color: white;
@@ -28,14 +28,14 @@
 			font-size: 25px;
 			cursor: pointer;
 			display: none;
-			@media screen and (max-width: 992px){
+			@media screen and (max-width: 992px) {
 				display: block;
 			}
 		}
-		.img-cover{
+		.img-cover {
 			width: 110px;
 			height: 80px;
-			img{
+			img {
 				width: 100%;
 			}
 		}
@@ -48,7 +48,7 @@
 		transition: 0.3s ease width;
 		padding-top: 20px;
 		max-height: calc(100vh - 120px);
-		@include custom-scroller('y');
+		@include custom-scroller("y");
 		.admin {
 			display: flex;
 			align-items: center;
@@ -75,7 +75,7 @@
 			@media screen and (max-width: 1600px) {
 				height: 40px;
 			}
-			
+
 			&.active {
 				background-color: white;
 				// color: #ff4da6;
@@ -114,16 +114,16 @@
 					align-items: center;
 					justify-content: center;
 				}
-				&.user-icon{
+				&.user-icon {
 					font-size: 25px;
 				}
-				&.bulb-icon{
+				&.bulb-icon {
 					font-size: 24px;
 				}
-				&.medal-icon{
+				&.medal-icon {
 					font-size: 25px;
 				}
-				&.brain-icon{
+				&.brain-icon {
 					font-size: 24px;
 				}
 			}
@@ -141,24 +141,60 @@
 }
 
 :host ::ng-deep {
-	.mat-list-item-content{
+	.mat-list-item-content {
 		padding: 0px 12px 0px 5px !important;
 	}
 	.mat-tooltip {
 		display: none;
 	}
-	.active{
-		.mat-list-item-content{
+	.active {
+		.mat-list-item-content {
 			font-weight: 600;
 		}
 	}
 }
 
-.sidebar-list{
-	&::-webkit-scrollbar-thumb{
+.sidebar-list {
+	&::-webkit-scrollbar-thumb {
 		background: white !important;
 	}
-	&::-webkit-scrollbar-track{
+	&::-webkit-scrollbar-track {
 		background: transparent !important;
+	}
+}
+
+:host ::ng-deep {
+	.mat-expansion-panel {
+		box-shadow: none;
+		border-radius: 0px;
+		background-color: transparent;
+		.mat-expansion-panel-header {
+			position: relative;
+			padding: 0px !important;
+			height: 48px !important;
+			.mat-expansion-indicator {
+				position: absolute;
+				right: 15px;
+				top: 12px;
+				transition: 0.3s;
+				&::after {
+					border-color: white;
+				}
+			}
+			&.mat-expanded {
+				.mat-expansion-indicator {
+					top: 15px;
+				}
+			}
+		}
+		&.mat-expanded {
+			background-color: rgba(0, 0, 0, 0.2);
+		}
+		.mat-expansion-panel-body {
+			padding: 0px !important;
+			a {
+				padding-left: 15px;
+			}
+		}
 	}
 }

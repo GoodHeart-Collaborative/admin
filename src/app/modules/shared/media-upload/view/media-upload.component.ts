@@ -24,6 +24,7 @@ export class MediaUploadComponent implements OnInit {
   isVideo: boolean;
   @Input() videoSrc: string | ArrayBuffer;
   private _canvas: HTMLCanvasElement;
+  saveEvent: any;
 
   // mediaFiles: any[] = [];
   // @Input() mediaControl: FormControl;
@@ -42,6 +43,7 @@ export class MediaUploadComponent implements OnInit {
   }
 
   async onSelectFile(event) {
+    this.saveEvent = event;
     try {
       this.checkMediaType(event.target.files[0], event);
       // Image Upload
@@ -52,7 +54,7 @@ export class MediaUploadComponent implements OnInit {
       }
      // Video Upload
     } catch (err) {
-      this.img.nativeElement.value = null;
+      this.saveEvent.target.value = null;
       if (err.type) {
         this.$upload.showAlert(invalidImageError());
       } else if (err.size) {
@@ -165,7 +167,7 @@ export class MediaUploadComponent implements OnInit {
           if ([2, 3].includes(this.contentId)) {
             return true;
           } else {
-            this.img.nativeElement.value = null;
+            this.saveEvent.target.value = null;
             this.$upload.showAlert('Invalid content type selected');
             return false;
           }
@@ -174,7 +176,7 @@ export class MediaUploadComponent implements OnInit {
           if ([1].includes(this.contentId)) {
             return true;
           } else {
-            this.img.nativeElement.value = null;
+            this.saveEvent.target.value = null;
             this.$upload.showAlert('Invalid content type selected');
             return false;
           }
@@ -183,7 +185,7 @@ export class MediaUploadComponent implements OnInit {
           if ([4].includes(this.contentId)) {
             return true;
           } else {
-            this.img.nativeElement.value = null;
+            this.saveEvent.target.value = null;
 
             this.$upload.showAlert('Invalid content type selected');
             return false;
@@ -204,14 +206,14 @@ export class MediaUploadComponent implements OnInit {
     this.isImage = false;
     this.isVideo = false;
     this.imageChangedEvent = null;
-    this.img.nativeElement.value = null;
+    this.saveEvent.target.value = null;
     this.profilePicURL = '';
     this.videoSrc = '';
     this.uploadMedia.emit(null);
   }
 
   closeCropper() {
-    this.img.nativeElement.value = null;
+    this.saveEvent.target.value = null;
     this.imageChangedEvent = null;
   }
 }
