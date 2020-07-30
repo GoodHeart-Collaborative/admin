@@ -1,5 +1,5 @@
 .page-media-upload{
-    .img-cover {
+    .media-upload-content {
         width: 180px;
         height: 180px;
         margin: auto;
@@ -19,38 +19,54 @@
             margin-right: 0px;
             margin-bottom: 20px;
         }
-    
-        img, video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 8px;
+
+        .img-cover{
+            .remove-cover{
+                display: none;
+                transition: 5s;
+                position: absolute;
+                align-items: center;
+                justify-content: center;
+                border-radius: 5px;
+                background: black;
+                box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.3);
+                width: 30px;
+                height: 30px;
+                right: 5px;
+                top: 5px;
+                cursor: pointer;
+                span{
+                    color: white;
+                    font-size: 20px;
+                }
+            }
+            img, video {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 8px;
+            }
+            &:hover{
+                .remove-cover{
+                    display: flex;
+                }
+            }
+
         }
-    
-        .mat-icon-cover {
-            position: absolute;
-            bottom: -13px;
-            right: -18px;
-            border: none;
+
+        .default-preview {
+            height: 100%;
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-    
-            .mat-icon {
-                cursor: pointer;
-                font-size: 20px;
-                height: 20px;
-            }
-    
+            flex-direction: column;
             input {
+                cursor: pointer;
                 position: absolute;
-                opacity: 0;
                 width: 100%;
                 height: 100%;
-                cursor: pointer;
-                left: 0;
-                top: 0;
+                opacity: 0;
             }
         }
     }
