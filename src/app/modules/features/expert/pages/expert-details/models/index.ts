@@ -27,11 +27,19 @@ export class ExpertDetailsTableDataSource implements Table.Source<Category> {
     },
 
     {
-        title: 'Description',
-        id: 'contentDisplayName',
+        title: 'Privacy',
+        id: 'privacy',
         sorting: false,
-        // templateBy: 'contentDisplayName'
-        resolve: (row: any) => row['contentDisplayName'],
+        // templateBy: 'privacy'
+        resolve: (row: any) => row['privacy'],
+
+    },
+    {
+        title: 'Topic',
+        id: 'topic',
+        sorting: false,
+        // templateBy: 'topic'
+        resolve: (row: any) => row['topic'],
 
     },
     {

@@ -43,7 +43,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   constructor(
     private $dashboardService: DashboardService,
-    private $member: MemberOfTheDayService,
     private $common: CommonService,
     router: Router) {
     // console.log(router.url.split('/').slice(-1)[0]);
