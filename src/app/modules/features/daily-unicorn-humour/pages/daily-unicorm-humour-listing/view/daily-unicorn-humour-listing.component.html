@@ -13,6 +13,13 @@
         </a>
     </ng-template>
 
+    <ng-template appFor="mediaUrl" let-category="row">
+        <div class="table-cell-image-cover" title="Click to see the image">
+            <img [src]="category?.mediaUrl |customImage:'USER'|async" alt="category-image"
+                (click)="onImageClick(category?.mediaUrl)">
+        </div>
+    </ng-template>
+
     <ng-template appFor="commentCount" let-daily="row">
         <a (click)="onCommentsHandler(daily._id, daily?.commentCount)" [class.color-black]="daily?.commentCount < 1">
             {{ daily?.commentCount}}

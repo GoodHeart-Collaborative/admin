@@ -13,6 +13,12 @@
         </a>
     </ng-template>
 
+    <ng-template appFor="profilePicUrl" let-category="row">
+        <div class="table-cell-image-cover" title="Click to see the image">
+            <img [src]="category?.profilePicUrl[0] |customImage:'USER'|async" alt="category-image"
+                (click)="onImageClick(category?.profilePicUrl[0])">
+        </div>
+    </ng-template>
 
     <ng-template appFor="name" let-post="row">
         <a href="javascript:void(0)" (click)="onDetails(post?._id)"

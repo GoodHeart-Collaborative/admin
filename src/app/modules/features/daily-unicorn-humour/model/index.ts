@@ -13,6 +13,13 @@ export class DailyUnicornTableDataSource implements Table.Source<Category> {
   label = 'Category Management';
   columns: Table.Column<Category>[] = [
     {
+      title: 'Image',
+      id: 'mediaUrl',
+      sorting: true,
+      templateBy: 'mediaUrl'
+      // resolve: (row: any) => row['title'] || '-',
+    },
+    {
       title: 'Description',
       id: 'description',
       sorting: true,

@@ -7,7 +7,13 @@
         {{ daily?.status | titlecase}}
     </ng-template>
 
-
+    <ng-template appFor="mediaUrl" let-category="row">
+        <div class="table-cell-image-cover" title="Click to see the image">
+            <img [src]="category?.mediaUrl |customImage:'USER'|async" alt="category-image"
+                (click)="onImageClick(category?.mediaUrl)">
+        </div>
+    </ng-template>
+    
     <ng-template appFor="title" let-post="row">
         <a href="javascript:void(0)" (click)="onDetailsHandler(post?._id)" title="{{ post?.title | titlecase}}">
             {{ post?.title | titlecase}}

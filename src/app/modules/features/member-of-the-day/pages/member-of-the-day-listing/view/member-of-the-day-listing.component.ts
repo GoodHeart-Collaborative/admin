@@ -9,6 +9,7 @@ import { UtilityService } from 'src/app/modules/shared/services/utility.service'
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import {  USER } from 'src/app/constant/routes';
 import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
+import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 
 @Component({
@@ -165,6 +166,17 @@ export class MemberOfTheDayListingComponent implements OnInit {
     this.$matDailog.open(LikeActionComponent, {
       width: '500px',
       data: id
+    }).afterClosed().subscribe();
+  }
+
+  /**
+   * View Fill Image
+   *
+   */
+  onImageClick(image) {
+    this.$matDailog.open(ViewFullImageComponent, {
+      panelClass: 'view-full-image-modal',
+      data: image
     }).afterClosed().subscribe();
   }
   
