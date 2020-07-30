@@ -55,12 +55,12 @@
 
             <ng-template appFor="actions" let-user="row">
                 <div class="action-icon-cover">
-                    <i class="material-icons icon-check icon-edit" (click)="onverifyHandler(user?._id, 'verified' )"
+                    <i class="material-icons icon-check icon-edit" (click)="onverifyHandler(user?._id, 'verified' ,user?.adminStatus)"
                         title="Verify User" [class.disabled-icon]="(user?.adminStatus == 'verified')">
                         check_circle
                     </i>
                     <i class="material-icons icon-deny" title="Reject User"
-                        (click)="onverifyHandler(user?._id, 'rejected')"
+                        (click)="onverifyHandler(user?._id, 'rejected', user?.adminStatus)"
                         [class.disabled-icon]="(user?.adminStatus == 'rejected')">
                         cancel
                     </i>

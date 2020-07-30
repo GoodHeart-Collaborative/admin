@@ -163,7 +163,10 @@ export class UserListingComponent implements OnInit {
    * Verify User Handler
    *
    */
-  onverifyHandler(id, status) {
+  onverifyHandler(id, status, checkStatus) {
+    if (checkStatus == status) {
+       return;
+    }
     this.$confirmBox.listAction('user', `${status == 'verified' ? 'verify' : 'reject'}`).subscribe((confirm) => {
       if (confirm) {
         const params = {
