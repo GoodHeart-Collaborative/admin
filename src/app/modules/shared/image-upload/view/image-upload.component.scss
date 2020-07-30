@@ -1,5 +1,5 @@
-.page-image-upload{
-    .image-upload-content {
+.upload-ui{
+    .upload-ui-content {
         width: 180px;
         height: 180px;
         margin: auto;
@@ -22,6 +22,8 @@
         }
 
         .img-cover{
+            height: 100%;
+            width: 100%;
             .remove-cover{
                 display: none;
                 transition: 5s;

@@ -1,9 +1,10 @@
-<div class="page-media-upload">
-  <div class="media-upload-content">
+<div class="page-media-upload upload-ui">
+  <div class="media-upload-content upload-ui-content">
 
     <div class="img-cover" *ngIf="profilePicURL || videoSrc">
       <div class="remove-cover">
-        <span style="z-index: 10000;" class="material-icons" (click)="$event.stopPropagation(); removeMedia()" type="button">delete</span>
+        <span style="z-index: 10000;" class="material-icons" (click)="$event.stopPropagation(); removeMedia()"
+          type="button">delete</span>
       </div>
       <img [src]="profilePicURL |customImage:'IMAGE_PLACEHOLDER'|async" alt=" uploaded-image" *ngIf="!videoSrc">
       <video #myVideo muted [src]="videoSrc" *ngIf="videoSrc" loop id="video" controls
@@ -11,9 +12,16 @@
         video tag.</video>
     </div>
 
-    <div class="default-preview" title="Image: JPEG, PNG | Video: MP4, 3GP formats are allowed" *ngIf="!profilePicURL && !videoSrc">
-      Upload Media
-      <input type="file" #file (change)="onSelectFile($event)" matTooltip="Upload file" accept="image/*,video/*" />
+    <div class="default-preview" title="Image: JPEG, PNG | Video: MP4, 3GP formats are allowed"
+      *ngIf="!profilePicURL && !videoSrc">
+      <div class="default-preview-content">
+        <img src="../../../../../assets/default-image/download-icon.svg" alt="upload"
+          class="animate__animated animate__rotateInDownLeft">
+        <h4>Drop your file here</h4>
+        <p>Or</p>
+        <span> Browse here</span>
+      </div>
+      <input type="file" #file (change)="onSelectFile($event)" accept="image/*,video/*" />
     </div>
 
   </div>
@@ -21,6 +29,6 @@
 </div>
 
 <div class="croppabelWrap" *ngIf="imageChangedEvent" [class.active]="imageChangedEvent">
-  <app-image-crop (imageData)="imageSelected($event)" [imageChangedEvent]="imageChangedEvent" [roundCropper]='true'
+  <app-image-crop (imageData)="imageSelected($event)" [imageChangedEvent]="imageChangedEvent" [roundCropper]='false'
     [aspectRatio]="4 / 4" (closeCropper)="closeCropper()"></app-image-crop>
 </div>
