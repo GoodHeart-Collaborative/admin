@@ -2,7 +2,7 @@
   <div class="image-upload-content">
 
     <!-- If this is true then default is false -->
-    <div class="img-cover" *ngIf="false">
+    <div class="img-cover" *ngIf="profilePicURL">
       <div class="remove-cover">
         <span class="material-icons" (click)="removeMedia()" type="button">delete</span>
       </div>
@@ -10,7 +10,7 @@
     </div>
 
     <!-- If this is true then img-cover is false -->
-    <div class="default-preview" title="Image: JPEG, PNG formats are allowed" *ngIf="true">
+    <div class="default-preview" title="Image: JPEG, PNG formats are allowed" *ngIf="!profilePicURL">
       Upload Image
       <input type="file" accept="image/x-png,image/jpeg" #file (change)="onSelectFile($event)"
         matTooltip="Upload Image" />

@@ -26,14 +26,14 @@ export class ExpertDetailsTableDataSource implements Table.Source<Category> {
       resolve: (row: any) => row['privacy'],
     },
 
-    {
-        title: 'Privacy',
-        id: 'privacy',
-        sorting: false,
-        // templateBy: 'privacy'
-        resolve: (row: any) => row['privacy'],
+    // {
+    //     title: 'Privacy',
+    //     id: 'privacy',
+    //     sorting: false,
+    //     // templateBy: 'privacy'
+    //     resolve: (row: any) => row['privacy'],
 
-    },
+    // },
     {
         title: 'Topic',
         id: 'topic',
