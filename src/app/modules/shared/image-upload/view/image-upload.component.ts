@@ -14,6 +14,7 @@ export class ImageUploadComponent implements OnInit {
   @Output() uploadMedia = new EventEmitter();
   imageChangedEvent: any;
   @ViewChild('file', { static: false }) img;
+  saveEvent: any;
 
   constructor(
     private $upload: FileUploadService
@@ -23,12 +24,13 @@ export class ImageUploadComponent implements OnInit {
   }
 
   async onSelectFile(event) {
+    this.saveEvent = event;
     try {
       let result = await onSelectFile(event);
       this.imageFile = result.file;
       this.imageSelectedFromInput(event);
     } catch (err) {
-      this.img.nativeElement.value = null;
+      this.saveEvent.target.value = null;
       if (err.type) {
         this.$upload.showAlert(invalidImageError());
       } else if (err.size) {
@@ -47,12 +49,14 @@ export class ImageUploadComponent implements OnInit {
   }
 
   closeCropper() {
-    this.img.nativeElement.value = null;
+    // this.img.nativeElement.value = null;
+    this.saveEvent.target.value = null;
     this.imageChangedEvent = null;
   }
 
   removeMedia() {
-    this.img.nativeElement.value = null;
+    // this.img.nativeElement.value = null;
+    this.saveEvent.target.value = null;
     this.profilePicURL = '';    
     this.imageChangedEvent = null;
     this.uploadMedia.emit(null);

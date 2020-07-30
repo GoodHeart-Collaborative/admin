@@ -10,7 +10,7 @@
     </div>
 
     <!-- If this is true then img-cover is false -->
-    <div class="default-preview" title="Image: JPEG, PNG formats are allowed" >
+    <div class="default-preview" title="Image: JPEG, PNG formats are allowed" *ngIf="!profilePicURL">
       Upload Image
       <input type="file" accept="image/x-png,image/jpeg" #file (change)="onSelectFile($event)"
         matTooltip="Upload Image" />

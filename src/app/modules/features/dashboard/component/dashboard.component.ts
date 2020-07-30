@@ -55,7 +55,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.recentUserList();
-    this.memberOfTheDayList();
+    this.memberOfTheDayList(4);
   }
 
   @HostListener('window:scroll', ['$event']) onWindowScroll(e) {
@@ -71,27 +71,26 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
   }
 
-  memberOfTheDayList(id?: string) {
+  memberOfTheDayList(count: any, id?: string) {
+    this.params.limit = count;
     this.$common.querymemberData(this.params).then(res => {
       if (id) {
         this.memberList = res.data['data'].filter(el => el._id != id);
         return;
       }
       this.memberList = res.data['data'];
-      // this.totalPage = res.data['totalPage'];
     });
   }
 
   recentUserList() {
     this.$common.queryUserData(this.params).then(res => {
       this.userList = res.data['data'].data;
-      // this.totalPage = res.data['totalPage'];
     });
   }
 
   onCloseMember(id: string) {
-    this.params.limit = 4;
-    this.memberOfTheDayList(id);
+    // this.params.limit = 5;
+    this.memberOfTheDayList(5, id);
   }
 
   ngOnDestroy() {
