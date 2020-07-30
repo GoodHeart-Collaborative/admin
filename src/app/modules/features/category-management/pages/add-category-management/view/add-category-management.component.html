@@ -16,7 +16,7 @@
         </div> -->
         <app-image-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL"></app-image-upload>
         <div class="right-portion">
-          <p>Enter the name of category you want to create.</p>
+          <p>Category Name</p>
           <mat-form-field appearance="outline">
             <mat-label>Category</mat-label>
             <input matInput formControlName="title" placeholder="Enter Category" [maxlength]="titleMaxLength"
