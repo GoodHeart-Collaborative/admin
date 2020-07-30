@@ -15,7 +15,7 @@ export class ImageUploadComponent implements OnInit {
   imageChangedEvent: any;
   @ViewChild('file', { static: false }) img;
   saveEvent: any;
-
+  @Input() isCropper = false;
   constructor(
     private $upload: FileUploadService
   ) { }
