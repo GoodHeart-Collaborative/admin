@@ -3,6 +3,10 @@
         {{ row?.createdAt |customDate}}
     </ng-template>
 
+    <ng-template appFor="postedAt" let-row="row">
+        {{ row?.postedAt |customDate}}
+    </ng-template>
+
     <ng-template appFor="status" let-row="row">
         {{ row?.status | titlecase}}
     </ng-template>
