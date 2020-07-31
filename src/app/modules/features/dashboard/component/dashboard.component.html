@@ -128,26 +128,28 @@
                                     <table>
                                           <thead>
                                                 <tr>
+                                                      <th>Profile</th>
                                                       <th>Name</th>
-                                                      <th>Company</th>
+                                                      <th>Industry Type</th>
                                                       <th>Start Date</th>
-                                                      <th>Status</th>
-                                                      <th>Amount</th>
-                                                      <th>Action</th>
+                                                      
                                                 </tr>
                                           </thead>
                                           <tbody *ngFor="let item of memberList">
                                                 <tr>
+                                                      <td>
+                                                            <img [src]="item?.profilePicUrl[0] |customImage:'USER'|async " alt="">
+                                                      </td>
                                                       <td>{{item?.firstName || 'String'}} {{item?.lastName || ''}}</td>
                                                       <td>{{item?.industryType || 'dummy data'}}</td>
                                                       <td>{{item?.memberCreatedAt | customDate}}</td>
-                                                      <td class="status-cell">
+                                                      <!-- <td class="status-cell">
                                                             <span class="active">{{item?.status}}</span>
                                                       </td>
                                                       <td>$ {{item?.amount || 0}}</td>
                                                       <td>
                                                             <span class="material-icons" (click)="onCloseMember(item?._id)">close</span>
-                                                      </td>
+                                                      </td> -->
                                                 </tr>
                                           </tbody>
                                           
