@@ -53,6 +53,13 @@ export class DailyAdviceTableDataSource implements Table.Source<Category> {
       sorting: true,
       templateBy: 'createdAt',
     },
+
+    {
+      title: 'Posted On',
+      id: 'postedAt',
+      sorting: false,
+      templateBy: 'postedAt',
+    },
     {
       title: 'Status',
       id: 'status',

@@ -139,9 +139,9 @@ export class AddDailyInspiratinComponent implements OnInit {
       }
       if (this.imageFile && this.imageFile.type == 2) {
         const dataForVideo: any = await this.$fileUploadService.uploadFile(this.imageFile.videoFile);
-        // const dataForThumb: any = await this.$fileUploadService.uploadFile(this.imageFile.thumbNailFile);
+        const dataForThumb: any = await this.$fileUploadService.uploadFile(this.imageFile.thumbNailFile);
         body['mediaUrl'] = dataForVideo.Location;
-        // body['thumbnailUrl'] = dataForThumb.Location;
+        body['thumbnailUrl'] = dataForThumb.Location;
         body.mediaType = this.imageFile.type;
       }
     } else if (this.dailyInspirationDetails) {
@@ -153,12 +153,12 @@ export class AddDailyInspiratinComponent implements OnInit {
         body['mediaUrl'] = '';
       }
       if (this.dailyInspirationDetails.mediaType == 2 && this.thumbnailUrl) {
-        // body['thumbnailUrl'] = this.thumbnailUrl;
+        body['thumbnailUrl'] = this.thumbnailUrl;
         body.mediaType = this.dailyInspirationDetails.mediaType;
       } else {
         delete body.mediaType;
-        // body['mediaUrl'] = '';
-        // body['thumbnailUrl'] = '';
+        body['mediaUrl'] = '';
+        body['thumbnailUrl'] = '';
       }
     }
     if (this.isPostLater.value) {

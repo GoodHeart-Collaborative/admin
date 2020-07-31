@@ -54,6 +54,12 @@ export class DailyTableDataSource implements Table.Source<Category> {
       templateBy: 'createdAt',
     },
     {
+      title: 'Posted On',
+      id: 'postedAt',
+      sorting: false,
+      templateBy: 'postedAt',
+    },
+    {
       title: 'Status',
       id: 'status',
       sorting: false,

@@ -3,14 +3,18 @@
         {{ row?.createdAt |customDate}}
     </ng-template>
 
+    <ng-template appFor="postedAt" let-row="row">
+        {{ row?.postedAt |customDate}}
+    </ng-template>
+
     <ng-template appFor="status" let-row="row">
         {{ row?.status | titlecase}}
     </ng-template>
 
     <ng-template appFor="mediaUrl" let-row="row">
         <div class="table-cell-image-cover" (click)="onImageClick(row?.mediaUrl, row?.mediaType)">
-            <img [src]="(row?.mediaType == 2 ?  row?.thumbnailUrl : row?.mediaUrl ) |customImage:'IMAGE_PLACEHOLDER'|async" *ngIf="false" alt="category-image" title="Click to see the image">
-            <span class="material-icons" *ngIf="true" title="Click to see the video">play_circle_filled</span>
+            <img [src]="(row?.mediaUrl ) |customImage:'IMAGE_PLACEHOLDER'|async" *ngIf="row?.mediaType == 1" alt="category-image" title="Click to see the image">
+            <span class="material-icons" *ngIf="row?.mediaType == 2" title="Click to see the video">play_circle_filled</span>
         </div>
     </ng-template>
     
