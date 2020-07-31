@@ -22,5 +22,13 @@
     }
     image-cropper{
         padding: 0px;
+        background-color: #dedede;
+        div{
+            &:first-child{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
     }
 }
