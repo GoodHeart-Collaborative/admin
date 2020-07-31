@@ -53,9 +53,9 @@
 			<mat-icon class="bulb-icon">star</mat-icon> Experts
 		</mat-list-item>
 
-		<!-- <mat-list-item color="primary" routerLinkActive="active">
+		<mat-list-item color="primary" routerLinkActive="active" [routerLink]="['EVENTS' | absolutePath]">
 			<mat-icon>emoji_events</mat-icon> Events
-		</mat-list-item> -->
+		</mat-list-item>
 
 		<mat-list-item color="primary" [routerLink]="['CATEGORY' | absolutePath]" routerLinkActive="active">
 			<mat-icon>category</mat-icon> Category
@@ -66,7 +66,7 @@
 			<mat-icon>description</mat-icon> Content Management
 		</mat-list-item>
 
-		<mat-list-item color="primary" routerLinkActive="active">
+		<mat-list-item color="primary" routerLinkActive="active" [routerLink]="['NOTIFICATIONS' | absolutePath]"	>
 			<mat-icon> notifications </mat-icon> Notifications
 		</mat-list-item>
 

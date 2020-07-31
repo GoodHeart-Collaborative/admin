@@ -68,7 +68,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="btn-wrap" *ngIf="(userDetails?.adminStatus == 'verified')">
+                        <div class="btn-wrap" *ngIf="(userDetails?.adminStatus == 'verified') || (userDetails?.adminStatus == 'pending')">
                             <button class="btn  btn-delete" mat-stroked-button
                                 (click)="onverifyHandler(userDetails?._id, 'rejected')">Reject User</button>
                         </div>

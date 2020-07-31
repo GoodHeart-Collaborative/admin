@@ -139,7 +139,7 @@
                                           <tbody *ngFor="let item of memberList">
                                                 <tr>
                                                       <td>{{item?.firstName || 'String'}} {{item?.lastName || ''}}</td>
-                                                      <td>{{item?.Company || 'dummy data'}}</td>
+                                                      <td>{{item?.industryType || 'dummy data'}}</td>
                                                       <td>{{item?.memberCreatedAt | customDate}}</td>
                                                       <td class="status-cell">
                                                             <span class="active">{{item?.status}}</span>

@@ -1,40 +1,40 @@
-<!-- <button class="btn btn-primary btn-add-category" mat-stroked-button (click)="onAddCategory()">Add Category</button> -->
+<!-- <button class="btn btn-primary btn-add-row" mat-stroked-button (click)="onAddrow()">Add row</button> -->
 
 <app-table [tableSource]="tableSource" (optionChange)="onOptionChange($event)" (onAddCahnges)="onAdd()">
-    <ng-template appFor="createdAt" let-daily="row">
-        {{ daily?.createdAt |customDate}}
+    <ng-template appFor="createdAt" let-row="row">
+        {{ row?.createdAt |customDate}}
     </ng-template>
 
-    <ng-template appFor="status" let-daily="row">
-        {{ daily?.status | titlecase}}
+    <ng-template appFor="status" let-row="row">
+        {{ row?.status | titlecase}}
     </ng-template>
 
-    <!-- <ng-template appFor="description" let-daily="row">
-        {{ daily?.description | titlecase}}
+    <!-- <ng-template appFor="description" let-row="row">
+        {{ row?.description | titlecase}}
     </ng-template> -->
 
-    <ng-template appFor="title" let-category="row">
-        <a href="javascript:void(0)" (click)="onDetailsHandler(category?._id)" title="{{ category?.title | titlecase}}">
-            {{ category?.title | titlecase}}
+    <ng-template appFor="title" let-row="row">
+        <a href="javascript:void(0)" (click)="onDetailsHandler(row?._id)" title="{{ row?.title | titlecase}}">
+            {{ row?.title | titlecase}}
         </a>
     </ng-template>
 
-    <ng-template appFor="mediaUrl" let-category="row">
-        <div class="table-cell-image-cover" title="Click to see the image">
-            <img [src]="category?.mediaUrl |customImage:'USER'|async" alt="category-image"
-                (click)="onImageClick(category?.mediaUrl)">
+    <ng-template appFor="mediaUrl" let-row="row">
+        <div class="table-cell-image-cover" (click)="onImageClick(row?.mediaUrl, row?.mediaType)">
+            <img [src]="row?.mediaUrl |customImage:'IMAGE_PLACEHOLDER'|async" *ngIf="false" alt="row-image" title="Click to see the image">
+            <span class="material-icons" *ngIf="true" title="Click to see the video">play_circle_filled</span>
         </div>
     </ng-template>
     
-    <ng-template appFor="likeCount" let-daily="row">
-        <a (click)="onlikeHandler(daily._id, daily?.likeCount)" [class.color-black]="daily?.likeCount < 1">
-            {{ daily?.likeCount}}
+    <ng-template appFor="likeCount" let-row="row">
+        <a (click)="onlikeHandler(row._id, row?.likeCount)" [class.color-black]="row?.likeCount < 1">
+            {{ row?.likeCount}}
         </a>
     </ng-template>
 
-    <ng-template appFor="commentCount" let-daily="row">
-        <a (click)="onCommentsHandler(daily._id, daily?.commentCount)" [class.color-black]="daily?.commentCount < 1">
-            {{ daily?.commentCount}}
+    <ng-template appFor="commentCount" let-row="row">
+        <a (click)="onCommentsHandler(row._id, row?.commentCount)" [class.color-black]="row?.commentCount < 1">
+            {{ row?.commentCount}}
         </a>
     </ng-template>
 

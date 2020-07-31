@@ -15,7 +15,7 @@ export class DataTransferService {
     ) {
     }
 
-    getProfileDetail() { 
+    getProfileDetail() {
         return new Observable((observer) => {
             if (this.profileData) {
                 observer.next(this.profileData);
@@ -24,8 +24,6 @@ export class DataTransferService {
                 this._http.get(ADMIN).subscribe(
                     response => {
                         this.profileData = response;
-                        console.log(response);
-                        // this.profileDetail.next({...response.data})
                         observer.next(response);
                         observer.complete();
                     }, error => {

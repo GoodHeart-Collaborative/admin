@@ -5,8 +5,8 @@ import { EventTableDataSource } from '../../../models/index';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { MatDialog } from '@angular/material';
-import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { EventService } from '../../../service/event.service';
+import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 
 @Component({
@@ -16,7 +16,7 @@ export type ActionType = 'deleted' | 'blocked' | 'active';
 })
 export class EventListingComponent implements OnInit {
    tableSource = new EventTableDataSource();
-   userData: any;
+   eventList: any;
    eventData: Table.OptionData = {
      pageIndex: 0,
      pageSize: 10,
@@ -29,17 +29,16 @@ export class EventListingComponent implements OnInit {
      private $router: Router,
      private $confirmBox: ConfirmBoxService,
      private $utility: UtilityService,
-     private $matDailog: MatDialog
    ) {
    }
 
    ngOnInit() {
-     this.updateUsers();
+     this.updateList();
    }
  /**
   * User listing Handler
   */
-   updateUsers() {
+   updateList() {
      const { pageIndex, pageSize, searchText, filterData , sortData } = this.eventData;
      let params = {
        page: `${pageIndex + 1}`,
@@ -67,8 +66,8 @@ export class EventListingComponent implements OnInit {
        params['searchTerm'] = searchText;
      }
     //  this.$event.queryData(params).then(res => {
-    //    this.userData = res['data'];
-    //    this.setUpTableResource(this.userData);
+    //    this.eventList = res['data'];
+    //    this.setUpTableResource(this.eventList);
     //  });
    }
  /**
@@ -77,17 +76,17 @@ export class EventListingComponent implements OnInit {
   */
    onOptionChange(event: Table.OptionEvent) {
      this.eventData = event.data;
-     this.updateUsers();
+     this.updateList();
    }
- 
+
    /**
     * User Action Handler
     * @param id
     * @param action
     */
    onActionHandler(id: string, action: ActionType) {
-     const index = this.userData.data.findIndex(user => user._id === id);
-     this.$confirmBox.listAction('inspiration', action == 'active'  ?  'active' : ( action == 'deleted' ? 'delete' : 'block'))
+     const index = this.eventList.data.findIndex(user => user._id === id);
+     this.$confirmBox.listAction('event', action == 'active'  ?  'active' : ( action == 'deleted' ? 'delete' : 'block'))
      .subscribe((confirm) => {
        if (confirm) {
          this.$event.updateStatus(id, action).then((res) => {
@@ -97,7 +96,7 @@ export class EventListingComponent implements OnInit {
        }
      });
    }
- 
+
    /**
     * Action Update Handler
     * @param action
@@ -106,32 +105,31 @@ export class EventListingComponent implements OnInit {
    handleActions(action: ActionType, index) {
      switch (action) {
        case 'deleted':
-         this.userData.data.splice(index, 1);
-         this.userData.total = this.userData.total - 1;
+         this.eventList.data.splice(index, 1);
+         this.eventList.total = this.eventList.total - 1;
          break;
        case 'active':
          this.handleStatus(action, index);
- 
+
          break;
        case 'blocked':
          this.handleStatus(action, index);
- 
          break;
        default:
          break;
      }
-     this.setUpTableResource(this.userData);
+     this.setUpTableResource(this.eventList);
    }
- 
+
    handleStatus(action: 'blocked' | 'active', index: number) {
-     this.userData.data = this.userData.data.map((user, i) => {
+     this.eventList.data = this.eventList.data.map((user, i) => {
        if (i === index) {
          user.status = action;
        }
        return user;
      });
    }
- 
+
    /**
     * User Set Up Table Handler
     * @param userRecords

@@ -212,13 +212,13 @@ export class DailyUnicornHumourListingComponent implements OnInit {
    * View Fill Image
    *
    */
-  onImageClick(image) {
+  onImageClick(image, type) {
     if (!image) {
       return;
     }
     this.$matDailog.open(ViewFullImageComponent, {
       panelClass: 'view-full-image-modal',
-      data: image
+      data: {image, type}
     }).afterClosed().subscribe();
   }
 }

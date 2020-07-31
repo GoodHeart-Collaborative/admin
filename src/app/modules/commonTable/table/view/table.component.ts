@@ -167,8 +167,6 @@ export class TableComponent implements OnInit {
     return this.tableSource && this.tableSource.options && this.tableSource.options.sorting;
   }
   get hasSearch(): boolean {
-    // console.log(this.tableSource, this.tableSource.options);
-
     return this.tableSource && this.tableSource.options && !!this.tableSource.options.search;
   }
   get hasFilter(): boolean {
@@ -214,15 +212,12 @@ export class TableComponent implements OnInit {
 
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnChanges(): void {
-    // console.log(this.moduleName);
 
   }
 
   ngOnInit() {
-    console.log(this.tableSource);
-
-    // this.checkAccessLevel();
   }
+
   templateOutlet(column: Table.Column<any>) {
     if (this.templates) {
       const template = this.templates.find(query => query.name === column.templateBy);
@@ -274,7 +269,6 @@ export class TableComponent implements OnInit {
               filterData
             }
           };
-          console.log(this.optionEvent.data);
           this._emitOptionEvent();
         }
         subscription.unsubscribe();
@@ -333,8 +327,6 @@ export class TableComponent implements OnInit {
   }
 
   onSortHandler(event) {
-    console.log(event);
-    
     let obj = {};
 
     if (event.active) {
@@ -368,12 +360,10 @@ export class TableComponent implements OnInit {
         pageSize: event.pageSize
       }
     };
-    console.log(this.optionEvent);
     this._emitOptionEvent();
   }
 
   private _emitOptionEvent() {
-    console.log(this.optionEvent);
      this.optionChange.emit(this.optionEvent);
   }
 
