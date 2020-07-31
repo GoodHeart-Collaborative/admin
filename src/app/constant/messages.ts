@@ -21,7 +21,7 @@ export const POPUP_MESSAGES = {
     "Forgot Your Password? Don't worry send us your registered email address and we will send yousteps to reset your password.",
 };
 
-export const invalidImageError = (format = "jpeg/png") =>
+export const invalidImageError = (format = "JPG, JPEG, PNG") =>
   `Only ${format} images are allowed`;
 
 export const invalidFileSize = (size = 4) =>

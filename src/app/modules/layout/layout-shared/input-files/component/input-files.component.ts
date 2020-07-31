@@ -49,7 +49,7 @@ export class InputFilesComponent implements OnInit, OnDestroy {
   @Input() errorMessage = 'Only image and video files are allowed';
   // multiple
   private _maxFiles = 10;
-  _accept = 'image/jpeg,image/png,video/mp4';
+  _accept = 'image/jpg,image/jpeg,image/png,video/mp4';
   @Input()
   set accept(format: string) {
     this._accept = format;
