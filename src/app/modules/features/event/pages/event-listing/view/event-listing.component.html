@@ -4,46 +4,46 @@
 </div> -->
 
 <app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)" (onAddCahnges)="onAdd()">
-    <ng-template appFor="createdAt" let-daily="row">
-         {{ daily?.createdAt |customDate}}
+    <ng-template appFor="createdAt" let-row="row">
+         {{ row?.createdAt |customDate}}
      </ng-template>
  
-     <ng-template appFor="status" let-daily="row">
-         {{ daily?.status | titlecase}}
+     <ng-template appFor="status" let-data="row">
+         {{ data?.status | titlecase}}
      </ng-template>
  
-     <ng-template appFor="title" let-category="row">
-         <a href="javascript:void(0)" (click)="onDetailsHandler(category?._id)" title="{{ category?.title | titlecase}}">
-             {{ category?.title | titlecase}}
+     <ng-template appFor="title" let-data="row">
+         <a href="javascript:void(0)" (click)="onDetailsHandler(data?._id)" title="{{ data?.title | titlecase}}">
+             {{ data?.title | titlecase}}
          </a>
      </ng-template>
  
-     <ng-template appFor="likeCount" let-daily="row">
-         <a (click)="onlikeHandler(daily._id, daily?.likeCount)" [class.color-black]="daily?.likeCount < 1">
-             {{ daily?.likeCount}}
+     <!-- <ng-template appFor="likeCount" let-row="row">
+         <a (click)="onlikeHandler(row._id, row?.likeCount)" [class.color-black]="row?.likeCount < 1">
+             {{ row?.likeCount}}
          </a>
-     </ng-template>
+     </ng-template> -->
  
-     <ng-template appFor="commentCount" let-daily="row">
-         <a (click)="onCommentsHandler(daily._id, daily?.commentCount)" [class.color-black]="daily?.commentCount < 1">
-             {{ daily?.commentCount}}
+     <!-- <ng-template appFor="commentCount" let-row="row">
+         <a (click)="onCommentsHandler(row._id, row?.commentCount)" [class.color-black]="row?.commentCount < 1">
+             {{ row?.commentCount}}
          </a>
-     </ng-template>
+     </ng-template> -->
  
    <ng-container>
  
-         <ng-template appFor="actions"  let-user="row">
+         <ng-template appFor="actions"  let-row="row">
              <div class="action-icon-cover">
-                 <i class="material-icons icon-edit" (click)="oneditHandler(user?._id)" title="Edit">
+                 <i class="material-icons icon-edit" (click)="oneditHandler(row?._id)" title="Edit">
                      edit
                  </i>
-                 <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')" title="Delete user">
+                 <i class="material-icons icon-delete" (click)="onActionHandler(row._id, 'deleted')" title="Delete row">
                      delete
                  </i>
-                 <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked')" *ngIf="user?.status === 'active';else templateAction"  title="Block user">
+                 <i class="material-icons icon-block" (click)="onActionHandler(row._id, 'blocked')" *ngIf="row?.status === 'active';else templateAction"  title="Block row">
                      blocked</i>
                  <ng-template #templateAction>
-                     <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active')" title="Unblock user" >
+                     <i class="material-icons icon-unblock" (click)="onActionHandler(row._id, 'active')" title="Unblock row" >
                          lock_open
                      </i>
                  </ng-template>

@@ -16,7 +16,7 @@
     <ng-template appFor="mediaUrl" let-category="row">
         <div class="table-cell-image-cover" title="Click to see the image">
             <img [src]="category?.mediaUrl |customImage:'USER'|async" alt="category-image"
-                (click)="onImageClick(category?.mediaUrl)">
+                (click)="onImageClick(category?.mediaUrl, category?.mediaType)">
         </div>
     </ng-template>
 

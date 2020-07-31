@@ -204,13 +204,13 @@ onAdd() {
    * View Fill Image
    *
    */
-  onImageClick(image) {
+  onImageClick(image: string, type: number) {
     if (!image) {
       return;
     }
     this.$matDailog.open(ViewFullImageComponent, {
       panelClass: 'view-full-image-modal',
-      data: image
+      data: {image, type}
     }).afterClosed().subscribe();
   }
 }

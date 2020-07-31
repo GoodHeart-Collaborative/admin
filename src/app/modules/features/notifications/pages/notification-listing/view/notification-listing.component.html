@@ -1,6 +1,54 @@
-<p>notification-listing works!</p>
-
-<div class="btn-row">
+<!-- <div class="btn-row">
     <button class="btn btn-primary" style="margin-right: 10px;" (click)="onAdd()">Add</button>
     <button class="btn btn-primary" (click)="onDetails()">Details</button>
-</div>
+</div> -->
+
+
+<app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)" (onAddCahnges)="onAdd()">
+    <ng-template appFor="createdAt" let-daily="row">
+         {{ daily?.createdAt |customDate}}
+     </ng-template>
+ 
+     <ng-template appFor="status" let-daily="row">
+         {{ daily?.status | titlecase}}
+     </ng-template>
+ 
+     <ng-template appFor="title" let-category="row">
+         <a href="javascript:void(0)" (click)="onDetailsHandler(category?._id)" title="{{ category?.title | titlecase}}">
+             {{ category?.title | titlecase}}
+         </a>
+     </ng-template>
+ 
+     <ng-template appFor="likeCount" let-daily="row">
+         <a (click)="onlikeHandler(daily._id, daily?.likeCount)" [class.color-black]="daily?.likeCount < 1">
+             {{ daily?.likeCount}}
+         </a>
+     </ng-template>
+ 
+     <ng-template appFor="commentCount" let-daily="row">
+         <a (click)="onCommentsHandler(daily._id, daily?.commentCount)" [class.color-black]="daily?.commentCount < 1">
+             {{ daily?.commentCount}}
+         </a>
+     </ng-template>
+ 
+   <ng-container>
+ 
+         <ng-template appFor="actions"  let-user="row">
+             <div class="action-icon-cover">
+                 <i class="material-icons icon-edit" (click)="oneditHandler(user?._id)" title="Edit">
+                     edit
+                 </i>
+                 <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')" title="Delete user">
+                     delete
+                 </i>
+                 <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked')" *ngIf="user?.status === 'active';else templateAction"  title="Block user">
+                     blocked</i>
+                 <ng-template #templateAction>
+                     <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active')" title="Unblock user" >
+                         lock_open
+                     </i>
+                 </ng-template>
+             </div>
+         </ng-template>
+     </ng-container>  
+ </app-table>
