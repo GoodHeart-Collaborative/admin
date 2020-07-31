@@ -1,3 +1,8 @@
 .click-not-allowed{
     cursor: not-allowed !important;
+    text-decoration: none !important;
+    color: black;
+    &.material-icons{
+        opacity: .5;
+    }
 }

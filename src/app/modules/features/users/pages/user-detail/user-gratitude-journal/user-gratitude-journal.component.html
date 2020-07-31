@@ -14,7 +14,7 @@
 
 
     <ng-template appFor="description" let-user="row">
-        <a href="javascript:void(0)" (click)="onDetailsHandler(user?._id, user?.privacy)">
+        <a href="javascript:void(0)" (click)="onDetailsHandler(user?._id, user?.privacy)" [class.click-not-allowed]="user?.privacy == 'private'">
             {{ (user?.description  | titlecase) || 'String'}}
         </a>
     </ng-template>
@@ -24,16 +24,16 @@
         <ng-template appFor="actions" let-user="row">
             <div class="action-icon-cover">
 
-                <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked', user?.privacy)"
+                <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked', user?.privacy)" [class.click-not-allowed]="user?.privacy == 'private'"
                     *ngIf="user?.status === 'active';else templateAction" title="Block user">
                     blocked</i>
                 <ng-template #templateAction>
-                    <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active', user?.privacy)"
+                    <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active', user?.privacy)" [class.click-not-allowed]="user?.privacy == 'private'"
                         title="Unblock user">
                         lock_open
                     </i>
                 </ng-template>
-                <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted',  user?.privacy)"
+                <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted',  user?.privacy)" [class.click-not-allowed]="user?.privacy == 'private'"
                     title="Delete user">
                     delete
                 </i>
