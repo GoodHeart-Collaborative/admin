@@ -51,7 +51,7 @@ export class CommentsShowComponent implements OnInit, OnChanges {
     console.log(commentId , 'shama');
     
     if (!this.comments[commenIndex].showReply) {
-        this.comments[commenIndex].replies = await this.getCommentHandler(this.commentId, commentId)
+        this.comments[commenIndex].replies = await this.getCommentHandler(this.commentId, commentId);
     }
     this.comments[commenIndex]['showReply'] = !this.comments[commenIndex]['showReply']
     this.hideShowReplies = !this.hideShowReplies;

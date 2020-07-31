@@ -18,7 +18,7 @@
 
 
 		<!-- THIS IS EXPANDABLE MENU USE WHEN NEEDED -->
-		<mat-expansion-panel #mep>
+		<mat-expansion-panel #mep >
 			<mat-expansion-panel-header>
 				<mat-list-item matRipple routerLinkActive="active">
 					<mat-icon>dynamic_feed</mat-icon> Home Feeds
@@ -52,8 +52,8 @@
 		<mat-list-item (click)="mep.expanded = false;" color="primary" [routerLink]="['EXPERT' | absolutePath]" routerLinkActive="active">
 			<mat-icon class="bulb-icon">star</mat-icon> Experts
 		</mat-list-item>
-
-		<mat-list-item (click)="mep.expanded = false;" color="primary" routerLinkActive="active" [routerLink]="['EVENTS' | absolutePath]">
+		<!-- [routerLink]="['EVENTS' | absolutePath]" -->
+		<mat-list-item (click)="mep.expanded = false;" color="primary" routerLinkActive="active" >
 			<mat-icon>emoji_events</mat-icon> Events
 		</mat-list-item>
 
@@ -66,7 +66,8 @@
 			<mat-icon>description</mat-icon> Content Management
 		</mat-list-item>
 
-		<mat-list-item (click)="mep.expanded = false;" color="primary" routerLinkActive="active" [routerLink]="['NOTIFICATIONS' | absolutePath]"	>
+		<!-- [routerLink]="['NOTIFICATIONS' | absolutePath]" -->
+		<mat-list-item (click)="mep.expanded = false;" color="primary" routerLinkActive="active" 	>
 			<mat-icon> notifications </mat-icon> Notifications
 		</mat-list-item>
 
