@@ -123,7 +123,7 @@
                   </div>
                   <div class="col-md-8">
                         <div class="mat-card mod-list-card animate__animated" [class.animate__bounceInRight]="tableAnimate">
-                              <h3 style="margin-bottom: 20px;">Member of the Day List</h3>
+                              <h3 style="margin-bottom: 10px;">Member of the Day List</h3>
                               <div class="table-cover">
                                     <table>
                                           <thead>
@@ -135,10 +135,12 @@
                                                       
                                                 </tr>
                                           </thead>
-                                          <tbody *ngFor="let item of memberList">
-                                                <tr>
+                                          <tbody>
+                                                <tr *ngFor="let item of memberList">
                                                       <td>
-                                                            <img [src]="item?.profilePicUrl[0] |customImage:'USER'|async " alt="">
+                                                            <div class="img-cover">
+                                                                  <img [src]="item?.profilePicUrl[0] |customImage:'USER'|async " alt="">
+                                                            </div>
                                                       </td>
                                                       <td>{{item?.firstName || 'String'}} {{item?.lastName || ''}}</td>
                                                       <td>{{item?.industryType || 'dummy data'}}</td>
