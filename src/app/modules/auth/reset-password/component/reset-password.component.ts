@@ -7,7 +7,7 @@ import { FormService } from '../../../shared/services/form.service';
 @Component({
     selector: 'app-reset-password',
     templateUrl: './reset-password.component.html',
-    styleUrls: ['../../auth.component.scss']
+    styleUrls: ['./reset-password.component.scss']
 })
 export class ResetPasswordComponent implements OnInit {
 

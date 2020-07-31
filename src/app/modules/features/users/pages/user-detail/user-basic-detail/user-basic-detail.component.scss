@@ -67,25 +67,6 @@
                     }
                 }
             }
-            .btn-row {
-                &:not(:first-child) {
-                    margin-top: 10px;
-                }
-                button {
-                    &.btn-block {
-                        border-color: #a72222 !important;
-                        color: #a72222 !important;
-                        &.btn-green {
-                            border-color: green !important;
-                            color: green !important;
-                        }
-                    }
-                    &.btn-delete {
-                        border-color: #a72222 !important;
-                        background-color: #a72222 !important;
-                    }
-                }
-            }
         }
         .right-portion {
             width: calc(100% - 260px);
@@ -100,8 +81,14 @@
                     margin-left: 5px;
                 }
             }
-            .btn-wrap{
-                padding: 0 10px;
+            .btn-row{
+                justify-content: flex-start;
+                .btn{
+                    &.btn-delete {
+                        border-color: #a72222 !important;
+                        color: #a72222 !important;
+                    }
+                }
             }
         }
     }
