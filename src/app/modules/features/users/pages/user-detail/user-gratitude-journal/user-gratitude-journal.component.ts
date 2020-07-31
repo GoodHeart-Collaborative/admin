@@ -57,9 +57,6 @@ export class UserGratitudeJournalComponent implements OnInit, OnChanges {
     this.$confirmBox.listAction('gratitude', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
       .subscribe((confirm) => {
         if (confirm) {
-          const params = {
-            status: action
-          }
           this.$userService.updateStatus(id, action).then((res) => {
             this.$utility.success(res.message);
             this.handleActions(action, index);
@@ -123,6 +120,7 @@ export class UserGratitudeJournalComponent implements OnInit, OnChanges {
     if (privacy == 'private') {
       return;
     }
+    return;
     this.$router.navigate([`admin/users/${id}/gratitude/details`]);
   }
 

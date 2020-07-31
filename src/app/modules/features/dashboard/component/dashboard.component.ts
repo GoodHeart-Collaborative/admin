@@ -3,6 +3,8 @@ import { DashboardService } from '../service/dashboard.service';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonService } from 'src/app/modules/shared/services/common.service';
+import { MatDialog } from '@angular/material';
+import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
 
 
 @Component({
@@ -42,6 +44,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   constructor(
     private $dashboardService: DashboardService,
     private $common: CommonService,
+    private matDailog: MatDialog,
     router: Router) {
     // console.log(router.url.split('/').slice(-1)[0]);
     // if (router.url.split('/').slice(-1)[0] == 'dashboard') {
@@ -86,6 +89,20 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * View Fill Image
+   *
+   */
+  onImageClick(image, type = 1) {
+    if (!image) {
+      return;
+    }
+    this.matDailog.open(ViewFullImageComponent, {
+      panelClass: 'view-full-image-modal',
+      data: {image, type}
+    }).afterClosed().subscribe();
+  }
+
   // onCloseMember(id: string) {
   //   this.memberOfTheDayList(5, id);
   // }
@@ -95,6 +112,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
 }
+
+
 
 
   // onPrevPage() {
