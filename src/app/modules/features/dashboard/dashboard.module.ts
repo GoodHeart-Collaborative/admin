@@ -36,7 +36,8 @@ import { MatProgressSpinnerModule } from '@angular/material';
     MatCardModule,
     CustomDatePipeModule,
     CustomImageModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    CustomImageModule
   ],
   exports: [DashboardComponent],
   providers: [
