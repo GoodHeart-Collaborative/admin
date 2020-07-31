@@ -1,7 +1,6 @@
 <div class="page-add-daily-unicorn-humour">
     <div class="add-daily-unicorn-humour-content">
-        
-        <form [formGroup]="unicornForm">
+         <form [formGroup]="unicornForm">
             <div class="row-1">
                 <media-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL" [videoSrc]="thumbnailUrl"></media-upload>
                 <div class="right-portion">
@@ -23,8 +22,7 @@
                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                             <mat-datepicker #picker></mat-datepicker>
                             <mat-error>{{form('postedAt')  |validate:'Posted At' }}</mat-error>
-
-                        </mat-form-field>
+                         </mat-form-field>
                     </div>
                 </div>
             </div>
