@@ -86,10 +86,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
   }
 
-  onCloseMember(id: string) {
-    // this.params.limit = 5;
-    this.memberOfTheDayList(5, id);
-  }
+  // onCloseMember(id: string) {
+  //   this.memberOfTheDayList(5, id);
+  // }
 
   ngOnDestroy() {
     this.$common.dashBoardFlag$.next(false);

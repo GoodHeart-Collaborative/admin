@@ -29,7 +29,8 @@ export class GratitudeTableDataSource implements Table.Source<User> {
       title: 'Privacy',
       id: 'privacy',
       sorting: false,
-      resolve: (row: any) => row['privacy'] || '-',
+      templateBy: 'privacy'
+      // resolve: (row: any) => row['privacy'] || '-',
     },
     {
       title: 'Added On',

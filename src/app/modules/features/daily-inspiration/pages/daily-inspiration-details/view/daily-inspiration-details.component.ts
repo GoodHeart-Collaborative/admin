@@ -11,6 +11,7 @@ import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/lik
 })
 export class DailyInspirationDetailsComponent implements OnInit {
   dailyInspirationDetails: any;
+  likeCount;
 
   constructor(
                $router: ActivatedRoute,

@@ -11,6 +11,10 @@
         {{ user?.status | titlecase}}
     </ng-template>
 
+    <ng-template appFor="privacy" let-user="row">
+        {{ user?.privacy | titlecase}}
+    </ng-template>
+
 
     <ng-template appFor="description" let-user="row">
         <a href="javascript:void(0)" (click)="onDetailsHandler(user?._id)">
