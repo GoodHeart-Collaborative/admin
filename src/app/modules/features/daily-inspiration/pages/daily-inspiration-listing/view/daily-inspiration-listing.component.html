@@ -21,7 +21,7 @@
 
     <ng-template appFor="mediaUrl" let-row="row">
         <div class="table-cell-image-cover" title="Click to see the image">
-            <img [src]="row?.mediaUrl |customImage:'USER'|async" alt="row-image"
+            <img [src]="row?.mediaUrl |customImage:'IMAGE_PLACEHOLDER'|async" alt="row-image"
                 (click)="onImageClick(row?.mediaUrl, row?.mediaType)">
         </div>
     </ng-template>

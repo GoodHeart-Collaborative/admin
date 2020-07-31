@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, Renderer2, ChangeDetectorRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FileUploadService } from '../../services/file-upload.service';
 import { PopupService } from '../../popup';
@@ -34,7 +34,8 @@ export class MediaUploadComponent implements OnInit {
   constructor(
     private $popup: PopupService,
     renderer: Renderer2,
-    private $upload: FileUploadService) {
+    private $upload: FileUploadService,
+    private $cdr: ChangeDetectorRef) {
     this._canvas = renderer.createElement('canvas');
 
   }
@@ -119,43 +120,37 @@ export class MediaUploadComponent implements OnInit {
     }
     event.target.value = '';
   }
-
   onCanPlayHandler(video: HTMLVideoElement) {
     if (!this.file) {
       return;
     }
-    try {
-      this.createThumbnail(video, `${Date.now()}.png`).then((thumbnail: File) => {
-        this.uploadMedia.emit({
-          type: 2,
-          videoFile: this.file,
-          thumbNailFile: thumbnail
-        });
-        this.isImage = false;
-      });
-    } catch (err) {}
+    this.createThumbnail(video, `${Date.now()}.png`);
+    this.isImage = false;
   }
-/**
- * Create Thumbnail for Video
- * @param video
- * @param name
- */
-  createThumbnail(video: HTMLVideoElement, name: string = 'thumbnail.png'): Promise<File> {
+
+  createThumbnail(video: HTMLVideoElement, name: string = 'thumbnail.png') {
     try {
-      return new Promise((resolve, reject) => {
-        const context = this._canvas.getContext('2d');
-        this._canvas.height = video.videoHeight;
-        this._canvas.width = video.videoWidth;
-        context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
-        this._canvas.toBlob((blob) => {
-          const file = new File([blob], name, { type: 'image/png' });
-          resolve(file);
+      setTimeout(() => {
+        return new Promise((resolve, reject) => {
+          const context = this._canvas.getContext('2d');
+          this._canvas.height = video.videoHeight;
+          this._canvas.width = video.videoWidth;
+          context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+          this._canvas.toBlob((blob) => {
+            const file = new File([blob], name, { type: 'image/png' });
+            this.uploadMedia.emit({
+              type: 2,
+              videoFile: this.file,
+              thumbNailFile: file
+            });
+            // resolve(file);
+          });
         });
-      });
+      }, 1000);
+
     } catch (err) {
     }
   }
-
   /**
    * Content Type Checking for Image , Video, Voic-Notes
    * @param mediaType
