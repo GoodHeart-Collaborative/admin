@@ -2,7 +2,7 @@
     
     <div class="slideshow-container">
         <ng-container *ngFor="let item of visibleImges">
-            <div class="mySlides animate__animated animate__fadeInRight" >
+            <div class="mySlides animate__animated animate__fadeIn" >
                 <img [src]="item | customImage:'USER'|async">
             </div>
         </ng-container>
