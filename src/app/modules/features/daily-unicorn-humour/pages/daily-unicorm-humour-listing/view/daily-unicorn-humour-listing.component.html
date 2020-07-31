@@ -15,7 +15,7 @@
 
     <ng-template appFor="mediaUrl" let-category="row">
         <div class="table-cell-image-cover" (click)="onImageClick(category?.mediaUrl, category?.mediaType)">
-            <img [src]="category?.mediaUrl |customImage:'USER'|async" *ngIf="false" alt="category-image" title="Click to see the image">
+            <img [src]="(category?.mediaType == 2 ?  category?.thumbnailUrl : category?.mediaUrl )|customImage:'IMAGE_PLACEHOLDER'|async" *ngIf="false" alt="category-image" title="Click to see the image">
             <span class="material-icons" *ngIf="true" title="Click to see the video">play_circle_filled</span>
         </div>
     </ng-template>
