@@ -131,13 +131,13 @@
                                                       <th>Profile</th>
                                                       <th>Name</th>
                                                       <th>Industry Type</th>
-                                                      <th>Start Date</th>
+                                                      <th>Member Date</th>
                                                       
                                                 </tr>
                                           </thead>
                                           <tbody *ngFor="let item of memberList">
                                                 <tr>
-                                                      <td>
+                                                      <td >
                                                             <img [src]="item?.profilePicUrl[0] |customImage:'USER'|async " alt="">
                                                       </td>
                                                       <td>{{item?.firstName || 'String'}} {{item?.lastName || ''}}</td>
