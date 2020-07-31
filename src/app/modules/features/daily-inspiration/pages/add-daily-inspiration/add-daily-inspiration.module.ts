@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MediaUploadModule } from 'src/app/modules/shared/media-upload/media-upload.module';
 import { WhiteSpaceModule } from 'src/app/modules/shared/white-space/white-space.module';
 import { EditProfileService } from '../../../admin/edit-profile/service/edit-profile.service';
+import { ImageUploadModule } from 'src/app/modules/shared/image-upload/image-upload.module';
 
 
 const routes: Routes = [
@@ -34,7 +35,7 @@ const routes: Routes = [
     CustomImageModule,
     MediaUploadModule,
     WhiteSpaceModule,
-    
+    ImageUploadModule
   ],
   providers: [EditProfileService]
 })
