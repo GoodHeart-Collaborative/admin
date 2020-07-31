@@ -1,13 +1,18 @@
-:host {
+.popup-page{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     background-color: #FFF;
     margin: -14px -16px;
-    // height: 100%;
     border-radius: 2px;
     padding: 14px;
     background-color: #FFF;
+    .action-button {
+        cursor: pointer;
+        margin-left: 10px;
+    }
 }
+
 :host-context(.success-snack) {
     color: #2ecc71;
 }
@@ -19,8 +24,4 @@
 }
 :host-context(.default-snack) {
     color: #444;
-}
-
-.action-button {
-    cursor: pointer;
 }
