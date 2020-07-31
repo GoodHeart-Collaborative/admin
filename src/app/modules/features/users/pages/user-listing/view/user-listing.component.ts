@@ -202,13 +202,13 @@ export class UserListingComponent implements OnInit {
    * View Fill Image
    *
    */
-  onImageClick(image) {
+  onImageClick(image, type = 1) {
     if (!image) {
       return;
     }
     this.matDailog.open(ViewFullImageComponent, {
       panelClass: 'view-full-image-modal',
-      data: image
+      data: {image, type}
     }).afterClosed().subscribe();
   }
 }

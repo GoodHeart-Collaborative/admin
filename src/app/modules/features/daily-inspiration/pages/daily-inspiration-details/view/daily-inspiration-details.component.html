@@ -15,12 +15,7 @@
                     <h1>{{dailyInspirationDetails?.title | titlecase}}</h1>
                     <p>{{dailyInspirationDetails?.description}}</p>
                 </div>
-                <!-- <div>
-                    <p class="posted-on-date">Posted on: {{dailyInspirationDetails?.postedAt | date : 'medium'}}</p>
-                    <div class="like-cover" (click)="onlikeHandler(dailyInspirationDetails._id, dailyInspirationDetails?.likeCount)"><span class="material-icons">thumb_up</span>
-                        <p>{{dailyInspirationDetails?.likeCount}}</p>
-                    </div>
-                </div> -->
+            
             </div>
             <div class="image-detail">
                 <img [src]="dailyInspirationDetails?.mediaUrl | customImage:'IMAGE_PLACEHOLDER'|async " *ngIf="dailyInspirationDetails?.mediaType == 1">

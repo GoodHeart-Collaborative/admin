@@ -155,16 +155,18 @@ export class CategoryManagementListingComponent implements OnInit {
   }
 
   relatedCategoryHandler(id) {
+    return;
     this.$router.navigate([`${CATEGORY.fullUrl}`, id]);
   }
 
-  onImageClick(image) {
+  onImageClick(image, type = 1) {
     if (!image) {
       return;
     }
-    this.matDailog.open(ViewFullImageComponent, {
+    this.
+    matDailog.open(ViewFullImageComponent, {
       panelClass: 'view-full-image-modal',
-      data: image
+      data: {image, type}
     }).afterClosed().subscribe();
   }
 

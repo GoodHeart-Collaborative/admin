@@ -77,4 +77,5 @@ export class UserBasicDetailComponent implements OnInit {
     }).afterClosed().subscribe();
   }
 
+
 }

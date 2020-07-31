@@ -11,8 +11,7 @@ export class SidebarComponent implements OnInit {
   constructor(
     private renderer: Renderer2,
     public $router: Router 
-  ) { 
-    
+  ) {
   }
 
   ngOnInit() {

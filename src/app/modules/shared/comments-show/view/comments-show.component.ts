@@ -7,7 +7,7 @@ import { CommonService } from '../../services/common.service';
   styleUrls: ['./comments-show.component.scss']
 })
 export class CommentsShowComponent implements OnInit, OnChanges {
-  adviceDetails: any;
+  details: any;
   comments: any;
   @Input() commentId;
   public hideShowReplies: boolean = false;
@@ -23,9 +23,7 @@ export class CommentsShowComponent implements OnInit, OnChanges {
     });
   }
 
-  ngOnInit() {
-  
-  }
+  ngOnInit() {}
 
 
   /**
@@ -50,8 +48,10 @@ export class CommentsShowComponent implements OnInit, OnChanges {
    * @param id
    */
   async toggleReplies(commentId: string, commenIndex: number) {
+    console.log(commentId , 'shama');
+    
     if (!this.comments[commenIndex].showReply) {
-        this.comments[commenIndex].replies = await this.getCommentHandler(this.adviceDetails.id, commentId)
+        this.comments[commenIndex].replies = await this.getCommentHandler(this.commentId, commentId);
     }
     this.comments[commenIndex]['showReply'] = !this.comments[commenIndex]['showReply']
     this.hideShowReplies = !this.hideShowReplies;
