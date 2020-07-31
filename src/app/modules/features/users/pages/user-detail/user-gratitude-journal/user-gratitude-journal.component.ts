@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output,EventEmitter, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
@@ -39,36 +39,39 @@ export class UserGratitudeJournalComponent implements OnInit, OnChanges {
     this.setUpTableResource(this.userData);
   }
 
- onOptionChange(event: Table.OptionEvent) {
+  onOptionChange(event: Table.OptionEvent) {
     this.eventData = event.data;
     this.changeHandler.emit(this.eventData);
   }
 
-/**
- * User Action Handler
- * @param id
- * @param action
- */
-  onActionHandler(id: string, action: ActionType) {
+  /**
+   * User Action Handler
+   * @param id
+   * @param action
+   */
+  onActionHandler(id: string, action: ActionType, privacy: string) {
+    if (privacy == 'private') {
+      return;
+    }
     const index = this.userData.data.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('gratitude', action == 'active'  ?  'Active' : ( action == 'deleted' ? 'Delete' : 'Block'))
-    .subscribe((confirm) => {
-      if (confirm) {
-        const params = {
-          status : action
+    this.$confirmBox.listAction('gratitude', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
+      .subscribe((confirm) => {
+        if (confirm) {
+          const params = {
+            status: action
+          }
+          this.$userService.updateStatus(id, action).then((res) => {
+            this.$utility.success(res.message);
+            this.handleActions(action, index);
+          });
         }
-        this.$userService.updateStatus(id, action).then((res) => {
-          this.$utility.success(res.message);
-          this.handleActions(action, index);
-        });
-      }
-    });
+      });
   }
-/**
- * Action Update Handler
- * @param action
- * @param index
- */
+  /**
+   * Action Update Handler
+   * @param action
+   * @param index
+   */
   handleActions(action: ActionType, index: number) {
     switch (action) {
       case 'deleted':
@@ -98,10 +101,10 @@ export class UserGratitudeJournalComponent implements OnInit, OnChanges {
     });
   }
 
-/**
- * User Set Up Table Handler
- * @param userRecords
- */
+  /**
+   * User Set Up Table Handler
+   * @param userRecords
+   */
   setUpTableResource(userDetails: any) {
     const { pageIndex, pageSize } = this.eventData;
     this.tableSource = new GratitudeTableDataSource({
@@ -116,7 +119,10 @@ export class UserGratitudeJournalComponent implements OnInit, OnChanges {
    * Detail page navigation
    * @param id
    */
-  onDetailsHandler(id: string) {
+  onDetailsHandler(id: string, privacy: string) {
+    if (privacy == 'private') {
+      return;
+    }
     this.$router.navigate([`admin/users/${id}/gratitude/details`]);
   }
 

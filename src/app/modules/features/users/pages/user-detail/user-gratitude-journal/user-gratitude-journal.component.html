@@ -1,6 +1,3 @@
-<!-- <button class="btn btn-primary" (click)="onClick()" *ngIf="!isProcessing">Button For Gratitude Journal detail</button> -->
-
-
 <app-table [tableSource]="tableSource" (optionChange)="onOptionChange($event)">
 
     <ng-template appFor="createdAt" let-user="row">
@@ -17,7 +14,7 @@
 
 
     <ng-template appFor="description" let-user="row">
-        <a href="javascript:void(0)" (click)="onDetailsHandler(user?._id)">
+        <a href="javascript:void(0)" (click)="onDetailsHandler(user?._id, user?.privacy)">
             {{ (user?.description  | titlecase) || 'String'}}
         </a>
     </ng-template>
@@ -27,16 +24,16 @@
         <ng-template appFor="actions" let-user="row">
             <div class="action-icon-cover">
 
-                <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked')"
+                <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked', user?.privacy)"
                     *ngIf="user?.status === 'active';else templateAction" title="Block user">
                     blocked</i>
                 <ng-template #templateAction>
-                    <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active')"
+                    <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active', user?.privacy)"
                         title="Unblock user">
                         lock_open
                     </i>
                 </ng-template>
-                <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')"
+                <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted',  user?.privacy)"
                     title="Delete user">
                     delete
                 </i>
