@@ -120,7 +120,7 @@ export class UserGratitudeJournalComponent implements OnInit, OnChanges {
     if (privacy == 'private') {
       return;
     }
-    return;
+    
     this.$router.navigate([`admin/users/${id}/gratitude/details`]);
   }
 

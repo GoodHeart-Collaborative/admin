@@ -17,8 +17,11 @@ export const USER_DETAILS = (id) => `admin/users/${id}`;
 
 export const CATEGORY = 'admin/category';
 export const CATEGORY_LISTING = 'admin/category';
+export const CATEGORY_POST_LISTING =  `admin/categoryDetails`;
 export const CATEGORY_DETAILS = (categoryId) => `admin/category/${categoryId}`;
 export const EDIT_CATEGORY = (categoryId) => `admin/category/${categoryId}`;
+export const CATEGORY_POST_ACTION = (postId, status) => `admin/expertpost/${postId}/status/${status}`;
+export const CATEGORY_ACTION = (id, status) => `admin/category/${id}/status/${status}`;
 
 // DAILY_INSPIRATION API's //
 

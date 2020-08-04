@@ -2,8 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CategoryManagementService } from '../../../service/category-management.service';
 import { FileUploadService } from 'src/app/modules/shared/services/file-upload.service';
-import {VALIDATION_CRITERIA} from 'src/app/constant/validation-criteria';
-import {CATEGORY} from 'src/app/constant/routes';
+import { VALIDATION_CRITERIA } from 'src/app/constant/validation-criteria';
+import { CATEGORY } from 'src/app/constant/routes';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
 @Component({
@@ -19,19 +19,19 @@ export class AddCategoryManagementComponent implements OnInit {
   titleMaxLength = VALIDATION_CRITERIA.titleMaxLength;
   categoryDetails: any;
   constructor(
-              private $formBuilder: FormBuilder,
-              private $category: CategoryManagementService,
-              private $fileUploadService: FileUploadService,
-              private $router: Router,
-              $activateRoute: ActivatedRoute,
-              $breadcrumb: BreadcrumbService
-              ) {
-                if ($activateRoute.snapshot.data.categoryDetails && $activateRoute.snapshot.data.categoryDetails.data) {
-                  this.categoryDetails = $activateRoute.snapshot.data.categoryDetails.data;
-                  $breadcrumb.replace(this.categoryDetails._id, this.categoryDetails.title);
-                  console.log(this.categoryDetails );
-                }
-               }
+    private $formBuilder: FormBuilder,
+    private $category: CategoryManagementService,
+    private $fileUploadService: FileUploadService,
+    private $router: Router,
+    $activateRoute: ActivatedRoute,
+    $breadcrumb: BreadcrumbService
+  ) {
+    if ($activateRoute.snapshot.data.categoryDetails && $activateRoute.snapshot.data.categoryDetails.data) {
+      this.categoryDetails = $activateRoute.snapshot.data.categoryDetails.data;
+      $breadcrumb.replace(this.categoryDetails._id, this.categoryDetails.title);
+      console.log(this.categoryDetails);
+    }
+  }
 
   ngOnInit() {
     this.createForm();
@@ -68,6 +68,10 @@ export class AddCategoryManagementComponent implements OnInit {
       let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
       this.profilePicURL = data.Location;
     }
+    if (!this.profilePicURL) {
+      this.$fileUploadService.showAlert('Profile pic is required')
+      return;
+    }
     let body = { imageUrl: this.profilePicURL, ...this.categoryForm.value };
     this.categoryForm.disable();
     if (this.categoryDetails && this.categoryDetails._id) {
@@ -97,10 +101,10 @@ export class AddCategoryManagementComponent implements OnInit {
 
   getCategoryDetail() {
     this.categoryForm.patchValue({
-            title: this.categoryDetails.title
-          });
+      title: this.categoryDetails.title
+    });
     this.profilePicURL = this.categoryDetails.imageUrl;
-}
+  }
 
   onCancel() {
     this.$router.navigate([CATEGORY.fullUrl]);

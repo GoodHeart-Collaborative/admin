@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/modules/shared/services/http.service';
-import { CATEGORY, CATEGORY_LISTING , CATEGORY_DETAILS, EDIT_CATEGORY} from 'src/app/constant/urls';
+import { CATEGORY, CATEGORY_DETAILS,
+        EDIT_CATEGORY, CATEGORY_POST_LISTING,
+        CATEGORY_LISTING, CATEGORY_POST_ACTION, CATEGORY_ACTION} from 'src/app/constant/urls';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { ActivatedRouteSnapshot, Resolve, Router } from '@angular/router';
 
@@ -14,27 +16,30 @@ export class CategoryManagementService {
     private $utilityService: UtilityService
   ) { }
 
-  async  queryData(params) {
+  async  queryData(params: any) {
     return  this.$http.get(CATEGORY_LISTING, params).toPromise();
   }
+  async  queryUpadteData(params: any) {
+    return  this.$http.get(CATEGORY_POST_LISTING, params).toPromise();
+  }
 
-  async  addCategory(params) {
+  async  addCategory(params: any) {
     return  this.$http.post(CATEGORY, params).toPromise();
   }
-  async  editCategory(id, params) {
+  async  editCategory(id: string, params: any) {
     return  this.$http.patch(EDIT_CATEGORY(id), params).toPromise();
   }
-  async updateStatus(id, status) {
-    return await this.$http.patch(`admin/category/${id}/status/${status}`, {}).toPromise();
+  async updateStatus(id: string, status: any) {
+    return await this.$http.patch(CATEGORY_ACTION(id, status), {}).toPromise();
   }
 
-  async  updateCategory(id) {
+  async updatePostStatus(id: string, status: any) {
+    return await this.$http.patch(CATEGORY_POST_ACTION(id, status), {}).toPromise();
+  }
+
+  async  updateCategory(id:string) {
     const categoryId = id;
     return  this.$http.get(CATEGORY_DETAILS(categoryId)).toPromise();
-  }
-
-  showAlert(message) {
-    this.$utilityService.showAlert(message);
   }
 }
 

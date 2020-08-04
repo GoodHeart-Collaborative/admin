@@ -90,6 +90,10 @@ export class EditProfileComponent implements OnInit,OnDestroy {
       let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
       this.profilePicURL = data.Location;
     }
+    if (!this.profilePicURL) {
+        this.$fileUploadService.showAlert('Profile pic is required ');
+        return;
+    }
     let body = { profilePicture: this.profilePicURL, ...this.editProfileForm.value };
     this.editProfileForm.disable();
     this.editProfileSubscription = this.$editProfileService.editProfile(body).subscribe(

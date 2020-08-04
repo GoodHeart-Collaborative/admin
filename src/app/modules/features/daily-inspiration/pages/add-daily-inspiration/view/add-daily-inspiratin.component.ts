@@ -161,6 +161,10 @@ export class AddDailyInspiratinComponent implements OnInit {
         body['thumbnailUrl'] = '';
       }
     }
+    if (!body.mediaUrl) {
+      this.$fileUploadService.showAlert('Media is required');
+      return;
+    }
     if (this.isPostLater.value) {
       body.postedAt = new Date(this.inspirationForm.get('postedAt').value);
       console.log(body.postedAt);

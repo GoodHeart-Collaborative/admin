@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { FormService } from 'src/app/modules/shared/services/form.service';
 import { VALIDATION_CRITERIA } from 'src/app/constant/validation-criteria';
 import { CategoryManagementService } from 'src/app/modules/features/category-management/service/category-management.service';
-import { INDUSTRY_TYPE, EXPERIENCE , PROFESSION} from 'src/app/constant/drawer';
+import { INDUSTRY_TYPE, EXPERIENCE, PROFESSION } from 'src/app/constant/drawer';
 import { FileUploadService } from 'src/app/modules/shared/services/file-upload.service';
 import { ExpertService } from '../../../service/expert.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -13,6 +13,7 @@ import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/
 import { GlobalService } from 'src/app/services/global/global.service';
 import { onSelectFile } from 'src/app/constant/file-input';
 import { invalidImageError, invalidFileSize } from 'src/app/constant/messages';
+import { CommonService } from 'src/app/modules/shared/services/common.service';
 
 @Component({
   selector: 'app-add-expert',
@@ -52,7 +53,7 @@ export class AddExpertComponent implements OnInit {
         $breadcrumb.replace(this.details._id, this.details.contentDisplayName);
         this.expertForm.patchValue(this.details);
         if (this.details && this.details.profilePicUrl) {
-            this.profilePicURL = this.details.profilePicUrl;
+          this.profilePicURL = this.details.profilePicUrl;
         }
       }
     });
@@ -85,9 +86,9 @@ export class AddExpertComponent implements OnInit {
       this.profilePicURL = result.url;
     } catch (err) {
       if (err.type) {
-        this.$category.showAlert(invalidImageError());
+        this.$fileUploadService.showAlert(invalidImageError());
       } else if (err.size) {
-        this.$category.showAlert(invalidFileSize());
+        this.$fileUploadService.showAlert(invalidFileSize());
       }
     }
   }
@@ -124,8 +125,11 @@ export class AddExpertComponent implements OnInit {
       let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
       this.profilePicURL = data.Location;
     }
+    if (!this.profilePicURL) {
+        this.$fileUploadService.showAlert('Profile pic is required');
+        return;
+    }
     let body = { profilePicUrl: [this.profilePicURL], ...this.expertForm.value };
-    console.log(body);
     if (this.details && this.details._id) {
       delete body.type;
       this.$service.edit(this.details._id, body).then(

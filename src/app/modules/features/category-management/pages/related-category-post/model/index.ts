@@ -1,4 +1,5 @@
 import * as Table from 'src/app/modules/commonTable/table/interfaces';
+import { ListingFilterComponent } from '../component/listing-filter.component';
 type Category = any;
 
 const defaultData: Table.Data<Category> = {
@@ -12,26 +13,40 @@ export class RelatedCategoryTableDataSource implements Table.Source<Category> {
   label = 'Related Category Management';
   columns: Table.Column<Category>[] = [
     {
-      title: 'Name',
+      title: 'Name ',
       id: 'name',
-      sorting: true,
+      sorting: false,
       templateBy: 'name'
       // resolve: (row: any) => `${row['firstName']} ${row['lastName']}` || 'NA',
     },
     {
         title: 'Title',
         id: 'title',
-        sorting: false,
-        templateBy: 'title'
-        // resolve: (row: any) => row['title'] || '-',
+        sorting: true,
+        // templateBy: 'title'
+        resolve: (row: any) => row['topic'] || '-',
     },
     {
         title: 'Description',
         id: 'description',
         sorting: false,
-        templateBy: 'description'
-        // resolve: (row: any) => row['title'] || '-',
+        // templateBy: 'description'
+        resolve: (row: any) => row['description'] || '-',
     },
+    {
+      title: 'Total Likes',
+      id: 'likeCount',
+      sorting: false,
+      templateBy: 'likeCount'
+      // resolve: (row: any) => row['likeCount'] || '0',
+      },
+     {
+    title: 'Total Comments',
+    id: 'commentCount',
+    sorting: false,
+    templateBy: 'commentCount'
+    // resolve: (row: any) => row['totalComments'] || '0',
+     },
     {
       title: 'Added On',
       id: 'createdAt',
@@ -48,10 +63,10 @@ export class RelatedCategoryTableDataSource implements Table.Source<Category> {
   ];
   options: Table.Options = {
     selection: false,
-    search: 'Search by Name',
+    search: 'Search by Title',
     index: true,
-    sorting: true
-    // filterComponent: UsersListingFilterComponent
+    sorting: true,
+    filterComponent: ListingFilterComponent
   };
   constructor(public data: Table.Data<Category> = defaultData) {}
 }

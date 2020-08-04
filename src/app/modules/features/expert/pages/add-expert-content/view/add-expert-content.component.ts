@@ -6,7 +6,7 @@ import { VALIDATION_CRITERIA } from 'src/app/constant/validation-criteria';
 import { EXPERT_DETAILS, EXPERT } from 'src/app/constant/routes';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { ExpertService } from '../../../service/expert.service';
-import { EXPERT_CONTENT_TYPE , PRAVICY} from 'src/app/constant/drawer';
+import { EXPERT_CONTENT_TYPE, PRAVICY } from 'src/app/constant/drawer';
 import { FileUploadService } from 'src/app/modules/shared/services/file-upload.service';
 
 @Component({
@@ -114,8 +114,6 @@ export class AddExpertContentComponent implements OnInit {
   }
 
   async onSubmit() {
-    console.log(this.expertContentForm);
-
     if (this.expertContentForm.invalid) {
       return;
     }
@@ -135,6 +133,10 @@ export class AddExpertContentComponent implements OnInit {
         body.mediaType = this.imageFile.type;
       }
     };
+    if (!body.mediaUrl) {
+      this.$fileUploadService.showAlert('Media is required');
+      return;
+    }
     // else if (this.adviceDetails) {
     //   if (this.adviceDetails.mediaType == 1) {
     //     body['mediaUrl'] = this.profilePicURL;

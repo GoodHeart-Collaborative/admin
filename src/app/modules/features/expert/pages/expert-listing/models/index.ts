@@ -19,12 +19,6 @@ export class ExpertTableDataSource implements Table.Source<Category> {
         templateBy: 'name'
     },
 
-    {
-      title: 'Added On',
-      id: 'createdAt',
-      sorting: true,
-      templateBy: 'createdAt',
-    },
 
     {
         title: 'Category',
@@ -43,6 +37,12 @@ export class ExpertTableDataSource implements Table.Source<Category> {
         id: 'totalPost',
         sorting: false,
         resolve: (row: any) => row['totalPost'] || '0',
+      },
+      {
+        title: 'Added On',
+        id: 'createdAt',
+        sorting: true,
+        templateBy: 'createdAt',
       },
 
     {

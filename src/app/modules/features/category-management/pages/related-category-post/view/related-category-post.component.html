@@ -7,18 +7,27 @@
         {{ category?.status | titlecase}}
     </ng-template>
 
+    <ng-template appFor="likeCount" let-category="row">
+        <a (click)="onlikeHandler(category._id, category?.likeCount)" [class.color-black]="category?.likeCount < 1">
+            {{ category?.likeCount}}
+        </a>
+    </ng-template>
+
+    <ng-template appFor="commentCount" let-category="row">
+        <a (click)="onCommentsHandler(category._id, category?.commentCount)" [class.color-black]="category?.commentCount < 1">
+            {{ category?.commentCount}}
+        </a>
+    </ng-template>
+
     <ng-template appFor="name" let-category="row">
-        <a href="javascript:void(0)" (click)="categoryDetailsHandler(category?._id)">
-            {{ category?.name | titlecase }}
+        <a href="javascript:void(0)">
+            {{ category?.expertData?.name | titlecase }}
         </a>
     </ng-template>
 
     <ng-container>
         <ng-template appFor="actions" let-user="row">
             <div class="action-icon-cover">
-                <!-- <i class="material-icons icon-edit" (click)="oneditHandler(user?._id)" title="Edit">
-                    edit
-                </i> -->
                 <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked')"
                     *ngIf="user?.status === 'active';else templateAction" title="Block user">
                     blocked</i>

@@ -27,8 +27,8 @@ export class CategoryManagementListingComponent implements OnInit {
     filterData: null,
     sortData: null
   };
-
-  constructor(
+ 
+ constructor(
     private $category: CategoryManagementService,
     private $router: Router,
     private matDailog: MatDialog,
@@ -70,7 +70,7 @@ export class CategoryManagementListingComponent implements OnInit {
       params['sortOrder'] = sortData.sortOrder;
       params['sortBy'] = sortData.sortBy;
     }
-    this.$category.queryData(params).then(res => {
+    this.$category.queryData( params).then(res => {
       this.userData = res['data'];
       this.setUpTableResource(this.userData);
     });

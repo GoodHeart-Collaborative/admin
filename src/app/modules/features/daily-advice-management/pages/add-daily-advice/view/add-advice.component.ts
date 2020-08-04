@@ -158,6 +158,10 @@ export class AddAdviceComponent implements OnInit {
       }
     }
 
+    if (!body.mediaUrl) {
+      this.$fileUploadService.showAlert('Media is required');
+      return;
+    }
     if (this.isPostLater.value) {
       body.postedAt = new Date(this.adviceForm.get('postedAt').value);
     }

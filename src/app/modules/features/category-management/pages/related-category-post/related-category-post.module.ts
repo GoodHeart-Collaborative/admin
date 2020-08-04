@@ -6,8 +6,10 @@ import { TableModule } from 'src/app/modules/commonTable/table';
 import { CategoryManagementService } from '../../service/category-management.service';
 import { CustomDatePipeModule } from 'src/app/pipes/custom-date/custom-date-pipe.module';
 import { MatIconModule } from '@angular/material';
-import { CategoryManagementDetailsComponent } from '../category-management-details/view/category-management-details.component';
-import { CategoryManagementDetailsModule } from '../category-management-details/category-management-details.module';
+import { LikeActionModule } from 'src/app/modules/shared/like-action/like-action.module';
+import { CommentsModule } from 'src/app/modules/shared/comments/comments.module';
+import { ListingFilterComponent } from './component/listing-filter.component';
+import { DateFilterModule } from 'src/app/modules/layout/layout-shared/date-filter/date-filter.module';
 
 
 const routes: Routes = [
@@ -21,21 +23,25 @@ const routes: Routes = [
     //   pathMatch: 'full',
     // },
     {path: '' , component: RelatedCategoryPostComponent},
-    
+
 //   ]
 // }
 
 ];
 
 @NgModule({
-  declarations: [RelatedCategoryPostComponent],
+  declarations: [RelatedCategoryPostComponent, ListingFilterComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     TableModule,
     CustomDatePipeModule,
     MatIconModule,
+    LikeActionModule,
+    CommentsModule,
+    DateFilterModule
   ],
-  providers: [CategoryManagementService]
+  providers: [CategoryManagementService],
+  entryComponents: [ListingFilterComponent]
 })
 export class RelatedCategoryPostModule { }
