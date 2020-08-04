@@ -155,7 +155,6 @@ export class CategoryManagementListingComponent implements OnInit {
   }
 
   relatedCategoryHandler(id) {
-    return;
     this.$router.navigate([`${CATEGORY.fullUrl}`, id]);
   }
 
