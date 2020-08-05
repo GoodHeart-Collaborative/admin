@@ -8,7 +8,7 @@
     </ng-template>
 
     <ng-template appFor="likeCount" let-category="row">
-        <a (click)="onlikeHandler(category._id, category?.likeCount)" [class.color-black]="category?.likeCount < 1">
+        <a (click)="likeHandler(category._id, category?.likeCount)" [class.color-black]="category?.likeCount < 1">
             {{ category?.likeCount}}
         </a>
     </ng-template>

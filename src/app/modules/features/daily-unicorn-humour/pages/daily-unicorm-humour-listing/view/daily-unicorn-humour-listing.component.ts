@@ -13,6 +13,7 @@ import { HOME_TYPE } from 'src/app/constant/drawer';
 import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
 import { CommentsComponent } from 'src/app/modules/shared/comments/view/comments/comments.component';
 import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
+import { CommonService } from 'src/app/modules/shared/services/common.service';
 @Component({
   selector: 'app-daily-unicorn-humour-listing',
   templateUrl: './daily-unicorn-humour-listing.component.html',
@@ -28,12 +29,14 @@ export class DailyUnicornHumourListingComponent implements OnInit {
     filterData: null,
     sortData: null,
   };
+  like: any;
   constructor(
     private $category: DailyUnicornHumourService,
     private $router: Router,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
-    private $matDailog: MatDialog
+    private $matDailog: MatDialog,
+    private $common: CommonService
   ) {
   }
 
@@ -93,15 +96,15 @@ export class DailyUnicornHumourListingComponent implements OnInit {
    */
   onActionHandler(id: string, action: ActionType) {
     const index = this.userData.data.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('unicorn', action == 'active'  ?  'active' : ( action == 'deleted' ? 'delete' : 'block'))
-    .subscribe((confirm) => {
-      if (confirm) {
-        this.$category.updateStatus(id, action).then((res) => {
-          this.$utility.success(res.message);
-          this.handleActions(action, index);
-        });
-      }
-    });
+    this.$confirmBox.listAction('unicorn', action == 'active' ? 'active' : (action == 'deleted' ? 'delete' : 'block'))
+      .subscribe((confirm) => {
+        if (confirm) {
+          this.$category.updateStatus(id, action).then((res) => {
+            this.$utility.success(res.message);
+            this.handleActions(action, index);
+          });
+        }
+      });
   }
   /**
    * Action Update Handler
@@ -183,19 +186,7 @@ export class DailyUnicornHumourListingComponent implements OnInit {
     this.$router.navigate([`${ADD_DAILY_UNICORN.fullUrl}`]);
   }
 
-  /**
-   * user Like Handler
-   * @param id
-   */
-  onlikeHandler(id: string, likesCount: number) {
-    if (!likesCount) {
-      return;
-    }
-    this.$matDailog.open(LikeActionComponent, {
-      width: '500px',
-      data: id
-    }).afterClosed().subscribe();
-  }
+
 
   onCommentsHandler(id: string, commentCount: number) {
     if (!commentCount) {
@@ -218,7 +209,37 @@ export class DailyUnicornHumourListingComponent implements OnInit {
     }
     this.$matDailog.open(ViewFullImageComponent, {
       panelClass: 'view-full-image-modal',
-      data: {image, type}
+      data: { image, type }
+    }).afterClosed().subscribe();
+  }
+
+  /**
+   * ON LIKE Handler
+   * @param id
+   */
+  likeHandler(id: string, likesCount: number) {
+    const params = {
+      pageNo: 1,
+      limit: 100,
+      postId: id
+    };
+    this.$common.onLikeHandler(params).then(res => {
+      const like = res.data['list'];
+      this.onlikeHandler(like, likesCount);
+    });
+  }
+
+/**
+ * user Like Handler
+ * @param id
+ */
+  onlikeHandler(like: any, likesCount: number) {
+    if (!likesCount) {
+      return;
+    }
+    this.$matDailog.open(LikeActionComponent, {
+      width: '500px',
+      data: like
     }).afterClosed().subscribe();
   }
 }

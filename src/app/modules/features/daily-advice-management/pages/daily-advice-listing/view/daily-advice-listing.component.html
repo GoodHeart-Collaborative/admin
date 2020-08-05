@@ -25,7 +25,7 @@
     </ng-template>
 
     <ng-template appFor="likeCount" let-row="row">
-        <a (click)="onlikeHandler(row?._id, row?.likeCount)" [class.color-black]="row?.likeCount < 1">
+        <a (click)="likeHandler(row?._id, row?.likeCount)" [class.color-black]="row?.likeCount < 1">
             {{ row?.likeCount}}
         </a>
     </ng-template>

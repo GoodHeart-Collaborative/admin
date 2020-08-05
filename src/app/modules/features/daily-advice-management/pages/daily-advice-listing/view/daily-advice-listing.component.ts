@@ -12,6 +12,7 @@ import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/lik
 import { CommentsComponent } from 'src/app/modules/shared/comments/view/comments/comments.component';
 import { MatDialog } from '@angular/material';
 import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
+import { CommonService } from 'src/app/modules/shared/services/common.service';
 @Component({
   selector: 'app-daily-advice-listing',
   templateUrl: './daily-advice-listing.component.html',
@@ -33,7 +34,8 @@ export class DailyAdviceListingComponent implements OnInit {
     private $router: Router,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
-    private $matDailog: MatDialog
+    private $matDailog: MatDialog,
+    private $common: CommonService
   ) {
   }
 
@@ -148,16 +150,32 @@ export class DailyAdviceListingComponent implements OnInit {
  }
 
   /**
-   * user Like Handler
+   * ON LIKE Handler
    * @param id
    */
-  onlikeHandler(id: string, likesCount: number) {
+  likeHandler(id: string, likesCount: number) {
+    const params = {
+      pageNo: 1,
+      limit: 100,
+      postId: id
+    };
+    this.$common.onLikeHandler(params).then(res => {
+      const like = res.data['list'];
+      this.onlikeHandler(like, likesCount);
+    });
+  }
+
+/**
+ * user Like Handler
+ * @param id
+ */
+  onlikeHandler(like: any, likesCount: number) {
     if (!likesCount) {
       return;
     }
     this.$matDailog.open(LikeActionComponent, {
       width: '500px',
-      data: id
+      data: like
     }).afterClosed().subscribe();
   }
 

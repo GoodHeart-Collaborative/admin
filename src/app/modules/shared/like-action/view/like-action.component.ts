@@ -25,7 +25,7 @@ export class LikeActionComponent implements OnInit {
     private $router: Router,
     private $confirmBox: ConfirmBoxService,
   ) {
-    this.likeHandler();
+    // this.likeHandler();
   }
 
   ngOnInit() {
@@ -42,16 +42,16 @@ export class LikeActionComponent implements OnInit {
    * ON LIKE Handler
    * @param id
    */
-  likeHandler() {
-    const params = {
-      pageNo: 1,
-      limit: 100,
-      postId: this.data
-    };
-    this.$common.onLikeHandler(params).then(res => {
-      this.like = res.data['list'];
-    });
-  }
+  // likeHandler() {
+  //   const params = {
+  //     pageNo: 1,
+  //     limit: 100,
+  //     postId: this.data
+  //   };
+  //   this.$common.onLikeHandler(params).then(res => {
+  //     this.like = res.data['list'];
+  //   });
+  // }
 
   /**
    * Block and Unblock User

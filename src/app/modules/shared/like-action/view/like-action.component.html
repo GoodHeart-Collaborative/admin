@@ -6,7 +6,7 @@
     <div class="popup-content">
         <div class="popup-body">
             <ul class="users-listing" >
-                <li class="single-user" *ngFor="let item of like">
+                <li class="single-user" *ngFor="let item of data">
                     <div class="img-cover">
                         <img [src]="item?.user?.profilePicUrl[0] |customImage:'USER'|async" alt="Profile" (click)="onViewPic(item?.user?.profilePicture)">
                     </div>

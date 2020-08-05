@@ -8,7 +8,7 @@
     </ng-template>
 
     <ng-template appFor="likeCount" let-daily="row">
-        <a [class.color-black]="daily?.likeCount < 1" (click)="onlikeHandler(daily._id, daily?.likeCount)">
+        <a [class.color-black]="daily?.likeCount < 1" (click)="likeHandler(daily._id, daily?.likeCount)">
             {{ daily?.likeCount}}
         </a>
     </ng-template>

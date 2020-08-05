@@ -11,6 +11,7 @@ import { CommentsComponent } from 'src/app/modules/shared/comments/view/comments
 import { MatDialog } from '@angular/material';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
+import { CommonService } from 'src/app/modules/shared/services/common.service';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 @Component({
   selector: 'app-daily-inspiration-listing',
@@ -32,7 +33,9 @@ export class DailyInspirationListingComponent implements OnInit {
     private $router: Router,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
-    private $matDailog: MatDialog
+    private $matDailog: MatDialog,
+    private $common: CommonService
+
   ) {
   }
 
@@ -179,16 +182,31 @@ onAdd() {
    * user Like Handler
    * @param id
    */
-  onlikeHandler(id: string, likesCount: number) {
+  onlikeHandler(like: any, likesCount: number) {
     if (!likesCount) {
       return;
     }
     this.$matDailog.open(LikeActionComponent, {
       width: '500px',
-      data: id
+      data: like
     }).afterClosed().subscribe();
   }
 
+  /**
+   * ON LIKE Handler
+   * @param id
+   */
+  likeHandler(id: string, likesCount: number) {
+    const params = {
+      pageNo: 1,
+      limit: 100,
+      postId: id
+    };
+    this.$common.onLikeHandler(params).then(res => {
+      const like = res.data['list'];
+       this.onlikeHandler(like,likesCount);
+    });
+  }
   onCommentsHandler(id: string, commentCount: number) {
     if (!commentCount) {
       return;
@@ -213,4 +231,6 @@ onAdd() {
       data: {image, type}
     }).afterClosed().subscribe();
   }
+
+
 }

@@ -10,6 +10,7 @@ import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/
 import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
 import { CommentsComponent } from 'src/app/modules/shared/comments/view/comments/comments.component';
 import { MatDialog } from '@angular/material';
+import { CommonService } from 'src/app/modules/shared/services/common.service';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 
 @Component({
@@ -36,16 +37,14 @@ export class RelatedCategoryPostComponent implements OnInit {
     private $utility: UtilityService,
     $activeRoute: ActivatedRoute,
     private $breadcrum: BreadcrumbService,
-    private $matDailog: MatDialog
+    private $matDailog: MatDialog,
+    private $common: CommonService
   ) {
     this.categoryId = $activeRoute.snapshot.params.id;
     this.updateUsers();
   }
 
-  ngOnInit() {
-
-
-  }
+  ngOnInit() {}
 
   updateUsers() {
     const { pageIndex, pageSize, searchText, filterData, sortData } = this.eventData;
@@ -152,16 +151,32 @@ export class RelatedCategoryPostComponent implements OnInit {
   }
 
   /**
-   * user Like Handler
+   * ON LIKE Handler
    * @param id
    */
-  onlikeHandler(id: string, likesCount: number) {
+  likeHandler(id: string, likesCount: number) {
+    const params = {
+      pageNo: 1,
+      limit: 100,
+      postId: id
+    };
+    this.$common.onLikeHandler(params).then(res => {
+      const like = res.data['list'];
+      this.onlikeHandler(like, likesCount);
+    });
+  }
+
+/**
+ * user Like Handler
+ * @param id
+ */
+  onlikeHandler(like: any, likesCount: number) {
     if (!likesCount) {
       return;
     }
     this.$matDailog.open(LikeActionComponent, {
       width: '500px',
-      data: id
+      data: like
     }).afterClosed().subscribe();
   }
 
