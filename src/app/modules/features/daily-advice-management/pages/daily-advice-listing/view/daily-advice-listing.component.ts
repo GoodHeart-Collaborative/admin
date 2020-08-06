@@ -154,6 +154,9 @@ export class DailyAdviceListingComponent implements OnInit {
    * @param id
    */
   likeHandler(id: string, likesCount: number) {
+    if (!likesCount) {
+      return;
+    }
     const params = {
       pageNo: 1,
       limit: 100,
@@ -170,9 +173,7 @@ export class DailyAdviceListingComponent implements OnInit {
  * @param id
  */
   onlikeHandler(like: any, likesCount: number) {
-    if (!likesCount) {
-      return;
-    }
+  
     this.$matDailog.open(LikeActionComponent, {
       width: '500px',
       data: like

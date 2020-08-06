@@ -28,55 +28,38 @@ export class DailyAdviceDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.comments = await this.getCommentHandler(this.adviceDetails.id);
-    // console.log(this.comments);
-    // this.comments = this.comments.map(comment => {
-    //   comment['replies'] = [];
-    //   comment['showReply'] = false;
-    //   return comment;
-    // });
   }
 
-  /**
-   * user Comment Handler
-   */
-  // async getCommentHandler(id, commentId?) {
-  //   const params = {
-  //     pageNo: 1,
-  //     limit: 100,
-  //     postId: id
-  //   };
-  //   if (commentId) {
-  //     params['commentId'] = commentId;
-  //   }
-  //   return await this.$common.onCommentHandler(params).then(res => {
-  //     return res.data['list'];
-  //   });
-  // }
 
   /**
-   * Show nested comment
+   * ON LIKE Handler
    * @param id
    */
-  // async toggleReplies(commentId: string, commenIndex: number) {
-  //   if (!this.comments[commenIndex].showReply) {
-  //       this.comments[commenIndex].replies = await this.getCommentHandler(this.adviceDetails.id, commentId)
-  //   }
-  //   this.comments[commenIndex]['showReply'] = !this.comments[commenIndex]['showReply']
-  //   this.hideShowReplies = !this.hideShowReplies;
-  // }
+  likeHandler(id: string, likesCount: number) {
 
-  /**
-   * user Like Handler
-   * @param id
-   */
-  onlikeHandler(id: string, likesCount: number) {
     if (!likesCount) {
       return;
     }
+    const params = {
+      pageNo: 1,
+      limit: 100,
+      postId: id
+    };
+    this.$common.onLikeHandler(params).then(res => {
+      const like = res.data['list'];
+      this.onlikeHandler(like, likesCount);
+    });
+  }
+
+/**
+ * user Like Handler
+ * @param id
+ */
+  onlikeHandler(like: any, likesCount: number) {
+  
     this.$matDailog.open(LikeActionComponent, {
       width: '500px',
-      data: id
+      data: like
     }).afterClosed().subscribe();
   }
 

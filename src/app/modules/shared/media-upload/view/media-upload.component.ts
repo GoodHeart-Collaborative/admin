@@ -2,7 +2,10 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, 
 import { FormControl } from '@angular/forms';
 import { FileUploadService } from '../../services/file-upload.service';
 import { PopupService } from '../../popup';
-import { invalidImageError, invalidFileSize } from 'src/app/constant/messages';
+import { invalidImageError, videoFormatFile ,
+         invalidFileSize,
+         invalidContentType, 
+         videoFileSize} from 'src/app/constant/messages';
 import { onSelectFile } from 'src/app/constant/file-input';
 import { Subject, Observable } from 'rxjs';
 
@@ -107,9 +110,9 @@ export class MediaUploadComponent implements OnInit {
     }
     if (type !== "video/mp4" && type !== "video/x-m4v" &&
       type !== "video/3gpp" && this.file) {
-      this.$upload.showAlert('Please select any video mp4/x-m4v/3gp format file.')
+      this.$upload.showAlert(videoFormatFile);
     } else if (size > 1024 * 10) {
-      this.$upload.showAlert('File size should not be greater then 10 MB')
+      this.$upload.showAlert(videoFileSize);
     } else {
       const reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]); // read file as data url
@@ -163,7 +166,7 @@ export class MediaUploadComponent implements OnInit {
             return true;
           } else {
             this.saveEvent.target.value = null;
-            this.$upload.showAlert('Invalid content type selected');
+            this.$upload.showAlert(invalidContentType);
             return false;
           }
           break;
@@ -172,7 +175,7 @@ export class MediaUploadComponent implements OnInit {
             return true;
           } else {
             this.saveEvent.target.value = null;
-            this.$upload.showAlert('Invalid content type selected');
+            this.$upload.showAlert(invalidContentType);
             return false;
           }
           break;
@@ -181,8 +184,7 @@ export class MediaUploadComponent implements OnInit {
             return true;
           } else {
             this.saveEvent.target.value = null;
-
-            this.$upload.showAlert('Invalid content type selected');
+            this.$upload.showAlert(invalidContentType);
             return false;
           }
           break;

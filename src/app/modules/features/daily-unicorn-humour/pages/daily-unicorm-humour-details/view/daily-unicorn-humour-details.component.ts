@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { DAILY_UNICORN } from 'src/app/constant/routes';
 import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
+import { CommonService } from 'src/app/modules/shared/services/common.service';
 
 @Component({
   selector: 'app-daily-unicorn-humour-details',
@@ -16,7 +17,8 @@ export class DailyUnicornHumourDetailsComponent implements OnInit {
     private $router: Router,
     private $dialogRef: MatDialogRef<DailyUnicornHumourDetailsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private $matDailog: MatDialog) {
+    private $matDailog: MatDialog,
+    private $common: CommonService) {
     console.log(data);
   }
 
@@ -30,16 +32,33 @@ export class DailyUnicornHumourDetailsComponent implements OnInit {
   }
 
   /**
-   * user Like Handler
+   * ON LIKE Handler
    * @param id
    */
-  onlikeHandler(id: string, likesCount: number) {
+  likeHandler(id: string, likesCount: number) {
     if (!likesCount) {
       return;
     }
+    const params = {
+      pageNo: 1,
+      limit: 100,
+      postId: id
+    };
+    this.$common.onLikeHandler(params).then(res => {
+      const like = res.data['list'];
+      this.onlikeHandler(like, likesCount);
+    });
+  }
+
+/**
+ * user Like Handler
+ * @param id
+ */
+  onlikeHandler(like: any, likesCount: number) {
+ 
     this.$matDailog.open(LikeActionComponent, {
       width: '500px',
-      data: id
+      data: like
     }).afterClosed().subscribe();
   }
 

@@ -6,6 +6,8 @@ import { VALIDATION_CRITERIA } from 'src/app/constant/validation-criteria';
 import { CATEGORY } from 'src/app/constant/routes';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
+import { UtilityService } from 'src/app/modules/shared/services/utility.service';
+import { requiredProfilePic } from 'src/app/constant/messages';
 @Component({
   selector: 'app-add-category-management',
   templateUrl: './add-category-management.component.html',
@@ -24,7 +26,8 @@ export class AddCategoryManagementComponent implements OnInit {
     private $fileUploadService: FileUploadService,
     private $router: Router,
     $activateRoute: ActivatedRoute,
-    $breadcrumb: BreadcrumbService
+    $breadcrumb: BreadcrumbService,
+    private $utility: UtilityService
   ) {
     if ($activateRoute.snapshot.data.categoryDetails && $activateRoute.snapshot.data.categoryDetails.data) {
       this.categoryDetails = $activateRoute.snapshot.data.categoryDetails.data;
@@ -69,7 +72,7 @@ export class AddCategoryManagementComponent implements OnInit {
       this.profilePicURL = data.Location;
     }
     if (!this.profilePicURL) {
-      this.$fileUploadService.showAlert('Profile pic is required')
+      this.$fileUploadService.showAlert(requiredProfilePic);
       return;
     }
     let body = { imageUrl: this.profilePicURL, ...this.categoryForm.value };
@@ -78,6 +81,8 @@ export class AddCategoryManagementComponent implements OnInit {
       this.$category.editCategory(this.categoryDetails._id, body).then(
         data => {
           this.categoryForm.enable();
+          this.$utility.success(data.message);
+
           this.$router.navigate([CATEGORY.fullUrl]);
         },
         err => {

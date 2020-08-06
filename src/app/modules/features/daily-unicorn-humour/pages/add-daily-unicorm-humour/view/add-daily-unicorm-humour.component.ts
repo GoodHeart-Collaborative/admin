@@ -9,6 +9,7 @@ import { UtilityService } from 'src/app/modules/shared/services/utility.service'
 import { DAILY_UNICORN } from 'src/app/constant/routes';
 import { HOME_TYPE, MEDIA_TYPE } from 'src/app/constant/drawer';
 import { EditProfileService } from 'src/app/modules/features/admin/edit-profile/service/edit-profile.service';
+import { requiredMedia } from 'src/app/constant/messages';
 @Component({
   selector: 'app-add-daily-unicorm-humour',
   templateUrl: './add-daily-unicorm-humour.component.html',
@@ -167,7 +168,7 @@ export class AddDailyUnicormHumourComponent implements OnInit {
       }
     }
     if (!body.mediaUrl) {
-      this.$fileUploadService.showAlert('Media is required');
+      this.$fileUploadService.showAlert(requiredMedia);
       return;
     }
 

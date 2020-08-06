@@ -70,7 +70,7 @@
                               <ul class="users-listing">
                                     <li class="single-user" *ngFor="let item of userList">
                                           <div class="img-cover">
-                                                <img [src]="item?.profilePicUrl[0] |customImage:'USER'|async" alt="Profile">
+                                                <img [src]="item?.profilePicUrl[0] |customImage:'USER'|async" alt="Profile" (click)="onImageClick(item?.profilePicUrl[0])">
                                           </div>
                                           <div class="textual-cover">
                                                 <h6>{{item?.firstName || 'String'}} {{item?.lastName || ''}}</h6>
@@ -145,13 +145,6 @@
                                                       <td>{{item?.firstName || 'String'}} {{item?.lastName || ''}}</td>
                                                       <td>{{item?.industryType || 'dummy data'}}</td>
                                                       <td>{{item?.memberCreatedAt | customDate}}</td>
-                                                      <!-- <td class="status-cell">
-                                                            <span class="active">{{item?.status}}</span>
-                                                      </td>
-                                                      <td>$ {{item?.amount || 0}}</td>
-                                                      <td>
-                                                            <span class="material-icons" (click)="onCloseMember(item?._id)">close</span>
-                                                      </td> -->
                                                 </tr>
                                           </tbody>
                                           

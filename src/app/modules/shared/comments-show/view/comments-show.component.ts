@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { CommonService } from '../../services/common.service';
+import { LikeActionComponent } from '../../like-action/view/like-action.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-comments-show',
@@ -11,7 +13,9 @@ export class CommentsShowComponent implements OnInit, OnChanges {
   comments: any;
   @Input() commentId;
   public hideShowReplies: boolean = false;
-  constructor(private $common: CommonService) { }
+  constructor(
+    private $common: CommonService,
+    private $matDailog: MatDialog) { }
 
   async ngOnChanges() {
     this.comments = await this.getCommentHandler(this.commentId);
@@ -48,13 +52,42 @@ export class CommentsShowComponent implements OnInit, OnChanges {
    * @param id
    */
   async toggleReplies(commentId: string, commenIndex: number) {
-    console.log(commentId , 'shama');
-    
     if (!this.comments[commenIndex].showReply) {
         this.comments[commenIndex].replies = await this.getCommentHandler(this.commentId, commentId);
     }
     this.comments[commenIndex]['showReply'] = !this.comments[commenIndex]['showReply']
     this.hideShowReplies = !this.hideShowReplies;
+  }
+
+  /**
+   * ON LIKE Handler
+   * @param id
+   */
+  likeHandler(id: string, likesCount: number) {
+    if (!likesCount) {
+      return;
+    }
+    const params = {
+      pageNo: 1,
+      limit: 100,
+      postId: id
+    };
+    this.$common.onLikeHandler(params).then(res => {
+      const like = res.data['list'];
+      this.onlikeHandler(like);
+    });
+  }
+
+/**
+ * user Like Handler
+ * @param id
+ */
+  onlikeHandler(like: any) {
+  
+    this.$matDailog.open(LikeActionComponent, {
+      width: '500px',
+      data: like
+    }).afterClosed().subscribe();
   }
 
 }

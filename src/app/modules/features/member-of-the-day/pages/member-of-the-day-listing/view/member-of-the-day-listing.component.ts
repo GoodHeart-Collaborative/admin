@@ -160,6 +160,9 @@ export class MemberOfTheDayListingComponent implements OnInit {
    * @param id
    */
   likeHandler(id: string, likesCount: number) {
+    if (!likesCount) {
+      return;
+    }
     const params = {
       pageNo: 1,
       limit: 100,
@@ -167,7 +170,7 @@ export class MemberOfTheDayListingComponent implements OnInit {
     };
     this.$common.onLikeHandler(params).then(res => {
       const like = res.data['list'];
-      this.onlikeHandler(like, likesCount);
+      this.onlikeHandler(like);
     });
   }
 
@@ -175,10 +178,8 @@ export class MemberOfTheDayListingComponent implements OnInit {
  * user Like Handler
  * @param id
  */
-  onlikeHandler(like: any, likesCount: number) {
-    if (!likesCount) {
-      return;
-    }
+  onlikeHandler(like: any) {
+ 
     this.$matDailog.open(LikeActionComponent, {
       width: '500px',
       data: like

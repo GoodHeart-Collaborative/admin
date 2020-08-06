@@ -8,6 +8,7 @@ import { UtilityService } from 'src/app/modules/shared/services/utility.service'
 import { ExpertService } from '../../../service/expert.service';
 import { EXPERT_CONTENT_TYPE, PRAVICY } from 'src/app/constant/drawer';
 import { FileUploadService } from 'src/app/modules/shared/services/file-upload.service';
+import { requiredMedia } from 'src/app/constant/messages';
 
 @Component({
   selector: 'app-add-expert-content',
@@ -132,9 +133,9 @@ export class AddExpertContentComponent implements OnInit {
         body['thumbnailUrl'] = dataForThumb.Location;
         body.mediaType = this.imageFile.type;
       }
-    };
+    }
     if (!body.mediaUrl) {
-      this.$fileUploadService.showAlert('Media is required');
+      this.$fileUploadService.showAlert(requiredMedia);
       return;
     }
     // else if (this.adviceDetails) {

@@ -5,6 +5,7 @@ import { FileUploadService } from '../../../../shared/services/file-upload.servi
 import { EditProfileService } from '../service/edit-profile.service';
 import { FormService } from '../../../../shared/services/form.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { requiredProfilePic } from 'src/app/constant/messages';
 
 @Component({
   selector: 'app-edit-profile',
@@ -91,7 +92,7 @@ export class EditProfileComponent implements OnInit,OnDestroy {
       this.profilePicURL = data.Location;
     }
     if (!this.profilePicURL) {
-        this.$fileUploadService.showAlert('Profile pic is required ');
+        this.$fileUploadService.showAlert(requiredProfilePic);
         return;
     }
     let body = { profilePicture: this.profilePicURL, ...this.editProfileForm.value };

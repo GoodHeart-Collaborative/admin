@@ -18,7 +18,7 @@ export const POPUP_MESSAGES = {
   logout: "Logout",
   logoutConfirmation: "Are you sure you want to logout?",
   forgotPasswordTitle:
-    "Forgot Your Password? Don't worry send us your registered email address and we will send yousteps to reset your password.",
+"Forgot Your Password? Don't worry send us your registered email address and we will send yousteps to reset your password.",
 };
 
 export const invalidImageError = (format = "JPG, JPEG, PNG") =>
@@ -26,6 +26,13 @@ export const invalidImageError = (format = "JPG, JPEG, PNG") =>
 
 export const invalidFileSize = (size = 4) =>
   `File size can not be more than ${size} MB`;
+
+export const requiredProfilePic = `Profile pic is required`;
+export const requiredMedia = `Media is required`;
+export const invalidContentType = 'Invalid content type selected';
+export const videoFormatFile = (format = 'mp4/x-m4v/3gp') =>  `Please select any video ${format} format file.`;
+export const videoFileSize = (size = 10) =>  `File size should not be greater then ${size} MB`;
+
 
 export const COMMON_MESSAGES = {
   ADDED: (type) => toTitleCase(type) + " has been added successfully",

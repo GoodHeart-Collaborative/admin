@@ -64,9 +64,7 @@ export class FileUploadService {
         this._utilityService.error(message);
     }
 
-   async capture(video, blob) {
-        console.log(video);
-        
+    async capture(video, blob) {
         // let w = video.videoWidth * this.scaleFactor;
         // let h = video.videoHeight * this.scaleFactor;
         // let canvas = this.document.createElement('canvas');
@@ -75,10 +73,8 @@ export class FileUploadService {
         // let ctx = canvas.getContext('2d');
         // ctx.drawImage(video, 0, 0, w, h);
         // let dataURI = canvas.toDataURL('image/jpeg');
-        const abc = await this.generateThumbnail( blob)
+        const abc = await this.generateThumbnail(blob)
         // console.log(abc);
-        
-        
         // let a = 
         let boj = {
             // canvas: canvas,
@@ -102,24 +98,24 @@ export class FileUploadService {
         const canvas: HTMLCanvasElement = this.document.createElement('canvas');
         const context: CanvasRenderingContext2D = canvas.getContext('2d');
         return new Promise<string>((resolve, reject) => {
-          canvas.addEventListener('error',  reject);
-          video.addEventListener('error',  reject);
-          video.addEventListener('canplay', event => {
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
-            context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
-            // console.log(canvas.toDataURL());
-            
-            resolve(canvas.toDataURL());
-          });
-          if (videoFile.type) {
-            video.setAttribute('type', videoFile.type);
-          }
-          video.preload = 'auto';
-          video.src = window.URL.createObjectURL(videoFile);
-          video.load();
-        });
-      }
+            canvas.addEventListener('error', reject);
+            video.addEventListener('error', reject);
+            video.addEventListener('canplay', event => {
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+                // console.log(canvas.toDataURL());
 
-    
+                resolve(canvas.toDataURL());
+            });
+            if (videoFile.type) {
+                video.setAttribute('type', videoFile.type);
+            }
+            video.preload = 'auto';
+            video.src = window.URL.createObjectURL(videoFile);
+            video.load();
+        });
+    }
+
+
 }

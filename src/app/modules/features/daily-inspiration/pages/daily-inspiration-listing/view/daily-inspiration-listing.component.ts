@@ -183,9 +183,6 @@ onAdd() {
    * @param id
    */
   onlikeHandler(like: any, likesCount: number) {
-    if (!likesCount) {
-      return;
-    }
     this.$matDailog.open(LikeActionComponent, {
       width: '500px',
       data: like
@@ -197,6 +194,9 @@ onAdd() {
    * @param id
    */
   likeHandler(id: string, likesCount: number) {
+    if (!likesCount) {
+      return;
+    }
     const params = {
       pageNo: 1,
       limit: 100,
@@ -204,9 +204,10 @@ onAdd() {
     };
     this.$common.onLikeHandler(params).then(res => {
       const like = res.data['list'];
-       this.onlikeHandler(like,likesCount);
+      this.onlikeHandler(like, likesCount);
     });
   }
+
   onCommentsHandler(id: string, commentCount: number) {
     if (!commentCount) {
       return;

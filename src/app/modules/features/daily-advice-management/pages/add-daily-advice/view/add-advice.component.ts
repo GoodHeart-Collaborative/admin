@@ -9,6 +9,7 @@ import { UtilityService } from 'src/app/modules/shared/services/utility.service'
 import { DAILY_ADVICE } from 'src/app/constant/routes';
 import { HOME_TYPE, MEDIA_TYPE } from 'src/app/constant/drawer';
 import { EditProfileService } from 'src/app/modules/features/admin/edit-profile/service/edit-profile.service';
+import { requiredMedia } from 'src/app/constant/messages';
 
 @Component({
   selector: 'app-add-advice',
@@ -159,7 +160,7 @@ export class AddAdviceComponent implements OnInit {
     }
 
     if (!body.mediaUrl) {
-      this.$fileUploadService.showAlert('Media is required');
+      this.$fileUploadService.showAlert(requiredMedia);
       return;
     }
     if (this.isPostLater.value) {

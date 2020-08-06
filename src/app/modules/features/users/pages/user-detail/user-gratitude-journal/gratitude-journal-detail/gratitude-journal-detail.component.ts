@@ -13,7 +13,7 @@ import { CommonService } from 'src/app/modules/shared/services/common.service';
 })
 export class GratitudeJournalDetailComponent implements OnInit {
 
-  public hideShowReplies: boolean = false;
+  public hideShowReplies = false;
   gratitudeDetails: any;
   comments: any;
   constructor(
@@ -27,52 +27,70 @@ export class GratitudeJournalDetailComponent implements OnInit {
     // $breadcrumb.replace(this.dailyInspirationDetails.id, this.dailyInspirationDetails.
   }
 
-
-
-  onlikeHandler(id: string, likesCount: number) {
+  /**
+   * ON LIKE Handler
+   * @param id
+   */
+  likeHandler(id: string, likesCount: number) {
     if (!likesCount) {
       return;
     }
-    this.$matDailog.open(LikeActionComponent, {
-      width: '500px',
-      data: id
-    }).afterClosed().subscribe();
-  }
-
-
-  async ngOnInit() {
-    this.comments = await this.getCommentHandler(this.gratitudeDetails._id);
-    console.log(this.comments);
-    this.comments = this.comments.map(comment => {
-      comment['replies'] = [];
-      comment['showReply'] = false;
-      return comment;
-    });
-  }
-
-  async toggleReplies(commentId: string, commenIndex: number) {
-    if (!this.comments[commenIndex].showReply) {
-        this.comments[commenIndex].replies = await this.getCommentHandler(this.gratitudeDetails._id, commentId);
-    }
-    this.comments[commenIndex]['showReply'] = !this.comments[commenIndex]['showReply']
-    this.hideShowReplies = !this.hideShowReplies;
-  }
-
-  /**
-   * user Comment Handler
-   */
-  async getCommentHandler(id, commentId?) {
     const params = {
       pageNo: 1,
       limit: 100,
       postId: id
     };
-    if (commentId) {
-      params['commentId'] = commentId;
-    }
-    return await this.$common.onCommentHandler(params).then(res => {
-      return res.data['list'];
+    this.$common.onLikeHandler(params).then(res => {
+      const like = res.data['list'];
+      this.onlikeHandler(like);
     });
   }
+
+/**
+ * user Like Handler
+ * @param id
+ */
+  onlikeHandler(like: any) {
+    this.$matDailog.open(LikeActionComponent, {
+      width: '500px',
+      data: like
+    }).afterClosed().subscribe();
+  }
+
+
+  async ngOnInit() {
+    // this.comments = await this.getCommentHandler(this.gratitudeDetails._id);
+    // console.log(this.comments);
+    // this.comments = this.comments.map(comment => {
+    //   comment['replies'] = [];
+    //   comment['showReply'] = false;
+    //   return comment;
+    // });
+  }
+
+  // async toggleReplies(commentId: string, commenIndex: number) {
+  //   if (!this.comments[commenIndex].showReply) {
+  //       this.comments[commenIndex].replies = await this.getCommentHandler(this.gratitudeDetails._id, commentId);
+  //   }
+  //   this.comments[commenIndex]['showReply'] = !this.comments[commenIndex]['showReply']
+  //   this.hideShowReplies = !this.hideShowReplies;
+  // }
+
+  /**
+   * user Comment Handler
+   */
+  // async getCommentHandler(id, commentId?) {
+  //   const params = {
+  //     pageNo: 1,
+  //     limit: 100,
+  //     postId: id
+  //   };
+  //   if (commentId) {
+  //     params['commentId'] = commentId;
+  //   }
+  //   return await this.$common.onCommentHandler(params).then(res => {
+  //     return res.data['list'];
+  //   });
+  // }
 
 }

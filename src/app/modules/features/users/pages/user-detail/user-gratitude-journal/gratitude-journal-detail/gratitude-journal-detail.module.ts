@@ -6,6 +6,8 @@ import { LikeActionModule } from 'src/app/modules/shared/like-action/like-action
 import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 import { TimePipeModule } from 'src/app/pipes/time-pipe/time-pipe.module';
+import { CommentsModule } from 'src/app/modules/shared/comments/comments.module';
+import { CommentsShowModule } from 'src/app/modules/shared/comments-show/comments-show.module';
 
 const routes: Routes = [
   {
@@ -21,7 +23,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     LikeActionModule,
     CustomImageModule,
-    TimePipeModule
+    TimePipeModule,
+    CommentsShowModule
   ],
   exports : [GratitudeJournalDetailComponent],
 })

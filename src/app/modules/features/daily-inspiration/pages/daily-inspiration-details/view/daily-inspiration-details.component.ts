@@ -3,6 +3,7 @@ import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
+import { CommonService } from 'src/app/modules/shared/services/common.service';
 
 @Component({
   selector: 'app-daily-inspiration-details',
@@ -16,7 +17,8 @@ export class DailyInspirationDetailsComponent implements OnInit {
   constructor(
                $router: ActivatedRoute,
                $breadcrumb: BreadcrumbService,
-               private $matDailog: MatDialog) {
+               private $matDailog: MatDialog,
+               private $common: CommonService) {
       this.dailyInspirationDetails = $router.snapshot.data.dailyData.data;
       $breadcrumb.replace(this.dailyInspirationDetails.id, this.dailyInspirationDetails.title);
     }
@@ -24,13 +26,33 @@ export class DailyInspirationDetailsComponent implements OnInit {
   ngOnInit() {
   }
 
-  onlikeHandler(id: string, likesCount: number) {
+  /**
+   * ON LIKE Handler
+   * @param id
+   */
+  likeHandler(id: string, likesCount: number) {
+    const params = {
+      pageNo: 1,
+      limit: 100,
+      postId: id
+    };
+    this.$common.onLikeHandler(params).then(res => {
+      const like = res.data['list'];
+      this.onlikeHandler(like, likesCount);
+    });
+  }
+
+/**
+ * user Like Handler
+ * @param id
+ */
+  onlikeHandler(like: any, likesCount: number) {
     if (!likesCount) {
       return;
     }
     this.$matDailog.open(LikeActionComponent, {
       width: '500px',
-      data: id
+      data: like
     }).afterClosed().subscribe();
   }
 

@@ -26,7 +26,7 @@
         </div>
         <div class="row-2" *ngIf="dailyInspirationDetails?.likeCount">
             <div class="like-cover"
-                (click)="onlikeHandler(dailyInspirationDetails._id, dailyInspirationDetails?.likeCount)"><span
+                (click)="likeHandler(dailyInspirationDetails._id, dailyInspirationDetails?.likeCount)"><span
                     class="material-icons">thumb_up</span>
                 <p>{{dailyInspirationDetails?.likeCount}}</p>
             </div>
