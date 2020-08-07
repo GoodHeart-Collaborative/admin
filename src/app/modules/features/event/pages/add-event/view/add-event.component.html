@@ -1,11 +1,11 @@
 <div class="page-add-event">
     <div class="add-event-content">
 
-        <form>
+        <form [formGroup]="eventForm">
             <div class="row-1">
                 <div class="left-portion">
-                    <media-upload></media-upload> 
-                    <ul class="media-upload-hint">
+                    <app-image-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL"></app-image-upload>
+                    <!-- <ul class="media-upload-hint">
                         <li class="list-item">
                             Max image size allowed: <em>500 KB</em>
                         </li>
@@ -21,26 +21,25 @@
                         <li class="list-item">
                             Format supported: <em>MP4, WMV</em> only
                         </li>
-                    </ul>
+                    </ul> -->
                 </div>
                 <div class="right-portion">
                     <div class="row">
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Event Name</mat-label>
-                                <input matInput placeholder="Name" appWhiteSpace>
+                                <input matInput placeholder="Name" appWhiteSpace formControlName="title">
                                 <mat-hint>0/20</mat-hint>
-                                <mat-error>Error</mat-error>
+                                <mat-error>{{form('title') |validate:'Event Name' }}</mat-error>
                             </mat-form-field>
                         </div>
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Category</mat-label>
-                                <mat-select>
-                                    <mat-option value="1">Value 1</mat-option>
-                                    <mat-option value="3">Value 2</mat-option>
+                                <mat-select formControlName="eventCategory">
+                                    <mat-option [value]="item?._id" *ngFor="let item of categoryData">{{item?.name}}</mat-option>
                                 </mat-select>
-                                <mat-error>Error</mat-error>
+                                <mat-error>{{form('eventCategory') |validate:'Event Category' }}</mat-error>
                             </mat-form-field>
                         </div>
                     </div>
@@ -48,33 +47,39 @@
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Choose a start date</mat-label>
-                                <input matInput [matDatepicker]="startDatePicker">
-                                <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
-                                <mat-datepicker #startDatePicker></mat-datepicker>
+                                <input matInput [matDatepicker]="picker1" [max]="endDate.value" [min]="today" formControlName="startDate"
+                                (click)="picker1.open()" placeholder="Start Date" readonly>
+                              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                              <mat-datepicker #picker1></mat-datepicker>
                             </mat-form-field>
                         </div>
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Choose an end date</mat-label>
-                                <input matInput [matDatepicker]="endDatePicker">
-                                <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
-                                <mat-datepicker #endDatePicker></mat-datepicker>
+                                <input matInput [matDatepicker]="picker2" [min]="startDate.value"  formControlName="endDate"
+                                (click)="picker2.open()"  placeholder="End Date" readonly>
+                              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                              <mat-datepicker #picker2></mat-datepicker>
                             </mat-form-field>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
-                                <mat-label>Event start time</mat-label>
-                                <input matInput placeholder="Start time" appWhiteSpace>
-                                <mat-hint>Replace this input field with time picker</mat-hint>
+                                <mat-label>Privacy</mat-label>
+                                <mat-select formControlName="privacy">
+                                    <mat-option *ngFor="let data of privacyData" [value]="data?.value">{{data?.viewValue}}</mat-option>
+                                </mat-select>
+                                <mat-error>{{form('privacy') |validate:'Privacy' }}</mat-error>
                             </mat-form-field>
                         </div>
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
-                                <mat-label>Event end time</mat-label>
-                                <input matInput placeholder="End time" appWhiteSpace>
-                                <mat-hint>Replace this input field with time picker</mat-hint>
+                                <mat-label>Event Location</mat-label>
+                                <input matInput placeholder="Location" formControlName="location"  appGooglePlaces
+                                (onSelect)="selectLocation($event)" autocomplete="off">                               
+                                <mat-error>{{form('location') |validate:'Event Location' }}</mat-error>
+
                             </mat-form-field>
                         </div>
                     </div>
@@ -82,17 +87,18 @@
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Price</mat-label>
-                                <input matInput placeholder="Voucher 1" appWhiteSpace>
-                                <mat-hint>0/20</mat-hint>
-                                <mat-error>Error</mat-error>
+                                <input matInput placeholder="Voucher 1" appWhiteSpace formControlName="price">
+                                <!-- <mat-hint>0/20</mat-hint> -->
+                                <mat-error>{{form('price') |validate:' Price' }}</mat-error>
                             </mat-form-field>
                         </div>
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Website Link</mat-label>
-                                <input matInput placeholder="URL" appWhiteSpace>
-                                <mat-hint>0/20</mat-hint>
-                                <mat-error>Error</mat-error>
+                                <input matInput placeholder="URL" appWhiteSpace formControlName="eventUrl">
+                                 <!-- <mat-hint>0/20</mat-hint> -->
+                                <mat-error>{{form('eventUrl') |validate:'Event Url' }}</mat-error>
+
                             </mat-form-field>
                         </div>
                     </div>
@@ -101,23 +107,23 @@
                             <mat-form-field appearance="outline">
                                 <mat-label>Description</mat-label>
                                 <textarea rows="5" matInput placeholder="Ex. Write something here about this event..."
-                                    appWhiteSpace></textarea>
-                                <mat-hint>0/200</mat-hint>
-                                <mat-error>Error</mat-error>
+                                    appWhiteSpace formControlName="description" #description></textarea>
+                                <mat-hint>{{description.value.trim().length}}/200</mat-hint>
+                                <mat-error>{{form('description') |validate:'Description' }}</mat-error>
                             </mat-form-field>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 checkbox-wrapper">
-                            <mat-checkbox color="primary">Mark as Featured</mat-checkbox>
+                            <mat-checkbox color="primary" formControlName="allowSharing">Mark as Featured</mat-checkbox>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
         <div class="btn-row">
-            <button class="btn btn-simple" mat-stroked-button type="button"> Cancel </button>
-            <button class="btn btn-primary" mat-stroked-button type="submit">Upload </button>
+            <button class="btn btn-simple" mat-stroked-button type="button" (click)="onCancel()"> Cancel </button>
+            <button class="btn btn-primary" mat-stroked-button type="button" (click)="onSubmit()">Upload </button>
         </div>
     </div>
 </div>

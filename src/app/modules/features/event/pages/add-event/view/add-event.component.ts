@@ -10,6 +10,8 @@ import { invalidImageError, invalidFileSize } from 'src/app/constant/messages';
 import { EVENTS } from 'src/app/constant/routes';
 import { FileUploadService } from 'src/app/modules/shared/services/file-upload.service';
 import { onSelectFile } from 'src/app/constant/file-input';
+import { FormService } from 'src/app/modules/shared/services/form.service';
+import { PRAVICY } from 'src/app/constant/drawer';
 
 @Component({
   selector: 'app-add-event',
@@ -17,11 +19,14 @@ import { onSelectFile } from 'src/app/constant/file-input';
   styleUrls: ['./add-event.component.scss']
 })
 export class AddEventComponent implements OnInit {
-  expertForm: FormGroup;
+  eventForm: FormGroup;
   imageFile: any;
   categoryData: any;
   profilePicURL: any;
   details: any;
+  privacyData = PRAVICY;
+  today = new Date();
+  location: {};
   constructor(
     private $fb: FormBuilder,
     private $category: CategoryManagementService,
@@ -29,7 +34,7 @@ export class AddEventComponent implements OnInit {
     private $service: EventService,
     private $utility: UtilityService,
     private $route: Router,
-
+    private $formService: FormService,
     activateRoute: ActivatedRoute,
     $breadcrumb: BreadcrumbService,
   ) {
@@ -41,34 +46,32 @@ export class AddEventComponent implements OnInit {
   }
 
   createForm() {
-    this.expertForm = this.$fb.group({
-      categoryId: [],
-      name: ['', [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.nameMaxLength)]],
-      email: ['',],
-      profession: ['', [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.professionMaxLength)]],
-      industry: [1],
-      bio: ['', [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.bioMaxLength)]],
-      experience: ['']
+    this.eventForm = this.$fb.group({
+      eventCategory: [],
+      title: ['', Validators.compose(this.$formService.VALIDATION.name)],
+      privacy: ['', [Validators.required]],
+      price: [0, [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.priceMaxLength)]],
+      eventUrl: ['', Validators.compose(this.$formService.VALIDATION.email)],
+      description: ['', [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.descriptionMaxLength)]],
+      allowSharing: [true],
+      location: ['', Validators.required],
+      startDate: ['', Validators.required],
+      endDate: ['', Validators.required]
     });
   }
 
   form(name) {
-    return this.expertForm.controls[name];
+    return this.eventForm.controls[name];
   }
 
-  async onSelectFile(event) {
-    try {
-      let result = await onSelectFile(event);
-      this.imageFile = result.file;
-      this.profilePicURL = result.url;
-    } catch (err) {
-      if (err.type) {
-        this.$fileUploadService.showAlert(invalidImageError());
-      } else if (err.size) {
-        this.$fileUploadService.showAlert(invalidFileSize());
-      }
-    }
+  get startDate() {
+    return this.eventForm.controls['startDate'];
   }
+  get endDate() {
+    return this.eventForm.controls['endDate'];
+  }
+
+
 
   /**
    * API hit for Category
@@ -95,7 +98,7 @@ export class AddEventComponent implements OnInit {
   }
 
   async onSubmit() {
-    if (this.expertForm.invalid) {
+    if (this.eventForm.invalid) {
       return;
     }
     if (this.imageFile) {
@@ -103,34 +106,41 @@ export class AddEventComponent implements OnInit {
       this.profilePicURL = [data.Location];
     }
     if (!this.profilePicURL) {
-        this.$fileUploadService.showAlert('Profile pic is required');
-        return;
+      this.$fileUploadService.showAlert('Profile pic is required');
+      return;
     }
-    let body = { profilePicUrl: this.profilePicURL, ...this.expertForm.value };
+    let body = { imageUrl: this.profilePicURL, ...this.eventForm.value };
+    if (this.location) {
+      console.log(this.location);
+      
+        body.location = this.location
+    }
+
     if (this.details && this.details._id) {
       delete body.type;
       // this.$service.edit(this.details._id, body).then(
       //   data => {
-      //     this.expertForm.enable();
+      //     this.eventForm.enable();
       //     this.$utility.success(data.message);
       //     this.$route.navigate([EVENTS.fullUrl]);
       //   },
       //   err => {
-      //     this.expertForm.enable();
+      //     this.eventForm.enable();
       //   });
       return;
     }
-    // this.$service.add(body).then(
-    //   data => {
-    //     this.expertForm.enable();
-    //     this.$utility.success(data.message);
+    console.log(body);
+    this.$service.add(body).then(
+      data => {
+        this.eventForm.enable();
+        this.$utility.success(data.message);
 
-    //     this.$route.navigate([EVENTS.fullUrl]);
+        this.$route.navigate([EVENTS.fullUrl]);
 
-    //   },
-    //   err => {
-    //     this.expertForm.enable();
-    //   });
+      },
+      err => {
+        this.eventForm.enable();
+      });
   }
 
   onCancel() {
@@ -138,4 +148,14 @@ export class AddEventComponent implements OnInit {
   }
 
 
+  selectLocation(event) {
+    this.location = {
+      address: event.formatted_address,
+      type: event.postal_code,
+      coordinates: {
+        longitude: event.lng,
+        latitude: event.lat
+      }
+    };
+  }
 }

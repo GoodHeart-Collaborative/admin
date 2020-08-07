@@ -2,8 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddEventComponent } from './view/add-event.component';
 import { Routes, RouterModule } from '@angular/router';
-import { MatFormFieldModule, MatInputModule, MatSelectModule, MatCheckboxModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
-import { MediaUploadModule } from 'src/app/modules/shared/media-upload/media-upload.module';
+import { MatFormFieldModule, 
+  MatInputModule, MatSelectModule,
+   MatCheckboxModule, MatDatepickerModule,
+   MatNativeDateModule } from '@angular/material';
+import { ImageUploadModule } from 'src/app/modules/shared/image-upload/image-upload.module';
+import { ValidationErrorPipeModule } from 'src/app/pipes/validation-error/validation-error-pipe.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { GooglePlacesModule } from 'src/app/directives/google-places/google-places.module';
 
 
 const routes: Routes = [
@@ -21,10 +27,13 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MediaUploadModule, 
+    ImageUploadModule,
     MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    ValidationErrorPipeModule,
+    ReactiveFormsModule,
+    GooglePlacesModule
   ]
 })
 

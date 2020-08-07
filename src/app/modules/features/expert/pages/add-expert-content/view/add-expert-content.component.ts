@@ -45,7 +45,7 @@ export class AddExpertContentComponent implements OnInit {
     this.expertContentForm = this.$fb.group({
       expertId: [this.expertContentId],
       categoryId: [],
-      price: [0],
+      price: [0, [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.priceMaxLength)]],
       contentId: [],
       mediaType: [],
       description: ['', [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.descriptionMaxLength)]],
