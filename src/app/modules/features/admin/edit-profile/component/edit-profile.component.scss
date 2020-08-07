@@ -56,10 +56,14 @@ input [ type=file] {
 :host ::ng-deep{
 	.image-upload-content{
 		border-radius: 50% !important;
+		width: 180px !important;
 		.img-cover{
 			img{
 				border-radius: 50% !important;
 			}
+		}
+		.default-preview{
+			height: 180px !important;
 		}
 	}
 	
