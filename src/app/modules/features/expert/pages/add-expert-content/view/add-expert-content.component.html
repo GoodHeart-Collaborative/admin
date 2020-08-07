@@ -2,7 +2,9 @@
     <div class="add-expert-content">
      <form [formGroup]="expertContentForm">
             <div class="row-1">
-                <media-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL" [contentId]="contentId?.value"></media-upload>
+                <div class="left-portion">
+                    <media-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL" [contentId]="contentId?.value"></media-upload>
+                </div>
                 <div class="right-portion">
                     <div class="row">
                         <div class="col-md-6">

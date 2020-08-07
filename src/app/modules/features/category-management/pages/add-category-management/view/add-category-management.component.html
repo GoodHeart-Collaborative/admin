@@ -2,19 +2,9 @@
   <div class="add-category-mangement-content">
     <form [formGroup]="categoryForm">
       <div class="row-1">
-        <!-- <div class="left-portion">
-          <div class="img-cover">
-            <img [src]="profilePicURL|customImage:'IMAGE_PLACEHOLDER'|async" alt="" style="width: 100%;">
-            <div class="mat-icon-cover">
-              <button type="button" class="camBtn" mat-mini-fab color="primary">
-                <mat-icon>camera_alt</mat-icon>
-                <input type="file" accept="image/x-png,image/jpeg" #file (change)="onSelectFile($event)"
-                  matTooltip="Change Image" />
-              </button>
-            </div>
-          </div>
-        </div> -->
-        <app-image-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL"></app-image-upload>
+        <div class="left-portion">
+          <app-image-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL"></app-image-upload>
+        </div>
         <div class="right-portion">
           <p>Category Name</p>
           <mat-form-field appearance="outline">

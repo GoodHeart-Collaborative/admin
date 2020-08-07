@@ -3,8 +3,10 @@
         <form [formGroup]="inspirationForm">
             <div class="row-1">
 
-                <media-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL"
+                <div class="left-portion">
+                    <media-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL"
                     [videoSrc]="thumbnailUrl"></media-upload>
+                </div>
 
                 <div class="right-portion">
                     <mat-form-field appearance="outline">
