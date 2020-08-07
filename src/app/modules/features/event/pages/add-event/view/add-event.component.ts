@@ -110,10 +110,8 @@ export class AddEventComponent implements OnInit {
       return;
     }
     let body = { imageUrl: this.profilePicURL, ...this.eventForm.value };
-    if (this.location) {
-      console.log(this.location);
-      
-        body.location = this.location
+    if (this.location) {      
+        body.location = this.location;
     }
 
     if (this.details && this.details._id) {
