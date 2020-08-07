@@ -13,7 +13,6 @@ import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/
 import { GlobalService } from 'src/app/services/global/global.service';
 import { onSelectFile } from 'src/app/constant/file-input';
 import { invalidImageError, invalidFileSize } from 'src/app/constant/messages';
-import { CommonService } from 'src/app/modules/shared/services/common.service';
 
 @Component({
   selector: 'app-add-expert',
@@ -69,7 +68,7 @@ export class AddExpertComponent implements OnInit {
       name: ['', Validators.compose(this.$formService.VALIDATION.name)],
       email: ['', Validators.compose(this.$formService.VALIDATION.email)],
       profession: ['', [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.professionMaxLength)]],
-      industry: [''],
+      industry: [1],
       bio: ['', [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.bioMaxLength)]],
       experience: ['']
     });
@@ -123,7 +122,7 @@ export class AddExpertComponent implements OnInit {
     }
     if (this.imageFile) {
       let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
-      this.profilePicURL = data.Location;
+      this.profilePicURL = [data.Location];
     }
     if (!this.profilePicURL) {
         this.$fileUploadService.showAlert('Profile pic is required');

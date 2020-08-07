@@ -21,10 +21,10 @@ export class EventService {
   async updateStatus(id, status) {
     return await this.$http.patch(ACTION_EVENT(id, status), {}).toPromise();
   }
-  async  addCategory(params) {
-    // return  this.$http.post(HOME, params).toPromise();
+  async  add(params) {
+    return  this.$http.post(EVENT, params).toPromise();
   }
-  async  editCategory(id, params) {
+  async  edit(id, params) {
     // return  this.$http.patch(HOME_DETAILS(id), params).toPromise();
   }
 
