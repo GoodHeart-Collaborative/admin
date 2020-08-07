@@ -7,6 +7,12 @@
     <ng-template appFor="createdAt" let-row="row">
          {{ row?.createdAt |customDate}}
      </ng-template>
+    <ng-template appFor="startDate" let-row="row">
+         {{ row?.startDate |customDate}}
+     </ng-template>
+    <ng-template appFor="endDate" let-row="row">
+         {{ row?.endDate |customDate}}
+     </ng-template>
  
      <ng-template appFor="status" let-data="row">
          {{ data?.status | titlecase}}

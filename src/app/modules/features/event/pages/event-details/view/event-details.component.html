@@ -3,16 +3,12 @@
         <div class="section-1">
             <div class="left-portion">
                 <div class="event-cover-photo">
-                    <img src="assets/images/event-dummy-img.jpg">
+    
+     <img [src]="eventDetails?.imageUrl | customImage:'USERS'|async">
                 </div>
                 <div class="event-about">
-                    <h4 class="event-title">National event</h4>
-                    <p>Material icons are delightful, beautifully crafted symbols for common actions and items. Download
-                        on desktop to use them in your digital products for Android, iOS, and web.
-                        Material icons are delightful, beautifully crafted symbols for common actions and items.
-                        Download on desktop to use them in your digital products for Android, iOS, and web.
-                        Each symbol is available in five themes and a range of downloadable sizes and densities. For web
-                        projects, the best format is our easy-to-use icon web font.
+                    <h4 class="event-title">{{eventDetails?.title}}</h4>
+                    <p>{{eventDetails?.description}}
                     </p>
                 </div>
                 <div class="btn-row">
@@ -25,7 +21,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <p class="label">Event Date & Time</p>
-                            <p class="value">Aug 10, 2020 || 01:30 PM - 06:00 PM</p>
+                            <p class="value">{{eventDetails?.startDate | date :'medium'}}</p>
                         </div>
                         <div class="col-md-12">
                             <p class="label">Event Place</p>
@@ -33,12 +29,14 @@
                         </div>
                         <div class="col-md-12">
                             <p class="label">Event Price</p>
-                            <p class="value">$14 / person</p>
+                            <p class="value">{{eventDetails?.price}}</p>
                         </div>
                         <div class="col-md-12">
                             <p class="label">Event URL</p>
                             <p class="value">
-                                <a href="javascript:void();">www.fakeeventweb.com</a>
+                                <a href="javascript:void();">
+                                    {{eventDetails?.eventUrl}}
+                                </a>
                             </p>
                         </div>
                         <div class="col-md-12">
@@ -49,14 +47,14 @@
                             <p class="label">Going</p>
                             <p class="value like-cover">
                                 <span class="material-icons going-icon">directions_run</span>
-                                <a href="javascript:void();">124</a>
+                                <a href="javascript:void();">{{eventDetails?.goingCount}}</a>
                             </p>
                         </div>
                         <div class="col-md-8">
                             <p class="label">Interested</p>
                             <p class="value like-cover">
                                 <span class="material-icons heart-icon">favorite</span>
-                                <a href="javascript:void();">568</a>
+                                <a href="javascript:void();">{{eventDetails?.interestCount}}</a>
                             </p>
                         </div>
                     </div>

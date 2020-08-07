@@ -1,3 +1,46 @@
-<button class="btn btn-primary" style="margin-bottom: 20px;" (click)="onClick()" *ngIf="!isProcessing">Button For User topic detail</button>
+<!-- <button class="btn btn-primary" style="margin-bottom: 20px;" (click)="onClick()" *ngIf="!isProcessing">Button For User topic detail</button>
 
-<!-- <app-user-topic-detail></app-user-topic-detail> -->
+<app-table [tableSource]="tableSource" (optionChange)="onOptionChange($event)">
+
+    <ng-template appFor="createdAt" let-user="row">
+        {{ user?.createdAt |customDate}}
+    </ng-template>
+
+    <ng-template appFor="status" let-user="row">
+        {{ user?.status | titlecase}}
+    </ng-template>
+
+    <ng-template appFor="privacy" let-user="row">
+        {{ user?.privacy | titlecase}}
+    </ng-template>
+
+
+    <ng-template appFor="description" let-user="row">
+        <a href="javascript:void(0)" (click)="onDetailsHandler(user?._id, user?.privacy)" [class.click-not-allowed]="user?.privacy == 'private'">
+            {{ (user?.description  | titlecase) || 'String'}}
+        </a>
+    </ng-template>
+
+    <ng-container>
+
+        <ng-template appFor="actions" let-user="row">
+            <div class="action-icon-cover">
+
+                <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked', user?.privacy)" [class.click-not-allowed]="user?.privacy == 'private'"
+                    *ngIf="user?.status === 'active';else templateAction" title="Block user">
+                    blocked</i>
+                <ng-template #templateAction>
+                    <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active', user?.privacy)" [class.click-not-allowed]="user?.privacy == 'private'"
+                        title="Unblock user">
+                        lock_open
+                    </i>
+                </ng-template>
+                <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted',  user?.privacy)" [class.click-not-allowed]="user?.privacy == 'private'"
+                    title="Delete user">
+                    delete
+                </i>
+            </div>
+
+        </ng-template>
+    </ng-container>
+</app-table> -->

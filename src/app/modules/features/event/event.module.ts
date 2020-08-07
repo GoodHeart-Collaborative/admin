@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { EventRoutingModule } from './event-routing.module';
 import { EventComponent } from './view/event.component';
-import { EventService } from './service/event.service';
+import { EventService, EventServiceResolve } from './service/event.service';
 
 
 @NgModule({
@@ -12,6 +12,6 @@ import { EventService } from './service/event.service';
     CommonModule,
     EventRoutingModule
   ],
-  providers: [EventService]
+  providers: [EventService, EventServiceResolve]
 })
 export class EventModule { }

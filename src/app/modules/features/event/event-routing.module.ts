@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { EventComponent } from './view/event.component';
 import { ADD_EVENTS , EVENTS_LIST, EVENTS_DETAIL} from 'src/app/constant/routes';
+import { EventServiceResolve } from './service/event.service';
 
 
 const routes: Routes = [
@@ -37,9 +38,9 @@ const routes: Routes = [
      },
     {
       path: `${EVENTS_DETAIL.path}/details`,
-      // resolve : {
-      //   dailyData : DailyUnicornHumourServiceResolve
-      // },
+      resolve : {
+        eventDetails : EventServiceResolve
+      },
       loadChildren: () => import('./pages/event-details/event-details.module')
       .then( (m) => m.EventDetailsModule
       ),

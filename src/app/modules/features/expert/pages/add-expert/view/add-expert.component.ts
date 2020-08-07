@@ -129,7 +129,7 @@ export class AddExpertComponent implements OnInit {
         this.$fileUploadService.showAlert('Profile pic is required');
         return;
     }
-    let body = { profilePicUrl: [this.profilePicURL], ...this.expertForm.value };
+    let body = { profilePicUrl: this.profilePicURL, ...this.expertForm.value };
     if (this.details && this.details._id) {
       delete body.type;
       this.$service.edit(this.details._id, body).then(

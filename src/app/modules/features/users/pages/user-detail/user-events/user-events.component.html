@@ -1,3 +1,56 @@
-<button class="btn btn-primary"  (click)="onClick()" *ngIf="!isProcessing">Button For Event detail</button>
+<!-- <button class="btn btn-primary"  (click)="onClick()" *ngIf="!isProcessing">Button For Event detail</button> -->
 
-<!-- <app-event-detail [hidden]="!isProcessing"></app-event-detail> -->
+<app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)">
+    <ng-template appFor="createdAt" let-row="row">
+         {{ row?.createdAt |customDate}}
+     </ng-template>
+    <ng-template appFor="startDate" let-row="row">
+         {{ row?.startDate |customDate}}
+     </ng-template>
+    <ng-template appFor="endDate" let-row="row">
+         {{ row?.endDate |customDate}}
+     </ng-template>
+ 
+     <ng-template appFor="status" let-data="row">
+         {{ data?.status | titlecase}}
+     </ng-template>
+ 
+     <ng-template appFor="title" let-data="row">
+         <a href="javascript:void(0)" (click)="onDetailsHandler(data?._id)" title="{{ data?.title | titlecase}}">
+             {{ data?.title | titlecase}}
+         </a>
+     </ng-template>
+ 
+     <!-- <ng-template appFor="likeCount" let-row="row">
+         <a (click)="onlikeHandler(row._id, row?.likeCount)" [class.color-black]="row?.likeCount < 1">
+             {{ row?.likeCount}}
+         </a>
+     </ng-template> -->
+ 
+     <!-- <ng-template appFor="commentCount" let-row="row">
+         <a (click)="onCommentsHandler(row._id, row?.commentCount)" [class.color-black]="row?.commentCount < 1">
+             {{ row?.commentCount}}
+         </a>
+     </ng-template> -->
+ 
+   <ng-container>
+ 
+         <ng-template appFor="actions"  let-row="row">
+             <div class="action-icon-cover">
+                 <i class="material-icons icon-edit" (click)="oneditHandler(row?._id)" title="Edit">
+                     edit
+                 </i>
+                 <i class="material-icons icon-delete" (click)="onActionHandler(row._id, 'deleted')" title="Delete row">
+                     delete
+                 </i>
+                 <i class="material-icons icon-block" (click)="onActionHandler(row._id, 'blocked')" *ngIf="row?.status === 'active';else templateAction"  title="Block row">
+                     blocked</i>
+                 <ng-template #templateAction>
+                     <i class="material-icons icon-unblock" (click)="onActionHandler(row._id, 'active')" title="Unblock row" >
+                         lock_open
+                     </i>
+                 </ng-template>
+             </div>
+         </ng-template>
+     </ng-container>  
+ </app-table>

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/modules/shared/services/http.service';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
-import { HOME, EXPERT } from 'src/app/constant/urls';
+import { HOME, EXPERT, EVENT, ACTION_EVENT, EVENT_DETAILS } from 'src/app/constant/urls';
+import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +15,11 @@ export class EventService {
   ) { }
 
   async  queryData(params) {
-    return  this.$http.get(EXPERT, params).toPromise();
+    return  this.$http.get(EVENT, params).toPromise();
   }
 
   async updateStatus(id, status) {
-    // return await this.$http.patch(ACTION_HOME(id, status), {}).toPromise();
+    return await this.$http.patch(ACTION_EVENT(id, status), {}).toPromise();
   }
   async  addCategory(params) {
     // return  this.$http.post(HOME, params).toPromise();
@@ -28,25 +29,24 @@ export class EventService {
   }
 
 
-  async  updateInspiration(id) {
-    // const data =  this.$http.get(HOME_DETAILS(id)).toPromise();
-    // return data;
+  async  updateDetails(id) {
+    const data =  this.$http.get(EVENT_DETAILS(id)).toPromise();
+    return data;
   }
 
 
 }
 
-// @Injectable()
-// export class DailyInspirationServiceResolve implements Resolve<any>  {
-//   constructor(private $daily: DailyInspirationService, private $router: Router) { }
-//   resolve(route: ActivatedRouteSnapshot) {
-//     const userId = route.params['id'];
-//     return this.$daily.updateInspiration(userId).catch(err => {
-//       if (err) {
-//         // this.$router.navigate([DAILY_INSPIRATION]);
-//         return null;
-//       }
-//     }
-//     );
-//   }
-// }
+@Injectable()
+export class EventServiceResolve implements Resolve<any>  {
+  constructor(private $daily: EventService) { }
+  resolve(route: ActivatedRouteSnapshot) {
+    const userId = route.params['id'];
+    return this.$daily.updateDetails(userId).catch(err => {
+      if (err) {
+        return null;
+      }
+    }
+    );
+  }
+}

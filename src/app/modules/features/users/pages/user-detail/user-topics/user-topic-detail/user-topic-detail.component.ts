@@ -13,7 +13,6 @@ export class UserTopicDetailComponent implements OnInit {
   ngOnInit() { }
 
   onlikeHandler() {
-    
   }
   toggleReplies() {
     this.hideShowReplies = !this.hideShowReplies;

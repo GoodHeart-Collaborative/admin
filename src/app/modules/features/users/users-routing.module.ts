@@ -4,6 +4,7 @@ import { UsersComponent } from './view/users.component';
 import { USER_LIST, USER_DETAIL ,GRATITUDE_DETAIL , EVENT_DETAIL, TOPIC_DETAIL} from '../../../constant/routes';
 import { UsersServiceResolve } from './service/users.service';
 import { UserGratitudeJournalServiceResolve } from './pages/user-detail/user-gratitude-journal/service/user-gratitude-journal.service';
+import { UserEventServiceResolve } from './pages/user-detail/user-events/service/user-event.service';
 
 const routes: Routes = [
   {
@@ -37,7 +38,7 @@ const routes: Routes = [
       {
         path: `${EVENT_DETAIL.path}`,
         resolve: {
-          eventData : UsersServiceResolve
+          eventData : UserEventServiceResolve
         },
         loadChildren: () => import('./pages/user-detail/user-events/event-detail/event-detail.module').then( (m) => m.EventDetailModule),
       },
@@ -46,7 +47,8 @@ const routes: Routes = [
         resolve: {
           UserDetails : UsersServiceResolve
         },
-     loadChildren: () => import('./pages/user-detail/user-topics/user-topic-detail/user-topic-detail.module').then( (m) => m.UserTopicDetailModule),
+       loadChildren: () => import('./pages/user-detail/user-topics/user-topic-detail/user-topic-detail.module').
+       then( (m) => m.UserTopicDetailModule),
       },
     ],
   },

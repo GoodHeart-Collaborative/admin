@@ -3,63 +3,63 @@
         <div class="section-1">
             <div class="left-portion">
                 <div class="event-cover-photo">
-                    <img src="assets/images/event-dummy-img.jpg">
+    
+         <img [src]="eventDetails?.imageUrl | customImage:'USERS'|async">
                 </div>
                 <div class="event-about">
-                    <h4 class="event-title">Wellness Program</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-                        but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                        popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                        and more recently with desktop publishing software like Aldus PageMaker including versions of
-                        Lorem Ipsum.</p>
-    
-                    </div>
-                    
+                    <h4 class="event-title">{{eventDetails?.title}}</h4>
+                    <p>{{eventDetails?.description}}
+                    </p>
                 </div>
-                <div class="right-portion">
-                    <div class="event-info detail-ui">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p class="label">Event Date & Time</p>
-                                <p class="value">Jan 20, 2021 || 05:30 PM - 08:45 PM</p>
-                            </div>
-                            <div class="col-md-12">
-                                <p class="label">Event Place</p>
-                                <p class="value">Central Park, New York</p>
-                            </div>
-                            <div class="col-md-12">
-                                <p class="label">Event Price</p>
-                                <p class="value">$12 / person</p>
-                            </div>
-                            <div class="col-md-12">
-                                <p class="label">Event URL</p>
-                                <p class="value">
-                                    <a href="">thisisaneventurlplace</a>
-                                </p>
-                            </div>
-                            <div class="col-md-12">
-                                <p class="label">Hosted By</p>
-                                <p class="value">Alec Benjamin</p>
-                            </div>
-                            <div class="col-md-4">
-                                <p class="label">Going</p>
-                                <p class="value like-cover">
-                                    <span class="material-icons going-icon">directions_run</span>
-                                    <a href="javascript:;">124</a>
-                                </p>
-                            </div>
-                            <div class="col-md-8">
-                                <p class="label">Interested</p>
-                                <p class="value like-cover">
-                                    <span class="material-icons heart-icon">favorite</span>
-                                    <a href="javascript:;">568</a>
-                                </p>
-                            </div>
+                <div class="btn-row">
+                    <button class="btn btn-simple" mat-stroked-button type="button"> Reject </button>
+                    <button class="btn btn-primary" mat-stroked-button type="submit">Accept </button>
+                </div>
+            </div>
+            <div class="right-portion">
+                <div class="event-info detail-ui">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p class="label">Event Date & Time</p>
+                            <p class="value">{{eventDetails?.startDate | date :'medium'}}</p>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="label">Event Place</p>
+                            <p class="value">National Park, Seychelles</p>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="label">Event Price</p>
+                            <p class="value">{{eventDetails?.price}}</p>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="label">Event URL</p>
+                            <p class="value">
+                                <a href="javascript:void();">
+                                    {{eventDetails?.eventUrl}}
+                                </a>
+                            </p>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="label">Hosted By</p>
+                            <p class="value">Alex Dolgove</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="label">Going</p>
+                            <p class="value like-cover">
+                                <span class="material-icons going-icon">directions_run</span>
+                                <a href="javascript:void();">{{eventDetails?.goingCount}}</a>
+                            </p>
+                        </div>
+                        <div class="col-md-8">
+                            <p class="label">Interested</p>
+                            <p class="value like-cover">
+                                <span class="material-icons heart-icon">favorite</span>
+                                <a href="javascript:void();">{{eventDetails?.interestCount}}</a>
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>

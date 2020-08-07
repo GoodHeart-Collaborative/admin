@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EventDetailsComponent } from './view/event-details.component';
 import { Routes, RouterModule } from '@angular/router';
+import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 
 const routes: Routes = [
   {
@@ -14,7 +15,8 @@ const routes: Routes = [
   declarations: [EventDetailsComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    CustomImageModule
   ]
 })
 export class EventDetailsModule { }

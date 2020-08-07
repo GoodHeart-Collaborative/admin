@@ -150,21 +150,25 @@ export class AddDailyUnicormHumourComponent implements OnInit {
         body.mediaType = this.imageFile.type;
       }
     } else if (this.unicornDetails) {
-      if (this.unicornDetails.mediaType == 1 && this.profilePicURL) {
-        body['mediaUrl'] = this.profilePicURL;
-        body.mediaType = this.unicornDetails.mediaType;
-      } else {
-        delete body.mediaType;
-        body['mediaUrl'] = '';
+      if (this.unicornDetails.mediaType == 1) {
+        if (this.profilePicURL) {
+          body['mediaUrl'] = this.profilePicURL;
+          body.mediaType = this.unicornDetails.mediaType;
+        } else {
+          delete body.mediaType;
+          body['mediaUrl'] = '';
+        }
       }
-      if (this.unicornDetails.mediaType == 2 && this.thumbnailUrl) {
-        body['thumbnailUrl'] = this.thumbnailUrl;
-        body.mediaType = this.unicornDetails.mediaType;
-      } else {
-       delete body.mediaType;
-       body['mediaUrl'] = '';
-       body['thumbnailUrl'] = '';
+      if (this.unicornDetails.mediaType == 2) {
+        if (this.thumbnailUrl) {
+          body['thumbnailUrl'] = this.thumbnailUrl;
+          body.mediaType = this.unicornDetails.mediaType;
+        } else {
 
+          delete body.mediaType;
+          body['mediaUrl'] = '';
+          body['thumbnailUrl'] = '';
+        }
       }
     }
     if (!body.mediaUrl) {

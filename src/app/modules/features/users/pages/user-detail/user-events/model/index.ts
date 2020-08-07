@@ -1,5 +1,5 @@
 import * as Table from 'src/app/modules/commonTable/table/interfaces';
-import { ListingFilterComponent } from '../pages/event-listing/component/listing-filter.component';
+import { ListingFilterComponent } from '../component/listing-filter.component';
 type Category = any;
 
 const defaultData: Table.Data<Category> = {
@@ -75,7 +75,6 @@ export class EventTableDataSource implements Table.Source<Category> {
     selection: false,
     search: 'Search by Description',
     index: true,
-    addComponent: true,
     sorting: true,
     filterComponent: ListingFilterComponent
   };

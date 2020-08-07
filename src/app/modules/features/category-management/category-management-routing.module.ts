@@ -29,9 +29,6 @@ const routes: Routes = [
     },
     {
       path: 'edit/:id',
-      resolve: {
-        categoryDetails: CategoryManagementServiceResolve
-      },
       loadChildren: () => import('./pages/add-category-management/add-category-management.module')
       .then( (m) => m.AddCategoryManagementModule
       ),

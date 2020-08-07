@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/modules/shared/services/http.service';
-import { GRATITUDE, GRATITUDE_DETAILS, ACTION_GRATITUDE } from 'src/app/constant/urls';
+import { GRATITUDE, GRATITUDE_DETAILS, ACTION_GRATITUDE, EVENT, ACTION_EVENT } from 'src/app/constant/urls';
 import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
 
 @Injectable({
@@ -15,6 +15,10 @@ export class UserGratitudeJournalService {
   async  queryData(params) {
     return  this.$http.get(GRATITUDE, params).toPromise();
   }
+  async  onEventHandler(params) {
+    return  this.$http.get(EVENT, params).toPromise();
+  }
+
 
   async onDetailsHandler(id) {
     const {data} = await this.$http.get(`${GRATITUDE_DETAILS(id)}`).toPromise();

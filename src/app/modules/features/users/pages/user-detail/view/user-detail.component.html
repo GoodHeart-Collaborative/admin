@@ -1,5 +1,5 @@
 <div class="page-user-details">
-    <mat-tab-group>
+    <mat-tab-group (selectedTabChange)="onTabChange($event)">
 
         <mat-tab label="Basic Details">
             <app-user-basic-detail [userDetails]="userDetails"></app-user-basic-detail>
@@ -10,13 +10,15 @@
             </ng-container>
         </mat-tab>
         <mat-tab label="Events">
-            <app-user-events [userDetails]="userDetails"></app-user-events>
+            <ng-container *ngIf="eventListData">
+                <app-user-events [userData]="eventListData" (changeHandler)="onOptionChange($event)"></app-user-events>
+           </ng-container>
         </mat-tab>
         <mat-tab label="Topics">
-            <app-user-topics [userDetails]="userDetails"></app-user-topics>
+            <!-- <app-user-topics [userDetails]="userDetails"></app-user-topics> -->
         </mat-tab>
         <mat-tab label="Shoutouts">
-            <app-user-shoutouts ></app-user-shoutouts>
+            <!-- <app-user-shoutouts ></app-user-shoutouts> -->
         </mat-tab>
 
     </mat-tab-group>
