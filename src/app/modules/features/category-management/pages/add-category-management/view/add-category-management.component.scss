@@ -6,11 +6,10 @@
         align-items: flex-start;
         justify-content: space-between;
         .left-portion{
-			width: 180px;
-			
+			width: 300px;
         }
         .right-portion{
-            width: calc(100% - 220px);
+            width: calc(100% - 300px);
             padding-left: 40px;
             .post-later{
                 display: flex;

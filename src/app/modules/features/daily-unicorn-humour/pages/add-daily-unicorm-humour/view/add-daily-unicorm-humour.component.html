@@ -2,7 +2,9 @@
     <div class="add-daily-unicorn-humour-content">
          <form [formGroup]="unicornForm">
             <div class="row-1">
-                <media-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL" [videoSrc]="thumbnailUrl"></media-upload>
+                <div class="left-portion">
+                    <media-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL" [videoSrc]="thumbnailUrl"></media-upload>
+                </div>
                 <div class="right-portion">
 
                     <mat-form-field appearance="outline">
