@@ -153,10 +153,10 @@ export class AddAdviceComponent implements OnInit {
       }
       if (this.adviceDetails.mediaType == 2) {
         if (this.thumbnailUrl) {
+          body['mediaUrl'] = this.adviceDetails.mediaUrl
           body['thumbnailUrl'] = this.thumbnailUrl;
           body.mediaType = this.adviceDetails.mediaType;
         } else {
-
           delete body.mediaType;
           body['mediaUrl'] = '';
           body['thumbnailUrl'] = '';
@@ -200,7 +200,7 @@ export class AddAdviceComponent implements OnInit {
         this.adviceForm.enable();
 
       }
-     );
+    );
   }
 
 

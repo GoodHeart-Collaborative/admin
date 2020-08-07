@@ -155,17 +155,18 @@ export class AddDailyInspiratinComponent implements OnInit {
           body['mediaUrl'] = '';
         }
       }
-      if (this.dailyInspirationDetails.mediaType == 2) {
-        if (this.thumbnailUrl) {
-          body['thumbnailUrl'] = this.thumbnailUrl;
-          body.mediaType = this.dailyInspirationDetails.mediaType;
-        } else {
-
-          delete body.mediaType;
-          body['mediaUrl'] = '';
-          body['thumbnailUrl'] = '';
-        }
+      if (this.dailyInspirationDetails.mediaType == 2 ) {
+        
+        if(this.thumbnailUrl){
+          body['mediaUrl'] =  this.dailyInspirationDetails.mediaUrl
+        body['thumbnailUrl'] = this.thumbnailUrl;
+        body.mediaType = this.dailyInspirationDetails.mediaType;
+      } else {
+        delete body.mediaType;
+        body['mediaUrl'] = '';
+        body['thumbnailUrl'] = '';
       }
+    }
     }
     if (!body.mediaUrl) {
       this.$fileUploadService.showAlert(requiredMedia);

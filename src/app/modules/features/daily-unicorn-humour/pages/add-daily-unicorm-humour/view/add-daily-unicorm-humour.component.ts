@@ -160,11 +160,11 @@ export class AddDailyUnicormHumourComponent implements OnInit {
         }
       }
       if (this.unicornDetails.mediaType == 2) {
-        if (this.thumbnailUrl) {
+         if (this.thumbnailUrl) {
+          body['mediaUrl'] = this.unicornDetails.mediaUrl;
           body['thumbnailUrl'] = this.thumbnailUrl;
           body.mediaType = this.unicornDetails.mediaType;
         } else {
-
           delete body.mediaType;
           body['mediaUrl'] = '';
           body['thumbnailUrl'] = '';
