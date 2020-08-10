@@ -11,7 +11,7 @@ import { EVENTS } from 'src/app/constant/routes';
 import { FileUploadService } from 'src/app/modules/shared/services/file-upload.service';
 import { onSelectFile } from 'src/app/constant/file-input';
 import { FormService } from 'src/app/modules/shared/services/form.service';
-import { PRAVICY } from 'src/app/constant/drawer';
+import { PRAVICY , EVENT_CATEGORY } from 'src/app/constant/drawer';
 
 @Component({
   selector: 'app-add-event',
@@ -25,6 +25,7 @@ export class AddEventComponent implements OnInit {
   profilePicURL: any;
   details: any;
   privacyData = PRAVICY;
+  eventCategory = EVENT_CATEGORY;
   today = new Date();
   location: {};
   constructor(
@@ -42,7 +43,6 @@ export class AddEventComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.categoryList();
   }
 
   createForm() {
@@ -73,20 +73,7 @@ export class AddEventComponent implements OnInit {
 
 
 
-  /**
-   * API hit for Category
-   */
 
-  categoryList() {
-    const params = {
-      page: 1,
-      limit: 100,
-    };
-    this.$category.queryData(params).then(res => {
-      this.categoryData = res.data['data'];
-      console.log(res.data['data']);
-    });
-  }
 
   setimageFile(event) {
     if (!event) {
@@ -103,7 +90,7 @@ export class AddEventComponent implements OnInit {
     }
     if (this.imageFile) {
       let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
-      this.profilePicURL = [data.Location];
+      this.profilePicURL = data.Location;
     }
     if (!this.profilePicURL) {
       this.$fileUploadService.showAlert('Profile pic is required');
@@ -149,7 +136,8 @@ export class AddEventComponent implements OnInit {
   selectLocation(event) {
     this.location = {
       address: event.formatted_address,
-      type: event.postal_code,
+      type: "Point",
+      // type: event.postal_code,
       coordinates: {
         longitude: event.lng,
         latitude: event.lat

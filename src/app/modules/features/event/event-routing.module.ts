@@ -29,9 +29,9 @@ const routes: Routes = [
     },
     {
       path: 'edit/:id',
-      // resolve : {
-      //   dailyData : DailyUnicornHumourServiceResolve
-      // },
+      resolve : {
+        eventDetails : EventServiceResolve
+      },
       loadChildren: () => import('./pages/add-event/add-event.module')
       .then( (m) => m.AddEventModule
       ),

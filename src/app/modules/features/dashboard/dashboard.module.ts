@@ -9,16 +9,19 @@ import { CustomDatePipeModule } from 'src/app/pipes/custom-date/custom-date-pipe
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 import { MatProgressSpinnerModule } from '@angular/material';
 import { ViewFullImageModule } from '../../shared/view-full-image/view-full-image.module';
+import { LineChartComponent } from './pages/line-chart/line-chart.component';
+import { ChartModule } from 'angular-highcharts';
 
 
 @NgModule({
-  declarations: [DashboardComponent],
+  declarations: [DashboardComponent, LineChartComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     MatCardModule,
     CustomDatePipeModule,
     CustomImageModule,
+    ChartModule,
     MatProgressSpinnerModule,
     CustomImageModule,
     ViewFullImageModule

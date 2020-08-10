@@ -7,13 +7,15 @@
                         <div class="mat-card current-balance-card animate__animated animate__slideInLeft">
                               <h3 style="margin-bottom: 10px;">Current Balance</h3>
                               <p class="latest-text" style="font-size: 14px;margin-bottom: 15px; color: #777b8b;">This billing Cycle</p>
-                              <div class="graph-cover">
+                              <!-- <div class="graph-cover">
                                     <mat-progress-spinner class="balance-graph" [color]="color" [mode]="mode" value="80" aria-value="80"></mat-progress-spinner>
                                     <div class="content-on-balance-graph">
                                           <p>Balance</p>
                                           <h3>$ 10k</h3>
                                     </div>
-                              </div>
+                              </div> -->
+                              <app-line-chart [type]="2"></app-line-chart>
+
                               <div class="current-balance-content">
                                     <h3>$ 50,345.00</h3>
                                     <p>Used balance this billing cycle</p>
@@ -26,14 +28,15 @@
                               <h3 style="margin-bottom: 10px;">Total Transaction</h3>
                               <p class="latest-text" style="font-size: 14px;margin-bottom: 0px; color: #777b8b;">This month transaction</p>
                               <div class="graph-cover">
-                                    <img src="../../../../../assets/graph1.PNG" alt="">
+                                    <app-line-chart [type]="1"></app-line-chart>
+                                    <!-- <img src="../../../../../assets/graph1.PNG" alt=""> -->
                               </div>
                         </div>
                   </div>
             </div>
 
             <div class="section-2 row">
-                  <div class="col-md-5 animate__animated animate__bounceInRight animate__delay-1s">
+                  <!-- <div class="col-md-5 animate__animated animate__bounceInRight animate__delay-1s">
                         <div class="mat-card user-statistics-card">
                               <h3 style="margin-bottom: 20px;">User Statistics</h3>
                               <div class="incline-decline">
@@ -62,7 +65,8 @@
                                     <img src="../../../../../assets/graph2.PNG" alt="">
                               </div>
                         </div>
-                  </div>
+                  </div> -->
+                  <app-line-chart [type]="3"></app-line-chart>
                   <div class="col-md-4 animate__animated animate__flipInX animate__delay-1s">
                         <div class="mat-card new-users-card">
                               <h3 style="margin-bottom: 10px;">Recent Users</h3>
@@ -113,13 +117,16 @@
                                     <p>Total Users</p>
                               </div>
                         </div>
-                        <div class="mat-card todays-revenue-card animate__animated" [class.animate__bounceInLeft]="totalUsersCardAnimate" >
+                        <app-line-chart [type]="4"></app-line-chart>
+
+                        <!-- <div class="mat-card todays-revenue-card animate__animated" [class.animate__bounceInLeft]="totalUsersCardAnimate" >
                               <h3 class="margin-bottom: 10px">Today's Revenue</h3>
                               <p class="latest-text" style="font-size: 14px;margin-bottom: 15px; color: #777b8b;">$43,343</p>
                               <div class="graph-cover">
-                                    <!-- <h3>Put Graph Here</h3> -->
+                                    <h3>Put Graph Here</h3>
+                                    
                               </div>
-                        </div>
+                        </div> -->
                   </div>
                   <div class="col-md-8">
                         <div class="mat-card mod-list-card animate__animated" [class.animate__bounceInRight]="tableAnimate">
@@ -143,7 +150,7 @@
                                                             </div>
                                                       </td>
                                                       <td>{{item?.firstName || 'String'}} {{item?.lastName || ''}}</td>
-                                                      <td>{{item?.industryType || 'dummy data'}}</td>
+                                                      <td>{{industry[item?.industryType]|| 'dummy data'}}</td>
                                                       <td>{{item?.memberCreatedAt | customDate}}</td>
                                                 </tr>
                                           </tbody>

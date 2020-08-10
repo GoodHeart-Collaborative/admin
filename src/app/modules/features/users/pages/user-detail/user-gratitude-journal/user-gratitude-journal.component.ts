@@ -22,6 +22,7 @@ export class UserGratitudeJournalComponent implements OnInit, OnChanges {
   };
   isProcessing = false;
   @Input() userData;
+  @Input() otherData;
   @Output() changeHandler = new EventEmitter();
 
   constructor(
@@ -103,6 +104,8 @@ export class UserGratitudeJournalComponent implements OnInit, OnChanges {
    * @param userRecords
    */
   setUpTableResource(userDetails: any) {
+    console.log(userDetails);
+    
     const { pageIndex, pageSize } = this.eventData;
     this.tableSource = new GratitudeTableDataSource({
       pageIndex,
@@ -120,11 +123,8 @@ export class UserGratitudeJournalComponent implements OnInit, OnChanges {
     if (privacy == 'private') {
       return;
     }
-    
-    this.$router.navigate([`admin/users/${id}/gratitude/details`]);
+    this.$router.navigate([`admin/users/${id}/gratitude/details`, {userID: this.otherData}]);
   }
 
 
 }
-
-

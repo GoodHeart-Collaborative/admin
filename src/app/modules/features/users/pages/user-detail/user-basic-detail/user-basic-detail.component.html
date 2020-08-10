@@ -40,7 +40,7 @@
                         </div>
                         <div class="col-md-4">
                             <p class="label">Date of Birth</p>
-                            <p class="value">{{(userDetails?.dob | date : 'mediumDate') || 'None'}} </p>
+                            <p class="value">{{( userDetails?.dob | date : 'mediumDate') || 'None'}} </p>
                         </div>
                         <div class="col-md-4">
                             <p class="label">Status</p>
@@ -56,7 +56,7 @@
                         </div>
                         <div class="col-md-4">
                             <p class="label">Industry</p>
-                            <p class="value">{{userDetails?.industryType || 'None'}}</p>
+                            <p class="value">{{ industry[userDetails?.industryType]  || 'None'}}</p>
                         </div>
                         <div class="col-md-4">
                             <p class="label">Membership Type</p>

@@ -174,6 +174,7 @@ export class UserListingComponent implements OnInit {
         };
         this.$userService.onVerifiedHnadler(id, params).then(res => {
           if (res) {
+            this.$utility.success(res.message);
             this.updateUsers();
           }
         });

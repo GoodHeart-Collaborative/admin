@@ -21,13 +21,30 @@ export class BreadcrumbComponent {
     private $route: ActivatedRoute,
     breadcrumb: BreadcrumbService
   ) {
-    breadcrumb.events.subscribe(({label, target}: any) => {
+    breadcrumb.events.subscribe(({ label, target, url = '' }: any) => {
+
       this.$changes.set(target, label);
       const routeStep = this.routeSteps.find((step: RouteStep) => {
         return step.label === target;
       });
+
+      if (url) {
+        setTimeout(() => {
+          console.log(this.routeSteps);
+          const step = this.routeSteps.find((step: RouteStep) => step.label === target);
+          if (step) {
+
+            step.url = url;
+          }
+
+          console.log(this.routeSteps);
+
+        }, 0);
+      }
+
       if (routeStep) {
         routeStep.label = label;
+
       }
     });
     this.$listenRouteChange(router);
@@ -64,4 +81,3 @@ export class BreadcrumbComponent {
     });
   }
 }
-

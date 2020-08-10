@@ -28,8 +28,8 @@
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Event Name</mat-label>
-                                <input matInput placeholder="Name" appWhiteSpace formControlName="title">
-                                <mat-hint>0/20</mat-hint>
+                                <input matInput placeholder="Name" appWhiteSpace formControlName="title" #title>
+                                <mat-hint>{{title.value.trim().length}}/50</mat-hint>
                                 <mat-error>{{form('title') |validate:'Event Name' }}</mat-error>
                             </mat-form-field>
                         </div>
@@ -37,7 +37,7 @@
                             <mat-form-field appearance="outline">
                                 <mat-label>Category</mat-label>
                                 <mat-select formControlName="eventCategory">
-                                    <mat-option [value]="item?._id" *ngFor="let item of categoryData">{{item?.name}}</mat-option>
+                                    <mat-option [value]="item?.value" *ngFor="let item of eventCategory">{{item?.viewValue}}</mat-option>
                                 </mat-select>
                                 <mat-error>{{form('eventCategory') |validate:'Event Category' }}</mat-error>
                             </mat-form-field>
@@ -108,7 +108,7 @@
                                 <mat-label>Description</mat-label>
                                 <textarea rows="5" matInput placeholder="Ex. Write something here about this event..."
                                     appWhiteSpace formControlName="description" #description></textarea>
-                                <mat-hint>{{description.value.trim().length}}/200</mat-hint>
+                                <mat-hint>{{description.value.trim().length}}/400</mat-hint>
                                 <mat-error>{{form('description') |validate:'Description' }}</mat-error>
                             </mat-form-field>
                         </div>

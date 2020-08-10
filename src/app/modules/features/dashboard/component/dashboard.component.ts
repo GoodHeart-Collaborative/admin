@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { DashboardService } from '../service/dashboard.service';
 import { FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import {  Router } from '@angular/router';
 import { CommonService } from 'src/app/modules/shared/services/common.service';
+import { INDUSTRY } from 'src/app/constant/drawer';
 import { MatDialog } from '@angular/material';
 import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
 
@@ -39,8 +40,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   year = new Date().getFullYear();
   @HostListener('window:scroll', ['$event'])
   scrollHandler(event) {}
-
-
+  industry= INDUSTRY;
   constructor(
     private $dashboardService: DashboardService,
     private $common: CommonService,

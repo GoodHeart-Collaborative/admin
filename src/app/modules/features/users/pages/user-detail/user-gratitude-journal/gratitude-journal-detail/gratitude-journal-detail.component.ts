@@ -23,8 +23,7 @@ export class GratitudeJournalDetailComponent implements OnInit {
     private $common: CommonService
   ) {
     this.gratitudeDetails = $router.snapshot.data.gratitudeData;
-    console.log(  this.gratitudeDetails, 'sssssssssss');
-    // $breadcrumb.replace(this.dailyInspirationDetails.id, this.dailyInspirationDetails.
+    $breadcrumb.replace($router.snapshot.params.id, $router.snapshot.params.id, `/admin/users/${$router.snapshot.params.userID}/details`)
   }
 
   /**

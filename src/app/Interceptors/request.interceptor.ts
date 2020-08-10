@@ -66,7 +66,8 @@ export class RequestInterceptor implements HttpInterceptor {
                         }
                         if ((err.status === 423 || err.error.type === 'SESSION_EXPIRED')
                         || (err.status === 403 || err.error.type === 'INCORRECT_PASSWORD')
-                        || (err.status === 401 || err.error.type === 'INVALID_TOKEN')) {
+                        || (err.status === 401 || err.error.type === 'INVALID_TOKEN')
+                        || err.status === 500  ) {
                             message = err.error.message;
                             // this.utilityService.clearStorage();
                             // this.router.navigate([LOGIN.fullUrl]);

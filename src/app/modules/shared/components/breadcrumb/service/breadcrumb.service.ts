@@ -10,7 +10,7 @@ export class BreadcrumbService {
     return this.$subject.asObservable();
   }
   constructor() { }
-  replace(target: string, label: string) {
-    this.$subject.next({target, label});
+  replace(target: string, label: string, url?: string) {
+    this.$subject.next({ target, label, url });
   }
 }
