@@ -35,9 +35,9 @@ export class LineChartComponent implements OnInit {
           useUTC: false
         },
 
-        title: {
-          text: 'Total Transaction'
-        },
+        // title: {
+        //   text: 'Total Transaction'
+        // },
 
         xAxis: {
           type: 'datetime',
@@ -138,9 +138,9 @@ export class LineChartComponent implements OnInit {
           height: 200,
           width: 440
         },
-        title: {
-          text: 'User Statistics'
-        },
+        // title: {
+        //   text: 'User Statistics'
+        // },
         // subtitle: {
         //   text: 'Source: WorldClimate.com'
         // },
@@ -208,9 +208,9 @@ export class LineChartComponent implements OnInit {
           type: 'area',
           height: 257,
         },
-        title: {
-          text: "Today's Revenue"
-        },
+        // title: {
+        //   text: "Today's Revenue"
+        // },
         // subtitle: {
         //   text: 'Source: Wikipedia.org'
         // },
