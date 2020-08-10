@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GoingListComponent } from './view/going-list.component';
-import { MatDialogModule } from '@angular/material';
+import { MatDialogModule, MatIconModule, MatMenuModule, MatButtonModule } from '@angular/material';
 
 
 
@@ -9,7 +9,10 @@ import { MatDialogModule } from '@angular/material';
   declarations: [GoingListComponent],
   imports: [
     CommonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatIconModule,
+    MatMenuModule,
+    MatButtonModule,
   ],
   entryComponents: [GoingListComponent]
 })
