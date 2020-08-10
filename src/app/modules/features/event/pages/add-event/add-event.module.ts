@@ -10,6 +10,7 @@ import { ImageUploadModule } from 'src/app/modules/shared/image-upload/image-upl
 import { ValidationErrorPipeModule } from 'src/app/pipes/validation-error/validation-error-pipe.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GooglePlacesModule } from 'src/app/directives/google-places/google-places.module';
+import { WhiteSpaceModule } from 'src/app/modules/shared/white-space/white-space.module';
 
 
 const routes: Routes = [
@@ -33,7 +34,8 @@ const routes: Routes = [
     MatNativeDateModule,
     ValidationErrorPipeModule,
     ReactiveFormsModule,
-    GooglePlacesModule
+    GooglePlacesModule,
+    WhiteSpaceModule
   ]
 })
 

@@ -28,8 +28,8 @@
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Event Name</mat-label>
-                                <input matInput placeholder="Name" appWhiteSpace formControlName="title" #title>
-                                <mat-hint>{{title.value.trim().length}}/50</mat-hint>
+                                <input matInput placeholder="Name"  formControlName="title" #title appWhiteSpace [maxlength]="100">
+                                <mat-hint>{{title.value.trim().length}}/100</mat-hint>
                                 <mat-error>{{form('title') |validate:'Event Name' }}</mat-error>
                             </mat-form-field>
                         </div>
@@ -87,7 +87,7 @@
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Price</mat-label>
-                                <input matInput placeholder="Voucher 1" appWhiteSpace formControlName="price">
+                                <input matInput placeholder="Price " appWhiteSpace formControlName="price" [maxlength]="10">
                                 <!-- <mat-hint>0/20</mat-hint> -->
                                 <mat-error>{{form('price') |validate:' Price' }}</mat-error>
                             </mat-form-field>
@@ -107,7 +107,7 @@
                             <mat-form-field appearance="outline">
                                 <mat-label>Description</mat-label>
                                 <textarea rows="5" matInput placeholder="Ex. Write something here about this event..."
-                                    appWhiteSpace formControlName="description" #description></textarea>
+                                    appWhiteSpace formControlName="description" #description [maxlength]="400"></textarea>
                                 <mat-hint>{{description.value.trim().length}}/400</mat-hint>
                                 <mat-error>{{form('description') |validate:'Description' }}</mat-error>
                             </mat-form-field>

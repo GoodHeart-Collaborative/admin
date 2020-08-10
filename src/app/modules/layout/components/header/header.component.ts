@@ -98,6 +98,8 @@ export class HeaderComponent implements OnInit {
       width: '500px',
     }).afterClosed().subscribe();
   }
+
+  
   openAdminProfileTab() {
    this.matDailog.open(AdminProfileComponent, {
       width: '500px',
