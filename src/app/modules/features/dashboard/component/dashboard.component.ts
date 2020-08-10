@@ -56,7 +56,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.recentUserList();
-    this.memberOfTheDayList(4);
+    this.memberOfTheDayList(5);
   }
 
   @HostListener('window:scroll', ['$event']) onWindowScroll(e) {

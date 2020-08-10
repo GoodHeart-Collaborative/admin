@@ -212,6 +212,7 @@
             }
             .todays-revenue-card{
                 display: none;
+                padding: 0px;
                 .graph-cover{
                     text-align: center;
                     padding: 45px 20px;
@@ -219,7 +220,7 @@
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-position: bottom;
-                background-image: url('../../../../../assets/graph4.png');
+                // background-image: url('../../../../../assets/graph4.png');
                 &.animate__bounceInLeft{
                     display: block;
                 }

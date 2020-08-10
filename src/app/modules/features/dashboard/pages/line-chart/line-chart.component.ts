@@ -135,8 +135,8 @@ export class LineChartComponent implements OnInit {
         colors: ['#FB56B2', '#2FD3CF'],
         chart: {
           type: 'column',
-          height: 300,
-          width: 450
+          height: 200,
+          width: 440
         },
         title: {
           text: 'User Statistics'
@@ -205,7 +205,8 @@ export class LineChartComponent implements OnInit {
         colors: ['#FB56B2'],
 
         chart: {
-          type: 'area'
+          type: 'area',
+          height: 257,
         },
         title: {
           text: "Today's Revenue"
