@@ -7,7 +7,8 @@ import { EventService } from '../../../service/event.service';
 import { MatDialog } from '@angular/material';
 import { IntrestedListComponent } from 'src/app/modules/shared/intrested-list/view/intrested-list.component';
 import { GoingListComponent } from 'src/app/modules/shared/going-list/view/going-list.component';
-export type ActionType =  'blocked' | 'active';
+import { EVENT_INTEREST } from 'src/app/constant/drawer';
+export type ActionType = 'blocked' | 'active';
 
 @Component({
   selector: 'app-event-details',
@@ -24,10 +25,10 @@ export class EventDetailsComponent implements OnInit {
     private $utility: UtilityService,
     private $event: EventService,
     private $matDailog: MatDialog
-    ) {
+  ) {
     this.eventDetails = $router.snapshot.data.eventDetails.data;
     $breadcrumb.replace(this.eventDetails.id, this.eventDetails.title);
-    }
+  }
 
   ngOnInit() {
   }
@@ -45,15 +46,44 @@ export class EventDetailsComponent implements OnInit {
   }
 
   onGoingCount(count: number) {
-    this.$matDailog.open(GoingListComponent, {
-      width: '500px',
-      data: count
-    }).afterClosed().subscribe();
+    if (!count) {
+      return;
+    }
+    const   eventData = {
+      pageIndex: 0,
+      pageSize: 20,
+      eventId: this.eventDetails.id,
+      type: EVENT_INTEREST.GOING
+    };
+    this.$event.onGoingAndInterestHnadler(eventData).then(res => {
+      if (res) {
+        this.$matDailog.open(GoingListComponent, {
+          width: '500px',
+          data: res.data['list']
+        }).afterClosed().subscribe();
+      }
+    });
+
   }
+
   onInterestCount(count: number) {
-    this.$matDailog.open(IntrestedListComponent, {
-      width: '500px',
-      data: count
-    }).afterClosed().subscribe();
+    if (!count) {
+      return;
+    }
+    const eventData = {
+      pageIndex: 0,
+      pageSize: 20,
+      eventId: this.eventDetails.id,
+      type: EVENT_INTEREST.INTEREST
+    };
+    this.$event.onGoingAndInterestHnadler(eventData).then(res => {
+      if (res) {
+        console.log(res.data['list']);
+        this.$matDailog.open(IntrestedListComponent, {
+          width: '500px',
+          data: res.data['list']
+        }).afterClosed().subscribe();
+      }
+    });
   }
 }

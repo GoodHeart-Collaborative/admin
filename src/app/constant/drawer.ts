@@ -97,3 +97,8 @@ export const  EVENT_CATEGORY = [
     {value : 'training' , viewValue: 'TRAINING'},
     {value : 'meetup' , viewValue: 'MEETUP'}
 ];
+ 
+export const EVENT_INTEREST = {
+	GOING: 1,
+	INTEREST: 2
+}

@@ -6,11 +6,12 @@
         </mat-tab>
         <mat-tab label="Gratitude Journal">
             <ng-container *ngIf="userData">
-                <app-user-gratitude-journal [otherData]="userDetails?._id"  [userData]="userData" (changeHandler)="onOptionChange($event)" ></app-user-gratitude-journal>            </ng-container>
+                <app-user-gratitude-journal [otherData]="userDetails?._id"  [userData]="userData" (changeHandler)="onOptionChange($event)" ></app-user-gratitude-journal>            
+            </ng-container>
         </mat-tab>
         <mat-tab label="Events">
             <ng-container *ngIf="eventListData">
-                <app-user-events [userData]="eventListData" (changeHandler)="onOptionChange($event)"></app-user-events>
+                <app-user-events [userData]="eventListData" [otherData]="userDetails?._id"  (changeHandler)="onOptionChange($event)"></app-user-events>
            </ng-container>
         </mat-tab>
         <mat-tab label="Topics">
