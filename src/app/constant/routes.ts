@@ -337,7 +337,7 @@ export const NOTIFICATIONS_DETAIL = {
 
 // DAILY_INSPIRATION ROUTES //
 export const DAILY_INSPIRATION: IRoute = {
-  path: 'daily-inspiration',
+  path: 'inspiring-women',
   get fullUrl(): string {
     return `${ADMIN.fullUrl}/${this.path}`;
   }
@@ -363,7 +363,7 @@ export const DAILY_INSPIRATION_DETAILS: IRoute = {
 
 // DAILY_UNICORN ROUTES //
 export const DAILY_UNICORN: IRoute = {
-  path: 'daily-unicorn',
+  path: 'daily-smiles',
   get fullUrl(): string {
     return `${ADMIN.fullUrl}/${this.path}`;
   }
@@ -389,7 +389,7 @@ export const DAILY_UNICORN_DETAILS: IRoute = {
 
 // DAILY_ADVICE ROUTES //
 export const DAILY_ADVICE: IRoute = {
-  path: 'daily-advice',
+  path: 'daily-pep-talk',
   get fullUrl(): string {
     return `${ADMIN.fullUrl}/${this.path}`;
   }
@@ -417,7 +417,7 @@ export const DAILY_ADVICE_DETAILS: IRoute = {
 
 // MEMBER_OF_THE_DAY ROUTES //
 export const MEMBER_OF_THE_DAY: IRoute = {
-  path: 'member-of-the-day',
+  path: 'leader-of-the-day',
   get fullUrl(): string {
     return `${ADMIN.fullUrl}/${this.path}`;
   }
