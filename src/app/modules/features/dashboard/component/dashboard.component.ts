@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { DashboardService } from '../service/dashboard.service';
 import { FormGroup } from '@angular/forms';
-import {  Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { CommonService } from 'src/app/modules/shared/services/common.service';
 import { INDUSTRY } from 'src/app/constant/drawer';
 import { MatDialog } from '@angular/material';
@@ -38,14 +38,18 @@ export class DashboardComponent implements OnInit, OnDestroy {
   rightSideHeight: any;
   userList: any;
   year = new Date().getFullYear();
+  GraphThisYear: any;
+  GraphLastYear: any;
+  currentYearUser: any;
+  lastYearUser: any;
   @HostListener('window:scroll', ['$event'])
-  scrollHandler(event) {}
-  industry= INDUSTRY;
+  scrollHandler(event) { }
+  industry = INDUSTRY;
   constructor(
     private $dashboardService: DashboardService,
     private $common: CommonService,
     private matDailog: MatDialog,
-    ) {
+  ) {
     // console.log(router.url.split('/').slice(-1)[0]);
     // if (router.url.split('/').slice(-1)[0] == 'dashboard') {
     //   this.isFlag = true;
@@ -69,8 +73,28 @@ export class DashboardComponent implements OnInit, OnDestroy {
   onDrashboardHandler() {
     this.$dashboardService.onDrashboardHandler().then(res => {
       this.data = res.data;
-    });
+      this.userStatisticsHnadler();
+     });
   }
+
+  userStatisticsHnadler() {
+    this.GraphThisYear = Object.values(this.data.userGraphThisYear);
+    this.GraphLastYear = Object.values(this.data.userGraphLastYear);
+    const sumGraphLastYear = this.GraphLastYear.reduce((a, b) => a + b, 0);
+    const sumGraphThisYear = this.GraphThisYear.reduce((a, b) => a + b, 0);
+    // this.currentYearUser = ((this.data.currentYearUserCount /  sumGraphThisYear ) * 100).toFixed();
+    // this.lastYearUser = ((this.data.previousYearUserCount /  sumGraphLastYear ) * 100).toFixed();
+    this.currentYearUser = this.getPercentage(this.GraphThisYear, this.data.currentYearUserCount);
+    this.lastYearUser = this.getPercentage(this.GraphLastYear, this.data.previousYearUserCount);
+
+    // this.lastYearUser = ((this.data.previousYearUserCount /  sumGraphLastYear ) * 100).toFixed();
+   }
+
+   getPercentage(values: number[], amount){
+    const sumOfValues = values.reduce((a, b) => a + b, 0);
+
+    return ((amount / sumOfValues ) * 100).toFixed(2)
+   }
 
   memberOfTheDayList(count: any, id?: string) {
     this.params.limit = count;
@@ -99,7 +123,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
     this.matDailog.open(ViewFullImageComponent, {
       panelClass: 'view-full-image-modal',
-      data: {image, type}
+      data: { image, type }
     }).afterClosed().subscribe();
   }
 

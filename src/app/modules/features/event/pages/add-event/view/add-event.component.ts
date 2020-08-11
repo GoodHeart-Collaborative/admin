@@ -26,6 +26,7 @@ export class AddEventComponent implements OnInit {
   today = new Date();
   location: {};
   eventDetails: any;
+  address: any;
   constructor(
     private $fb: FormBuilder,
     private $fileUploadService: FileUploadService,
@@ -51,8 +52,8 @@ export class AddEventComponent implements OnInit {
     if (this.eventDetails) {
       this.eventForm.patchValue(this.eventDetails);
       if (this.eventDetails.location) {
-        // this.location = this.eventDetails.location;
         this.eventForm.get('location').patchValue(this.eventDetails.location);
+        this.eventForm.get('address').patchValue(this.eventDetails.address);
       }
       if (this.eventDetails.imageUrl) {
         this.profilePicURL = this.eventDetails.imageUrl;
@@ -68,9 +69,10 @@ export class AddEventComponent implements OnInit {
       eventUrl: ['', Validators.compose(this.$formService.VALIDATION.email)],
       description: ['', [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.descriptionMaxLength)]],
       allowSharing: [true],
-      location: ['', Validators.required],
+      location: [''],
       startDate: ['', Validators.required],
-      endDate: ['', Validators.required]
+      endDate: ['', Validators.required],
+      address: ['']
     });
   }
 
@@ -109,8 +111,9 @@ export class AddEventComponent implements OnInit {
       return;
     }
     let body = { imageUrl: this.profilePicURL, ...this.eventForm.value };
-    if (this.location) {
+    if (this.location && this.address) {
       body.location = this.location;
+      body.address = this.address
     }
 
     if (this.eventDetails && this.eventDetails._id) {
@@ -146,12 +149,11 @@ export class AddEventComponent implements OnInit {
 
   selectLocation(event) {
     this.location = {
-      address: event.formatted_address,
       type: "Point",
-      coordinates: {
-        longitude: event.lng,
-        latitude: event.lat
-      }
+      coordinates: [
+        event.lng, event.lat
+      ]
     };
+    this.address = event.formatted_address;
   }
 }

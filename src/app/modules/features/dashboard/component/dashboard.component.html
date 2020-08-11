@@ -47,7 +47,7 @@
                                           </div>
                                           <div class="this-year-stat">
                                                 <p>This Year</p>
-                                                <h3>60%</h3>
+                                                <h3>{{currentYearUser }}%</h3>
                                           </div>
                                     </div>
                                     <div class="incline-decline-content last-year ">
@@ -57,13 +57,13 @@
                                           </div>
                                           <div class="previous-year-stat">
                                                 <p>Last Year</p>
-                                                <h3>40%</h3>
+                                                <h3>{{lastYearUser}}%</h3>
                                           </div>
                                     </div>
                               </div>
                               <div class="graph-cover">
                                     <!-- <img src="../../../../../assets/graph2.PNG" alt=""> -->
-                                    <app-line-chart [type]="3" [userLastYear]="data?.userGraphLastYear" [userThisYear]="data?.userGraphThisYear"  ></app-line-chart>
+                                    <app-line-chart [type]="3" [userLastYear]="GraphLastYear" [userThisYear]="GraphThisYear"  ></app-line-chart>
                               </div>
                         </div>
                   </div>

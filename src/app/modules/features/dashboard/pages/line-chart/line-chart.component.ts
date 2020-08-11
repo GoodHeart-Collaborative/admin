@@ -12,6 +12,7 @@ export class LineChartComponent implements OnInit, OnChanges {
   areaChart: Chart;
   GraphThisYear = [];
   GraphLastYear = [];
+  sumGraphLastYear;
 
   constructor() { }
   chart: Chart;
@@ -27,13 +28,6 @@ export class LineChartComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     if (this.userThisYear && this.userLastYear) {
-      Object.values(this.userThisYear).forEach(element => {
-        this.GraphThisYear.push(element);
-      });
-      Object.values(this.userLastYear).forEach(element => {
-        this.GraphLastYear.push(element);
-      });
-      // console.log(this.GraphThisYear);
       this.initColumnChart();
     }
   }
@@ -200,12 +194,12 @@ export class LineChartComponent implements OnInit, OnChanges {
         },
         series: [{
           name: 'This Year',
-          data: this.GraphThisYear,
+          data: this.userLastYear,
           type: 'column'
 
         }, {
           name: 'Last Year',
-          data: this.GraphLastYear,
+          data: this.userThisYear,
           type: 'column',
           colors: ['#FB56B2']
 
