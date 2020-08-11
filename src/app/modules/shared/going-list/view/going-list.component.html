@@ -6,14 +6,14 @@
     <div class="popup-content">
         <div class="popup-body">
             <ul class="users-listing">
-                <li class="single-user" *ngFor="let item of [1,2,3,4,5,6,7,8]">
+                <li class="single-user" *ngFor="let item of data">
                     <div class="img-cover">
-                        <img src="assets/images/img_avatar3.png" alt="Profile">
+                        <img [src]="item?.userData[0]?.profilePicUrl[0] | customImage:'USERS'|async " alt="Profile">
                     </div>
                     <div class="textual-cover">
                         <h4>
-                            <span>User name here</span>
-                            <p class="comment-time">12 July 2020</p>
+                            <span>{{item?.userData[0]?.firstName}} {{item?.userData[0]?.lastName || ''}}</span>
+                            <p class="comment-time">{{item?.createdAt | time }}</p>
                         </h4>
                     </div>
                     <div class="see-profile-cover">
@@ -21,11 +21,11 @@
                             <mat-icon>more_vert</mat-icon>
                         </button>
                         <mat-menu #menu="matMenu" class="small_menu">
-                            <button mat-menu-item>
+                            <button mat-menu-item (click)="onSeeProfile(item?.userData[0]?._id)">
                                 See Profile
                             </button>
                             <button mat-menu-item>
-                                 dummy data
+                                 {{item?.userData[0]?.status}} User
                             </button>
                         </mat-menu>
                     </div>

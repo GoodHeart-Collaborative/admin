@@ -66,7 +66,7 @@ export const EXPERIENCE = [
     {value: 'Mid' , viewValue: 'Mid'},
     {value: 'Senior' , viewValue: 'Senior'},
 
-]
+];
 export const PROFESSION = [
     {value: 'Founder' , viewValue: 'Founder'},
     {value: 'CEO' , viewValue: 'CEO'},
@@ -74,7 +74,6 @@ export const PROFESSION = [
     {value: 'Managing Director' , viewValue: 'Managing Director'},
 
 ];
- 
 
 export const EXPERT_CONTENT_TYPE =  [
     { value : 1 , viewValue: 'Video', disabled: false},
@@ -97,3 +96,8 @@ export const  EVENT_CATEGORY = [
     {value : 'training' , viewValue: 'TRAINING'},
     {value : 'meetup' , viewValue: 'MEETUP'}
 ];
+
+export const EVENT_INTEREST = {
+	GOING: 1,
+	INTEREST: 2
+};

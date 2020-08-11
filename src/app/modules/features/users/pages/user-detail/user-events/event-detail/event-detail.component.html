@@ -4,7 +4,7 @@
             <div class="left-portion">
                 <div class="event-cover-photo">
     
-                  <img [src]="eventDetails?.imageUrl | customImage:'USERS'|async">
+     <img [src]="eventDetails?.imageUrl | customImage:'USERS'|async">
                 </div>
                 <div class="event-about">
                     <h4 class="event-title">{{eventDetails?.title}}</h4>
@@ -12,8 +12,8 @@
                     </p>
                 </div>
                 <div class="btn-row">
-                    <button class="btn btn-simple" mat-stroked-button type="button"> Reject </button>
-                    <button class="btn btn-primary" mat-stroked-button type="submit">Accept </button>
+                    <button class="btn btn-simple" mat-stroked-button type="button" *ngIf="eventDetails?.status == 'active'" (click)="onActionHandler(eventDetails?._id, 'blocked')"> Reject </button>
+                    <button class="btn btn-primary" mat-stroked-button type="button" *ngIf="eventDetails?.status == 'blocked'" (click)="onActionHandler(eventDetails?._id, 'active')">Accept </button>
                 </div>
             </div>
             <div class="right-portion">
@@ -45,14 +45,14 @@
                         </div>
                         <div class="col-md-4">
                             <p class="label">Going</p>
-                            <p class="value like-cover">
+                            <p class="value like-cover" (click)="onGoingCount(eventDetails?.interestCount)">
                                 <span class="material-icons going-icon">directions_run</span>
                                 <a href="javascript:void();">{{eventDetails?.goingCount}}</a>
                             </p>
                         </div>
                         <div class="col-md-8">
                             <p class="label">Interested</p>
-                            <p class="value like-cover">
+                            <p class="value like-cover" (click)="onInterestCount(eventDetails?.interestCount)">
                                 <span class="material-icons heart-icon">favorite</span>
                                 <a href="javascript:void();">{{eventDetails?.interestCount}}</a>
                             </p>

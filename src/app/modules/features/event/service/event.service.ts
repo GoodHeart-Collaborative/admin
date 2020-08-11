@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/modules/shared/services/http.service';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
-import { HOME, EXPERT, EVENT, ACTION_EVENT, EVENT_DETAILS } from 'src/app/constant/urls';
+import { HOME, EXPERT, EVENT, ACTION_EVENT, EVENT_DETAILS, EVENT_INTREST } from 'src/app/constant/urls';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 
 @Injectable({
@@ -16,6 +16,9 @@ export class EventService {
 
   async  queryData(params) {
     return  this.$http.get(EVENT, params).toPromise();
+  }
+  async  onGoingAndInterestHnadler(params) {
+    return  this.$http.get(EVENT_INTREST, params).toPromise();
   }
 
   async updateStatus(id, status) {

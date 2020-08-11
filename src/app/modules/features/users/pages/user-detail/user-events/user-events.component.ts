@@ -24,7 +24,7 @@ export class UserEventsComponent implements OnInit, OnChanges {
   isProcessing = false;
   @Input() userData;
   @Output() changeHandler = new EventEmitter();
-
+  @Input() otherData;
   constructor(
     private $router: Router,
     private $userService: UserEventService,
@@ -112,8 +112,8 @@ export class UserEventsComponent implements OnInit, OnChanges {
     });
   }
 
-  onClick() {
-    // this.$router.navigate([`admin/users/${this.userDetails._id}/event/details`]);
+  onDetailsHandler(id: string) {
+       this.$router.navigate([`admin/users/${id}/event/details`, {userID: this.otherData}]);
   }
 
 }
