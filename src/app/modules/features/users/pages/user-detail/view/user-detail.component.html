@@ -4,7 +4,7 @@
         <mat-tab label="Basic Details">
             <app-user-basic-detail [userDetails]="userDetails"></app-user-basic-detail>
         </mat-tab>
-        <mat-tab label="Gratitude Journal">
+        <mat-tab label="Gratitude and Self-Love">
             <ng-container *ngIf="userData">
                 <app-user-gratitude-journal [otherData]="userDetails?._id"  [userData]="userData" (changeHandler)="onOptionChange($event)" ></app-user-gratitude-journal>            
             </ng-container>
