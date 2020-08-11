@@ -49,7 +49,7 @@ export class EventDetailComponent implements OnInit {
     if (!count) {
       return;
     }
-    const   eventData = {
+    const eventData = {
       pageIndex: 0,
       pageSize: 20,
       eventId: this.eventDetails.id,
@@ -74,7 +74,6 @@ export class EventDetailComponent implements OnInit {
       pageIndex: 0,
       pageSize: 20,
       eventId: this.eventDetails.id,
-      type: EVENT_INTEREST.INTEREST
     };
     this.$event.onGoingAndInterestHnadler(eventData).then(res => {
       if (res) {

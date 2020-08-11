@@ -72,7 +72,7 @@ export class LikeActionComponent implements OnInit {
 
   }
 
-  onDetails(id: string) {
+  onSeeProfile(id: string) {
     this.$router.navigate([`${USER.fullUrl}`, id, 'details']);
     this.$dialogRef.close();
   }
