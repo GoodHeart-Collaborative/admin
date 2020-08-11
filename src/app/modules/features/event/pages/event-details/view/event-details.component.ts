@@ -46,6 +46,8 @@ export class EventDetailsComponent implements OnInit {
   }
 
   onGoingCount(count: number) {
+    console.log(count);
+    
     if (!count) {
       return;
     }

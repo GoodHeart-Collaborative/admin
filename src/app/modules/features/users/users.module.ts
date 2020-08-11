@@ -10,6 +10,7 @@ import { UsersComponent } from './view/users.component';
 import { MinMaxFilterModule } from '../../layout/layout-shared/min-max-filter/min-max-filter.module';
 import { UsersServiceResolve } from './service/users.service';
 import { UserGratitudeJournalServiceResolve } from './pages/user-detail/user-gratitude-journal/service/user-gratitude-journal.service';
+import { UserEventServiceResolve } from './pages/user-detail/user-events/service/user-event.service';
 
 
 @NgModule({
@@ -24,6 +25,6 @@ import { UserGratitudeJournalServiceResolve } from './pages/user-detail/user-gra
     RouterModule,
     DropdownFilterModule,
   ],
-  providers: [UsersServiceResolve, UserGratitudeJournalServiceResolve]
+  providers: [UsersServiceResolve, UserGratitudeJournalServiceResolve, UserEventServiceResolve]
 })
 export class UsersModule { }

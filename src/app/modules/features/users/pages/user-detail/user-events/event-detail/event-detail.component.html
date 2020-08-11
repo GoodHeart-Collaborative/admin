@@ -45,16 +45,16 @@
                         </div>
                         <div class="col-md-4">
                             <p class="label">Going</p>
-                            <p class="value like-cover" (click)="onGoingCount(eventDetails?.interestCount)">
+                            <p class="value like-cover" (click)="onGoingCount(eventDetails?.goingCount)">
                                 <span class="material-icons going-icon">directions_run</span>
-                                <a href="javascript:void();">{{eventDetails?.goingCount}}</a>
+                                <a href="javascript:void();">{{eventDetails?.goingCount || 0}}</a>
                             </p>
                         </div>
                         <div class="col-md-8">
                             <p class="label">Interested</p>
                             <p class="value like-cover" (click)="onInterestCount(eventDetails?.interestCount)">
                                 <span class="material-icons heart-icon">favorite</span>
-                                <a href="javascript:void();">{{eventDetails?.interestCount}}</a>
+                                <a href="javascript:void();">{{eventDetails?.interestCount || 0}}</a>
                             </p>
                         </div>
                     </div>

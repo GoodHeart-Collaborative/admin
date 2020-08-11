@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { EVENT, ACTION_EVENT, EVENT_DETAILS } from 'src/app/constant/urls';
+import { EVENT, ACTION_EVENT, EVENT_DETAILS, EVENT_INTREST } from 'src/app/constant/urls';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { HttpService } from 'src/app/modules/shared/services/http.service';
 
@@ -17,6 +17,10 @@ export class UserEventService {
   async  updateDetails(id) {
     const data =  this.$http.get(EVENT_DETAILS(id)).toPromise();
     return data;
+  }
+
+  async  onGoingAndInterestHnadler(params) {
+    return  this.$http.get(EVENT_INTREST, params).toPromise();
   }
 }
 

@@ -118,6 +118,7 @@ export class AddExpertComponent implements OnInit {
 
   async onSubmit() {
     if (this.expertForm.invalid) {
+      this.expertForm.markAllAsTouched();
       return;
     }
     if (this.imageFile) {

@@ -45,7 +45,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     private $dashboardService: DashboardService,
     private $common: CommonService,
     private matDailog: MatDialog,
-    router: Router) {
+    ) {
     // console.log(router.url.split('/').slice(-1)[0]);
     // if (router.url.split('/').slice(-1)[0] == 'dashboard') {
     //   this.isFlag = true;
@@ -103,9 +103,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }).afterClosed().subscribe();
   }
 
-  // onCloseMember(id: string) {
-  //   this.memberOfTheDayList(5, id);
-  // }
 
   ngOnDestroy() {
     this.$common.dashBoardFlag$.next(false);

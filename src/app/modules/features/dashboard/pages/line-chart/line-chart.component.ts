@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Chart } from 'angular-highcharts';
 
 @Component({
@@ -6,19 +6,36 @@ import { Chart } from 'angular-highcharts';
   templateUrl: './line-chart.component.html',
   styleUrls: ['./line-chart.component.scss']
 })
-export class LineChartComponent implements OnInit {
+export class LineChartComponent implements OnInit, OnChanges {
   circleChart: Chart;
   columnChart: Chart;
   areaChart: Chart;
+  GraphThisYear = [];
+  GraphLastYear = [];
 
   constructor() { }
   chart: Chart;
   @Input() type = 1;
+  @Input() userThisYear;
+  @Input() userLastYear;
   ngOnInit() {
     this.initChart();
     this.initCircleChart();
-    this.initColumnChart();
+    // this.initColumnChart();
     this.initAreaChart();
+  }
+
+  ngOnChanges() {
+    if (this.userThisYear && this.userLastYear) {
+      Object.values(this.userThisYear).forEach(element => {
+        this.GraphThisYear.push(element);
+      });
+      Object.values(this.userLastYear).forEach(element => {
+        this.GraphLastYear.push(element);
+      });
+      // console.log(this.GraphThisYear);
+      this.initColumnChart();
+    }
   }
 
   initChart() {
@@ -129,7 +146,7 @@ export class LineChartComponent implements OnInit {
   }
 
 
-  initColumnChart(){
+  initColumnChart() {
     const column = new Chart(
       {
         colors: ['#FB56B2', '#2FD3CF'],
@@ -164,13 +181,13 @@ export class LineChartComponent implements OnInit {
         yAxis: {
           min: 0,
           title: {
-            text: 'Rainfall (mm)'
+            text: 'Users'
           }
         },
         tooltip: {
           headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
           pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+            '<td style="padding:0"><b>{point.y:.1f} </b></td></tr>',
           footerFormat: '</table>',
           shared: true,
           useHTML: true
@@ -182,13 +199,13 @@ export class LineChartComponent implements OnInit {
           }
         },
         series: [{
-          name: 'Tokyo',
-          data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+          name: 'This Year',
+          data: this.GraphThisYear,
           type: 'column'
 
         }, {
-          name: 'New York',
-          data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3],
+          name: 'Last Year',
+          data: this.GraphLastYear,
           type: 'column',
           colors: ['#FB56B2']
 
@@ -199,7 +216,7 @@ export class LineChartComponent implements OnInit {
     this.columnChart = column;
   }
 
-  initAreaChart(){
+  initAreaChart() {
     const area = new Chart(
       {
         colors: ['#FB56B2'],

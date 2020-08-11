@@ -6,12 +6,11 @@ import { UtilityService } from 'src/app/modules/shared/services/utility.service'
 import { Router, ActivatedRoute } from '@angular/router';
 import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
 import { VALIDATION_CRITERIA } from 'src/app/constant/validation-criteria';
-import { invalidImageError, invalidFileSize } from 'src/app/constant/messages';
 import { EVENTS } from 'src/app/constant/routes';
 import { FileUploadService } from 'src/app/modules/shared/services/file-upload.service';
-import { onSelectFile } from 'src/app/constant/file-input';
+import { requiredProfilePic } from 'src/app/constant/messages';
 import { FormService } from 'src/app/modules/shared/services/form.service';
-import { PRAVICY , EVENT_CATEGORY } from 'src/app/constant/drawer';
+import { PRAVICY, EVENT_CATEGORY } from 'src/app/constant/drawer';
 
 @Component({
   selector: 'app-add-event',
@@ -21,16 +20,14 @@ import { PRAVICY , EVENT_CATEGORY } from 'src/app/constant/drawer';
 export class AddEventComponent implements OnInit {
   eventForm: FormGroup;
   imageFile: any;
-  categoryData: any;
   profilePicURL: any;
-  details: any;
   privacyData = PRAVICY;
   eventCategory = EVENT_CATEGORY;
   today = new Date();
   location: {};
+  eventDetails: any;
   constructor(
     private $fb: FormBuilder,
-    private $category: CategoryManagementService,
     private $fileUploadService: FileUploadService,
     private $service: EventService,
     private $utility: UtilityService,
@@ -40,14 +37,31 @@ export class AddEventComponent implements OnInit {
     $breadcrumb: BreadcrumbService,
   ) {
     this.createForm();
+    if (activateRoute.snapshot.data.eventDetails && activateRoute.snapshot.data.eventDetails.data) {
+      this.eventDetails = activateRoute.snapshot.data.eventDetails.data;
+      $breadcrumb.replace(this.eventDetails.id, this.eventDetails.title);
+      this.setEditFormHandler();
+    }
   }
 
   ngOnInit() {
   }
 
+  setEditFormHandler() {
+    if (this.eventDetails) {
+      this.eventForm.patchValue(this.eventDetails);
+      if (this.eventDetails.location) {
+        // this.location = this.eventDetails.location;
+        this.eventForm.get('location').patchValue(this.eventDetails.location);
+      }
+      if (this.eventDetails.imageUrl) {
+        this.profilePicURL = this.eventDetails.imageUrl;
+      }
+    }
+  }
   createForm() {
     this.eventForm = this.$fb.group({
-      eventCategory: [],
+      eventCategory: [null, Validators.required],
       title: ['', Validators.compose(this.$formService.VALIDATION.name)],
       privacy: ['', [Validators.required]],
       price: [0, [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.priceMaxLength)]],
@@ -72,10 +86,7 @@ export class AddEventComponent implements OnInit {
   }
 
 
-
-
-
-  setimageFile(event) {
+   setimageFile(event) {
     if (!event) {
       this.imageFile = null;
       this.profilePicURL = '';
@@ -86,6 +97,7 @@ export class AddEventComponent implements OnInit {
 
   async onSubmit() {
     if (this.eventForm.invalid) {
+      this.eventForm.markAllAsTouched();
       return;
     }
     if (this.imageFile) {
@@ -93,25 +105,24 @@ export class AddEventComponent implements OnInit {
       this.profilePicURL = data.Location;
     }
     if (!this.profilePicURL) {
-      this.$fileUploadService.showAlert('Profile pic is required');
+      this.$fileUploadService.showAlert(requiredProfilePic);
       return;
     }
     let body = { imageUrl: this.profilePicURL, ...this.eventForm.value };
-    if (this.location) {      
-        body.location = this.location;
+    if (this.location) {
+      body.location = this.location;
     }
 
-    if (this.details && this.details._id) {
-      delete body.type;
-      // this.$service.edit(this.details._id, body).then(
-      //   data => {
-      //     this.eventForm.enable();
-      //     this.$utility.success(data.message);
-      //     this.$route.navigate([EVENTS.fullUrl]);
-      //   },
-      //   err => {
-      //     this.eventForm.enable();
-      //   });
+    if (this.eventDetails && this.eventDetails._id) {
+      this.$service.edit(this.eventDetails._id, body).then(
+        data => {
+          this.eventForm.enable();
+          this.$utility.success(data.message);
+          this.$route.navigate([EVENTS.fullUrl]);
+        },
+        err => {
+          this.eventForm.enable();
+        });
       return;
     }
     console.log(body);
@@ -137,7 +148,6 @@ export class AddEventComponent implements OnInit {
     this.location = {
       address: event.formatted_address,
       type: "Point",
-      // type: event.postal_code,
       coordinates: {
         longitude: event.lng,
         latitude: event.lat

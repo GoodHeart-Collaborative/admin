@@ -4,6 +4,7 @@ import { EventDetailComponent } from './event-detail.component';
 import { Routes, RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material';
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
+import { UserEventService, UserEventServiceResolve } from '../service/user-event.service';
 
 const routes: Routes = [
   {
@@ -22,6 +23,8 @@ const routes: Routes = [
   ],
   exports: [
     EventDetailComponent
-  ]
+  ],
+  providers: [UserEventService],
+
 })
 export class EventDetailModule { }

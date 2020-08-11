@@ -65,6 +65,7 @@ export class AddCategoryManagementComponent implements OnInit {
 
   async onSubmit() {
     if (this.categoryForm.invalid) {
+      this.categoryForm.markAllAsTouched();
       return;
     }
     if (this.imageFile) {

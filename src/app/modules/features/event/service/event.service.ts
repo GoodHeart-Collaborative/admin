@@ -28,7 +28,7 @@ export class EventService {
     return  this.$http.post(EVENT, params).toPromise();
   }
   async  edit(id, params) {
-    // return  this.$http.patch(HOME_DETAILS(id), params).toPromise();
+    return  this.$http.patch(EVENT_DETAILS(id), params).toPromise();
   }
 
 

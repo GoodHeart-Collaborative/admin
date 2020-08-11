@@ -21,7 +21,7 @@ const routes: Routes = [
     DateFilterModule
   ],
   exports: [UserEventsComponent],
-  providers: [UserEventService, UserEventServiceResolve],
+  providers: [UserEventService],
   entryComponents: [ListingFilterComponent]
 })
 export class UserEventsModule { }

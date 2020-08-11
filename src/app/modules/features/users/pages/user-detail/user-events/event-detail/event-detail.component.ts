@@ -5,7 +5,7 @@ import { GoingListComponent } from 'src/app/modules/shared/going-list/view/going
 import { IntrestedListComponent } from 'src/app/modules/shared/intrested-list/view/intrested-list.component';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
-import { EventService } from 'src/app/modules/features/event/service/event.service';
+import {  UserEventService } from 'src/app/modules/features/users/pages/user-detail/user-events/service/user-event.service';
 import { MatDialog } from '@angular/material';
 import { EVENT_INTEREST } from 'src/app/constant/drawer';
 export type ActionType =  'blocked' | 'active';
@@ -23,11 +23,13 @@ export class EventDetailComponent implements OnInit {
     $breadcrumb: BreadcrumbService,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
-    private $event: EventService,
+    private $event: UserEventService,
     private $matDailog: MatDialog
     ) {
-    this.eventDetails = $router.snapshot.data.eventDetails.data;
-    $breadcrumb.replace(this.eventDetails.id, this.eventDetails.title);
+    this.eventDetails = $router.snapshot.data.eventData.data;
+    // $breadcrumb.replace(this.eventDetails.id, this.eventDetails.title);
+    $breadcrumb.replace($router.snapshot.params.id, $router.snapshot.params.id, `/admin/users/${$router.snapshot.params.userID}/details`)
+
     }
 
   ngOnInit() {
@@ -37,7 +39,7 @@ export class EventDetailComponent implements OnInit {
     this.$confirmBox.listAction('event', action == 'active' ? 'active' : 'block')
       .subscribe((confirm) => {
         if (confirm) {
-          this.$event.updateStatus(id, action).then((res) => {
+          this.$event.updateEventStatus(id, action).then((res) => {
             this.$utility.success(res.message);
             this.eventDetails.status = (action == 'active' ? 'active' : 'blocked');
           });
