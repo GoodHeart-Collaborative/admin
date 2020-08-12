@@ -22,20 +22,20 @@
 
     <ng-container>
 
-        <ng-template appFor="actions" let-user="row">
+        <ng-template appFor="actions" let-expert="row">
             <div class="action-icon-cover">
-                <!-- <i class="material-icons icon-edit" (click)="oneditHandler(user?._id)" title="Edit" >
+                <!-- <i class="material-icons icon-edit" (click)="oneditHandler(expert?._id)" title="Edit" >
                      edit
                  </i> -->
 
-                <!-- <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked')" *ngIf="user?.status === 'active';else templateAction"  title="Block user">
+                <i class="material-icons icon-block" (click)="onActionHandler(expert._id, 'blocked')" *ngIf="expert?.status === 'active';else templateAction"  title="Block expert post">
                      blocked</i>
                  <ng-template #templateAction>
-                     <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active')" title="Unblock user" >
+                     <i class="material-icons icon-unblock" (click)="onActionHandler(expert._id, 'active')" title="Unblock expert post" >
                          lock_open
                      </i>
-                 </ng-template> -->
-                <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')"
+                 </ng-template>
+                <i class="material-icons icon-delete" (click)="onActionHandler(expert._id, 'deleted')"
                     title="Delete expert post">
                     delete
                 </i>
