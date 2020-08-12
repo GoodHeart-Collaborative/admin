@@ -159,7 +159,7 @@ export class AddDailyUnicormHumourComponent implements OnInit {
         }
       }
       if (this.unicornDetails.mediaType == 2) {
-         if (this.thumbnailUrl) {
+        if (this.thumbnailUrl) {
           body['mediaUrl'] = this.unicornDetails.mediaUrl;
           body['thumbnailUrl'] = this.thumbnailUrl;
           body.mediaType = this.unicornDetails.mediaType;
@@ -170,11 +170,10 @@ export class AddDailyUnicormHumourComponent implements OnInit {
         }
       }
     }
-    // if (!body.mediaUrl) {
-    //   this.$fileUploadService.showAlert(requiredMedia);
-    //   return;
-    // }
-
+    if (!body.mediaUrl) {
+      this.$fileUploadService.showAlert(requiredMedia);
+      return;
+    }
     if (this.isPostLater.value) {
       body.postedAt = new Date(this.unicornForm.get('postedAt').value);
     }

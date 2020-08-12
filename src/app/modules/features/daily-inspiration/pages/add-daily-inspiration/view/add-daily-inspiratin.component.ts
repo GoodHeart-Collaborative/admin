@@ -7,8 +7,9 @@ import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/
 import { VALIDATION_CRITERIA, getTrimmed } from 'src/app/constant/validation-criteria'
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { DAILY_INSPIRATION } from 'src/app/constant/routes';
-import { HOME_TYPE, MEDIA_TYPE } from 'src/app/constant/drawer';
+import { HOME_TYPE } from 'src/app/constant/drawer';
 import { EditProfileService } from 'src/app/modules/features/admin/edit-profile/service/edit-profile.service';
+import { requiredMedia } from 'src/app/constant/messages';
 @Component({
   selector: 'app-add-daily-inspiratin',
   templateUrl: './add-daily-inspiratin.component.html',
@@ -163,10 +164,10 @@ export class AddDailyInspiratinComponent implements OnInit {
         }
       }
     }
-    // if (!body.mediaUrl) {
-    //   this.$fileUploadService.showAlert(requiredMedia);
-    //   return;
-    // }
+    if (!body.mediaUrl) {
+      this.$fileUploadService.showAlert(requiredMedia);
+      return;
+    }
     if (this.isPostLater.value) {
       body.postedAt = new Date(this.inspirationForm.get('postedAt').value);
       console.log(body.postedAt);

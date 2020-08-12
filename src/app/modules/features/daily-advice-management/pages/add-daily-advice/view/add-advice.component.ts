@@ -159,10 +159,10 @@ export class AddAdviceComponent implements OnInit {
       }
     }
 
-    // if (!body.mediaUrl) {
-    //   this.$fileUploadService.showAlert(requiredMedia);
-    //   return;
-    // }
+    if (!body.mediaUrl) {
+      this.$fileUploadService.showAlert(requiredMedia);
+      return;
+    }
     if (this.isPostLater.value) {
       body.postedAt = new Date(this.adviceForm.get('postedAt').value);
     }
