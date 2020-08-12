@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-
+import { INDUSTRY } from 'src/app/constant/drawer';
 @Component({
   selector: 'app-expert-basic-details',
   templateUrl: './expert-basic-details.component.html',
@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ExpertBasicDetailsComponent implements OnInit {
 @Input() data:any;
+industry = INDUSTRY;
   constructor() { }
 
   ngOnInit() {
