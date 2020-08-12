@@ -47,7 +47,7 @@ export class ExpertDetailsListingComponent implements OnInit, OnChanges {
   onActionHandler(id: string, action: ActionType) {
     console.log(this.experDetails);
     const index = this.experDetails.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('expert',  (action == 'deleted' ? 'Delete' : 'Block'))
+    this.$confirmBox.listAction('expert post',  (action == 'deleted' ? 'Delete' : 'Block'))
       .subscribe((confirm) => {
         if (confirm) {
           this.$expert.updateStatus(id, action).then((res) => {

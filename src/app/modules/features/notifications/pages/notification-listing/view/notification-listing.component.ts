@@ -40,7 +40,7 @@ export class NotificationListingComponent implements OnInit {
   updateList() {
     const { pageIndex, pageSize, searchText, filterData , sortData } = this.eventData;
     let params = {
-      page: `${pageIndex + 1}`,
+      pageNo: `${pageIndex + 1}`,
       limit: `${pageSize}`,
     };
     if (filterData) {

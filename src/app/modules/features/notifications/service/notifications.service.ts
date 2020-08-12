@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/modules/shared/services/http.service';
-import { EXPERT  } from 'src/app/constant/urls';
+import { EXPERT, NOTIFICATION  } from 'src/app/constant/urls';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class NotificationsService {
   ) { }
 
   async  queryData(params) {
-    return  this.$http.get(EXPERT, params).toPromise();
+    return  this.$http.get(NOTIFICATION, params).toPromise();
   }
 
   async updateStatus(id, status) {

@@ -8,7 +8,6 @@ export const RESET_PASSWORD = 'admin/reset-password';
 export const LOGOUT = 'admin/logout';
 export const VALIDATE_TOKEN = 'common/deepLink';
 export const FEEDBACK = 'feedback';
-export const NOTIFICATION = 'notification';
 
 // USER API's //
 export const USER = 'admin/users';
@@ -109,6 +108,11 @@ export const ACTION_HOME = (Id , status) => `admin/home/${Id}/status/${status}`;
 export const GRATITUDE = 'admin/gratitude';
 export const GRATITUDE_DETAILS = (Id) => `admin/gratitude/${Id}`;
 export const ACTION_GRATITUDE = (Id , status) => `admin/gratitude/${Id}/status/${status}`;
+
+// NOTIFICATION API's //
+export const NOTIFICATION = 'admin-notification';
+export const NOTIFICATION_DETAILS = `admin-notification/details`;
+export const ACTION_NOTIFICATION = (Id , status) => `admin/gratitude/${Id}/status/${status}`;
 
 // EXPERT API's //
 export const EXPERT = 'admin/expert';
