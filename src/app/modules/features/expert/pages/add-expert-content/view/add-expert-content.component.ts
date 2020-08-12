@@ -116,6 +116,7 @@ export class AddExpertContentComponent implements OnInit {
 
   async onSubmit() {
     if (this.expertContentForm.invalid) {
+      this.expertContentForm.markAllAsTouched();
       return;
     }
     let body = { ...this.expertContentForm.value };

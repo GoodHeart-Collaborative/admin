@@ -29,6 +29,7 @@ const routes: Routes = [
     },
     {
       path: 'edit/:id',
+      
       loadChildren: () => import('./pages/add-category-management/add-category-management.module')
       .then( (m) => m.AddCategoryManagementModule
       ),

@@ -83,6 +83,7 @@
                                                 <p>{{item?.createdAt | customDate}}</p>
                                           </div>
                                     </li>
+                                    <div *ngIf="!userList">No Data</div>
                               </ul>
                         </div>
                   </div>
@@ -135,7 +136,7 @@
                                                       <th>Profile</th>
                                                       <th>Name</th>
                                                       <th>Industry Type</th>
-                                                      <th>Member Date</th>
+                                                      <th>Leader Date</th>
                                                       
                                                 </tr>
                                           </thead>
@@ -150,6 +151,7 @@
                                                       <td>{{industry[item?.industryType]|| 'dummy data'}}</td>
                                                       <td>{{item?.memberCreatedAt | customDate}}</td>
                                                 </tr>
+                                                <div *ngIf="!memberList">No Data</div>
                                           </tbody>
                                           
                                     </table>

@@ -15,34 +15,43 @@ import { requiredProfilePic } from 'src/app/constant/messages';
 })
 export class AddCategoryManagementComponent implements OnInit {
   categoryForm: FormGroup;
-  profilePicURL: any;
+  profilePicURL: string;
   imageFile: any;
-  data;
   titleMaxLength = VALIDATION_CRITERIA.titleMaxLength;
-  categoryDetails: any;
+  categoryId: string;
   constructor(
     private $formBuilder: FormBuilder,
     private $category: CategoryManagementService,
     private $fileUploadService: FileUploadService,
     private $router: Router,
     $activateRoute: ActivatedRoute,
-    $breadcrumb: BreadcrumbService,
+    private $breadcrumb: BreadcrumbService,
     private $utility: UtilityService
   ) {
-    if ($activateRoute.snapshot.data.categoryDetails && $activateRoute.snapshot.data.categoryDetails.data) {
-      this.categoryDetails = $activateRoute.snapshot.data.categoryDetails.data;
-      $breadcrumb.replace(this.categoryDetails._id, this.categoryDetails.title);
-      console.log(this.categoryDetails);
+    console.log($activateRoute.snapshot.params.id);
+    this.createForm();
+    if ($activateRoute.snapshot.params && $activateRoute.snapshot.params.id) {
+      this.categoryId = $activateRoute.snapshot.params.id;
+      this.getCategoryHandler();
     }
   }
 
   ngOnInit() {
-    this.createForm();
-    if (this.categoryDetails && this.categoryDetails._id) {
-      this.getCategoryDetail();
-    }
   }
 
+  getCategoryHandler() {
+    this.$category.onCategoryDetailsHandler(this.categoryId).then(res => {
+      if (res && res.data) {
+        const categoryDetails = res.data;
+        console.log(categoryDetails);
+        this.$breadcrumb.replace(this.categoryId, categoryDetails['title']);
+        this.categoryForm.patchValue({
+          title: categoryDetails['title']
+        });
+        this.profilePicURL = categoryDetails['imageUrl'];
+      }
+    });
+  }
   createForm() {
     this.categoryForm = this.$formBuilder.group(
       {
@@ -78,12 +87,11 @@ export class AddCategoryManagementComponent implements OnInit {
     }
     let body = { imageUrl: this.profilePicURL, ...this.categoryForm.value };
     this.categoryForm.disable();
-    if (this.categoryDetails && this.categoryDetails._id) {
-      this.$category.editCategory(this.categoryDetails._id, body).then(
+    if (this.categoryId) {
+      this.$category.editCategory(this.categoryId, body).then(
         data => {
           this.categoryForm.enable();
           this.$utility.success(data.message);
-
           this.$router.navigate([CATEGORY.fullUrl]);
         },
         err => {
@@ -95,6 +103,7 @@ export class AddCategoryManagementComponent implements OnInit {
     this.$category.addCategory(body).then(
       data => {
         this.categoryForm.enable();
+        this.$utility.success(data.message);
         this.$router.navigate([CATEGORY.fullUrl]);
       },
       err => {
@@ -103,14 +112,6 @@ export class AddCategoryManagementComponent implements OnInit {
     );
   }
 
-
-
-  getCategoryDetail() {
-    this.categoryForm.patchValue({
-      title: this.categoryDetails.title
-    });
-    this.profilePicURL = this.categoryDetails.imageUrl;
-  }
 
   onCancel() {
     this.$router.navigate([CATEGORY.fullUrl]);

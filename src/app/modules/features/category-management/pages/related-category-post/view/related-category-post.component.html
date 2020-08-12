@@ -21,7 +21,7 @@
 
     <ng-template appFor="name" let-category="row">
         <a href="javascript:void(0)">
-            {{ category?.expertData?.name | titlecase }}
+            {{( category?.expertData?.name || '-') | titlecase }}
         </a>
     </ng-template>
 

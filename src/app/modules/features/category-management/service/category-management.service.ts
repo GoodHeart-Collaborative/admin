@@ -36,6 +36,9 @@ export class CategoryManagementService {
   async updatePostStatus(id: string, status: any) {
     return await this.$http.patch(CATEGORY_POST_ACTION(id, status), {}).toPromise();
   }
+  async onCategoryDetailsHandler(id: string) {
+    return await this.$http.get(CATEGORY_DETAILS(id), {}).toPromise();
+  }
 
   async  updateCategory(id:string) {
     const categoryId = id;

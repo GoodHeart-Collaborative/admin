@@ -194,12 +194,13 @@ export class LineChartComponent implements OnInit, OnChanges {
         },
         series: [{
           name: 'This Year',
-          data: this.userLastYear,
+          
+          data: this.userThisYear,
           type: 'column'
 
         }, {
           name: 'Last Year',
-          data: this.userThisYear,
+          data: this.userLastYear,
           type: 'column',
           colors: ['#FB56B2']
 
