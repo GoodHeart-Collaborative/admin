@@ -5,10 +5,10 @@
                 <div class="card_header_container profile_header">
                     <div class="card_header">
                         <figure mat-card-avatar class="image-cover">
-                            <img class="img-cover-fit" [src]="adviceDetails?.addedBy?.profilePicture | customImage:'USERS'|async "  alt="">
+                            <img class="img-cover-fit" [src]="adviceDetails?.adminData[0]?.profilePicture | customImage:'USERS'|async "  alt="">
                         </figure>
                         <div class="heading-cover">
-                            <a class="user_name" href="javascript:void()">{{adviceDetails?.addedBy?.name}}</a>
+                            <a class="user_name" href="javascript:void()">{{adviceDetails?.adminData[0]?.name}}</a>
                             <p class="posted-on-date" *ngIf="adviceDetails?.postedAt">Posted on:
                                 {{adviceDetails?.postedAt | date : 'd MMMM, y, h:mm a'}}</p>
                         </div>
@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="row-2">
-            <div class="like-cover" (click)="likeHandler(adviceDetails.id, adviceDetails?.likeCount)"><span
+            <div class="like-cover" (click)="likeHandler(adviceDetails._id, adviceDetails?.likeCount)"><span
                     class="material-icons">thumb_up</span>
                 <p>{{adviceDetails?.likeCount}}</p>
             </div>
@@ -33,7 +33,7 @@
                 <p>{{adviceDetails?.commentCount}}</p>
             </div>
         </div>
-        <app-comments-show [commentId]="adviceDetails?.id"></app-comments-show>
+        <app-comments-show [commentId]="adviceDetails?._id"></app-comments-show>
        
     </div>
 </div>

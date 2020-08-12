@@ -3,14 +3,14 @@
         <div class="row-1">
             <div class="textual-detail">
                 <p>{{gratitudeDetails?.description}}</p>
-                <p>Posted on: {{gratitudeDetails?.postAt}}</p>
+                <p>Posted on: {{gratitudeDetails?.postAt | date : 'd MMMM, y, h:mm a'}}</p>
             </div>
             <div class="image-detail">
                 <img [src]="gratitudeDetails?.mediaUrl |customImage:'USER'|async">
             </div>
         </div>
         <div class="row-2">
-            <div class="like-cover" (click)="likeHandler(gratitudeDetails?.id ,gratitudeDetails?.likeCount)"><span class="material-icons">thumb_up</span>
+            <div class="like-cover" (click)="likeHandler(gratitudeDetails?._id ,gratitudeDetails?.likeCount)"><span class="material-icons">thumb_up</span>
                 <p>{{gratitudeDetails?.likeCount}}</p>
             </div>
             <div class="like-cover"><span class="material-icons">comment</span>
@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="row-3">
-            <app-comments-show [commentId]="gratitudeDetails?.id"></app-comments-show>
+            <app-comments-show [commentId]="gratitudeDetails?._id"></app-comments-show>
 
         </div>
     </div>

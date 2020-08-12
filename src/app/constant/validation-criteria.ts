@@ -7,7 +7,7 @@ export const VALIDATION_CRITERIA = {
   subTitleMinLength: 2,
   subTitleMaxLength: 150,
   titleMinLength: 2,
-  titleMaxLength: 50,
+  titleMaxLength: 100,
   phoneMinLength: 8,
   phoneMaxLength: 14,
   locationMinLength: 2,

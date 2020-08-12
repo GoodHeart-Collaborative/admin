@@ -55,7 +55,9 @@ export class AddCategoryManagementComponent implements OnInit {
   createForm() {
     this.categoryForm = this.$formBuilder.group(
       {
-        title: ['', [Validators.required, Validators.minLength(VALIDATION_CRITERIA.titleMinLength)]]
+        title: ['', [Validators.required,
+          Validators.minLength(VALIDATION_CRITERIA.titleMinLength), 
+          Validators.maxLength(VALIDATION_CRITERIA.titleMaxLength)]]
       });
   }
 
@@ -81,10 +83,10 @@ export class AddCategoryManagementComponent implements OnInit {
       let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
       this.profilePicURL = data.Location;
     }
-    if (!this.profilePicURL) {
-      this.$fileUploadService.showAlert(requiredProfilePic);
-      return;
-    }
+    // if (!this.profilePicURL) {
+    //   this.$fileUploadService.showAlert(requiredProfilePic);
+    //   return;
+    // }
     let body = { imageUrl: this.profilePicURL, ...this.categoryForm.value };
     this.categoryForm.disable();
     if (this.categoryId) {

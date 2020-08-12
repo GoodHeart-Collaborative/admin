@@ -109,7 +109,6 @@ export class AddAdviceComponent implements OnInit {
   }
 
   async onSubmit() {
-    console.log(this.adviceForm);
     if (this.adviceForm.invalid) {
       if (this.adviceForm.get('postedAt').value &&
         new Date(this.adviceForm.get('postedAt').value).getTime()
@@ -121,11 +120,7 @@ export class AddAdviceComponent implements OnInit {
     }
     const body = { ...this.adviceForm.value };
     if (this.profileDetail) {
-
-      body.addedBy = {
-        name: this.profileDetail.name,
-        profilePicture: this.profileDetail.profilePicture
-      };
+        body.addedBy = this.profileDetail.userId;
     }
     if (this.imageFile) {
       if (this.imageFile && this.imageFile.type == 1) {
@@ -164,10 +159,10 @@ export class AddAdviceComponent implements OnInit {
       }
     }
 
-    if (!body.mediaUrl) {
-      this.$fileUploadService.showAlert(requiredMedia);
-      return;
-    }
+    // if (!body.mediaUrl) {
+    //   this.$fileUploadService.showAlert(requiredMedia);
+    //   return;
+    // }
     if (this.isPostLater.value) {
       body.postedAt = new Date(this.adviceForm.get('postedAt').value);
     }

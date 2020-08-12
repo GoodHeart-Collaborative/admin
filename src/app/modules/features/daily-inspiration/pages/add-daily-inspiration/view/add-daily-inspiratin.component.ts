@@ -5,12 +5,10 @@ import { FileUploadService } from 'src/app/modules/shared/services/file-upload.s
 import { ActivatedRoute, Router } from '@angular/router';
 import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
 import { VALIDATION_CRITERIA, getTrimmed } from 'src/app/constant/validation-criteria'
-import { RequestInterceptor } from 'src/app/Interceptors/request.interceptor';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { DAILY_INSPIRATION } from 'src/app/constant/routes';
 import { HOME_TYPE, MEDIA_TYPE } from 'src/app/constant/drawer';
 import { EditProfileService } from 'src/app/modules/features/admin/edit-profile/service/edit-profile.service';
-import { requiredMedia } from 'src/app/constant/messages';
 @Component({
   selector: 'app-add-daily-inspiratin',
   templateUrl: './add-daily-inspiratin.component.html',
@@ -41,7 +39,7 @@ export class AddDailyInspiratinComponent implements OnInit {
     this.today = new Date(new Date(new Date().setHours(0, 0, 0)).setDate(new Date().getDate() + 1));
     if ($router.snapshot.data.dailyData && $router.snapshot.data.dailyData.data) {
       this.dailyInspirationDetails = $router.snapshot.data.dailyData.data;
-      $breadcrumb.replace(this.dailyInspirationDetails.id, this.dailyInspirationDetails.title);
+      $breadcrumb.replace(this.dailyInspirationDetails._id, this.dailyInspirationDetails.title);
     }
     this.getProfileDetail();
   }
@@ -126,10 +124,7 @@ export class AddDailyInspiratinComponent implements OnInit {
     const body = { ...this.inspirationForm.value };
     if (this.profileDetail) {
 
-      body.addedBy = {
-        name: this.profileDetail.name,
-        profilePicture: this.profileDetail.profilePicture
-      };
+      body.addedBy = this.profileDetail.userId;
     }
     if (this.imageFile) {
       if (this.imageFile && this.imageFile.type == 1) {
@@ -155,23 +150,23 @@ export class AddDailyInspiratinComponent implements OnInit {
           body['mediaUrl'] = '';
         }
       }
-      if (this.dailyInspirationDetails.mediaType == 2 ) {
-        
-        if(this.thumbnailUrl){
-          body['mediaUrl'] =  this.dailyInspirationDetails.mediaUrl
-        body['thumbnailUrl'] = this.thumbnailUrl;
-        body.mediaType = this.dailyInspirationDetails.mediaType;
-      } else {
-        delete body.mediaType;
-        body['mediaUrl'] = '';
-        body['thumbnailUrl'] = '';
+      if (this.dailyInspirationDetails.mediaType == 2) {
+
+        if (this.thumbnailUrl) {
+          body['mediaUrl'] = this.dailyInspirationDetails.mediaUrl
+          body['thumbnailUrl'] = this.thumbnailUrl;
+          body.mediaType = this.dailyInspirationDetails.mediaType;
+        } else {
+          delete body.mediaType;
+          body['mediaUrl'] = '';
+          body['thumbnailUrl'] = '';
+        }
       }
     }
-    }
-    if (!body.mediaUrl) {
-      this.$fileUploadService.showAlert(requiredMedia);
-      return;
-    }
+    // if (!body.mediaUrl) {
+    //   this.$fileUploadService.showAlert(requiredMedia);
+    //   return;
+    // }
     if (this.isPostLater.value) {
       body.postedAt = new Date(this.inspirationForm.get('postedAt').value);
       console.log(body.postedAt);

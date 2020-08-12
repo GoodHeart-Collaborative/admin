@@ -7,11 +7,15 @@ import { MediaUploadModule } from 'src/app/modules/shared/media-upload/media-upl
 import { MatFormFieldModule, 
   MatIconModule, MatCheckboxModule, 
   MatDatepickerModule, MatNativeDateModule, MatInputModule, 
-  MatButtonModule } from '@angular/material';
+  MatButtonModule,
+  DateAdapter,
+  MAT_DATE_FORMATS
+} from '@angular/material';
 import { ValidationErrorPipeModule } from 'src/app/pipes/validation-error/validation-error-pipe.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { WhiteSpaceModule } from 'src/app/modules/shared/white-space/white-space.module';
 import { EditProfileService } from '../../../admin/edit-profile/service/edit-profile.service';
+import { AppDateAdapter, APP_DATE_FORMATS } from 'src/app/constant/format-datepicker';
 
 
 const routes: Routes = [
@@ -41,6 +45,9 @@ const routes: Routes = [
     MatInputModule,
     WhiteSpaceModule
   ],
-  providers: [EditProfileService]
+  providers: [EditProfileService,
+    { provide: DateAdapter, useClass: AppDateAdapter },
+    { provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS }
+  ]
 })
 export class AddDailyUnicormHumourModule { }

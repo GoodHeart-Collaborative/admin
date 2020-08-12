@@ -40,7 +40,8 @@ export class AddDailyUnicormHumourComponent implements OnInit {
     this.today = new Date(new Date(new Date().setHours(0, 0, 0)).setDate(new Date().getDate() + 1));
     if ($router.snapshot.data.dailyData && $router.snapshot.data.dailyData.data) {
       this.unicornDetails = $router.snapshot.data.dailyData.data;
-      $breadcrumb.replace(this.unicornDetails.id, this.unicornDetails.description);
+      console.log(this.unicornDetails);
+      $breadcrumb.replace(this.unicornDetails._id, this.unicornDetails.description);
     }
     this.getProfileDetail();
   }
@@ -87,6 +88,7 @@ export class AddDailyUnicormHumourComponent implements OnInit {
    */
   getDailyInspiration() {
     if (this.unicornDetails) {
+      console.log(this.unicornDetails);
       this.profilePicURL = this.unicornDetails.mediaUrl;
       if (this.unicornDetails.mediaType == 2) {
         this.thumbnailUrl = this.unicornDetails.mediaUrl;
@@ -130,10 +132,7 @@ export class AddDailyUnicormHumourComponent implements OnInit {
     const body = { ...this.unicornForm.value };
     if (this.profileDetail) {
 
-      body.addedBy = {
-        name: this.profileDetail.name,
-        profilePicture: this.profileDetail.profilePicture
-      };
+      body.addedBy = this.profileDetail.userId;
     }
     if (this.imageFile) {
       if (this.imageFile && this.imageFile.type == 1) {
@@ -171,10 +170,10 @@ export class AddDailyUnicormHumourComponent implements OnInit {
         }
       }
     }
-    if (!body.mediaUrl) {
-      this.$fileUploadService.showAlert(requiredMedia);
-      return;
-    }
+    // if (!body.mediaUrl) {
+    //   this.$fileUploadService.showAlert(requiredMedia);
+    //   return;
+    // }
 
     if (this.isPostLater.value) {
       body.postedAt = new Date(this.unicornForm.get('postedAt').value);

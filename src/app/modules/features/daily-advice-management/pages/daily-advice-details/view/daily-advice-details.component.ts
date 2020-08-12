@@ -24,7 +24,9 @@ export class DailyAdviceDetailsComponent implements OnInit {
     private $common: CommonService,
     private $matDailog: MatDialog) {
     this.adviceDetails = $router.snapshot.data.dailyData.data;
-    $breadcrumb.replace(this.adviceDetails.id, this.adviceDetails.title);
+    console.log(this.adviceDetails);
+    
+    $breadcrumb.replace(this.adviceDetails._id, this.adviceDetails.title);
   }
 
   ngOnInit() {
@@ -36,7 +38,6 @@ export class DailyAdviceDetailsComponent implements OnInit {
    * @param id
    */
   likeHandler(id: string, likesCount: number) {
-
     if (!likesCount) {
       return;
     }
@@ -51,12 +52,11 @@ export class DailyAdviceDetailsComponent implements OnInit {
     });
   }
 
-/**
- * user Like Handler
- * @param id
- */
+  /**
+   * user Like Handler
+   * @param id
+   */
   onlikeHandler(like: any, likesCount: number) {
-  
     this.$matDailog.open(LikeActionComponent, {
       width: '500px',
       data: like

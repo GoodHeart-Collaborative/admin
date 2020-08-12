@@ -20,7 +20,7 @@ export class DailyInspirationDetailsComponent implements OnInit {
                private $matDailog: MatDialog,
                private $common: CommonService) {
       this.dailyInspirationDetails = $router.snapshot.data.dailyData.data;
-      $breadcrumb.replace(this.dailyInspirationDetails.id, this.dailyInspirationDetails.title);
+      $breadcrumb.replace(this.dailyInspirationDetails._id, this.dailyInspirationDetails.title);
     }
 
   ngOnInit() {

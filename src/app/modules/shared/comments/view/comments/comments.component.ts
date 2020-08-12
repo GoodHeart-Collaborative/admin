@@ -21,30 +21,36 @@ export class CommentsComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.comments = await this.getCommentHandler(this.data);
-    console.log(this.comments);
-    this.comments = this.comments.map(comment => {
-      comment['replies'] = [];
-      comment['showReply'] = false;
-      return comment;
-    });
+    if (this.data) {
+
+      this.comments = await this.getCommentHandler(this.data);
+      console.log(this.comments);
+      this.comments = this.comments.map(comment => {
+        comment['replies'] = [];
+        comment['showReply'] = false;
+        return comment;
+      });
+    }
   }
 
   /**
    * user Comment Handler
    */
   async getCommentHandler(id, commentId?) {
-    const params = {
-      pageNo: 1,
-      limit: 100,
-      postId: id
-    };
-    if (commentId) {
-      params['commentId'] = commentId;
+    console.log(id);
+    if (id) {
+      const params = {
+        pageNo: 1,
+        limit: 100,
+        postId: id
+      };
+      if (commentId) {
+        params['commentId'] = commentId;
+      }
+      return await this.$common.onCommentHandler(params).then(res => {
+        return res.data['list'];
+      });
     }
-    return await this.$common.onCommentHandler(params).then(res => {
-      return res.data['list'];
-    });
   }
 
   /**
@@ -53,7 +59,7 @@ export class CommentsComponent implements OnInit {
    */
   async toggleReplies(commentId: string, commenIndex: number) {
     if (!this.comments[commenIndex].showReply) {
-        this.comments[commenIndex].replies = await this.getCommentHandler(this.data, commentId)
+      this.comments[commenIndex].replies = await this.getCommentHandler(this.data, commentId);
     }
     this.comments[commenIndex]['showReply'] = !this.comments[commenIndex]['showReply']
     this.hideShowReplies = !this.hideShowReplies;

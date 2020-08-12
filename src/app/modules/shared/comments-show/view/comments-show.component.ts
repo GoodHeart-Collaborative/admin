@@ -18,8 +18,10 @@ export class CommentsShowComponent implements OnInit, OnChanges {
     private $matDailog: MatDialog) { }
 
   async ngOnChanges() {
+    console.log(this.commentId, 'jjhjhjkh');
+    
     this.comments = await this.getCommentHandler(this.commentId);
-    console.log(this.comments);
+    console.log(this.comments, 'hjkhjkh');
     this.comments = this.comments.map(comment => {
       comment['replies'] = [];
       comment['showReply'] = false;
@@ -34,6 +36,8 @@ export class CommentsShowComponent implements OnInit, OnChanges {
    * user Comment Handler
    */
   async getCommentHandler(id, commentId?) {
+    console.log(id, commentId);
+    
     const params = {
       pageNo: 1,
       limit: 100,

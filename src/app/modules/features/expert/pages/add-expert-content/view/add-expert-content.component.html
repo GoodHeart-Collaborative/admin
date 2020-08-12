@@ -51,7 +51,7 @@
                             <mat-form-field appearance="outline">
                                 <mat-label>Description</mat-label>
                                 <textarea matInput placeholder="Write something here..." rows="13" appWhiteSpace #description formControlName="description"></textarea>
-                                <mat-hint>{{description.value.trim().length}}/200</mat-hint>
+                                <mat-hint>{{description.value.trim().length}}/400</mat-hint>
                                 <mat-error>{{form('description') |validate:'Description' }}</mat-error>
                             </mat-form-field>
                         </div>

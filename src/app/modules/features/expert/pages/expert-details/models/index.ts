@@ -1,4 +1,5 @@
 import * as Table from 'src/app/modules/commonTable/table/interfaces';
+import { ListingFilterComponent } from '../pages/expert-details-listing/component/listing-filter.component';
 type Category = any;
 
 const defaultData: Table.Data<Category> = {
@@ -19,7 +20,7 @@ export class ExpertDetailsTableDataSource implements Table.Source<Category> {
     },
 
     {
-      title: 'Category',
+      title: 'Privacy',
       id: 'privacy',
       sorting: false,
       // templateBy: 'privacy'
@@ -71,9 +72,9 @@ export class ExpertDetailsTableDataSource implements Table.Source<Category> {
   ];
   options: Table.Options = {
     selection: false,
-    search: 'Search by Title',
+    search: 'Search by Topic',
     index: true,
-    // addComponent: true,
+    filterComponent: ListingFilterComponent,
     sorting: true,
   };
   constructor(public data: Table.Data<Category> = defaultData) {}

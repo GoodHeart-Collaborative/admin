@@ -79,7 +79,7 @@ export const EXPERT_CONTENT_TYPE =  [
     { value : 1 , viewValue: 'Video', disabled: false},
     { value : 2 , viewValue: 'Article', disabled: false},
     { value : 3 , viewValue: 'Image', disabled: false},
-    { value : 4 , viewValue: 'Voice Note', disabled: false}
+    // { value : 4 , viewValue: 'Voice Note', disabled: false}
 ];
 
 export const PRAVICY =  [

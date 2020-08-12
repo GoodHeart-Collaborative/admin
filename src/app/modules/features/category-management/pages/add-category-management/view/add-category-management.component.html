@@ -10,7 +10,8 @@
           <mat-form-field appearance="outline">
             <mat-label>Category</mat-label>
             <input matInput formControlName="title" placeholder="Enter Category" [maxlength]="titleMaxLength"
-              appWhiteSpace>
+              appWhiteSpace #name>
+              <mat-hint>{{name.value.trim().length}}/100</mat-hint>
             <mat-error>{{title |validate:'Title'}}</mat-error>
           </mat-form-field>
         </div>

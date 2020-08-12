@@ -10,7 +10,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 export class ListingFilterComponent implements OnInit {
 
   dateFilterObject = {
-    label: 'Date Filter',
+    label: 'Expert Filter',
     maxFromDate: new Date(),
    };
   filterForm: FormGroup;

@@ -5,12 +5,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { MatFormFieldModule, 
   MatInputModule, MatSelectModule,
    MatCheckboxModule, MatDatepickerModule,
-   MatNativeDateModule } from '@angular/material';
+   MatNativeDateModule,
+   DateAdapter,
+   MAT_DATE_FORMATS} from '@angular/material';
 import { ImageUploadModule } from 'src/app/modules/shared/image-upload/image-upload.module';
 import { ValidationErrorPipeModule } from 'src/app/pipes/validation-error/validation-error-pipe.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GooglePlacesModule } from 'src/app/directives/google-places/google-places.module';
 import { WhiteSpaceModule } from 'src/app/modules/shared/white-space/white-space.module';
+import { AppDateAdapter, APP_DATE_FORMATS } from 'src/app/constant/format-datepicker';
 
 
 const routes: Routes = [
@@ -36,7 +39,9 @@ const routes: Routes = [
     ReactiveFormsModule,
     GooglePlacesModule,
     WhiteSpaceModule
-  ]
+  ],
+  providers : [  { provide: DateAdapter, useClass: AppDateAdapter },
+    { provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS }]
 })
 
 export class AddEventModule { }

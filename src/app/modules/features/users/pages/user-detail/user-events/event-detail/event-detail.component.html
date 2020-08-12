@@ -4,7 +4,7 @@
             <div class="left-portion">
                 <div class="event-cover-photo">
     
-     <img [src]="eventDetails?.imageUrl | customImage:'USERS'|async">
+                    <img [src]="eventDetails?.imageUrl | customImage:'USERS'|async">
                 </div>
                 <div class="event-about">
                     <h4 class="event-title">{{eventDetails?.title}}</h4>
@@ -21,7 +21,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <p class="label">Event Date & Time</p>
-                            <p class="value">{{eventDetails?.startDate | date :'medium'}}</p>
+                            <p class="value">{{eventDetails?.startDate | date :'d MMMM, y, h:mm a'}}</p>
                         </div>
                         <div class="col-md-12">
                             <p class="label">Event Place</p>

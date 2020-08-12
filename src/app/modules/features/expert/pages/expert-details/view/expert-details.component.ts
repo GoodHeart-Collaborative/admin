@@ -64,9 +64,11 @@ export class ExpertDetailsComponent implements OnInit {
  * API Hit for List
  */
   updateList(index?: number) {
+    
     if (!index ) {
         return;
     }
+    
     const { pageIndex, pageSize, searchText, filterData, sortData } = this.eventData;
     let params = {
       page: `${pageIndex + 1}`,
@@ -108,7 +110,9 @@ export class ExpertDetailsComponent implements OnInit {
  */
   onOptionChange(event) {
     this.eventData = event;
-    this.updateList();
+    console.log(event);
+    
+    this.updateList(this.index);
   }
 
 
