@@ -67,9 +67,12 @@
 			<mat-icon>description</mat-icon> Content Management
 		</mat-list-item>
 
-		<!-- [routerLink]="['NOTIFICATIONS' | absolutePath]" -->
 		<mat-list-item (click)="mep.expanded = false;" color="primary" routerLinkActive="active" 	[routerLink]="['NOTIFICATIONS' | absolutePath]">
 			<mat-icon> notifications </mat-icon> Notifications
+		</mat-list-item>
+
+		<mat-list-item (click)="mep.expanded = false;" color="primary" routerLinkActive="active" 	[routerLink]="['FORUM' | absolutePath]">
+			<mat-icon> notifications </mat-icon> Forum
 		</mat-list-item>
 
 	</mat-list>

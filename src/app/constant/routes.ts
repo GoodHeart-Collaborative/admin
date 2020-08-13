@@ -499,3 +499,34 @@ export const ADD_EXPERT_CONTENT: IRoute = {
     return `${EXPERT.fullUrl}/${this.path}`;
   }
 };
+// FORUM ROUTES //
+export const FORUM: IRoute = {
+  path: 'forum',
+  get fullUrl(): string {
+    return `${ADMIN.fullUrl}/${this.path}`;
+  }
+};
+export const FORUM_LIST: IRoute = {
+  path: 'list',
+  get fullUrl(): string {
+    return `${FORUM.fullUrl}/${this.path}`;
+  }
+};
+export const ADD_FORUM: IRoute = {
+  path: 'add',
+  get fullUrl(): string {
+    return `${FORUM.fullUrl}/${this.path}`;
+  }
+};
+export const FORUM_DETAILS: IRoute = {
+  path: ':id',
+  get fullUrl(): string {
+    return `${FORUM.fullUrl}/${this.path}`;
+  }
+};
+export const ADD_FORUM_CONTENT: IRoute = {
+  path: 'add',
+  get fullUrl(): string {
+    return `${FORUM.fullUrl}/${this.path}`;
+  }
+};

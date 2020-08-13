@@ -20,7 +20,7 @@ export class ExpertDetailsTableDataSource implements Table.Source<Category> {
       // resolve: (row: any) => row['topic'],
 
   },
- 
+
 
        {
         title: 'Category',

@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout.component';
 import { USER, DASHBOARD , CONTENT_MANAGEMENT ,
       CATEGORY, DAILY_INSPIRATION, DAILY_UNICORN,
-      DAILY_ADVICE, MEMBER_OF_THE_DAY, ARTICLES, EXPERT, EVENTS, NOTIFICATIONS} from '../../constant/routes';
+      DAILY_ADVICE, MEMBER_OF_THE_DAY, ARTICLES, EXPERT, EVENTS, NOTIFICATIONS, FORUM} from '../../constant/routes';
 
 const routes: Routes = [
   {
@@ -86,6 +86,13 @@ const routes: Routes = [
         loadChildren: () =>
           import('../features/notifications/notifications.module')
           .then((m) => m.NotificationsModule
+          ),
+      },
+      {
+        path: FORUM.path,
+        loadChildren: () =>
+          import('../features/forum/forum.module')
+          .then((m) => m.ForumModule
           ),
       },
     ],

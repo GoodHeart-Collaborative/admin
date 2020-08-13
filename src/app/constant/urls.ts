@@ -114,6 +114,11 @@ export const NOTIFICATION = 'admin-notification';
 export const NOTIFICATION_DETAILS = `admin-notification/details`;
 export const ACTION_NOTIFICATION = (Id , status) => `admin/gratitude/${Id}/status/${status}`;
 
+// NOTIFICATION API's //
+export const FORUM = 'admin-forum';
+export const FORUM_DETAILS = `admin-forum/details`;
+export const ACTION_FORUM = (Id , status) => `admin/gratitude/${Id}/status/${status}`;
+
 // EXPERT API's //
 export const EXPERT = 'admin/expert';
 export const EXPERT_POST = 'admin/expertPost';
