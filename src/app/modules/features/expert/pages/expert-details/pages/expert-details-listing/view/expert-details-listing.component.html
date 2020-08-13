@@ -8,17 +8,19 @@
     </ng-template>
 
 
-    <!-- <ng-template appFor="name" let-post="row">
-         <a href="javascript:void(0)" (click)="onDetails(post?._id, post)">
-             {{ (post?.name | titlecase) || 'String'}}
+    <ng-template appFor="topic" let-post="row">
+         <a href="javascript:void(0)">
+             {{ (post?.topic | titlecase) || 'String'}}
          </a>
-     </ng-template> -->
+     </ng-template>
 
-    <!-- <ng-template appFor="categoryData" let-post="row">
-         <span *ngFor="let item of post?.categoryData">
-             {{ item?.name | titlecase}}
-         </span>
-     </ng-template> -->
+     <ng-template appFor="categoryData" let-post="row">
+        <span *ngFor="let item of post?.categoryData ; let i = index" title="{{ item?.name | titlecase}}">
+            {{ item?.name | titlecase}}{{i< post?.categoryData?.length -1?',' : '' }}
+            <!-- {{item}} -->
+
+        </span>
+    </ng-template>
 
     <ng-container>
 

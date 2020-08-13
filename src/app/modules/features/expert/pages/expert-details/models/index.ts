@@ -13,12 +13,23 @@ export class ExpertDetailsTableDataSource implements Table.Source<Category> {
   label = ' Expert Details';
   columns: Table.Column<Category>[] = [
     {
-        title: 'Date of Article',
-        id: 'createdAt',
-        sorting: false,
-        templateBy: 'createdAt'
-    },
+      title: 'Topic',
+      id: 'topic',
+      sorting: false,
+      templateBy: 'topic'
+      // resolve: (row: any) => row['topic'],
 
+  },
+ 
+
+       {
+        title: 'Category',
+        id: 'categoryData',
+        sorting: false,
+        templateBy: 'categoryData'
+        // resolve: (row: any) => row['categoryData'],
+
+    },
     {
       title: 'Privacy',
       id: 'privacy',
@@ -27,22 +38,7 @@ export class ExpertDetailsTableDataSource implements Table.Source<Category> {
       resolve: (row: any) => row['privacy'],
     },
 
-    // {
-    //     title: 'Privacy',
-    //     id: 'privacy',
-    //     sorting: false,
-    //     // templateBy: 'privacy'
-    //     resolve: (row: any) => row['privacy'],
 
-    // },
-    {
-        title: 'Topic',
-        id: 'topic',
-        sorting: false,
-        // templateBy: 'topic'
-        resolve: (row: any) => row['topic'],
-
-    },
     {
         title: 'Price',
         id: 'price',
@@ -55,6 +51,12 @@ export class ExpertDetailsTableDataSource implements Table.Source<Category> {
     //     sorting: false,
     //     resolve: (row: any) => row['totalPost'] || '0',
     //   },
+    {
+      title: 'Date of Article',
+      id: 'createdAt',
+      sorting: false,
+      templateBy: 'createdAt'
+  },
 
     {
       title: 'Status',
