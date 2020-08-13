@@ -6,7 +6,7 @@ import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { GlobalService } from 'src/app/services/global/global.service';
 import { ExpertTableDataSource } from 'src/app/modules/features/expert/pages/expert-listing/models';
-import {  ADD_EXPERT, ADD_FORUM } from 'src/app/constant/routes';
+import {  ADD_EXPERT, ADD_FORUM, FORUM } from 'src/app/constant/routes';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 @Component({
@@ -80,7 +80,7 @@ export class ForumListingComponent implements OnInit {
   onActionHandler(id: string, action: ActionType) {
     console.log(this.forumData);
     const index = this.forumData.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('post', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
+    this.$confirmBox.listAction('forum', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
       .subscribe((confirm) => {
         if (confirm) {
           this.$forum.updateStatus(id, action).then((res) => {
@@ -130,12 +130,13 @@ export class ForumListingComponent implements OnInit {
   }
 
 
-
-
-
-  onAdd() {
+onAdd() {
     this.$router.navigate([`${ADD_FORUM.fullUrl}`]);
   }
 
+  onDetails(id: string) {
+    this.$router.navigate([`${FORUM.fullUrl}`, id, 'details']);
+
+  }
 
 }

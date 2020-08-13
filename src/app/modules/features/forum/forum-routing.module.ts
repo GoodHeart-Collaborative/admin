@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ForumComponent } from './view/forum.component';
-import { FORUM_LIST , ADD_FORUM } from 'src/app/constant/routes';
+import { FORUM_LIST , ADD_FORUM , FORUM_DETAILS} from 'src/app/constant/routes';
 
 
 const routes: Routes = [
@@ -26,15 +26,15 @@ const routes: Routes = [
           .then((m) => m.AddForumModule
           ),
       },
-      // {
-      //   path: `${FORUM_DETAIL.path}/details`,
-      //   resolve : {
-      //     dailyData : DailyUnicornHumourServiceResolve
-      //   },
-      //   loadChildren: () => import('./pages/notification-details/notification-details.module')
-      //     .then((m) => m.NotificationDetailsModule
-      //     ),
-      // },
+      {
+        path: `${FORUM_DETAILS.path}/details`,
+        // resolve : {
+        //   dailyData : DailyUnicornHumourServiceResolve
+        // },
+        loadChildren: () => import('./pages/forum-details/forum-details.module')
+          .then((m) => m.ForumDetailsModule
+          ),
+      },
     ]
   }
 ];

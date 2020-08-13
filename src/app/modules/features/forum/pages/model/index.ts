@@ -1,5 +1,5 @@
 import * as Table from 'src/app/modules/commonTable/table/interfaces';
-// import { ListingFilterComponent } from '../component/listing-filter.component';
+import { ListingFilterComponent } from '../forum-listing/component/listing-filter.component';
 type forum = any;
 
 const defaultData: Table.Data<forum> = {
@@ -65,7 +65,7 @@ export class ForumTableDataSource implements Table.Source<forum> {
     index: true,
     addComponent: true,
     sorting: true,
-    // filterComponent: ListingFilterComponent
+    filterComponent: ListingFilterComponent
   };
   constructor(public data: Table.Data<forum> = defaultData) {}
 }
