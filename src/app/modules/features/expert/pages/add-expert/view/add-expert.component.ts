@@ -78,19 +78,6 @@ export class AddExpertComponent implements OnInit {
     return this.expertForm.controls[name];
   }
 
-  async onSelectFile(event) {
-    try {
-      let result = await onSelectFile(event);
-      this.imageFile = result.file;
-      this.profilePicURL = result.url;
-    } catch (err) {
-      if (err.type) {
-        this.$fileUploadService.showAlert(invalidImageError());
-      } else if (err.size) {
-        this.$fileUploadService.showAlert(invalidFileSize());
-      }
-    }
-  }
 
   /**
    * API hit for Category

@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { ForumRoutingModule } from './forum-routing.module';
 import { ForumComponent } from './view/forum.component';
-import { ForumService } from './service/forum.service';
+import { ForumService, ForumServiceResolve } from './service/forum.service';
 
 
 @NgModule({
@@ -12,6 +11,6 @@ import { ForumService } from './service/forum.service';
     CommonModule,
     ForumRoutingModule
   ],
-  providers: [ ForumService]
+  providers: [ ForumService , ForumServiceResolve]
 })
 export class ForumModule { }

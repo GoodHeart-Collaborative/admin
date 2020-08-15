@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, EmailValidator } from '@angular/forms';
 import { CategoryManagementService } from 'src/app/modules/features/category-management/service/category-management.service';
 import { EventService } from '../../../service/event.service';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
@@ -11,6 +11,7 @@ import { FileUploadService } from 'src/app/modules/shared/services/file-upload.s
 import { requiredProfilePic } from 'src/app/constant/messages';
 import { FormService } from 'src/app/modules/shared/services/form.service';
 import { PRAVICY, EVENT_CATEGORY } from 'src/app/constant/drawer';
+import { PATTERN } from 'src/app/constant/patterns';
 
 @Component({
   selector: 'app-add-event',
@@ -27,6 +28,7 @@ export class AddEventComponent implements OnInit {
   location: {};
   eventDetails: any;
   address: any;
+  descriptionMaxLength = VALIDATION_CRITERIA.descriptionMaxLength;
   constructor(
     private $fb: FormBuilder,
     private $fileUploadService: FileUploadService,
@@ -66,8 +68,8 @@ export class AddEventComponent implements OnInit {
       title: ['', Validators.compose(this.$formService.VALIDATION.name)],
       privacy: ['', [Validators.required]],
       price: [0, [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.priceMaxLength)]],
-      eventUrl: ['', Validators.compose(this.$formService.VALIDATION.email)],
-      description: ['', [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.descriptionMaxLength)]],
+      eventUrl: ['', [Validators.pattern(PATTERN.email), Validators.maxLength(VALIDATION_CRITERIA.emailMaxLength) ]],
+      description: ['', [Validators.required, Validators.maxLength(this.descriptionMaxLength)]],
       allowSharing: [true],
       location: [''],
       startDate: ['', Validators.required],

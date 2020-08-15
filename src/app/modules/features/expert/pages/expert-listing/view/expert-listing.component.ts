@@ -25,6 +25,7 @@ export class ExpertListingComponent implements OnInit {
     filterData: null,
     sortData: null
   };
+  total: any;
   constructor(
     private $article: ExpertService,
     private $router: Router,
@@ -67,6 +68,7 @@ export class ExpertListingComponent implements OnInit {
     }
     this.$article.queryData(params).then(res => {
       this.userData = res.data['list'];
+      this.total = res.data['total'];
       // console.log(res.data['list']);
       this.setUpTableResource(this.userData);
     });
@@ -126,7 +128,7 @@ export class ExpertListingComponent implements OnInit {
       pageIndex,
       pageSize,
       rows: userRecords,
-      total: userRecords['total']
+      total: this.total
     });
   }
 

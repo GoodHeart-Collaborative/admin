@@ -108,7 +108,7 @@
                                 <mat-label>Description</mat-label>
                                 <textarea rows="5" matInput placeholder="Ex. Write something here about this event..."
                                     appWhiteSpace formControlName="description" #description [maxlength]="400"></textarea>
-                                <mat-hint>{{description.value.trim().length}}/400</mat-hint>
+                                <mat-hint>{{description.value.trim().length}}/{{ descriptionMaxLength}}</mat-hint>
                                 <mat-error>{{form('description') |validate:'Description' }}</mat-error>
                             </mat-form-field>
                         </div>

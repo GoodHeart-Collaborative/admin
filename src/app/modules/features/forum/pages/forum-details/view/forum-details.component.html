@@ -1,4 +1,4 @@
-<div class="page-forum-topic-detail common-detail-page-ui">
+<!-- <div class="page-forum-topic-detail common-detail-page-ui">
     <div class="forum-topic-content">
         <div class="row-1">
             <div class="textual-detail">
@@ -42,7 +42,6 @@
         </div>
         <app-comments-show></app-comments-show>
 
-        <!-- Remove the code below once u integrate the app-comments-show component with this one. -->
         <div class="row-3">
             <ul class="users-listing">
                 <li class="single-user">
@@ -100,6 +99,41 @@
                 </li>
             </ul>
         </div>
-        <!-- end -->
+    </div>
+</div>  -->
+
+<div class="page-daily-inspiration-detail common-detail-page-ui">
+    <div class="daily-inspiration-content">
+        <div class="row-1">
+            <div class="textual-detail">
+                <div class="card_header_container profile_header">
+                    <div class="card_header">
+                        <figure mat-card-avatar class="image-cover">
+                            <!-- <img class="img-cover-fit" [src]="forumsData?.adminData[0]?.profilePicture | customImage:'USERS'|async " alt=""> -->
+                        </figure>
+                        <!-- <div class="heading-cover">
+                            <a class="user_name" href="javascript:void()">{{forumsData?.adminData[0]?.name}}</a>
+                            <p class="posted-on-date">Scheduled On: {{forumsData?.postedAt | date : 'd MMMM, y, h:mm a'}}</p>
+                        </div> -->
+                    </div>
+                    <h1>{{forumsData?.topic | titlecase}}</h1>
+                    <p>{{forumsData?.description}}</p>
+                </div>
+            
+            </div>
+            <div class="image-detail">
+                <img [src]="forumsData?.mediaUrl | customImage:'IMAGE_PLACEHOLDER'|async " >
+               
+            </div>
+        </div>
+        <!-- <div class="row-2" *ngIf="forumsData?.likeCount">
+            <div class="like-cover"
+                (click)="likeHandler(forumsData._id, forumsData?.likeCount)"><span
+                    class="material-icons">thumb_up</span>
+                <p>{{forumsData?.likeCount}}</p>
+            </div>
+        </div> -->
+        <app-comments-show [commentId]="forumsData?._id"></app-comments-show>
+
     </div>
 </div>

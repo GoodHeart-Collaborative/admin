@@ -8,38 +8,33 @@
     </ng-template>
 
 
-    <ng-template appFor="name" let-post="row">
+    <ng-template appFor="topic" let-post="row">
         <a href="javascript:void(0)" (click)="onDetails(post?._id, post)"
-            title="{{ (post?.name | titlecase) || 'String'}}">
-            {{ (post?.name | titlecase) || 'String'}}
+            title="{{ (post?.topic | titlecase) || 'String'}}">
+            {{ (post?.topic | titlecase) || 'String'}}
         </a>
     </ng-template>
 
-    <ng-template appFor="categoryData" let-post="row">
-        <span *ngFor="let item of post?.categoryData ; let i = index" title="{{ item?.title | titlecase}}">
-            {{ item?.title | titlecase}}{{i< post?.categoryData?.length -1?',' : '' }}
-        </span>
-    </ng-template>
 
     <ng-container>
 
         <ng-template appFor="actions" let-user="row">
             <div class="action-icon-cover">
-                <i class="material-icons icon-edit" (click)="oneditHandler(user?._id, user)" title="Edit">
+                <i class="material-icons icon-edit" (click)="oneditHandler(user?._id)" title="Edit">
                     edit
                 </i>
 
                 <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked')"
-                    *ngIf="user?.status === 'active';else templateAction" title="Block user">
+                    *ngIf="user?.status === 'active';else templateAction" title="Block ">
                     blocked</i>
                 <ng-template #templateAction>
                     <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active')"
-                        title="Unblock user">
+                        title="Unblock">
                         lock_open
                     </i>
                 </ng-template>
                 <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')"
-                    title="Delete user">
+                    title="Delete ">
                     delete
                 </i>
             </div>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/modules/shared/services/http.service';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
-import { FORUM , EXPERT} from 'src/app/constant/urls';
+import { FORUM , EXPERT, ACTION_FORUM , ADD_FORUM , FORUM_DETAILS} from 'src/app/constant/urls';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 
 @Injectable({
@@ -15,23 +15,23 @@ export class ForumService {
   ) { }
 
   async  queryData(params) {
-    return  this.$http.get(EXPERT, params).toPromise();
+    return  this.$http.get(FORUM, params).toPromise();
   }
 
   async updateStatus(id, status) {
-    // return await this.$http.patch(ACTION_EXPERT(id , status), {}).toPromise();
+    return await this.$http.patch(ACTION_FORUM(id , status), {}).toPromise();
   }
 
   async  add(params) {
-    // return  this.$http.post(ADD_EXPERT, params).toPromise();
+    return  this.$http.post(ADD_FORUM, params).toPromise();
   }
   async  edit(id, params) {
-    // return  this.$http.patch(EXPERT_DETAILS(id), params).toPromise();
+    // return  this.$http.patch(FORUM(id), params).toPromise();
   }
 
   async  updateDetails(id) {
-    // const data =  this.$http.get(EXPERT_DETAILS(id)).toPromise();
-    // return data;
+    const data =  this.$http.get(FORUM_DETAILS(id)).toPromise();
+    return data;
   }
 
 }

@@ -112,12 +112,13 @@ export const ACTION_GRATITUDE = (Id , status) => `admin/gratitude/${Id}/status/$
 // NOTIFICATION API's //
 export const NOTIFICATION = 'admin-notification';
 export const NOTIFICATION_DETAILS = `admin-notification/details`;
-export const ACTION_NOTIFICATION = (Id , status) => `admin/gratitude/${Id}/status/${status}`;
+export const ACTION_NOTIFICATION = (Id , status) => `admin/forums/${Id}/status/${status}`;
 
 // NOTIFICATION API's //
-export const FORUM = 'admin-forum';
-export const FORUM_DETAILS = `admin-forum/details`;
-export const ACTION_FORUM = (Id , status) => `admin/gratitude/${Id}/status/${status}`;
+export const FORUM = 'admin/forums';
+export const ADD_FORUM = 'admin/forum';
+export const FORUM_DETAILS = (postId) =>  `admin/forums/${postId}`;
+export const ACTION_FORUM = (Id , status) => `admin/forums/${Id}/status/${status}`;
 
 // EXPERT API's //
 export const EXPERT = 'admin/expert';

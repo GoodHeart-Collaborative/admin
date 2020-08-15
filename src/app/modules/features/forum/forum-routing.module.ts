@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ForumComponent } from './view/forum.component';
 import { FORUM_LIST , ADD_FORUM , FORUM_DETAILS} from 'src/app/constant/routes';
+import { ForumServiceResolve } from './service/forum.service';
 
 
 const routes: Routes = [
@@ -27,10 +28,19 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'edit/:id',
+        resolve : {
+          forumData : ForumServiceResolve
+        },
+        loadChildren: () => import('./pages/add-forum/add-forum.module')
+          .then((m) => m.AddForumModule
+          ),
+      },
+      {
         path: `${FORUM_DETAILS.path}/details`,
-        // resolve : {
-        //   dailyData : DailyUnicornHumourServiceResolve
-        // },
+        resolve : {
+          forumData : ForumServiceResolve
+        },
         loadChildren: () => import('./pages/forum-details/forum-details.module')
           .then((m) => m.ForumDetailsModule
           ),

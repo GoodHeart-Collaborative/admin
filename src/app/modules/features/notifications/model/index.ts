@@ -26,19 +26,18 @@ export class NotificationTableDataSource implements Table.Source<Category> {
     //     // resolve: (row: any) => row['title'] || '-',
     // },
     {
-        title: 'Total Likes',
-        id: 'likeCount',
+        title: 'Total Post',
+        id: 'totalPost',
         sorting: false,
-        templateBy: 'likeCount'
-        // resolve: (row: any) => row['likeCount'] || '0',
+        // templateBy: 'totalPost'
+        resolve: (row: any) => row['totalPost'] || '0',
     },
-    {
-      title: 'Total Comments',
-      id: 'commentCount',
-      sorting: false,
-      templateBy: 'commentCount'
-      // resolve: (row: any) => row['totalComments'] || '0',
-  },
+  //   {
+  //     title: 'Total Comments',
+  //     id: 'commentCount',
+  //     sorting: false,
+  //     templateBy: 'commentCount'
+  // },
     {
       title: 'Added On',
       id: 'createdAt',

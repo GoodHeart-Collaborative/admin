@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ForumTableDataSource } from '../../model';
+import { ForumTableDataSource } from '../../../model/index';
 import { ForumService } from '../../../service/forum.service';
 import { Router } from '@angular/router';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { GlobalService } from 'src/app/services/global/global.service';
 import { ExpertTableDataSource } from 'src/app/modules/features/expert/pages/expert-listing/models';
-import {  ADD_EXPERT, ADD_FORUM, FORUM } from 'src/app/constant/routes';
+import { ADD_FORUM, FORUM } from 'src/app/constant/routes';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 @Component({
@@ -25,6 +25,7 @@ export class ForumListingComponent implements OnInit {
     filterData: null,
     sortData: null
   };
+  total: any;
   constructor(
     private $forum: ForumService,
     private $router: Router,
@@ -67,6 +68,7 @@ export class ForumListingComponent implements OnInit {
     }
     this.$forum.queryData(params).then(res => {
       this.forumData = res.data['list'];
+      this.total = res.data['total'];
       this.setUpTableResource(this.forumData);
     });
   }
@@ -84,7 +86,7 @@ export class ForumListingComponent implements OnInit {
       .subscribe((confirm) => {
         if (confirm) {
           this.$forum.updateStatus(id, action).then((res) => {
-            // this.$utility.success(res.message);
+            this.$utility.success(res.message);
             this.handleActions(action, index);
           });
         }
@@ -121,11 +123,11 @@ export class ForumListingComponent implements OnInit {
 
   setUpTableResource(userRecords) {
     const { pageIndex, pageSize } = this.eventData;
-    this.tableSource = new ExpertTableDataSource({
+    this.tableSource = new ForumTableDataSource({
       pageIndex,
       pageSize,
       rows: userRecords,
-      total: userRecords['total']
+      total: this.total
     });
   }
 
@@ -138,5 +140,13 @@ onAdd() {
     this.$router.navigate([`${FORUM.fullUrl}`, id, 'details']);
 
   }
+
+  /**
+   * Edit Handler
+   * @param id
+   */
+ oneditHandler(id) {
+  this.$router.navigate([`${FORUM.fullUrl}`, 'edit', id]);
+}
 
 }
