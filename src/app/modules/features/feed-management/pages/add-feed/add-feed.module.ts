@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { AddFeedComponent } from '../view/add-feed.component';
+import { AddFeedComponent } from '../add-feed/view/add-feed.component';
 
 const routes: Routes = [
   {
