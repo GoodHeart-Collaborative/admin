@@ -133,6 +133,7 @@
             flex-wrap: wrap;
             padding: 10px 0px;
             .filter-button{
+                position: relative;
                 background: white;
                 border: none;
                 border-radius: 50%;
@@ -145,16 +146,33 @@
                 height: 40px;
                 box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.4);
                 transition: .3s;
-                &:hover{
-                    background: linear-gradient(323deg, #b58ecc 14%, #409fbb 98%);
-                    color: white;
+                &:hover, &.active{
+                    .filter-button-bg{   
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 50%;
+                        background: linear-gradient(323deg, #bc88da 14%, #409fbb 98%);
+                        color: white;
+                    }
+                    mat-icon{
+                        position: absolute;
+                        color: white;
+                        z-index: 1;
+                    }
+                }
+                &.active{
+                    .filter-button-bg{
+                        animation: rotate 1s linear infinite;
+                    }
+                    mat-icon{
+                        position: absolute;
+                        color: white;
+                        z-index: 1;
+                    }
                 }
             }
             button{
-                // @media screen and (max-width: 700px){
-                //     margin-top: 5px;
-                //     margin-bottom: 5px;
-                // }
                 &:not(:first-child){
                     margin-left: 15px;
                 }
@@ -229,4 +247,15 @@
             }
         }
     }
+}
+
+
+
+
+
+
+@keyframes rotate {
+	100% {
+		transform: rotate(1turn);
+	}
 }
