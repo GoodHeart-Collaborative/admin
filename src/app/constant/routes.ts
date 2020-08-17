@@ -468,6 +468,7 @@ export const ARTICLES_DETAILS: IRoute = {
     return `${ARTICLES.fullUrl}/${this.path}`;
   }
 };
+
 // EXPERT ROUTES //
 export const EXPERT: IRoute = {
   path: 'expert',
@@ -499,6 +500,8 @@ export const ADD_EXPERT_CONTENT: IRoute = {
     return `${EXPERT.fullUrl}/${this.path}`;
   }
 };
+
+
 // FORUM ROUTES //
 export const FORUM: IRoute = {
   path: 'forum',
@@ -530,3 +533,30 @@ export const ADD_FORUM_CONTENT: IRoute = {
     return `${FORUM.fullUrl}/${this.path}`;
   }
 };
+
+// FORUM ROUTES //
+export const FEED: IRoute = {
+  path: 'feed',
+  get fullUrl(): string {
+    return `${ADMIN.fullUrl}/${this.path}`;
+  }
+};
+export const FEED_LIST: IRoute = {
+  path: 'list',
+  get fullUrl(): string {
+    return `${FEED.fullUrl}/${this.path}`;
+  }
+};
+export const ADD_FEED: IRoute = {
+  path: 'add',
+  get fullUrl(): string {
+    return `${FEED.fullUrl}/${this.path}`;
+  }
+};
+export const FEED_DETAILS: IRoute = {
+  path: ':id',
+  get fullUrl(): string {
+    return `${FEED.fullUrl}/${this.path}`;
+  }
+};
+
