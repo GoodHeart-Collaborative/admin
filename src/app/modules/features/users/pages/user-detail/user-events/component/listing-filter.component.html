@@ -3,7 +3,8 @@
     <div>
         <!-- <form [formGroup]="filterForm">
         
-            <mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Status</mat-label>
                 <mat-select  placeholder="Status" formControlName="status" >
                     <mat-option [value]="item?.value" *ngFor="let item of statusList">{{item?.view}}</mat-option>
                 </mat-select>

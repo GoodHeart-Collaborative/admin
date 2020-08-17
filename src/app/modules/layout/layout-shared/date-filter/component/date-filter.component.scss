@@ -13,10 +13,10 @@
         mat-form-field{
             width: 50%;
             &:first-child{
-                padding-right: 10px;
+                padding-right: 8px;
             }
             &:last-child{
-                padding-left: 10px;
+                padding-left: 8px;
             }
         }
     }
@@ -27,7 +27,15 @@
     .mat-datepicker-toggle{
         .mat-icon-button{
             padding: 0px !important;
-            right: -11px;
+            width: 24px !important;
+            height: 24px !important;
         }
+    }
+    .mat-form-field-infix .mat-input-element{
+        line-height: initial !important;
+        min-height: initial !important;
+    }
+    .mat-form-field-appearance-outline .mat-form-field-flex{
+        padding: 0 .75em 0 .50em !important;
     }
 }
