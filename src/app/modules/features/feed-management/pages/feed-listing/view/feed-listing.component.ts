@@ -1,21 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { ForumTableDataSource } from '../../../model/index';
-import { ForumService } from '../../../service/forum.service';
+import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
+import { FeedTableDataSource } from '../../../model';
+import { ForumService } from 'src/app/modules/features/forum/service/forum.service';
 import { Router } from '@angular/router';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { GlobalService } from 'src/app/services/global/global.service';
-import { ADD_FORUM, FORUM } from 'src/app/constant/routes';
-import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
+import {  ADD_FEED, FEED } from 'src/app/constant/routes';
+import { FeedService } from '../../../service/feed.service';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 @Component({
-  selector: 'app-forum-listing',
-  templateUrl: './forum-listing.component.html',
-  styleUrls: ['./forum-listing.component.scss']
+  selector: 'app-feed-listing',
+  templateUrl: './feed-listing.component.html',
+  styleUrls: ['./feed-listing.component.scss']
 })
-export class ForumListingComponent implements OnInit {
+export class FeedListingComponent implements OnInit {
 
-  tableSource = new ForumTableDataSource();
+  tableSource = new FeedTableDataSource();
   forumData: any;
   eventData: Table.OptionData = {
     pageIndex: 0,
@@ -26,7 +27,7 @@ export class ForumListingComponent implements OnInit {
   };
   total: any;
   constructor(
-    private $forum: ForumService,
+    private $feed: FeedService,
     private $router: Router,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
@@ -65,7 +66,7 @@ export class ForumListingComponent implements OnInit {
       params['sortOrder'] = sortData.sortOrder;
       params['sortBy'] = sortData.sortBy;
     }
-    this.$forum.queryData(params).then(res => {
+    this.$feed.queryData(params).then(res => {
       this.forumData = res.data['list'];
       this.total = res.data['total'];
       this.setUpTableResource(this.forumData);
@@ -84,8 +85,8 @@ export class ForumListingComponent implements OnInit {
     this.$confirmBox.listAction('forum', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
       .subscribe((confirm) => {
         if (confirm) {
-          this.$forum.updateStatus(id, action).then((res) => {
-            this.$utility.success(res.message);
+          this.$feed.updateStatus(id, action).then((res) => {
+            // this.$utility.success(res.message);
             this.handleActions(action, index);
           });
         }
@@ -122,7 +123,7 @@ export class ForumListingComponent implements OnInit {
 
   setUpTableResource(userRecords) {
     const { pageIndex, pageSize } = this.eventData;
-    this.tableSource = new ForumTableDataSource({
+    this.tableSource = new FeedTableDataSource({
       pageIndex,
       pageSize,
       rows: userRecords,
@@ -132,14 +133,11 @@ export class ForumListingComponent implements OnInit {
 
 
 onAdd() {
-    this.$router.navigate([`${ADD_FORUM.fullUrl}`]);
+    this.$router.navigate([`${ADD_FEED.fullUrl}`]);
   }
 
   onDetails(id: string, type: string) {
-    this.$router.navigate([`${FORUM.fullUrl}`, id, 'details'],
-    {
-      queryParams: { type }
-    }
+    this.$router.navigate([`${FEED.fullUrl}`, id, 'details'],
     );
   }
 
@@ -148,10 +146,7 @@ onAdd() {
    * @param id
    */
  oneditHandler(id: string, type: string) {
-  this.$router.navigate([`${FORUM.fullUrl}`, 'edit', id],
-  {
-    queryParams: { type }
-  });
+  this.$router.navigate([`${FEED.fullUrl}`, 'edit', id]);
  }
 
 }

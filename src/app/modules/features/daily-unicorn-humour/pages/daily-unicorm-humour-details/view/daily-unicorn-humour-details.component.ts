@@ -1,9 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { DAILY_UNICORN } from 'src/app/constant/routes';
 import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
 import { CommonService } from 'src/app/modules/shared/services/common.service';
+import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
 
 @Component({
   selector: 'app-daily-unicorn-humour-details',
@@ -12,14 +13,18 @@ import { CommonService } from 'src/app/modules/shared/services/common.service';
 })
 export class DailyUnicornHumourDetailsComponent implements OnInit {
   dailyUnicornDetails: any;
+  smilesDetails: any;
 
   constructor(
-    private $router: Router,
-    private $dialogRef: MatDialogRef<DailyUnicornHumourDetailsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    private router: Router,
     private $matDailog: MatDialog,
-    private $common: CommonService) {
-    console.log(data);
+    private $common: CommonService,
+    $router: ActivatedRoute,
+    $breadcrumb: BreadcrumbService) {
+      this.smilesDetails = $router.snapshot.data.smileData.data;
+      console.log(this.smilesDetails);
+      
+      $breadcrumb.replace(this.smilesDetails._id, this.smilesDetails.topic);
   }
 
   ngOnInit() { }
@@ -27,8 +32,8 @@ export class DailyUnicornHumourDetailsComponent implements OnInit {
    * User Edit Handler
    */
   onEditDetails() {
-    this.$router.navigate([`${DAILY_UNICORN.fullUrl}`, 'edit', this.data._id]);
-    this.$dialogRef.close();
+    // this.router.navigate([`${DAILY_UNICORN.fullUrl}`, 'edit', this.data._id]);
+    // this.$dialogRef.close();
   }
 
   /**
@@ -55,8 +60,7 @@ export class DailyUnicornHumourDetailsComponent implements OnInit {
  * @param id
  */
   onlikeHandler(like: any, likesCount: number) {
- 
-    this.$matDailog.open(LikeActionComponent, {
+   this.$matDailog.open(LikeActionComponent, {
       width: '500px',
       data: like
     }).afterClosed().subscribe();
