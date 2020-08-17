@@ -4,6 +4,7 @@ import { ForumDetailsComponent } from './view/forum-details.component';
 import { Routes, RouterModule } from '@angular/router';
 import { CommentsShowModule } from 'src/app/modules/shared/comments-show/comments-show.module';
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
+import { LikeActionModule } from 'src/app/modules/shared/like-action/like-action.module';
 
 const routes: Routes = [
   {
@@ -18,7 +19,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     CommentsShowModule,
-    CustomImageModule
+    CustomImageModule,
+    LikeActionModule
   ]
 })
 export class ForumDetailsModule { }
