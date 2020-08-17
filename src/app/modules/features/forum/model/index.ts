@@ -20,12 +20,12 @@ export class ForumTableDataSource implements Table.Source<forum> {
     },
 
 
-    // {
-    //     title: 'forum',
-    //     id: 'categoryData',
-    //     sorting: false,
-    //     templateBy: 'categoryData'
-    // },
+    {
+        title: 'User Type',
+        id: 'userType',
+        sorting: false,
+        templateBy: 'userType'
+    },
     {
         title: 'Description',
         id: 'description',

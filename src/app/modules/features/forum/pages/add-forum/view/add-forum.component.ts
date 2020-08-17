@@ -99,18 +99,18 @@ export class AddForumComponent implements OnInit {
     let body = { mediaUrl: this.profilePicURL, ...this.forumForm.value };
     body.categoryName = this.categoryData.find(categgory => categgory._id === body.categoryId).name;
 
-    // if (this.forumsData && this.forumsData._id) {
-    //   this.$service.edit(this.forumsData._id, body).then(
-    //     data => {
-    //       this.forumForm.enable();
-    //       this.$utility.success(data.message);
-    //       this.$route.navigate([FORUM.fullUrl]);
-    //     },
-    //     err => {
-    //       this.forumForm.enable();
-    //     });
-    //   return;
-    // }
+    if (this.forumsData && this.forumsData._id) {
+      this.$service.edit(this.forumsData._id, body).then(
+        data => {
+          this.forumForm.enable();
+          this.$utility.success(data.message);
+          this.$route.navigate([FORUM.fullUrl]);
+        },
+        err => {
+          this.forumForm.enable();
+        });
+      return;
+    }
     console.log(body);
     this.$service.add(body).then(
       data => {

@@ -117,7 +117,8 @@ export const ACTION_NOTIFICATION = (Id , status) => `admin/forums/${Id}/status/$
 // NOTIFICATION API's //
 export const FORUM = 'admin/forums';
 export const ADD_FORUM = 'admin/forum';
-export const FORUM_DETAILS = (postId) =>  `admin/forums/${postId}`;
+export const FORUM_DETAILS = (postId) =>  `admin/forums/detail/${postId}`;
+export const EDIT_FORUM = (postId) =>  `admin/forums/${postId}`;
 export const ACTION_FORUM = (Id , status) => `admin/forums/${Id}/status/${status}`;
 
 // EXPERT API's //
