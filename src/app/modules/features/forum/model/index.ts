@@ -19,19 +19,18 @@ export class ForumTableDataSource implements Table.Source<forum> {
         templateBy: 'topic'
     },
 
-
-    {
-        title: 'User Type',
-        id: 'userType',
-        sorting: false,
-        templateBy: 'userType'
-    },
     {
         title: 'Description',
         id: 'description',
         sorting: false,
         resolve: (row: any) => row['description'],
       },
+      {
+        title: 'User Type',
+        id: 'userType',
+        sorting: false,
+        templateBy: 'userType'
+    },
     {
         title: 'Category Name',
         id: 'categoryName',
@@ -61,7 +60,7 @@ export class ForumTableDataSource implements Table.Source<forum> {
   ];
   options: Table.Options = {
     selection: false,
-    search: 'Search by topic',
+    search: 'Search by name',
     index: true,
     addComponent: true,
     sorting: true,

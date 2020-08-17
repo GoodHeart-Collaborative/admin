@@ -13,7 +13,7 @@
 
 
     <ng-template appFor="topic" let-forum="row">
-        <a href="javascript:void(0)" (click)="onDetails(forum?._id, forum)"
+        <a href="javascript:void(0)" (click)="onDetails(forum?._id, forum?.userType)"
             title="{{ (forum?.topic | titlecase) || 'String'}}">
             {{ (forum?.topic | titlecase) || 'String'}}
         </a>
@@ -24,7 +24,7 @@
 
         <ng-template appFor="actions" let-forum="row">
             <div class="action-icon-cover">
-                <i class="material-icons icon-edit" (click)="oneditHandler(forum?._id)" title="Edit">
+                <i class="material-icons icon-edit" (click)="oneditHandler(forum?._id, forum?.userType)" title="Edit">
                     edit
                 </i>
 

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/modules/shared/services/http.service';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { FORUM , EDIT_FORUM, ACTION_FORUM , ADD_FORUM , FORUM_DETAILS} from 'src/app/constant/urls';
-import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
+import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -29,9 +29,9 @@ export class ForumService {
     return  this.$http.patch(EDIT_FORUM(id), params).toPromise();
   }
 
-  async  updateDetails(id) {
+  async  updateDetails(id: string, type: string) {
     const params = {
-      userType: 'admin'
+      userType: type
     };
     const data =  this.$http.get(FORUM_DETAILS(id), params).toPromise();
     return data;
@@ -41,9 +41,9 @@ export class ForumService {
 
 @Injectable()
 export class ForumServiceResolve implements Resolve<any>  {
-  constructor(private $daily: ForumService) { }
+  constructor(private $daily: ForumService, private $route: Router ) { }
   resolve(route: ActivatedRouteSnapshot) {
-    return this.$daily.updateDetails(route.params['id']).catch(err => {
+    return this.$daily.updateDetails(route.params['id'], route.queryParams.type).catch(err => {
       if (err) {
         return null;
       }

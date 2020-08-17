@@ -136,17 +136,23 @@ onAdd() {
     this.$router.navigate([`${ADD_FORUM.fullUrl}`]);
   }
 
-  onDetails(id: string) {
-    this.$router.navigate([`${FORUM.fullUrl}`, id, 'details']);
-
+  onDetails(id: string, type: string) {
+    this.$router.navigate([`${FORUM.fullUrl}`, id, 'details'],
+    {
+      queryParams: { type }
+    }
+    );
   }
 
   /**
    * Edit Handler
    * @param id
    */
- oneditHandler(id) {
-  this.$router.navigate([`${FORUM.fullUrl}`, 'edit', id]);
-}
+ oneditHandler(id: string, type: string) {
+  this.$router.navigate([`${FORUM.fullUrl}`, 'edit', id],
+  {
+    queryParams: { type }
+  });
+ }
 
 }

@@ -44,6 +44,7 @@ const routes: Routes = [
         loadChildren: () => import('./pages/forum-details/forum-details.module')
           .then((m) => m.ForumDetailsModule
           ),
+        // data: {userType: }
       },
     ]
   }

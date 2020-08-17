@@ -35,7 +35,8 @@ export class AddForumComponent implements OnInit {
     $breadcrumb: BreadcrumbService,
   ) {
     this.createForm();
-    if (activateRoute.snapshot.data && activateRoute.snapshot.data.forumData.data) {
+    if (activateRoute.snapshot && activateRoute.snapshot.data &&
+      activateRoute.snapshot.data.forumData && activateRoute.snapshot.data.forumData.data) {
       this.forumsData = activateRoute.snapshot.data.forumData.data;
       $breadcrumb.replace(this.forumsData._id, this.forumsData.topic);
       this.forumPatchData();
@@ -49,7 +50,7 @@ export class AddForumComponent implements OnInit {
   forumPatchData() {
     this.forumForm.patchValue(this.forumsData);
     if (this.forumsData && this.forumsData.mediaUrl) {
-        this.profilePicURL = this.forumsData.mediaUrl;
+      this.profilePicURL = this.forumsData.mediaUrl;
     }
   }
 
@@ -63,6 +64,7 @@ export class AddForumComponent implements OnInit {
       console.log(res.data['data']);
     });
   }
+
   createForm() {
     this.forumForm = this.$fb.group({
       topic: ['', [Validators.required, Validators.maxLength(this.titleMaxLength)]],
