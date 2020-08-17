@@ -31,7 +31,7 @@
     </ng-template>
 
     <ng-template appFor="description" let-post="row">
-        <a href="javascript:void(0)" (click)="onDetailsHandler(post)" title="{{ post?.description | titlecase}}">
+        <a href="javascript:void(0)" (click)="onDetailsHandler(post?._id)" title="{{ post?.description | titlecase}}">
             {{ post?.description | titlecase}}
         </a>
     </ng-template>

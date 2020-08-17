@@ -6,25 +6,24 @@ import { MatDialogModule, MatIconModule } from '@angular/material';
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 import { LikeActionModule } from 'src/app/modules/shared/like-action/like-action.module';
 
-// const routes: Routes = [
-//   {
-//     path: '',
-//     component: DailyUnicornHumourDetailsComponent
-//   }
-// ];
+const routes: Routes = [
+  {
+    path: '',
+    component: DailyUnicornHumourDetailsComponent
+  }
+];
 
 @NgModule({
   declarations: [DailyUnicornHumourDetailsComponent],
   imports: [
     CommonModule,
+    RouterModule.forChild(routes),
     MatDialogModule,
     MatIconModule,
     CustomImageModule,
     LikeActionModule,
-    MatDialogModule
-    // RouterModule.forChild(routes)
   ],
-  entryComponents: [DailyUnicornHumourDetailsComponent],
+
   exports: [DailyUnicornHumourDetailsComponent]
 })
 export class DailyUnicormHumourDetailsModule { }

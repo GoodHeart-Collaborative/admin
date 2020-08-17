@@ -161,22 +161,24 @@ export class DailyUnicornHumourListingComponent implements OnInit {
    * User Edit Handler
    * @param id
    */
-  oneditHandler(id) {
+  oneditHandler(id: string) {
     this.$router.navigate([`${DAILY_UNICORN.fullUrl}`, 'edit', id]);
   }
 
   /***
    * User Details Handler
    */
-  onDetailsHandler(postDetails) {
-    this.$matDailog.open(DailyUnicornHumourDetailsComponent, {
-      width: '500px',
-      data: postDetails
-    }).afterClosed().subscribe(res => {
-      if (res) {
-        this.updateUsers();
-      }
-    });
+  onDetailsHandler(postDetails: string) {
+    this.$router.navigate([`${DAILY_UNICORN.fullUrl}`, postDetails, 'details']);
+
+    // this.$matDailog.open(DailyUnicornHumourDetailsComponent, {
+    //   width: '500px',
+    //   data: postDetails
+    // }).afterClosed().subscribe(res => {
+    //   if (res) {
+    //     this.updateUsers();
+    //   }
+    // });
   }
 
   /**

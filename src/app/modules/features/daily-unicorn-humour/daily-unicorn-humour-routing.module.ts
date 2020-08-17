@@ -21,6 +21,15 @@ const routes: Routes = [
       ),
     },
     {
+      path: `${DAILY_UNICORN_DETAILS.path}/details`,
+      resolve : {
+        smileData : DailyUnicornHumourServiceResolve
+      },
+      loadChildren: () => import('./pages/daily-unicorm-humour-details/daily-unicorm-humour-details.module')
+      .then( (m) => m.DailyUnicormHumourDetailsModule
+      ),
+    },
+    {
       path: ADD_DAILY_UNICORN.path,
       loadChildren: () => import('./pages/add-daily-unicorm-humour/add-daily-unicorm-humour.module')
       .then( (m) => m.AddDailyUnicormHumourModule
@@ -35,15 +44,7 @@ const routes: Routes = [
       .then( (m) => m.AddDailyUnicormHumourModule
       ),
      },
-    {
-      path: `${DAILY_UNICORN_DETAILS.path}/details`,
-      resolve : {
-        dailyData : DailyUnicornHumourServiceResolve
-      },
-      loadChildren: () => import('./pages/daily-unicorm-humour-details/daily-unicorm-humour-details.module')
-      .then( (m) => m.DailyUnicormHumourDetailsModule
-      ),
-    },
+ 
   ]
 }
 ];
