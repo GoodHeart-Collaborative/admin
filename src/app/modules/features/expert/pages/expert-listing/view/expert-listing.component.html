@@ -30,16 +30,16 @@
                 </i>
 
                 <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked')"
-                    *ngIf="user?.status === 'active';else templateAction" title="Block user">
+                    *ngIf="user?.status === 'active';else templateAction" title="Block">
                     blocked</i>
                 <ng-template #templateAction>
                     <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active')"
-                        title="Unblock user">
+                        title="Unblock">
                         lock_open
                     </i>
                 </ng-template>
                 <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')"
-                    title="Delete user">
+                    title="Delete">
                     delete
                 </i>
             </div>

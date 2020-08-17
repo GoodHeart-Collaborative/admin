@@ -28,21 +28,21 @@
 
         <ng-template appFor="actions" let-forum="row">
             <div class="action-icon-cover">
-                <i class="material-icons icon-edit" (click)="oneditHandler(forum?._id, forum?.userType)" title="Edit forum">
+                <i class="material-icons icon-edit" (click)="oneditHandler(forum?._id, forum?.userType)" title="Edit">
                     edit
                 </i>
 
                 <i class="material-icons icon-block" (click)="onActionHandler(forum._id, 'blocked')"
-                    *ngIf="forum?.status === 'active';else templateAction" title="Block forum">
+                    *ngIf="forum?.status === 'active';else templateAction" title="Block">
                     blocked</i>
                 <ng-template #templateAction>
                     <i class="material-icons icon-unblock" (click)="onActionHandler(forum._id, 'active')"
-                        title="Unblock forum">
+                        title="Unblock">
                         lock_open
                     </i>
                 </ng-template>
                 <i class="material-icons icon-delete" (click)="onActionHandler(forum._id, 'deleted')"
-                    title="Delete forum">
+                    title="Delete">
                     delete
                 </i>
             </div>

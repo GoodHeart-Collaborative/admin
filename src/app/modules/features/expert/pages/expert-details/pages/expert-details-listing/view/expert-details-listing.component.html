@@ -30,15 +30,15 @@
                      edit
                  </i> -->
 
-                <i class="material-icons icon-block" (click)="onActionHandler(expert._id, 'blocked')" *ngIf="expert?.status === 'active';else templateAction"  title="Block expert post">
+                <i class="material-icons icon-block" (click)="onActionHandler(expert._id, 'blocked')" *ngIf="expert?.status === 'active';else templateAction"  title="Block">
                      blocked</i>
                  <ng-template #templateAction>
-                     <i class="material-icons icon-unblock" (click)="onActionHandler(expert._id, 'active')" title="Unblock expert post" >
+                     <i class="material-icons icon-unblock" (click)="onActionHandler(expert._id, 'active')" title="Unblock" >
                          lock_open
                      </i>
                  </ng-template>
                 <i class="material-icons icon-delete" (click)="onActionHandler(expert._id, 'deleted')"
-                    title="Delete expert post">
+                    title="Delete">
                     delete
                 </i>
             </div>

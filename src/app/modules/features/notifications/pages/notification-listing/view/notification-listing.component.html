@@ -38,13 +38,13 @@
                  <i class="material-icons icon-edit" (click)="oneditHandler(user?._id)" title="Edit">
                      edit
                  </i>
-                 <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')" title="Delete user">
+                 <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')" title="Delete">
                      delete
                  </i>
-                 <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked')" *ngIf="user?.status === 'active';else templateAction"  title="Block user">
+                 <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked')" *ngIf="user?.status === 'active';else templateAction"  title="Block">
                      blocked</i>
                  <ng-template #templateAction>
-                     <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active')" title="Unblock user" >
+                     <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active')" title="Unblock" >
                          lock_open
                      </i>
                  </ng-template>
