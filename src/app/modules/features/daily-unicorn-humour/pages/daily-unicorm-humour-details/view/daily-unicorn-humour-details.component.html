@@ -1,28 +1,37 @@
-<div class="page-daily-unicorn-humour-details">
-    <div class="daily-unicorn-humour-details-content popup-ui">
-        <div class="popup-header">
-            <h3>Daily Smiles Detail</h3>
-		    <mat-icon class="close-icon" [mat-dialog-close]="false">close</mat-icon>
-        </div>
-        <div class="popup-content">
-            <div class="popup-body">
-                <div class="img-cover">
-                    <img [src]="data?.mediaUrl |customImage:'IMAGE_PLACEHOLDER'|async" alt="unicorn image"  *ngIf="data?.mediaType == 1">
-                    <video #myVideo muted [src]="data?.mediaUrl" *ngIf="data?.mediaType == 2" loop id="video"  controls
-                    >Your browser does not support the
-                      video tag.</video>
+<div class="page-daily-unicorn-humour-details common-detail-page-ui">
+    <div class="daily-unicorn-humour-details-content">
+        <div class="row-1">
+            <div class="textual-detail">
+                <div class="card_header_container profile_header">
+                    <div class="card_header">
+                        <figure mat-card-avatar class="image-cover">
+                            <img class="img-cover-fit"
+                                [src]="data?.mediaUrl |customImage:'IMAGE_PLACEHOLDER'|async"
+                                alt="">
+                        </figure>
+                        <div class="heading-cover">
+                            <a class="user_name" href="javascript:void()">User name static</a>
+                            <p class="posted-on-date">Scheduled On: </p>
+                        </div>
+                    </div>
+                    <p>{{data?.description}}</p>
                 </div>
-                <p>{{data?.description}}</p>
-                <div class="like-cover" (click)="likeHandler(data._id, data?.likeCount)"><span class="material-icons">thumb_up</span>
-                    <p>{{data?.likeCount}}</p>
-                </div>
+
             </div>
-            <div class="popup-footer">
-                <div class="btn-row">
-                    <button class="btn btn-simple" mat-stroked-button type="button" [mat-dialog-close]="false">Back</button>
-                    <button class="btn btn-primary" mat-stroked-button type="button" (click)="onEditDetails()" >Edit Detail </button>
-                </div>
+            <div class="image-detail">
+                <img class="img-cover-fit" [src]="data?.mediaUrl |customImage:'IMAGE_PLACEHOLDER'|async"
+                    alt="unicorn image" *ngIf="data?.mediaType == 1">
+                <video #myVideo muted [src]="data?.mediaUrl" *ngIf="data?.mediaType == 2" loop id="video" controls>Your
+                    browser does not support the
+                    video tag.</video>
             </div>
         </div>
+        <div class="row-2" *ngIf="dailyInspirationDetails?.likeCount">
+            <div class="like-cover" (click)="likeHandler(data._id, data?.likeCount)"><span
+                    class="material-icons">thumb_up</span>
+                <p>{{data?.likeCount}}</p>
+            </div>
+        </div>
+        <!-- <app-comments-show [commentId]="dailyInspirationDetails?._id"></app-comments-show> -->
     </div>
 </div>
