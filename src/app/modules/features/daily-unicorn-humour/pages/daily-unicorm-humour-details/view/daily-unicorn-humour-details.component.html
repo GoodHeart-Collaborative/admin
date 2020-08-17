@@ -6,32 +6,32 @@
                     <div class="card_header">
                         <figure mat-card-avatar class="image-cover">
                             <img class="img-cover-fit"
-                                [src]="data?.mediaUrl |customImage:'IMAGE_PLACEHOLDER'|async"
+                                [src]="smilesDetails?.addedBy?.profilePicture |customImage:'IMAGE_PLACEHOLDER'|async"
                                 alt="">
                         </figure>
                         <div class="heading-cover">
-                            <a class="user_name" href="javascript:void()">User name static</a>
-                            <p class="posted-on-date">Scheduled On: </p>
+                            <a class="user_name" href="javascript:void()">{{smilesDetails?.addedBy?.name}}</a>
+                            <p class="posted-on-date">Scheduled On: {{smilesDetails?.postedAt | date : 'd MMMM, y, h:mm a'}} </p>
                         </div>
                     </div>
-                    <p>{{data?.description}}</p>
+                    <p>{{smilesDetails?.description}}</p>
                 </div>
 
             </div>
             <div class="image-detail">
-                <img class="img-cover-fit" [src]="data?.mediaUrl |customImage:'IMAGE_PLACEHOLDER'|async"
-                    alt="unicorn image" *ngIf="data?.mediaType == 1">
-                <video #myVideo muted [src]="data?.mediaUrl" *ngIf="data?.mediaType == 2" loop id="video" controls>Your
+                <img class="img-cover-fit" [src]="smilesDetails?.mediaUrl |customImage:'IMAGE_PLACEHOLDER'|async"
+                    alt="unicorn image" *ngIf="smilesDetails?.mediaType == 1">
+                <video #myVideo muted [src]="smilesDetails?.mediaUrl" *ngIf="smilesDetails?.mediaType == 2" loop id="video" controls>Your
                     browser does not support the
                     video tag.</video>
             </div>
         </div>
-        <div class="row-2" *ngIf="dailyInspirationDetails?.likeCount">
-            <div class="like-cover" (click)="likeHandler(data._id, data?.likeCount)"><span
+        <div class="row-2" >
+            <div class="like-cover" (click)="likeHandler(smilesDetails._id, smilesDetails?.likeCount)"><span
                     class="material-icons">thumb_up</span>
-                <p>{{data?.likeCount}}</p>
+                <p>{{smilesDetails?.likeCount}}</p>
             </div>
         </div>
-        <!-- <app-comments-show [commentId]="dailyInspirationDetails?._id"></app-comments-show> -->
+        <app-comments-show [commentId]="smilesDetails?._id"></app-comments-show>
     </div>
 </div>

@@ -23,18 +23,11 @@ export class DailyUnicornHumourDetailsComponent implements OnInit {
     $breadcrumb: BreadcrumbService) {
       this.smilesDetails = $router.snapshot.data.smileData.data;
       console.log(this.smilesDetails);
-      
-      $breadcrumb.replace(this.smilesDetails._id, this.smilesDetails.topic);
+      $breadcrumb.replace(this.smilesDetails._id, this.smilesDetails.description);
   }
 
   ngOnInit() { }
-  /**
-   * User Edit Handler
-   */
-  onEditDetails() {
-    // this.router.navigate([`${DAILY_UNICORN.fullUrl}`, 'edit', this.data._id]);
-    // this.$dialogRef.close();
-  }
+
 
   /**
    * ON LIKE Handler

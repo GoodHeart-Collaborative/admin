@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MatDialogModule, MatIconModule } from '@angular/material';
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 import { LikeActionModule } from 'src/app/modules/shared/like-action/like-action.module';
+import { CommentsShowModule } from 'src/app/modules/shared/comments-show/comments-show.module';
 
 const routes: Routes = [
   {
@@ -22,6 +23,7 @@ const routes: Routes = [
     MatIconModule,
     CustomImageModule,
     LikeActionModule,
+    CommentsShowModule
   ],
 
   exports: [DailyUnicornHumourDetailsComponent]
