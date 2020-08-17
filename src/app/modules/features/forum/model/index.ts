@@ -35,7 +35,8 @@ export class ForumTableDataSource implements Table.Source<forum> {
         title: 'Category Name',
         id: 'categoryName',
         sorting: false,
-        resolve: (row: any) => row['categoryName'],
+        templateBy: 'categoryName'
+        // resolve: (row: any) => row['categoryName'],
       },
       {
         title: 'Added On',

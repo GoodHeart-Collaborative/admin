@@ -11,6 +11,10 @@
         {{ forum?.userType | titlecase}}
     </ng-template>
 
+    <ng-template appFor="categoryName" let-forum="row">
+        {{ forum?.categoryData?.title | titlecase}}
+    </ng-template>
+
 
     <ng-template appFor="topic" let-forum="row">
         <a href="javascript:void(0)" (click)="onDetails(forum?._id, forum?.userType)"

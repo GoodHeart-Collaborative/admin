@@ -5,12 +5,21 @@
         <div class="row-1">
             <div class="textual-detail">
                 <div class="card_header_container profile_header">
-                    <div class="card_header">
+                    <div class="card_header" *ngIf="forumsData?.userData">
                         <figure mat-card-avatar class="image-cover">
                             <img class="img-cover-fit" [src]="forumsData?.userData?.profilePicUrl[0] | customImage:'USERS'|async " alt="">
                         </figure>
                         <div class="heading-cover">
                             <a class="user_name" href="javascript:void()">{{forumsData?.userData?.firstName}} {{forumsData?.userData?.lastName || 'string'}}</a>
+                            <!-- <p class="posted-on-date">Scheduled On: {{forumsData?.postedAt | date : 'd MMMM, y, h:mm a'}}</p> -->
+                        </div>
+                    </div>
+                    <div class="card_header" *ngIf="forumsData?.adminData">
+                        <figure mat-card-avatar class="image-cover">
+                            <img class="img-cover-fit" [src]="forumsData?.adminData?.profilePicture | customImage:'USERS'|async " alt="">
+                        </figure>
+                        <div class="heading-cover">
+                            <a class="user_name" href="javascript:void()">{{(forumsData?.adminData?.name | titlecase) || 'string'  }} </a>
                             <!-- <p class="posted-on-date">Scheduled On: {{forumsData?.postedAt | date : 'd MMMM, y, h:mm a'}}</p> -->
                         </div>
                     </div>
