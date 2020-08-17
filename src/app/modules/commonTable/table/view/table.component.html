@@ -7,10 +7,11 @@
 		<button class="filter-button" [class.active]="false" *ngIf="hasFilter" title="Filter"
 			 (click)="onFilterHandler()">
 			 <div class="filter-button-bg"></div>
-			<mat-icon>filter_list</mat-icon>
-		</button>
-		<button class="filter-button" *ngIf="hasAdd" title="Add"
-			 (click)="onAddHandler()">
+			 <mat-icon>filter_list</mat-icon>
+			</button>
+			<button class="filter-button" *ngIf="hasAdd" title="Add"
+			(click)="onAddHandler()">
+			<div class="filter-button-bg"></div>
 			<mat-icon>add</mat-icon>
 			<!-- <span>{{tableSource.options.addComponent}}</span> -->
 		</button>
