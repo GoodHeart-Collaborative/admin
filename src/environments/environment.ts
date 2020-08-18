@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  url: 'http://womencomqaapi.appskeeper.com/v1/',
-  // url: 'http://womencomdevapi.appskeeper.com/v1/',
+  // url: 'http://womencomqaapi.appskeeper.com/v1/',
+  url: 'http://womencomdevapi.appskeeper.com/v1/',
   tokenKey: 'desknow-admin-token',
   config: {
     AWS_ACCESS_KEY: 'AKIA6DQMUBGGY6CUWRG4',
@@ -13,7 +13,7 @@ export const environment = {
     REGION: 'us-east-1',
     BUCKET_NAME: 'appinventiv-development'
     },
-};
+}; 
 
 // S3 bucket
 // S3 Bucket---appinventiv-development

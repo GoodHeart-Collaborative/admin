@@ -49,10 +49,13 @@ export class AddExpertComponent implements OnInit {
       if (application) {
         this.details = global.decodeData(application);
         console.log(this.details);
-        $breadcrumb.replace(this.details._id, this.details.contentDisplayName);
+        $breadcrumb.replace(this.details._id, this.details.name);
         this.expertForm.patchValue(this.details);
         if (this.details && this.details.profilePicUrl) {
           this.profilePicURL = this.details.profilePicUrl;
+        }
+        if (this.details && this.details.categoryData) {
+           this.categoryData = this.details.categoryData;
         }
       }
     });
@@ -64,13 +67,13 @@ export class AddExpertComponent implements OnInit {
 
   createForm() {
     this.expertForm = this.$fb.group({
-      categoryId: [],
+      categoryId: ['', Validators.required],
       name: ['', Validators.compose(this.$formService.VALIDATION.name)],
       email: ['', Validators.compose(this.$formService.VALIDATION.email)],
       profession: ['', [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.professionMaxLength)]],
       industry: [1 , Validators.required],
       bio: ['', [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.bioMaxLength)]],
-      experience: ['']
+      experience: ['', Validators.required]
     });
   }
 
@@ -90,7 +93,6 @@ export class AddExpertComponent implements OnInit {
     };
     this.$category.queryData(params).then(res => {
       this.categoryData = res.data['data'];
-      console.log(res.data['data']);
     });
   }
 
@@ -118,7 +120,6 @@ export class AddExpertComponent implements OnInit {
     }
     let body = { profilePicUrl: this.profilePicURL, ...this.expertForm.value };
     if (this.details && this.details._id) {
-      delete body.type;
       this.$service.edit(this.details._id, body).then(
         data => {
           this.expertForm.enable();

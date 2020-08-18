@@ -19,7 +19,7 @@ export class CategoryTableDataSource implements Table.Source<Category> {
       templateBy: 'imageUrl'
     },
     {
-      title: 'Title',
+      title: 'Category Name',
       id: 'title',
       sorting: true,
       templateBy: 'title'

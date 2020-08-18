@@ -20,7 +20,7 @@ export class DailyUnicornTableDataSource implements Table.Source<Category> {
       // resolve: (row: any) => row['title'] || '-',
     },
     {
-      title: 'Description',
+      title: 'Title',
       id: 'description',
       sorting: true,
       templateBy: 'description'
@@ -68,7 +68,7 @@ export class DailyUnicornTableDataSource implements Table.Source<Category> {
   ];
   options: Table.Options = {
     selection: false,
-    search: 'Search by Description',
+    search: 'Search by Title',
     index: true,
     addComponent: true,
     sorting: true,

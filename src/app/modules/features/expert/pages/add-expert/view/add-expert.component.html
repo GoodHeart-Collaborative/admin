@@ -58,13 +58,13 @@
                                 </mat-select>
                                 <mat-error>{{form('experience') |validate:'Experience' }}</mat-error>
                             </mat-form-field>
-                     -
+                     
                         </div>
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Category</mat-label>
                                 <mat-select formControlName="categoryId" multiple>
-                                    <mat-option *ngFor="let data of categoryData" [value]="data?._id">{{data?.name}}</mat-option>
+                                    <mat-option *ngFor="let data of categoryData" [value]="data?._id">{{data?.title | titlecase}}</mat-option>
                                 </mat-select>
                                 <mat-error>{{form('categoryId') |validate:'Category' }}</mat-error>
                             </mat-form-field>
