@@ -83,7 +83,7 @@ export class ExpertListingComponent implements OnInit {
   onActionHandler(id: string, action: ActionType) {
     console.log(this.userData);
     const index = this.userData.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('post', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
+    this.$confirmBox.listAction('expert', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
       .subscribe((confirm) => {
         if (confirm) {
           this.$article.updateStatus(id, action).then((res) => {
