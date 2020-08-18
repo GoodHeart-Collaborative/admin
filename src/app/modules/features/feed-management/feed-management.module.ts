@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { FeedManagementRoutingModule } from './feed-management-routing.module';
 import { FeedManagementComponent } from './view/feed-management.component';
 import { FeedService } from './service/feed.service';
+import { MatTabsModule } from '@angular/material';
 
 
 @NgModule({
   declarations: [FeedManagementComponent],
   imports: [
     CommonModule,
-    FeedManagementRoutingModule
+    FeedManagementRoutingModule,
+    MatTabsModule,
   ],
   providers: [FeedService]
 })
