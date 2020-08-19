@@ -56,7 +56,6 @@ export class ExpertDetailsComponent implements OnInit {
  */
   onTabChange(event: MatTabChangeEvent) {
     this.index = event.index;
-    console.log(this.index);
     this.updateList(this.index);
 
   }
@@ -64,7 +63,6 @@ export class ExpertDetailsComponent implements OnInit {
  * API Hit for List
  */
   updateList(index?: number) {
-    
     if (!index ) {
         return;
     }
@@ -111,7 +109,6 @@ export class ExpertDetailsComponent implements OnInit {
   onOptionChange(event) {
     this.eventData = event;
     console.log(event);
-    
     this.updateList(this.index);
   }
 

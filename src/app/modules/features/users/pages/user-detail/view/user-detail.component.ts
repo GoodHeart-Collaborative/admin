@@ -21,7 +21,7 @@ export class UserDetailComponent implements OnInit {
     filterData: null,
     sortData: null
   };
-  userData: unknown;
+  userData: any;
   index: any;
   eventListData: any;
 
@@ -102,6 +102,5 @@ export class UserDetailComponent implements OnInit {
     this.index = event.index;
     console.log(this.index);
     this.updateList(this.index);
-
   }
 }

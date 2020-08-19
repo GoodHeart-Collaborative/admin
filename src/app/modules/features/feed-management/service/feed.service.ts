@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/modules/shared/services/http.service';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
-import { FORUM } from 'src/app/constant/urls';
+import {  ACTION_GRATITUDE, FEED, ACTION_FEED } from 'src/app/constant/urls';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +14,20 @@ export class FeedService {
   ) { }
 
   async  queryData(params) {
-    return  this.$http.get(FORUM, params).toPromise();
+    return  this.$http.get(FEED, params).toPromise();
+  }
+  async  onShoutOutsHandler(params) {
+    // return  this.$http.get(GRATITUDE, params).toPromise();
+  }
+  async  onEncouragingMessageHandler(params) {
+    // return  this.$http.get(GRATITUDE, params).toPromise();
   }
 
+  // async updateGratitudeStatus(id, status) {
+  //   return await this.$http.patch(ACTION_GRATITUDE(id , status), {}).toPromise();
+  // }
   async updateStatus(id, status) {
-    // return await this.$http.patch(ACTION_FORUM(id , status), {}).toPromise();
+    return await this.$http.patch(ACTION_FEED(id), {}).toPromise();
   }
 
   async  add(params) {

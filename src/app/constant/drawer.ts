@@ -101,3 +101,7 @@ export const EVENT_INTEREST = {
 	GOING: 1,
 	INTEREST: 2
 };
+export const FEED_TYPE = {
+	GRATITUDE: 4,
+	SHOUTOUTS: 8
+};

@@ -62,24 +62,7 @@ export const ARTICLES_DETAILS = (Id) => `admin/inspire/${Id}`;
 // DREASHBOARD API's //
 export const DASHBOARD = 'admin/dashboard';
 
-// HOST API's //
-export const HOST = 'admin/host/list';
-export const HOST_DELETE = (userId) => `admin/host/${userId}/delete`;
-export const HOST_VERFIY = (userId) => `admin/host/${userId}/verify`;
-export const HOST_BLOCK = (userId) => `admin/host/${userId}/block`;
-export const HOST_UNBLOCK = (userId) => `admin/host/${userId}/unblock`;
 
-// HOST API's //
-
-// AMENITY API's //
-export const AMENITY_LIST_GET = 'admin/amenities/list';
-export const AMENITY_ACTIVE_PUT = (id) => `admin/amenities/${id}/active`;
-export const AMENITY_INACTIVE_PUT = (id) => `admin/amenities/${id}/inactive`;
-export const AMENITY_DETAIL_GET = (id) => `admin/amenities/${id}/details`;
-export const AMENITY_ADD_POST = `admin/amenities/add`;
-export const AMENITY_EDIT_PUT = `admin/amenities/update`;
-
-// AMENITY API's //
 
 export const USER_DELETE = (userId) => `admin/users/${userId}/delete`;
 export const USER_BLOCK = (userId) => `admin/users/${userId}/block`;
@@ -114,7 +97,12 @@ export const NOTIFICATION = 'admin-notification';
 export const NOTIFICATION_DETAILS = `admin-notification/details`;
 export const ACTION_NOTIFICATION = (Id , status) => `admin/forums/${Id}/status/${status}`;
 
-// NOTIFICATION API's //
+// FEED API's //
+export const FEED = 'admin/feed';
+// export const NOTIFICATION_DETAILS = `admin-notification/details`;
+export const ACTION_FEED = (Id) => `admin/feed/${Id}`;
+
+// FORUM API's //
 export const FORUM = 'admin/forums';
 export const ADD_FORUM = 'admin/forum';
 export const FORUM_DETAILS = (postId) =>  `admin/forums/detail/${postId}`;

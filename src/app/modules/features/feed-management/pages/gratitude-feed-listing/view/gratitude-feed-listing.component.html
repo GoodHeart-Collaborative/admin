@@ -1,0 +1,44 @@
+<app-table [tableSource]="tableSource" (optionChange)="onOptionChange($event)">
+
+    <ng-template appFor="createdAt" let-gratitude="row">
+        {{ gratitude?.createdAt |customDate}}
+    </ng-template>
+
+    <ng-template appFor="status" let-gratitude="row">
+        {{ gratitude?.status | titlecase}}
+    </ng-template>
+
+    <ng-template appFor="privacy" let-gratitude="row">
+        {{ gratitude?.privacy | titlecase}}
+    </ng-template>
+
+
+    <ng-template appFor="description" let-gratitude="row">
+        <a href="javascript:void(0)" (click)="onDetailsHandler(gratitude?._id, gratitude?.privacy)" [class.click-not-allowed]="gratitude?.privacy == 'private'">
+            {{ (gratitude?.description  | titlecase) || 'String'}}
+        </a>
+    </ng-template>
+
+    <ng-container>
+
+        <ng-template appFor="actions" let-gratitude="row">
+            <div class="action-icon-cover">
+
+                <i class="material-icons icon-block" (click)="onActionHandler(gratitude._id, 'blocked', gratitude?.privacy)" [class.click-not-allowed]="gratitude?.privacy == 'private'"
+                    *ngIf="gratitude?.status === 'active';else templateAction" title="Block gratitude">
+                    blocked</i>
+                <ng-template #templateAction>
+                    <i class="material-icons icon-unblock" (click)="onActionHandler(gratitude._id, 'active', gratitude?.privacy)" [class.click-not-allowed]="gratitude?.privacy == 'private'"
+                        title="Unblock gratitude">
+                        lock_open
+                    </i>
+                </ng-template>
+                <i class="material-icons icon-delete" (click)="onActionHandler(gratitude._id, 'deleted',  user?.privacy)" [class.click-not-allowed]="user?.privacy == 'private'"
+                    title="Delete gratitude">
+                    delete
+                </i>
+            </div>
+
+        </ng-template>
+    </ng-container>
+</app-table>
