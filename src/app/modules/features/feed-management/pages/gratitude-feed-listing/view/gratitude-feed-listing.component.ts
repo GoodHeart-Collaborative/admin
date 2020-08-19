@@ -5,6 +5,7 @@ import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { FeedService } from '../../../service/feed.service';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
+import { FEED_TYPE } from 'src/app/constant/drawer';
 @Component({
   selector: 'app-gratitude-feed-listing',
   templateUrl: './gratitude-feed-listing.component.html',
@@ -53,11 +54,15 @@ export class GratitudeFeedListingComponent implements OnInit, OnChanges {
     if (privacy == 'private') {
       return;
     }
-    const index = this.gratitudeDetails.data.findIndex(user => user._id === id);
+    const index = this.gratitudeDetails.list.findIndex(user => user._id === id);
     this.$confirmBox.listAction('gratitude', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
       .subscribe((confirm) => {
         if (confirm) {
-          this.$feed.updateStatus(id, action).then((res) => {
+          const params = {
+            status: action,
+            type: FEED_TYPE.GRATITUDE
+          }
+          this.$feed.updateStatus(id, params).then((res) => {
             this.$utility.success(res.message);
             this.handleActions(action, index);
           });
@@ -72,7 +77,7 @@ export class GratitudeFeedListingComponent implements OnInit, OnChanges {
   handleActions(action: ActionType, index: number) {
     switch (action) {
       case 'deleted':
-        this.gratitudeDetails.data.splice(index, 1);
+        this.gratitudeDetails.list.splice(index, 1);
         this.gratitudeDetails.total = this.gratitudeDetails.total - 1;
         break;
       case 'active':
@@ -90,7 +95,7 @@ export class GratitudeFeedListingComponent implements OnInit, OnChanges {
   }
 
   handleStatus(action: 'blocked' | 'active', index: number) {
-    this.gratitudeDetails.data = this.gratitudeDetails.data.map((user, i) => {
+    this.gratitudeDetails.list = this.gratitudeDetails.list.map((user, i) => {
       if (i === index) {
         user.status = action;
       }

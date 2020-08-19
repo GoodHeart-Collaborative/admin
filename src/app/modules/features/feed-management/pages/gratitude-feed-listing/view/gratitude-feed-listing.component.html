@@ -14,7 +14,7 @@
 
 
     <ng-template appFor="description" let-gratitude="row">
-        <a href="javascript:void(0)" (click)="onDetailsHandler(gratitude?._id, gratitude?.privacy)" [class.click-not-allowed]="gratitude?.privacy == 'private'">
+        <a href="javascript:void(0)"  [class.click-not-allowed]="gratitude?.privacy == 'private'">
             {{ (gratitude?.description  | titlecase) || 'String'}}
         </a>
     </ng-template>

@@ -9,7 +9,7 @@
     </ng-template>
 
     <ng-template appFor="title" let-shoutouts="row">
-        <a href="javascript:void(0)" (click)="onDetailsHandler(shoutouts?._id, shoutouts?.privacy)" [class.click-not-allowed]="shoutouts?.privacy == 'private'">
+        <a href="javascript:void(0)"  [class.click-not-allowed]="shoutouts?.privacy == 'private'">
         {{ shoutouts?.title | titlecase}}
     </a>
     </ng-template>

@@ -17,7 +17,7 @@ import { EncouragingMessageModule } from './pages/encouraging-message/encouragin
     MatTabsModule,
     GratitudeFeedListingModule,
     ShoutoutsListingModule,
-    EncouragingMessageModule
+    // EncouragingMessageModule
   ],
   providers: [FeedService]
 })

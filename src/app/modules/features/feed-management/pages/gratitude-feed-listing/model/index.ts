@@ -1,4 +1,5 @@
 import * as Table from 'src/app/modules/commonTable/table/interfaces';
+import { ListingFilterComponent } from '../component/listing-filter.component';
 type User = any;
 
 const defaultData: Table.Data<User> = {
@@ -58,7 +59,7 @@ export class GratitudeFeedTableDataSource implements Table.Source<User> {
     search: 'Search by Description',
     index: true,
     sorting: true,
-    // filterComponent: UsersListingFilterComponent,
+    filterComponent: ListingFilterComponent,
   };
   constructor(public data: Table.Data<User> = defaultData) {}
 }

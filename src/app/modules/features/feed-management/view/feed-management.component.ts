@@ -4,13 +4,14 @@ import { FeedService } from '../service/feed.service';
 import { FEED_TYPE } from 'src/app/constant/drawer';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 
+
 @Component({
   selector: 'app-feed-management',
   templateUrl: './feed-management.component.html',
   styleUrls: ['./feed-management.component.scss']
 })
 export class FeedManagementComponent implements OnInit {
-  index: number;
+  index = 0;
   eventData: Table.OptionData = {
     pageIndex: 0,
     pageSize: 10,
@@ -18,13 +19,18 @@ export class FeedManagementComponent implements OnInit {
     filterData: null,
     sortData: null
   };
-  gratitudeDetails: unknown;
+  feedType = {
+    0: FEED_TYPE.GRATITUDE,
+    1: FEED_TYPE.SHOUTOUTS,
+    2: FEED_TYPE.SHOUTOUTS
+  };
+  gratitudeDetails: any;
   shoutOutsDetails: any;
 
   constructor(
     private $feed: FeedService,
   ) {
-    this.updateList(0);
+    this.updateList(this.index);
 
   }
 
@@ -62,27 +68,28 @@ export class FeedManagementComponent implements OnInit {
       params['sortOrder'] = sortData.sortOrder;
       params['sortBy'] = sortData.sortBy;
     }
-    if (index == 0) {
-      params['type'] = FEED_TYPE.GRATITUDE;
-      this.$feed.queryData(params).then(res => {
-        this.gratitudeDetails = res.data;
-      });
-    }
-    if (index == 1) {
+    params['type'] = this.feedType[index];
+    this.$feed.queryData(params).then(res => {
+    this.responseHander(index, res);
+    });
+  }
 
-      this.$feed.queryData(params).then(res => {
-        console.log(res);
-        // this.shoutOutsDetails = res.data;
-      });
+  responseHander(tabIndex: number, response) {
+    switch (tabIndex) {
+      case 0: {
+        this.gratitudeDetails = response.data;
+        break;
+      }
+      case 1: {
+        break;
+      }
+      case 2: {
+        this.shoutOutsDetails = response.data;
+        break;
+      }
+       default:
+        break;
     }
-    if (index == 2) {
-      params['type'] = FEED_TYPE.SHOUTOUTS;
-      this.$feed.queryData(params).then(res => {
-        console.log(res);
-        this.shoutOutsDetails = res.data;
-      });
-    }
-
   }
 
   /**

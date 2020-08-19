@@ -45,12 +45,19 @@ export class ExpertDetailsTableDataSource implements Table.Source<Category> {
         sorting: false,
         resolve: (row: any) => row['price'],
       },
-    // {
-    //     title: 'Total Post',
-    //     id: 'totalPost',
-    //     sorting: false,
-    //     resolve: (row: any) => row['totalPost'] || '0',
-    //   },
+
+    {
+        title: 'Total Like',
+        id: 'likeCount',
+        sorting: false,
+        templateBy: 'likeCount'
+      },
+    {
+        title: 'Total Comments',
+        id: 'commentCount',
+        sorting: false,
+        templateBy: 'commentCount'
+      },
     {
       title: 'Date of Article',
       id: 'createdAt',

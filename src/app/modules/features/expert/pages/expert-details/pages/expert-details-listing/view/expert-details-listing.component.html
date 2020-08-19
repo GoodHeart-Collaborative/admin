@@ -14,10 +14,22 @@
          </a>
      </ng-template>
 
+          <ng-template appFor="likeCount" let-row="row">
+         <a (click)="likeHandler(row._id, row?.likeCount)" [class.color-black]="row?.likeCount < 1">
+             {{ row?.likeCount}}
+         </a>
+     </ng-template> 
+ 
+     <ng-template appFor="commentCount" let-row="row">
+         <a (click)="onCommentsHandler(row._id, row?.commentCount)" [class.color-black]="row?.commentCount < 1">
+             {{ row?.commentCount}}
+         </a>
+     </ng-template>
+
      <ng-template appFor="categoryData" let-post="row">
         <span *ngFor="let item of post?.categoryData ; let i = index" title="{{ item?.name | titlecase}}">
-            {{ item?.name | titlecase}}{{i< post?.categoryData?.length -1?',' : '' }}
-            <!-- {{item}} -->
+            {{ item?.title | titlecase}}{{i< post?.categoryData?.length -1?',' : '' }}
+            
 
         </span>
     </ng-template>

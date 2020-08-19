@@ -26,8 +26,8 @@ export class FeedService {
   // async updateGratitudeStatus(id, status) {
   //   return await this.$http.patch(ACTION_GRATITUDE(id , status), {}).toPromise();
   // }
-  async updateStatus(id, status) {
-    return await this.$http.patch(ACTION_FEED(id), {}).toPromise();
+  async updateStatus(id, params) {
+    return await this.$http.patch(ACTION_FEED(id), params).toPromise();
   }
 
   async  add(params) {

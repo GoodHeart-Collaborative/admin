@@ -105,3 +105,13 @@ export const FEED_TYPE = {
 	GRATITUDE: 4,
 	SHOUTOUTS: 8
 };
+export const   privacyList = [
+    {view: 'Private', value: 'private'},
+    {view: 'Protected', value: 'protected'},
+    {view: 'Public', value: 'public'},
+  ];
+
+export const   statusList = [{
+    view: 'Active', value: 'active'},
+    {view: 'Blocked', value: 'blocked'},
+  ];

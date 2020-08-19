@@ -7,6 +7,8 @@ import { ListingFilterComponent } from '../../pages/expert-details-listing/compo
 import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material';
 import { AppDateAdapter, APP_DATE_FORMATS } from 'src/app/constant/format-datepicker';
 import { DateFilterModule } from 'src/app/modules/layout/layout-shared/date-filter/date-filter.module';
+import { LikeActionModule } from 'src/app/modules/shared/like-action/like-action.module';
+import { CommentsModule } from 'src/app/modules/shared/comments/comments.module';
 
 
 
@@ -16,7 +18,9 @@ import { DateFilterModule } from 'src/app/modules/layout/layout-shared/date-filt
     CommonModule,
     TableModule,
     CustomDatePipeModule,
-    DateFilterModule
+    DateFilterModule,
+    LikeActionModule,
+    CommentsModule
   ],
   exports : [ExpertDetailsListingComponent],
   entryComponents: [ListingFilterComponent],

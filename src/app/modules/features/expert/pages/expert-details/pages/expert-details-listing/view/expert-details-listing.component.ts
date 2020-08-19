@@ -5,6 +5,10 @@ import { ExpertDetailsService } from '../../../service/expert-details.service';
 import { Router } from '@angular/router';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
+import { MatDialog } from '@angular/material';
+import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
+import { CommentsComponent } from 'src/app/modules/shared/comments/view/comments/comments.component';
+import { CommonService } from 'src/app/modules/shared/services/common.service';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 
 @Component({
@@ -30,6 +34,8 @@ export class ExpertDetailsListingComponent implements OnInit, OnChanges {
     private $expert: ExpertDetailsService,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
+    private $matDailog: MatDialog,
+    private $common: CommonService
   ) {
   }
 
@@ -47,7 +53,7 @@ export class ExpertDetailsListingComponent implements OnInit, OnChanges {
   onActionHandler(id: string, action: ActionType) {
     console.log(this.experDetails);
     const index = this.experDetails.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('post',  action == 'active' ? 'Active' :(action == 'deleted' ? 'Delete' : 'Block'))
+    this.$confirmBox.listAction('expert post',  action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
       .subscribe((confirm) => {
         if (confirm) {
           this.$expert.updateStatus(id, action).then((res) => {
@@ -95,5 +101,44 @@ export class ExpertDetailsListingComponent implements OnInit, OnChanges {
     });
   }
 
+  /**
+   * ON LIKE Handler
+   * @param id
+   */
+  likeHandler(id: string, likesCount: number) {
+    if (!likesCount) {
+      return;
+    }
+    const params = {
+      pageNo: 1,
+      limit: 100,
+      postId: id
+    };
+    this.$common.onLikeHandler(params).then(res => {
+      const like = res.data['list'];
+      this.onlikeHandler(like);
+    });
+  }
+
+/**
+ * user Like Handler
+ * @param id
+ */
+  onlikeHandler(like: any) {
+    this.$matDailog.open(LikeActionComponent, {
+      width: '500px',
+      data: like
+    }).afterClosed().subscribe();
+  }
+
+   onCommentsHandler(id: string, commentCount: number) {
+     if (!commentCount) {
+       return;
+     }
+     this.$matDailog.open(CommentsComponent, {
+       width: '500px',
+       data: id
+     }).afterClosed().subscribe();
+   }
 
 }

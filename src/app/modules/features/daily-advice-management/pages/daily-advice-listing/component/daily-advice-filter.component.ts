@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { statusList} from 'src/app/constant/drawer';
 
 @Component({
   selector: 'app-daily-advice-filter',
@@ -14,10 +15,7 @@ export class DailyAdviceFilterComponent implements OnInit {
     maxFromDate: new Date(),
   };
   filterForm: FormGroup;
-  statusList = [{
-    view: 'Active', value: 'active'},
-    {view: 'Blocked', value: 'blocked'},
-  ];
+  statusList =statusList;
   isProcessing = true;
   constructor(
      private $fb: FormBuilder,
