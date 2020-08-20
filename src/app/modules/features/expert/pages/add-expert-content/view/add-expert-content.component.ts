@@ -9,6 +9,7 @@ import { ExpertService } from '../../../service/expert.service';
 import { EXPERT_CONTENT_TYPE, PRAVICY } from 'src/app/constant/drawer';
 import { FileUploadService } from 'src/app/modules/shared/services/file-upload.service';
 import { requiredMedia } from 'src/app/constant/messages';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-add-expert-content',
@@ -31,7 +32,8 @@ export class AddExpertContentComponent implements OnInit {
     private $router: Router,
     private $service: ExpertService,
     private $utility: UtilityService,
-    private $fileUploadService: FileUploadService
+    private $fileUploadService: FileUploadService,
+    private $location: Location
   ) {
     this.expertContentId = $activatedRoute.snapshot.parent.params.id;
     this.createForm();
@@ -168,8 +170,8 @@ export class AddExpertContentComponent implements OnInit {
       data => {
         this.expertContentForm.enable();
         this.$utility.success(data.message);
-
-        this.$router.navigate([`${EXPERT.fullUrl}`]);
+        this.$location.back();
+        // this.$router.navigate([`${EXPERT.fullUrl}`]);
 
       },
       err => {
@@ -178,7 +180,9 @@ export class AddExpertContentComponent implements OnInit {
   }
 
   onCancel() {
+    this.$location.back();
+
     // this.$router.navigate([`${EXPERT_DETAILS.fullUrl}`, this.expertContentId]);
-    this.$router.navigate([`${EXPERT.fullUrl}`]);
+    // this.$router.navigate([`${EXPERT.fullUrl}`]);
   }
 }

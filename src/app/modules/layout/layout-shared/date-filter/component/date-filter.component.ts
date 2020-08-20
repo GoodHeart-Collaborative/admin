@@ -17,7 +17,7 @@ interface IDate {
 export class DateFilterComponent implements OnInit {
   minDate: Date;
   @Input() dateObject: IDate;
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
     if (!("maxFromDate" in this.dateObject)) {
@@ -26,6 +26,12 @@ export class DateFilterComponent implements OnInit {
     if (!("maxToDate" in this.dateObject)) {
       this.dateObject.maxToDate = new Date();
     }
+
+    console.log(this.dateObject);
+    if (this.dateObject.fromDate.value) {
+      this.minDate = this.dateObject.fromDate.value;
+    }
+
   }
 
   /*

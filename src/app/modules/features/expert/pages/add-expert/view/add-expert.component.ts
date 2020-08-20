@@ -28,6 +28,9 @@ export class AddExpertComponent implements OnInit {
   categoryData: any;
   profilePicURL: any;
   details: any;
+  nameMaxLenght = VALIDATION_CRITERIA.nameMaxLength;
+  emailMaxLenght = VALIDATION_CRITERIA.emailMaxLength;
+  bioMaxLength = VALIDATION_CRITERIA.bioMaxLength;
   constructor(
     private $fb: FormBuilder,
     private $formService: FormService,
@@ -71,8 +74,8 @@ export class AddExpertComponent implements OnInit {
       name: ['', Validators.compose(this.$formService.VALIDATION.name)],
       email: ['', Validators.compose(this.$formService.VALIDATION.email)],
       profession: ['', [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.professionMaxLength)]],
-      industry: [1 , Validators.required],
-      bio: ['', [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.bioMaxLength)]],
+      industry: [null , Validators.required],
+      bio: ['', [Validators.required, Validators.maxLength(this.bioMaxLength)]],
       experience: ['', Validators.required]
     });
   }

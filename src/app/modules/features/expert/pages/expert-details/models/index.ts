@@ -17,37 +17,36 @@ export class ExpertDetailsTableDataSource implements Table.Source<Category> {
       id: 'topic',
       sorting: false,
       templateBy: 'topic'
-      // resolve: (row: any) => row['topic'],
-
-  },
-
-
-       {
+    },
+    {
+      title: 'Description',
+      id: 'description',
+      sorting: false,
+      templateBy: 'description'
+     },
+     {
         title: 'Category',
         id: 'categoryData',
         sorting: false,
         templateBy: 'categoryData'
-        // resolve: (row: any) => row['categoryData'],
 
     },
     {
       title: 'Privacy',
       id: 'privacy',
       sorting: false,
-      // templateBy: 'privacy'
-      resolve: (row: any) => row['privacy'],
+      templateBy: 'privacy'
+      // resolve: (row: any) => row['privacy'],
     },
+    // {
+    //     title: 'Price',
+    //     id: 'price',
+    //     sorting: false,
+    //     resolve: (row: any) => row['price'],
+    //   },
 
-
-    {
-        title: 'Price',
-        id: 'price',
-        sorting: false,
-        resolve: (row: any) => row['price'],
-      },
-
-    {
-        title: 'Total Like',
+     {
+        title: 'Total Likes',
         id: 'likeCount',
         sorting: false,
         templateBy: 'likeCount'
@@ -59,7 +58,7 @@ export class ExpertDetailsTableDataSource implements Table.Source<Category> {
         templateBy: 'commentCount'
       },
     {
-      title: 'Date of Article',
+      title: 'Added On',
       id: 'createdAt',
       sorting: false,
       templateBy: 'createdAt'

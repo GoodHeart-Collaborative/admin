@@ -7,6 +7,7 @@ import { MediaUploadModule } from 'src/app/modules/shared/media-upload/media-upl
 import { ReactiveFormsModule } from '@angular/forms';
 import { ValidationErrorPipeModule } from 'src/app/pipes/validation-error/validation-error-pipe.module';
 import { AppDateAdapter, APP_DATE_FORMATS } from 'src/app/constant/format-datepicker';
+import { WhiteSpaceModule } from 'src/app/modules/shared/white-space/white-space.module';
 
 const routes: Routes = [
   {
@@ -25,7 +26,8 @@ const routes: Routes = [
     MatSelectModule,
     MediaUploadModule,
     ReactiveFormsModule,
-    ValidationErrorPipeModule
+    ValidationErrorPipeModule,
+    WhiteSpaceModule
   ],
   providers : [
     { provide: DateAdapter, useClass: AppDateAdapter },

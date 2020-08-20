@@ -18,7 +18,7 @@ export const VALIDATION_CRITERIA = {
   descriptionMinLength: 10,
   descriptionMaxLength: 400,
   bioMinLength: 10,
-  bioMaxLength: 200,
+  bioMaxLength: 500,
   professionMinLength: 3,
   professionMaxLength: 50,
   topicMaxLength: 50,
