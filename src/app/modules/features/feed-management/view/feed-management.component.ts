@@ -30,14 +30,10 @@ export class FeedManagementComponent implements OnInit {
   constructor(
     private $feed: FeedService,
   ) {
-    
     this.updateList(this.index);
-
-  }
-
-  ngOnInit() {
-
    }
+
+  ngOnInit() { }
 
 
 
@@ -76,7 +72,11 @@ export class FeedManagementComponent implements OnInit {
     this.responseHander(index, res);
     });
   }
-
+/**
+ *  Response Handler
+ * @param tabIndex
+ * @param response
+ */
   responseHander(tabIndex: number, response) {
     switch (tabIndex) {
       case 0: {
