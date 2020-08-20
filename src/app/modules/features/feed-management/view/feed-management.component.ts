@@ -30,11 +30,14 @@ export class FeedManagementComponent implements OnInit {
   constructor(
     private $feed: FeedService,
   ) {
+    
     this.updateList(this.index);
 
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+
+   }
 
 
 

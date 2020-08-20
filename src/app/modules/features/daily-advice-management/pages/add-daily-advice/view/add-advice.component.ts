@@ -85,8 +85,7 @@ export class AddAdviceComponent implements OnInit {
       this.profilePicURL = this.adviceDetails.mediaUrl;
       if (this.adviceDetails.mediaType == 2) {
         this.thumbnailUrl = this.adviceDetails.mediaUrl;
-
-      }
+       }
       this.adviceForm.patchValue(this.adviceDetails);
       if (this.adviceDetails && this.adviceDetails.postedAt && this.adviceDetails.isPostLater) {
 
