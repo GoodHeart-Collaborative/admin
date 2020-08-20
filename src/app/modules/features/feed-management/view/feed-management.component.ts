@@ -105,8 +105,6 @@ export class FeedManagementComponent implements OnInit {
     this.updateList(this.index);
   }
 
-
-
   /**
    * Tab Changes
    *
