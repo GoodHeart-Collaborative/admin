@@ -6,13 +6,9 @@ import { MatTabsModule, MatIconModule, MatFormFieldModule, MatInputModule, MatSe
 import { FormsModule } from '@angular/forms';
 import { ExpertBasicDetailsModule } from './pages/expert-basic-details/expert-basic-details.module';
 import { AddExpertContentModule } from '../add-expert-content/add-expert-content.module';
-import { AddExpertContentComponent } from '../add-expert-content/view/add-expert-content.component';
 import { DetailsComponent } from './details/details.component';
-import { ExpertImageModule } from './pages/expert-image/expert-image.module';
-import { ExpertVideoModule } from './pages/expert-video/expert-video.module';
-import { ExpertArticleModule } from './pages/expert-article/expert-article.module';
-import { ExpertVoiceNotesModule } from './pages/expert-voice-notes/expert-voice-notes.module';
 import { ExpertDetailsListingModule } from './pages/expert-details-listing/expert-details-listing.module';
+import { ExpertDetailsServiceResolve } from './service/expert-details.service';
 
 // const routes: Routes = [
 //   {
@@ -27,7 +23,28 @@ const routes: Routes = [
     path: '', component: DetailsComponent, children: [
       {path: '', redirectTo: 'details', pathMatch: 'full'},
       { path: 'details', component: ExpertDetailsComponent },
-      {path: 'add', component: AddExpertContentComponent }
+      {
+        path: 'add',
+      loadChildren: () => import('../add-expert-content/add-expert-content.module')
+          .then((m) => m.AddExpertContentModule
+          )
+        } ,
+      {path: 'edit',
+      resolve : {
+        expertData : ExpertDetailsServiceResolve
+      },
+      loadChildren: () => import('../add-expert-content/add-expert-content.module')
+          .then((m) => m.AddExpertContentModule
+          ),
+      },
+      {path: 'post',
+      resolve : {
+        expertData : ExpertDetailsServiceResolve
+      },
+      loadChildren: () => import('../expert-details/pages/expert-post-details/expert-post-details.module')
+          .then((m) => m.ExpertPostDetailsModule
+          ),
+      }
     ]
   },
 
@@ -47,11 +64,8 @@ const routes: Routes = [
     FormsModule,
     AddExpertContentModule,
     ExpertBasicDetailsModule,
-    ExpertImageModule,
-    ExpertVideoModule,
-    ExpertArticleModule,
-    ExpertVoiceNotesModule,
     ExpertDetailsListingModule
-  ]
+  ],
+  providers: [ExpertDetailsServiceResolve]
 })
 export class ExpertDetailsModule { }

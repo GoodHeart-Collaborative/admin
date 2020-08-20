@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output ,EventEmitter, OnChanges} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { ExpertDetailsTableDataSource } from '../../../models';
 import { ExpertDetailsService } from '../../../service/expert-details.service';
@@ -35,13 +35,15 @@ export class ExpertDetailsListingComponent implements OnInit, OnChanges {
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
     private $matDailog: MatDialog,
-    private $common: CommonService
+    private $common: CommonService,
+    private $router: Router
   ) {
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngOnChanges() {
+    console.log(this.experDetails);
     this.setUpTableResource(this.experDetails);
   }
 
@@ -53,7 +55,7 @@ export class ExpertDetailsListingComponent implements OnInit, OnChanges {
   onActionHandler(id: string, action: ActionType) {
     console.log(this.experDetails);
     const index = this.experDetails.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('expert post',  action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
+    this.$confirmBox.listAction('expert post', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
       .subscribe((confirm) => {
         if (confirm) {
           this.$expert.updateStatus(id, action).then((res) => {
@@ -70,14 +72,14 @@ export class ExpertDetailsListingComponent implements OnInit, OnChanges {
         this.experDetails.splice(index, 1);
         this.experDetails.total = this.experDetails.total - 1;
         break;
-        case 'active':
-           this.handleStatus(action, index);
-           break;
-        case 'blocked':
-          this.handleStatus(action, index);
-          break;
-        default:
-          break;
+      case 'active':
+        this.handleStatus(action, index);
+        break;
+      case 'blocked':
+        this.handleStatus(action, index);
+        break;
+      default:
+        break;
     }
     this.setUpTableResource(this.experDetails);
   }
@@ -120,10 +122,10 @@ export class ExpertDetailsListingComponent implements OnInit, OnChanges {
     });
   }
 
-/**
- * user Like Handler
- * @param id
- */
+  /**
+   * user Like Handler
+   * @param id
+   */
   onlikeHandler(like: any) {
     this.$matDailog.open(LikeActionComponent, {
       width: '500px',
@@ -131,14 +133,23 @@ export class ExpertDetailsListingComponent implements OnInit, OnChanges {
     }).afterClosed().subscribe();
   }
 
-   onCommentsHandler(id: string, commentCount: number) {
-     if (!commentCount) {
-       return;
-     }
-     this.$matDailog.open(CommentsComponent, {
-       width: '500px',
-       data: id
-     }).afterClosed().subscribe();
-   }
+  onCommentsHandler(id: string, commentCount: number) {
+    if (!commentCount) {
+      return;
+    }
+    this.$matDailog.open(CommentsComponent, {
+      width: '500px',
+      data: id
+    }).afterClosed().subscribe();
+  }
 
+  oneditHandler(id: string) {
+    this.$router.navigate([`admin/expert/${id}`, 'edit']);
+  }
+
+  onDetails(id: string) {
+    console.log(id);
+    
+    this.$router.navigate([`admin/expert/${id}`, 'post']);
+  }
 }

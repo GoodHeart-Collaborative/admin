@@ -40,7 +40,6 @@ export class AddDailyUnicormHumourComponent implements OnInit {
     this.today = new Date(new Date(new Date().setHours(0, 0, 0)).setDate(new Date().getDate() + 1));
     if ($router.snapshot.data.dailyData && $router.snapshot.data.dailyData.data) {
       this.unicornDetails = $router.snapshot.data.dailyData.data;
-      console.log(this.unicornDetails);
       $breadcrumb.replace(this.unicornDetails._id, this.unicornDetails.description);
     }
     this.getProfileDetail();
@@ -88,7 +87,6 @@ export class AddDailyUnicormHumourComponent implements OnInit {
    */
   getDailyInspiration() {
     if (this.unicornDetails) {
-      console.log(this.unicornDetails);
       this.profilePicURL = this.unicornDetails.mediaUrl;
       if (this.unicornDetails.mediaType == 2) {
         this.thumbnailUrl = this.unicornDetails.mediaUrl;

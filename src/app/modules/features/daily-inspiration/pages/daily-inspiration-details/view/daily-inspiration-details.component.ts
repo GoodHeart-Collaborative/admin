@@ -56,5 +56,4 @@ export class DailyInspirationDetailsComponent implements OnInit {
     }).afterClosed().subscribe();
   }
 
-  
 }

@@ -29,12 +29,18 @@ const routes: Routes = [
        },
         {
            path: 'edit/:id',
+           resolve : {
+            expertData : ExpertServiceResolve
+          },
             loadChildren: () => import('./pages/add-expert/add-expert.module')
           .then( (m) => m.AddExpertModule
           ),
           },
       {
         path: `${EXPERT_DETAILS.path}`,
+        resolve : {
+          expertData : ExpertServiceResolve
+        },
         loadChildren: () => import('./pages/expert-details/expert-details.module')
           .then((m) => m.ExpertDetailsModule
           ),

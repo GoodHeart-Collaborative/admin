@@ -10,6 +10,7 @@ import { EXPERT_CONTENT_TYPE, PRAVICY } from 'src/app/constant/drawer';
 import { FileUploadService } from 'src/app/modules/shared/services/file-upload.service';
 import { requiredMedia } from 'src/app/constant/messages';
 import { Location } from '@angular/common';
+import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
 
 @Component({
   selector: 'app-add-expert-content',
@@ -25,24 +26,39 @@ export class AddExpertContentComponent implements OnInit {
   imageFile: any;
   thumbnailUrl: string;
   profilePicURL: string;
+  details: any;
   constructor(
     private $fb: FormBuilder,
     private $category: CategoryManagementService,
     $activatedRoute: ActivatedRoute,
-    private $router: Router,
     private $service: ExpertService,
     private $utility: UtilityService,
     private $fileUploadService: FileUploadService,
-    private $location: Location
+    private $location: Location,
+    $breadcrumb: BreadcrumbService
   ) {
     this.expertContentId = $activatedRoute.snapshot.parent.params.id;
     this.createForm();
+    if ($activatedRoute.parent.snapshot.data) {
+      this.details = $activatedRoute.parent.snapshot.data.expertData.data[0];
+      $breadcrumb.replace(this.details._id, this.details.topic);
+      this.patchValueInForm();
+    }
   }
 
   ngOnInit() {
     this.categoryList();
   }
 
+  patchValueInForm() {
+    this.expertContentForm.patchValue(this.details);
+    if (this.details && this.details.mediaUrl) {
+      this.profilePicURL = this.details.mediaUrl;
+      if (this.details.mediaType == 2) {
+        this.thumbnailUrl = this.details.mediaUrl;
+      }
+    }
+  }
   createForm() {
     this.expertContentForm = this.$fb.group({
       expertId: [this.expertContentId],
@@ -137,42 +153,41 @@ export class AddExpertContentComponent implements OnInit {
         body.mediaType = this.imageFile.type;
       }
     }
+     else if (this.details) {
+      if (this.details.mediaType == 1) {
+        body['mediaUrl'] = this.profilePicURL;
+        body.mediaType = this.details.mediaType;
+      }
+      if (this.details.mediaType == 2) {
+        body['thumbnailUrl'] = this.thumbnailUrl;
+        body.mediaType = this.details.mediaType;
+      }
+    }
     if (!body.mediaUrl) {
       this.$fileUploadService.showAlert(requiredMedia);
       return;
     }
-    // else if (this.adviceDetails) {
-    //   if (this.adviceDetails.mediaType == 1) {
-    //     body['mediaUrl'] = this.profilePicURL;
-    //     body.mediaType = this.adviceDetails.mediaType;
-    //   }
-    //   if (this.adviceDetails.mediaType == 2) {
-    //     body['thumbnailUrl'] = this.thumbnailUrl;
-    //     body.mediaType = this.adviceDetails.mediaType;
-    //   }
-    // }
-    console.log(body);
-    // if (this.details && this.details._id) {
-    //   delete body.type;
-    //   this.$service.edit(this.details._id, body).then(
-    //     data => {
-    //       this.expertContentForm.enable();
-    //       this.$utility.success(data.message);
-    //       this.$route.navigate([EXPERT.fullUrl]);
-    //     },
-    //     err => {
-    //       this.expertContentForm.enable();
-    //     }
-    //   );
-    //   return;
-    // }
+    if (this.details && this.details._id) {
+      console.log(body);
+      delete body.expertId;
+      this.$service.editContent(this.details._id, body).then(
+        data => {
+          this.expertContentForm.enable();
+          this.$utility.success(data.message);
+          this.$location.back();
+
+        },
+        err => {
+          this.expertContentForm.enable();
+        }
+      );
+      return;
+    }
     this.$service.addContent(body).then(
       data => {
         this.expertContentForm.enable();
         this.$utility.success(data.message);
         this.$location.back();
-        // this.$router.navigate([`${EXPERT.fullUrl}`]);
-
       },
       err => {
         this.expertContentForm.enable();
@@ -181,8 +196,5 @@ export class AddExpertContentComponent implements OnInit {
 
   onCancel() {
     this.$location.back();
-
-    // this.$router.navigate([`${EXPERT_DETAILS.fullUrl}`, this.expertContentId]);
-    // this.$router.navigate([`${EXPERT.fullUrl}`]);
   }
 }

@@ -12,9 +12,8 @@ import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
   styleUrls: ['./expert-details.component.scss']
 })
 export class ExpertDetailsComponent implements OnInit {
-  expertDetails: any;
   details: any ;
-  index: number ;
+  index: number  ;
 
   eventData: Table.OptionData = {
     pageIndex: 0,
@@ -28,20 +27,11 @@ export class ExpertDetailsComponent implements OnInit {
     private $router: Router,
     activateRoute: ActivatedRoute,
     $breadcrumb: BreadcrumbService,
-    global: GlobalService,
     private $expert: ExpertDetailsService
   ) {
-    activateRoute.queryParams.subscribe(({ application }) => {
-      if (!application) {
-        return;
-      }
-      if (application) {
-        this.details = global.decodeData(application);
-        console.log( this.details);
-        $breadcrumb.replace(this.details._id, this.details.name);
-      }
-    });
-  }
+    this.details = activateRoute.parent.snapshot.data.expertData.data[0];
+    $breadcrumb.replace(this.details._id, this.details.name);
+   }
 
   ngOnInit() {
   }
@@ -66,7 +56,6 @@ export class ExpertDetailsComponent implements OnInit {
     if (!index ) {
         return;
     }
-    
     const { pageIndex, pageSize, searchText, filterData, sortData } = this.eventData;
     let params = {
       page: `${pageIndex + 1}`,
@@ -108,7 +97,6 @@ export class ExpertDetailsComponent implements OnInit {
  */
   onOptionChange(event) {
     this.eventData = event;
-    console.log(event);
     this.updateList(this.index);
   }
 

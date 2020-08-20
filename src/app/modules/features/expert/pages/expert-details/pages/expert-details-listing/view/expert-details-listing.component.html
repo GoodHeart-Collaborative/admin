@@ -1,25 +1,25 @@
 <app-table [tableSource]="tableSource" (optionChange)="onOptionChange($event)">
-    <ng-template appFor="createdAt" let-daily="row">
-        {{ daily?.createdAt |customDate}}
+    <ng-template appFor="createdAt" let-expert="row">
+        {{ expert?.createdAt |customDate}}
     </ng-template>
 
-    <ng-template appFor="status" let-daily="row">
-        {{ daily?.status | titlecase}}
+    <ng-template appFor="status" let-expert="row">
+        {{ expert?.status | titlecase}}
     </ng-template>
 
-    <ng-template appFor="privacy" let-daily="row">
-        {{ daily?.privacy | titlecase}}
+    <ng-template appFor="privacy" let-expert="row">
+        {{ expert?.privacy | titlecase}}
     </ng-template>
 
 
-    <ng-template appFor="topic" let-post="row">
-         <a href="javascript:void(0)">
-             {{ (post?.topic | titlecase) || 'String'}}
+    <ng-template appFor="topic" let-expert="row">
+         <a href="javascript:void(0)" (click)="onDetails(expert?._id)">
+             {{ (expert?.topic | titlecase) || 'String'}}
          </a>
      </ng-template>
 
-    <ng-template appFor="description" let-post="row">
-         {{ post?.description || 'String'}}
+    <ng-template appFor="description" let-expert="row">
+         {{ expert?.description || 'String'}}
     </ng-template>
 
     <ng-template appFor="likeCount" let-row="row">
@@ -34,9 +34,9 @@
          </a>
     </ng-template>
 
-     <ng-template appFor="categoryData" let-post="row">
-        <span *ngFor="let item of post?.categoryData ; let i = index" title="{{ item?.name | titlecase}}">
-            {{ item?.title | titlecase}}{{i< post?.categoryData?.length -1?',' : '' }}
+     <ng-template appFor="categoryData" let-expert="row">
+        <span *ngFor="let item of expert?.categoryData ; let i = index" title="{{ item?.name | titlecase}}">
+            {{ item?.title | titlecase}}{{i< expert?.categoryData?.length -1?',' : '' }}
             
 
         </span>
@@ -46,9 +46,9 @@
 
         <ng-template appFor="actions" let-expert="row">
             <div class="action-icon-cover">
-                <!-- <i class="material-icons icon-edit" (click)="oneditHandler(expert?._id)" title="Edit" >
+                <i class="material-icons icon-edit" (click)="oneditHandler(expert?._id)" title="Edit" >
                      edit
-                 </i> -->
+                 </i>
 
                 <i class="material-icons icon-block" (click)="onActionHandler(expert._id, 'blocked')" *ngIf="expert?.status === 'active';else templateAction"  title="Block">
                      blocked</i>

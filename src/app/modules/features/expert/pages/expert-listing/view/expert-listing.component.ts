@@ -133,20 +133,21 @@ export class ExpertListingComponent implements OnInit {
   }
 
   oneditHandler(id , data) {
-    const application = this.$global.encodeData(data);
-    this.$router.navigate([`${EXPERT.fullUrl}`, 'edit', id],
-      {
-        queryParams: { application }
-      });
-    // this.$router.navigate([`${EXPERT.fullUrl}`, 'edit', id]);
+    // const application = this.$global.encodeData(data);
+    // this.$router.navigate([`${EXPERT.fullUrl}`, 'edit', id],
+    //   {
+    //     queryParams: { application }
+    //   });
+    this.$router.navigate([`${EXPERT.fullUrl}`, 'edit', id]);
   }
 
   onDetails(id, data) {
-    const application = this.$global.encodeData(data);
+    // const application = this.$global.encodeData(data);
     this.$router.navigate([`${EXPERT.fullUrl}`, id, 'details'],
-      {
-        queryParams: { application }
-      });
+    //  {
+    //     queryParams: { application }
+    //   }
+      );
   }
 
   onAdd() {

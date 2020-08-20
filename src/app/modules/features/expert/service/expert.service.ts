@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/modules/shared/services/http.service';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
-import { EXPERT, ACTION_EXPERT, ADD_EXPERT , EXPERT_DETAILS, EXPERT_POST} from 'src/app/constant/urls';
+import { EXPERT, ACTION_EXPERT, ADD_EXPERT , EXPERT_DETAILS, EXPERT_POST, EXPERT_POST_DETAILS} from 'src/app/constant/urls';
 import { Resolve, Router, ActivatedRouteSnapshot } from '@angular/router';
 
 @Injectable({
@@ -30,6 +30,9 @@ export class ExpertService {
   async  edit(id, params) {
     return  this.$http.patch(EXPERT_DETAILS(id), params).toPromise();
   }
+  async  editContent(id, params) {
+    return  this.$http.patch(EXPERT_POST_DETAILS(id), params).toPromise();
+  }
 
   async  updateDetails(id) {
     const data =  this.$http.get(EXPERT_DETAILS(id)).toPromise();
@@ -43,7 +46,8 @@ export class ExpertServiceResolve implements Resolve<any>  {
   constructor(private $daily: ExpertService, private $router: Router) { }
   resolve(route: ActivatedRouteSnapshot) {
     const userId = route.params['id'];
-    return this.$daily.updateDetails(userId).catch(err => {
+    return this.$daily.updateDetails(userId)
+    .catch(err => {
       if (err) {
         return null;
       }

@@ -1,0 +1,40 @@
+<div class="page-gratitude-journal-detail common-detail-page-ui">
+    <div class="gratitude-journal-content">
+        <div class="row-1">
+            <div class="textual-detail">
+                <div class="card_header_container profile_header">
+                    <!-- <div class="card_header">
+                        <figure mat-card-avatar class="image-cover">
+                            <img class="img-cover-fit" [src]="post?.mediaUrl | customImage:'USERS'|async" alt="">
+                        </figure>
+                        <div class="heading-cover">
+                             <a class="user_name" href="javascript:void()">User name</a> 
+                             <p class="posted-on-date">Scheduled On: {{post?.postedAt | date : 'd MMMM, y, h:mm a'}}</p> 
+                        </div>
+                    </div> -->
+                    <h1>{{post?.topic | titlecase}}</h1>
+                    <p>
+                        {{post?.description}}
+                    </p>
+                </div>
+            </div>
+            <div class="image-detail">
+                <img [src]="post?.mediaUrl | customImage:'USERS'|async" alt="">
+            </div>
+        </div>
+        <div class="row-2">
+            <div class="like-cover"
+            (click)="likeHandler(post._id, post?.likeCount)"><span
+                class="material-icons">thumb_up</span>
+            <p>{{post?.likeCount}}</p>
+        </div>
+            <div class="like-cover"><span class="material-icons">comment</span>
+                <p>{{post?.commentCount}}</p>
+            </div>
+        </div>
+        <div class="row-3">
+            <app-comments-show [commentId]="post?._id"></app-comments-show>
+
+        </div>
+    </div>
+</div>

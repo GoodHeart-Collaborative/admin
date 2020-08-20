@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/modules/shared/services/http.service';
-import { UtilityService } from 'src/app/modules/shared/services/utility.service';
-import { EXPERT_POST, ACTION_EXPERT_POST } from 'src/app/constant/urls';
+import { EXPERT_POST, ACTION_EXPERT_POST, EXPERT_POST_DETAILS } from 'src/app/constant/urls';
+import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +12,11 @@ export class ExpertDetailsService {
   ) { }
 
   async  queryData(params) {
-    return  this.$http.get(EXPERT_POST, params).toPromise();
+    return this.$http.get(EXPERT_POST, params).toPromise();
   }
 
   async updateStatus(id, status) {
-    return await this.$http.patch(ACTION_EXPERT_POST(id , status), {}).toPromise();
+    return await this.$http.patch(ACTION_EXPERT_POST(id, status), {}).toPromise();
   }
 
   async  add(params) {
@@ -27,22 +27,22 @@ export class ExpertDetailsService {
   }
 
   async  updateDetails(id) {
-    // const data =  this.$http.get(DAILY_INSPIRATION_DETAILS(id)).toPromise();
-    // return data;
+    const data = this.$http.get(EXPERT_POST_DETAILS(id)).toPromise();
+    return data;
   }
 
 }
 
-// @Injectable()
-// export class ExpertServiceResolve implements Resolve<any>  {
-//   constructor(private $daily: ExpertService, private $router: Router) { }
-//   resolve(route: ActivatedRouteSnapshot) {
-//     const userId = route.params['id'];
-//     return this.$daily.updateDetails(userId).catch(err => {
-//       if (err) {
-//         return null;
-//       }
-//     }
-//     );
-//   }
-// }
+@Injectable()
+export class ExpertDetailsServiceResolve implements Resolve<any>  {
+  constructor(private $daily: ExpertDetailsService) { }
+  resolve(route: ActivatedRouteSnapshot) {
+    console.log(route.parent.params.id);
+    return this.$daily.updateDetails(route.parent.params.id).catch(err => {
+      if (err) {
+        return null;
+      }
+    }
+    );
+  }
+}
