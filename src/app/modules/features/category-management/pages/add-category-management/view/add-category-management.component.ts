@@ -83,10 +83,10 @@ export class AddCategoryManagementComponent implements OnInit {
       let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
       this.profilePicURL = data.Location;
     }
-    // if (!this.profilePicURL) {
-    //   this.$fileUploadService.showAlert(requiredProfilePic);
-    //   return;
-    // }
+    if (!this.profilePicURL) {
+      this.$fileUploadService.showAlert(requiredProfilePic);
+      return;
+    }
     let body = { imageUrl: this.profilePicURL, ...this.categoryForm.value };
     this.categoryForm.disable();
     if (this.categoryId) {
