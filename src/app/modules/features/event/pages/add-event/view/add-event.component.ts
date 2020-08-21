@@ -65,7 +65,7 @@ export class AddEventComponent implements OnInit {
   }
   createForm() {
     this.eventForm = this.$fb.group({
-      eventCategory: [null, Validators.required],
+      eventCategoryId: [null, Validators.required],
       title: ['', Validators.compose(this.$formService.VALIDATION.name)],
       privacy: ['', [Validators.required]],
       price: [0, [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.priceMaxLength)]],

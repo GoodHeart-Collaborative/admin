@@ -73,7 +73,7 @@ export class EventTableDataSource implements Table.Source<Category> {
   ];
   options: Table.Options = {
     selection: false,
-    search: 'Search by Description',
+    search: 'Search by Title, Description',
     index: true,
     addComponent: true,
     sorting: true,
