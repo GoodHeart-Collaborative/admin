@@ -162,7 +162,7 @@ export class MediaUploadComponent implements OnInit {
     if (this.contentId) {
       switch (mediaType) {
         case 1:
-          if ([2, 3].includes(this.contentId)) {
+          if ([1, 3].includes(this.contentId)) {
             return true;
           } else {
             this.saveEvent.target.value = null;
@@ -171,7 +171,7 @@ export class MediaUploadComponent implements OnInit {
           }
           break;
         case 2:
-          if ([1].includes(this.contentId)) {
+          if ([2].includes(this.contentId)) {
             return true;
           } else {
             this.saveEvent.target.value = null;

@@ -83,6 +83,7 @@ export class AddExpertContentComponent implements OnInit {
   }
 
   setimageFile(event) {
+    console.log(event);
     if (!event) {
       this.imageFile = null;
       this.profilePicURL = '';

@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ValidationErrorPipeModule } from 'src/app/pipes/validation-error/validation-error-pipe.module';
 import { AppDateAdapter, APP_DATE_FORMATS } from 'src/app/constant/format-datepicker';
 import { WhiteSpaceModule } from 'src/app/modules/shared/white-space/white-space.module';
+import { OnlyCharcterModule } from 'src/app/directives/only-charcter/only-charcter.module';
 
 const routes: Routes = [
   {
@@ -27,7 +28,8 @@ const routes: Routes = [
     MediaUploadModule,
     ReactiveFormsModule,
     ValidationErrorPipeModule,
-    WhiteSpaceModule
+    WhiteSpaceModule,
+    OnlyCharcterModule
   ],
   providers : [
     { provide: DateAdapter, useClass: AppDateAdapter },
