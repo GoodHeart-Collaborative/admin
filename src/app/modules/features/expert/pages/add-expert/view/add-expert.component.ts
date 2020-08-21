@@ -41,27 +41,22 @@ export class AddExpertComponent implements OnInit {
     private $route: Router,
     activateRoute: ActivatedRoute,
     $breadcrumb: BreadcrumbService,
-    global: GlobalService,
   ) {
     this.createForm();
-
-    activateRoute.queryParams.subscribe(({ application }) => {
-      if (!application) {
-        return;
-      }
-      if (application) {
-        this.details = global.decodeData(application);
-        console.log(this.details);
-        $breadcrumb.replace(this.details._id, this.details.name);
-        this.expertForm.patchValue(this.details);
-        if (this.details && this.details.profilePicUrl) {
-          this.profilePicURL = this.details.profilePicUrl;
-        }
-        if (this.details && this.details.categoryData) {
-           this.categoryData = this.details.categoryData;
-        }
-      }
-    });
+    if (activateRoute.parent.snapshot && activateRoute.parent.snapshot.data && activateRoute.parent.snapshot.data.expertData) {
+      this.details = activateRoute.parent.snapshot.data.expertData.data[0];
+      $breadcrumb.replace(this.details._id, this.details.name);
+      this.patchValueInForm();
+    }
+  }
+  patchValueInForm() {
+    this.expertForm.patchValue(this.details);
+    if (this.details && this.details.profilePicUrl) {
+      this.profilePicURL = this.details.profilePicUrl;
+    }
+    if (this.details && this.details.categoryData) {
+      this.categoryData = this.details.categoryData;
+    }
   }
 
   ngOnInit() {
@@ -74,7 +69,7 @@ export class AddExpertComponent implements OnInit {
       name: ['', Validators.compose(this.$formService.VALIDATION.name)],
       email: ['', Validators.compose(this.$formService.VALIDATION.email)],
       profession: ['', [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.professionMaxLength)]],
-      industry: [null , Validators.required],
+      industry: [null, Validators.required],
       bio: ['', [Validators.required, Validators.maxLength(this.bioMaxLength)]],
       experience: ['', Validators.required]
     });
@@ -118,8 +113,8 @@ export class AddExpertComponent implements OnInit {
       this.profilePicURL = [data.Location];
     }
     if (!this.profilePicURL) {
-        this.$fileUploadService.showAlert('Profile pic is required');
-        return;
+      this.$fileUploadService.showAlert('Profile pic is required');
+      return;
     }
     let body = { profilePicUrl: this.profilePicURL, ...this.expertForm.value };
     if (this.details && this.details._id) {

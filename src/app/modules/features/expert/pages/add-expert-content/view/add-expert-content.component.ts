@@ -39,7 +39,7 @@ export class AddExpertContentComponent implements OnInit {
   ) {
     this.expertContentId = $activatedRoute.snapshot.parent.params.id;
     this.createForm();
-    if ($activatedRoute.parent.snapshot.data) {
+    if ($activatedRoute.parent.snapshot.data && $activatedRoute.parent.snapshot.data.expertData) {
       this.details = $activatedRoute.parent.snapshot.data.expertData.data[0];
       $breadcrumb.replace(this.details._id, this.details.topic);
       this.patchValueInForm();
