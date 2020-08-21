@@ -43,7 +43,6 @@ export class ExpertDetailsListingComponent implements OnInit, OnChanges {
   ngOnInit() { }
 
   ngOnChanges() {
-    console.log(this.experDetails);
     this.setUpTableResource(this.experDetails);
   }
 
@@ -54,7 +53,7 @@ export class ExpertDetailsListingComponent implements OnInit, OnChanges {
 
   onActionHandler(id: string, action: ActionType) {
     console.log(this.experDetails);
-    const index = this.experDetails.findIndex(user => user._id === id);
+    const index = this.experDetails.list.findIndex(user => user._id === id);
     this.$confirmBox.listAction('expert post', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
       .subscribe((confirm) => {
         if (confirm) {
@@ -69,7 +68,7 @@ export class ExpertDetailsListingComponent implements OnInit, OnChanges {
   handleActions(action: ActionType, index) {
     switch (action) {
       case 'deleted':
-        this.experDetails.splice(index, 1);
+        this.experDetails.list.splice(index, 1);
         this.experDetails.total = this.experDetails.total - 1;
         break;
       case 'active':
@@ -85,7 +84,7 @@ export class ExpertDetailsListingComponent implements OnInit, OnChanges {
   }
 
   handleStatus(action: 'blocked' | 'active', index: number) {
-    this.experDetails = this.experDetails.map((user, i) => {
+    this.experDetails.list = this.experDetails.list.map((user, i) => {
       if (i === index) {
         user.status = action;
       }
@@ -94,11 +93,12 @@ export class ExpertDetailsListingComponent implements OnInit, OnChanges {
   }
 
   setUpTableResource(record) {
+    console.log(record);
     const { pageIndex, pageSize } = this.eventData;
     this.tableSource = new ExpertDetailsTableDataSource({
       pageIndex,
       pageSize,
-      rows: record,
+      rows: record.list,
       total: record.total
     });
   }
@@ -148,8 +148,6 @@ export class ExpertDetailsListingComponent implements OnInit, OnChanges {
   }
 
   onDetails(id: string) {
-    console.log(id);
-    
     this.$router.navigate([`admin/expert/${id}`, 'post']);
   }
 }

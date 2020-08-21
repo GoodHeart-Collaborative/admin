@@ -86,7 +86,7 @@ export class ExpertDetailsComponent implements OnInit {
       params['sortBy'] = sortData.sortBy;
     }
     this.$expert.queryData(params).then(res => {
-      this.expertListingData = res.data['list'];
+      this.expertListingData = res.data;
       console.log(res);
     });
   }

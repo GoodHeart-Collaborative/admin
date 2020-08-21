@@ -8,6 +8,7 @@ import { ExpertTableDataSource } from '../models/index';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 import { GlobalService } from 'src/app/services/global/global.service';
+import { EVENT_CATEGORY } from 'src/app/constant/drawer';
 @Component({
   selector: 'app-expert-listing',
   templateUrl: './expert-listing.component.html',

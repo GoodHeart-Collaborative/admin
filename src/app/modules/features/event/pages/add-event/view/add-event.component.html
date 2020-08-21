@@ -5,23 +5,7 @@
             <div class="row-1">
                 <div class="left-portion">
                     <app-image-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL"></app-image-upload>
-                    <!-- <ul class="media-upload-hint">
-                        <li class="list-item">
-                            Max image size allowed: <em>500 KB</em>
-                        </li>
-                        <li class="list-item">
-                            Format supported: <em>JPEG, PNG, JPG</em> only
-                        </li>
-                        <li class="list-item">
-                            Max <em>5</em> images allowed
-                        </li>
-                        <li class="list-item">
-                            Max video size allowed: <em>5 MB</em>
-                        </li>
-                        <li class="list-item">
-                            Format supported: <em>MP4, WMV</em> only
-                        </li>
-                    </ul> -->
+                   
                 </div>
                 <div class="right-portion">
                     <div class="row">
@@ -37,7 +21,7 @@
                             <mat-form-field appearance="outline">
                                 <mat-label>Category</mat-label>
                                 <mat-select formControlName="eventCategory">
-                                    <mat-option [value]="item?.value" *ngFor="let item of eventCategory">{{item?.viewValue}}</mat-option>
+                                    <mat-option [value]="item?.VALUE" *ngFor="let item of eventCategory">{{item?.DISPLAY_NAME}}</mat-option>
                                 </mat-select>
                                 <mat-error>{{form('eventCategory') |validate:'Event Category' }}</mat-error>
                             </mat-form-field>
@@ -88,7 +72,6 @@
                             <mat-form-field appearance="outline">
                                 <mat-label>Price</mat-label>
                                 <input matInput placeholder="Price " appWhiteSpace formControlName="price" [maxlength]="10">
-                                <!-- <mat-hint>0/20</mat-hint> -->
                                 <mat-error>{{form('price') |validate:' Price' }}</mat-error>
                             </mat-form-field>
                         </div>
@@ -96,7 +79,6 @@
                             <mat-form-field appearance="outline">
                                 <mat-label>Website Link</mat-label>
                                 <input matInput placeholder="URL" appWhiteSpace formControlName="eventUrl">
-                                 <!-- <mat-hint>0/20</mat-hint> -->
                                 <mat-error>{{form('eventUrl') |validate:'Event Url' }}</mat-error>
 
                             </mat-form-field>

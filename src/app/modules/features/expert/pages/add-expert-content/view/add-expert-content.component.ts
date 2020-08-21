@@ -37,7 +37,9 @@ export class AddExpertContentComponent implements OnInit {
     private $location: Location,
     $breadcrumb: BreadcrumbService
   ) {
-    this.expertContentId = $activatedRoute.snapshot.parent.params.id;
+    console.log($activatedRoute.snapshot.parent.parent.params.id);
+    this.expertContentId = $activatedRoute.snapshot.parent.parent.params.id;
+    console.log(this.expertContentId);
     this.createForm();
     if ($activatedRoute.parent.snapshot.data && $activatedRoute.parent.snapshot.data.expertData) {
       this.details = $activatedRoute.parent.snapshot.data.expertData.data[0];
@@ -90,10 +92,10 @@ export class AddExpertContentComponent implements OnInit {
     console.log(event);
     switch (event.type) {
       case 1:
-        this.contentType = this.getUpdatedTypes([2, 3]);
+        this.contentType = this.getUpdatedTypes([1, 3]);
         break;
       case 2:
-        this.contentType = this.getUpdatedTypes([1]);
+        this.contentType = this.getUpdatedTypes([2]);
 
         break;
       case 3:
@@ -153,7 +155,7 @@ export class AddExpertContentComponent implements OnInit {
         body.mediaType = this.imageFile.type;
       }
     }
-     else if (this.details) {
+    else if (this.details) {
       if (this.details.mediaType == 1) {
         body['mediaUrl'] = this.profilePicURL;
         body.mediaType = this.details.mediaType;

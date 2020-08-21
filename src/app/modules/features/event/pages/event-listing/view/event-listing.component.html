@@ -17,6 +17,10 @@
      <ng-template appFor="status" let-data="row">
          {{ data?.status | titlecase}}
      </ng-template>
+
+     <ng-template appFor="eventCategory" let-data="row">
+         {{ data?.eventCategoryType | titlecase}}
+     </ng-template>
  
      <ng-template appFor="title" let-data="row">
          <a href="javascript:void(0)" (click)="onDetailsHandler(data?._id)" title="{{ data?.title | titlecase}}">

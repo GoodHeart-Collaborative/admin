@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   memberList: any;
   params = {
     page: 1,
-    limit: 3,
+    limit: 4,
   };
   scroll: boolean = false;
   totalPage: number;
@@ -50,17 +50,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
     private $common: CommonService,
     private matDailog: MatDialog,
   ) {
-    // console.log(router.url.split('/').slice(-1)[0]);
-    // if (router.url.split('/').slice(-1)[0] == 'dashboard') {
-    //   this.isFlag = true;
-    // }
     this.$common.dashBoardFlag$.next(true);
     this.onDrashboardHandler();
   }
 
   ngOnInit() {
     this.recentUserList();
-    this.memberOfTheDayList(5);
+    this.memberOfTheDayList(6);
   }
 
   @HostListener('window:scroll', ['$event']) onWindowScroll(e) {
@@ -74,27 +70,20 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.$dashboardService.onDrashboardHandler().then(res => {
       this.data = res.data;
       this.userStatisticsHnadler();
-     });
+    });
   }
 
   userStatisticsHnadler() {
     this.GraphThisYear = Object.values(this.data.userGraphThisYear);
     this.GraphLastYear = Object.values(this.data.userGraphLastYear);
-    const sumGraphLastYear = this.GraphLastYear.reduce((a, b) => a + b, 0);
-    const sumGraphThisYear = this.GraphThisYear.reduce((a, b) => a + b, 0);
-    // this.currentYearUser = ((this.data.currentYearUserCount /  sumGraphThisYear ) * 100).toFixed();
-    // this.lastYearUser = ((this.data.previousYearUserCount /  sumGraphLastYear ) * 100).toFixed();
     this.currentYearUser = this.getPercentage(this.GraphThisYear, this.data.currentYearUserCount);
     this.lastYearUser = this.getPercentage(this.GraphLastYear, this.data.previousYearUserCount);
+  }
 
-    // this.lastYearUser = ((this.data.previousYearUserCount /  sumGraphLastYear ) * 100).toFixed();
-   }
-
-   getPercentage(values: number[], amount){
+  getPercentage(values: number[], amount) {
     const sumOfValues = values.reduce((a, b) => a + b, 0);
-
-    return ((amount / sumOfValues ) * 100).toFixed(2)
-   }
+    return ((amount / sumOfValues) * 100).toFixed(2);
+  }
 
   memberOfTheDayList(count: any, id?: string) {
     this.params.limit = count;

@@ -23,7 +23,7 @@ export class AddEventComponent implements OnInit {
   imageFile: any;
   profilePicURL: any;
   privacyData = PRAVICY;
-  eventCategory = EVENT_CATEGORY;
+  eventCategory = Object.values(EVENT_CATEGORY) ;
   today = new Date();
   location: {};
   eventDetails: any;
@@ -39,6 +39,7 @@ export class AddEventComponent implements OnInit {
     activateRoute: ActivatedRoute,
     $breadcrumb: BreadcrumbService,
   ) {
+    console.log(this.eventCategory);
     this.createForm();
     if (activateRoute.snapshot.data.eventDetails && activateRoute.snapshot.data.eventDetails.data) {
       this.eventDetails = activateRoute.snapshot.data.eventDetails.data;

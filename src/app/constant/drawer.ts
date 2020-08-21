@@ -76,9 +76,9 @@ export const PROFESSION = [
 ];
 
 export const EXPERT_CONTENT_TYPE =  [
-    { value : 1 , viewValue: 'Video', disabled: false},
-    { value : 2 , viewValue: 'Article', disabled: false},
-    { value : 3 , viewValue: 'Image', disabled: false},
+    { value : 2 , viewValue: 'Video', disabled: false},
+    { value : 3, viewValue: 'Article', disabled: false},
+    { value : 1 , viewValue: 'Image', disabled: false},
     // { value : 4 , viewValue: 'Voice Note', disabled: false}
 ];
 
@@ -90,12 +90,35 @@ export const PRAVICY =  [
 ];
 
 
-export const  EVENT_CATEGORY = [
-    {value : 'events' , viewValue: 'EVENTS'},
-    {value : 'classes' , viewValue: 'CLASSES'},
-    {value : 'training' , viewValue: 'TRAINING'},
-    {value : 'meetup' , viewValue: 'MEETUP'}
-];
+// export const  EVENT_CATEGORY = [
+//     {value : 'events' , viewValue: 'EVENTS'},
+//     {value : 'classes' , viewValue: 'CLASSES'},
+//     {value : 'training' , viewValue: 'TRAINING'},
+//     {value : 'meetup' , viewValue: 'MEETUP'}
+// ];
+
+export const EVENT_CATEGORY = {
+	EVENTS: {
+		TYPE: 'events',
+		VALUE: 1,
+		DISPLAY_NAME: 'EVENTS'
+	},
+	CLASSES: {
+		TYPE: 'classes',
+		VALUE: 2,
+		DISPLAY_NAME: 'CLASSES'
+	},
+	TRAINING: {
+		TYPE: 'training',
+		VALUE: 3,
+		DISPLAY_NAME: 'TRAINING'
+	},
+	MEETUP: {
+		TYPE: 'meetup',
+		VALUE: 4,
+		DISPLAY_NAME: 'MEETUP'
+	}
+}
 
 export const EVENT_INTEREST = {
 	GOING: 1,

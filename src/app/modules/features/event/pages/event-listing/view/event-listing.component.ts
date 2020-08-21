@@ -7,6 +7,7 @@ import { UtilityService } from 'src/app/modules/shared/services/utility.service'
 import { MatDialog } from '@angular/material';
 import { EventService } from '../../../service/event.service';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
+import { EVENT_CATEGORY } from 'src/app/constant/drawer';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 
 @Component({
@@ -24,6 +25,8 @@ export class EventListingComponent implements OnInit {
     filterData: null,
     sortData: null
   };
+  eventCategory = Object.values(EVENT_CATEGORY) ;
+
   constructor(
     private $event: EventService,
     private $router: Router,

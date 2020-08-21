@@ -45,7 +45,7 @@ export class AddExpertComponent implements OnInit {
     this.createForm();
     if (activateRoute.parent.snapshot && activateRoute.parent.snapshot.data && activateRoute.parent.snapshot.data.expertData) {
       this.details = activateRoute.parent.snapshot.data.expertData.data[0];
-      $breadcrumb.replace(this.details._id, this.details.name);
+      $breadcrumb.replace(this.details._id, this.details.name.toString());
       this.patchValueInForm();
     }
   }
