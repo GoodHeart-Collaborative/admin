@@ -10,13 +10,6 @@ import { DetailsComponent } from './details/details.component';
 import { ExpertDetailsListingModule } from './pages/expert-details-listing/expert-details-listing.module';
 import { ExpertDetailsServiceResolve } from './service/expert-details.service';
 
-// const routes: Routes = [
-//   {
-//     path: '',
-//     component: ExpertDetailsComponent
-//   },
-
-// ];
 
 const routes: Routes = [
   {

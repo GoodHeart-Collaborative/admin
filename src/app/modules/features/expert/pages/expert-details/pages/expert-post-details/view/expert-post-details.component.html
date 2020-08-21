@@ -3,15 +3,6 @@
         <div class="row-1">
             <div class="textual-detail">
                 <div class="card_header_container profile_header">
-                    <!-- <div class="card_header">
-                        <figure mat-card-avatar class="image-cover">
-                            <img class="img-cover-fit" [src]="post?.mediaUrl | customImage:'USERS'|async" alt="">
-                        </figure>
-                        <div class="heading-cover">
-                             <a class="user_name" href="javascript:void()">User name</a> 
-                             <p class="posted-on-date">Scheduled On: {{post?.postedAt | date : 'd MMMM, y, h:mm a'}}</p> 
-                        </div>
-                    </div> -->
                     <h1>{{post?.topic | titlecase}}</h1>
                     <p>
                         {{post?.description}}
@@ -19,7 +10,10 @@
                 </div>
             </div>
             <div class="image-detail">
-                <img [src]="post?.mediaUrl | customImage:'USERS'|async" alt="">
+                <img [src]="post?.mediaUrl | customImage:'IMAGE_PLACEHOLDER'|async " *ngIf="post?.mediaType == 1">
+                <video #myVideo muted [src]="post?.mediaUrl" *ngIf="post?.mediaType == 2" loop id="video"  controls
+                >Your browser does not support the
+                  video tag.</video>
             </div>
         </div>
         <div class="row-2">
@@ -34,7 +28,6 @@
         </div>
         <div class="row-3">
             <app-comments-show [commentId]="post?._id"></app-comments-show>
-
         </div>
     </div>
 </div>
