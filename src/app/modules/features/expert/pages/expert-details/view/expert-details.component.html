@@ -7,15 +7,15 @@
         </mat-tab>
         
         <mat-tab  label="Image" >
-            <app-expert-details-listing *ngIf="expertListingData" [experDetails]="expertListingData" (changeHandler)="onOptionChange($event)"></app-expert-details-listing>
+            <app-expert-details-listing *ngIf="expertListingData" [experDetails]="expertListingData" (changeHandler)="onOptionChange($event)" [expetId]="details?._id"></app-expert-details-listing>
         </mat-tab>
 
         <mat-tab label="Video" >
-            <app-expert-details-listing *ngIf="expertListingData" [experDetails]="expertListingData" (changeHandler)="onOptionChange($event)"></app-expert-details-listing>
+            <app-expert-details-listing *ngIf="expertListingData" [experDetails]="expertListingData" (changeHandler)="onOptionChange($event)" [expetId]="details?._id"></app-expert-details-listing>
         </mat-tab>
 
         <mat-tab label="Article">
-            <app-expert-details-listing  *ngIf="expertListingData" [experDetails]="expertListingData" (changeHandler)="onOptionChange($event)"></app-expert-details-listing>
+            <app-expert-details-listing  *ngIf="expertListingData" [experDetails]="expertListingData" (changeHandler)="onOptionChange($event)" [expetId]="details?._id"></app-expert-details-listing>
         </mat-tab>
 
     </mat-tab-group>

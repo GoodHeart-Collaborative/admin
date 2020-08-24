@@ -22,7 +22,7 @@ const routes: Routes = [
           .then((m) => m.AddExpertContentModule
           )
         } ,
-      {path: 'edit',
+      {path: ':id/edit',
       resolve : {
         expertData : ExpertDetailsServiceResolve
       },

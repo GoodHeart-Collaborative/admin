@@ -20,6 +20,7 @@ export class ExpertDetailsListingComponent implements OnInit, OnChanges {
   contentIndex: any;
   @Output() changeHandler = new EventEmitter();
   @Input() experDetails;
+  @Input() expetId;
 
   tableSource = new ExpertDetailsTableDataSource();
   userData: any;
@@ -43,7 +44,7 @@ export class ExpertDetailsListingComponent implements OnInit, OnChanges {
   ngOnInit() { }
 
   ngOnChanges() {
-    this.setUpTableResource(this.experDetails);
+     this.setUpTableResource(this.experDetails);
   }
 
   onOptionChange(event: Table.OptionEvent) {
@@ -52,7 +53,6 @@ export class ExpertDetailsListingComponent implements OnInit, OnChanges {
   }
 
   onActionHandler(id: string, action: ActionType) {
-    console.log(this.experDetails);
     const index = this.experDetails.list.findIndex(user => user._id === id);
     this.$confirmBox.listAction('expert post', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
       .subscribe((confirm) => {
@@ -143,8 +143,9 @@ export class ExpertDetailsListingComponent implements OnInit, OnChanges {
     }).afterClosed().subscribe();
   }
 
-  oneditHandler(id: string) {
-    this.$router.navigate([`admin/expert/${id}`, 'edit']);
+  oneditHandler(expertId: string, id: string) {
+    console.log(expertId, 'shama');
+    this.$router.navigate([`admin/expert/${expertId}/${id}`, 'edit']);
   }
 
   onDetails(id: string) {

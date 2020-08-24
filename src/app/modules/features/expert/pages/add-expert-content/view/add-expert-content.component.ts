@@ -11,6 +11,7 @@ import { FileUploadService } from 'src/app/modules/shared/services/file-upload.s
 import { requiredMedia } from 'src/app/constant/messages';
 import { Location } from '@angular/common';
 import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
+import { ExpertDetailsService } from '../../expert-details/service/expert-details.service';
 
 @Component({
   selector: 'app-add-expert-content',
@@ -19,7 +20,7 @@ import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/
 })
 export class AddExpertContentComponent implements OnInit {
   expertContentForm: FormGroup;
-  categoryData: any;
+  categoryData: any[];
   expertContentId: string;
   contentType = EXPERT_CONTENT_TYPE;
   privacyData = PRAVICY;
@@ -27,6 +28,7 @@ export class AddExpertContentComponent implements OnInit {
   thumbnailUrl: string;
   profilePicURL: string;
   details: any;
+  expertData: any;
   constructor(
     private $fb: FormBuilder,
     private $category: CategoryManagementService,
@@ -35,21 +37,36 @@ export class AddExpertContentComponent implements OnInit {
     private $utility: UtilityService,
     private $fileUploadService: FileUploadService,
     private $location: Location,
-    $breadcrumb: BreadcrumbService
+    $breadcrumb: BreadcrumbService,
+    $expertPostService: ExpertDetailsService
   ) {
-    console.log($activatedRoute.snapshot.parent.parent.params.id);
-    this.expertContentId = $activatedRoute.snapshot.parent.parent.params.id;
-    console.log(this.expertContentId);
+    if ($activatedRoute.snapshot.parent &&
+      $activatedRoute.snapshot.parent.parent.params &&
+      $activatedRoute.snapshot.parent.parent.params.id) {
+      this.expertContentId = $activatedRoute.snapshot.parent.parent.params.id;
+      this.$service.updateDetails(this.expertContentId).then(res => {
+        if (res && res.data && res.data[0]) {
+          this.expertData = res.data[0];
+          $breadcrumb.replace(this.expertContentId, this.expertData.name);
+          this.categoryData = this.expertData.categoryData;
+          console.log(this.categoryData);
+        }
+      });
+    }
     this.createForm();
-    if ($activatedRoute.parent.snapshot.data && $activatedRoute.parent.snapshot.data.expertData) {
-      this.details = $activatedRoute.parent.snapshot.data.expertData.data[0];
-      $breadcrumb.replace(this.details._id, this.details.topic);
-      this.patchValueInForm();
+    if ($activatedRoute.snapshot && $activatedRoute.snapshot.params.id) {
+      $expertPostService.updateDetails($activatedRoute.snapshot.params.id).then(res => {
+        if (res && res.data && res.data[0]) {
+          this.details = res.data[0];
+          $breadcrumb.replace(this.details._id, this.details.topic);
+          this.patchValueInForm();
+        }
+      });
     }
   }
 
   ngOnInit() {
-    this.categoryList();
+    // this.categoryList();
   }
 
   patchValueInForm() {
@@ -125,15 +142,15 @@ export class AddExpertContentComponent implements OnInit {
   /**
    * API hit for Category
    */
-  categoryList() {
-    const params = {
-      page: 1,
-      limit: 10,
-    };
-    this.$category.queryData(params).then(res => {
-      this.categoryData = res.data['data'];
-    });
-  }
+  // categoryList() {
+  //   const params = {
+  //     page: 1,
+  //     limit: 10,
+  //   };
+  //   this.$category.queryData(params).then(res => {
+  //     this.categoryData = res.data['data'];
+  //   });
+  // }
 
   async onSubmit() {
     if (this.expertContentForm.invalid) {

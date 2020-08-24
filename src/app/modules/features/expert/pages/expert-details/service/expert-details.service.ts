@@ -19,13 +19,6 @@ export class ExpertDetailsService {
     return await this.$http.patch(ACTION_EXPERT_POST(id, status), {}).toPromise();
   }
 
-  async  add(params) {
-    // return  this.$http.post(DAILY_INSPIRATION, params).toPromise();
-  }
-  async  edit(id, params) {
-    // return  this.$http.patch(EDIT_DAILY_INSPIRATION(id), params).toPromise();
-  }
-
   async  updateDetails(id) {
     const data = this.$http.get(EXPERT_POST_DETAILS(id)).toPromise();
     return data;

@@ -22,7 +22,7 @@ export class BreadcrumbComponent {
     breadcrumb: BreadcrumbService
   ) {
     breadcrumb.events.subscribe(({ label, target, url = '' }: any) => {
-      
+
       this.$changes.set(target, label);
       const routeStep = this.routeSteps.find((step: RouteStep) => {
         return step.label === target;
@@ -34,10 +34,9 @@ export class BreadcrumbComponent {
           const step = this.routeSteps.find((step: RouteStep) => step.label === target);
           if (step) {
 
-            // step.url = url;
+            step.url = url;
           }
 
-          console.log(this.routeSteps);
 
         }, 0);
       }
@@ -61,11 +60,7 @@ export class BreadcrumbComponent {
           url = url.substr(0, index);
         }
         const steps = this.$createSteps(url);
-        console.log(steps);
-        
         this.routeSteps = steps.reduce<{ [key: string]: any }>((data, step, index, arr) => {
-          console.log();
-          
           if (step === 'admin') {
             return data;
           }
@@ -74,10 +69,6 @@ export class BreadcrumbComponent {
             if (this.$changes.has(step)) {
               step = this.$changes.get(step);
             }
-            console.log({
-              currentUrl,
-               steps: [...data.steps, new RouteStep(step, currentUrl)]
-            });
             return {
               currentUrl,
               steps: [...data.steps, new RouteStep(step, currentUrl)]
