@@ -65,9 +65,7 @@ export class AddExpertContentComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-    // this.categoryList();
-  }
+  ngOnInit() { }
 
   patchValueInForm() {
     this.expertContentForm.patchValue(this.details);
@@ -100,30 +98,28 @@ export class AddExpertContentComponent implements OnInit {
   }
 
   setimageFile(event) {
-    console.log(event);
     if (!event) {
       this.imageFile = null;
       this.profilePicURL = '';
       this.thumbnailUrl = '';
       return;
     }
-    console.log(event);
-    switch (event.type) {
-      case 1:
-        this.contentType = this.getUpdatedTypes([1, 3]);
-        break;
-      case 2:
-        this.contentType = this.getUpdatedTypes([2]);
+    // switch (event.type) {
+    //   case 1:
+    //     this.contentType = this.getUpdatedTypes([1, 3]);
+    //     break;
+    //   case 2:
+    //     this.contentType = this.getUpdatedTypes([2]);
 
-        break;
-      case 3:
-        this.contentType = this.getUpdatedTypes([4]);
+    //     break;
+    //   // case 3:
+    //   //   this.contentType = this.getUpdatedTypes([4]);
 
-        break;
+    //   //   break;
 
-      default:
-        break;
-    }
+    //   default:
+    //     break;
+    // }
     event.type === 1 ? this.thumbnailUrl = '' : this.profilePicURL = '';
     this.imageFile = event;
   }
@@ -139,24 +135,13 @@ export class AddExpertContentComponent implements OnInit {
       return type;
     });
   }
-  /**
-   * API hit for Category
-   */
-  // categoryList() {
-  //   const params = {
-  //     page: 1,
-  //     limit: 10,
-  //   };
-  //   this.$category.queryData(params).then(res => {
-  //     this.categoryData = res.data['data'];
-  //   });
-  // }
+
 
   async onSubmit() {
     if (this.expertContentForm.invalid) {
       this.expertContentForm.markAllAsTouched();
       return;
-    }
+     }
     let body = { ...this.expertContentForm.value };
     if (this.imageFile) {
       if (this.imageFile && this.imageFile.type == 1) {

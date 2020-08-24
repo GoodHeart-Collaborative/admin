@@ -8,14 +8,17 @@
                 <div class="right-portion">
                     <div class="row">
                         <div class="col-md-6">
+
                             <mat-form-field appearance="outline">
                                 <mat-label>Topic</mat-label>
                                 <input matInput placeholder="Topic" appWhiteSpace #name formControlName="topic" >
                                 <mat-hint>{{name.value.trim().length}}/50</mat-hint>
                                 <mat-error>{{form('topic') |validate:'Topic' }}</mat-error>
                             </mat-form-field>
+
                         </div>
                         <div class="col-md-6">
+
                             <mat-form-field appearance="outline">
                                 <mat-label>Category</mat-label>
                                 <mat-select formControlName="categoryId">
@@ -23,10 +26,12 @@
                                 </mat-select>
                                 <mat-error>{{form('categoryId') |validate:'Category' }}</mat-error>
                             </mat-form-field>
+
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
+
                             <mat-form-field appearance="outline">
                                 <mat-label>Privacy</mat-label>
                                 <mat-select formControlName="privacy">
@@ -34,12 +39,12 @@
                                 </mat-select>
                                 <mat-error>{{form('privacy') |validate:'Privacy' }}</mat-error>
                             </mat-form-field>
+
                         </div>
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Content</mat-label>
                                 <mat-select formControlName="contentId" >
-                                    <mat-option value="">select </mat-option>
                                     <mat-option [disabled]="data?.disabled" *ngFor="let data of contentType" [value]="data?.value">{{data?.viewValue}}</mat-option>
                                 </mat-select>
                                 <mat-error>{{form('contentId') |validate:'Content' }}</mat-error>
