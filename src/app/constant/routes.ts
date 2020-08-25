@@ -560,3 +560,29 @@ export const FEED_DETAILS: IRoute = {
   }
 };
 
+// FORUM ROUTES //
+export const REPORTS_AND_ANALYTICS: IRoute = {
+  path: 'reports-and-analytics',
+  get fullUrl(): string {
+    return `${ADMIN.fullUrl}/${this.path}`;
+  }
+};
+export const REPORTS_AND_ANALYTICS_LIST: IRoute = {
+  path: 'list',
+  get fullUrl(): string {
+    return `${REPORTS_AND_ANALYTICS.fullUrl}/${this.path}`;
+  }
+};
+export const ADD_REPORTS_AND_ANALYTICS: IRoute = {
+  path: 'add',
+  get fullUrl(): string {
+    return `${REPORTS_AND_ANALYTICS.fullUrl}/${this.path}`;
+  }
+};
+export const REPORTS_AND_ANALYTICS_DETAILS: IRoute = {
+  path: ':id',
+  get fullUrl(): string {
+    return `${REPORTS_AND_ANALYTICS.fullUrl}/${this.path}`;
+  }
+};
+

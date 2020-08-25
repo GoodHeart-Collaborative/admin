@@ -50,12 +50,18 @@ export class AddExpertComponent implements OnInit {
     }
   }
   patchValueInForm() {
-    this.expertForm.patchValue(this.details);
-    if (this.details && this.details.profilePicUrl) {
-      this.profilePicURL = this.details.profilePicUrl;
-    }
-    if (this.details && this.details.categoryData) {
-      this.categoryData = this.details.categoryData;
+    if (this.details) {
+
+      this.expertForm.patchValue(this.details);
+      if (this.details.profilePicUrl) {
+        this.profilePicURL = this.details.profilePicUrl;
+      }
+      if (this.details.email) {
+        this.expertForm.get('email').disable();
+      }
+      if (this.details.categoryData) {
+        this.categoryData = this.details.categoryData;
+      }
     }
   }
 

@@ -12,18 +12,26 @@ const defaultData: Table.Data<forum> = {
 export class ForumTableDataSource implements Table.Source<forum> {
   label = 'Forum Management';
   columns: Table.Column<forum>[] = [
-    {
-        title: 'Name',
-        id: 'topic',
-        sorting: true,
-        templateBy: 'topic'
-    },
+    // {
+    //     title: 'Name',
+    //     id: 'topic',
+    //     sorting: true,
+    //     templateBy: 'topic'
+    // },
 
     {
         title: 'Description',
         id: 'description',
         sorting: false,
-        resolve: (row: any) => row['description'],
+        templateBy: 'description'
+        // resolve: (row: any) => row['description'],
+      },
+    {
+        title: 'Post Anonymous',
+        id: 'postAnonymous',
+        sorting: false,
+        templateBy: 'postAnonymous'
+        // resolve: (row: any) => row['postAnonymous'],
       },
       {
         title: 'User Type',

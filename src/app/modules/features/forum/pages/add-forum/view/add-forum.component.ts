@@ -71,7 +71,7 @@ export class AddForumComponent implements OnInit {
 
   createForm() {
     this.forumForm = this.$fb.group({
-      topic: ['', [Validators.required, Validators.maxLength(this.titleMaxLength)]],
+      // topic: ['', [Validators.required, Validators.maxLength(this.titleMaxLength)]],
       description: ['', [Validators.required, Validators.maxLength(this.descriptionMaxLength)]],
       categoryId: ['', Validators.required],
       categoryName: [''],

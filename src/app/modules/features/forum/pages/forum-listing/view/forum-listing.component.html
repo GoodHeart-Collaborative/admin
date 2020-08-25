@@ -11,15 +11,19 @@
         {{ forum?.userType | titlecase}}
     </ng-template>
 
+    <ng-template appFor="postAnonymous" let-forum="row">
+        {{ forum?.postAnonymous ? 'True' : 'False' }}
+    </ng-template>
+
     <ng-template appFor="categoryName" let-forum="row">
         {{ forum?.categoryData?.title | titlecase}}
     </ng-template>
 
 
-    <ng-template appFor="topic" let-forum="row">
+    <ng-template appFor="description" let-forum="row">
         <a href="javascript:void(0)" (click)="onDetails(forum?._id, forum?.userType)"
-            title="{{ (forum?.topic | titlecase) || 'String'}}">
-            {{ (forum?.topic | titlecase) || 'String'}}
+            title="{{ (forum?.description | titlecase) || 'String'}}">
+            {{ (forum?.description | titlecase) || 'String'}}
         </a>
     </ng-template>
 
