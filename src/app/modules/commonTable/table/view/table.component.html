@@ -4,7 +4,8 @@
 		</app-search-filter>
     </div>
     <div class="right-side-filters">
-		<button class="filter-button" [class.active]="false" *ngIf="hasFilter" title="Filter"
+		<button class="filter-button" [class.active]="false" *ngIf="hasFilter" title="Filter" [matBadge]="filterCount?filterCount:null" matBadgePosition="before"
+		matBadgeColor="accent"
 			 (click)="onFilterHandler()">
 			 <div class="filter-button-bg"></div>
 			 <mat-icon>filter_list</mat-icon>

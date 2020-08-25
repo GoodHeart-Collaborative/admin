@@ -26,6 +26,7 @@ export class UserListingComponent implements OnInit {
     sortData: null
   };
   statusCount: any;
+  filterCount: number;
   constructor(
     private $router: Router,
     private $userService: UsersService,
@@ -61,6 +62,7 @@ export class UserListingComponent implements OnInit {
         }
       });
     }
+
     if (searchText) {
       params['searchTerm'] = searchText;
     }
@@ -68,6 +70,7 @@ export class UserListingComponent implements OnInit {
       params['sortOrder'] = sortData.sortOrder;
       params['sortBy'] = sortData.sortBy;
     }
+
     this.$userService.queryData(params).then(res => {
       this.statusCount = res.data
       this.userData = res.data['data'];
@@ -209,7 +212,7 @@ export class UserListingComponent implements OnInit {
     }
     this.matDailog.open(ViewFullImageComponent, {
       panelClass: 'view-full-image-modal',
-      data: {image, type}
+      data: { image, type }
     }).afterClosed().subscribe();
   }
 }

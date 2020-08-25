@@ -98,4 +98,14 @@ export class UtilityService {
   show(message: string, config: MatSnackBarConfig = {}) {
     this.open(message, 'DEFAULT', config);
   }
+
+  countFilter(data) {
+    let count = 0;
+    for (const k in data) {
+      if (data[k] != null && data[k] != '') {
+        ++count;
+      }
+    }
+    return count;
+  }
 }

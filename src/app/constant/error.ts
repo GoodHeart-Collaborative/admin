@@ -2,8 +2,6 @@ import { toTitleCase } from './messages';
 import { PATTERN } from './patterns';
 
 export const PATTERN_ERRORS = (pattern, key) => {
-
-    console.log(pattern,  PATTERN.name);
     if (pattern == PATTERN.email) {
         return `Please enter a valid ${key.toLowerCase()}`;
     }

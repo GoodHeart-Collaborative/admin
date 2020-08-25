@@ -12,6 +12,7 @@ import {
   MatIconModule,
   MatButtonModule,
   MatButtonToggleModule,
+  MatBadgeModule,
 } from '@angular/material';
 import { TableComponent } from './view/table.component';
 import { ForModule } from '../for';
@@ -41,6 +42,8 @@ import { SearchFilterModule } from '../search-filter/search-filter.module';
     SearchFilterModule,
     MatButtonModule,
     MatButtonToggleModule,
+    MatBadgeModule
+
   ],
   exports: [
     TableComponent,

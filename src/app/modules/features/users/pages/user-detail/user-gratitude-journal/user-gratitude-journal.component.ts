@@ -6,6 +6,7 @@ export type ActionType = 'deleted' | 'blocked' | 'active';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { GratitudeTableDataSource } from './model';
 import { UserGratitudeJournalService } from './service/user-gratitude-journal.service';
+import { GlobalService } from 'src/app/services/global/global.service';
 @Component({
   selector: 'app-user-gratitude-journal',
   templateUrl: './user-gratitude-journal.component.html',
@@ -22,7 +23,7 @@ export class UserGratitudeJournalComponent implements OnInit, OnChanges {
   };
   isProcessing = false;
   @Input() userData;
-  @Input() otherData;
+  @Input() userId;
   @Output() changeHandler = new EventEmitter();
 
   constructor(
@@ -30,6 +31,7 @@ export class UserGratitudeJournalComponent implements OnInit, OnChanges {
     private $userService: UserGratitudeJournalService,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
+    private $global: GlobalService,
   ) {
   }
 
@@ -122,7 +124,10 @@ export class UserGratitudeJournalComponent implements OnInit, OnChanges {
     if (privacy == 'private') {
       return;
     }
-    this.$router.navigate([`admin/users/${id}/gratitude/details`, {userID: this.otherData}]);
+    const userId = this.$global.encodeData(this.userId);
+    this.$router.navigate([`admin/users/${id}/gratitude/details`],
+      { queryParams: { userId } }
+    );
   }
 
 

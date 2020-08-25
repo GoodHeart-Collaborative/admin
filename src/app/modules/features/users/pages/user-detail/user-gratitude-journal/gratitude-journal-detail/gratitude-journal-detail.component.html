@@ -3,7 +3,7 @@
         <div class="row-1">
             <div class="textual-detail">
                 <p>{{gratitudeDetails?.description}}</p>
-                <p>Scheduled On:{{gratitudeDetails?.postAt | date : 'd MMMM, y, h:mm a'}}</p>
+                <p>Scheduled On: {{gratitudeDetails?.postAt | date : 'd MMMM, y, h:mm a'}}</p>
             </div>
             <div class="image-detail">
                 <img [src]="gratitudeDetails?.mediaUrl |customImage:'USER'|async">

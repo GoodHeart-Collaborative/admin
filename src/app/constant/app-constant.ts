@@ -46,3 +46,4 @@ export const USER_COMPANY_TYPE_CONST = [
     viewValue: 'Individual',
   },
 ];
+

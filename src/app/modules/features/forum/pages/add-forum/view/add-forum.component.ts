@@ -10,6 +10,7 @@ import { VALIDATION_CRITERIA } from 'src/app/constant/validation-criteria';
 import { FORUM } from 'src/app/constant/routes';
 import { CategoryManagementService } from 'src/app/modules/features/category-management/service/category-management.service';
 import { ForumService } from '../../../service/forum.service';
+import { requiredMedia } from 'src/app/constant/messages';
 
 @Component({
   selector: 'app-add-forum',
@@ -24,6 +25,7 @@ export class AddForumComponent implements OnInit {
   profilePicURL: string;
   categoryData: any[];
   forumsData: any;
+  thumbnailUrl: string;
   constructor(
     private $fb: FormBuilder,
     private $fileUploadService: FileUploadService,
@@ -65,6 +67,8 @@ export class AddForumComponent implements OnInit {
     });
   }
 
+
+
   createForm() {
     this.forumForm = this.$fb.group({
       topic: ['', [Validators.required, Validators.maxLength(this.titleMaxLength)]],
@@ -80,12 +84,18 @@ export class AddForumComponent implements OnInit {
     return this.forumForm.controls[name];
   }
 
+  /**
+   * setting Image in ImageFile
+   *
+   */
   setimageFile(event) {
     if (!event) {
       this.imageFile = null;
       this.profilePicURL = '';
+      this.thumbnailUrl = '';
       return;
     }
+    event.type === 1 ? this.thumbnailUrl = '' : this.profilePicURL = '';
     this.imageFile = event;
   }
 
@@ -94,13 +104,48 @@ export class AddForumComponent implements OnInit {
       this.forumForm.markAllAsTouched();
       return;
     }
-    if (this.imageFile) {
-      let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
-      this.profilePicURL = data.Location;
-    }
     let body = { mediaUrl: this.profilePicURL, ...this.forumForm.value };
+    if (this.imageFile) {
+      if (this.imageFile && this.imageFile.type == 1) {
+        const data: any = await this.$fileUploadService.uploadFile(this.imageFile.file);
+        const url = data.Location;
+        body['mediaUrl'] = url;
+        body.mediaType = this.imageFile.type;
+      }
+      if (this.imageFile && this.imageFile.type == 2) {
+        const dataForVideo: any = await this.$fileUploadService.uploadFile(this.imageFile.videoFile);
+        const dataForThumb: any = await this.$fileUploadService.uploadFile(this.imageFile.thumbNailFile);
+        body['mediaUrl'] = dataForVideo.Location;
+        body['thumbnailUrl'] = dataForThumb.Location;
+        body.mediaType = this.imageFile.type;
+      }
+    } else if (this.forumsData) {
+      if (this.forumsData.mediaType == 1) {
+        if (this.profilePicURL) {
+          body['mediaUrl'] = this.profilePicURL;
+          body.mediaType = this.forumsData.mediaType;
+        } else {
+          delete body.mediaType;
+          body['mediaUrl'] = '';
+        }
+      }
+      if (this.forumsData.mediaType == 2) {
+        if (this.thumbnailUrl) {
+          body['mediaUrl'] = this.forumsData.mediaUrl;
+          body['thumbnailUrl'] = this.thumbnailUrl;
+          body.mediaType = this.forumsData.mediaType;
+        } else {
+          delete body.mediaType;
+          body['mediaUrl'] = '';
+          body['thumbnailUrl'] = '';
+        }
+      }
+    }
+    if (!body.mediaUrl) {
+      this.$fileUploadService.showAlert(requiredMedia);
+      return;
+    }
     body.categoryName = this.categoryData.find(categgory => categgory._id === body.categoryId).name;
-
     if (this.forumsData && this.forumsData._id) {
       this.$service.edit(this.forumsData._id, body).then(
         data => {

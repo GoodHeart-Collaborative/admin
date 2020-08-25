@@ -15,6 +15,7 @@ import { MatTableDataSource, MatCheckboxChange, MatCheckbox, MatDialog, MatPagin
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ForDirective } from '../../for';
 import * as Table from '../interfaces';
+import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 
 @Component({
   selector: 'app-table',
@@ -23,6 +24,7 @@ import * as Table from '../interfaces';
   exportAs: 'DataTable'
 })
 export class TableComponent implements OnInit {
+  filterCount: any;
   @Input()
   set disabled(state: boolean) {
     this.$disabled = coerceBooleanProperty(state);
@@ -178,7 +180,9 @@ export class TableComponent implements OnInit {
   get hasPagination(): boolean {
     return this.tableSource && this.tableSource.options && this.tableSource.options.pagination;
   }
-  constructor(private $dialog: MatDialog) {
+  constructor(
+            private $dialog: MatDialog,
+            private $utility: UtilityService) {
 
   }
   private $disabled = false;
@@ -269,6 +273,7 @@ export class TableComponent implements OnInit {
               filterData
             }
           };
+          this.filterCount = this.$utility.countFilter(filterData);
           this._emitOptionEvent();
         }
         subscription.unsubscribe();

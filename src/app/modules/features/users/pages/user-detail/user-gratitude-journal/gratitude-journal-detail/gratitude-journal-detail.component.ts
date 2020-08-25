@@ -4,6 +4,7 @@ import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/lik
 import { ActivatedRoute } from '@angular/router';
 import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
 import { CommonService } from 'src/app/modules/shared/services/common.service';
+import { GlobalService } from 'src/app/services/global/global.service';
 
 
 @Component({
@@ -16,14 +17,21 @@ export class GratitudeJournalDetailComponent implements OnInit {
   public hideShowReplies = false;
   gratitudeDetails: any;
   comments: any;
+  userID: any;
   constructor(
     private $matDailog: MatDialog,
     $router: ActivatedRoute,
     $breadcrumb: BreadcrumbService,
-    private $common: CommonService
+    private $common: CommonService,
+    $global: GlobalService
   ) {
+    $router.queryParams.subscribe(({ userId }) => {
+      console.log(userId);
+      this.userID = $global.decodeData(userId);
+      console.log($router.snapshot.params.id);
+      $breadcrumb.replace($router.snapshot.params.id, $router.snapshot.params.id, `/admin/users/${this.userID}/details`)
+    });
     this.gratitudeDetails = $router.snapshot.data.gratitudeData;
-    $breadcrumb.replace($router.snapshot.params.id, $router.snapshot.params.id, `/admin/users/${$router.snapshot.params.userID}/details`)
   }
 
   /**
@@ -45,10 +53,10 @@ export class GratitudeJournalDetailComponent implements OnInit {
     });
   }
 
-/**
- * user Like Handler
- * @param id
- */
+  /**
+   * user Like Handler
+   * @param id
+   */
   onlikeHandler(like: any) {
     this.$matDailog.open(LikeActionComponent, {
       width: '500px',

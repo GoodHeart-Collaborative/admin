@@ -25,4 +25,6 @@ dashBoardFlag$ =  new BehaviorSubject(false);
  async  queryUserData(params) {
     return  this.$http.get(USER, params).toPromise();
   }
+
+  
 }
