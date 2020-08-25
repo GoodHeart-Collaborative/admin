@@ -23,8 +23,8 @@
                         <mat-error>{{form('description')  |validate:'Description'}}</mat-error>
                     </mat-form-field>
 
-                    <div class="post-later">
-                        <mat-checkbox formControlName="isPostLater">Post Later!</mat-checkbox>
+                    <div class="post-later checkbox-wrapper">
+                        <mat-checkbox color="primary" formControlName="isPostLater">Post Later!</mat-checkbox>
                         <mat-form-field class="later-date-picker" color="accent"
                             *ngIf="adviceForm?.contains('postedAt')" appearance="outline">
                             <input matInput [matDatepicker]="picker"  [min]="today" formControlName="postedAt"

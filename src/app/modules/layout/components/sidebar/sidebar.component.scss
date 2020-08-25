@@ -189,8 +189,10 @@
 			}
 			&.mat-expanded {
 				background: rgba(0,0,0,0.2);
+				border-bottom-left-radius: 0;
+				border-bottom-right-radius: 0;
 				.mat-expansion-indicator {
-					top: 12px;
+					top: 14px;
 				}
 			}
 		}
@@ -199,6 +201,9 @@
 		}
 		.mat-expansion-panel-body {
 			padding: 0px !important;
+			.mat-list-item{
+				border-radius: 0 !important;
+			}
 			a {
 				padding-left: 15px;
 			}
