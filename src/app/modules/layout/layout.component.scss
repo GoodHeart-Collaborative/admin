@@ -22,7 +22,7 @@
         }
         .main-content{
             width: 100%;
-            padding: 15px 20px;
+            padding: 22px 20px;
             transition: .3s;
             height: calc(100vh - 64px);
             @include scroller(6px , $primary);
