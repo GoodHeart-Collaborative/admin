@@ -23,13 +23,12 @@
                             <!-- <p class="posted-on-date">Scheduled On: {{forumsData?.postedAt | date : 'd MMMM, y, h:mm a'}}</p> -->
                         </div>
                     </div>
-                    <h1>{{(forumsData?.topic | titlecase) || 'string'}}</h1>
+                    <!-- <h1>{{(forumsData?.topic | titlecase) || 'string'}}</h1> -->
                     <p>{{forumsData?.description || 'string'}}</p>
                 </div>
             
             </div>
             <div class="image-detail">
-                <!-- <img [src]="forumsData?.mediaUrl | customImage:'IMAGE_PLACEHOLDER'|async " > -->
                 <img [src]="forumsData?.mediaUrl | customImage:'IMAGE_PLACEHOLDER'|async " *ngIf="forumsData?.mediaType == 1">
                 <video #myVideo muted [src]="forumsData?.mediaUrl" *ngIf="forumsData?.mediaType == 2" loop id="video"  controls
                 >Your browser does not support the

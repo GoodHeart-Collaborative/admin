@@ -69,7 +69,7 @@ export class ForumTableDataSource implements Table.Source<forum> {
   ];
   options: Table.Options = {
     selection: false,
-    search: 'Search by name',
+    search: 'Search by Description',
     index: true,
     addComponent: true,
     sorting: true,
