@@ -51,8 +51,8 @@ export class AddForumComponent implements OnInit {
 
   forumPatchData() {
     this.forumForm.patchValue(this.forumsData);
-    if (this.forumsData.profilePicUrl) {
-      this.profilePicURL = this.forumsData.profilePicUrl;
+    if (this.forumsData.mediaUrl) {
+      this.profilePicURL = this.forumsData.mediaUrl;
     }
     // if (this.forumsData && this.forumsData.mediaUrl) {
     //   this.profilePicURL = this.forumsData.mediaUrl;
