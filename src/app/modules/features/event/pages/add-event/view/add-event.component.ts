@@ -76,7 +76,7 @@ export class AddEventComponent implements OnInit {
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
       address: [''],
-      isFeatured: ['false']
+      isFeatured: [false]
     });
   }
 
