@@ -26,10 +26,12 @@
                             <p class="label">Industry</p>
                             <p class="value">{{industry[data?.industry] }}</p>
                         </div>
-                        <!-- <div class="col-md-4">
+                        <div class="col-md-4">
                             <p class="label">Category</p>
-                            <p class="value">{{data?.category || 'none'}}</p>
-                        </div> -->
+                            <p *ngFor="let item of data?.categoryData ; let i = index">
+                                {{ item?.title | titlecase}}{{i< data?.categoryData?.length -1 ?',' : '' }}
+                            </p>                        
+                        </div>
                         <div class="col-md-4">
                             <p class="label">Experience</p>
                             <p class="value">{{(data?.experience | titlecase) || 'none'}}</p>

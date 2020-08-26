@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
-import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
-import { UtilityService } from 'src/app/modules/shared/services/utility.service';
-import { EventService } from 'src/app/modules/features/event/service/event.service';
 import { MatDialog } from '@angular/material';
 import { CommonService } from 'src/app/modules/shared/services/common.service';
 import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
@@ -23,8 +20,8 @@ export class ForumDetailsComponent implements OnInit {
     private $matDailog: MatDialog
   ) {
     this.forumsData = $router.snapshot.data.forumData.data;
-    $breadcrumb.replace(this.forumsData._id,
-      this.forumsData.userData ? this.forumsData.userData.firstName  : this.forumsData.adminData.name);
+    // $breadcrumb.replace(this.forumsData._id,
+    //   this.forumsData.userData ? this.forumsData.userData.firstName  : this.forumsData.adminData.name);
   }
 
   ngOnInit() { }

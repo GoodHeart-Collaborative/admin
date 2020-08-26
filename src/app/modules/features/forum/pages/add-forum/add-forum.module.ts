@@ -7,6 +7,7 @@ import { WhiteSpaceModule } from 'src/app/modules/shared/white-space/white-space
 import { ReactiveFormsModule } from '@angular/forms';
 import { ValidationErrorPipeModule } from 'src/app/pipes/validation-error/validation-error-pipe.module';
 import { MediaUploadModule } from 'src/app/modules/shared/media-upload/media-upload.module';
+import { ImageUploadModule } from 'src/app/modules/shared/image-upload/image-upload.module';
 
 const routes: Routes = [
   {
@@ -23,10 +24,11 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MediaUploadModule,
+    // MediaUploadModule,
     WhiteSpaceModule,
     ReactiveFormsModule,
-    ValidationErrorPipeModule
+    ValidationErrorPipeModule,
+    ImageUploadModule
   ]
 })
 export class AddForumModule { }
