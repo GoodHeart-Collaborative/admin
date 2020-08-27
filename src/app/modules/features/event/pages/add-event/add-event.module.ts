@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { GooglePlacesModule } from 'src/app/directives/google-places/google-places.module';
 import { WhiteSpaceModule } from 'src/app/modules/shared/white-space/white-space.module';
 import { AppDateAdapter, APP_DATE_FORMATS } from 'src/app/constant/format-datepicker';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 
 const routes: Routes = [
@@ -38,7 +39,9 @@ const routes: Routes = [
     ValidationErrorPipeModule,
     ReactiveFormsModule,
     GooglePlacesModule,
-    WhiteSpaceModule
+    WhiteSpaceModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule
   ],
   providers : [  { provide: DateAdapter, useClass: AppDateAdapter },
     { provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS }]

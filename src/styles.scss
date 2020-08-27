@@ -1,4 +1,5 @@
 @import './sass/global-sass';
+@import "~ng-pick-datetime/assets/style/picker.min.css";
 .cdk-overlay-pane{
 	max-width: 95vw !important;
 	&.filter-modal{

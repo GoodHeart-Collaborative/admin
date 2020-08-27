@@ -31,19 +31,27 @@
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Choose a start date</mat-label>
-                                <input matInput [matDatepicker]="picker1" [max]="endDate.value" [min]="today" formControlName="startDate"
+                                <!-- <input matInput [matDatepicker]="picker1" [max]="endDate.value" [min]="today" formControlName="startDate"
                                 (click)="picker1.open()" placeholder="Start Date" readonly>
                               <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                              <mat-datepicker #picker1></mat-datepicker>
+                              <mat-datepicker #picker1></mat-datepicker> -->
+                              <input [max]="endDate.value" [min]="today"   [owlDateTimeTrigger]="dt1" formControlName="startDate" matInput [owlDateTime]="dt1" placeholder="Finish" readonly>
+                            <owl-date-time [hour12Timer]="true" #dt1></owl-date-time>
+                            <mat-error>{{form('startDate') |validate:'Start Date' }}</mat-error>
+
                             </mat-form-field>
                         </div>
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Choose an end date</mat-label>
-                                <input matInput [matDatepicker]="picker2" [min]="startDate.value"  formControlName="endDate"
+                                <!-- <input matInput [matDatepicker]="picker2" [min]="startDate.value"  formControlName="endDate"
                                 (click)="picker2.open()"  placeholder="End Date" readonly>
                               <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                              <mat-datepicker #picker2></mat-datepicker>
+                              <mat-datepicker #picker2></mat-datepicker> -->
+                              <input  [min]="startDate.value"    [owlDateTimeTrigger]="dt2" formControlName="endDate" matInput [owlDateTime]="dt2" placeholder="Finish" readonly>
+                            <owl-date-time [hour12Timer]="true" #dt2></owl-date-time>
+                            <mat-error>{{form('endDate') |validate:'End Date' }}</mat-error>
+
                             </mat-form-field>
                         </div>
                     </div>
