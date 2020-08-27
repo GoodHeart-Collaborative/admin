@@ -1,0 +1,51 @@
+@import '../../../../../sass/abstracts/variables';
+
+::ng-deep .page-analytics-details {
+    height: calc(100% - 55px);
+    mat-tab-group {
+        background-color: #f9f9f9;
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+        height: 100%;
+        border-radius: 2px;
+        .mat-tab-label{
+            height: auto;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            .mat-tab-label-content{
+                font-weight: 600;
+                display: block;
+                .count{
+                    font-weight: 600;
+                    display: block;
+                    margin-top: 10px;
+                }
+            }
+            &.mat-tab-label-active{
+                .mat-tab-label-content{
+                    font-weight: bold;
+                    color: $primary;
+                    .count{
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+        .mat-ink-bar{
+            height: 4px;
+        }
+        .mat-tab-body{
+            padding: 15px;
+        }
+    }
+}
+
+
+:host ::ng-deep{
+    .mat-tab-body-wrapper{
+        .mat-tab-body{
+            .mat-tab-body-content{
+                padding: 15px;
+            }
+        }
+    }
+}
