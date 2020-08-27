@@ -560,7 +560,7 @@ export const FEED_DETAILS: IRoute = {
   }
 };
 
-// FORUM ROUTES //
+// REPORTS_AND_ANALYTICS ROUTES //
 export const REPORTS_AND_ANALYTICS: IRoute = {
   path: 'reports-and-analytics',
   get fullUrl(): string {

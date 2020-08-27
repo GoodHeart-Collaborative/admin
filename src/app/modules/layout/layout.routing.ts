@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout.component';
 import { USER, DASHBOARD , CONTENT_MANAGEMENT ,
       CATEGORY, DAILY_INSPIRATION, DAILY_UNICORN,
-      DAILY_ADVICE, MEMBER_OF_THE_DAY, ARTICLES, EXPERT, EVENTS, NOTIFICATIONS, FORUM, FEED, REPORTS_AND_ANALYTICS} from '../../constant/routes';
+      DAILY_ADVICE, MEMBER_OF_THE_DAY, ARTICLES, EXPERT, EVENTS,
+       NOTIFICATIONS, FORUM, FEED, REPORTS_AND_ANALYTICS} from '../../constant/routes';
 
 const routes: Routes = [
   {
