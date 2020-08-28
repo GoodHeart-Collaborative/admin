@@ -1,1 +1,47 @@
-<h2 style="text-align: center; margin-top: 80px;">Under Development</h2>
+<app-table [tableSource]="tableSource" (optionChange)="onOptionChange($event)">
+
+    <ng-template appFor="createdAt" let-shoutouts="row">
+        {{ shoutouts?.createdAt |customDate}}
+    </ng-template>
+
+    <ng-template appFor="status" let-shoutouts="row">
+        {{( shoutouts?.status  | titlecase) || 'Active'}}
+    </ng-template>
+
+    <ng-template appFor="privacy" let-shoutouts="row">
+        {{ shoutouts?.privacy | titlecase}}
+    </ng-template>
+    <ng-template appFor="gif" let-shoutouts="row">
+        {{ shoutouts?.gif }}
+    </ng-template>
+
+
+    <ng-template appFor="title" let-shoutouts="row">
+        <a href="javascript:void(0)" (click)="onDetailsHandler(shoutouts?._id, shoutouts?.privacy)" [class.click-not-allowed]="shoutouts?.privacy == 'private'">
+            {{ (shoutouts?.title  | titlecase) || 'String'}}
+        </a>
+    </ng-template>
+
+    <ng-container>
+
+        <ng-template appFor="actions" let-shoutouts="row">
+            <div class="action-icon-cover">
+
+                <i class="material-icons icon-block" (click)="onActionHandler(shoutouts._id, 'blocked', shoutouts?.privacy)" [class.click-not-allowed]="shoutouts?.privacy == 'private'"
+                    *ngIf="shoutouts?.status === 'active';else templateAction" title="Block">
+                    blocked</i>
+                <ng-template #templateAction>
+                    <i class="material-icons icon-unblock" (click)="onActionHandler(shoutouts._id, 'active', shoutouts?.privacy)" [class.click-not-allowed]="shoutouts?.privacy == 'private'"
+                        title="Unblock">
+                        lock_open
+                    </i>
+                </ng-template>
+                <i class="material-icons icon-delete" (click)="onActionHandler(shoutouts._id, 'deleted',  shoutouts?.privacy)" [class.click-not-allowed]="shoutouts?.privacy == 'private'"
+                    title="Delete">
+                    delete
+                </i>
+            </div>
+
+        </ng-template>
+    </ng-container>
+</app-table>

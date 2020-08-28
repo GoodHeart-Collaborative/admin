@@ -159,10 +159,10 @@ export class AddForumComponent implements OnInit {
       let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
       this.profilePicURL = data.Location;
     }
-    if (!this.profilePicURL) {
-      this.$fileUploadService.showAlert(requiredMedia);
-      return;
-    }
+    // if (!this.profilePicURL) {
+    //   this.$fileUploadService.showAlert(requiredMedia);
+    //   return;
+    // }
 
     let body = { mediaUrl: this.profilePicURL, ...this.forumForm.value };
 

@@ -5,7 +5,7 @@ import { CategoryManagementService } from '../../../service/category-management.
 import { Router, ActivatedRoute } from '@angular/router';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
-import { USER, CATEGORY } from 'src/app/constant/routes';
+import { USER, CATEGORY, EXPERT } from 'src/app/constant/routes';
 import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
 import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
 import { CommentsComponent } from 'src/app/modules/shared/comments/view/comments/comments.component';
@@ -188,6 +188,11 @@ export class RelatedCategoryPostComponent implements OnInit {
       width: '500px',
       data: id
     }).afterClosed().subscribe();
+  }
+
+  ondetailsHandler(id: string) {
+    this.$router.navigate([`${EXPERT.fullUrl}`, id, 'details']);
+
   }
 
 }

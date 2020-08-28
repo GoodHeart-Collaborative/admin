@@ -22,8 +22,9 @@ export class UserDetailComponent implements OnInit {
     sortData: null
   };
   userData: any;
-  index: any;
+  index = 1;
   eventListData: any;
+  shoutoutsListData: unknown;
 
   constructor(
     private $router: ActivatedRoute,
@@ -70,19 +71,31 @@ export class UserDetailComponent implements OnInit {
       params['sortOrder'] = sortData.sortOrder;
       params['sortBy'] = sortData.sortBy;
     }
-    if (index == 1) {
-      this.$userService.queryData(params).then(res => {
-        console.log(res);
-        this.userData = res.data;
-      });
-    }
-    if (index == 2) {
-      this.$userService.onEventHandler(params).then(res => {
-        console.log(res);
-        this.eventListData = res.data;
-      });
-    }
+    this.onApiHandler(index , params);
+   }
 
+  onApiHandler(index , params) {
+    switch (index) {
+      case 1:
+        this.$userService.queryData(params).then(res => {
+          this.userData = res.data;
+        });
+        break;
+      case 2:
+        this.$userService.onEventHandler(params).then(res => {
+          this.eventListData = res.data;
+        });
+        break;
+      case 3:
+        break;
+      case 4:
+        this.$userService.onShoutoutsHandler(params).then(res => {
+          this.shoutoutsListData = res.data;
+        });
+        break;
+      default:
+        break;
+    }
   }
 
   /**
@@ -91,7 +104,7 @@ export class UserDetailComponent implements OnInit {
    */
   onOptionChange(event) {
     this.eventData = event;
-    this.updateList();
+    this.updateList(this.index);
   }
 
   /**

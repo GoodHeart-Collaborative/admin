@@ -13,9 +13,9 @@
          {{ daily?.status | titlecase}}
      </ng-template>
  
-     <ng-template appFor="title" let-category="row">
+     <ng-template appFor="fullName" let-category="row">
          <a href="javascript:void(0)" (click)="onDetailsHandler(category?._id)" title="{{ category?.title | titlecase}}">
-             {{ category?.title | titlecase}}
+             {{ category?.fullName | titlecase}}
          </a>
      </ng-template>
  

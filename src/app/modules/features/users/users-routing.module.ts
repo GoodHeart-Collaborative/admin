@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UsersComponent } from './view/users.component';
-import { USER_LIST, USER_DETAIL ,GRATITUDE_DETAIL , EVENT_DETAIL, TOPIC_DETAIL} from '../../../constant/routes';
+import { USER_LIST, USER_DETAIL ,GRATITUDE_DETAIL , EVENT_DETAIL, TOPIC_DETAIL, SHOUTOUTS_DETAIL} from '../../../constant/routes';
 import { UsersServiceResolve } from './service/users.service';
 import { UserGratitudeJournalServiceResolve } from './pages/user-detail/user-gratitude-journal/service/user-gratitude-journal.service';
 import { UserEventServiceResolve } from './pages/user-detail/user-events/service/user-event.service';
@@ -44,11 +44,16 @@ const routes: Routes = [
       },
       {
         path: `${TOPIC_DETAIL.path}`,
-        resolve: {
-          UserDetails : UsersServiceResolve
-        },
        loadChildren: () => import('./pages/user-detail/user-topics/user-topic-detail/user-topic-detail.module').
        then( (m) => m.UserTopicDetailModule),
+      },
+      {
+        path: `${SHOUTOUTS_DETAIL.path}`,
+        // resolve: {
+        //   UserDetails : UsersServiceResolve
+        // },
+       loadChildren: () => import('./pages/user-detail/user-shoutouts/details/user-shoutouts-details.module').
+       then( (m) => m.UserShoutoutsDetailsModule),
       },
     ],
   },

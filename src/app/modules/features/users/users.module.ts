@@ -11,6 +11,7 @@ import { MinMaxFilterModule } from '../../layout/layout-shared/min-max-filter/mi
 import { UsersServiceResolve } from './service/users.service';
 import { UserGratitudeJournalServiceResolve } from './pages/user-detail/user-gratitude-journal/service/user-gratitude-journal.service';
 import { UserEventServiceResolve } from './pages/user-detail/user-events/service/user-event.service';
+import { UserShoutoutsServiceResolve } from './pages/user-detail/user-shoutouts/service/user-shoutouts.service';
 
 
 @NgModule({
@@ -25,6 +26,10 @@ import { UserEventServiceResolve } from './pages/user-detail/user-events/service
     RouterModule,
     DropdownFilterModule,
   ],
-  providers: [UsersServiceResolve, UserGratitudeJournalServiceResolve, UserEventServiceResolve]
+  providers: [
+    UsersServiceResolve,
+    UserGratitudeJournalServiceResolve,
+    UserEventServiceResolve,
+    UserShoutoutsServiceResolve]
 })
 export class UsersModule { }

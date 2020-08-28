@@ -94,6 +94,12 @@ export const TOPIC_DETAIL: IRoute = {
     return `${USER.fullUrl}/${this.path}`;
   }
 };
+export const SHOUTOUTS_DETAIL: IRoute = {
+  path: `:id/shoutouts/details`,
+  get fullUrl(): string {
+    return `${USER.fullUrl}/${this.path}`;
+  }
+};
 
 
 

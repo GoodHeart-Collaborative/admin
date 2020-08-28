@@ -30,7 +30,7 @@ export const invalidFileSize = (size = 4) =>
 export const requiredProfilePic = `Profile pic is required`;
 export const requiredMedia = `Media is required`;
 export const invalidContentType = 'Invalid content type selected';
-export const videoFormatFile = (format = 'mp4/x-m4v/3gp') =>  `Please select any video ${format} format file.`;
+export const videoFormatFile = (format = 'mp4/x-m4v/3gp') =>  `Please select  video ${format} format file.`;
 export const videoFileSize = (size = 10) =>  `File size should not be greater then ${size} MB`;
 
 

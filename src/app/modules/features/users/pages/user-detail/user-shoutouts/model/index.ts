@@ -1,6 +1,5 @@
 import * as Table from 'src/app/modules/commonTable/table/interfaces';
 import { ListingFilterComponent } from '../component/listing-filter.component';
-
 type User = any;
 
 const defaultData: Table.Data<User> = {
@@ -10,20 +9,36 @@ const defaultData: Table.Data<User> = {
     rows: null
 };
 
-export class GratitudeTableDataSource implements Table.Source<User> {
+export class ShoutoutsTableDataSource implements Table.Source<User> {
   label = 'Users Management';
   columns: Table.Column<User>[] = [
+    {
+      title: 'Title',
+      id: 'title',
+      sorting: true,
+      templateBy: 'title'
+    //   resolve: (row: any) => `${row['firstName']} ${row['lastName']}` || 'NA',
+    },
     {
       title: 'Description',
       id: 'description',
       sorting: false,
-      templateBy: 'description'
+      // templateBy: 'description'
+      resolve: (row: any) => row['description'] || '-',
     },
     {
       title: 'Privacy',
       id: 'privacy',
       sorting: false,
       templateBy: 'privacy'
+      // resolve: (row: any) => row['privacy'] || '-',
+    },
+    {
+      title: 'Gif',
+      id: 'gif',
+      sorting: false,
+      templateBy: 'gif'
+      // resolve: (row: any) => row['privacy'] || '-',
     },
     {
       title: 'Added On',
@@ -36,6 +51,7 @@ export class GratitudeTableDataSource implements Table.Source<User> {
       id: 'status',
       sorting: false,
       templateBy: 'status'
+      // resolve: (row: any) => row['status'] || 'NA',
     },
 
     {
@@ -47,7 +63,7 @@ export class GratitudeTableDataSource implements Table.Source<User> {
   ];
   options: Table.Options = {
     selection: false,
-    search: 'Search by Description',
+    search: 'Search by Title',
     index: true,
     sorting: true,
     filterComponent: ListingFilterComponent,

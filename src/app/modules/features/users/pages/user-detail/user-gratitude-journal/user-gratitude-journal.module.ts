@@ -6,19 +6,24 @@ import { RouterModule, Routes } from '@angular/router';
 import { TableModule } from 'src/app/modules/commonTable/table';
 import { CustomDatePipeModule } from 'src/app/pipes/custom-date/custom-date-pipe.module';
 import { UsersService } from '../../../service/users.service';
+import { ListingFilterComponent } from './component/listing-filter.component';
+import { DateFilterModule } from 'src/app/modules/layout/layout-shared/date-filter/date-filter.module';
+import { MatSelectModule } from '@angular/material';
+import { ReactiveFormsModule } from '@angular/forms';
 
-const routes: Routes = [
-];
 
 @NgModule({
-  declarations: [UserGratitudeJournalComponent],
+  declarations: [UserGratitudeJournalComponent, ListingFilterComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),
     TableModule,
-    CustomDatePipeModule
+    CustomDatePipeModule,
+    DateFilterModule,
+    MatSelectModule,
+    ReactiveFormsModule
   ],
   providers: [UsersService],
-  exports : [UserGratitudeJournalComponent]
+  exports : [UserGratitudeJournalComponent],
+  entryComponents: [ListingFilterComponent]
 })
 export class UserGratitudeJournalModule { }

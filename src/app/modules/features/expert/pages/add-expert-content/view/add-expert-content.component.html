@@ -3,7 +3,7 @@
      <form [formGroup]="expertContentForm">
             <div class="row-1">
                 <div class="left-portion">
-                    <media-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL" [contentId]="contentId?.value"></media-upload>
+                    <media-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL" [contentId]="contentId?.value" [videoSrc]="thumbnailUrl"></media-upload>
                 </div>
                 <div class="right-portion">
                     <div class="row">
@@ -44,7 +44,7 @@
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Content</mat-label>
-                                <mat-select formControlName="contentId" >
+                                <mat-select formControlName="contentId" (selectionChange)="onSelectContent($event)">
                                     <mat-option [disabled]="data?.disabled" *ngFor="let data of contentType" [value]="data?.value">{{data?.viewValue}}</mat-option>
                                 </mat-select>
                                 <mat-error>{{form('contentId') |validate:'Content' }}</mat-error>

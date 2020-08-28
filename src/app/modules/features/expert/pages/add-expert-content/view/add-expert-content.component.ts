@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { CategoryManagementService } from 'src/app/modules/features/category-management/service/category-management.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,6 +12,7 @@ import { requiredMedia } from 'src/app/constant/messages';
 import { Location } from '@angular/common';
 import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
 import { ExpertDetailsService } from '../../expert-details/service/expert-details.service';
+import { MatSelectChange } from '@angular/material';
 
 @Component({
   selector: 'app-add-expert-content',
@@ -35,6 +36,7 @@ export class AddExpertContentComponent implements OnInit {
     $activatedRoute: ActivatedRoute,
     private $service: ExpertService,
     private $utility: UtilityService,
+    private $cdr: ChangeDetectorRef,
     private $fileUploadService: FileUploadService,
     private $location: Location,
     $breadcrumb: BreadcrumbService,
@@ -98,6 +100,8 @@ export class AddExpertContentComponent implements OnInit {
   }
 
   setimageFile(event) {
+    console.log(event);
+
     if (!event) {
       this.imageFile = null;
       this.profilePicURL = '';
@@ -122,6 +126,7 @@ export class AddExpertContentComponent implements OnInit {
     // }
     event.type === 1 ? this.thumbnailUrl = '' : this.profilePicURL = '';
     this.imageFile = event;
+    
   }
 
   getUpdatedTypes(validTypes: number[]) {
@@ -141,7 +146,7 @@ export class AddExpertContentComponent implements OnInit {
     if (this.expertContentForm.invalid) {
       this.expertContentForm.markAllAsTouched();
       return;
-     }
+    }
     let body = { ...this.expertContentForm.value };
     if (this.imageFile) {
       if (this.imageFile && this.imageFile.type == 1) {
@@ -201,5 +206,22 @@ export class AddExpertContentComponent implements OnInit {
 
   onCancel() {
     this.$location.back();
+  }
+
+  onSelectContent(event: MatSelectChange) {
+    console.log(this.imageFile, event.value);
+    if (!this.details && this.imageFile && this.imageFile.type != event.value) {
+      
+      this.imageFile = null;
+      this.profilePicURL = '';
+      this.thumbnailUrl = '';
+    } else if (this.details && (this.details.mediaType != event.value || (this.imageFile && this.imageFile.type != event.value))) {
+      debugger
+      this.imageFile = null;
+      this.profilePicURL = null;
+      this.thumbnailUrl = null;
+    }
+    this.$cdr.detectChanges()
+
   }
 }

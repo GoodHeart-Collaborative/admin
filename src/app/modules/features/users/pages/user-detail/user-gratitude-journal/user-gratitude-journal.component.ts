@@ -35,8 +35,7 @@ export class UserGratitudeJournalComponent implements OnInit, OnChanges {
   ) {
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   ngOnChanges() {
     this.setUpTableResource(this.userData);
@@ -67,6 +66,7 @@ export class UserGratitudeJournalComponent implements OnInit, OnChanges {
         }
       });
   }
+
   /**
    * Action Update Handler
    * @param action

@@ -46,6 +46,13 @@ export class MediaUploadComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngOnChanges(){
+    debugger
+    console.log(this.profilePicURL);
+
+    
+  }
+
   async onSelectFile(event) {
     this.saveEvent = event;
     try {

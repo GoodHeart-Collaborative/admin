@@ -18,7 +18,9 @@
             <!-- <app-user-topics [userDetails]="userDetails"></app-user-topics> -->
         </mat-tab>
         <mat-tab label="Shoutouts">
-            <!-- <app-user-shoutouts ></app-user-shoutouts> -->
+            <ng-container *ngIf="shoutoutsListData">
+                <app-user-shoutouts [userData]="shoutoutsListData" [userData]="userDetails?._id"  (changeHandler)="onOptionChange($event)"></app-user-shoutouts>
+           </ng-container>
         </mat-tab>
 
     </mat-tab-group>
