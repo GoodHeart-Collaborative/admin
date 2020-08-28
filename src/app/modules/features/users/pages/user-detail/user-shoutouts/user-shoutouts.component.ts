@@ -127,7 +127,9 @@ export class UserShoutoutsComponent implements OnInit, OnChanges {
     if (privacy == 'private') {
       return;
     }
+    console.log(this.userId);
     const userId = this.$global.encodeData(this.userId);
+  
     this.$router.navigate([`admin/users/${id}/shoutouts/details`],
       { queryParams: { userId } }
     );

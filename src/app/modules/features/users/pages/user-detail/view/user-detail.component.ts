@@ -32,6 +32,8 @@ export class UserDetailComponent implements OnInit {
     private $userService: UserGratitudeJournalService,
   ) {
     this.userDetails = this.$router.snapshot.data.UserDetails;
+    console.log(this.userDetails._id);
+    
     this.$breadcrumb.replace(this.userDetails.id, this.userDetails['firstName']);
   }
   ngOnInit() {

@@ -26,7 +26,6 @@ export class UserBasicDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    
   }
 
   /***

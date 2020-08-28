@@ -29,8 +29,7 @@ export class HeaderComponent implements OnInit {
     private _http: HttpService,
     private $router: Router,
     private _dataService: DataTransferService,
-    private matDailog: MatDialog,
-    
+    private matDailog: MatDialog
   ) {
     this.getProfileDetail();
   }

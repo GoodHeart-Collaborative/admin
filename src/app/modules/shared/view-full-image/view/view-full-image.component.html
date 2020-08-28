@@ -1,8 +1,8 @@
 <div class="view-full-image-model-popup">
     <img [src]="data?.image  |customImage:'USER'|async" alt="Full-Image" *ngIf="data?.type == 1">
-    <!-- <img [src]="data?.image  |customImage:'USER'|async" alt="Full-Image" > -->
     <video #myVideo muted [src]="data?.image" *ngIf="data?.type == 2" loop id="video" controls
     >Your browser does not support the
     video tag.</video>
+    <div *ngIf="data?.type == 0">{{data?.image}}</div> 
     <mat-icon [mat-dialog-close]="false">close</mat-icon>
 </div>
