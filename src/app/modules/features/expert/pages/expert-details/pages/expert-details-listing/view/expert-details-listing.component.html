@@ -37,8 +37,6 @@
      <ng-template appFor="categoryData" let-expert="row">
         <span *ngFor="let item of expert?.categoryData ; let i = index" title="{{ item?.name | titlecase}}">
             {{ item?.title | titlecase}}{{i< expert?.categoryData?.length -1?',' : '' }}
-            
-
         </span>
     </ng-template>
 
