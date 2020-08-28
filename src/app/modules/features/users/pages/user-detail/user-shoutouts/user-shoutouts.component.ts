@@ -124,7 +124,6 @@ export class UserShoutoutsComponent implements OnInit, OnChanges {
    */
   onDetailsHandler(id: string, privacy: string) {
     console.log(id, privacy);
-    
     if (privacy == 'private') {
       return;
     }

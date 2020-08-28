@@ -6,44 +6,42 @@
                     <div class="row">
                         <div class="col-md-4">
                             <p class="label">Title</p>
-                            <p class="value">Lorem Ipsum is simply dummy text of the printing.</p>
+                            <p class="value">{{shoutoutsData?.title |titlecase}}</p>
                         </div>
                         <div class="col-md-4">
                             <p class="label">Privacy Type</p>
-                            <p class="value">Public</p>
+                            <p class="value">{{shoutoutsData?.privacy |titlecase }}</p>
                         </div>
                         <div class="col-md-4">
                             <p class="label">Greetings Type</p>
-                            <p class="value">Happiness</p>
+                            <p class="value">{{shoutoutsData?.title}}</p>
                         </div>
                         <div class="col-md-4">
                             <p class="label">To</p>
-                            <p class="value">Recipient Name</p>
+                            <p class="value">{{shoutoutsData?.title}}</p>
                         </div>
                         <div class="col-md-4">
                             <p class="label">From</p>
-                            <p class="value">Sender Name</p>
+                            <p class="value">{{shoutoutsData?.title}}</p>
                         </div>
                         <div class="col-md-4">
                             <p class="label">Status</p>
-                            <p class="value">Active</p>
+                            <p class="value">{{shoutoutsData?.status | titlecase}}</p>
                         </div>
                         <div class="col-md-6">
                             <p class="label">GIF URL</p>
-                            <p class="value">http://localhost:4500/admin/users/5f4632ce8adfcd71af953bcf/details</p>
+                            <a href="">{{shoutoutsData?.gif}}</a>
                         </div>
                         <div class="col-md-12">
                             <p class="label">Description</p>
-                            <p class="value">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                            <p class="value">{{shoutoutsData?.description}}</p>
                         </div>
 
                     </div>
-                    <div class="btn-row">
+                    <!-- <div class="btn-row">
                         <button class="btn btn-primary" mat-stroked-button>Unblock </button>
                         <button class="btn btn-delete" mat-stroked-button>Delete </button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

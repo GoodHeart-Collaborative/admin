@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { HttpService } from 'src/app/modules/shared/services/http.service';
+import { SHOUTOUTS_DETAILS } from 'src/app/constant/urls';
+import { requiredMedia } from 'src/app/constant/messages';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +16,8 @@ export class UserShoutoutsService {
   }
 
   async  updateDetails(id) {
-    // const data =  this.$http.get(SHOUTOUTS_DETAILS(id)).toPromise();
-    // return data;
+    const data = this.$http.get(SHOUTOUTS_DETAILS(id)).toPromise();
+    return (await data).data;
   }
 
   async  onGoingAndInterestHnadler(params) {
@@ -27,8 +29,7 @@ export class UserShoutoutsService {
 export class UserShoutoutsServiceResolve implements Resolve<any>  {
   constructor(private $daily: UserShoutoutsService) { }
   resolve(route: ActivatedRouteSnapshot) {
-    const userId = route.params['id'];
-    return this.$daily.updateDetails(userId).catch(err => {
+    return this.$daily.updateDetails(route.params['id']).catch(err => {
       if (err) {
         return null;
       }

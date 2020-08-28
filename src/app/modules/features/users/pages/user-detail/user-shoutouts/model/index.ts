@@ -54,12 +54,12 @@ export class ShoutoutsTableDataSource implements Table.Source<User> {
       // resolve: (row: any) => row['status'] || 'NA',
     },
 
-    {
-      title: 'Actions',
-      id: 'actions',
-      sorting: false,
-      templateBy: 'actions',
-    },
+    // {
+    //   title: 'Actions',
+    //   id: 'actions',
+    //   sorting: false,
+    //   templateBy: 'actions',
+    // },
   ];
   options: Table.Options = {
     selection: false,

@@ -38,14 +38,10 @@ export class UserGratitudeJournalService {
 @Injectable()
 export class UserGratitudeJournalServiceResolve implements Resolve<any>  {
   constructor(
-    private $UserGratitudeJournalService: UserGratitudeJournalService,
-    private $router: Router) { }
+    private $UserGratitudeJournalService: UserGratitudeJournalService) { }
   resolve(route: ActivatedRouteSnapshot) {
     const userId = route.params['id'];
     return this.$UserGratitudeJournalService.onDetailsHandler(userId).catch(err => {
-      if (err) {
-        console.error(err);
-      }
     }
     );
   }

@@ -5,6 +5,7 @@ import { USER_LIST, USER_DETAIL ,GRATITUDE_DETAIL , EVENT_DETAIL, TOPIC_DETAIL, 
 import { UsersServiceResolve } from './service/users.service';
 import { UserGratitudeJournalServiceResolve } from './pages/user-detail/user-gratitude-journal/service/user-gratitude-journal.service';
 import { UserEventServiceResolve } from './pages/user-detail/user-events/service/user-event.service';
+import { UserShoutoutsServiceResolve } from './pages/user-detail/user-shoutouts/service/user-shoutouts.service';
 
 const routes: Routes = [
   {
@@ -49,9 +50,9 @@ const routes: Routes = [
       },
       {
         path: `${SHOUTOUTS_DETAIL.path}`,
-        // resolve: {
-        //   UserDetails : UsersServiceResolve
-        // },
+        resolve: {
+          shoutoutsData : UserShoutoutsServiceResolve
+        },
        loadChildren: () => import('./pages/user-detail/user-shoutouts/details/user-shoutouts-details.module').
        then( (m) => m.UserShoutoutsDetailsModule),
       },

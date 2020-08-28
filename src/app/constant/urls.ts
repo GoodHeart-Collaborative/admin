@@ -104,7 +104,7 @@ export const ACTION_FEED = (Id) => `admin/feed/${Id}`;
 
 // SHOUTOUTS API's //
 export const SHOUTOUTS = 'admin/shoutout';
-export const SHOUTOUTS_DETAILS = `admin/shoutout/details`;
+export const SHOUTOUTS_DETAILS = (cardId) => `admin/shoutout/${cardId}`;
 export const ACTION_SHOUTOUTS = (Id) => `admin/shoutout/${Id}`;
 
 // FORUM API's //
