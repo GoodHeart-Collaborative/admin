@@ -54,7 +54,7 @@ export class AddExpertComponent implements OnInit {
 
       this.expertForm.patchValue(this.details);
       if (this.details.profilePicUrl) {
-        this.profilePicURL = this.details.profilePicUrl;
+        this.profilePicURL = this.details.profilePicUrl[0];
       }
       if (this.details.email) {
         this.expertForm.get('email').disable();

@@ -6,6 +6,7 @@ import { TableModule } from 'src/app/modules/commonTable/table';
 import { CustomDatePipeModule } from 'src/app/pipes/custom-date/custom-date-pipe.module';
 import { ListingFilterComponent } from './component/listing-filter.component';
 import { DateFilterModule } from 'src/app/modules/layout/layout-shared/date-filter/date-filter.module';
+import { DateTimePipeModule } from 'src/app/pipes/date-time-pipe/date-time-pipe.module';
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     TableModule,
     CustomDatePipeModule,
-    DateFilterModule
+    DateFilterModule,
+    DateTimePipeModule
   ],
   entryComponents: [ListingFilterComponent]
 })

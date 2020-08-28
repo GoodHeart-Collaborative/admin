@@ -5,10 +5,10 @@
          {{ row?.createdAt |customDate}}
      </ng-template>
     <ng-template appFor="startDate" let-row="row">
-         {{ row?.startDate |customDate}}
+         {{ row?.startDate |dateTime}}
      </ng-template>
     <ng-template appFor="endDate" let-row="row">
-         {{ row?.endDate |customDate}}
+         {{ row?.endDate |dateTime}}
      </ng-template>
  
      <ng-template appFor="status" let-data="row">
