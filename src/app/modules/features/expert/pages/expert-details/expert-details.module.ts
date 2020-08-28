@@ -17,7 +17,7 @@ const routes: Routes = [
       {path: '', redirectTo: 'details', pathMatch: 'full'},
       { path: 'details', component: ExpertDetailsComponent },
       {
-        path: 'add',
+        path: 'add-content',
       loadChildren: () => import('../add-expert-content/add-expert-content.module')
           .then((m) => m.AddExpertContentModule
           )

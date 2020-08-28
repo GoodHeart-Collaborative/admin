@@ -37,7 +37,7 @@ export class ExpertDetailsComponent implements OnInit {
   }
 
   onAddContent() {
-    this.$router.navigate([`admin/expert/${this.details._id}`, 'add']);
+    this.$router.navigate([`admin/expert/${this.details._id}`, 'add-content']);
   }
 
 /**

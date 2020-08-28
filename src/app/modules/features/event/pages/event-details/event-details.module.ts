@@ -6,6 +6,7 @@ import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.modul
 import { IntrestedListModule } from 'src/app/modules/shared/intrested-list/intrested-list.module';
 import { GoingListModule } from 'src/app/modules/shared/going-list/going-list.module';
 import { MatDialogModule } from '@angular/material';
+import { DateTimePipeModule } from 'src/app/pipes/date-time-pipe/date-time-pipe.module';
 
 const routes: Routes = [
   {
@@ -22,7 +23,8 @@ const routes: Routes = [
     CustomImageModule,
     IntrestedListModule,
     GoingListModule,
-    MatDialogModule
+    MatDialogModule,
+    DateTimePipeModule
   ]
 })
 export class EventDetailsModule { }

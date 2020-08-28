@@ -8,6 +8,7 @@ import { LikeActionModule } from 'src/app/modules/shared/like-action/like-action
 import { CustomDatePipeModule } from 'src/app/pipes/custom-date/custom-date-pipe.module';
 import { TimePipeModule } from 'src/app/pipes/time-pipe/time-pipe.module';
 import { CommentsShowModule } from 'src/app/modules/shared/comments-show/comments-show.module';
+import { DateTimePipeModule } from 'src/app/pipes/date-time-pipe/date-time-pipe.module';
 
 
 const routes: Routes = [
@@ -24,7 +25,8 @@ const routes: Routes = [
     LikeActionModule,
     CustomImageModule,
     TimePipeModule,
-    CommentsShowModule
+    CommentsShowModule,
+    DateTimePipeModule
   ],
   providers: [CommonService]
 })

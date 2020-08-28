@@ -27,7 +27,7 @@ export const invalidImageError = (format = "JPG, JPEG, PNG") =>
 export const invalidFileSize = (size = 4) =>
   `File size can not be more than ${size} MB`;
 
-export const requiredProfilePic = `Profile pic is required`;
+export const requiredProfilePic = `Image is required`;
 export const requiredMedia = `Media is required`;
 export const invalidContentType = 'Invalid content type selected';
 export const videoFormatFile = (format = 'mp4/x-m4v/3gp') =>  `Please select  video ${format} format file.`;

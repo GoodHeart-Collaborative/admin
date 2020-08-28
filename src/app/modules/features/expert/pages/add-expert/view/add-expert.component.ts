@@ -119,7 +119,7 @@ export class AddExpertComponent implements OnInit {
       this.profilePicURL = [data.Location];
     }
     if (!this.profilePicURL) {
-      this.$fileUploadService.showAlert('Profile pic is required');
+      this.$fileUploadService.showAlert('Image is required');
       return;
     }
     let body = { profilePicUrl: this.profilePicURL, ...this.expertForm.value };

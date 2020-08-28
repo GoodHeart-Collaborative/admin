@@ -2,10 +2,12 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, 
 import { FormControl } from '@angular/forms';
 import { FileUploadService } from '../../services/file-upload.service';
 import { PopupService } from '../../popup';
-import { invalidImageError, videoFormatFile ,
-         invalidFileSize,
-         invalidContentType, 
-         videoFileSize} from 'src/app/constant/messages';
+import {
+  invalidImageError, videoFormatFile,
+  invalidFileSize,
+  invalidContentType,
+  videoFileSize
+} from 'src/app/constant/messages';
 import { onSelectFile } from 'src/app/constant/file-input';
 import { Subject, Observable } from 'rxjs';
 
@@ -46,11 +48,11 @@ export class MediaUploadComponent implements OnInit {
   ngOnInit() {
   }
 
-  ngOnChanges(){
-    debugger
+  ngOnChanges() {
+
     console.log(this.profilePicURL);
 
-    
+
   }
 
   async onSelectFile(event) {
@@ -63,7 +65,7 @@ export class MediaUploadComponent implements OnInit {
         this.imageFile = result.file;
         this.imageSelectedFromInput(event);
       }
-     // Video Upload
+      // Video Upload
     } catch (err) {
       this.saveEvent.target.value = null;
       if (err.type) {
@@ -212,7 +214,7 @@ export class MediaUploadComponent implements OnInit {
     this.imageChangedEvent = null;
     if (this.saveEvent) {
       this.saveEvent.target.value = null;
-     }
+    }
     // this.saveEvent.target.value = null;
     this.profilePicURL = '';
     this.videoSrc = '';

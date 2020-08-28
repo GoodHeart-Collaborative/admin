@@ -21,7 +21,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <p class="label">Event Date & Time</p>
-                            <p class="value">{{eventDetails?.startDate | date :'d MMMM, y, h:mm a'}} {{eventDetails?.endDate ? '-'+(eventDetails?.endDate | date :'d MMMM, y, h:mm a') : '' }} 
+                            <p class="value">{{eventDetails?.startDate | date :'d MMMM, y, h:mm a'}} {{eventDetails?.endDate ? '-'+(eventDetails?.endDate | dateTime) : '' }} 
                                 <!-- {{eventDetails?.endDate | date :'d MMMM, y, h:mm a'}} -->
                             </p>
 

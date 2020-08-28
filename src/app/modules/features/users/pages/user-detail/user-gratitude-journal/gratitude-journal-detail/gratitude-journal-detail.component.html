@@ -2,8 +2,18 @@
     <div class="gratitude-journal-content">
         <div class="row-1">
             <div class="textual-detail">
-                <p>{{gratitudeDetails?.description}}</p>
-                <p>Scheduled On: {{gratitudeDetails?.postAt | date : 'd MMMM, y, h:mm a'}}</p>
+                <div class="card_header_container profile_header">
+                    <div class="card_header">
+                        <figure mat-card-avatar class="image-cover">
+                            <img class="img-cover-fit" [src]="dailyInspirationDetails?.adminData[0]?.profilePicture | customImage:'USERS'|async " alt="">
+                        </figure>
+                        <div class="heading-cover">
+                            <a class="user_name" href="javascript:void()">It's Static Data</a>
+                            <p class="posted-on-date">Posted On: {{gratitudeDetails?.postAt | dateTime}}</p>
+                        </div>
+                    </div>
+                    <p>{{gratitudeDetails?.description}}</p>
+                </div>
             </div>
             <div class="image-detail">
                 <img [src]="gratitudeDetails?.mediaUrl |customImage:'USER'|async">

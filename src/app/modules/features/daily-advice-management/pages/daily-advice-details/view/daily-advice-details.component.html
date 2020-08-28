@@ -10,7 +10,7 @@
                         <div class="heading-cover">
                             <a class="user_name" href="javascript:void()">{{adviceDetails?.adminData[0]?.name}}</a>
                             <p class="posted-on-date" *ngIf="adviceDetails?.postedAt">Scheduled On:
-                                {{adviceDetails?.postedAt | date : 'd MMMM, y, h:mm a'}}</p>
+                                {{adviceDetails?.postedAt |dateTime}}</p>
                         </div>
                     </div>
                     <h1>{{adviceDetails?.title | titlecase}}</h1>
