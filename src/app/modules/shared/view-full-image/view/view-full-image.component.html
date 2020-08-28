@@ -3,6 +3,8 @@
     <video #myVideo muted [src]="data?.image" *ngIf="data?.type == 2" loop id="video" controls
     >Your browser does not support the
     video tag.</video>
-    <div *ngIf="data?.type == 0">{{data?.image}}</div> 
+    <div *ngIf="data?.type == 0">
+        <img src="{{data?.image}}" alt="">
+    </div> 
     <mat-icon [mat-dialog-close]="false">close</mat-icon>
 </div>
