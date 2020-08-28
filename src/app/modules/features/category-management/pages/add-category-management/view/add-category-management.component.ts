@@ -17,7 +17,7 @@ export class AddCategoryManagementComponent implements OnInit {
   categoryForm: FormGroup;
   profilePicURL: string;
   imageFile: any;
-  titleMaxLength = VALIDATION_CRITERIA.titleMaxLength;
+  titleMaxLength = VALIDATION_CRITERIA.categorytitleMaxLength;
   categoryId: string;
   constructor(
     private $formBuilder: FormBuilder,
@@ -56,8 +56,8 @@ export class AddCategoryManagementComponent implements OnInit {
     this.categoryForm = this.$formBuilder.group(
       {
         title: ['', [Validators.required,
-          Validators.minLength(VALIDATION_CRITERIA.titleMinLength), 
-          Validators.maxLength(VALIDATION_CRITERIA.titleMaxLength)]]
+          Validators.minLength(VALIDATION_CRITERIA.categorytitleMinLength), 
+          Validators.maxLength(VALIDATION_CRITERIA.categorytitleMaxLength)]]
       });
   }
 

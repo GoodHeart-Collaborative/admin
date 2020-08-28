@@ -1,16 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { FileUploadService } from 'src/app/modules/shared/services/file-upload.service';
-import { EventService } from 'src/app/modules/features/event/service/event.service';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormService } from 'src/app/modules/shared/services/form.service';
 import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
 import { VALIDATION_CRITERIA } from 'src/app/constant/validation-criteria';
 import { FORUM } from 'src/app/constant/routes';
 import { CategoryManagementService } from 'src/app/modules/features/category-management/service/category-management.service';
 import { ForumService } from '../../../service/forum.service';
-import { requiredMedia } from 'src/app/constant/messages';
 
 @Component({
   selector: 'app-add-forum',
@@ -19,7 +16,7 @@ import { requiredMedia } from 'src/app/constant/messages';
 })
 export class AddForumComponent implements OnInit {
   forumForm: FormGroup;
-  descriptionMaxLength = VALIDATION_CRITERIA.descriptionMaxLength;
+  descriptionMaxLength = VALIDATION_CRITERIA.forumDescriptionMaxLength;
   titleMaxLength = VALIDATION_CRITERIA.titleMaxLength;
   imageFile: any;
   profilePicURL: any;
