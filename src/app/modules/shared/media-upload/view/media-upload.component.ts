@@ -22,6 +22,15 @@ export class MediaUploadComponent implements OnInit {
   @ViewChild('myVideo', { static: false }) video: ElementRef<HTMLVideoElement>;
   @Output() uploadMedia = new EventEmitter();
   @Input() profilePicURL;
+  @Input() set reset(value){
+    
+    if(value){
+      this.profilePicURL = '';
+      this.videoSrc = '';
+    }
+  }
+
+  
   @Input() contentId;
   imageChangedEvent: any;
   isImage: boolean;

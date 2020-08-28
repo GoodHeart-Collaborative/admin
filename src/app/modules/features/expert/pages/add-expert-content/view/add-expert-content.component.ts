@@ -29,13 +29,15 @@ export class AddExpertContentComponent implements OnInit {
   profilePicURL: string;
   details: any;
   expertData: any;
+  allowedTypes: number[];
+  topicMaxLength = VALIDATION_CRITERIA.topicMaxLength;
+  descriptionMaxLength = VALIDATION_CRITERIA.descriptionMaxLength;
+  reset = 0
   constructor(
     private $fb: FormBuilder,
-    private $category: CategoryManagementService,
     $activatedRoute: ActivatedRoute,
     private $service: ExpertService,
     private $utility: UtilityService,
-    private $cdr: ChangeDetectorRef,
     private $fileUploadService: FileUploadService,
     private $location: Location,
     $breadcrumb: BreadcrumbService,
@@ -59,6 +61,7 @@ export class AddExpertContentComponent implements OnInit {
       $expertPostService.updateDetails($activatedRoute.snapshot.params.id).then(res => {
         if (res && res.data && res.data[0]) {
           this.details = res.data[0];
+          this.allowedTypes = this.details.mediaType == 2 ? [2] : [1, 3];
           $breadcrumb.replace(this.details._id, this.details.topic);
           this.patchValueInForm();
         }
@@ -125,7 +128,8 @@ export class AddExpertContentComponent implements OnInit {
     // }
     event.type === 1 ? this.thumbnailUrl = '' : this.profilePicURL = '';
     this.imageFile = event;
-    
+    this.allowedTypes = event.type == 2 ? [2] : [1, 3];
+
   }
 
   getUpdatedTypes(validTypes: number[]) {
@@ -161,8 +165,7 @@ export class AddExpertContentComponent implements OnInit {
         body['thumbnailUrl'] = dataForThumb.Location;
         body.mediaType = this.imageFile.type;
       }
-    }
-    else if (this.details) {
+    } else if (this.details) {
       if (this.details.mediaType == 1) {
         body['mediaUrl'] = this.profilePicURL;
         body.mediaType = this.details.mediaType;
@@ -209,18 +212,24 @@ export class AddExpertContentComponent implements OnInit {
 
   onSelectContent(event: MatSelectChange) {
     console.log(this.imageFile, event.value);
-    if (!this.details && this.imageFile && this.imageFile.type != event.value) {
-      
+    if (!this.details && this.imageFile && !this.allowedTypes.includes(event.value)) {
+
       this.imageFile = null;
       this.profilePicURL = '';
       this.thumbnailUrl = '';
-    } else if (this.details && (this.details.mediaType != event.value || (this.imageFile && this.imageFile.type != event.value))) {
-
+      this.reset++;
+    } else if (this.details &&
+      (!this.allowedTypes.includes(event.value) || (this.imageFile
+        && !this.allowedTypes.includes(event.value)))) {
       this.imageFile = null;
       this.profilePicURL = null;
       this.thumbnailUrl = null;
-    }
-    this.$cdr.detectChanges()
+      this.reset++;
 
+    }
+  }
+
+  checkAllowedType(validValues: number[], value: number) {
+    return validValues.includes(value)
   }
 }

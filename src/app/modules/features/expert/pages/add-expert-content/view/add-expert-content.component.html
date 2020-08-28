@@ -3,7 +3,7 @@
      <form [formGroup]="expertContentForm">
             <div class="row-1">
                 <div class="left-portion">
-                    <media-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL" [contentId]="contentId?.value" [videoSrc]="thumbnailUrl"></media-upload>
+                    <media-upload (uploadMedia)="setimageFile($event)" [reset]="reset" [profilePicURL]="profilePicURL" [contentId]="contentId?.value" [videoSrc]="thumbnailUrl"></media-upload>
                 </div>
                 <div class="right-portion">
                     <div class="row">
@@ -11,8 +11,8 @@
 
                             <mat-form-field appearance="outline">
                                 <mat-label>Topic</mat-label>
-                                <input matInput placeholder="Topic" appWhiteSpace #name formControlName="topic" >
-                                <mat-hint>{{name.value.trim().length}}/50</mat-hint>
+                                <input matInput placeholder="Topic" appWhiteSpace #name formControlName="topic" [maxlength]="topicMaxLength">
+                                <mat-hint>{{name.value.trim().length}}/{{topicMaxLength}}</mat-hint>
                                 <mat-error>{{form('topic') |validate:'Topic' }}</mat-error>
                             </mat-form-field>
 
@@ -55,8 +55,9 @@
                         <div class="col-md-12">
                             <mat-form-field appearance="outline">
                                 <mat-label>Description</mat-label>
-                                <textarea matInput placeholder="Write something here..." rows="13" appWhiteSpace #description formControlName="description"></textarea>
-                                <mat-hint>{{description.value.trim().length}}/400</mat-hint>
+                                <textarea matInput placeholder="Write something here..." rows="13" appWhiteSpace #description 
+                                formControlName="description" [maxlength]="descriptionMaxLength" ></textarea>
+                                <mat-hint>{{description.value.trim().length}}/{{descriptionMaxLength}}</mat-hint>
                                 <mat-error>{{form('description') |validate:'Description' }}</mat-error>
                             </mat-form-field>
                         </div>
