@@ -501,7 +501,7 @@ export const EXPERT_DETAILS: IRoute = {
   }
 };
 export const ADD_EXPERT_CONTENT: IRoute = {
-  path: 'add',
+  path: 'add-content',
   get fullUrl(): string {
     return `${EXPERT.fullUrl}/${this.path}`;
   }

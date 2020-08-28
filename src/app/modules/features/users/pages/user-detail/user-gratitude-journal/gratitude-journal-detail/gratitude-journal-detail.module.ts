@@ -8,6 +8,7 @@ import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.modul
 import { TimePipeModule } from 'src/app/pipes/time-pipe/time-pipe.module';
 import { CommentsModule } from 'src/app/modules/shared/comments/comments.module';
 import { CommentsShowModule } from 'src/app/modules/shared/comments-show/comments-show.module';
+import { DateTimePipeModule } from 'src/app/pipes/date-time-pipe/date-time-pipe.module';
 
 const routes: Routes = [
   {
@@ -24,7 +25,8 @@ const routes: Routes = [
     LikeActionModule,
     CustomImageModule,
     TimePipeModule,
-    CommentsShowModule
+    CommentsShowModule,
+    DateTimePipeModule
   ],
   exports : [GratitudeJournalDetailComponent],
 })

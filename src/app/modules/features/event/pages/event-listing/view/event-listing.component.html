@@ -1,7 +1,4 @@
-<!-- <div class="btn-row">
-    <button class="btn btn-primary" style="margin-right: 10px;" (click)="onAdd()">Add</button>
-    <button class="btn btn-primary" (click)="onDetails()">Details</button>
-</div> -->
+
 
 <app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)" (onAddCahnges)="onAdd()">
     <ng-template appFor="createdAt" let-row="row">

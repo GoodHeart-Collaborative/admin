@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { CategoryManagementService } from 'src/app/modules/features/category-management/service/category-management.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VALIDATION_CRITERIA } from 'src/app/constant/validation-criteria';
-import { EXPERT_DETAILS, EXPERT } from 'src/app/constant/routes';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { ExpertService } from '../../../service/expert.service';
 import { EXPERT_CONTENT_TYPE, PRAVICY } from 'src/app/constant/drawer';
@@ -216,7 +215,7 @@ export class AddExpertContentComponent implements OnInit {
       this.profilePicURL = '';
       this.thumbnailUrl = '';
     } else if (this.details && (this.details.mediaType != event.value || (this.imageFile && this.imageFile.type != event.value))) {
-      debugger
+
       this.imageFile = null;
       this.profilePicURL = null;
       this.thumbnailUrl = null;

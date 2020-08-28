@@ -59,7 +59,9 @@ export class RequestInterceptor implements HttpInterceptor {
                             this.utilityService.errorAlert(message);
                             return;
                         }
-                        if ((err.status === 401 || err.error.responseType === 'UNAUTHORIZED' ) || err.status === 504 ) {
+                        if ((err.status === 401 || err.error.responseType === 'UNAUTHORIZED' ) 
+                        || err.status === 504 
+                        || err.status === 503) {
                             message = SOMETHING_WENT_WRONG;
                         }
                         if ((err.status === 423 || err.error.type === 'SESSION_EXPIRED')
