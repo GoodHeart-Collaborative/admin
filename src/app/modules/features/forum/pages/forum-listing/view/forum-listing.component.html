@@ -48,7 +48,7 @@
 
         <ng-template appFor="actions" let-forum="row">
             <div class="action-icon-cover">
-                <i class="material-icons icon-edit" [class.disabled-icon]="true" (click)="oneditHandler(forum?._id, forum?.userType)" title="Edit">
+                <i class="material-icons icon-edit" [class.disabled-icon]="forum?.userType == 'user'" (click)="oneditHandler(forum?._id, forum?.userType)" title="Edit">
                     edit
                 </i>
 

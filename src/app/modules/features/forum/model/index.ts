@@ -27,14 +27,14 @@ export class ForumTableDataSource implements Table.Source<forum> {
         // resolve: (row: any) => row['description'],
       },
     {
-        title: 'Posted By',
+        title: 'Post Anonymous',
         id: 'postAnonymous',
         sorting: false,
         templateBy: 'postAnonymous'
         // resolve: (row: any) => row['postAnonymous'],
       },
       {
-        title: 'User Type',
+        title: 'Posted By',
         id: 'userType',
         sorting: false,
         templateBy: 'userType'
