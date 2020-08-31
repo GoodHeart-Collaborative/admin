@@ -40,7 +40,6 @@ export class AddEventComponent implements OnInit {
     $breadcrumb: BreadcrumbService,
     private $category: CategoryManagementService
   ) {
-    console.log(this.eventCategory);
     this.createForm();
     if (activateRoute.snapshot.data.eventDetails && activateRoute.snapshot.data.eventDetails.data) {
       this.eventDetails = activateRoute.snapshot.data.eventDetails.data;
@@ -66,6 +65,14 @@ export class AddEventComponent implements OnInit {
       if (this.eventDetails.categoryData) {
         this.eventCategory = this.eventDetails.categoryData;
       }
+      if (this.eventDetails.endDate) {
+        this.eventForm.get('endDate').patchValue(new Date(this.eventDetails.endDate));
+        //  = this.eventDetails.endDate;
+      }
+      if (this.eventDetails.startDate) {
+        this.eventForm.get('startDate').patchValue(new Date(this.eventDetails.startDate));
+        //  = this.eventDetails.endDate;
+      }
     }
   }
   createForm() {
@@ -76,8 +83,8 @@ export class AddEventComponent implements OnInit {
       price: [0, [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.priceMaxLength)]],
       eventUrl: ['', [Validators.pattern(PATTERN.url), Validators.maxLength(VALIDATION_CRITERIA.emailMaxLength)]],
       description: ['', [Validators.required, Validators.maxLength(this.descriptionMaxLength)]],
-      allowSharing: [true],
-      location: ['', Validators.required],
+      // allowSharing: [true],
+      location: ['',],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
       address: [''],
@@ -107,6 +114,8 @@ export class AddEventComponent implements OnInit {
   }
 
   async onSubmit() {
+    console.log(this.eventForm);
+
     if (this.eventForm.invalid) {
       this.eventForm.markAllAsTouched();
       return;
@@ -120,16 +129,17 @@ export class AddEventComponent implements OnInit {
       return;
     }
     let body = { imageUrl: this.profilePicURL, ...this.eventForm.value };
+    if (!body.eventUrl) {
+      delete body.eventUrl;
+    }
     if (this.location && this.address) {
       body.location = this.location;
       body.address = this.address
     }
     if (body.startDate) {
       body.startDate = new Date(body.startDate).getTime();
-
     }
     if (body.endDate) {
-
       body.endDate = new Date(body.endDate).getTime();
     }
 
