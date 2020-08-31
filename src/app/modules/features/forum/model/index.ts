@@ -27,7 +27,7 @@ export class ForumTableDataSource implements Table.Source<forum> {
         // resolve: (row: any) => row['description'],
       },
     {
-        title: 'Post Anonymous',
+        title: 'Posted By',
         id: 'postAnonymous',
         sorting: false,
         templateBy: 'postAnonymous'
@@ -45,6 +45,29 @@ export class ForumTableDataSource implements Table.Source<forum> {
         sorting: false,
         templateBy: 'categoryName'
         // resolve: (row: any) => row['categoryName'],
+      },
+      {
+        title: 'Total Likes',
+        id: 'likeCount',
+        sorting: false,
+        templateBy: 'likeCount'
+        // resolve: (row: any) => row['likeCount'] || '0',
+      },
+    {
+        title: 'Total Comments',
+        id: 'commentCount',
+        sorting: false,
+        templateBy: 'commentCount',
+
+        // resolve: (row: any) => row['totalComments'] || '0',
+      },
+    {
+        title: 'Total Report',
+        id: 'reportCount',
+        sorting: false,
+        templateBy: 'reportCount',
+
+        // resolve: (row: any) => row['totalComments'] || '0',
       },
       {
         title: 'Added On',

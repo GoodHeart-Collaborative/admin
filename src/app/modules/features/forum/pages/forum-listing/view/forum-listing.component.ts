@@ -7,6 +7,12 @@ import { UtilityService } from 'src/app/modules/shared/services/utility.service'
 import { GlobalService } from 'src/app/services/global/global.service';
 import { ADD_FORUM, FORUM } from 'src/app/constant/routes';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
+import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
+import { CommentsComponent } from 'src/app/modules/shared/comments/view/comments/comments.component';
+import { MatDialog } from '@angular/material';
+
+import { CommonService } from 'src/app/modules/shared/services/common.service';
+import { ReportProblemComponent } from 'src/app/modules/shared/report-problem/view/report-problem.component';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 @Component({
   selector: 'app-forum-listing',
@@ -30,7 +36,9 @@ export class ForumListingComponent implements OnInit {
     private $router: Router,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
-    private $global: GlobalService
+    private $global: GlobalService,
+    private $matDailog: MatDialog,
+    private $common: CommonService
   ) {
   }
 
@@ -131,15 +139,15 @@ export class ForumListingComponent implements OnInit {
   }
 
 
-onAdd() {
+  onAdd() {
     this.$router.navigate([`${ADD_FORUM.fullUrl}`]);
   }
 
   onDetails(id: string, type: string) {
     this.$router.navigate([`${FORUM.fullUrl}`, id, 'details'],
-    {
-      queryParams: { type }
-    }
+      {
+        queryParams: { type }
+      }
     );
   }
 
@@ -147,11 +155,62 @@ onAdd() {
    * Edit Handler
    * @param id
    */
- oneditHandler(id: string, type: string) {
-  this.$router.navigate([`${FORUM.fullUrl}`, 'edit', id],
-  {
-    queryParams: { type }
-  });
- }
+  oneditHandler(id: string, type: string) {
+    this.$router.navigate([`${FORUM.fullUrl}`, 'edit', id],
+      {
+        queryParams: { type }
+      });
+  }
 
+
+  /**
+   * ON LIKE Handler
+   * @param id
+   */
+  likeHandler(id: string, likesCount: number) {
+    if (!likesCount) {
+      return;
+    }
+    const params = {
+      pageNo: 1,
+      limit: 100,
+      postId: id
+    };
+    this.$common.onLikeHandler(params).then(res => {
+      const like = res.data['list'];
+      this.onlikeHandler(like, likesCount);
+    });
+  }
+
+  /**
+   * user Like Handler
+   * @param id
+   */
+  onlikeHandler(like: any, likesCount: number) {
+    this.$matDailog.open(LikeActionComponent, {
+      width: '500px',
+      data: like
+    }).afterClosed().subscribe();
+  }
+
+  onCommentsHandler(id: string, commentCount: number) {
+    if (!commentCount) {
+      return;
+    }
+    this.$matDailog.open(CommentsComponent, {
+      width: '500px',
+      data: id
+    }).afterClosed().subscribe();
+  }
+
+
+  onReportProblem(id: string, count: number) {
+    if (count) {
+        return;
+    }
+    this.$matDailog.open(ReportProblemComponent, {
+      width: '500px',
+      data: id
+    }).afterClosed().subscribe();
+  }
 }
