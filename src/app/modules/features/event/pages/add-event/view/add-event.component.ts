@@ -23,7 +23,7 @@ export class AddEventComponent implements OnInit {
   imageFile: any;
   profilePicURL: any;
   privacyData = PRAVICY;
-  eventCategory = Object.values(EVENT_CATEGORY) ;
+  eventCategory = Object.values(EVENT_CATEGORY);
   today = new Date();
   location: {};
   eventDetails: any;
@@ -74,10 +74,10 @@ export class AddEventComponent implements OnInit {
       title: ['', Validators.compose(this.$formService.VALIDATION.name)],
       privacy: ['', [Validators.required]],
       price: [0, [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.priceMaxLength)]],
-      eventUrl: ['', [Validators.pattern(PATTERN.email), Validators.maxLength(VALIDATION_CRITERIA.emailMaxLength) ]],
+      eventUrl: ['', [Validators.pattern(PATTERN.url), Validators.maxLength(VALIDATION_CRITERIA.emailMaxLength)]],
       description: ['', [Validators.required, Validators.maxLength(this.descriptionMaxLength)]],
       allowSharing: [true],
-      location: [''],
+      location: ['', Validators.required],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
       address: [''],
@@ -97,7 +97,7 @@ export class AddEventComponent implements OnInit {
   }
 
 
-   setimageFile(event) {
+  setimageFile(event) {
     if (!event) {
       this.imageFile = null;
       this.profilePicURL = '';
@@ -123,6 +123,14 @@ export class AddEventComponent implements OnInit {
     if (this.location && this.address) {
       body.location = this.location;
       body.address = this.address
+    }
+    if (body.startDate) {
+      body.startDate = new Date(body.startDate).getTime();
+
+    }
+    if (body.endDate) {
+
+      body.endDate = new Date(body.endDate).getTime();
     }
 
     if (this.eventDetails && this.eventDetails._id) {
