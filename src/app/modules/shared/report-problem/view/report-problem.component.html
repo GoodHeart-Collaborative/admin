@@ -1,1 +1,36 @@
-<p>report-problem works!</p>
+<div class="page-like-action popup-ui">
+    <div class="popup-header">
+        <h3>Report</h3>
+        <mat-icon class="close-icon">close</mat-icon>
+    </div>
+    <div class="popup-content">
+        <div class="popup-body">
+            <ul class="users-listing">
+                <li class="single-user" *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]">
+                    <div class="img-cover">
+                        <img alt="Profile" src="assets/images/img_avatar3.png">
+                    </div>
+                    <div class="textual-cover">
+                        <h4><span>User Name here</span>
+                            <p class="comment-time">12 July 2020</p>
+                        </h4>
+                    </div>
+                    <div class="see-profile-cover">
+                        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item>
+                                See Profile
+                            </button>
+                            <button mat-menu-item>
+                                Block User
+                            </button>
+                        </mat-menu>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
