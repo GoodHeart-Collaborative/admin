@@ -31,7 +31,8 @@
     </ng-template>
 
     <ng-template appFor="reportCount" let-row="row">
-        <a (click)="onReportProblem(row?._id, row?.reportCount)" [class.erroneous]="row?.reportCount < 10">
+        <!-- (click)="onReportProblem(row?._id, row?.reportCount)" -->
+        <a  [class.erroneous]="row?.reportCount < 10">
             {{ row?.likeCount}}
         </a>
     </ng-template>

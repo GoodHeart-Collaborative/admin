@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReportsAndAnalyticsComponent } from './view/reports-and-analytics.component';
 import { Routes, RouterModule } from '@angular/router';
 import { REPORTS_AND_ANALYTICS , REPORTS_AND_ANALYTICS_LIST} from 'src/app/constant/routes';
-import { MatTabsModule } from '@angular/material';
+import { MatTabsModule, MatIconModule } from '@angular/material';
 
 const routes: Routes = [
   {
@@ -18,6 +18,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     MatTabsModule,
+     MatIconModule,
   ]
 })
 export class ReportsAndAnalyticsModule { }
