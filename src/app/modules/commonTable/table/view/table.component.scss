@@ -210,6 +210,9 @@
                 cursor: inherit;
                 text-decoration: initial;
             }
+            &.erroneaous{
+                color: #ce0101;
+            }
         }
         &.mat-cell{
             .table-cell-image-cover {
