@@ -1,5 +1,3 @@
-
-
 <div class="page-daily-inspiration-detail common-detail-page-ui">
     <div class="daily-inspiration-content">
         <div class="row-1">
@@ -7,51 +5,54 @@
                 <div class="card_header_container profile_header">
                     <div class="card_header" *ngIf="forumsData?.userData">
                         <figure mat-card-avatar class="image-cover">
-                            <img class="img-cover-fit" [src]="forumsData?.userData?.profilePicUrl[0] | customImage:'USERS'|async " alt="">
+                            <img class="img-cover-fit"
+                                [src]="forumsData?.userData?.profilePicUrl[0] | customImage:'USERS'|async " alt="">
                         </figure>
                         <div class="heading-cover">
-                            <a class="user_name" href="javascript:void()">{{forumsData?.userData?.firstName}} {{forumsData?.userData?.lastName || 'string'}}</a>
+                            <a class="user_name" href="javascript:void()">{{forumsData?.userData?.firstName}}
+                                {{forumsData?.userData?.lastName || 'string'}}</a>
                             <!-- <p class="posted-on-date">Scheduled On: {{forumsData?.postedAt | date : 'd MMMM, y, h:mm a'}}</p> -->
                         </div>
                     </div>
                     <div class="card_header" *ngIf="forumsData?.adminData">
                         <figure mat-card-avatar class="image-cover">
-                            <img class="img-cover-fit" [src]="forumsData?.adminData?.profilePicture | customImage:'USERS'|async " alt="">
+                            <img class="img-cover-fit"
+                                [src]="forumsData?.adminData?.profilePicture | customImage:'USERS'|async " alt="">
                         </figure>
                         <div class="heading-cover">
-                            <a class="user_name" href="javascript:void()">{{(forumsData?.adminData?.name | titlecase) || 'string'  }} </a>
+                            <a class="user_name"
+                                href="javascript:void()">{{(forumsData?.adminData?.name | titlecase) || 'string'  }}
+                            </a>
                             <!-- <p class="posted-on-date">Scheduled On: {{forumsData?.postedAt | date : 'd MMMM, y, h:mm a'}}</p> -->
                         </div>
                     </div>
                     <!-- <h1>{{(forumsData?.topic | titlecase) || 'string'}}</h1> -->
                     <p>{{forumsData?.description || 'string'}}</p>
                 </div>
-            
+
             </div>
             <div class="image-detail">
-                <img [src]="forumsData?.mediaUrl | customImage:'IMAGE_PLACEHOLDER'|async " *ngIf="forumsData?.mediaType == 1">
-                <video #myVideo muted [src]="forumsData?.mediaUrl" *ngIf="forumsData?.mediaType == 2" loop id="video"  controls
-                >Your browser does not support the
-                  video tag.</video>
-               
+                <img [src]="forumsData?.mediaUrl | customImage:'IMAGE_PLACEHOLDER'|async "
+                    *ngIf="forumsData?.mediaType == 1">
+                <video #myVideo muted [src]="forumsData?.mediaUrl" *ngIf="forumsData?.mediaType == 2" loop id="video"
+                    controls>Your browser does not support the
+                    video tag.</video>
+
             </div>
         </div>
         <div class="row-2">
-            <div class="like-cover"
-                (click)="likeHandler(forumsData._id, forumsData?.likeCount)"><span
+            <div class="like-cover" (click)="likeHandler(forumsData._id, forumsData?.likeCount)"><span
                     class="material-icons">thumb_up</span>
                 <p>{{forumsData?.likeCount}}</p>
             </div>
-            <div class="like-cover"><span
-                class="material-icons">thumb_up</span>
-            <p>{{forumsData?.commentCount}}</p>
-           </div>
-            <div class="like-cover" (click)="onReportProblem()"><span
-                class="material-icons">thumb_up</span>
-            <p>Report-Problem</p>
-           </div>
+            <div class="like-cover"><span class="material-icons">comment</span>
+                <p>{{forumsData?.commentCount}}</p>
+            </div>
+            <div class="like-cover" (click)="onReportProblem()"><span class="material-icons">report</span>
+                <p>Report</p>
+            </div>
         </div>
-     
+
         <app-comments-show [commentId]="forumsData?._id"></app-comments-show>
     </div>
 </div>
