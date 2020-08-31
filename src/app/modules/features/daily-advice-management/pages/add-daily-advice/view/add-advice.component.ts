@@ -163,7 +163,7 @@ export class AddAdviceComponent implements OnInit {
       return;
     }
     if (this.isPostLater.value) {
-      body.postedAt = new Date(this.adviceForm.get('postedAt').value);
+      body.postedAt = new Date(this.adviceForm.get('postedAt').value).toString();
     }
 
     this.adviceForm.disable();

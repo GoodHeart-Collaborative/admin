@@ -38,6 +38,7 @@ export class AddEventComponent implements OnInit {
     private $formService: FormService,
     activateRoute: ActivatedRoute,
     $breadcrumb: BreadcrumbService,
+    private $category: CategoryManagementService
   ) {
     console.log(this.eventCategory);
     this.createForm();
@@ -49,6 +50,7 @@ export class AddEventComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.categoryList();
   }
 
   setEditFormHandler() {
@@ -60,6 +62,9 @@ export class AddEventComponent implements OnInit {
       }
       if (this.eventDetails.imageUrl) {
         this.profilePicURL = this.eventDetails.imageUrl;
+      }
+      if (this.eventDetails.categoryData) {
+        this.eventCategory = this.eventDetails.categoryData;
       }
     }
   }
@@ -150,7 +155,19 @@ export class AddEventComponent implements OnInit {
     this.$route.navigate([EVENTS.fullUrl]);
   }
 
+  /**
+   * API hit for Category
+   */
 
+  categoryList() {
+    const params = {
+      page: 1,
+      limit: 100,
+    };
+    this.$category.queryData(params).then(res => {
+      this.eventCategory = res.data['data'];
+    });
+  }
   selectLocation(event) {
     this.location = {
       type: "Point",
