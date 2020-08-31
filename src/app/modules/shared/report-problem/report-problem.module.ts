@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReportProblemComponent } from './view/report-problem.component';
-import { MatMenuModule, MatIconModule, MatButtonModule } from '@angular/material';
+import { MatMenuModule, MatIconModule, MatButtonModule, MatDialogModule } from '@angular/material';
 
 
 
@@ -12,6 +12,7 @@ import { MatMenuModule, MatIconModule, MatButtonModule } from '@angular/material
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
+    MatDialogModule,
   ],
   entryComponents: [ReportProblemComponent]
 })
