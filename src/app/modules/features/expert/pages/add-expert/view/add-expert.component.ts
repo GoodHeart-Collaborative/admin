@@ -152,4 +152,8 @@ export class AddExpertComponent implements OnInit {
     this.$route.navigate([EXPERT.fullUrl]);
   }
 
+  onKeydown(event){
+    event.preventDefault();
+  }
+
 }

@@ -4,11 +4,14 @@
 		</app-search-filter>
     </div>
     <div class="right-side-filters">
-		<button class="filter-button" *ngIf="hasFilter" title="Filter" [matBadge]="filterCount?filterCount:null" matBadgePosition="after"
+		<button class="filter-button btn-indicator-cover" *ngIf="hasFilter" title="Filter"
 		matBadgeColor="accent"
 			 (click)="onFilterHandler()">
 			 <div class="filter-button-bg"></div>
 			 <mat-icon>filter_list</mat-icon>
+			 <div class="button-indicator" *ngIf="filterCount">
+				<div class="pulse_effect"></div>
+			</div>
 			</button>
 			<button class="filter-button" *ngIf="hasAdd" title="Add"
 			(click)="onAddHandler()">
