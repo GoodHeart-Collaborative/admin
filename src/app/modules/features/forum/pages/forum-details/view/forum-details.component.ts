@@ -4,6 +4,7 @@ import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/
 import { MatDialog } from '@angular/material';
 import { CommonService } from 'src/app/modules/shared/services/common.service';
 import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
+import { ReportProblemComponent } from 'src/app/modules/shared/report-problem/view/report-problem.component';
 
 @Component({
   selector: 'app-forum-details',
@@ -53,6 +54,13 @@ export class ForumDetailsComponent implements OnInit {
     this.$matDailog.open(LikeActionComponent, {
       width: '500px',
       data: like
+    }).afterClosed().subscribe();
+  }
+
+  onReportProblem() {
+    this.$matDailog.open(ReportProblemComponent, {
+      width: '500px',
+      // data: like
     }).afterClosed().subscribe();
   }
 

@@ -9,6 +9,6 @@ import { ReportProblemComponent } from './view/report-problem.component';
   imports: [
     CommonModule
   ],
-  exports: [ReportProblemComponent]
+  entryComponents: [ReportProblemComponent]
 })
 export class ReportProblemModule { }
