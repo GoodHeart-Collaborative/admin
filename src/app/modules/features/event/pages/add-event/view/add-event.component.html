@@ -38,7 +38,7 @@
                                 (click)="picker1.open()" placeholder="Start Date" readonly>
                               <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                               <mat-datepicker #picker1></mat-datepicker> -->
-                              <input [max]="endDate.value" [min]="eventDetails.id ? eventDetails?.startDate :today "   [owlDateTimeTrigger]="dt1" formControlName="startDate" matInput [owlDateTime]="dt1" placeholder="Finish" readonly>
+                              <input [max]="endDate.value" [min]="eventDetails?.id ? eventDetails?.startDate :today "   [owlDateTimeTrigger]="dt1" formControlName="startDate" matInput [owlDateTime]="dt1" placeholder="Finish" readonly>
                             <owl-date-time [hour12Timer]="true" #dt1></owl-date-time>
                             <mat-error>{{form('startDate') |validate:'Start Date' }}</mat-error>
 
@@ -51,7 +51,7 @@
                                 (click)="picker2.open()"  placeholder="End Date" readonly>
                               <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                               <mat-datepicker #picker2></mat-datepicker> -->
-                              <input  [min]="eventDetails.id ? eventDetails?.endDate : startDate.value"    [owlDateTimeTrigger]="dt2" formControlName="endDate" matInput [owlDateTime]="dt2" placeholder="Finish" readonly>
+                              <input  [min]="eventDetails?.id ? eventDetails?.endDate : startDate.value"    [owlDateTimeTrigger]="dt2" formControlName="endDate" matInput [owlDateTime]="dt2" placeholder="Finish" readonly>
                             <owl-date-time [hour12Timer]="true" #dt2></owl-date-time>
                             <mat-error>{{form('endDate') |validate:'End Date' }}</mat-error>
 
