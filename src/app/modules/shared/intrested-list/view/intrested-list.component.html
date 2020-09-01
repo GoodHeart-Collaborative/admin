@@ -1,6 +1,7 @@
 <div class="page-like-action popup-ui">
     <div class="popup-header">
-        <h3>Users  interested for  the Event are shown below</h3>
+        <h3> interested Users</h3>
+        <!-- <h3>Users  interested for  the event are shown below</h3> -->
         <mat-icon class="close-icon" [mat-dialog-close]="false">close</mat-icon>
     </div>
     <div class="popup-content">
@@ -24,9 +25,9 @@
                             <button mat-menu-item (click)="onSeeProfile(item?.userData[0]?._id)">
                                 See Profile
                             </button>
-                            <button mat-menu-item>
+                            <!-- <button mat-menu-item>
                                  {{item?.userData[0]?.status}} User
-                            </button>
+                            </button> -->
                         </mat-menu>
                     </div>
                 </li>
