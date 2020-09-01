@@ -17,4 +17,7 @@ export const PATTERN_ERRORS = (pattern, key) => {
     if (pattern == PATTERN.price) {
         return `${toTitleCase(key)} must be numeric`;
     }
+    if (pattern == PATTERN.url) {
+        return `${toTitleCase(key)} is an invalid url`;
+    }
 };

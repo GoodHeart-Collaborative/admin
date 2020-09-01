@@ -1,12 +1,12 @@
-
-
 <app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)" (onAddCahnges)="onAdd()">
     <ng-template appFor="createdAt" let-row="row">
          {{ row?.createdAt |customDate}}
      </ng-template>
+
     <ng-template appFor="startDate" let-row="row">
          {{ row?.startDate |dateTime}}
      </ng-template>
+     
     <ng-template appFor="endDate" let-row="row">
          {{ row?.endDate |dateTime}}
      </ng-template>

@@ -15,15 +15,15 @@
     </ng-template>
 
     <ng-template appFor="name" let-report="row">
-        {{ (report?.userData?.firstName | titlecase) || '-'}}  {{ (report?.userData?.lastName | titlecase ) || ''}}
+        {{ (report?.userData?.firstName | titlecase) }}  {{ (report?.userData?.lastName | titlecase ) || ''}}
     </ng-template>
 
     <ng-template appFor="email" let-report="row">
-        {{ report?.userData?.email || '-'}}
+        {{ report?.userData?.email }}
     </ng-template>
 
     <ng-template appFor="reason" let-report="row">
-        {{ report?.email || '-'}}
+        {{ report?.email }}
     </ng-template>
 
 

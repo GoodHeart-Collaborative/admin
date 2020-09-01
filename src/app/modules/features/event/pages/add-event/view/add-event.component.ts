@@ -81,12 +81,12 @@ export class AddEventComponent implements OnInit {
       title: ['', Validators.compose(this.$formService.VALIDATION.name)],
       privacy: ['', [Validators.required]],
       price: [0, [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.priceMaxLength), Validators.pattern(PATTERN.price)]],
-      eventUrl: ['', [Validators.pattern(PATTERN.url), Validators.maxLength(VALIDATION_CRITERIA.emailMaxLength)]],
+      eventUrl: ['', [Validators.pattern(PATTERN.url)]],
       description: ['', [Validators.required, Validators.maxLength(this.descriptionMaxLength)]],
-      location: ['', ],
+      location: [''],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
-      address: ['',Validators.required],
+      address: ['', Validators.required],
       isFeatured: [false]
     });
   }
@@ -185,6 +185,7 @@ export class AddEventComponent implements OnInit {
       this.eventCategory = res.data['data'];
     });
   }
+
   selectLocation(event) {
     this.location = {
       type: "Point",

@@ -24,7 +24,7 @@ export class EventTableDataSource implements Table.Source<Category> {
         id: 'description',
         sorting: false,
         // templateBy: 'description'
-        resolve: (row: any) => row['description'] || '-',
+        resolve: (row: any) => row['description'] ,
     },
     {
         title: 'Event Category',
