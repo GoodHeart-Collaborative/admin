@@ -24,6 +24,6 @@ import { AppDateAdapter, APP_DATE_FORMATS } from 'src/app/constant/format-datepi
     { provide: DateAdapter, useClass: AppDateAdapter },
     { provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS }
   ],
-  exports:[DateFilterComponent]
+  exports: [DateFilterComponent]
 })
 export class DateFilterModule { }

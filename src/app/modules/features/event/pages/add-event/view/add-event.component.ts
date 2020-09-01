@@ -136,12 +136,7 @@ export class AddEventComponent implements OnInit {
       body.location = this.location;
       body.address = this.address
     }
-    if (body.startDate) {
-      body.startDate = new Date(body.startDate).getTime();
-    }
-    if (body.endDate) {
-      body.endDate = new Date(body.endDate).getTime();
-    }
+  
 
     if (this.eventDetails && this.eventDetails._id) {
       this.$service.edit(this.eventDetails._id, body).then(

@@ -4,7 +4,7 @@
             <div class="row-1">
                 <div class="left-portion">
                     <div class="img-cover">
-                        <img [src]="data?.profilePicUrl |customImage:'IMAGE_PLACEHOLDER'|async" alt="User Profile Image">
+                        <img [src]="data?.profilePicUrl[0] |customImage:'IMAGE_PLACEHOLDER'|async" alt="User Profile Image">
                     </div>
                 </div>
                 <div class="right-portion">

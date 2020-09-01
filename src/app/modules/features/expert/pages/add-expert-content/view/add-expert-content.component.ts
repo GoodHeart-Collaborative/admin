@@ -85,7 +85,7 @@ export class AddExpertContentComponent implements OnInit {
       expertId: [this.expertContentId],
       categoryId: [],
       price: [0, [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.priceMaxLength)]],
-      contentId: [],
+      contentId: [null , Validators.required],
       mediaType: [],
       description: ['', [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.descriptionMaxLength)]],
       privacy: ['', [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.topicMaxLength)]],
