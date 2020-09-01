@@ -107,6 +107,9 @@ export const SHOUTOUTS = 'admin/shoutout';
 export const SHOUTOUTS_DETAILS = (cardId) => `admin/shoutout/${cardId}`;
 export const ACTION_SHOUTOUTS = (Id) => `admin/shoutout/${Id}`;
 
+// REPORT API's //
+export const REPORT = 'admin/report';
+
 // FORUM API's //
 export const FORUM = 'admin/forums';
 export const ADD_FORUM = 'admin/forum';

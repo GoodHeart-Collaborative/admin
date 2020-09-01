@@ -1,6 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { CommonService } from '../../services/common.service';
+import { Router } from '@angular/router';
+import { USER } from 'src/app/constant/routes';
 
 @Component({
   selector: 'app-report-problem',
@@ -12,15 +14,20 @@ export class ReportProblemComponent implements OnInit {
   constructor(
     private $dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private $common: CommonService
+    private $common: CommonService,
+    private  $router: Router
+
   ) {
-    this.onReportProblem();
+    // this.onReportProblem();
    }
 
   ngOnInit() { }
 
-  onReportProblem() {
-    
-  }
+  // onReportProblem() {
+  // }
 
+  onSeeProfile(id: string) {
+    this.$router.navigate([`${USER.fullUrl}`, id, 'details']);
+    this.$dialogRef.close();
+  }
 }

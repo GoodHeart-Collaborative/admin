@@ -83,10 +83,10 @@ export class AddEventComponent implements OnInit {
       price: [0, [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.priceMaxLength), Validators.pattern(PATTERN.price)]],
       eventUrl: ['', [Validators.pattern(PATTERN.url), Validators.maxLength(VALIDATION_CRITERIA.emailMaxLength)]],
       description: ['', [Validators.required, Validators.maxLength(this.descriptionMaxLength)]],
-      location: [''],
+      location: ['', ],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
-      address: [''],
+      address: ['',Validators.required],
       isFeatured: [false]
     });
   }

@@ -35,12 +35,7 @@ export class ForumDetailsComponent implements OnInit {
     if (!likesCount) {
       return;
     }
-    const params = {
-      pageNo: 1,
-      limit: 100,
-      postId: id
-    };
-    this.$common.onLikeHandler(params).then(res => {
+    this.$common.onLikeHandler(id).then(res => {
       const like = res.data['list'];
       this.onlikeHandler(like);
     });
@@ -57,11 +52,17 @@ export class ForumDetailsComponent implements OnInit {
     }).afterClosed().subscribe();
   }
 
-  onReportProblem() {
-    this.$matDailog.open(ReportProblemComponent, {
-      width: '500px',
-      // data: like
-    }).afterClosed().subscribe();
+  onReportProblem(id: string, count: number) {
+    if (!count) {
+      return;
+    }
+    this.$common.onReportProblemHandler(id).then(res => {
+      if (res && res.data) {
+        this.$matDailog.open(ReportProblemComponent, {
+          width: '500px',
+          data: res.data['data']
+        }).afterClosed().subscribe();
+      }
+    });
   }
-
 }

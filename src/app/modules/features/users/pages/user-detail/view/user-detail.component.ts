@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { UsersService } from '../../../service/users.service';
 import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
 import { UserGratitudeJournalService } from '../user-gratitude-journal/service/user-gratitude-journal.service';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
@@ -32,8 +31,6 @@ export class UserDetailComponent implements OnInit {
     private $userService: UserGratitudeJournalService,
   ) {
     this.userDetails = this.$router.snapshot.data.UserDetails;
-    console.log(this.userDetails._id);
-    
     this.$breadcrumb.replace(this.userDetails.id, this.userDetails['firstName']);
   }
   ngOnInit() {

@@ -126,7 +126,9 @@ export class EventListingComponent implements OnInit {
   }
 
   handleStatus(action: 'blocked' | 'active', index: number) {
-    this.eventList.data = this.eventList.data.map((user, i) => {
+    console.log(this.eventList);
+    
+    this.eventList.list = this.eventList.list.map((user, i) => {
       if (i === index) {
         user.status = action;
       }

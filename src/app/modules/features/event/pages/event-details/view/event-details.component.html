@@ -12,8 +12,8 @@
                     </p>
                 </div>
                 <div class="btn-row">
-                    <button class="btn btn-simple" mat-stroked-button type="button" *ngIf="eventDetails?.status == 'active'" (click)="onActionHandler(eventDetails?._id, 'blocked')"> Reject </button>
-                    <button class="btn btn-primary" mat-stroked-button type="button" *ngIf="eventDetails?.status == 'blocked'" (click)="onActionHandler(eventDetails?._id, 'active')">Accept </button>
+                    <button class="btn btn-simple" mat-stroked-button type="button" *ngIf="eventDetails?.status == 'active'" (click)="onActionHandler(eventDetails?._id, 'blocked')"> Block </button>
+                    <button class="btn btn-primary" mat-stroked-button type="button" *ngIf="eventDetails?.status == 'blocked'" (click)="onActionHandler(eventDetails?._id, 'active')">Active </button>
                 </div>
             </div>
             <div class="right-portion">
@@ -27,15 +27,15 @@
 
                             <p class="value"></p>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-12" *ngIf="eventDetails?.address">
                             <p class="label">Event Place</p>
-                            <p class="value">National Park, Seychelles</p>
+                            <p class="value">{{eventDetails?.address}}</p>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-12" *ngIf="eventDetails?.price">
                             <p class="label">Event Price</p>
                             <p class="value">{{eventDetails?.price}}</p>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-12" *ngIf="eventDetails?.eventUrl">
                             <p class="label">Event URL</p>
                             <p class="value">
                                 <a href="javascript:void();">
@@ -43,10 +43,10 @@
                                 </a>
                             </p>
                         </div>
-                        <div class="col-md-12">
+                        <!-- <div class="col-md-12">
                             <p class="label">Hosted By</p>
                             <p class="value">Alex Dolgove</p>
-                        </div>
+                        </div> -->
                         <div class="col-md-4">
                             <p class="label">Going</p>
                             <p class="value like-cover" (click)="onGoingCount(eventDetails?.goingCount)">

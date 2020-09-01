@@ -223,12 +223,7 @@ export class DailyUnicornHumourListingComponent implements OnInit {
     if (!likesCount) {
       return;
     }
-    const params = {
-      pageNo: 1,
-      limit: 100,
-      postId: id
-    };
-    this.$common.onLikeHandler(params).then(res => {
+    this.$common.onLikeHandler(id).then(res => {
       const like = res.data['list'];
       this.onlikeHandler(like);
     });

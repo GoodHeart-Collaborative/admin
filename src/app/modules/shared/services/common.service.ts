@@ -1,25 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
-import { HOME_LIKE, HOME_COMMENT, MEMBER, USER } from 'src/app/constant/urls';
+import { HOME_LIKE, HOME_COMMENT, MEMBER, USER, REPORT } from 'src/app/constant/urls';
 import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class CommonService {
   dashBoardFlag$ = new BehaviorSubject(false);
+  params = {
+    pageNo: 1,
+    limit: 100,
+  };
   constructor(private $http: HttpService) { }
 
 
-  async onLikeHandler(params) {
-    return this.$http.get(HOME_LIKE, params).toPromise();
+  async onLikeHandler(id: string) {
+    this.params['postId'] = id;
+    return this.$http.get(HOME_LIKE, this.params).toPromise();
   }
 
   async onCommentHandler(params) {
     return this.$http.get(HOME_COMMENT, params).toPromise();
   }
 
-  async onReportProblemHandler(params) {
-    return this.$http.get(HOME_COMMENT, params).toPromise();
+  async onReportProblemHandler(id: string) {
+    this.params['postId'] = id;
+    this.params['type'] = 9;
+    return this.$http.get(REPORT, this.params).toPromise();
   }
 
   async updateStatus(userId: string, params) {

@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReportsAndAnalyticsComponent } from './view/reports-and-analytics.component';
 import { Routes, RouterModule } from '@angular/router';
-import { REPORTS_AND_ANALYTICS , REPORTS_AND_ANALYTICS_LIST} from 'src/app/constant/routes';
 import { MatTabsModule, MatIconModule } from '@angular/material';
+import { ReportsAndAnalyticsService } from './service/reports-and-analytics.service';
+import { ReportListingModule } from './pages/report-listing/report-listing.module';
 
 const routes: Routes = [
   {
@@ -18,7 +19,9 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     MatTabsModule,
-     MatIconModule,
-  ]
+    MatIconModule,
+    ReportListingModule
+  ],
+  providers: [ReportsAndAnalyticsService]
 })
 export class ReportsAndAnalyticsModule { }

@@ -4,13 +4,11 @@ import { ForumService } from '../../../service/forum.service';
 import { Router } from '@angular/router';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
-import { GlobalService } from 'src/app/services/global/global.service';
 import { ADD_FORUM, FORUM } from 'src/app/constant/routes';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
 import { CommentsComponent } from 'src/app/modules/shared/comments/view/comments/comments.component';
 import { MatDialog } from '@angular/material';
-
 import { CommonService } from 'src/app/modules/shared/services/common.service';
 import { ReportProblemComponent } from 'src/app/modules/shared/report-problem/view/report-problem.component';
 export type ActionType = 'deleted' | 'blocked' | 'active';
@@ -170,12 +168,7 @@ export class ForumListingComponent implements OnInit {
     if (!likesCount) {
       return;
     }
-    const params = {
-      pageNo: 1,
-      limit: 100,
-      postId: id
-    };
-    this.$common.onLikeHandler(params).then(res => {
+    this.$common.onLikeHandler(id).then(res => {
       const like = res.data['list'];
       this.onlikeHandler(like, likesCount);
     });
@@ -205,12 +198,15 @@ export class ForumListingComponent implements OnInit {
 
   onReportProblem(id: string, count: number) {
     if (!count) {
-        return;
+      return;
     }
-    // this.$common.onReportProblemHandler()
-    this.$matDailog.open(ReportProblemComponent, {
-      width: '500px',
-      data: id
-    }).afterClosed().subscribe();
+    this.$common.onReportProblemHandler(id).then(res => {
+      if (res && res.data) {
+        this.$matDailog.open(ReportProblemComponent, {
+          width: '500px',
+          data: res.data['data']
+        }).afterClosed().subscribe();
+      }
+    });
   }
 }
