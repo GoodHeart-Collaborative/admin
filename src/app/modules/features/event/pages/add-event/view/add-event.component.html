@@ -38,12 +38,9 @@
                                 (click)="picker1.open()" placeholder="Start Date" readonly>
                               <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                               <mat-datepicker #picker1></mat-datepicker> -->
-                              <!-- <input [max]="endDate.value" [min]="eventDetails?.id ? eventDetails?.startDate :today "  
+                               <input [max]="endDate.value" [min]="eventDetails?.id ? eventDetails?.startDate :today "  
                                [owlDateTimeTrigger]="dt1" formControlName="startDate" matInput 
-                               [owlDateTime]="dt1" placeholder="Start" readonly [value]="startDate.value ? (startDate.value | date : 'd MMMM, y, h:mm a') : ''"> -->
-                               <input  [min]="eventDetails?.id ? (eventDetails?.startDate) :(today) "   [max]="(endDate.value )"
-                               [owlDateTimeTrigger]="dt1" formControlName="startDate" matInput [owlDateTime]="dt1" 
-                               placeholder="Start" readonly [value]="startDate.value ? (startDate.value  ) : ''">
+                               [owlDateTime]="dt1" placeholder="Start" readonly> 
                             <owl-date-time [hour12Timer]="true" #dt1></owl-date-time>
                             <mat-error>{{form('startDate') |validate:'Start Date' }}</mat-error>
 
@@ -58,7 +55,7 @@
                               <mat-datepicker #picker2></mat-datepicker> -->
                               <input  [min]="eventDetails?.id ? eventDetails?.endDate : startDate.value"   
                                [owlDateTimeTrigger]="dt2" formControlName="endDate" matInput [owlDateTime]="dt2" 
-                               placeholder="End" readonly [value]="endDate.value ? (endDate.value ) : ''">
+                               placeholder="End" readonly >
                             <owl-date-time [hour12Timer]="true" #dt2></owl-date-time>
                             <mat-error>{{form('endDate') |validate:'End Date' }}</mat-error>
 
@@ -89,7 +86,7 @@
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Price</mat-label>
-                                <input matInput placeholder="Price " appWhiteSpace formControlName="price" [maxlength]="10">
+                                <input matInput placeholder="Price " appWhiteSpace formControlName="price" [maxlength]="10" numeric>
                                 <mat-error>{{form('price') |validate:' Price' }}</mat-error>
                             </mat-form-field>
                         </div>

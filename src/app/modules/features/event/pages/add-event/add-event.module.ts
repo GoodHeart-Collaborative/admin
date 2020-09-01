@@ -16,15 +16,8 @@ import { WhiteSpaceModule } from 'src/app/modules/shared/white-space/white-space
 import { AppDateAdapter, APP_DATE_FORMATS } from 'src/app/constant/format-datepicker';
 import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
 import { DateTimePipeModule } from 'src/app/pipes/date-time-pipe/date-time-pipe.module';
-// export const MY_CUSTOM_FORMATS = {
-//   fullPickerInput: 'YYYY-MMM-DD HH:mm:ss',
-//   parseInput: 'YYYY-MMM-DD HH:mm:ss',
-//   datePickerInput: 'YYYY-MMM-DD HH:mm:ss',
-//   timePickerInput: 'LT',
-//   monthYearLabel: 'YYYY-MMM-DD HH:mm:ss',
-//   dateA11yLabel: 'YYYY-MMM-DD HH:mm:ss',
-//   monthYearA11yLabel: 'YYYY-MMM-DD HH:mm:ss'
-//   };
+import { NumericDecimalModule } from 'src/app/pipes/numeric-decimal/numeric-decimal.module';
+
 
 const routes: Routes = [
   {
@@ -51,11 +44,10 @@ const routes: Routes = [
     WhiteSpaceModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
-    DateTimePipeModule
+    DateTimePipeModule,
+    NumericDecimalModule
   ],
-  providers : [ 
-    //  { provide: DateAdapter, useClass: AppDateAdapter },
-    // { provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS }
+  providers : [
       // {provide: OWL_DATE_TIME_FORMATS, useValue: MY_CUSTOM_FORMATS},
   ]
 })

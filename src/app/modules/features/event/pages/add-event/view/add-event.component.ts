@@ -80,11 +80,10 @@ export class AddEventComponent implements OnInit {
       eventCategoryId: [null, Validators.required],
       title: ['', Validators.compose(this.$formService.VALIDATION.name)],
       privacy: ['', [Validators.required]],
-      price: [0, [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.priceMaxLength)]],
+      price: [0, [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.priceMaxLength), Validators.pattern(PATTERN.price)]],
       eventUrl: ['', [Validators.pattern(PATTERN.url), Validators.maxLength(VALIDATION_CRITERIA.emailMaxLength)]],
       description: ['', [Validators.required, Validators.maxLength(this.descriptionMaxLength)]],
-      // allowSharing: [true],
-      location: ['',],
+      location: [''],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
       address: [''],
@@ -134,9 +133,14 @@ export class AddEventComponent implements OnInit {
     }
     if (this.location && this.address) {
       body.location = this.location;
-      body.address = this.address
+      body.address = this.address;
     }
-  
+    if (body.endDate) {
+      body.endDate = new Date(body.endDate).getTime();
+    }
+    if (body.startDate) {
+      body.startDate = new Date(body.startDate).getTime();
+    }
 
     if (this.eventDetails && this.eventDetails._id) {
       this.$service.edit(this.eventDetails._id, body).then(

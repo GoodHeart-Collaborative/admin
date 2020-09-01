@@ -36,7 +36,6 @@ export class ForumListingComponent implements OnInit {
     private $router: Router,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
-    private $global: GlobalService,
     private $matDailog: MatDialog,
     private $common: CommonService
   ) {
@@ -205,9 +204,10 @@ export class ForumListingComponent implements OnInit {
 
 
   onReportProblem(id: string, count: number) {
-    if (count) {
+    if (!count) {
         return;
     }
+    // this.$common.onReportProblemHandler()
     this.$matDailog.open(ReportProblemComponent, {
       width: '500px',
       data: id
