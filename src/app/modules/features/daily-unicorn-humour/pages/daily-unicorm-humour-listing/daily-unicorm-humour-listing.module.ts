@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommentsModule } from 'src/app/modules/shared/comments/comments.module';
 import { ViewFullImageModule } from 'src/app/modules/shared/view-full-image/view-full-image.module';
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
+import { ReportProblemModule } from 'src/app/modules/shared/report-problem/report-problem.module';
 
 
 const routes: Routes = [
@@ -34,7 +35,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     CommentsModule,
     ViewFullImageModule,
-    CustomImageModule
+    CustomImageModule,
+    ReportProblemModule
   ],
   entryComponents: [DailyUnicornFilterComponent]
 })

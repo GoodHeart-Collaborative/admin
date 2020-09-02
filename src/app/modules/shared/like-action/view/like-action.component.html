@@ -11,7 +11,7 @@
                         <img [src]="item?.user?.profilePicUrl[0] |customImage:'USER'|async" alt="Profile" (click)="onViewPic(item?.user?.profilePicture)">
                     </div>
                     <div class="textual-cover">
-                        <h4><span title="{{item?.user?.name}}">{{item?.user?.name}}</span>
+                        <h4><span title="{{item?.user?.name}}">{{item?.user?.firstName}} {{item?.user?.lastName}}</span>
                             <p class="comment-time">{{item?.createdAt | time}}</p>
                         </h4>
                     </div>

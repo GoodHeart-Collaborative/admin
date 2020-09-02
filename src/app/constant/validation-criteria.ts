@@ -15,16 +15,18 @@ export const VALIDATION_CRITERIA = {
   locationMinLength: 2,
   locationMaxLength: 1000,
   priceMinLength: 1,
-  priceMaxLength: 5,
+  priceMaxLength: 6,
   maxRange: 1000,
   descriptionMinLength: 10,
   descriptionMaxLength: 400,
+  eventDescriptionMaxLength: 500,
   forumDescriptionMaxLength: 1000,
   bioMinLength: 10,
   bioMaxLength: 500,
   professionMinLength: 3,
   professionMaxLength: 50,
   topicMaxLength: 50,
+  eventNameMaxlength : 50
 };
 
 export const getTrimmed = (body) =>{

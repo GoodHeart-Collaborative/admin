@@ -12,6 +12,7 @@ import { MatDialog } from '@angular/material';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
 import { CommonService } from 'src/app/modules/shared/services/common.service';
+import { ReportProblemComponent } from 'src/app/modules/shared/report-problem/view/report-problem.component';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 @Component({
   selector: 'app-daily-inspiration-listing',
@@ -228,5 +229,17 @@ onAdd() {
     }).afterClosed().subscribe();
   }
 
-
+  onReportProblem(id: string, count: number) {
+    if (!count) {
+      return;
+    }
+    this.$common.onReportProblemHandler(id).then(res => {
+      if (res && res.data) {
+        this.$matDailog.open(ReportProblemComponent, {
+          width: '500px',
+          data: res.data['data']
+        }).afterClosed().subscribe();
+      }
+    });
+  }
 }

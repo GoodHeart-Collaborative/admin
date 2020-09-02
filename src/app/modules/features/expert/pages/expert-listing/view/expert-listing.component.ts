@@ -9,6 +9,9 @@ import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 import { GlobalService } from 'src/app/services/global/global.service';
 import { EVENT_CATEGORY } from 'src/app/constant/drawer';
+import { ReportProblemComponent } from 'src/app/modules/shared/report-problem/view/report-problem.component';
+import { CommonService } from 'src/app/modules/shared/services/common.service';
+import { MatDialog } from '@angular/material';
 @Component({
   selector: 'app-expert-listing',
   templateUrl: './expert-listing.component.html',
@@ -32,7 +35,8 @@ export class ExpertListingComponent implements OnInit {
     private $router: Router,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
-    private $global: GlobalService
+    private $common: CommonService,
+    private $matDailog: MatDialog
   ) {
   }
 
@@ -154,5 +158,7 @@ export class ExpertListingComponent implements OnInit {
   onAdd() {
     this.$router.navigate([`${ADD_EXPERT.fullUrl}`]);
   }
+
+
 
 }

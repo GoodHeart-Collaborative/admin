@@ -61,13 +61,11 @@ export class ForumTableDataSource implements Table.Source<forum> {
 
         // resolve: (row: any) => row['totalComments'] || '0',
       },
-    {
+     {
         title: 'Total Report',
         id: 'reportCount',
         sorting: false,
         templateBy: 'reportCount',
-
-        // resolve: (row: any) => row['totalComments'] || '0',
       },
       {
         title: 'Added On',

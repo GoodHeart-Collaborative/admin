@@ -9,6 +9,7 @@ import { CustomDatePipeModule } from 'src/app/pipes/custom-date/custom-date-pipe
 import { TimePipeModule } from 'src/app/pipes/time-pipe/time-pipe.module';
 import { CommentsShowModule } from 'src/app/modules/shared/comments-show/comments-show.module';
 import { DateTimePipeModule } from 'src/app/pipes/date-time-pipe/date-time-pipe.module';
+import { ReportProblemModule } from 'src/app/modules/shared/report-problem/report-problem.module';
 
 
 const routes: Routes = [
@@ -26,7 +27,8 @@ const routes: Routes = [
     CustomImageModule,
     TimePipeModule,
     CommentsShowModule,
-    DateTimePipeModule
+    DateTimePipeModule,
+    ReportProblemModule
   ],
   providers: [CommonService]
 })

@@ -11,8 +11,9 @@
                         <img alt="Profile"  [src]="item?.userData?.profilePicUrl[0] |customImage:'IMAGE_PLACEHOLDER'|async" >
                     </div>
                     <div class="textual-cover">
-                        <h4><span>{{item?.userData?.firstName}} {{item?.userData?.lastName || ''}}</span>
-                            <p class="comment-time">{{item?.createdAt |date }}</p>
+                        <h4><span>{{item?.userData?.firstName}} {{item?.userData?.lastName}}</span>
+                            <!-- {{item?.createdAt}} -->
+                            <p class="comment-time">{{item?.createdAt | time}}</p>
                         </h4>
                     </div>
                     <div class="see-profile-cover">

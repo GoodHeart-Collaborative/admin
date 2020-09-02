@@ -25,6 +25,10 @@
             <div class="like-cover"><span class="material-icons">comment</span>
                 <p>{{post?.commentCount}}</p>
             </div>
+            <div class="like-cover" (click)="onReportProblem(post?._id, post?.reportCount)"><span class="material-icons">report</span>
+                <p>Report</p>
+            </div>
+
         </div>
         <div class="row-3">
             <app-comments-show [commentId]="post?._id"></app-comments-show>

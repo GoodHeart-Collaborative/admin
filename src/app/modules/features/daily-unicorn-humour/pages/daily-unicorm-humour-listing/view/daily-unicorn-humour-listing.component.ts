@@ -14,6 +14,7 @@ import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/lik
 import { CommentsComponent } from 'src/app/modules/shared/comments/view/comments/comments.component';
 import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
 import { CommonService } from 'src/app/modules/shared/services/common.service';
+import { ReportProblemComponent } from 'src/app/modules/shared/report-problem/view/report-problem.component';
 @Component({
   selector: 'app-daily-unicorn-humour-listing',
   templateUrl: './daily-unicorn-humour-listing.component.html',
@@ -238,5 +239,19 @@ export class DailyUnicornHumourListingComponent implements OnInit {
       width: '500px',
       data: like
     }).afterClosed().subscribe();
+  }
+
+  onReportProblem(id: string, count: number) {
+    if (!count) {
+      return;
+    }
+    this.$common.onReportProblemHandler(id).then(res => {
+      if (res && res.data) {
+        this.$matDailog.open(ReportProblemComponent, {
+          width: '500px',
+          data: res.data['data']
+        }).afterClosed().subscribe();
+      }
+    });
   }
 }

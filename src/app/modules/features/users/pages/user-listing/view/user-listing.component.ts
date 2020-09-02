@@ -10,6 +10,8 @@ import { MatDialog } from '@angular/material';
 
 export type ActionType = 'deleted' | 'blocked' | 'active' | 'pending';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
+import { ReportProblemComponent } from 'src/app/modules/shared/report-problem/view/report-problem.component';
+import { CommonService } from 'src/app/modules/shared/services/common.service';
 @Component({
   selector: 'app-user-listing',
   templateUrl: './user-listing.component.html',
@@ -32,7 +34,8 @@ export class UserListingComponent implements OnInit {
     private $userService: UsersService,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
-    private matDailog: MatDialog
+    private matDailog: MatDialog,
+    private $common: CommonService
   ) {
   }
 
@@ -214,5 +217,19 @@ export class UserListingComponent implements OnInit {
       panelClass: 'view-full-image-modal',
       data: { image, type }
     }).afterClosed().subscribe();
+  }
+
+  onReportProblem(id: string, count: number) {
+    if (!count) {
+      return;
+    }
+    this.$common.onReportProblemHandler(id).then(res => {
+      if (res && res.data) {
+        this.matDailog.open(ReportProblemComponent, {
+          width: '500px',
+          data: res.data['data']
+        }).afterClosed().subscribe();
+      }
+    });
   }
 }

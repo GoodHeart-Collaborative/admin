@@ -36,6 +36,12 @@
         </a>
     </ng-template>
 
+    <ng-template appFor="reportCount" let-row="row">
+        <a  [class.erroneous]="row?.reportCount < 10" (click)="onReportProblem(row?._id, row?.reportCount)">
+            {{ row?.reportCount || 0}}
+        </a>
+    </ng-template>
+
     <ng-container>
 
         <ng-template appFor="actions" let-user="row">

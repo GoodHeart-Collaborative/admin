@@ -7,6 +7,7 @@ import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.modul
 import { LikeActionModule } from 'src/app/modules/shared/like-action/like-action.module';
 import { CommentsShowModule } from 'src/app/modules/shared/comments-show/comments-show.module';
 import { DateTimePipeModule } from 'src/app/pipes/date-time-pipe/date-time-pipe.module';
+import { ReportProblemModule } from 'src/app/modules/shared/report-problem/report-problem.module';
 
 const routes: Routes = [
   {
@@ -25,7 +26,8 @@ const routes: Routes = [
     CustomImageModule,
     LikeActionModule,
     CommentsShowModule,
-    DateTimePipeModule
+    DateTimePipeModule,
+    ReportProblemModule
   ],
 
   exports: [DailyUnicornHumourDetailsComponent]

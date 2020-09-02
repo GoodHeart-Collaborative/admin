@@ -17,7 +17,7 @@
                     <p>{{adviceDetails?.description}}</p>
                 </div>
             </div>
-            <div class="image-detail">
+            <div class="image-detail" *ngIf="adviceDetails?.mediaUrl">
                 <img [src]="adviceDetails?.mediaUrl | customImage:'IMAGE_PLACEHOLDER'|async " *ngIf="adviceDetails?.mediaType == 1">
                 <video #myVideo muted [src]="adviceDetails?.mediaUrl" *ngIf="adviceDetails?.mediaType == 2" loop id="video"  controls
                 >Your browser does not support the
@@ -32,6 +32,9 @@
             <div class="like-cover"><span class="material-icons">comment</span>
                 <p>{{adviceDetails?.commentCount}}</p>
             </div>
+            <!-- <div class="like-cover" (click)="onReportProblem(adviceDetails?._id, adviceDetails?.reportCount)"><span class="material-icons">report</span>
+                <p>Report</p>
+            </div> -->
         </div>
         <app-comments-show [commentId]="adviceDetails?._id"></app-comments-show>
        

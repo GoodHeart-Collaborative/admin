@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material';
 import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
 import { CommentsComponent } from 'src/app/modules/shared/comments/view/comments/comments.component';
 import { CommonService } from 'src/app/modules/shared/services/common.service';
+import { ReportProblemComponent } from 'src/app/modules/shared/report-problem/view/report-problem.component';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 
 @Component({
@@ -145,5 +146,19 @@ export class ExpertDetailsListingComponent implements OnInit, OnChanges {
 
   onDetails(id: string) {
     this.$router.navigate([`admin/expert/${id}`, 'post']);
+  }
+
+  onReportProblem(id: string, count: number) {
+    if (!count) {
+      return;
+    }
+    this.$common.onReportProblemHandler(id).then(res => {
+      if (res && res.data) {
+        this.$matDailog.open(ReportProblemComponent, {
+          width: '500px',
+          data: res.data['data']
+        }).afterClosed().subscribe();
+      }
+    });
   }
 }

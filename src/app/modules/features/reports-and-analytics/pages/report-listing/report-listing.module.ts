@@ -8,11 +8,12 @@ import { MatSelectModule, MatDialogModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 import { ViewFullImageModule } from 'src/app/modules/shared/view-full-image/view-full-image.module';
+import { ListingFilterComponent } from './component/listing-filter.component';
 
 
 
 @NgModule({
-  declarations: [ReportListingComponent],
+  declarations: [ReportListingComponent, ListingFilterComponent],
   imports: [
     CommonModule,
     TableModule,
@@ -24,6 +25,7 @@ import { ViewFullImageModule } from 'src/app/modules/shared/view-full-image/view
     ViewFullImageModule,
     MatDialogModule
   ],
+  entryComponents: [ListingFilterComponent],
   exports: [ReportListingComponent]
 })
 export class ReportListingModule { }

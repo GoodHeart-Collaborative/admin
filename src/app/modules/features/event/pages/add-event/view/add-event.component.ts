@@ -28,7 +28,10 @@ export class AddEventComponent implements OnInit {
   location: {};
   eventDetails: any;
   address: any;
-  descriptionMaxLength = VALIDATION_CRITERIA.descriptionMaxLength;
+  descriptionMaxLength = VALIDATION_CRITERIA.eventDescriptionMaxLength;
+  eventNameMaxlength = VALIDATION_CRITERIA.eventNameMaxlength;
+  priceMaxLength= VALIDATION_CRITERIA.priceMaxLength;
+  maxDate : Date;
   constructor(
     private $fb: FormBuilder,
     private $fileUploadService: FileUploadService,
@@ -40,6 +43,9 @@ export class AddEventComponent implements OnInit {
     $breadcrumb: BreadcrumbService,
     private $category: CategoryManagementService
   ) {
+    this.maxDate =new Date(new Date().getTime() + 2592000000); 
+    console.log(this.maxDate);
+    
     this.createForm();
     if (activateRoute.snapshot.data.eventDetails && activateRoute.snapshot.data.eventDetails.data) {
       this.eventDetails = activateRoute.snapshot.data.eventDetails.data;
@@ -55,8 +61,8 @@ export class AddEventComponent implements OnInit {
   setEditFormHandler() {
     if (this.eventDetails) {
       this.eventForm.patchValue(this.eventDetails);
-      if (this.eventDetails.location) {
-        this.eventForm.get('location').patchValue(this.eventDetails.location);
+      if (this.eventDetails.address) {
+        // this.eventForm.get('location').patchValue(this.eventDetails.location);
         this.eventForm.get('address').patchValue(this.eventDetails.address);
       }
       if (this.eventDetails.imageUrl) {
@@ -78,12 +84,12 @@ export class AddEventComponent implements OnInit {
   createForm() {
     this.eventForm = this.$fb.group({
       eventCategoryId: [null, Validators.required],
-      title: ['', Validators.compose(this.$formService.VALIDATION.name)],
+      title: ['', Validators.maxLength(this.eventNameMaxlength)],
       privacy: ['', [Validators.required]],
-      price: [0, [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.priceMaxLength), Validators.pattern(PATTERN.price)]],
+      price: [0, [Validators.maxLength(this.priceMaxLength), Validators.pattern(PATTERN.price),Validators.required,]],
       eventUrl: ['', [Validators.pattern(PATTERN.url)]],
       description: ['', [Validators.required, Validators.maxLength(this.descriptionMaxLength)]],
-      location: [''],
+      // location: [''],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
       address: ['', Validators.required],
@@ -100,6 +106,10 @@ export class AddEventComponent implements OnInit {
   }
   get endDate() {
     return this.eventForm.controls['endDate'];
+  }
+  get minForStartDate() {
+    return this.eventDetails && this.eventDetails.id ?
+    this.eventDetails.endDate : new Date(new Date(this.startDate.value).getTime() + 3600000);
   }
 
 
@@ -131,8 +141,12 @@ export class AddEventComponent implements OnInit {
     if (!body.eventUrl) {
       delete body.eventUrl;
     }
-    if (this.location && this.address) {
-      body.location = this.location;
+    // if (this.location && this.address) {
+    //   body.location = this.location;
+    //   body.address = this.address;
+    // }
+    if ( this.address) {
+      // body.location = this.location;
       body.address = this.address;
     }
     if (body.endDate) {
@@ -187,12 +201,12 @@ export class AddEventComponent implements OnInit {
   }
 
   selectLocation(event) {
-    this.location = {
-      type: "Point",
-      coordinates: [
-        event.lng, event.lat
-      ]
-    };
+    // this.location = {
+    //   type: "Point",
+    //   coordinates: [
+    //     event.lng, event.lat
+    //   ]
+    // };
     this.address = event.formatted_address;
   }
 }

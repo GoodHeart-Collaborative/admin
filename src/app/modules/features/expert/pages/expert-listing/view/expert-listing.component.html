@@ -15,6 +15,8 @@
         </a>
     </ng-template>
 
+ 
+
     <ng-template appFor="categoryData" let-post="row">
         <span *ngFor="let item of post?.categoryData ; let i = index" title="{{ item?.title | titlecase}}">
             {{ item?.title | titlecase}}{{i< post?.categoryData?.length -1?',' : '' }}

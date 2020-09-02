@@ -8,6 +8,7 @@ import { ListingFilterComponent } from './component/listing-filter.component';
 import { DateFilterModule } from 'src/app/modules/layout/layout-shared/date-filter/date-filter.module';
 import { MatOptionModule, MatSelectModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ReportProblemModule } from 'src/app/modules/shared/report-problem/report-problem.module';
 
 const routes: Routes = [
   {
@@ -26,7 +27,8 @@ const routes: Routes = [
     DateFilterModule,
     MatOptionModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    ReportProblemModule
   ],
   entryComponents: [ListingFilterComponent]
 })

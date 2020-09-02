@@ -31,7 +31,7 @@
                 </div>
 
             </div>
-            <div class="image-detail">
+            <div class="image-detail" *ngIf="forumsData?.mediaUrl">
                 <img [src]="forumsData?.mediaUrl | customImage:'IMAGE_PLACEHOLDER'|async "
                     *ngIf="forumsData?.mediaType == 1">
                 <video #myVideo muted [src]="forumsData?.mediaUrl" *ngIf="forumsData?.mediaType == 2" loop id="video"

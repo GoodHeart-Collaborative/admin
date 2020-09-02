@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 import { CommentsShowModule } from 'src/app/modules/shared/comments-show/comments-show.module';
 import { LikeActionModule } from 'src/app/modules/shared/like-action/like-action.module';
+import { ReportProblemModule } from 'src/app/modules/shared/report-problem/report-problem.module';
 
 const routes: Routes = [
   {
@@ -27,7 +28,8 @@ const routes: Routes = [
     MatButtonModule,
     CustomImageModule,
     CommentsShowModule,
-    LikeActionModule
+    LikeActionModule,
+    ReportProblemModule
   ]
 })
 export class ExpertPostDetailsModule { }

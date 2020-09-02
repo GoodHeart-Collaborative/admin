@@ -57,6 +57,13 @@ export class ExpertDetailsTableDataSource implements Table.Source<Category> {
         sorting: false,
         templateBy: 'commentCount'
       },
+
+      {
+        title: 'Total Report',
+        id: 'reportCount',
+        sorting: false,
+        templateBy: 'reportCount',
+      },
     {
       title: 'Added On',
       id: 'createdAt',

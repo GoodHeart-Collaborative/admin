@@ -9,6 +9,7 @@ import { AppDateAdapter, APP_DATE_FORMATS } from 'src/app/constant/format-datepi
 import { DateFilterModule } from 'src/app/modules/layout/layout-shared/date-filter/date-filter.module';
 import { LikeActionModule } from 'src/app/modules/shared/like-action/like-action.module';
 import { CommentsModule } from 'src/app/modules/shared/comments/comments.module';
+import { ReportProblemModule } from 'src/app/modules/shared/report-problem/report-problem.module';
 
 
 
@@ -20,7 +21,8 @@ import { CommentsModule } from 'src/app/modules/shared/comments/comments.module'
     CustomDatePipeModule,
     DateFilterModule,
     LikeActionModule,
-    CommentsModule
+    CommentsModule,
+    ReportProblemModule
   ],
   exports : [ExpertDetailsListingComponent],
   entryComponents: [ListingFilterComponent],

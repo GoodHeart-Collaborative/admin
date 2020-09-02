@@ -1,4 +1,5 @@
 import * as Table from 'src/app/modules/commonTable/table/interfaces';
+import { ListingFilterComponent } from '../component/listing-filter.component';
 
 type User = any;
 
@@ -10,7 +11,7 @@ const defaultData: Table.Data<User> = {
 };
 
 export class ReportTableDataSource implements Table.Source<User> {
-  label = 'Users Management';
+  label = 'Report Management';
   columns: Table.Column<User>[] = [
   
     {
@@ -36,7 +37,6 @@ export class ReportTableDataSource implements Table.Source<User> {
       id: 'reason',
       sorting: true,
       templateBy: 'reason',
-    
     },
     {
       title: 'Added On',
@@ -63,7 +63,7 @@ export class ReportTableDataSource implements Table.Source<User> {
     search: 'Search by Description',
     index: true,
     sorting: true,
-    // filterComponent: ListingFilterComponent,
+    filterComponent: ListingFilterComponent,
   };
   constructor(public data: Table.Data<User> = defaultData) {}
 }

@@ -11,6 +11,7 @@ import { CustomDatePipeModule } from 'src/app/pipes/custom-date/custom-date-pipe
 import { ConfirmBoxService, ConfirmBoxModule } from 'src/app/modules/shared/confirm-box';
 import { ViewFullImageModule } from 'src/app/modules/shared/view-full-image/view-full-image.module';
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
+import { ReportProblemModule } from 'src/app/modules/shared/report-problem/report-problem.module';
 
 const routes: Routes = [
   {
@@ -34,7 +35,9 @@ const routes: Routes = [
     ViewFullImageModule,
     CustomImageModule,
     MatButtonModule,
+    ReportProblemModule
   ],
+
   providers: [ConfirmBoxService],
   entryComponents: [UsersListingFilterComponent]
 })

@@ -47,6 +47,12 @@ export class DailyTableDataSource implements Table.Source<Category> {
       templateBy: 'commentCount'
       // resolve: (row: any) => row['totalComments'] || '0',
   },
+  // {
+  //   title: 'Total Report',
+  //   id: 'reportCount',
+  //   sorting: false,
+  //   templateBy: 'reportCount',
+  // },
     {
       title: 'Added On',
       id: 'createdAt',

@@ -41,6 +41,12 @@ export class UserTableDataSource implements Table.Source<User> {
       // resolve: (row: any) =>  `${row.mobileNo} ` || '-',
     },
     {
+      title: 'Total Report',
+      id: 'reportCount',
+      sorting: false,
+      templateBy: 'reportCount',
+    },
+    {
       title: 'Added On',
       id: 'createdAt',
       sorting: true,

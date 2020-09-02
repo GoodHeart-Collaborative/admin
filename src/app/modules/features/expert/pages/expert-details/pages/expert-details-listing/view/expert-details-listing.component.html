@@ -10,7 +10,12 @@
     <ng-template appFor="privacy" let-expert="row">
         {{ expert?.privacy | titlecase}}
     </ng-template>
-
+    
+    <ng-template appFor="reportCount" let-row="row">
+        <a  [class.erroneous]="row?.reportCount < 10" (click)="onReportProblem(row?._id, row?.reportCount)">
+            {{ row?.reportCount || 0}}
+        </a>
+    </ng-template>
 
     <ng-template appFor="topic" let-expert="row">
          <a href="javascript:void(0)" (click)="onDetails(expert?._id)">
