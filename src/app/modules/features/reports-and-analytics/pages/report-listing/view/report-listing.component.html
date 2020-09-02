@@ -23,7 +23,7 @@
     </ng-template>
 
     <ng-template appFor="reason" let-report="row">
-        {{ report?.email }}
+        {{ report?.reason || report?.message }}
     </ng-template>
 
 

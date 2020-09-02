@@ -117,13 +117,14 @@ export class AddExpertComponent implements OnInit {
     }
     if (this.imageFile) {
       let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
-      this.profilePicURL = [data.Location];
+      this.profilePicURL = data.Location;
     }
     if (!this.profilePicURL) {
       this.$fileUploadService.showAlert('Image is required');
       return;
     }
-    let body = { profilePicUrl: this.profilePicURL, ...this.expertForm.value };
+    let body = { profilePicUrl: [this.profilePicURL], ...this.expertForm.value };
+    console.log(body);
     if (this.details && this.details._id) {
       this.$service.edit(this.details._id, body).then(
         data => {
@@ -153,7 +154,7 @@ export class AddExpertComponent implements OnInit {
     this.$route.navigate([EXPERT.fullUrl]);
   }
 
-  onKeydown(event){
+  onKeydown(event) {
     event.preventDefault();
   }
 

@@ -13,11 +13,10 @@ const defaultData: Table.Data<User> = {
 export class ReportTableDataSource implements Table.Source<User> {
   label = 'Report Management';
   columns: Table.Column<User>[] = [
-  
     {
       title: 'Profile Pic',
       id: 'profilePicUrl',
-      sorting: true,
+      sorting: false,
       templateBy: 'profilePicUrl',
     },
     {
@@ -29,13 +28,13 @@ export class ReportTableDataSource implements Table.Source<User> {
     {
       title: 'Email',
       id: 'email',
-      sorting: true,
+      sorting: false,
       templateBy: 'email',
     },
     {
       title: 'Reason',
       id: 'reason',
-      sorting: true,
+      sorting: false,
       templateBy: 'reason',
     },
     {
