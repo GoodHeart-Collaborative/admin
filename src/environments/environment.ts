@@ -13,7 +13,7 @@ export const environment = {
     REGION: 'us-east-1',
     BUCKET_NAME: 'appinventiv-development'
     },
-}; 
+};
 
 // S3 bucket
 // S3 Bucket---appinventiv-development
