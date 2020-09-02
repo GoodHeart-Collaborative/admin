@@ -60,7 +60,7 @@ export class ReportTableDataSource implements Table.Source<User> {
   ];
   options: Table.Options = {
     selection: false,
-    search: 'Search by Description',
+    search: 'Search by Name , Email',
     index: true,
     sorting: true,
     filterComponent: ListingFilterComponent,

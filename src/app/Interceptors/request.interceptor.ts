@@ -17,12 +17,14 @@ import {
     SOMETHING_WENT_WRONG,
     SLOW_INTERNET_CONNECTION,
   } from '../constant/messages';
+import { MatDialog } from '@angular/material';
 @Injectable()
 export class RequestInterceptor implements HttpInterceptor {
     constructor(
         private router: Router,
         private utilityService: UtilityService,
-        private loaderService: LoaderService
+        private loaderService: LoaderService,
+        private dialog: MatDialog,
     ) {
     }
 
@@ -60,7 +62,7 @@ export class RequestInterceptor implements HttpInterceptor {
                             return;
                         }
                         if ((err.status === 401 || err.error.responseType === 'UNAUTHORIZED' ) 
-                        || err.status === 504 
+                        || err.status === 504
                         || err.status === 503) {
                             message = SOMETHING_WENT_WRONG;
                         }

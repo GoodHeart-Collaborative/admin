@@ -13,7 +13,9 @@ import { PopupComponent } from '../popup/components/popup.component';
 
 @Injectable()
 export class UtilityService {
-  constructor(private dialog: MatDialog, private $snackBar: MatSnackBar) {}
+  constructor(
+    private dialog: MatDialog,
+    private $snackBar: MatSnackBar) { }
   clearStorage() {
     localStorage.removeItem(environment.tokenKey);
   }
@@ -44,7 +46,9 @@ export class UtilityService {
       confirmButtonText: POPUP_MESSAGES.close,
       hideCancelButton: true,
     };
-    this.openDialog(data).subscribe((success) => {});
+    this.openDialog(data).subscribe((success) => {
+      this.dialog.closeAll();
+    });
   }
   openDialog(data: IPopupData): Observable<IPopupResponse> {
     const dialogRef = this.dialog.open(ConfirmationModalComponent, {
@@ -107,5 +111,10 @@ export class UtilityService {
       }
     }
     return count;
+  }
+
+  onCloseAll() {
+    this.dialog.closeAll();
+
   }
 }

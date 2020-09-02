@@ -13,7 +13,7 @@
                         <p>{{item?.comment}}</p>
                         <div class="like-cover">
                             <span class="material-icons"
-                                (click)="likeHandler(item?._id, item?.likeCount)">thumb_up</span>
+                                (click)="likeHandler(item?._id, item?.likeCount, item?.postId)">thumb_up</span>
                             <p>{{item?.likeCount}}</p>
                             <a class="see-hide-replies" (click)="toggleReplies(item?._id, commentIndex)"
                                 *ngIf="item?.commentCount">{{item?.showReply? "Hide" : "See"}} Replies

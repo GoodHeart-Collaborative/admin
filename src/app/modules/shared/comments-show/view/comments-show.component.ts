@@ -67,11 +67,11 @@ export class CommentsShowComponent implements OnInit, OnChanges {
    * ON LIKE Handler
    * @param id
    */
-  likeHandler(id: string, likesCount: number) {
+  likeHandler(id: string, likesCount: number , postId) {
     if (!likesCount) {
       return;
     }
-    this.$common.onLikeHandler(id).then(res => {
+    this.$common.onLikeHandler(id, postId).then(res => {
       const like = res.data['list'];
       this.onlikeHandler(like);
     });

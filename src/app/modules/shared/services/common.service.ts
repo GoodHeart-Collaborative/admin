@@ -14,9 +14,16 @@ export class CommonService {
   constructor(private $http: HttpService) { }
 
 
-  async onLikeHandler(id: string) {
-    this.params['postId'] = id;
-    return this.$http.get(HOME_LIKE, this.params).toPromise();
+  async onLikeHandler(id: string, postId?: string) {
+    if (!postId && id) {
+      this.params['postId'] = id;
+      return this.$http.get(HOME_LIKE, this.params).toPromise();
+    }
+    if (postId && id) {
+      this.params['postId'] = postId;
+      this.params['commentId'] = id;
+      return this.$http.get(HOME_LIKE, this.params).toPromise();
+    }
   }
 
   async onCommentHandler(params) {

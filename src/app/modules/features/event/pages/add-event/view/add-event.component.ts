@@ -30,22 +30,19 @@ export class AddEventComponent implements OnInit {
   address: any;
   descriptionMaxLength = VALIDATION_CRITERIA.eventDescriptionMaxLength;
   eventNameMaxlength = VALIDATION_CRITERIA.eventNameMaxlength;
-  priceMaxLength= VALIDATION_CRITERIA.priceMaxLength;
-  maxDate : Date;
+  priceMaxLength = VALIDATION_CRITERIA.priceMaxLength;
+  maxDate: Date;
   constructor(
     private $fb: FormBuilder,
     private $fileUploadService: FileUploadService,
     private $service: EventService,
     private $utility: UtilityService,
     private $route: Router,
-    private $formService: FormService,
     activateRoute: ActivatedRoute,
     $breadcrumb: BreadcrumbService,
     private $category: CategoryManagementService
   ) {
-    this.maxDate =new Date(new Date().getTime() + 2592000000); 
-    console.log(this.maxDate);
-    
+    this.maxDate = new Date(new Date().getTime() + 2592000000);
     this.createForm();
     if (activateRoute.snapshot.data.eventDetails && activateRoute.snapshot.data.eventDetails.data) {
       this.eventDetails = activateRoute.snapshot.data.eventDetails.data;
@@ -86,14 +83,14 @@ export class AddEventComponent implements OnInit {
       eventCategoryId: [null, Validators.required],
       title: ['', Validators.maxLength(this.eventNameMaxlength)],
       privacy: ['', [Validators.required]],
-      price: [0, [Validators.maxLength(this.priceMaxLength), Validators.pattern(PATTERN.price),Validators.required,]],
+      price: [null, [Validators.maxLength(this.priceMaxLength), Validators.pattern(PATTERN.price), Validators.required,]],
       eventUrl: ['', [Validators.pattern(PATTERN.url)]],
       description: ['', [Validators.required, Validators.maxLength(this.descriptionMaxLength)]],
       // location: [''],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
       address: ['', Validators.required],
-      isFeatured: [false]
+      isFeatured: [0]
     });
   }
 
@@ -109,7 +106,7 @@ export class AddEventComponent implements OnInit {
   }
   get minForStartDate() {
     return this.eventDetails && this.eventDetails.id ?
-    this.eventDetails.endDate : new Date(new Date(this.startDate.value).getTime() + 3600000);
+      this.eventDetails.endDate : new Date(new Date(this.startDate.value).getTime() + 3600000);
   }
 
 
@@ -145,7 +142,7 @@ export class AddEventComponent implements OnInit {
     //   body.location = this.location;
     //   body.address = this.address;
     // }
-    if ( this.address) {
+    if (this.address) {
       // body.location = this.location;
       body.address = this.address;
     }
@@ -154,6 +151,9 @@ export class AddEventComponent implements OnInit {
     }
     if (body.startDate) {
       body.startDate = new Date(body.startDate).getTime();
+    }
+    if (body.isFeatured) {
+      body.isFeatured =   body.isFeatured ? 1 : 0;
     }
 
     if (this.eventDetails && this.eventDetails._id) {
@@ -209,4 +209,12 @@ export class AddEventComponent implements OnInit {
     // };
     this.address = event.formatted_address;
   }
+
+  onDateSelected(event) {
+    if (event && this.startDate.value &&  new Date(event.value) < new Date(new Date(this.startDate.value).getTime() + 3600000)) {
+        this.endDate.setValue(new Date(new Date(this.startDate.value).getTime() + 3600000));
+    }
+  }
 }
+
+
