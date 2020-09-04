@@ -30,9 +30,9 @@ export class CommonService {
     return this.$http.get(HOME_COMMENT, params).toPromise();
   }
 
-  async onReportProblemHandler(id: string) {
+  async onReportProblemHandler(id: string, type: number) {
     this.params['postId'] = id;
-    this.params['type'] = 9;
+    this.params['type'] = type;
     return this.$http.get(REPORT, this.params).toPromise();
   }
 

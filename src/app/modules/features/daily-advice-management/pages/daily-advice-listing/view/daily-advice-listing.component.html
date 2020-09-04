@@ -12,11 +12,11 @@
         {{ row?.status | titlecase}}
     </ng-template>
 
-    <ng-template appFor="reportCount" let-row="row">
+    <!-- <ng-template appFor="reportCount" let-row="row">
         <a  [class.erroneous]="row?.reportCount < 10" (click)="onReportProblem(row?._id, row?.reportCount)" [ngClass]="{'color-black': !row.reportCount , 'erroneous': row.reportCount <= 10}">
             {{ row?.reportCount || 0}}
         </a>
-    </ng-template>
+    </ng-template> -->
 
     <ng-template appFor="mediaUrl" let-row="row">
         <div class="table-cell-image-cover" (click)="onImageClick(row?.mediaUrl, row?.mediaType)">

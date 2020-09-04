@@ -12,6 +12,7 @@ export type ActionType = 'deleted' | 'blocked' | 'active' | 'pending';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { ReportProblemComponent } from 'src/app/modules/shared/report-problem/view/report-problem.component';
 import { CommonService } from 'src/app/modules/shared/services/common.service';
+import { REPORT_TYPE } from 'src/app/constant/drawer';
 @Component({
   selector: 'app-user-listing',
   templateUrl: './user-listing.component.html',
@@ -219,11 +220,11 @@ export class UserListingComponent implements OnInit {
     }).afterClosed().subscribe();
   }
 
-  onReportProblem(id: string, count: number) {
+  onReportProblem(id: string, count: number, type = REPORT_TYPE.USER) {
     if (!count) {
       return;
     }
-    this.$common.onReportProblemHandler(id).then(res => {
+    this.$common.onReportProblemHandler(id, type).then(res => {
       if (res && res.data) {
         this.matDailog.open(ReportProblemComponent, {
           width: '500px',

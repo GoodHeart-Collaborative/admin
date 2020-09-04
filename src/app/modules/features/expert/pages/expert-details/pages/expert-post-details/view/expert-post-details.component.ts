@@ -5,6 +5,7 @@ import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/lik
 import { CommonService } from 'src/app/modules/shared/services/common.service';
 import { MatDialog } from '@angular/material';
 import { ReportProblemComponent } from 'src/app/modules/shared/report-problem/view/report-problem.component';
+import { REPORT_TYPE } from 'src/app/constant/drawer';
 
 @Component({
   selector: 'app-expert-post-details',
@@ -52,11 +53,11 @@ export class ExpertPostDetailsComponent implements OnInit {
     }).afterClosed().subscribe();
   }
 
-  onReportProblem(id: string, count: number) {
+  onReportProblem(id: string, count: number, type = REPORT_TYPE.EXPERT_POST) {
     if (!count) {
       return;
     }
-    this.$common.onReportProblemHandler(id).then(res => {
+    this.$common.onReportProblemHandler(id, type).then(res => {
       if (res && res.data) {
         this.$matDailog.open(ReportProblemComponent, {
           width: '500px',

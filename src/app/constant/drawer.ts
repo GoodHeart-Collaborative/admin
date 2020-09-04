@@ -32,6 +32,19 @@ export const HOME_TYPE = {
     DAILY_ADVICE: 3,
     GENERAL_GRATITUDE: 4
 };
+export const REPORT_TYPE = {
+    EXPERT_POST: 7,
+    USER: 10,
+    FORUM: 9,
+    UNICORN: 1,
+	INSPIRATION: 2,
+	DAILY_ADVICE: 3,
+	GENERAL_GRATITUDE: 4,
+	MEMBER_OF_DAY: 5,
+	CONGRATS: 6,
+	SHOUTOUT: 8,
+	FORUM_TOPIC: 9,
+};
 
 export const MEDIA_TYPE = {
     IMAGE: 1,
