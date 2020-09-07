@@ -5,10 +5,10 @@
                 <div class="card_header_container profile_header">
                     <div class="card_header">
                         <figure mat-card-avatar class="image-cover">
-                            <img class="img-cover-fit" [src]="adviceDetails?.adminData[0]?.profilePicture | customImage:'USERS'|async "  alt="">
+                            <img class="img-cover-fit" [src]="(adviceDetails?.adminData[0]?.profilePicture ? adviceDetails?.adminData[0]?.profilePicture : adviceDetails?.addedBy?.profilePicture ) | customImage:'USERS'|async "  alt="">
                         </figure>
                         <div class="heading-cover">
-                            <a class="user_name" href="javascript:void()">{{adviceDetails?.adminData[0]?.name}}</a>
+                            <a class="user_name" href="javascript:void()">{{(adviceDetails?.adminData[0]?.name ? adviceDetails?.adminData[0]?.name : adviceDetails?.addedBy?.name) | titlecase }}</a>
                             <p class="posted-on-date" *ngIf="adviceDetails?.postedAt">Scheduled On:
                                 {{adviceDetails?.postedAt |dateTime}}</p>
                         </div>

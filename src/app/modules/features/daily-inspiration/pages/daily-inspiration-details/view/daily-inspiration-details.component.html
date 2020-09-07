@@ -5,10 +5,10 @@
                 <div class="card_header_container profile_header">
                     <div class="card_header">
                         <figure mat-card-avatar class="image-cover">
-                            <img class="img-cover-fit" [src]="dailyInspirationDetails?.adminData[0]?.profilePicture | customImage:'USERS'|async " alt="">
+                            <img class="img-cover-fit" [src]="(dailyInspirationDetails?.adminData[0]?.profilePicture ? dailyInspirationDetails?.adminData[0]?.profilePicture : dailyInspirationDetails?.addedBy?.profilePicture ) | customImage:'USERS'|async  " alt="">
                         </figure>
                         <div class="heading-cover">
-                            <a class="user_name" href="javascript:void()">{{dailyInspirationDetails?.adminData[0]?.name}}</a>
+                            <a class="user_name" href="javascript:void()">{{(dailyInspirationDetails?.adminData[0]?.name ? dailyInspirationDetails?.adminData[0]?.name : dailyInspirationDetails?.addedBy?.name) | titlecase}}</a>
                             <p class="posted-on-date">Scheduled On: {{dailyInspirationDetails?.postedAt | dateTime}}</p>
                         </div>
                     </div>
@@ -30,9 +30,9 @@
                     class="material-icons">thumb_up</span>
                 <p>{{dailyInspirationDetails?.likeCount}}</p>
             </div>
-            <!-- <div class="like-cover" (click)="onReportProblem(dailyInspirationDetails?._id, dailyInspirationDetails?.reportCount)"><span class="material-icons">report</span>
+            <div class="like-cover" (click)="onReportProblem(dailyInspirationDetails?._id, dailyInspirationDetails?.reportCount)"><span class="material-icons">report</span>
                 <p>Report</p>
-            </div> -->
+            </div>
         </div>
         <app-comments-show [commentId]="dailyInspirationDetails?._id"></app-comments-show>
 

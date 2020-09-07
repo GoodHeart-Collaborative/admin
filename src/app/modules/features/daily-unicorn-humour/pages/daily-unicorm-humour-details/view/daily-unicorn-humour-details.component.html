@@ -6,11 +6,11 @@
                     <div class="card_header">
                         <figure mat-card-avatar class="image-cover">
                             <img class="img-cover-fit"
-                                [src]="smilesDetails?.adminData[0]?.profilePicture  |customImage:'IMAGE_PLACEHOLDER'|async"
+                                [src]="(smilesDetails?.adminData[0]?.profilePicture ? smilesDetails?.adminData[0]?.profilePicture : smilesDetails?.addedBy?.profilePicture )"
                                 alt="">
                         </figure>
                         <div class="heading-cover">
-                            <a class="user_name" href="javascript:void()">{{smilesDetails?.adminData[0]?.name}}</a>
+                            <a class="user_name" href="javascript:void()">{{smilesDetails?.adminData[0]?.name ? smilesDetails?.adminData[0]?.name : smilesDetails?.addedBy?.name}}</a>
                             <p class="posted-on-date">Scheduled On: {{smilesDetails?.postedAt | dateTime}} </p>
                         </div>
                     </div>

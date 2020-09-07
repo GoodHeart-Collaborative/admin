@@ -51,17 +51,18 @@ export class DailyInspirationDetailsComponent implements OnInit {
       data: like
     }).afterClosed().subscribe();
   }
-  // onReportProblem(id: string, count: number) {
-  //   if (!count) {
-  //     return;
-  //   }
-  //   this.$common.onReportProblemHandler(id).then(res => {
-  //     if (res && res.data) {
-  //       this.$matDailog.open(ReportProblemComponent, {
-  //         width: '500px',
-  //         data: res.data['data']
-  //       }).afterClosed().subscribe();
-  //     }
-  //   });
-  // }
+
+  onReportProblem(id: string, count: number) {
+    // if (!count) {
+    //   return;
+    // }
+    // this.$common.onReportProblemHandler(id , ).then(res => {
+    //   if (res && res.data) {
+    //     this.$matDailog.open(ReportProblemComponent, {
+    //       width: '500px',
+    //       data: res.data['data']
+    //     }).afterClosed().subscribe();
+    //   }
+    // });
+  }
 }
