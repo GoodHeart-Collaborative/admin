@@ -30,6 +30,9 @@
                     class="material-icons">thumb_up</span>
                 <p>{{dailyInspirationDetails?.likeCount}}</p>
             </div>
+            <div class="like-cover"><span class="material-icons">comment</span>
+                <p>{{dailyInspirationDetails?.commentCount}}</p>
+            </div>
             <div class="like-cover" (click)="onReportProblem(dailyInspirationDetails?._id, dailyInspirationDetails?.reportCount)"><span class="material-icons">report</span>
                 <p>Report</p>
             </div>

@@ -24,7 +24,6 @@
                             </div>
                             <a class="see-hide-replies" (click)="toggleReplies(item?._id, commentIndex)" *ngIf="item?.commentCount">{{item?.showReply? "Hide" : "See"}} Replies ({{item?.commentCount}})</a>
                         </div>
-                        <!-- (click)="onNestedComment()" -->
                     </div>
                     <ul class="comment-listing" *ngIf="item?.showReply" >
                         <li class="single-comment" *ngFor="let reply of item?.replies">

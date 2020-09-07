@@ -13,15 +13,13 @@ export class CommentsShowComponent implements OnInit, OnChanges {
   comments: any;
   @Input() commentId;
   public hideShowReplies: boolean = false;
+
   constructor(
     private $common: CommonService,
     private $matDailog: MatDialog) { }
 
-  async ngOnChanges() {
-    console.log(this.commentId, 'jjhjhjkh');
-    
+  async ngOnChanges() {    
     this.comments = await this.getCommentHandler(this.commentId);
-    console.log(this.comments, 'hjkhjkh');
     this.comments = this.comments.map(comment => {
       comment['replies'] = [];
       comment['showReply'] = false;
@@ -36,8 +34,6 @@ export class CommentsShowComponent implements OnInit, OnChanges {
    * user Comment Handler
    */
   async getCommentHandler(id, commentId?) {
-    console.log(id, commentId);
-    
     const params = {
       pageNo: 1,
       limit: 100,
@@ -82,8 +78,7 @@ export class CommentsShowComponent implements OnInit, OnChanges {
  * @param id
  */
   onlikeHandler(like: any) {
-  
-    this.$matDailog.open(LikeActionComponent, {
+   this.$matDailog.open(LikeActionComponent, {
       width: '500px',
       data: like
     }).afterClosed().subscribe();
