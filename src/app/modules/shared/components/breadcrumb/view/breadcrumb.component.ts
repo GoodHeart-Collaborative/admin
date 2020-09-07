@@ -22,7 +22,11 @@ export class BreadcrumbComponent {
     breadcrumb: BreadcrumbService
   ) {
     breadcrumb.events.subscribe(({ label, target, url = '' }: any) => {
-
+      if (label.includes('%')) {
+        // label.replace('%', '')\
+        label = label.split('%').join('');
+      }
+      // console.log(target, label, label.includes('%'));
       this.$changes.set(target, label);
       const routeStep = this.routeSteps.find((step: RouteStep) => {
         return step.label === target;

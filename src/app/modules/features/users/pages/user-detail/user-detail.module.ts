@@ -35,7 +35,8 @@ const routes: Routes = [
     MatSelectModule,
     FormsModule,
     CommonModule,
-    UserShoutoutsModule
+    UserShoutoutsModule,
+    UserTopicsModule
   ]
 })
 export class UserDetailModule { }

@@ -63,9 +63,11 @@ export class AddDailyInspiratinComponent implements OnInit {
   createForm() {
     this.inspirationForm = this.$formBuilder.group(
       {
-        title: ['', [Validators.required, Validators.maxLength(this.titleMaxLength)]],
+        title: ['', [Validators.required, Validators.maxLength(this.titleMaxLength),
+                Validators.minLength(VALIDATION_CRITERIA.titleMinLength)]],
         isPostLater: [false],
-        description: ['', [Validators.required, Validators.maxLength(this.descriptionMaxLength)]],
+        description: ['', [Validators.required, Validators.maxLength(this.descriptionMaxLength),
+          Validators.minLength(VALIDATION_CRITERIA.descriptionMinLength)]],
         type: HOME_TYPE.INSPIRATION,
         mediaType: [1],
         addedBy: ['']
