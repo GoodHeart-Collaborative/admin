@@ -12,22 +12,23 @@ export class ListingFilterComponent implements OnInit {
   dateFilterObject = {
     label: 'Event Date Filter',
     maxFromDate: new Date(),
-   };
+  };
   filterForm: FormGroup;
   statusList = [{
-    view: 'Active', value: 'active'},
-    {view: 'Blocked', value: 'blocked'},
+    view: 'Active', value: 'active'
+  },
+  { view: 'Blocked', value: 'blocked' },
   ];
   isProcessing = true;
   constructor(
-     private $fb: FormBuilder,
-     private dialogRef: MatDialogRef<any>,
-     @Inject(MAT_DIALOG_DATA) data: any,
+    private $fb: FormBuilder,
+    private dialogRef: MatDialogRef<any>,
+    @Inject(MAT_DIALOG_DATA) data: any,
   ) {
     this.getFilterForm();
-    this.dateFilterObject = {...this.dateFilterObject, ...this.filterForm.controls};
+    this.dateFilterObject = { ...this.dateFilterObject, ...this.filterForm.controls };
     if (data) {
-       this.filterForm.patchValue(data);
+      this.filterForm.patchValue(data);
     }
   }
 
@@ -45,16 +46,20 @@ export class ListingFilterComponent implements OnInit {
   }
 
   onApplyHandler() {
-   if (this.filterForm.valid) {
+    if (this.filterForm.valid) {
       this.isProcessing = false;
-      const filterData = { ...this.filterForm.value};
+      const filterData = { ...this.filterForm.value };
       this.dialogRef.close(filterData);
     }
   }
 
   resetFilter() {
+    if (Object.values(this.filterForm.value).every(el => el == null)) {
+      this.dialogRef.close();
+      return;
+    }
     this.filterForm.reset();
-    const filterData = { ...this.filterForm.value};
+    const filterData = { ...this.filterForm.value };
     this.dialogRef.close(filterData);
   }
 

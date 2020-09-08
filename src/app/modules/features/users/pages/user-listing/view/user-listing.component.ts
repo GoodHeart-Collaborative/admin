@@ -7,12 +7,12 @@ import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
 import { MatDialog } from '@angular/material';
-
-export type ActionType = 'deleted' | 'blocked' | 'active' | 'pending';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { ReportProblemComponent } from 'src/app/modules/shared/report-problem/view/report-problem.component';
 import { CommonService } from 'src/app/modules/shared/services/common.service';
 import { REPORT_TYPE } from 'src/app/constant/drawer';
+export type ActionType = 'deleted' | 'blocked' | 'active' | 'pending';
+
 @Component({
   selector: 'app-user-listing',
   templateUrl: './user-listing.component.html',
@@ -95,8 +95,6 @@ export class UserListingComponent implements OnInit {
    */
   onOptionChange(event: Table.OptionEvent) {
     this.eventData = event.data;
-    console.log(this.eventData);
-
     this.updateUsers();
   }
 
@@ -133,11 +131,9 @@ export class UserListingComponent implements OnInit {
         break;
       case 'active':
         this.handleStatus(action, index);
-
         break;
       case 'blocked':
         this.handleStatus(action, index);
-
         break;
       default:
         break;
@@ -145,10 +141,16 @@ export class UserListingComponent implements OnInit {
     this.setUpTableResource(this.userData);
   }
 
-  handleStatus(action: 'blocked' | 'active', index: number) {
+  handleStatus(action: 'blocked' | 'active', index: number, adminStatus?) {
+    console.log(adminStatus, 'dddd');
     this.userData.data = this.userData.data.map((user, i) => {
       if (i === index) {
-        user.status = action;
+        if (action) {
+         user.status = action;
+        }
+        if (adminStatus) {
+          user.adminStatus = adminStatus;
+        }
       }
       return user;
     });
@@ -174,6 +176,7 @@ export class UserListingComponent implements OnInit {
     if (checkStatus == status) {
       return;
     }
+    const index = this.userData.data.findIndex(user => user._id === id);
     this.$confirmBox.listAction('user', `${status == 'verified' ? 'verify' : 'reject'}`).subscribe((confirm) => {
       if (confirm) {
         const params = {
@@ -182,7 +185,8 @@ export class UserListingComponent implements OnInit {
         this.$userService.onVerifiedHnadler(id, params).then(res => {
           if (res) {
             this.$utility.success(res.message);
-            this.updateUsers();
+            this.handleStatus(null, index, status);
+            // this.updateUsers();
           }
         });
 

@@ -48,6 +48,7 @@
                 {{ row?.reportCount || 0}}
             </a>
         </ng-template>
+        
         <ng-template appFor="name" let-user="row">
             <a href="javascript:void(0)" (click)="onDetailsHandler(user?._id)"
                 title="{{ user?.firstName  | titlecase}} {{ user?.lastName | titlecase}}">

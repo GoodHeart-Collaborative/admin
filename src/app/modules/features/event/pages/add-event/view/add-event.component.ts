@@ -150,9 +150,9 @@ export class AddEventComponent implements OnInit {
     if (body.startDate) {
       body.startDate = new Date(body.startDate).getTime();
     }
-    if (body.isFeatured) {
+    // if (body.isFeatured) {
       body.isFeatured =   body.isFeatured ? 1 : 0;
-    }
+    // }
     if (body.allowSharing) {
       body.allowSharing =   body.allowSharing ? 1 : 0;
     }

@@ -48,6 +48,10 @@ export class UsersListingFilterComponent implements OnInit {
   }
 
   resetFilter() {
+    if (Object.values(this.userFilterForm.value).every(el => el == null)) {
+      this.dialogRef.close();
+      return;
+    }
     this.userFilterForm.reset();
     const filterData = { ...this.userFilterForm.value};
     this.dialogRef.close(filterData);

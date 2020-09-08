@@ -52,6 +52,10 @@ export class ListingFilterComponent implements OnInit {
   }
 
   resetFilter() {
+    if (Object.values(this.filterForm.value).every(el => el == null)) {
+      this.dialogRef.close();
+      return;
+    }
     this.filterForm.reset();
     const filterData = { ...this.filterForm.value};
     this.dialogRef.close(filterData);

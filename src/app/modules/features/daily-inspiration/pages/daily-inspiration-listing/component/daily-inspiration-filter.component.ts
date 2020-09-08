@@ -45,12 +45,15 @@ export class DailyInspirationFilterComponent implements OnInit {
    if (this.filterForm.valid && this.filterForm.touched) {
       this.isProcessing = false;
       const filterData = { ...this.filterForm.value};
-     
       this.dialogRef.close(filterData);
     }
   }
 
   resetFilter() {
+    if (Object.values(this.filterForm.value).every(el => el == null)) {
+      this.dialogRef.close();
+      return;
+    }
     this.filterForm.reset();
     const filterData = { ...this.filterForm.value};
     this.dialogRef.close(filterData);

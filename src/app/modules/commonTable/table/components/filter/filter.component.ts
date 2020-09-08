@@ -13,10 +13,10 @@ export class FilterComponent implements OnInit {
   @Input() disableValue;
   constructor(
     private $dialogRef: MatDialogRef<any>
-) {}
+    ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
+
   onCloseHandler() {
     this.$dialogRef.close();
   }
