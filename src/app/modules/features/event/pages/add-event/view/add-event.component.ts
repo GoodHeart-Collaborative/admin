@@ -90,7 +90,7 @@ export class AddEventComponent implements OnInit {
       endDate: ['', Validators.required],
       address: ['', Validators.required],
       isFeatured: [0],
-      allowsharing: [0]
+      allowSharing: [0]
     });
   }
 
@@ -153,8 +153,8 @@ export class AddEventComponent implements OnInit {
     if (body.isFeatured) {
       body.isFeatured =   body.isFeatured ? 1 : 0;
     }
-    if (body.allowsharing) {
-      body.allowsharing =   body.allowsharing ? 1 : 0;
+    if (body.allowSharing) {
+      body.allowSharing =   body.allowSharing ? 1 : 0;
     }
 
     if (this.eventDetails && this.eventDetails._id) {
