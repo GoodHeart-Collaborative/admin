@@ -1,4 +1,5 @@
 import * as Table from 'src/app/modules/commonTable/table/interfaces';
+import { ListingFilterComponent } from '../pages/notification-listing/component/listing-filter.component';
 type Category = any;
 
 const defaultData: Table.Data<Category> = {
@@ -64,6 +65,7 @@ export class NotificationTableDataSource implements Table.Source<Category> {
     index: true,
     addComponent: true,
     sorting: true,
+    filterComponent: ListingFilterComponent
   };
   constructor(public data: Table.Data<Category> = defaultData) {}
 }

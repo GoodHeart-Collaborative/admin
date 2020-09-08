@@ -12,7 +12,7 @@ export class NotificationsService {
   ) { }
 
   async  queryData(params) {
-    return  this.$http.get(NOTIFICATION, params).toPromise();
+    return  this.$http.post(NOTIFICATION, params).toPromise();
   }
 
   async updateStatus(id, status) {
