@@ -14,14 +14,21 @@
                 <div class="btn-row">
                     <button class="btn btn-simple" mat-stroked-button type="button" *ngIf="eventDetails?.status == 'active'" (click)="onActionHandler(eventDetails?._id, 'blocked')"> Block </button>
                     <button class="btn btn-primary" mat-stroked-button type="button" *ngIf="eventDetails?.status == 'blocked'" (click)="onActionHandler(eventDetails?._id, 'active')">Active </button>
-                </div>
-            </div>
+               
+                       
+                    <button class="btn btn-primary" mat-stroked-button type="button"
+                         (click)="onCopyHandler($event.currentTarget)" *ngIf="eventDetails?.userType =='admin' && eventDetails?.allowSharing">
+                         <span class="info"> {{eventDetails?.eventUrl}} </span>
+                           <span class="info"> (click number to copy URL)  </span>
+                        </button>
+                  
+             </div>
             <div class="right-portion">
                 <div class="event-info detail-ui">
                     <div class="row">
                         <div class="col-md-12">
                             <p class="label">Event Date & Time</p>
-                            <p class="value">{{eventDetails?.startDate | date :'d MMMM, y, h:mm a'}} {{eventDetails?.endDate ? '-'+(eventDetails?.endDate | dateTime) : '' }} 
+                            <p class="value">{{eventDetails?.startDate | dateTime}} {{eventDetails?.endDate ? '-'+(eventDetails?.endDate | dateTime) : '' }} 
                                 <!-- {{eventDetails?.endDate | date :'d MMMM, y, h:mm a'}} -->
                             </p>
 

@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material';
 import { IntrestedListComponent } from 'src/app/modules/shared/intrested-list/view/intrested-list.component';
 import { GoingListComponent } from 'src/app/modules/shared/going-list/view/going-list.component';
 import { EVENT_INTEREST } from 'src/app/constant/drawer';
+import { COPIED } from 'src/app/constant/messages';
 export type ActionType = 'blocked' | 'active';
 
 @Component({
@@ -46,8 +47,6 @@ export class EventDetailsComponent implements OnInit {
   }
 
   onGoingCount(count: number) {
-    console.log(count);
-    
     if (!count) {
       return;
     }
@@ -86,5 +85,13 @@ export class EventDetailsComponent implements OnInit {
         }).afterClosed().subscribe();
       }
     });
+  }
+
+  onCopyHandler(el: HTMLDivElement) {
+    console.log(el);
+    window.getSelection().selectAllChildren(el);
+    document.execCommand('copy');
+    window.getSelection().removeAllRanges();
+    this.$utility.success(COPIED);
   }
 }
