@@ -3,32 +3,22 @@
         <div class="section-1">
             <div class="left-portion">
                 <div class="event-cover-photo">
-    
-                  <img [src]="eventDetails?.imageUrl | customImage:'USERS'|async">
+
+                    <img [src]="eventDetails?.imageUrl | customImage:'USERS'|async">
                 </div>
                 <div class="event-about">
                     <h4 class="event-title">{{eventDetails?.title}}</h4>
                     <p>{{eventDetails?.description}}
                     </p>
                 </div>
-                <div class="btn-row">
-                    <button class="btn btn-simple" mat-stroked-button type="button" *ngIf="eventDetails?.status == 'active'" (click)="onActionHandler(eventDetails?._id, 'blocked')"> Block </button>
-                    <button class="btn btn-primary" mat-stroked-button type="button" *ngIf="eventDetails?.status == 'blocked'" (click)="onActionHandler(eventDetails?._id, 'active')">Active </button>
-               
-                       
-                    <button class="btn btn-primary" mat-stroked-button type="button"
-                         (click)="onCopyHandler($event.currentTarget)" *ngIf="eventDetails?.userType =='admin' && eventDetails?.allowSharing">
-                         <span class="info"> {{eventDetails?.eventUrl}} </span>
-                           <span class="info"> (click number to copy URL)  </span>
-                        </button>
-                  
-             </div>
+            </div>
             <div class="right-portion">
                 <div class="event-info detail-ui">
                     <div class="row">
                         <div class="col-md-12">
                             <p class="label">Event Date & Time</p>
-                            <p class="value">{{eventDetails?.startDate | dateTime}} {{eventDetails?.endDate ? '-'+(eventDetails?.endDate | dateTime) : '' }} 
+                            <p class="value">{{eventDetails?.startDate | dateTime}}
+                                {{eventDetails?.endDate ? '-'+(eventDetails?.endDate | dateTime) : '' }}
                                 <!-- {{eventDetails?.endDate | date :'d MMMM, y, h:mm a'}} -->
                             </p>
 
@@ -51,9 +41,9 @@
                             </p>
                         </div>
                         <!-- <div class="col-md-12">
-                            <p class="label">Hosted By</p>
-                            <p class="value">Alex Dolgove</p>
-                        </div> -->
+                                <p class="label">Hosted By</p>
+                                <p class="value">Alex Dolgove</p>
+                            </div> -->
                         <div class="col-md-4">
                             <p class="label">Going</p>
                             <p class="value like-cover" (click)="onGoingCount(eventDetails?.goingCount)">
@@ -68,9 +58,24 @@
                                 <a href="javascript:void();">{{eventDetails?.interestCount}}</a>
                             </p>
                         </div>
+                        <div class="col-md-12 btn-row">
+                            <button class="btn btn-simple" mat-stroked-button type="button"
+                                *ngIf="eventDetails?.status == 'active'"
+                                (click)="onActionHandler(eventDetails?._id, 'blocked')"> Block </button>
+                            <button class="btn btn-primary" mat-stroked-button type="button"
+                                *ngIf="eventDetails?.status == 'blocked'"
+                                (click)="onActionHandler(eventDetails?._id, 'active')">Active </button>
+
+
+                            <button class="btn btn-primary" mat-stroked-button type="button"
+                                (click)="onCopyHandler($event.currentTarget)"
+                                *ngIf="eventDetails?.userType =='admin' && eventDetails?.allowSharing">
+                                <span class="info"> {{eventDetails?.eventUrl}} </span>&nbsp;
+                                <span class="info"> (click to copy URL) </span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
