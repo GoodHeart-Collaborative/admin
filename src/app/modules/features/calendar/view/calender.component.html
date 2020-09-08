@@ -1,6 +1,6 @@
 <!-- <button class="btn btn-primary btn-add-row" mat-stroked-button (click)="onAddrow()">Add row</button> -->
 
-<app-table [tableSource]="tableSource" (optionChange)="onOptionChange($event)" (onAddCahnges)="onAdd()">
+<app-table [tableSource]="tableSource" (optionChange)="onOptionChange($event)">
     <ng-template appFor="createdAt" let-row="row">
         {{ row?.createdAt |customDate}}
     </ng-template>
