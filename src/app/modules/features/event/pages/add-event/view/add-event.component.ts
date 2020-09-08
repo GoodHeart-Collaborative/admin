@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, EmailValidator } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CategoryManagementService } from 'src/app/modules/features/category-management/service/category-management.service';
 import { EventService } from '../../../service/event.service';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
@@ -9,7 +9,6 @@ import { VALIDATION_CRITERIA } from 'src/app/constant/validation-criteria';
 import { EVENTS } from 'src/app/constant/routes';
 import { FileUploadService } from 'src/app/modules/shared/services/file-upload.service';
 import { requiredProfilePic } from 'src/app/constant/messages';
-import { FormService } from 'src/app/modules/shared/services/form.service';
 import { PRAVICY, EVENT_CATEGORY } from 'src/app/constant/drawer';
 import { PATTERN } from 'src/app/constant/patterns';
 
@@ -82,7 +81,7 @@ export class AddEventComponent implements OnInit {
     this.eventForm = this.$fb.group({
       eventCategoryId: [null, Validators.required],
       title: ['', Validators.maxLength(this.eventNameMaxlength)],
-      privacy: ['', [Validators.required]],
+      // privacy: ['', [Validators.required]],
       price: [null, [Validators.maxLength(this.priceMaxLength), Validators.pattern(PATTERN.price), Validators.required,]],
       eventUrl: ['', [Validators.pattern(PATTERN.url)]],
       description: ['', [Validators.required, Validators.maxLength(this.descriptionMaxLength)]],
@@ -90,7 +89,8 @@ export class AddEventComponent implements OnInit {
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
       address: ['', Validators.required],
-      isFeatured: [0]
+      isFeatured: [0],
+      allowsharing: [0]
     });
   }
 
@@ -120,8 +120,6 @@ export class AddEventComponent implements OnInit {
   }
 
   async onSubmit() {
-    console.log(this.eventForm);
-
     if (this.eventForm.invalid) {
       this.eventForm.markAllAsTouched();
       return;
@@ -154,6 +152,9 @@ export class AddEventComponent implements OnInit {
     }
     if (body.isFeatured) {
       body.isFeatured =   body.isFeatured ? 1 : 0;
+    }
+    if (body.allowsharing) {
+      body.allowsharing =   body.allowsharing ? 1 : 0;
     }
 
     if (this.eventDetails && this.eventDetails._id) {

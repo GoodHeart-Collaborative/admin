@@ -11,7 +11,7 @@
                         <div class="heading-cover">
                             <a class="user_name" href="javascript:void()">{{forumsData?.userData?.firstName}}
                                 {{forumsData?.userData?.lastName || 'string'}}</a>
-                            <!-- <p class="posted-on-date">Scheduled On: {{forumsData?.postedAt | date : 'd MMMM, y, h:mm a'}}</p> -->
+                            <!-- <p class="posted-on-date">Created At: {{forumsData?.createdAt | dateTime}}</p> -->
                         </div>
                     </div>
                     <div class="card_header" *ngIf="forumsData?.adminData">

@@ -1,25 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { DailyTableDataSource } from '../model';
+import { CalenderTableDataSource } from '../model';
+import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
+import { CalenderService } from '../service/calender.service';
 import { Router } from '@angular/router';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
-import { ADD_DAILY_INSPIRATION, DAILY_INSPIRATION } from 'src/app/constant/routes';
-import { DailyInspirationService } from '../../../service/daily-inspiration.service';
-import { HOME_TYPE } from 'src/app/constant/drawer';
-import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
-import { CommentsComponent } from 'src/app/modules/shared/comments/view/comments/comments.component';
 import { MatDialog } from '@angular/material';
-import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
 import { CommonService } from 'src/app/modules/shared/services/common.service';
-import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
+import { HOME_TYPE } from 'src/app/constant/drawer';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 @Component({
-  selector: 'app-daily-inspiration-listing',
-  templateUrl: './daily-inspiration-listing.component.html',
-  styleUrls: ['./daily-inspiration-listing.component.scss']
+  selector: 'app-calender',
+  templateUrl: './calender.component.html',
+  styleUrls: ['./calender.component.scss']
 })
-export class DailyInspirationListingComponent implements OnInit {
- tableSource = new DailyTableDataSource();
+export class CalenderComponent implements OnInit {
+
+  tableSource = new CalenderTableDataSource();
   userData: any;
   eventData: Table.OptionData = {
     pageIndex: 0,
@@ -29,7 +26,7 @@ export class DailyInspirationListingComponent implements OnInit {
     sortData: null
   };
   constructor(
-    private $category: DailyInspirationService,
+    private $calender: CalenderService ,
     private $router: Router,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
@@ -50,7 +47,6 @@ export class DailyInspirationListingComponent implements OnInit {
     let params = {
       page: `${pageIndex + 1}`,
       limit: `${pageSize}`,
-      type: `${HOME_TYPE.INSPIRATION}`
     };
     if (filterData) {
       const keys = Object.keys(filterData).filter(el => filterData[el]);
@@ -73,7 +69,7 @@ export class DailyInspirationListingComponent implements OnInit {
     if (searchText) {
       params['searchTerm'] = searchText;
     }
-    this.$category.queryData(params).then(res => {
+    this.$calender.queryData(params).then(res => {
       this.userData = res['data'];
       this.setUpTableResource(this.userData);
     });
@@ -98,7 +94,7 @@ export class DailyInspirationListingComponent implements OnInit {
     this.$confirmBox.listAction('post', action == 'active'  ?  'active' : ( action == 'deleted' ? 'delete' : 'block'))
     .subscribe((confirm) => {
       if (confirm) {
-        this.$category.updateStatus(id, action).then((res) => {
+        this.$calender.updateStatus(id, action).then((res) => {
           this.$utility.success(res.message);
           this.handleActions(action, index);
         });
@@ -146,7 +142,7 @@ export class DailyInspirationListingComponent implements OnInit {
    */
   setUpTableResource(userRecords) {
     const { pageIndex, pageSize } = this.eventData;
-    this.tableSource = new DailyTableDataSource({
+    this.tableSource = new CalenderTableDataSource({
       pageIndex,
       pageSize,
       rows: userRecords['data'],
@@ -158,87 +154,75 @@ export class DailyInspirationListingComponent implements OnInit {
    * Edit Handler
    * @param id
    */
- oneditHandler(id) {
-    this.$router.navigate([`${DAILY_INSPIRATION.fullUrl}`, 'edit', id]);
-  }
+//  oneditHandler(id) {
+//     this.$router.navigate([`${DAILY_INSPIRATION.fullUrl}`, 'edit', id]);
+//   }
 
   /**
    * Details Handler
    * @param id
    */
-  onDetailsHandler(id) {
-    this.$router.navigate([`${DAILY_INSPIRATION.fullUrl}`, id, 'details']);
-  }
+  // onDetailsHandler(id) {
+  //   this.$router.navigate([`${DAILY_INSPIRATION.fullUrl}`, id, 'details']);
+  // }
 
   /**
    * Add Handler
    */
-onAdd() {
-    this.$router.navigate([`${ADD_DAILY_INSPIRATION.fullUrl}`]);
-}
+// onAdd() {
+//     this.$router.navigate([`${ADD_DAILY_INSPIRATION.fullUrl}`]);
+// }
 
 
   /**
    * user Like Handler
    * @param id
    */
-  onlikeHandler(like: any, likesCount: number) {
-    this.$matDailog.open(LikeActionComponent, {
-      width: '500px',
-      data: like
-    }).afterClosed().subscribe();
-  }
+  // onlikeHandler(like: any, likesCount: number) {
+  //   this.$matDailog.open(LikeActionComponent, {
+  //     width: '500px',
+  //     data: like
+  //   }).afterClosed().subscribe();
+  // }
 
   /**
    * ON LIKE Handler
    * @param id
    */
-  likeHandler(id: string, likesCount: number) {
-    if (!likesCount) {
-      return;
-    }
-    this.$common.onLikeHandler(id).then(res => {
-      const like = res.data['list'];
-      this.onlikeHandler(like, likesCount);
-    });
-  }
+  // likeHandler(id: string, likesCount: number) {
+  //   if (!likesCount) {
+  //     return;
+  //   }
+  //   this.$common.onLikeHandler(id).then(res => {
+  //     const like = res.data['list'];
+  //     this.onlikeHandler(like, likesCount);
+  //   });
+  // }
 
-  onCommentsHandler(id: string, commentCount: number) {
-    if (!commentCount) {
-      return;
-    }
-    this.$matDailog.open(CommentsComponent, {
-      width: '500px',
-      data: id
-    }).afterClosed().subscribe();
-  }
+  // onCommentsHandler(id: string, commentCount: number) {
+  //   if (!commentCount) {
+  //     return;
+  //   }
+  //   this.$matDailog.open(CommentsComponent, {
+  //     width: '500px',
+  //     data: id
+  //   }).afterClosed().subscribe();
+  // }
 
 
   /**
    * View Fill Image
    *
    */
-  onImageClick(image: string, type: number) {
-    if (!image) {
-      return;
-    }
-    this.$matDailog.open(ViewFullImageComponent, {
-      panelClass: 'view-full-image-modal',
-      data: {image, type}
-    }).afterClosed().subscribe();
-  }
-
-  // onReportProblem(id: string, count: number) {
-  //   if (!count) {
+  // onImageClick(image: string, type: number) {
+  //   if (!image) {
   //     return;
   //   }
-  //   this.$common.onReportProblemHandler(id).then(res => {
-  //     if (res && res.data) {
-  //       this.$matDailog.open(ReportProblemComponent, {
-  //         width: '500px',
-  //         data: res.data['data']
-  //       }).afterClosed().subscribe();
-  //     }
-  //   });
+  //   this.$matDailog.open(ViewFullImageComponent, {
+  //     panelClass: 'view-full-image-modal',
+  //     data: {image, type}
+  //   }).afterClosed().subscribe();
   // }
+
+
 }

@@ -110,6 +110,11 @@ export const ACTION_SHOUTOUTS = (Id) => `admin/shoutout/${Id}`;
 // REPORT API's //
 export const REPORT = 'admin/report';
 
+// CALENDER API's //
+export const CALENDER = 'admin/calender';
+export const ACTION_CALENDER = (Id , status) => `admin/calender/${Id}/status/${status}`;
+
+
 // FORUM API's //
 export const FORUM = 'admin/forums';
 export const ADD_FORUM = 'admin/forum';

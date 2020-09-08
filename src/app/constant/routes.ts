@@ -592,3 +592,12 @@ export const REPORTS_AND_ANALYTICS_DETAILS: IRoute = {
   }
 };
 
+
+
+/// CALENDER 
+export const CALENDER: IRoute = {
+  path: 'calender',
+  get fullUrl(): string {
+    return `${ADMIN.fullUrl}/${this.path}`;
+  }
+};

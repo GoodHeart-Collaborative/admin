@@ -52,7 +52,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Privacy</mat-label>
                                 <mat-select formControlName="privacy">
@@ -60,7 +60,7 @@
                                 </mat-select>
                                 <mat-error>{{form('privacy') |validate:'Privacy' }}</mat-error>
                             </mat-form-field>
-                        </div>
+                        </div> -->
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Event Location</mat-label>
@@ -101,6 +101,9 @@
                     <div class="row">
                         <div class="col-md-6 checkbox-wrapper">
                             <mat-checkbox color="primary" formControlName="isFeatured">Mark as Featured</mat-checkbox>
+                        </div>
+                        <div class="col-md-6 checkbox-wrapper">
+                            <mat-checkbox color="primary" formControlName="allowsharing">Mark as Allow Sharing</mat-checkbox>
                         </div>
                     </div>
                 </div>

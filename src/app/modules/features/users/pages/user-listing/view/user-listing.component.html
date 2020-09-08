@@ -40,7 +40,7 @@
         </ng-template>
 
         <ng-template appFor="email" let-user="row">
-            <span>{{ user?.email}}</span>
+            <span>{{ user?.email || '-'}}</span>
         </ng-template>
 
         <ng-template appFor="reportCount" let-row="row">
