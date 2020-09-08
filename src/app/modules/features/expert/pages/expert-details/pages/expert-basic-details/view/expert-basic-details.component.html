@@ -28,7 +28,7 @@
                         </div>
                         <div class="col-md-4">
                             <p class="label">Category</p>
-                            <p *ngFor="let item of data?.categoryData ; let i = index">
+                            <p class="value" *ngFor="let item of data?.categoryData ; let i = index">
                                 {{ item?.title | titlecase}}{{i< data?.categoryData?.length -1 ?',' : '' }}
                             </p>                        
                         </div>

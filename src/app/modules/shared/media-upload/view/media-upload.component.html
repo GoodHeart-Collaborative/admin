@@ -30,5 +30,5 @@
 
 <div class="croppabelWrap" *ngIf="imageChangedEvent" [class.active]="imageChangedEvent">
   <app-image-crop (imageData)="imageSelected($event)" [imageChangedEvent]="imageChangedEvent" [roundCropper]='false'
-    [aspectRatio]="2 / 1" (closeCropper)="closeCropper()"></app-image-crop>
+    [aspectRatio]="2 / 2" (closeCropper)="closeCropper()"></app-image-crop>
 </div>

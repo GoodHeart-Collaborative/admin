@@ -4,15 +4,17 @@
         <form [formGroup]="eventForm">
             <div class="row-1">
                 <div class="left-portion">
-                    <app-image-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL"></app-image-upload>
-                   
+                    <app-image-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL">
+                    </app-image-upload>
+
                 </div>
                 <div class="right-portion">
                     <div class="row">
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Event Name</mat-label>
-                                <input matInput placeholder="Name"  formControlName="title" #title appWhiteSpace [maxlength]="eventNameMaxlength">
+                                <input matInput placeholder="Name" formControlName="title" #title appWhiteSpace
+                                    [maxlength]="eventNameMaxlength">
                                 <mat-hint>{{title.value.trim().length}}/{{eventNameMaxlength}}</mat-hint>
                                 <mat-error>{{form('title') |validate:'Event Name' }}</mat-error>
                             </mat-form-field>
@@ -21,7 +23,8 @@
                             <mat-form-field appearance="outline">
                                 <mat-label>Category</mat-label>
                                 <mat-select formControlName="eventCategoryId">
-                                    <mat-option [value]="item?._id" *ngFor="let item of eventCategory">{{item?.title | titlecase}}</mat-option>
+                                    <mat-option [value]="item?._id" *ngFor="let item of eventCategory">
+                                        {{item?.title | titlecase}}</mat-option>
                                 </mat-select>
                                 <mat-error>{{form('eventCategory') |validate:'Event Category' }}</mat-error>
                             </mat-form-field>
@@ -31,22 +34,23 @@
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Choose a start date</mat-label>
-                               <input [max]="endDate.value || maxDate" [min]="eventDetails?.id ? eventDetails?.startDate :today "  
-                               [owlDateTimeTrigger]="dt1" formControlName="startDate" matInput 
-                               [owlDateTime]="dt1" placeholder="Start" readonly> 
-                            <owl-date-time [hour12Timer]="true" #dt1></owl-date-time>
-                            <mat-error>{{form('startDate') |validate:'Start Date' }}</mat-error>
+                                <input [max]="endDate.value || maxDate"
+                                    [min]="eventDetails?.id ? eventDetails?.startDate :today "
+                                    [owlDateTimeTrigger]="dt1" formControlName="startDate" matInput [owlDateTime]="dt1"
+                                    placeholder="Start" readonly>
+                                <owl-date-time [hour12Timer]="true" #dt1></owl-date-time>
+                                <mat-error>{{form('startDate') |validate:'Start Date' }}</mat-error>
 
                             </mat-form-field>
                         </div>
                         <div class="col-md-6">
-                             <mat-form-field appearance="outline">
+                            <mat-form-field appearance="outline">
                                 <mat-label>Choose an end date</mat-label>
-                              <input  [min]="minForStartDate"   
-                               [owlDateTimeTrigger]="dt2" formControlName="endDate" matInput [owlDateTime]="dt2" 
-                               placeholder="End" readonly  (dateTimeChange)="onDateSelected($event)">
-                            <owl-date-time [hour12Timer]="true" #dt2></owl-date-time>
-                            <mat-error>{{form('endDate') |validate:'End Date' }}</mat-error>
+                                <input [min]="minForStartDate" [owlDateTimeTrigger]="dt2" formControlName="endDate"
+                                    matInput [owlDateTime]="dt2" placeholder="End" readonly
+                                    (dateTimeChange)="onDateSelected($event)">
+                                <owl-date-time [hour12Timer]="true" #dt2></owl-date-time>
+                                <mat-error>{{form('endDate') |validate:'End Date' }}</mat-error>
 
                             </mat-form-field>
                         </div>
@@ -64,21 +68,22 @@
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Event Location</mat-label>
-                                <input matInput placeholder="Location" formControlName="address"  appGooglePlaces
-                                (onSelect)="selectLocation($event)" autocomplete="off">                               
+                                <input matInput placeholder="Location" formControlName="address" appGooglePlaces
+                                    (onSelect)="selectLocation($event)" autocomplete="off">
                                 <mat-error>{{form('address') |validate:'Event Location' }}</mat-error>
 
                             </mat-form-field>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Price</mat-label>
-                                <input matInput placeholder="Price " appWhiteSpace formControlName="price" [maxlength]="priceMaxLength" numeric>
+                                <input matInput placeholder="Price " appWhiteSpace formControlName="price"
+                                    [maxlength]="priceMaxLength" numeric>
                                 <mat-error>{{form('price') |validate:' Price' }}</mat-error>
                             </mat-form-field>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Website Link</mat-label>
@@ -92,7 +97,8 @@
                             <mat-form-field appearance="outline">
                                 <mat-label>Description</mat-label>
                                 <textarea rows="5" matInput placeholder="Ex. Write something here about this event..."
-                                    appWhiteSpace formControlName="description" #description [maxlength]="descriptionMaxLength"></textarea>
+                                    appWhiteSpace formControlName="description" #description
+                                    [maxlength]="descriptionMaxLength"></textarea>
                                 <mat-hint>{{description.value.trim().length}}/{{ descriptionMaxLength}}</mat-hint>
                                 <mat-error>{{form('description') |validate:'Description' }}</mat-error>
                             </mat-form-field>
@@ -103,7 +109,12 @@
                             <mat-checkbox color="primary" formControlName="isFeatured">Mark as Featured</mat-checkbox>
                         </div>
                         <div class="col-md-6 checkbox-wrapper">
+<<<<<<< HEAD
                             <mat-checkbox color="primary" formControlName="allowSharing">Mark as Allow Sharing</mat-checkbox>
+=======
+                            <mat-checkbox color="primary" formControlName="allowsharing">Mark as Allow Sharing
+                            </mat-checkbox>
+>>>>>>> 423d78610858acbfc22b05f604da865519475453
                         </div>
                     </div>
                 </div>
