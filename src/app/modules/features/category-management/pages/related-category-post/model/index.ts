@@ -12,25 +12,29 @@ const defaultData: Table.Data<Category> = {
 export class RelatedCategoryTableDataSource implements Table.Source<Category> {
   label = 'Related Category Management';
   columns: Table.Column<Category>[] = [
+    // {
+    //   title: 'Name ',
+    //   id: 'name',
+    //   sorting: false,
+    //   templateBy: 'name'
+    // },
     {
-      title: 'Name ',
-      id: 'name',
+      title: 'Image',
+      id: 'profilePicUrl',
       sorting: false,
-      templateBy: 'name'
-      // resolve: (row: any) => `${row['firstName']} ${row['lastName']}` || 'NA',
+      templateBy: 'profilePicUrl'
     },
     {
         title: 'Title',
         id: 'title',
         sorting: true,
-        // templateBy: 'title'
-        resolve: (row: any) => row['topic'] || '-',
+        templateBy: 'title'
+        // resolve: (row: any) => row['topic'] || '-',
     },
     {
         title: 'Description',
         id: 'description',
         sorting: false,
-        // templateBy: 'description'
         resolve: (row: any) => row['description'] || '-',
     },
     {
@@ -38,20 +42,35 @@ export class RelatedCategoryTableDataSource implements Table.Source<Category> {
       id: 'likeCount',
       sorting: false,
       templateBy: 'likeCount'
-      // resolve: (row: any) => row['likeCount'] || '0',
       },
-     {
-    title: 'Total Comments',
-    id: 'commentCount',
-    sorting: false,
-    templateBy: 'commentCount'
-    // resolve: (row: any) => row['totalComments'] || '0',
-     },
+
     {
+       title: 'Total Comments',
+       id: 'commentCount',
+       sorting: false,
+       templateBy: 'commentCount'
+     },
+
+     {
       title: 'Added On',
       id: 'createdAt',
       sorting: true,
       templateBy: 'createdAt',
+    },
+
+    {
+      title: 'Privacy',
+      id: 'privacy',
+      sorting: false,
+      // resolve: (row: any) => row['privacy'] || '-',
+
+      templateBy: 'privacy',
+    },
+    {
+      title: 'Status',
+      id: 'status',
+      sorting: false,
+      templateBy: 'status',
     },
 
     {

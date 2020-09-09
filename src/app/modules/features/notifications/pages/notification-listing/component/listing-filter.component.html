@@ -1,7 +1,7 @@
 <app-filter (apply)="onApplyHandler()" (reset)="resetFilter()" [disableValue]="filterForm.touched">
     <app-date-filter [dateObject]="dateFilterObject" ></app-date-filter>
     <div>
-        <form [formGroup]="filterForm">
+        <!-- <form [formGroup]="filterForm">
         
             <mat-form-field appearance="outline">
                 <mat-label>Status</mat-label>
@@ -9,6 +9,6 @@
                     <mat-option [value]="item?.value" *ngFor="let item of statusList">{{item?.view}}</mat-option>
                 </mat-select>
             </mat-form-field>
-        </form>
+        </form> -->
     </div>
  </app-filter>

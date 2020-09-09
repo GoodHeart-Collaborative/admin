@@ -37,13 +37,13 @@ export const REPORT_TYPE = {
     USER: 10,
     FORUM: 9,
     UNICORN: 1,
-	INSPIRATION: 2,
-	DAILY_ADVICE: 3,
-	GENERAL_GRATITUDE: 4,
-	MEMBER_OF_DAY: 5,
-	CONGRATS: 6,
-	SHOUTOUT: 8,
-	FORUM_TOPIC: 9,
+    INSPIRATION: 2,
+    DAILY_ADVICE: 3,
+    GENERAL_GRATITUDE: 4,
+    MEMBER_OF_DAY: 5,
+    CONGRATS: 6,
+    SHOUTOUT: 8,
+    FORUM_TOPIC: 9,
 };
 
 export const MEDIA_TYPE = {
@@ -53,88 +53,94 @@ export const MEDIA_TYPE = {
 };
 
 export const INDUSTRY = {
-   [1]: 'Nonprofit',
-   [2]: 'Emergency Services',
-   [3]: 'Social And Community Services',
-   [4]: 'Law Enforcement',
-   [5]: 'Healthcare And Community Medical Services'
+    [1]: 'Nonprofit',
+    [2]: 'Emergency Services',
+    [3]: 'Social And Community Services',
+    [4]: 'Law Enforcement',
+    [5]: 'Healthcare And Community Medical Services'
 };
 
 export const INDUSTRY_TYPE = [
-    {value: 1 , viewValue: 'Nonprofit'},
-    {value: 2, viewValue: 'Emergency Services'},
-    {value: 3 , viewValue: 'Social And Community Services'},
-    {value: 4, viewValue: 'Law Enforcement'},
-    {value: 5 , viewValue: 'Healthcare And Community Medical Services'},
+    { value: 1, viewValue: 'Nonprofit' },
+    { value: 2, viewValue: 'Emergency Services' },
+    { value: 3, viewValue: 'Social And Community Services' },
+    { value: 4, viewValue: 'Law Enforcement' },
+    { value: 5, viewValue: 'Healthcare And Community Medical Services' },
 ];
 
 
 export const EXPERIENCE = [
-    {value: 'Junior' , viewValue: 'Junior'},
-    {value: 'Mid' , viewValue: 'Mid'},
-    {value: 'Senior' , viewValue: 'Senior'},
+    { value: 'Junior', viewValue: 'Junior' },
+    { value: 'Mid', viewValue: 'Mid' },
+    { value: 'Senior', viewValue: 'Senior' },
 
 ];
 export const PROFESSION = [
-    {value: 'Founder' , viewValue: 'Founder'},
-    {value: 'CEO' , viewValue: 'CEO'},
-    {value: 'Executive Director' , viewValue: 'Executive Director'},
-    {value: 'Managing Director' , viewValue: 'Managing Director'},
+    { value: 'Founder', viewValue: 'Founder' },
+    { value: 'CEO', viewValue: 'CEO' },
+    { value: 'Executive Director', viewValue: 'Executive Director' },
+    { value: 'Managing Director', viewValue: 'Managing Director' },
 
 ];
 
-export const EXPERT_CONTENT_TYPE =  [
-    { value : 2 , viewValue: 'Video', disabled: false},
-    { value : 3, viewValue: 'Article', disabled: false},
-    { value : 1 , viewValue: 'Image', disabled: false},
+export const EXPERT_CONTENT_TYPE = [
+    { value: 2, viewValue: 'Video', disabled: false },
+    { value: 3, viewValue: 'Article', disabled: false },
+    { value: 1, viewValue: 'Image', disabled: false },
 ];
 
-export const PRAVICY =  [
-    { value : 'private', viewValue: 'Private'},
-    { value : 'protected', viewValue: 'Protected'},
-    { value : 'public', viewValue: 'Public'},
+export const PRAVICY = [
+    { value: 'private', viewValue: 'Private' },
+    { value: 'protected', viewValue: 'Protected' },
+    { value: 'public', viewValue: 'Public' },
 
 ];
 
 
 export const EVENT_CATEGORY = {
-	EVENTS: {
-		TYPE: 'events',
-		VALUE: 1,
-		DISPLAY_NAME: 'EVENTS'
-	},
-	CLASSES: {
-		TYPE: 'classes',
-		VALUE: 2,
-		DISPLAY_NAME: 'CLASSES'
-	},
-	TRAINING: {
-		TYPE: 'training',
-		VALUE: 3,
-		DISPLAY_NAME: 'TRAINING'
-	},
-	MEETUP: {
-		TYPE: 'meetup',
-		VALUE: 4,
-		DISPLAY_NAME: 'MEETUP'
-	}
+    EVENTS: {
+        TYPE: 'events',
+        VALUE: 1,
+        DISPLAY_NAME: 'EVENTS'
+    },
+    CLASSES: {
+        TYPE: 'classes',
+        VALUE: 2,
+        DISPLAY_NAME: 'CLASSES'
+    },
+    TRAINING: {
+        TYPE: 'training',
+        VALUE: 3,
+        DISPLAY_NAME: 'TRAINING'
+    },
+    MEETUP: {
+        TYPE: 'meetup',
+        VALUE: 4,
+        DISPLAY_NAME: 'MEETUP'
+    }
 }
 
 export const EVENT_INTEREST = {
-	GOING: 1,
-	INTEREST: 2
+    GOING: 1,
+    INTEREST: 2
 };
 export const FEED_TYPE = {
-	GRATITUDE: 4,
-	SHOUTOUTS: 8
+    GRATITUDE: 4,
+    SHOUTOUTS: 8
 };
-export const   privacyList = [
-    {view: 'Private', value: 'private'},
-    {view: 'Protected', value: 'protected'},
-    {view: 'Public', value: 'public'},
-  ];
+export const privacyList = [
+    { view: 'Private', value: 'private' },
+    { view: 'Protected', value: 'protected' },
+    { view: 'Public', value: 'public' },
+];
 
-export const   statusList = [{
-    view: 'Active', value: 'active'},
-    {view: 'Blocked', value: 'blocked'},
-  ]
+export const statusList = [
+{ view: 'Active', value: 'active'},
+{ view: 'Blocked', value: 'blocked' },
+];
+
+export const sentTo = [
+    { value: '1', viewValue: 'Android' },
+    { value: '2', viewValue: 'IOS' },
+    { value: '4', viewValue: 'All Users' },
+];

@@ -13,6 +13,12 @@ export class NotificationTableDataSource implements Table.Source<Category> {
   label = 'Category Management';
   columns: Table.Column<Category>[] = [
     {
+      title: 'Image',
+      id: 'profilePicUrl',
+      sorting: false,
+      templateBy: 'profilePicUrl'
+    },
+    {
         title: 'Title',
         id: 'title',
         sorting: true,
@@ -27,11 +33,11 @@ export class NotificationTableDataSource implements Table.Source<Category> {
     //     // resolve: (row: any) => row['title'] || '-',
     // },
     {
-        title: 'Total Post',
-        id: 'totalPost',
-        sorting: false,
-        // templateBy: 'totalPost'
-        resolve: (row: any) => row['totalPost'] || '0',
+        title: 'Sent Count',
+        id: 'sentCount',
+        sorting: true,
+        // templateBy: 'sentCount'
+        resolve: (row: any) => row['sentCount'] || '0',
     },
   //   {
   //     title: 'Total Comments',
@@ -41,15 +47,16 @@ export class NotificationTableDataSource implements Table.Source<Category> {
   // },
     {
       title: 'Added On',
-      id: 'createdAt',
+      id: 'created',
       sorting: true,
-      templateBy: 'createdAt',
+      templateBy: 'created',
     },
     {
-      title: 'Status',
-      id: 'status',
+      title: 'Message',
+      id: 'message',
       sorting: false,
-      templateBy: 'status'
+      // templateBy: 'message'
+      resolve: (row: any ) => row['message'] || '-'
     },
 
     {

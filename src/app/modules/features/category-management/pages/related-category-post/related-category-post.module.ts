@@ -10,6 +10,8 @@ import { LikeActionModule } from 'src/app/modules/shared/like-action/like-action
 import { CommentsModule } from 'src/app/modules/shared/comments/comments.module';
 import { ListingFilterComponent } from './component/listing-filter.component';
 import { DateFilterModule } from 'src/app/modules/layout/layout-shared/date-filter/date-filter.module';
+import { ViewFullImageModule } from 'src/app/modules/shared/view-full-image/view-full-image.module';
+import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 
 
 const routes: Routes = [
@@ -39,7 +41,9 @@ const routes: Routes = [
     MatIconModule,
     LikeActionModule,
     CommentsModule,
-    DateFilterModule
+    DateFilterModule,
+    ViewFullImageModule,
+    CustomImageModule
   ],
   providers: [CategoryManagementService],
   entryComponents: [ListingFilterComponent]

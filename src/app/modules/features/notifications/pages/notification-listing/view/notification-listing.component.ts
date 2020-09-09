@@ -7,6 +7,7 @@ import { UtilityService } from 'src/app/modules/shared/services/utility.service'
 import { MatDialog } from '@angular/material';
 import { NotificationsService } from '../../../service/notifications.service';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
+import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 @Component({
   selector: 'app-notification-listing',
@@ -28,6 +29,7 @@ export class NotificationListingComponent implements OnInit {
     private $router: Router,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
+    private $matDailog: MatDialog
   ) {
   }
 
@@ -51,7 +53,7 @@ export class NotificationListingComponent implements OnInit {
           if (key === 'toDate' && value) {
             value.setHours(23, 59, 59, 999);
           }
-          params[key] = `${new Date(value).toISOString()}`;
+          params[key] = `${new Date(value).getTime()}`;
         } else {
           params[key] = filterData[key];
         }
@@ -62,7 +64,7 @@ export class NotificationListingComponent implements OnInit {
       params['sortBy'] = sortData.sortBy;
     }
     if (searchText) {
-      params['searchTerm'] = searchText;
+      params['searchKey'] = searchText;
     }
     this.$notification.queryData(params).then(res => {
       this.notificationData = res.data;
@@ -84,12 +86,12 @@ export class NotificationListingComponent implements OnInit {
    * @param action
    */
   onActionHandler(id: string, action: ActionType) {
-    const index = this.notificationData.data.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('notification', action == 'active'  ?  'active' : ( action == 'deleted' ? 'delete' : 'block'))
+    const index = this.notificationData.notificationList.findIndex(user => user._id === id);
+    this.$confirmBox.listAction('notification' , action )
     .subscribe((confirm) => {
       if (confirm) {
-        this.$notification.updateStatus(id, action).then((res) => {
-         //  this.$utility.success(res.message);
+        this.$notification.updateStatus(id).then((res) => {
+          this.$utility.success(res.message);
           this.handleActions(action, index);
         });
       }
@@ -104,17 +106,17 @@ export class NotificationListingComponent implements OnInit {
   handleActions(action: ActionType, index) {
     switch (action) {
       case 'deleted':
-        this.notificationData.data.splice(index, 1);
-        this.notificationData.total = this.notificationData.total - 1;
+        this.notificationData.notificationList.splice(index, 1);
+        this.notificationData.totalRecord = this.notificationData.totalRecord - 1;
         break;
-      case 'active':
-        this.handleStatus(action, index);
+      // case 'active':
+      //   this.handleStatus(action, index);
 
-        break;
-      case 'blocked':
-        this.handleStatus(action, index);
+      //   break;
+      // case 'blocked':
+      //   this.handleStatus(action, index);
 
-        break;
+      //   break;
       default:
         break;
     }
@@ -122,7 +124,7 @@ export class NotificationListingComponent implements OnInit {
   }
 
   handleStatus(action: 'blocked' | 'active', index: number) {
-    this.notificationData.data = this.notificationData.data.map((user, i) => {
+    this.notificationData.notificationList = this.notificationData.notificationList.map((user, i) => {
       if (i === index) {
         user.status = action;
       }
@@ -136,11 +138,12 @@ export class NotificationListingComponent implements OnInit {
    */
   setUpTableResource(userRecords) {
     const { pageIndex, pageSize } = this.eventData;
+    console.log(userRecords);
     this.tableSource = new NotificationTableDataSource({
       pageIndex,
       pageSize,
-      rows: userRecords.data,
-      total: userRecords.total
+      rows: userRecords.notificationList,
+      total: userRecords.totalRecord
     });
   }
 
@@ -150,6 +153,20 @@ export class NotificationListingComponent implements OnInit {
 
   onDetails(id) {
     this.$router.navigate([`${NOTIFICATIONS.fullUrl}`, id, 'details']);
+  }
+
+  /**
+   * View Fill Image
+   *
+   */
+  onImageClick(image, type = 1) {
+    if (!image) {
+      return;
+    }
+    this.$matDailog.open(ViewFullImageComponent, {
+      panelClass: 'view-full-image-modal',
+      data: {image, type}
+    }).afterClosed().subscribe();
   }
 
 }

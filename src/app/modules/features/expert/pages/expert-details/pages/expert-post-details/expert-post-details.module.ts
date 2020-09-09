@@ -7,6 +7,7 @@ import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.modul
 import { CommentsShowModule } from 'src/app/modules/shared/comments-show/comments-show.module';
 import { LikeActionModule } from 'src/app/modules/shared/like-action/like-action.module';
 import { ReportProblemModule } from 'src/app/modules/shared/report-problem/report-problem.module';
+import { DateTimePipeModule } from 'src/app/pipes/date-time-pipe/date-time-pipe.module';
 
 const routes: Routes = [
   {
@@ -29,7 +30,8 @@ const routes: Routes = [
     CustomImageModule,
     CommentsShowModule,
     LikeActionModule,
-    ReportProblemModule
+    ReportProblemModule,
+    DateTimePipeModule
   ]
 })
 export class ExpertPostDetailsModule { }

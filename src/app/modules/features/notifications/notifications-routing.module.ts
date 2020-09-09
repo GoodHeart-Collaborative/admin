@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NotificationComponent } from './view/notification.component';
 import { NOTIFICATIONS_LIST, ADD_NOTIFICATIONS, NOTIFICATIONS_DETAIL } from 'src/app/constant/routes';
+import { NotificationsServiceResolve } from './service/notifications.service';
 
 
 const routes: Routes = [
@@ -28,9 +29,9 @@ const routes: Routes = [
       },
       {
         path: `${NOTIFICATIONS_DETAIL.path}/details`,
-        // resolve : {
-        //   dailyData : DailyUnicornHumourServiceResolve
-        // },
+        resolve : {
+          notificationData : NotificationsServiceResolve
+        },
         loadChildren: () => import('./pages/notification-details/notification-details.module')
           .then((m) => m.NotificationDetailsModule
           ),

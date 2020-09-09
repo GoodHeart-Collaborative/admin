@@ -33,8 +33,8 @@ export class AddEventComponent implements OnInit {
   maxDate: Date;
   constructor(
     private $fb: FormBuilder,
-    private $fileUploadService: FileUploadService,
     private $service: EventService,
+    private $fileUploadService: FileUploadService,
     private $utility: UtilityService,
     private $route: Router,
     activateRoute: ActivatedRoute,
@@ -150,13 +150,8 @@ export class AddEventComponent implements OnInit {
     if (body.startDate) {
       body.startDate = new Date(body.startDate).getTime();
     }
-    // if (body.isFeatured) {
-      body.isFeatured =   body.isFeatured ? 1 : 0;
-    // }
-    if (body.allowSharing) {
-      body.allowSharing =   body.allowSharing ? 1 : 0;
-    }
-
+    body.isFeatured =   body.isFeatured ? 1 : 0;
+    body.allowSharing =   body.allowSharing ? 1 : 0;
     if (this.eventDetails && this.eventDetails._id) {
       this.$service.edit(this.eventDetails._id, body).then(
         data => {

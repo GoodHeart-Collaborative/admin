@@ -11,6 +11,7 @@ import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/lik
 import { CommentsComponent } from 'src/app/modules/shared/comments/view/comments/comments.component';
 import { MatDialog } from '@angular/material';
 import { CommonService } from 'src/app/modules/shared/services/common.service';
+import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 
 @Component({
@@ -187,7 +188,20 @@ export class RelatedCategoryPostComponent implements OnInit {
 
   ondetailsHandler(id: string) {
     this.$router.navigate([`${EXPERT.fullUrl}`, id, 'details']);
+  }
 
+  /**
+   * View Fill Image
+   *
+   */
+  onImageClick(image, type = 1) {
+    if (!image) {
+      return;
+    }
+    this.$matDailog.open(ViewFullImageComponent, {
+      panelClass: 'view-full-image-modal',
+      data: {image, type}
+    }).afterClosed().subscribe();
   }
 
 }

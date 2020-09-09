@@ -14,11 +14,11 @@ export class ListingFilterComponent implements OnInit {
     maxFromDate: new Date(),
   };
   filterForm: FormGroup;
-  statusList = [{
-    view: 'Active', value: 'active'
-  },
-  { view: 'Blocked', value: 'blocked' },
-  ];
+  // statusList = [{
+  //   view: 'Active', value: 'active'
+  // },
+  // { view: 'Blocked', value: 'blocked' },
+  // ];
   isProcessing = true;
   constructor(
     private $fb: FormBuilder,
@@ -40,7 +40,7 @@ export class ListingFilterComponent implements OnInit {
       {
         fromDate: [],
         toDate: [],
-        status: []
+        // status: []
       },
     );
   }

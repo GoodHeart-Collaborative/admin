@@ -95,7 +95,8 @@ export const ACTION_GRATITUDE = (Id , status) => `admin/gratitude/${Id}/status/$
 // NOTIFICATION API's //
 export const NOTIFICATION = 'admin-notification';
 export const NOTIFICATION_DETAILS = `admin-notification/details`;
-export const ACTION_NOTIFICATION = (Id , status) => `admin/forums/${Id}/status/${status}`;
+// export const ADD_NOTIFICATION = `admin-notification/details`;
+export const ACTION_NOTIFICATION = (notificationId) => `admin-notification/${notificationId}`;
 
 // FEED API's //
 export const FEED = 'admin/feed';

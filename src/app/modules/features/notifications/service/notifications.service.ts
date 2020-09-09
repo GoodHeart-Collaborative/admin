@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/modules/shared/services/http.service';
-import { EXPERT, NOTIFICATION  } from 'src/app/constant/urls';
+import { NOTIFICATION, ACTION_NOTIFICATION, NOTIFICATION_DETAILS } from 'src/app/constant/urls';
+import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,39 +13,36 @@ export class NotificationsService {
   ) { }
 
   async  queryData(params) {
+    return this.$http.get(NOTIFICATION, params).toPromise();
+  }
+
+  async updateStatus(id) {
+    return await this.$http.delete(ACTION_NOTIFICATION(id)).toPromise();
+  }
+  async  add(params) {
     return  this.$http.post(NOTIFICATION, params).toPromise();
   }
 
-  async updateStatus(id, status) {
-    // return await this.$http.patch(ACTION_HOME(id, status), {}).toPromise();
-  }
-  async  add(params) {
-    // return  this.$http.post(HOME, params).toPromise();
-  }
-  async  edit(id, params) {
-    // return  this.$http.patch(HOME_DETAILS(id), params).toPromise();
-  }
-
-
-  async  updateDetails(id) {
-    // const data =  this.$http.get(HOME_DETAILS(id)).toPromise();
-    // return data;
+async  updateDetails(id) {
+    const params = {
+      notificationId: id
+    };
+    const data = this.$http.get(NOTIFICATION_DETAILS, params).toPromise();
+    return data;
   }
 
 
 }
 
-// @Injectable()
-// export class DailyInspirationServiceResolve implements Resolve<any>  {
-//   constructor(private $daily: DailyInspirationService, private $router: Router) { }
-//   resolve(route: ActivatedRouteSnapshot) {
-//     const userId = route.params['id'];
-//     return this.$daily.updateDetails(userId).catch(err => {
-//       if (err) {
-//         // this.$router.navigate([DAILY_INSPIRATION]);
-//         return null;
-//       }
-//     }
-//     );
-//   }
-// }
+@Injectable()
+export class NotificationsServiceResolve implements Resolve<any>  {
+  constructor(private $notification: NotificationsService) { }
+  resolve(route: ActivatedRouteSnapshot) {
+    return this.$notification.updateDetails(route.params['id']).catch(err => {
+      if (err) {
+        return null;
+      }
+    }
+    );
+  }
+}

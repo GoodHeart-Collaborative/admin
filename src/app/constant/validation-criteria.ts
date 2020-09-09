@@ -26,7 +26,9 @@ export const VALIDATION_CRITERIA = {
   professionMinLength: 3,
   professionMaxLength: 50,
   topicMaxLength: 50,
-  eventNameMaxlength : 50
+  eventNameMaxlength : 50,
+  titleNotificationMaxLimit: 50,
+  messageNotificationMaxLimit: 100
 };
 
 export const getTrimmed = (body) =>{
