@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { ContentService } from 'src/app/modules/shared/services/content.service';
-import { PopupService } from 'src/app/modules/shared/popup';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 
 @Component({
@@ -16,7 +15,7 @@ export class ContentManagementComponent implements OnInit {
     contentTabs = [
         { tabName: 'Privacy Policy' },
         { tabName: 'Terms and Conditions' },
-        { tabName: 'FAQs' },
+        { tabName: 'About Us' },
         { tabName: 'Contact Us' },
     ];
     selectedTab: any;
