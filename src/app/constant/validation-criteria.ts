@@ -28,10 +28,10 @@ export const VALIDATION_CRITERIA = {
   topicMaxLength: 50,
   eventNameMaxlength : 50,
   titleNotificationMaxLimit: 50,
-  messageNotificationMaxLimit: 100
+  messageNotificationMaxLimit: 125
 };
 
-export const getTrimmed = (body) =>{
+export const getTrimmed = (body) => {
   for (const key in body) {
     if (body.hasOwnProperty(key)) {
       if (typeof body[key] == 'string') {

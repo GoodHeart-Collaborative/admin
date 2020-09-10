@@ -135,9 +135,11 @@ export const privacyList = [
 ];
 
 export const statusList = [
-{ view: 'Active', value: 'active'},
-{ view: 'Blocked', value: 'blocked' },
+   { view: 'Active', value: 'active'},
+   { view: 'Blocked', value: 'blocked' },
 ];
+
+
 
 export const sentTo = [
     { value: '1', viewValue: 'Android' },
