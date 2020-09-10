@@ -8,6 +8,7 @@ export type ActionType = 'deleted' | 'blocked' | 'active';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
 import { MatDialog } from '@angular/material';
+import { reportType } from 'src/app/constant/drawer';
 @Component({
   selector: 'app-report-listing',
   templateUrl: './report-listing.component.html',
@@ -24,12 +25,21 @@ export class ReportListingComponent implements OnInit, OnChanges {
     sortData: null
   };
   isProcessing = false;
+  reportType = {
+    [9]: 'FORUM',
+    [10]: 'USER',
+    [7]: 'EXPERT POST',
+    [1]: 'UNICORN',
+    [2]: 'INSPIRATION',
+    [4]: 'GENERAL GRATITUDE',
+    [3]: 'DAILY ADVICE',
+    [8]: 'SHOUTOUT',
+   };
   @Input() userData;
   @Output() changeHandler = new EventEmitter();
 
   constructor(
     private $router: Router,
-    private $userService: ReportsAndAnalyticsService,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
     private $matDailog: MatDialog,
@@ -52,21 +62,21 @@ export class ReportListingComponent implements OnInit, OnChanges {
    * @param id
    * @param action
    */
-  onActionHandler(id: string, action: ActionType, privacy: string) {
-    if (privacy == 'private') {
-      return;
-    }
-    const index = this.userData.data.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('gratitude', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
-      .subscribe((confirm) => {
-        if (confirm) {
-          // this.$userService.updateStatus(id, action).then((res) => {
-          //   this.$utility.success(res.message);
-          //   this.handleActions(action, index);
-          // });
-        }
-      });
-  }
+  // onActionHandler(id: string, action: ActionType, privacy: string) {
+  //   if (privacy == 'private') {
+  //     return;
+  //   }
+  //   const index = this.userData.data.findIndex(user => user._id === id);
+  //   this.$confirmBox.listAction('gratitude', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
+  //     .subscribe((confirm) => {
+  //       if (confirm) {
+  //         // this.$userService.updateStatus(id, action).then((res) => {
+  //         //   this.$utility.success(res.message);
+  //         //   this.handleActions(action, index);
+  //         // });
+  //       }
+  //     });
+  // }
 
   /**
    * Action Update Handler

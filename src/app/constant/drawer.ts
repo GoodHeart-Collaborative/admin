@@ -118,16 +118,18 @@ export const EVENT_CATEGORY = {
         VALUE: 4,
         DISPLAY_NAME: 'MEETUP'
     }
-}
+};
 
 export const EVENT_INTEREST = {
     GOING: 1,
     INTEREST: 2
 };
+
 export const FEED_TYPE = {
     GRATITUDE: 4,
     SHOUTOUTS: 8
 };
+
 export const privacyList = [
     { view: 'Private', value: 'private' },
     { view: 'Protected', value: 'protected' },
@@ -135,8 +137,8 @@ export const privacyList = [
 ];
 
 export const statusList = [
-   { view: 'Active', value: 'active'},
-   { view: 'Blocked', value: 'blocked' },
+    { view: 'Active', value: 'active' },
+    { view: 'Blocked', value: 'blocked' },
 ];
 
 
@@ -145,4 +147,48 @@ export const sentTo = [
     { value: '1', viewValue: 'Android' },
     { value: '2', viewValue: 'IOS' },
     { value: '4', viewValue: 'All Users' },
-];
+]
+export const reportType = {
+    EXPERT_POST:
+    {
+        label: 'EXPERT POST',
+        value: 7
+    },
+    USER: 
+    {
+        label: 'USER',
+        value: 10
+    },
+    FORUM:   
+    {
+        label: 'FORUM',
+        value: 9
+    },
+    UNICORN:    {
+        label: 'UNICORN',
+        value: 1
+    },
+    INSPIRATION:  
+    {
+        label: 'INSPIRATION',
+        value: 2
+    },
+    DAILY_ADVICE: 
+    {
+        label: 'DAILY ADVICE',
+        value: 3
+    },
+    GENERAL_GRATITUDE: {
+        label: 'GENERAL GRATITUDE',
+        value: 4
+    },
+    MEMBER_OF_DAY: {
+        label: 'MEMBER OF DAY',
+        value: 5
+    },
+    SHOUTOUT: {
+        label: 'SHOUTOUT',
+        value: 8
+    },
+    // FORUM_TOPIC: 9,
+};

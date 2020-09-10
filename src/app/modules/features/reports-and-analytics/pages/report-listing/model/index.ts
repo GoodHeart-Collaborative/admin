@@ -38,6 +38,12 @@ export class ReportTableDataSource implements Table.Source<User> {
       templateBy: 'reason',
     },
     {
+      title: 'Report Type',
+      id: 'type',
+      sorting: false,
+      templateBy: 'type',
+    },
+    {
       title: 'Added On',
       id: 'createdAt',
       sorting: true,

@@ -78,6 +78,7 @@ export class RelatedCategoryPostComponent implements OnInit {
     }
     this.$category.queryUpadteData(params).then(res => {
       this.userData = res.data;
+      this.$breadcrum.replace(this.categoryId , this.userData.categoryData.name);
       // if (this.userData && this.userData.data[0]) {
       //   this.$breadcrum.replace(this.categoryId, this.userData.data[0].topic || 'unkown');
       // }
@@ -116,11 +117,9 @@ export class RelatedCategoryPostComponent implements OnInit {
         break;
       case 'active':
         this.handleStatus(action, index);
-
         break;
       case 'blocked':
         this.handleStatus(action, index);
-
         break;
       default:
         break;
