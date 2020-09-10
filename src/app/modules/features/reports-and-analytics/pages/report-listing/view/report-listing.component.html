@@ -27,7 +27,7 @@
     </ng-template>
 
     <ng-template appFor="reason" let-report="row">
-        {{ report?.reason || report?.message }}
+        {{ (report?.reason || report?.message ) | titlecase }}
     </ng-template>
 
 

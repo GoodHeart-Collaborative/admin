@@ -9,9 +9,9 @@
          {{ notification?.created |customDate}}
      </ng-template>
  
-     <!-- <ng-template appFor="status" let-notification="row">
-         {{ notification?.status | titlecase}}
-     </ng-template> -->
+     <ng-template appFor="message" let-notification="row">
+         {{ notification?.message | titlecase}}
+     </ng-template>
  
      <ng-template appFor="fullName" let-notification="row">
          <a href="javascript:void(0)" (click)="onDetails(notification?._id)" title="{{ notification?.title | titlecase}}">

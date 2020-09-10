@@ -24,7 +24,7 @@
      </ng-template>
 
     <ng-template appFor="description" let-expert="row">
-         {{ expert?.description || 'String'}}
+         {{ (expert?.description || 'String') | titlecase}}
     </ng-template>
 
     <ng-template appFor="likeCount" let-row="row">

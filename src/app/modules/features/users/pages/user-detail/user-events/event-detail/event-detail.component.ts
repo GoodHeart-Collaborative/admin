@@ -28,7 +28,7 @@ export class EventDetailComponent implements OnInit {
     ) {
     this.eventDetails = $router.snapshot.data.eventData.data;
     // $breadcrumb.replace(this.eventDetails.id, this.eventDetails.title);
-    $breadcrumb.replace($router.snapshot.params.id, $router.snapshot.params.id, `/admin/users/${$router.snapshot.params.userID}/details`)
+    $breadcrumb.replace($router.snapshot.params.id, $router.snapshot.params.id, `/admin/users/${$router.snapshot.params.userID}/details`);
 
     }
 

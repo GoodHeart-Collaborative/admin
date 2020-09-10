@@ -55,8 +55,8 @@ export class NotificationTableDataSource implements Table.Source<Category> {
       title: 'Message',
       id: 'message',
       sorting: false,
-      // templateBy: 'message'
-      resolve: (row: any ) => row['message'] || '-'
+      templateBy: 'message'
+      // resolve: (row: any ) => row['message'] || '-'
     },
 
     {
