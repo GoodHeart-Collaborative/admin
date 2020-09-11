@@ -18,7 +18,12 @@
         {{ shoutouts?.privacy | titlecase}}
     </ng-template>
 
+    <ng-template appFor="name" let-gratitude="row">
+        <a href="javascript:void(0)"  [class.click-not-allowed]="gratitude?.privacy == 'private'" (click)="onUserDetail(gratitude?.userData?._id)">
+            {{ (gratitude?.userData?.firstName  | titlecase) || 'String'}}  {{ (gratitude?.userData?.lastName  | titlecase) || ''}}
 
+        </a>
+    </ng-template>
     <ng-template appFor="description" let-shoutouts="row">
             {{ (shoutouts?.description  | titlecase) || 'String'}}
     </ng-template>

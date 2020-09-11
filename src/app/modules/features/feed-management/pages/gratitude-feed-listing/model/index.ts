@@ -13,7 +13,7 @@ export class GratitudeFeedTableDataSource implements Table.Source<User> {
   label = 'Users Management';
   columns: Table.Column<User>[] = [
     {
-      title: 'Title',
+      title: 'User Name',
       id: 'name',
       sorting: true,
       templateBy: 'name'
@@ -66,7 +66,7 @@ export class GratitudeFeedTableDataSource implements Table.Source<User> {
   ];
   options: Table.Options = {
     selection: false,
-    search: 'Search by Description',
+    search: 'Search by Name, Description',
     index: true,
     sorting: true,
     filterComponent: ListingFilterComponent,

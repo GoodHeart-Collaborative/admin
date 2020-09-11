@@ -22,7 +22,7 @@ export class ForumDetailsComponent implements OnInit {
     private $matDailog: MatDialog
   ) {
     this.forumsData = $router.snapshot.data.forumData.data;
-    // $breadcrumb.replace(this.forumsData._id, this.forumsData.description);
+    $breadcrumb.replace(this.forumsData._id, this.forumsData.description);
   }
 
   ngOnInit() { }

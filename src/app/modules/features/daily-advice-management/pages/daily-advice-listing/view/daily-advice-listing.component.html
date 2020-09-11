@@ -51,7 +51,7 @@
 
         <ng-template appFor="actions" let-user="row">
             <div class="action-icon-cover">
-                <i class="material-icons icon-edit" (click)="oneditHandler(user?._id)" title="Edit"
+                <i class="material-icons icon-edit" (click)="oneditHandler(user?._id, user?.status)" title="Edit"
                     [class.disabled-icon]="user?.status != 'active'">
                     edit
                 </i>

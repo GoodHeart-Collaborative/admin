@@ -14,6 +14,19 @@ export class ShoutoutsTableDataSource implements Table.Source<User> {
   label = 'Users Management';
   columns: Table.Column<User>[] = [
     {
+      title: 'Name',
+      id: 'name',
+      sorting: true,
+      templateBy: 'name'
+    },
+
+    {
+      title: 'Email',
+      id: 'email',
+      sorting: true,
+      resolve: (row: any) => row.userData['email'] || ''
+    },
+    {
       title: 'Title',
       id: 'title',
       sorting: false,
@@ -64,7 +77,7 @@ export class ShoutoutsTableDataSource implements Table.Source<User> {
   ];
   options: Table.Options = {
     selection: false,
-    search: 'Search by Description',
+    search: 'Search by Name, Description',
     index: true,
     sorting: true,
     filterComponent: ListingFilterComponent,

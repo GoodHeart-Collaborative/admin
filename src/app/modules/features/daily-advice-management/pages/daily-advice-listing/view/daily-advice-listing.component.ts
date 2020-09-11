@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DailyAdviceTableDataSource } from '../../../model';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 export type ActionType = 'deleted' | 'blocked' | 'active';
-import { DAILY_ADVICE , ADD_DAILY_ADVICE } from 'src/app/constant/routes';
+import { DAILY_ADVICE, ADD_DAILY_ADVICE } from 'src/app/constant/routes';
 import { DailyAdviceManagementService } from '../../../service/daily-advice-management.service';
 import { Router } from '@angular/router';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
@@ -45,7 +45,7 @@ export class DailyAdviceListingComponent implements OnInit {
   }
 
   updateUsers() {
-    const { pageIndex, pageSize, searchText, filterData , sortData } = this.eventData;
+    const { pageIndex, pageSize, searchText, filterData, sortData } = this.eventData;
     console.log(this.eventData);
     let params = {
       page: `${pageIndex + 1}`,
@@ -87,15 +87,15 @@ export class DailyAdviceListingComponent implements OnInit {
 
   onActionHandler(id: string, action: ActionType) {
     const index = this.userData.data.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('post', action == 'active'  ?  'active' : ( action == 'deleted' ? 'delete' : 'block'))
-    .subscribe((confirm) => {
-      if (confirm) {
-        this.$category.updateStatus(id, action).then((res) => {
-          this.$utility.success(res.message);
-          this.handleActions(action, index);
-        });
-      }
-    });
+    this.$confirmBox.listAction('post', action == 'active' ? 'active' : (action == 'deleted' ? 'delete' : 'block'))
+      .subscribe((confirm) => {
+        if (confirm) {
+          this.$category.updateStatus(id, action).then((res) => {
+            this.$utility.success(res.message);
+            this.handleActions(action, index);
+          });
+        }
+      });
   }
 
   handleActions(action: ActionType, index) {
@@ -137,7 +137,10 @@ export class DailyAdviceListingComponent implements OnInit {
     });
   }
 
- oneditHandler(id) {
+  oneditHandler(id: string, status: string) {
+    if (status == 'blocked') {
+      return;
+    }
     this.$router.navigate([`${DAILY_ADVICE.fullUrl}`, 'edit', id]);
   }
 
@@ -145,10 +148,10 @@ export class DailyAdviceListingComponent implements OnInit {
     this.$router.navigate([`${DAILY_ADVICE.fullUrl}`, id, 'details']);
   }
 
- onAdd() {
+  onAdd() {
     // this.$router.navigate([`${ADD_DAILY_ADVICE.fullUrl}`]);
     this.$router.navigate([`${DAILY_ADVICE.fullUrl}`, 'add']);
- }
+  }
 
   /**
    * ON LIKE Handler
@@ -164,12 +167,12 @@ export class DailyAdviceListingComponent implements OnInit {
     });
   }
 
-/**
- * user Like Handler
- * @param id
- */
+  /**
+   * user Like Handler
+   * @param id
+   */
   onlikeHandler(like: any, likesCount: number) {
-  
+
     this.$matDailog.open(LikeActionComponent, {
       width: '500px',
       data: like
@@ -191,13 +194,13 @@ export class DailyAdviceListingComponent implements OnInit {
    * View Fill Image
    *
    */
-  onImageClick(image: string , type: number) {
+  onImageClick(image: string, type: number) {
     if (!image) {
       return;
     }
     this.$matDailog.open(ViewFullImageComponent, {
       panelClass: 'view-full-image-modal',
-      data: {image, type}
+      data: { image, type }
     }).afterClosed().subscribe();
   }
 

@@ -1,17 +1,18 @@
-import { Component, OnInit, Input, Output ,EventEmitter} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { ShoutoutsTableDataSource } from '../model';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { FeedService } from '../../../service/feed.service';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shoutouts-listing',
   templateUrl: './shoutouts-listing.component.html',
   styleUrls: ['./shoutouts-listing.component.scss']
 })
-export class ShoutoutsListingComponent implements OnInit {
+export class ShoutoutsListingComponent implements OnInit , OnChanges{
 
   tableSource = new ShoutoutsTableDataSource();
   eventData: Table.OptionData = {
@@ -29,6 +30,7 @@ export class ShoutoutsListingComponent implements OnInit {
     private $feed: FeedService,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
+    private $router: Router
   ) {
   }
 
@@ -36,8 +38,10 @@ export class ShoutoutsListingComponent implements OnInit {
   }
 
   ngOnChanges() {
-    console.log(this.shoutOutsDetails);
-    this.setUpTableResource(this.shoutOutsDetails);
+    if (this.shoutOutsDetails) {
+      this.setUpTableResource(this.shoutOutsDetails);
+
+    }
   }
 
   onOptionChange(event: Table.OptionEvent) {
@@ -114,5 +118,7 @@ export class ShoutoutsListingComponent implements OnInit {
     });
   }
 
-
+  onUserDetail(id: string) {
+    this.$router.navigate([`admin/users/${id}/details`]);
+  }
 }
