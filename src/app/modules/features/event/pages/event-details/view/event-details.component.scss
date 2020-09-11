@@ -1,6 +1,5 @@
 :host{
     @import 'components/detail-ui';
-    // @import 'abstracts/variables';
 }
 .event-detail-page{
     padding: 15px;
@@ -11,7 +10,7 @@
         flex-wrap: wrap;
         justify-content: flex-start;
         .left-portion{
-            width: calc(100% - 400px);
+            width: calc(100% - 300px);
             padding-right: 30px;
             max-width: 800px;
             .event-cover-photo{
@@ -39,7 +38,7 @@
             }
         }
         .right-portion{
-            width: 400px;
+            width: 300px;
             p{
                 &.value{
                     margin-top: 3px;

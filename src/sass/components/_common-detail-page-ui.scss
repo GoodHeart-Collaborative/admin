@@ -25,7 +25,9 @@
                 width: 100%;
                 order: 1;
             }
-
+            &.d-block {
+                display: block;
+            }
             .card_header_container {
                 &.profile_header {
                     .card_header {

@@ -9,29 +9,29 @@
     width: fit-content;
     margin: 0px;
     margin-bottom: 17px;
-    @media screen and (max-width: 767px){
+    @media screen and (max-width: 767px) {
         margin-bottom: 12px;
     }
-    li{
+    li {
         float: left;
         user-select: none;
-        a{
+        a {
             color: black;
             font-size: 12px;
-            text-decoration: none; 
+            text-decoration: none;
             padding: 12px 25px 12px 20px;
             background: white;
             text-transform: uppercase;
-            position: relative; 
+            position: relative;
             display: block;
             float: left;
-            transition: .2s;
-            @media screen and (max-width: 767px){
+            transition: 0.2s;
+            @media screen and (max-width: 767px) {
                 padding: 5px 15px 5px 10px;
                 font-size: 10px;
                 max-width: 90px;
             }
-            &::after{
+            &::after {
                 border-style: solid;
                 border-width: 2px 2px 0 0;
                 content: "";
@@ -45,46 +45,47 @@
                 vertical-align: top;
                 width: 8px;
                 transform: rotate(45deg);
-                @media screen and (max-width: 767px){
+                @media screen and (max-width: 767px) {
                     border-width: 1px 1px 0px 0px;
                     height: 6px;
                     top: 8px;
                     width: 6px;
                 }
             }
-            &:hover{
+            &:hover {
                 color: #419fbb;
                 text-decoration: underline;
             }
-            span{
-                @media screen and (max-width: 767px){
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
+            span {
+                max-width: 200px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                display: block;
+                @media screen and (max-width: 767px) {
                     max-width: 60px;
-                    display: block;
                 }
             }
         }
-        &:first-child{
-            a{
+        &:first-child {
+            a {
                 padding-left: 20px;
                 border-radius: 4px 0px 0px 4px;
-                @media screen and (max-width: 767px){
+                @media screen and (max-width: 767px) {
                     padding-left: 10px;
                 }
             }
         }
-        &:nth-last-child(2){
-            a{
+        &:nth-last-child(2) {
+            a {
                 padding-right: 20px;
                 cursor: default !important;
                 pointer-events: none;
                 text-decoration: none;
-                @media screen and (max-width: 767px){
+                @media screen and (max-width: 767px) {
                     padding-right: 10px;
                 }
-                &::after{
+                &::after {
                     content: "";
                     border-color: transparent #ffffff;
                     border-style: solid;
@@ -96,26 +97,25 @@
                     z-index: 9;
                     top: 0px;
                     transform: none;
-                    @media screen and (max-width: 767px){
+                    @media screen and (max-width: 767px) {
                         border-width: 12px 0px 13px 10px;
                         right: -10px;
                     }
                 }
-
             }
         }
-        &:last-child{
-            a{
+        &:last-child {
+            a {
                 padding: 12px 20px 12px 40px;
                 color: white;
-                background: linear-gradient(323deg, #b58ecc 14%, #409fbb 98%)!important;
+                background: linear-gradient(323deg, #b58ecc 14%, #409fbb 98%) !important;
                 cursor: default !important;
                 pointer-events: none;
                 text-decoration: none;
-                @media screen and (max-width: 767px){
+                @media screen and (max-width: 767px) {
                     padding: 5px 10px 5px 20px;
                 }
-                &::after{
+                &::after {
                     content: "";
                     position: absolute;
                     width: 0;
@@ -128,7 +128,7 @@
                     border-color: transparent transparent #a990ca #af8fcb;
                     transform: rotate(225deg);
                     box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.18);
-                    @media screen and (max-width: 767px){
+                    @media screen and (max-width: 767px) {
                         top: 4px;
                         right: -8px;
                         border: 9px solid transparent;
@@ -137,8 +137,8 @@
                 }
             }
         }
-        &:only-child{
-            a{
+        &:only-child {
+            a {
                 padding-left: 20px;
             }
         }
