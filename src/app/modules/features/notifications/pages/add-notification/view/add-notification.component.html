@@ -4,7 +4,7 @@
         <form [formGroup]="notificationForm">
             <div class="row-1">
                 <div class="left-portion">
-                    <app-image-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL"></app-image-upload>
+                    <app-image-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL" [aspectRatio]="4/4"></app-image-upload>
                 </div>
                 
                 <div class="right-portion">

@@ -16,6 +16,7 @@ export class ImageUploadComponent implements OnInit {
   @ViewChild('file', { static: false }) img;
   saveEvent: any;
   @Input() isCropper = false;
+  @Input() aspectRatio;
   constructor(
     private $upload: FileUploadService
   ) { }
