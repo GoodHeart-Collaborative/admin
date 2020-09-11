@@ -9,7 +9,7 @@
     <div class="popup-body">
       <form [formGroup]="editProfileForm">
 
-        <app-image-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profileDetail?.profilePicture" [isCropper]="true"></app-image-upload>
+        <app-image-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profileDetail?.profilePicture" [isCropper]="true" [aspectRatio]="4/4"></app-image-upload>
 
         <div class="profile-detail">
           <div class="single-profile-detail">

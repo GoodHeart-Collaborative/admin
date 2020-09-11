@@ -3,7 +3,7 @@
     <form [formGroup]="categoryForm">
       <div class="row-1">
         <div class="left-portion">
-          <app-image-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL"></app-image-upload>
+          <app-image-upload (uploadMedia)="setimageFile($event)" [aspectRatio]="4/4" [profilePicURL]="profilePicURL"></app-image-upload>
         </div>
         <div class="right-portion">
           <p>Category Name</p>

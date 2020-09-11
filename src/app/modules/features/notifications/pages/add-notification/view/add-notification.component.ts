@@ -55,7 +55,7 @@ export class AddNotificationComponent implements OnInit {
   }
 
   async onSubmit() {
-    if (this.notificationForm.invalid) {
+    if (this.notificationForm.invalid ) {
       this.notificationForm.markAllAsTouched();
       return;
     }
