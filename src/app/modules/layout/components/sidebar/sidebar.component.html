@@ -67,33 +67,31 @@
 			<mat-icon> forum </mat-icon> Forum
 		</mat-list-item>
 
-	<mat-list-item (click)="mep.expanded = false;" color="primary" routerLinkActive="active"
+		<!-- <mat-list-item (click)="mep.expanded = false;" color="primary" routerLinkActive="active"
 			[routerLink]="['FEED' | absolutePath]">
 			<mat-icon> dynamic_feed </mat-icon> Feed
-	</mat-list-item>
+		</mat-list-item> -->
 
-	<mat-list-item (click)="mep.expanded = false;" color="primary" [routerLink]="['CATEGORY' | absolutePath]"
+		<mat-list-item (click)="mep.expanded = false;" color="primary" [routerLink]="['CATEGORY' | absolutePath]"
 			routerLinkActive="active">
 			<mat-icon>category</mat-icon> Category
-	 </mat-list-item>
+		</mat-list-item>
 
-     <mat-list-item (click)="mep.expanded = false;" color="primary" routerLinkActive="active" [routerLink]="['REPORTS_AND_ANALYTICS' | absolutePath]">
+		<!-- <mat-list-item (click)="mep.expanded = false;" color="primary" routerLinkActive="active" [routerLink]="['REPORTS_AND_ANALYTICS' | absolutePath]">
 			<mat-icon> analytics </mat-icon> Report & Analytics
-		</mat-list-item> 
+		</mat-list-item> -->
 
-	 <mat-list-item (click)="mep.expanded = false;" color="primary" [queryParams]="{ tab: '0'}"
+		<mat-list-item (click)="mep.expanded = false;" color="primary" [queryParams]="{ tab: '0'}"
 			[routerLink]="['CONTENT_MANAGEMENT' | absolutePath]"
 			[ngClass]="{'active': $router.url.includes('content-management')}">
 			<mat-icon>description</mat-icon> Content Management
-	</mat-list-item> 
+		</mat-list-item>
 
-	 <mat-list-item (click)="mep.expanded = false;" color="primary" routerLinkActive="active" [routerLink]="['NOTIFICATIONS' | absolutePath]">
+		<!-- <mat-list-item (click)="mep.expanded = false;" color="primary" routerLinkActive="active" [routerLink]="['NOTIFICATIONS' | absolutePath]">
 			<mat-icon> notifications </mat-icon> Notifications
-	</mat-list-item> 
+		</mat-list-item> -->
 
-	<!-- <mat-list-item (click)="mep.expanded = false;" color="primary" routerLinkActive="active" [routerLink]="['CALENDER' | absolutePath]">
-			<mat-icon> notifications </mat-icon> Calender
-	</mat-list-item>  -->
-	
-    </mat-list>
+		
+
+	</mat-list>
 </div>
