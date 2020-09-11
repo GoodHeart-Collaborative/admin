@@ -8,8 +8,11 @@
     </ng-container>
     <ng-container  *ngSwitchCase="type == 2">
         <ng-container *ngTemplateOutlet="termsTemplate">
-
-        </ng-container>
+         </ng-container>
+    </ng-container>
+    <ng-container  *ngSwitchCase="type == 3">
+        <ng-container *ngTemplateOutlet="faqTemplate">
+         </ng-container>
     </ng-container>
     <ng-container *ngSwitchCase="type == 4">
         <ng-container *ngTemplateOutlet="contactUsTemplate">
@@ -31,6 +34,11 @@
 
 <ng-template #aboutusTemplate>
     <h1 class="content-heading">About Us</h1>
+    <div [innerHtml]="content"></div>
+</ng-template>
+
+<ng-template #faqTemplate>
+    <h1 class="content-heading">FAQ</h1>
     <div [innerHtml]="content"></div>
 </ng-template>
 

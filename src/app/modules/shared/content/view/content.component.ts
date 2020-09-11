@@ -8,7 +8,7 @@ import { ContentService } from '../../services/content.service';
   styleUrls: ['./content.component.scss']
 })
 export class ContentComponent implements OnInit {
-  types = ['1', '2', '4', '5'];
+  types = ['1', '2', '4', '5', '3'];
   type: any;
   content: any;
   constructor(private $http: ContentService,

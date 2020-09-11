@@ -10,13 +10,14 @@ import { UtilityService } from 'src/app/modules/shared/services/utility.service'
     styleUrls: ['./content-management.component.scss']
 })
 export class ContentManagementComponent implements OnInit {
-    types = ['0', '1', '2', '3'];
+    types = ['0', '1', '2', '3', '4'];
     content;
     contentTabs = [
         { tabName: 'Privacy Policy' },
         { tabName: 'Terms and Conditions' },
-        { tabName: 'About Us' },
+        { tabName: 'FAQ' },
         { tabName: 'Contact Us' },
+        { tabName: 'About Us' },
     ];
     selectedTab: any;
     data: any;
@@ -64,7 +65,8 @@ export class ContentManagementComponent implements OnInit {
     async getContentDetails() {
         this.content = '';
         const params = {
-            type: (+this.selectedTab) < 2 ? (+this.selectedTab) + 1 : (+this.selectedTab) + 2
+            // type: (+this.selectedTab) < 2 ? (+this.selectedTab) + 1 : (+this.selectedTab) + 2
+            type: (+this.selectedTab)+1 
         };
         this.data = await this.$http.onGetContentDetails(params.type);
         if (this.data && this.data.data.description) {
