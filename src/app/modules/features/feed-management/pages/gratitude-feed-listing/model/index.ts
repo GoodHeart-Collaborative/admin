@@ -12,13 +12,20 @@ const defaultData: Table.Data<User> = {
 export class GratitudeFeedTableDataSource implements Table.Source<User> {
   label = 'Users Management';
   columns: Table.Column<User>[] = [
-    // {
-    //   title: 'Title',
-    //   id: 'title',
-    //   sorting: true,
-    //   templateBy: 'title'
-    // //   resolve: (row: any) => `${row['firstName']} ${row['lastName']}` || 'NA',
-    // },
+    {
+      title: 'Title',
+      id: 'name',
+      sorting: true,
+      templateBy: 'name'
+    },
+
+    {
+      title: 'Email',
+      id: 'email',
+      sorting: true,
+      resolve: (row: any) => row.userData['email'] || ''
+    },
+
     {
       title: 'Description',
       id: 'description',
@@ -26,6 +33,7 @@ export class GratitudeFeedTableDataSource implements Table.Source<User> {
       templateBy: 'description'
       // resolve: (row: any) => row['description'] || '-',
     },
+
     {
       title: 'Privacy',
       id: 'privacy',
@@ -33,12 +41,14 @@ export class GratitudeFeedTableDataSource implements Table.Source<User> {
       templateBy: 'privacy'
       // resolve: (row: any) => row['privacy'] || '-',
     },
+
     {
       title: 'Added On',
       id: 'createdAt',
       sorting: true,
       templateBy: 'createdAt',
     },
+
     {
       title: 'Status',
       id: 'status',

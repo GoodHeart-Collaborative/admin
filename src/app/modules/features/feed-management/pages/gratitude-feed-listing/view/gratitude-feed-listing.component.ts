@@ -6,6 +6,7 @@ import { UtilityService } from 'src/app/modules/shared/services/utility.service'
 import { FeedService } from '../../../service/feed.service';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { FEED_TYPE } from 'src/app/constant/drawer';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-gratitude-feed-listing',
   templateUrl: './gratitude-feed-listing.component.html',
@@ -29,6 +30,7 @@ export class GratitudeFeedListingComponent implements OnInit, OnChanges {
     private $feed: FeedService,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
+    private $route: Router
   ) {
   }
 
@@ -118,5 +120,8 @@ export class GratitudeFeedListingComponent implements OnInit, OnChanges {
     });
   }
 
+  onUserDetail(id: string) {
+    this.$route.navigate([`admin/users/${id}/details`]);
+  }
 
 }

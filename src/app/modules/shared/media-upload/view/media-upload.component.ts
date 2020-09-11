@@ -93,6 +93,7 @@ export class MediaUploadComponent implements OnInit {
       this.videoSelected(event);
 
     } else {
+      this.$upload.showAlert(invalidImageError());
       return null;
     }
   }
