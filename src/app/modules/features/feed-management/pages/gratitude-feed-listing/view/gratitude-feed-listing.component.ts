@@ -38,8 +38,9 @@ export class GratitudeFeedListingComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    console.log(this.gratitudeDetails);
-    this.setUpTableResource(this.gratitudeDetails);
+    if (this.gratitudeDetails) {
+        this.setUpTableResource(this.gratitudeDetails);
+    }
   }
 
   onOptionChange(event: Table.OptionEvent) {
@@ -110,7 +111,6 @@ export class GratitudeFeedListingComponent implements OnInit, OnChanges {
    * @param userRecords
    */
   setUpTableResource(userDetails: any) {
-    console.log(userDetails);
     const { pageIndex, pageSize } = this.eventData;
     this.tableSource = new GratitudeFeedTableDataSource({
       pageIndex,
