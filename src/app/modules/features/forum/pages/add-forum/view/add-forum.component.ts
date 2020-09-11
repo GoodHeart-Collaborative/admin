@@ -108,7 +108,7 @@ export class AddForumComponent implements OnInit {
   }
 
   async onSubmit() {
-    if (this.forumForm.invalid) {
+    if (this.forumForm.invalid ) {
       this.forumForm.markAllAsTouched();
       return;
     }
@@ -176,7 +176,6 @@ export class AddForumComponent implements OnInit {
         });
       return;
     }
-    console.log(body);
     this.$service.add(body).then(
       data => {
         this.forumForm.enable();
