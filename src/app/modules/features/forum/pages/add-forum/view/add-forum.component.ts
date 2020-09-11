@@ -37,7 +37,7 @@ export class AddForumComponent implements OnInit {
     if (activateRoute.snapshot && activateRoute.snapshot.data &&
       activateRoute.snapshot.data.forumData && activateRoute.snapshot.data.forumData.data) {
       this.forumsData = activateRoute.snapshot.data.forumData.data;
-      // $breadcrumb.replace(this.forumsData._id, this.forumsData.topic);
+      $breadcrumb.replace(this.forumsData._id, this.forumsData.description);
       this.forumPatchData();
     }
   }

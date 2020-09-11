@@ -154,6 +154,9 @@ export class ForumListingComponent implements OnInit {
    * @param id
    */
   oneditHandler(id: string, type: string) {
+    if (type == 'user') {
+      return;
+    }
     this.$router.navigate([`${FORUM.fullUrl}`, 'edit', id],
       {
         queryParams: { type }
