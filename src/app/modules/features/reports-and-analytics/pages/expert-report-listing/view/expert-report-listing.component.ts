@@ -80,7 +80,6 @@ export class ExpertReportListingComponent implements OnInit, OnChanges {
 
   onPostDetails(id: string) {
     this.$router.navigate([`admin/expert/${id}/post`]);
-
   }
 }
 
