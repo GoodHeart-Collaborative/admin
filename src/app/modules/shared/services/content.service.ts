@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
+import { FAQS_DELETE, FAQS } from 'src/app/constant/urls';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +12,19 @@ export class ContentService {
     const data = await this.$http.get('content/view', params).toPromise();
     return data;
   }
-  async  queryData(params) {
-    const data = await this.$http.get('content/faq', params).toPromise();
-    return data;
-  }
 
   async onAddContentHnadler(data) {
     return await this.$http.post('content', data).toPromise();
+  }
+  async  queryData(params) {
+    const data = await this.$http.get(FAQS, params).toPromise();
+    return data;
+  }
+  async onAddFaqHnadler(data) {
+    return await this.$http.post(FAQS, data).toPromise();
+  }
+  async onDeleteFaqHnadler(data) {
+    return await this.$http.delete(FAQS_DELETE).toPromise();
   }
 
   async onEditContentHnadler(id, data) {

@@ -15,7 +15,6 @@ export class FaqsTableDataSource implements Table.Source<Category> {
     {
         title: 'Title',
         id: 'title',
-        sorting: true,
         templateBy: 'title'
         // resolve: (row: any) => row['title'] || '-',
     },

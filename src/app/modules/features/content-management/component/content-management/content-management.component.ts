@@ -65,7 +65,7 @@ export class ContentManagementComponent implements OnInit {
     async getContentDetails() {
         this.content = '';
         const params = {
-            type: (+this.selectedTab) < 2 ? (+this.selectedTab) + 1 : (+this.selectedTab) + 2
+            type: (+this.selectedTab) < 2 ? (+this.selectedTab) + 1 : (+this.selectedTab) + 3
             // type: (+this.selectedTab) + 1
         };
         // debugger

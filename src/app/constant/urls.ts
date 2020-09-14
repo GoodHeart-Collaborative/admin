@@ -125,9 +125,13 @@ export const ACTION_FORUM = (Id , status) => `admin/forums/${Id}/status/${status
 
 // EXPERT API's //
 export const EXPERT = 'admin/expert';
+export const ADD_EXPERT = `admin/expert`;
 export const EXPERT_POST = 'admin/expertPost';
 export const EXPERT_DETAILS = (Id) => `admin/expert/${Id}`;
 export const EXPERT_POST_DETAILS = (expertId) => `admin/expertpost/${expertId}`;
-export const ADD_EXPERT = `admin/expert`;
 export const ACTION_EXPERT = (expertId , status) => `admin/expert/${expertId}/status/${status}`;
 export const ACTION_EXPERT_POST = (postId , status) => `admin/expertpost/${postId}/status/${status}`;
+
+//FAQS API's /////////
+export const FAQS = 'content/faq';
+export const FAQS_DELETE = (faqId) =>  `content/faq/${faqId}`;
