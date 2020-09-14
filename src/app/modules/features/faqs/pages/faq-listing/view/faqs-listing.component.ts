@@ -89,13 +89,13 @@ export class FaqsListingComponent implements OnInit {
    */
   onActionHandler(id: string, action: ActionType) {
     const index = this.faqList.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('event', action == 'active' ? 'active' : (action == 'deleted' ? 'delete' : 'block'))
+    this.$confirmBox.listAction('event', (action == 'deleted' ? 'delete': ''))
       .subscribe((confirm) => {
         if (confirm) {
-          // this.$content.updateStatus(id, action).then((res) => {
-          //   this.$utility.success(res.message);
-          //   this.handleActions(action, index);
-          // });
+          this.$content.onDeleteFaqHnadler(id).then((res) => {
+            this.$utility.success(res.message);
+            this.handleActions(action, index);
+          });
         }
       });
   }
@@ -111,27 +111,12 @@ export class FaqsListingComponent implements OnInit {
         this.faqList.splice(index, 1);
         this.faqList.total = this.faqList.total - 1;
         break;
-      case 'active':
-        this.handleStatus(action, index);
-
-        break;
-      case 'blocked':
-        this.handleStatus(action, index);
-        break;
       default:
         break;
     }
     this.setUpTableResource(this.faqList);
   }
 
-  handleStatus(action: 'blocked' | 'active', index: number) {
-    this.faqList = this.faqList.map((user, i) => {
-      if (i === index) {
-        user.status = action;
-      }
-      return user;
-    });
-  }
 
   /**
    * User Set Up Table Handler
@@ -154,6 +139,10 @@ export class FaqsListingComponent implements OnInit {
       console.log(res);
 
     });
+  }
+
+  oneditHandler(id: string) {
+
   }
 
 }

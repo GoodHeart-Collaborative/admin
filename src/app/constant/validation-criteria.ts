@@ -28,7 +28,9 @@ export const VALIDATION_CRITERIA = {
   topicMaxLength: 50,
   eventNameMaxlength : 50,
   titleNotificationMaxLimit: 50,
-  messageNotificationMaxLimit: 125
+  messageNotificationMaxLimit: 125,
+  questionFaqMaxLimit: 50,
+  answerFaqMaxLimit: 125
 };
 
 export const getTrimmed = (body) => {
