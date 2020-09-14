@@ -132,6 +132,7 @@ export const EXPERT_POST_DETAILS = (expertId) => `admin/expertpost/${expertId}`;
 export const ACTION_EXPERT = (expertId , status) => `admin/expert/${expertId}/status/${status}`;
 export const ACTION_EXPERT_POST = (postId , status) => `admin/expertpost/${postId}/status/${status}`;
 
-//FAQS API's /////////
+//FAQS API's
 export const FAQS = 'content/faq';
+export const FAQS_DETAILS = 'content/details';
 export const FAQS_DELETE = (faqId) =>  `content/faq/${faqId}`;

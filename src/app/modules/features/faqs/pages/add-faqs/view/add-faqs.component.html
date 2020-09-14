@@ -5,22 +5,26 @@
     </div>
     <div class="popup-content">
         <div class="popup-body">
-            <form>
+            <form [formGroup]="faqForm">
                 <mat-form-field appearance="outline">
                     <mat-label for="question">Question</mat-label>
-                    <textarea id="question" rows="3" matInput appWhiteSpace></textarea>
-                    <mat-hint>0/500</mat-hint>
+                    <textarea  formControlName="question" rows="3" matInput appWhiteSpace #question [maxlength]="questionFaqMaxLimit"></textarea>
+                    <mat-hint>{{question.value.trim().length}}/{{questionFaqMaxLimit}}</mat-hint>
+                    <mat-error>{{form('question') |validate:'Question' }}</mat-error>
                 </mat-form-field>
+
                 <mat-form-field appearance="outline">
                     <mat-label for="answer">Answer</mat-label>
-                    <textarea id="answer" rows="3" matInput appWhiteSpace></textarea>
-                    <mat-hint>0/2000</mat-hint>
+                    <textarea  rows="3" matInput appWhiteSpace formControlName="answer" #answer [maxlength]="answerFaqMaxLimit"></textarea>
+                    <mat-hint>{{answer.value.trim().length}}/{{answerFaqMaxLimit}}</mat-hint>
+                    <mat-error>{{form('answer') |validate:'Answer' }}</mat-error>
+
                 </mat-form-field>
             </form>
         </div>
         <div class="popup-footer">
-            <button class="btn" mat-stroked-button>Cancel</button>
-            <button class="btn btn-primary" mat-stroked-button>Save</button>
+            <button class="btn" mat-stroked-button [mat-dialog-close]="false">Cancel</button>
+            <button class="btn btn-primary" mat-stroked-button (click)="onSaveHandler()">Save</button>
         </div>
     </div>
 </div>

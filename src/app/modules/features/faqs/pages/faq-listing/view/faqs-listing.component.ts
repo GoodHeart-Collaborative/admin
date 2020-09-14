@@ -88,8 +88,8 @@ export class FaqsListingComponent implements OnInit {
    * @param action
    */
   onActionHandler(id: string, action: ActionType) {
-    const index = this.faqList.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('event', (action == 'deleted' ? 'delete': ''))
+    const index = this.faqList.contentList.findIndex(user => user._id === id);
+    this.$confirmBox.listAction('faq', (action == 'deleted' ? 'delete' : ''))
       .subscribe((confirm) => {
         if (confirm) {
           this.$content.onDeleteFaqHnadler(id).then((res) => {
@@ -108,8 +108,8 @@ export class FaqsListingComponent implements OnInit {
   handleActions(action: ActionType, index) {
     switch (action) {
       case 'deleted':
-        this.faqList.splice(index, 1);
-        this.faqList.total = this.faqList.total - 1;
+        this.faqList.contentList.splice(index, 1);
+        this.faqList.totalRecord = this.faqList.totalRecord - 1;
         break;
       default:
         break;
@@ -137,12 +137,22 @@ export class FaqsListingComponent implements OnInit {
       width: '500px',
     }).afterClosed().subscribe(res => {
       console.log(res);
-
+      if (res) {
+        this.updateList();
+      }
     });
   }
 
   oneditHandler(id: string) {
-
+    this.$dailog.open(AddFaqsComponent, {
+      width: '500px',
+      data: id
+    }).afterClosed().subscribe(res => {
+      console.log(res);
+      if (res) {
+        this.updateList();
+      }
+    });
   }
 
 }

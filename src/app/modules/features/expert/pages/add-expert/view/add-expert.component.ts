@@ -10,9 +10,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { EXPERT } from 'src/app/constant/routes';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
-import { GlobalService } from 'src/app/services/global/global.service';
-import { onSelectFile } from 'src/app/constant/file-input';
-import { invalidImageError, invalidFileSize } from 'src/app/constant/messages';
 
 @Component({
   selector: 'app-add-expert',
@@ -124,7 +121,6 @@ export class AddExpertComponent implements OnInit {
       return;
     }
     let body = { profilePicUrl: [this.profilePicURL], ...this.expertForm.value };
-    console.log(body);
     if (this.details && this.details._id) {
       this.$service.edit(this.details._id, body).then(
         data => {
