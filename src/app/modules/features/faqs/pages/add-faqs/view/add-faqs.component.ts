@@ -14,6 +14,7 @@ export class AddFaqsComponent implements OnInit {
   faqForm: FormGroup;
   questionFaqMaxLimit = VALIDATION_CRITERIA.questionFaqMaxLimit;
   answerFaqMaxLimit = VALIDATION_CRITERIA.answerFaqMaxLimit;
+  details: any;
   constructor(
     private $fb: FormBuilder,
     private $service: ContentService,
@@ -39,29 +40,29 @@ export class AddFaqsComponent implements OnInit {
   form(name) {
     return this.faqForm.controls[name];
   }
+
   onSaveHandler() {
     if (this.faqForm.invalid) {
       this.faqForm.markAllAsTouched();
       return;
     }
     let body = { ...this.faqForm.value };
-    // if (this.details && this.details._id) {
-    //   this.$service.onEditFaqHnadler(this.details._id, body).then(
-    //     data => {
-    //       this.faqForm.enable();
-    //       this.$utility.success(data.message);
-    //        this.$dialogRef.close(true);
-
-    //     },
-    //     err => {
-    //       this.faqForm.enable();
-    //     }
-    //   );
-    //   return;
-    // }
+    if (this.details && this.details._id) {
+      this.$service.onEditFaqHnadler(this.details._id, body).then(
+        data => {
+          this.faqForm.disable();
+          this.$utility.success(data.message);
+          this.$dialogRef.close(true);
+        },
+        err => {
+          this.faqForm.enable();
+        }
+      );
+      return;
+    }
     this.$service.onAddFaqHnadler(body).then(
       data => {
-        this.faqForm.enable();
+        this.faqForm.disable();
         this.$utility.success(data.message);
         this.$dialogRef.close(true);
       },
@@ -71,11 +72,14 @@ export class AddFaqsComponent implements OnInit {
   }
 
   faqsDetails() {
+    console.log(this.data);
     this.$service.onFaqDetailsHandler(this.data).then(res => {
-      // if(res) {
-        //this.details = res.data;
-      //   this.faqForm.patchValue(this.details);
-      // }
+      if (res) {
+        this.details = res.data;
+        console.log(this.details);
+
+        this.faqForm.patchValue(this.details);
+      }
     });
   }
 }

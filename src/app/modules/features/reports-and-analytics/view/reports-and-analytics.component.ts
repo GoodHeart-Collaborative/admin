@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportsAndAnalyticsService } from '../service/reports-and-analytics.service';
-import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
-import { ActivatedRoute } from '@angular/router';
 import { MatTabChangeEvent } from '@angular/material';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 
@@ -79,7 +77,7 @@ export class ReportsAndAnalyticsComponent implements OnInit {
         });
         break;
       case 1:
-        params['type']= 9;
+        params['type'] = 7;
         this.$report.queryData(params).then(res => {
           this.userData = res.data;
         });
@@ -116,7 +114,6 @@ export class ReportsAndAnalyticsComponent implements OnInit {
    */
   onTabChange(event: MatTabChangeEvent) {
     this.index = event.index;
-    console.log(this.index);
     this.updateList(this.index);
   }
 

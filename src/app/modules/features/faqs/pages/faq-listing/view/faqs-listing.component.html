@@ -1,10 +1,14 @@
 <app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)" (onAddCahnges)="onAdd()">
  <ng-template appFor="answer" let-row="row">
-         {{ (row?.answer | titlecase) || 'dddd'}}
+      <a href="javascript:void(0)" title="{{ row?.answer | titlecase}}">
+            {{ (row?.answer | titlecase)}}
+     </a>
      </ng-template>
  
      <ng-template appFor="question" let-row="row">
-             {{ (row?.question | titlecase )|| 'sss'}}
+        <a href="javascript:void(0)" title="{{ row?.question | titlecase}}">
+            {{ (row?.question | titlecase )}}
+        </a>
      </ng-template>
  
     <ng-container>

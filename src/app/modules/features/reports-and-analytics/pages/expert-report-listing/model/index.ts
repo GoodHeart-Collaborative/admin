@@ -10,7 +10,7 @@ const defaultData: Table.Data<User> = {
     rows: null
 };
 
-export class ReportTableDataSource implements Table.Source<User> {
+export class ExpertReportTableDataSource implements Table.Source<User> {
   label = 'Report Management';
   columns: Table.Column<User>[] = [
     {
@@ -49,7 +49,6 @@ export class ReportTableDataSource implements Table.Source<User> {
     //   sorting: false,
     //   templateBy: 'reason',
     // },
- 
     {
       title: 'Added On',
       id: 'createdAt',

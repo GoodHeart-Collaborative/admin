@@ -1,19 +1,17 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
-import { ReportTableDataSource } from '../model';
-import { Router } from '@angular/router';
-import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
-import { MatDialog } from '@angular/material';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
-import { FORUM } from 'src/app/constant/routes';
+import { ExpertReportTableDataSource } from '../model';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 @Component({
-  selector: 'app-report-listing',
-  templateUrl: './report-listing.component.html',
-  styleUrls: ['./report-listing.component.scss']
+  selector: 'app-expert-report-listing',
+  templateUrl: './expert-report-listing.component.html',
+  styleUrls: ['./expert-report-listing.component.scss']
 })
-export class ReportListingComponent implements OnInit, OnChanges {
-
-  tableSource = new ReportTableDataSource();
+export class ExpertReportListingComponent implements OnInit, OnChanges {
+  tableSource = new ExpertReportTableDataSource();
   eventData: Table.OptionData = {
     pageIndex: 0,
     pageSize: 10,
@@ -22,7 +20,6 @@ export class ReportListingComponent implements OnInit, OnChanges {
     sortData: null
   };
   isProcessing = false;
-
   @Input() userData;
   @Output() changeHandler = new EventEmitter();
 
@@ -44,6 +41,14 @@ export class ReportListingComponent implements OnInit, OnChanges {
   }
 
 
+  handleStatus(action: 'blocked' | 'active', index: number) {
+    this.userData.data = this.userData.data.map((user, i) => {
+      if (i === index) {
+        user.status = action;
+      }
+      return user;
+    });
+  }
 
   /**
    * User Set Up Table Handler
@@ -51,7 +56,7 @@ export class ReportListingComponent implements OnInit, OnChanges {
    */
   setUpTableResource(userDetails: any) {
     const { pageIndex, pageSize } = this.eventData;
-    this.tableSource = new ReportTableDataSource({
+    this.tableSource = new ExpertReportTableDataSource({
       pageIndex,
       pageSize,
       rows: userDetails.data,
@@ -69,15 +74,13 @@ export class ReportListingComponent implements OnInit, OnChanges {
     }).afterClosed().subscribe();
   }
 
-  onUserDetails(id: String) {
+  onUserDetails(id: string) {
     this.$router.navigate([`admin/users/${id}/details`]);
   }
 
-  onPostDetails(id: string, type: string) {
-    this.$router.navigate([`${FORUM.fullUrl}`, id, 'details'],
-    {
-      queryParams: { type }
-    }
-  );  }
+  onPostDetails(id: string) {
+    this.$router.navigate([`admin/expert/${id}/post`]);
 
+  }
 }
+

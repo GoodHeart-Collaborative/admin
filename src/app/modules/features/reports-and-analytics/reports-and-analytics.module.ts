@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MatTabsModule, MatIconModule } from '@angular/material';
 import { ReportsAndAnalyticsService } from './service/reports-and-analytics.service';
 import { ReportListingModule } from './pages/report-listing/report-listing.module';
+import { ExpertReportListingModule } from './pages/expert-report-listing/expert-report-listing.module';
 
 const routes: Routes = [
   {
@@ -20,7 +21,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MatTabsModule,
     MatIconModule,
-    ReportListingModule
+    ReportListingModule,
+    ExpertReportListingModule
   ],
   providers: [ReportsAndAnalyticsService]
 })
