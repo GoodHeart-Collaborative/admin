@@ -10,6 +10,10 @@
             {{ (row?.question | titlecase )}}
         </a>
      </ng-template>
+
+    <ng-template appFor="createdAt" let-row="row">
+        {{ row?.createdAt |customDate}}
+    </ng-template>
  
     <ng-container>
       <ng-template appFor="actions"  let-row="row">
