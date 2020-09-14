@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddFaqsComponent } from './view/add-faqs.component';
 import { Routes, RouterModule } from '@angular/router';
-import { MatDialogModule } from '@angular/material';
+import { MatButtonModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule } from '@angular/material';
 
 
 
@@ -10,7 +10,11 @@ import { MatDialogModule } from '@angular/material';
   declarations: [AddFaqsComponent],
   imports: [
     CommonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
   ],
   entryComponents: [AddFaqsComponent]
 })
