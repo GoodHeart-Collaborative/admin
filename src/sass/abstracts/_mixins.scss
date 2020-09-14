@@ -21,7 +21,6 @@
     &::-webkit-scrollbar-thumb {
         border-radius: 20px 20px;
         background-color: $bgcolor;
-        outline: 1px solid slategrey;
         opacity: 0.5;
         width: $brodness;
         height: $brodness;
@@ -46,7 +45,6 @@
     &::-webkit-scrollbar-thumb {
         border-radius: 20px 20px;
         background-color: $bgcolor;
-        outline: 1px solid slategrey;
         opacity: 0.5;
         width: $brodness;
         &:hover {
