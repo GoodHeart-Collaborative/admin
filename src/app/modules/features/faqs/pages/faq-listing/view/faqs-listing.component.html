@@ -1,29 +1,16 @@
 <app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)" (onAddCahnges)="onAdd()">
-    <ng-template appFor="createdAt" let-row="row">
-         {{ row?.createdAt |customDate}}
-     </ng-template>
-
-    
- 
-     <ng-template appFor="status" let-row="row">
-         {{ row?.status | titlecase}}
+ <ng-template appFor="answer" let-row="row">
+         {{ (row?.answer | titlecase) || 'dddd'}}
      </ng-template>
  
-
- 
-     <ng-template appFor="title" let-row="row">
-         <a href="javascript:void(0)" (click)="onDetailsHandler(row?._id)" title="{{ row?.title | titlecase}}">
-             {{ row?.title | titlecase}}
-         </a>
+     <ng-template appFor="question" let-row="row">
+             {{ (row?.question | titlecase )|| 'sss'}}
      </ng-template>
  
-
- 
-   <ng-container>
- 
-         <ng-template appFor="actions"  let-row="row">
+    <ng-container>
+      <ng-template appFor="actions"  let-row="row">
              <div class="action-icon-cover">
-                <i class="material-icons icon-edit" (click)="oneditHandler(row?._id, user)" title="Edit  ">
+                <i class="material-icons icon-edit" (click)="oneditHandler(row?._id)" title="Edit  ">
                     edit
                 </i>
                  <i class="material-icons icon-delete" (click)="onActionHandler(row._id, 'deleted')" title="Delete FAQ">
@@ -31,7 +18,8 @@
                  </i>
              </div>
          </ng-template>
-     </ng-container>  
+     </ng-container> 
+
  </app-table>
  
 

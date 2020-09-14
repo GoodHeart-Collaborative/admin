@@ -13,16 +13,25 @@ export class FaqsTableDataSource implements Table.Source<Category> {
   label = 'Category Management';
   columns: Table.Column<Category>[] = [
     {
-        title: 'Title',
-        id: 'title',
-        templateBy: 'title'
-        // resolve: (row: any) => row['title'] || '-',
+        title: 'Question',
+        id: 'question',
+        templateBy: 'question'
+    },
+    {
+        title: 'Answer',
+        id: 'answer',
+        templateBy: 'answer'
+    },
+    {
+        title: 'Action',
+        id: 'actions',
+        templateBy: 'actions'
     },
 
   ];
   options: Table.Options = {
     selection: false,
-    search: 'Search by Title, Description',
+    search: 'Search by Question, Answer',
     index: true,
     sorting: true,
     addComponent: true,

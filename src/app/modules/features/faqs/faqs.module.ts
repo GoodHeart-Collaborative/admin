@@ -23,21 +23,21 @@ const routes: Routes = [
           ),
       },
 
-        {
-          path: ADD_FAQs.path,
-          loadChildren: () => import('./pages/add-faqs/add-faqs.module')
-          .then( (m) => m.AddFaqsModule
-          ),
-       },
-        {
-           path: 'edit/:id',
-          //  resolve : {
-          //   expertData : ExpertServiceResolve
-          // },
-          loadChildren: () => import('./pages/add-faqs/add-faqs.module')
-          .then( (m) => m.AddFaqsModule
-          )
-          },
+      //   {
+      //     path: ADD_FAQs.path,
+      //     loadChildren: () => import('./pages/add-faqs/add-faqs.module')
+      //     .then( (m) => m.AddFaqsModule
+      //     ),
+      //  },
+        // {
+        //    path: 'edit/:id',
+        //   //  resolve : {
+        //   //   expertData : ExpertServiceResolve
+        //   // },
+        //   loadChildren: () => import('./pages/add-faqs/add-faqs.module')
+        //   .then( (m) => m.AddFaqsModule
+        //   )
+        //   },
     ]
   }
 ];
