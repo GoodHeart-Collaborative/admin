@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output , EventEmitter, OnChanges} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { ReportTableDataSource } from '../model';
 import { ReportsAndAnalyticsService } from '../../../service/reports-and-analytics.service';
 import { Router } from '@angular/router';
@@ -26,15 +26,15 @@ export class ReportListingComponent implements OnInit, OnChanges {
   };
   isProcessing = false;
   reportType = {
-    [9]: 'FORUM',
-    [10]: 'USER',
-    [7]: 'EXPERT POST',
-    [1]: 'UNICORN',
-    [2]: 'INSPIRATION',
-    [4]: 'GENERAL GRATITUDE',
-    [3]: 'DAILY ADVICE',
-    [8]: 'SHOUTOUT',
-   };
+    [9]: 'Forum',
+    [10]: 'User',
+    [7]: 'Expert Post',
+    [1]: 'Unicorn',
+    [2]: 'Inspiration',
+    [4]: 'General Gratitude',
+    [3]: 'Daily Advice',
+    [8]: 'Shoutouts',
+  };
   @Input() userData;
   @Output() changeHandler = new EventEmitter();
 
@@ -137,4 +137,11 @@ export class ReportListingComponent implements OnInit, OnChanges {
     }).afterClosed().subscribe();
   }
 
+  // onPostDetails(id: String) {
+  //   // this.$router.navigate([]);
+  // }
+
+  onUserDetails(id: String) {
+    this.$router.navigate([`admin/users/${id}/details`]);
+  }
 }

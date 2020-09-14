@@ -601,3 +601,31 @@ export const CALENDER: IRoute = {
     return `${ADMIN.fullUrl}/${this.path}`;
   }
 };
+
+/// FAQs 
+
+export const FAQs: IRoute = {
+  path: 'faqs',
+  get fullUrl(): string {
+    return `${ADMIN.fullUrl}/${this.path}`;
+  }
+};
+export const FAQs_LIST: IRoute = {
+  path: 'list',
+  get fullUrl(): string {
+    return `${FAQs.fullUrl}/${this.path}`;
+  }
+};
+export const ADD_FAQs: IRoute = {
+  path: 'add',
+  get fullUrl(): string {
+    return `${FAQs.fullUrl}/${this.path}`;
+  }
+};
+
+export const FAQs_DETAILS: IRoute = {
+  path: ':id',
+  get fullUrl(): string {
+    return `${REPORTS_AND_ANALYTICS.fullUrl}/${this.path}`;
+  }
+};

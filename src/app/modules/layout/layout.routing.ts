@@ -4,7 +4,7 @@ import { LayoutComponent } from './layout.component';
 import { USER, DASHBOARD , CONTENT_MANAGEMENT ,
       CATEGORY, DAILY_INSPIRATION, DAILY_UNICORN,
       DAILY_ADVICE, MEMBER_OF_THE_DAY, ARTICLES, EXPERT, EVENTS,
-       NOTIFICATIONS, FORUM, FEED, REPORTS_AND_ANALYTICS, CALENDER} from '../../constant/routes';
+       NOTIFICATIONS, FORUM, FEED, REPORTS_AND_ANALYTICS, CALENDER, FAQs} from '../../constant/routes';
 
 const routes: Routes = [
   {
@@ -73,6 +73,13 @@ const routes: Routes = [
         loadChildren: () =>
           import('../features/expert/expert.module')
           .then((m) => m.ExpertModule
+          ),
+      },
+      {
+        path: FAQs.path,
+        loadChildren: () =>
+          import('../features/faqs/faqs.module')
+          .then((m) => m.FaqsModule
           ),
       },
       {

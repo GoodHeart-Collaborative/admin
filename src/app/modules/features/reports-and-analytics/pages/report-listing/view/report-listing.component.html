@@ -19,16 +19,22 @@
     </ng-template>
 
     <ng-template appFor="name" let-report="row">
+        <a href="javascript:void(0)" (click)="onUserDetails(report?.userData?._id)">
         {{ (report?.userData?.firstName | titlecase) }}  {{ (report?.userData?.lastName | titlecase ) || ''}}
+        </a>
     </ng-template>
 
     <ng-template appFor="email" let-report="row">
         {{ report?.userData?.email }}
     </ng-template>
 
-    <ng-template appFor="reason" let-report="row">
+    <!-- <ng-template appFor="reason" let-report="row">
         {{ (report?.reason || report?.message ) | titlecase }}
-    </ng-template>
+    </ng-template> -->
+    <ng-template appFor="reason" let-report="row">
+        <a href="javascript:void(0)" title="{{ (report?.description | titlecase)}}">
+        {{ (report?.description | titlecase) || 'String'}}
+    </a>    </ng-template>
 
 
     <ng-container>

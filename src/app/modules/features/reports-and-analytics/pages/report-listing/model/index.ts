@@ -32,17 +32,24 @@ export class ReportTableDataSource implements Table.Source<User> {
       templateBy: 'email',
     },
     {
-      title: 'Reason',
-      id: 'reason',
-      sorting: false,
-      templateBy: 'reason',
-    },
-    {
       title: 'Report Type',
       id: 'type',
       sorting: false,
       templateBy: 'type',
     },
+    {
+      title: 'Post',
+      id: 'reason',
+      sorting: false,
+      templateBy: 'reason',
+    },
+    // {
+    //   title: 'Reason',
+    //   id: 'reason',
+    //   sorting: false,
+    //   templateBy: 'reason',
+    // },
+ 
     {
       title: 'Added On',
       id: 'createdAt',

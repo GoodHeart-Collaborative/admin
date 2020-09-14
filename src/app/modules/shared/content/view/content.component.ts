@@ -30,9 +30,9 @@ export class ContentComponent implements OnInit {
         type: this.type
     };
     const data = await this.$http.onGetContentDetails(params.type);
-    if (data && data.data.description) {
-       this.content = data.data.description;
-    }
+    // if (data && data.data.description) {
+    //    this.content = data.data.description;
+    // }
 }
 
 }

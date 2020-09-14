@@ -1,0 +1,41 @@
+<app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)" (onAddCahnges)="onAdd()">
+    <ng-template appFor="createdAt" let-row="row">
+         {{ row?.createdAt |customDate}}
+     </ng-template>
+
+    
+ 
+     <ng-template appFor="status" let-row="row">
+         {{ row?.status | titlecase}}
+     </ng-template>
+ 
+
+ 
+     <ng-template appFor="title" let-row="row">
+         <a href="javascript:void(0)" (click)="onDetailsHandler(row?._id)" title="{{ row?.title | titlecase}}">
+             {{ row?.title | titlecase}}
+         </a>
+     </ng-template>
+ 
+
+ 
+   <ng-container>
+ 
+         <ng-template appFor="actions"  let-row="row">
+             <div class="action-icon-cover">
+                 <i class="material-icons icon-delete" (click)="onActionHandler(row._id, 'deleted')" title="Delete">
+                     delete
+                 </i>
+                 <i class="material-icons icon-block" (click)="onActionHandler(row._id, 'blocked')" *ngIf="row?.status === 'active';else templateAction"  title="Block">
+                     blocked</i>
+                 <ng-template #templateAction>
+                     <i class="material-icons icon-unblock" (click)="onActionHandler(row._id, 'active')" title="Unblock">
+                         lock_open
+                     </i>
+                 </ng-template>
+             </div>
+         </ng-template>
+     </ng-container>  
+ </app-table>
+ 
+

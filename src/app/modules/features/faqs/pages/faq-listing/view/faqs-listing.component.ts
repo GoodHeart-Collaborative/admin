@@ -1,22 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ADD_EVENTS, EVENTS } from 'src/app/constant/routes';
-import { EventTableDataSource } from '../../../models/index';
+import { FaqsTableDataSource } from '../../../models';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
-import { EventService } from '../../../service/event.service';
-import { EVENT_CATEGORY } from 'src/app/constant/drawer';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
+import { ContentService } from 'src/app/modules/shared/services/content.service';
+import { Router } from '@angular/router';
+import { ADD_FAQs } from 'src/app/constant/routes';
+import { MatDialog } from '@angular/material';
+import { AddFaqsComponent } from '../../add-faqs/view/add-faqs.component';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 
 @Component({
-  selector: 'app-event-listing',
-  templateUrl: './event-listing.component.html',
-  styleUrls: ['./event-listing.component.scss']
+  selector: 'app-faqs-listing',
+  templateUrl: './faqs-listing.component.html',
+  styleUrls: ['./faqs-listing.component.scss']
 })
-export class EventListingComponent implements OnInit {
-  tableSource = new EventTableDataSource();
-  eventList: any;
+export class FaqsListingComponent implements OnInit {
+
+  tableSource = new FaqsTableDataSource();
+  faqList: any;
   eventData: Table.OptionData = {
     pageIndex: 0,
     pageSize: 10,
@@ -24,13 +26,12 @@ export class EventListingComponent implements OnInit {
     filterData: null,
     sortData: null
   };
-  eventCategory = Object.values(EVENT_CATEGORY) ;
 
   constructor(
-    private $event: EventService,
-    private $router: Router,
+    private $content: ContentService,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
+    private $dailog: MatDialog
   ) {
   }
 
@@ -67,10 +68,9 @@ export class EventListingComponent implements OnInit {
     if (searchText) {
       params['searchTerm'] = searchText;
     }
-    this.$event.queryData(params).then(res => {
-
-      this.eventList = res.data;
-      this.setUpTableResource(this.eventList);
+    this.$content.queryData(params).then(res => {
+      this.faqList = res.data;
+      this.setUpTableResource(this.faqList);
     });
   }
   /**
@@ -88,14 +88,14 @@ export class EventListingComponent implements OnInit {
    * @param action
    */
   onActionHandler(id: string, action: ActionType) {
-    const index = this.eventList.list.findIndex(user => user._id === id);
+    const index = this.faqList.findIndex(user => user._id === id);
     this.$confirmBox.listAction('event', action == 'active' ? 'active' : (action == 'deleted' ? 'delete' : 'block'))
       .subscribe((confirm) => {
         if (confirm) {
-          this.$event.updateStatus(id, action).then((res) => {
-            this.$utility.success(res.message);
-            this.handleActions(action, index);
-          });
+          // this.$content.updateStatus(id, action).then((res) => {
+          //   this.$utility.success(res.message);
+          //   this.handleActions(action, index);
+          // });
         }
       });
   }
@@ -108,8 +108,8 @@ export class EventListingComponent implements OnInit {
   handleActions(action: ActionType, index) {
     switch (action) {
       case 'deleted':
-        this.eventList.list.splice(index, 1);
-        this.eventList.total = this.eventList.total - 1;
+        this.faqList.splice(index, 1);
+        this.faqList.total = this.faqList.total - 1;
         break;
       case 'active':
         this.handleStatus(action, index);
@@ -121,11 +121,11 @@ export class EventListingComponent implements OnInit {
       default:
         break;
     }
-    this.setUpTableResource(this.eventList);
+    this.setUpTableResource(this.faqList);
   }
 
   handleStatus(action: 'blocked' | 'active', index: number) {
-    this.eventList.list = this.eventList.list.map((user, i) => {
+    this.faqList = this.faqList.map((user, i) => {
       if (i === index) {
         user.status = action;
       }
@@ -139,60 +139,21 @@ export class EventListingComponent implements OnInit {
    */
   setUpTableResource(userRecords) {
     const { pageIndex, pageSize } = this.eventData;
-    this.tableSource = new EventTableDataSource({
+    this.tableSource = new FaqsTableDataSource({
       pageIndex,
       pageSize,
-      rows: userRecords.list,
-      total: userRecords.total
+      rows: userRecords.contentList,
+      total: userRecords.totalRecord
     });
   }
 
-  /**
-   * Edit Handler
-   * @param id
-   */
-  oneditHandler(id) {
-    this.$router.navigate([`${EVENTS.fullUrl}`, 'edit', id]);
-  }
-
-  /**
-   * Details Handler
-   * @param id
-   */
-  onDetailsHandler(id: string) {
-    this.$router.navigate([`${EVENTS.fullUrl}`, id, 'details']);
-  }
-
-  /**
-   * Add Handler
-   */
   onAdd() {
-    this.$router.navigate([`${ADD_EVENTS.fullUrl}`]);
+    this.$dailog.open(AddFaqsComponent, {
+      width: '500px',
+    }).afterClosed().subscribe(res => {
+      console.log(res);
+
+    });
   }
-
-
-  /**
-   * user Like Handler
-   * @param id
-   */
-  //  onlikeHandler(id: string, likesCount: number) {
-  //    if (!likesCount) {
-  //      return;
-  //    }
-  //    this.$matDailog.open(LikeActionComponent, {
-  //      width: '500px',
-  //      data: id
-  //    }).afterClosed().subscribe();
-  //  }
-
-  //  onCommentsHandler(id: string, commentCount: number) {
-  //    if (!commentCount) {
-  //      return;
-  //    }
-  //    this.$matDailog.open(CommentsComponent, {
-  //      width: '500px',
-  //      data: id
-  //    }).afterClosed().subscribe();
-  //  }
 
 }
