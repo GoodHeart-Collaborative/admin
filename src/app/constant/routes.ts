@@ -602,10 +602,10 @@ export const CALENDER: IRoute = {
   }
 };
 
-/// FAQs 
+/// FAQs
 
 export const FAQs: IRoute = {
-  path: 'faqs',
+  path: 'faq',
   get fullUrl(): string {
     return `${ADMIN.fullUrl}/${this.path}`;
   }
@@ -628,4 +628,4 @@ export const FAQs_DETAILS: IRoute = {
   get fullUrl(): string {
     return `${REPORTS_AND_ANALYTICS.fullUrl}/${this.path}`;
   }
-};
+}

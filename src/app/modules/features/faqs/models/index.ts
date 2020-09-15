@@ -23,6 +23,12 @@ export class FaqsTableDataSource implements Table.Source<Category> {
         templateBy: 'answer'
     },
     {
+      title: 'Added On',
+      id: 'createdAt',
+      sorting: true,
+      templateBy: 'createdAt',
+    },
+    {
         title: 'Action',
         id: 'actions',
         templateBy: 'actions'

@@ -1,7 +1,13 @@
 <app-table [tableSource]="tableSource" (optionChange)="onOptionChange($event)">
 
     <ng-template appFor="createdAt" let-report="row">
-        {{ report?.createdAt |customDate}}
+            {{ report?.createdAt |customDate}}
+    </ng-template>
+
+    <ng-template appFor="reason" let-report="row">
+        <a href="javascript:void(0)" title="{{ (report?.reason | titlecase)}}" class="color-black" >
+           {{ report?.reason | titlecase}} 
+        </a>
     </ng-template>
 
     <ng-template appFor="status" let-report="row">
@@ -24,7 +30,7 @@
         {{ report?.userData?.email }}
     </ng-template>
 
-    <ng-template appFor="reason" let-report="row">
+    <ng-template appFor="description" let-report="row">
         <a href="javascript:void(0)" title="{{ (report?.description | titlecase)}}" (click)="onPostDetails(report?.forumsData?._id,report?.forumsData?.userType )">
             {{ (report?.forumsData?.description | titlecase)}}
         </a>    

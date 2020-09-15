@@ -8,7 +8,12 @@
         {{ report?.userData?.status | titlecase}}
     </ng-template>
 
-  
+    <ng-template appFor="reason" let-report="row">
+        <a href="javascript:void(0)" title="{{(report?.reason | titlecase)}}" class="color-black" >
+           {{ report?.reason | titlecase}} 
+        </a>
+    </ng-template>
+
     <ng-template appFor="profilePicUrl" let-report="row" >
         <div (click)="onImageClick(report?.userData?.profilePicUrl[0], 1)" class="table-cell-image-cover">
             <img [src]="(report?.userData?.profilePicUrl[0] )|customImage:'IMAGE_PLACEHOLDER'|async"  alt="category-image" title="Click to see the image">
@@ -17,7 +22,7 @@
 
     <ng-template appFor="name" let-report="row">
         <a href="javascript:void(0)" (click)="onUserDetails(report?.userData?._id)">
-        {{ (report?.userData?.firstName | titlecase) }}  {{ (report?.userData?.lastName | titlecase ) || ''}}
+          {{ (report?.userData?.firstName | titlecase) }}  {{ (report?.userData?.lastName | titlecase ) || ''}}
         </a>
     </ng-template>
 
@@ -25,10 +30,10 @@
         {{ report?.userData?.email }}
     </ng-template>
 
-    <ng-template appFor="reason" let-report="row">
+    <ng-template appFor="description" let-report="row">
         <a href="javascript:void(0)" title="{{ (report?.description | titlecase)}}" (click)="onPostDetails(report?.expertPostData?._id)">
            {{ (report?.expertPostData?.description | titlecase)}}
         </a>    
-  </ng-template>
+    </ng-template>
 
 </app-table>
