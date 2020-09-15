@@ -3,17 +3,13 @@
         <div class="section-1">
             <div class="left-portion">
                 <div class="event-cover-photo">
-    
+
                     <img [src]="eventDetails?.imageUrl | customImage:'USERS'|async">
                 </div>
                 <div class="event-about">
                     <h4 class="event-title">{{eventDetails?.title}}</h4>
-                    <p>{{eventDetails?.description}}
+                    <p class="paraText">{{eventDetails?.description}}
                     </p>
-                </div>
-                <div class="btn-row">
-                    <button class="btn btn-simple" mat-stroked-button type="button" *ngIf="eventDetails?.status == 'active'" (click)="onActionHandler(eventDetails?._id, 'blocked')"> Reject </button>
-                    <button class="btn btn-primary" mat-stroked-button type="button" *ngIf="eventDetails?.status == 'blocked'" (click)="onActionHandler(eventDetails?._id, 'active')">Accept </button>
                 </div>
             </div>
             <div class="right-portion">
@@ -56,6 +52,14 @@
                                 <span class="material-icons heart-icon">favorite</span>
                                 <a href="javascript:void();">{{eventDetails?.interestCount || 0}}</a>
                             </p>
+                        </div>
+                        <div class="col-md-12 btn-row">
+                            <button class="btn btn-simple" mat-stroked-button type="button"
+                                *ngIf="eventDetails?.status == 'active'"
+                                (click)="onActionHandler(eventDetails?._id, 'blocked')"> Reject </button>
+                            <button class="btn btn-primary" mat-stroked-button type="button"
+                                *ngIf="eventDetails?.status == 'blocked'"
+                                (click)="onActionHandler(eventDetails?._id, 'active')">Accept </button>
                         </div>
                     </div>
                 </div>
