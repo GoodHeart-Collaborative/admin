@@ -39,16 +39,16 @@ export class ReportTableDataSource implements Table.Source<User> {
     // },
     {
       title: 'Post',
+      id: 'description',
+      sorting: false,
+      templateBy: 'description',
+    },
+    {
+      title: 'Report Message',
       id: 'reason',
       sorting: false,
       templateBy: 'reason',
     },
-    // {
-    //   title: 'Reason',
-    //   id: 'reason',
-    //   sorting: false,
-    //   templateBy: 'reason',
-    // },
  
     {
       title: 'Added On',

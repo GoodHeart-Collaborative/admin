@@ -66,7 +66,7 @@ export class FaqsListingComponent implements OnInit {
       params['sortBy'] = sortData.sortBy;
     }
     if (searchText) {
-      params['searchTerm'] = searchText;
+      params['searchKey'] = searchText;
     }
     this.$content.queryData(params).then(res => {
       this.faqList = res.data;

@@ -44,7 +44,7 @@
         </ng-template>
 
         <ng-template appFor="reportCount" let-row="row">
-            <a   (click)="onReportProblem(row?._id, row?.reportCount)" [ngClass]="{'color-black': !row.reportCount , 'erroneous': row.reportCount <= 10}">
+            <a   (click)="onReportProblem(row?.postId, row?.reportCount)" [ngClass]="{'color-black': !row.reportCount , 'erroneous': row.reportCount <= 10}">
                 {{ row?.reportCount || 0}}
             </a>
         </ng-template>
