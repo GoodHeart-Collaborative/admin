@@ -68,7 +68,7 @@
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Event Location</mat-label>
-                                <input matInput placeholder="Location" formControlName="address" appGooglePlaces
+                                <input matInput placeholder="Location" formControlName="address"
                                     (onSelect)="selectLocation($event)" autocomplete="off">
                                 <mat-error>{{form('address') |validate:'Event Location' }}</mat-error>
 
