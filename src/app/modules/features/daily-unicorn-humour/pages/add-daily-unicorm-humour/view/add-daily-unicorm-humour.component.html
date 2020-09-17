@@ -9,9 +9,9 @@
 
                     <mat-form-field appearance="outline">
                         <mat-label>Title</mat-label>
-                        <input matInput placeholder="Title" formControlName="description" #input [maxlength]="titleMaxLength" appWhiteSpace>
+                        <input matInput placeholder="Title" formControlName="title" #input [maxlength]="titleMaxLength" appWhiteSpace>
                         <mat-hint>{{input.value.trim().length}}/{{titleMaxLength}}</mat-hint>
-                        <mat-error>{{form('description') |validate:'Title' }}</mat-error>
+                        <mat-error>{{form('title') |validate:'Title' }}</mat-error>
                     </mat-form-field>
 
 

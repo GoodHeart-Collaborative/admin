@@ -40,7 +40,7 @@ export class AddDailyUnicormHumourComponent implements OnInit {
     this.today = new Date(new Date(new Date().setHours(0, 0, 0)).setDate(new Date().getDate() + 1));
     if ($router.snapshot.data.dailyData && $router.snapshot.data.dailyData.data) {
       this.unicornDetails = $router.snapshot.data.dailyData.data;
-      $breadcrumb.replace(this.unicornDetails._id, this.unicornDetails.description);
+      $breadcrumb.replace(this.unicornDetails._id, this.unicornDetails.title);
     }
     this.getProfileDetail();
   }
@@ -63,7 +63,7 @@ export class AddDailyUnicormHumourComponent implements OnInit {
   createForm() {
     this.unicornForm = this.$formBuilder.group(
       {
-        description: ['', [Validators.required, Validators.maxLength(this.titleMaxLength)]],
+        title: ['', [Validators.required, Validators.maxLength(this.titleMaxLength)]],
         isPostLater: [false],
         type: HOME_TYPE.UNICRON,
         mediaType: MEDIA_TYPE.IMAGE,
@@ -214,7 +214,7 @@ export class AddDailyUnicormHumourComponent implements OnInit {
 
 
   /**
-   * @description Getting Admin Profile Detail
+   * @title Getting Admin Profile Detail
    */
   getProfileDetail() {
     this.$editProfileService.getProfileDetail()
