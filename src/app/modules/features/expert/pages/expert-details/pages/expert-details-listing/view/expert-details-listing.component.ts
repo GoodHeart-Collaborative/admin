@@ -95,7 +95,6 @@ export class ExpertDetailsListingComponent implements OnInit, OnChanges {
   }
 
   setUpTableResource(record) {
-    console.log(record);
     const { pageIndex, pageSize } = this.eventData;
     this.tableSource = new ExpertDetailsTableDataSource({
       pageIndex,
@@ -141,7 +140,6 @@ export class ExpertDetailsListingComponent implements OnInit, OnChanges {
   }
 
   oneditHandler(expertId: string, id: string) {
-    console.log(expertId, 'shama');
     this.$router.navigate([`admin/expert/${expertId}/${id}`, 'edit']);
   }
 

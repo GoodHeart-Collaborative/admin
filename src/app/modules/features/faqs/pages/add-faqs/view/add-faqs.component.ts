@@ -72,12 +72,9 @@ export class AddFaqsComponent implements OnInit {
   }
 
   faqsDetails() {
-    console.log(this.data);
     this.$service.onFaqDetailsHandler(this.data).then(res => {
       if (res) {
         this.details = res.data;
-        console.log(this.details);
-
         this.faqForm.patchValue(this.details);
       }
     });

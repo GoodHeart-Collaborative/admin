@@ -28,7 +28,7 @@ export class QuillEditorComponent implements OnInit, AfterViewInit , OnChanges {
     }
 
     ngOnChanges() {
-        if (this.contentForm) {
+        if (this.contentForm) {            
             this.contentForm.controls['content'].setValue(this.content);
         }
     }

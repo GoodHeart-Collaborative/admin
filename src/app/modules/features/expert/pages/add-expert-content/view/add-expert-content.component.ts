@@ -52,7 +52,6 @@ export class AddExpertContentComponent implements OnInit {
           this.expertData = res.data[0];
           $breadcrumb.replace(this.expertContentId, this.expertData.name);
           this.categoryData = this.expertData.categoryData;
-          console.log(this.categoryData);
         }
       });
     }
@@ -102,8 +101,6 @@ export class AddExpertContentComponent implements OnInit {
   }
 
   setimageFile(event) {
-    console.log(event);
-
     if (!event) {
       this.imageFile = null;
       this.profilePicURL = '';
@@ -180,7 +177,6 @@ export class AddExpertContentComponent implements OnInit {
       return;
     }
     if (this.details && this.details._id) {
-      console.log(body);
       delete body.expertId;
       this.$service.editContent(this.details._id, body).then(
         data => {
@@ -211,9 +207,7 @@ export class AddExpertContentComponent implements OnInit {
   }
 
   onSelectContent(event: MatSelectChange) {
-    console.log(this.imageFile, event.value);
     if (!this.details && this.imageFile && !this.allowedTypes.includes(event.value)) {
-
       this.imageFile = null;
       this.profilePicURL = '';
       this.thumbnailUrl = '';

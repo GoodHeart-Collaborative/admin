@@ -44,7 +44,6 @@ export class ContentService {
   onGetContentDetails(type) {
     return fetch(`http://womencomdevapi.appskeeper.com/v1/content/view?type=${type}`)
       .then(response => {
-        console.log(response.clone().text());
         return response.clone().text();
       });
   }

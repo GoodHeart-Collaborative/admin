@@ -35,9 +35,7 @@ export class AdminProfileComponent implements OnInit {
    this.$dataService.getProfileDetail()
       .subscribe(
         (response: any) => {
-          this.profileDetail = response.data;
-          console.log(this.profileDetail);
-          
+          this.profileDetail = response.data;          
         }, err => { }
       );
     }

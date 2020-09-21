@@ -192,8 +192,6 @@ export class AddDailyUnicormHumourComponent implements OnInit {
       );
       return;
     }
-    console.log(body);
-
     this.$daily.addCategory(body).then(
       data => {
         this.unicornForm.enable();

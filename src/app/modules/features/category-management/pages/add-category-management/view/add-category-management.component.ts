@@ -28,7 +28,6 @@ export class AddCategoryManagementComponent implements OnInit {
     private $breadcrumb: BreadcrumbService,
     private $utility: UtilityService
   ) {
-    console.log($activateRoute.snapshot.params.id);
     this.createForm();
     if ($activateRoute.snapshot.params && $activateRoute.snapshot.params.id) {
       this.categoryId = $activateRoute.snapshot.params.id;
@@ -43,7 +42,6 @@ export class AddCategoryManagementComponent implements OnInit {
     this.$category.onCategoryDetailsHandler(this.categoryId).then(res => {
       if (res && res.data) {
         const categoryDetails = res.data;
-        console.log(categoryDetails);
         this.$breadcrumb.replace(this.categoryId, categoryDetails['title']);
         this.categoryForm.patchValue({
           title: categoryDetails['title']

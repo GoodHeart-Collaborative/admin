@@ -101,7 +101,6 @@ export class FeedManagementComponent implements OnInit {
    */
   onOptionChange(event) {
     this.eventData = event;
-    console.log(this.eventData);
     this.updateList(this.index);
   }
 

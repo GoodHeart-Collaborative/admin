@@ -23,7 +23,6 @@ export class DailyUnicornHumourDetailsComponent implements OnInit {
     $router: ActivatedRoute,
     $breadcrumb: BreadcrumbService) {
       this.smilesDetails = $router.snapshot.data.smileData.data;
-      console.log(this.smilesDetails);
       $breadcrumb.replace(this.smilesDetails._id, this.smilesDetails.description);
   }
 

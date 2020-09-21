@@ -56,7 +56,6 @@ export class FileUploadService {
             });
         } catch (err) {
             this._loaderService.loader.next(false);
-            console.error(err);
         }
     }
 
@@ -74,7 +73,6 @@ export class FileUploadService {
         // ctx.drawImage(video, 0, 0, w, h);
         // let dataURI = canvas.toDataURL('image/jpeg');
         const abc = await this.generateThumbnail(blob)
-        // console.log(abc);
         // let a = 
         let boj = {
             // canvas: canvas,
@@ -104,8 +102,6 @@ export class FileUploadService {
                 canvas.width = video.videoWidth;
                 canvas.height = video.videoHeight;
                 context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
-                // console.log(canvas.toDataURL());
-
                 resolve(canvas.toDataURL());
             });
             if (videoFile.type) {

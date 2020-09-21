@@ -112,7 +112,6 @@ export class UserDetailComponent implements OnInit {
    */
   onTabChange(event: MatTabChangeEvent) {
     this.index = event.index;
-    console.log(this.index);
     this.updateList(this.index);
   }
 }

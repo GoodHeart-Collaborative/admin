@@ -26,9 +26,7 @@ export class GratitudeJournalDetailComponent implements OnInit {
     $global: GlobalService
   ) {
     $router.queryParams.subscribe(({ userId }) => {
-      console.log(userId);
       this.userID = $global.decodeData(userId);
-      console.log($router.snapshot.params.id);
       $breadcrumb.replace($router.snapshot.params.id, $router.snapshot.params.id, `/admin/users/${this.userID}/details`)
     });
     this.gratitudeDetails = $router.snapshot.data.gratitudeData;
@@ -62,7 +60,6 @@ export class GratitudeJournalDetailComponent implements OnInit {
 
   async ngOnInit() {
     // this.comments = await this.getCommentHandler(this.gratitudeDetails._id);
-    // console.log(this.comments);
     // this.comments = this.comments.map(comment => {
     //   comment['replies'] = [];
     //   comment['showReply'] = false;

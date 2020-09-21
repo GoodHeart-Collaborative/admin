@@ -83,7 +83,6 @@ export class EditProfileComponent implements OnInit,OnDestroy {
    * @description First upload the profile picture then edit the profile
    */
   async editProfile() {
-    console.log(this.editProfileForm);
     if (this.editProfileForm.invalid) {
        return;
     }

@@ -106,7 +106,6 @@ export class UserGratitudeJournalComponent implements OnInit, OnChanges {
    * @param userRecords
    */
   setUpTableResource(userDetails: any) {
-    console.log(userDetails);
     const { pageIndex, pageSize } = this.eventData;
     this.tableSource = new GratitudeTableDataSource({
       pageIndex,

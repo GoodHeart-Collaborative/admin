@@ -47,7 +47,6 @@ export class AddExpertComponent implements OnInit {
     }
   }
   patchValueInForm() {
-    console.log(this.details, this.details.profilePicUrl);
     if (this.details) {
 
       this.expertForm.patchValue(this.details);

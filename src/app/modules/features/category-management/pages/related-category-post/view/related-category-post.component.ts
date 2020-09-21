@@ -72,7 +72,6 @@ export class RelatedCategoryPostComponent implements OnInit {
       params['searchTerm'] = searchText;
     }
     if (sortData) {
-      console.log(sortData);
       params['sortOrder'] = sortData.sortOrder;
       params['sortBy'] = sortData.sortBy;
     }

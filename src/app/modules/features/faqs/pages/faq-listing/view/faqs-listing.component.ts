@@ -136,7 +136,6 @@ export class FaqsListingComponent implements OnInit {
     this.$dailog.open(AddFaqsComponent, {
       width: '500px',
     }).afterClosed().subscribe(res => {
-      console.log(res);
       if (res) {
         this.updateList();
       }
@@ -148,7 +147,6 @@ export class FaqsListingComponent implements OnInit {
       width: '500px',
       data: id
     }).afterClosed().subscribe(res => {
-      console.log(res);
       if (res) {
         this.updateList();
       }

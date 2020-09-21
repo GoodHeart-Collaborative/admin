@@ -57,7 +57,6 @@ export class FileUploadService {
           .on("httpUploadProgress", progress => {});
       });
     } catch (err) {
-      console.error(err.message);
     }
   }
   async uploadMultipleFiles(files) {

@@ -103,8 +103,6 @@ export class AddAdviceComponent implements OnInit {
       return;
     }
     this.imageFile = event;
-    console.log(event);
-
   }
 
   async onSubmit() {
@@ -182,8 +180,6 @@ export class AddAdviceComponent implements OnInit {
       );
       return;
     }
-    console.log(body);
-
     this.$daily.addCategory(body).then(
       data => {
         this.adviceForm.enable();

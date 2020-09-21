@@ -19,7 +19,7 @@ export class ContentManagementComponent implements OnInit {
         // { tabName: 'Contact Us' },
         { tabName: 'About Us' },
     ];
-    selectedTab: any;
+    selectedTab: any = 0;
     data: any;
 
     constructor(
@@ -68,26 +68,21 @@ export class ContentManagementComponent implements OnInit {
             type: (+this.selectedTab) < 2 ? (+this.selectedTab) + 1 : (+this.selectedTab) + 3
             // type: (+this.selectedTab) + 1
         };
-        // debugger
         this.data = await this.$http.onGetContentDetails(params.type);
-        console.log(this.data);
         if (this.data) {
-         this.content = this.data;
+            this.content = this.data;
         }
     }
 
-    onAddContent(event) {
-        console.log(event);
-        const data = {
-            title: this.data.data.title,
-            description: event.content,
-            type: this.data.data.type
-        };
-        this.$http.onAddContentHnadler(data).then(res => {
-            console.log(res);
-
-        });
-    }
+    // onAddContent(event) {
+    //     const data = {
+    //         title: this.data.data.title,
+    //         description: event.content,
+    //         type: this.data.data.type
+    //     };
+    //     this.$http.onAddContentHnadler(data).then(res => {
+    //     });
+    // }
 
     onEditContent(event) {
         if (!this.getDescription(event.content)) {
@@ -95,13 +90,12 @@ export class ContentManagementComponent implements OnInit {
             return;
         }
         const data = {
-            title: this.data.data.title,
+            // title: this.data.data.title,
             description: event.content,
         };
-        this.$http.onEditContentHnadler(this.data.data._id, data).then(res => {
+        this.$http.onEditContentHnadler((+this.selectedTab) < 2 ? (+this.selectedTab) + 1 : (+this.selectedTab) + 3, data).then(res => {
             this.$popUp.success(res.message);
         }).catch((err) => {
-            console.log(err);
 
         });
     }
@@ -116,11 +110,7 @@ export class ContentManagementComponent implements OnInit {
 
     getDescription(htmlText) {
         if (htmlText) {
-
-            // console.log(htmlText, (new DOMParser).parseFromString(htmlText, "text/html").documentElement.textContent.trim());
             return (new DOMParser).parseFromString(htmlText, "text/html").documentElement.textContent.trim();
         }
-        // return (new DOMParser).parseFromString(htmlText, "text/html").documentElement.textContent.trim()
-
     }
 }

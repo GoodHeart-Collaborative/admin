@@ -164,7 +164,6 @@ export class AddEventComponent implements OnInit {
         });
       return;
     }
-    console.log(body);
     this.$service.add(body).then(
       data => {
         this.eventForm.enable();

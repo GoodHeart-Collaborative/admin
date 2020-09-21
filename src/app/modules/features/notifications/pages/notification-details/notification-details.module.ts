@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MatRadioModule } from '@angular/material';
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 import { CustomDatePipeModule } from 'src/app/pipes/custom-date/custom-date-pipe.module';
+import { ViewFullImageModule } from 'src/app/modules/shared/view-full-image/view-full-image.module';
 
 const routes: Routes = [
   {
@@ -21,7 +22,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MatRadioModule,
     CustomImageModule,
-    CustomDatePipeModule
+    CustomDatePipeModule,
+    ViewFullImageModule
   ]
 })
 export class NotificationDetailsModule { }

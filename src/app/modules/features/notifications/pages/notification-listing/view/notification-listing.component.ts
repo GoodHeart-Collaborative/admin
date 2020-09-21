@@ -138,7 +138,6 @@ export class NotificationListingComponent implements OnInit {
    */
   setUpTableResource(userRecords) {
     const { pageIndex, pageSize } = this.eventData;
-    console.log(userRecords);
     this.tableSource = new NotificationTableDataSource({
       pageIndex,
       pageSize,

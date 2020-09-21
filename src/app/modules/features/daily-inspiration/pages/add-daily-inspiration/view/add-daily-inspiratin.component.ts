@@ -100,7 +100,6 @@ export class AddDailyInspiratinComponent implements OnInit {
 
 
   setimageFile(event) {
-    console.log(event);
     if (!event) {
       this.imageFile = null;
       this.profilePicURL = '';
@@ -172,7 +171,6 @@ export class AddDailyInspiratinComponent implements OnInit {
     }
     if (this.isPostLater.value) {
       body.postedAt = new Date(this.inspirationForm.get('postedAt').value).toString();
-      console.log(body.postedAt);
     }
     getTrimmed(body);
     this.inspirationForm.disable();

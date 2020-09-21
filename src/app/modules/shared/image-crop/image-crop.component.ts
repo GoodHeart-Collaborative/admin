@@ -25,11 +25,7 @@ export class ImageCropComponent implements OnInit {
   isCropperOpen: boolean = true;
   fileSizeInvalid: boolean = false;
   msg = "";
-  ngOnInit() {
-console.log(this.imageChangedEvent);
-
-
-  }
+  ngOnInit() { }
 
   // on file upload
   fileChangeEvent(event: any): void {
@@ -57,8 +53,6 @@ console.log(this.imageChangedEvent);
 
   // event on cropping image
   imageCropped(event) {
-    console.log(event);
-
     this.imageDataObj = event;
     this.croppedImage = event.base64;
   }

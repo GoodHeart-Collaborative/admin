@@ -13,8 +13,6 @@ industry = INDUSTRY;
   ngOnInit() {
   }
 
-  ngOnChanges() {
-    console.log(this.data);
-    
+  ngOnChanges() {    
   }
 }

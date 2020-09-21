@@ -24,9 +24,7 @@ export class DailyAdviceDetailsComponent implements OnInit {
     $breadcrumb: BreadcrumbService,
     private $common: CommonService,
     private $matDailog: MatDialog) {
-    this.adviceDetails = $router.snapshot.data.dailyData.data;
-    console.log(this.adviceDetails);
-    
+    this.adviceDetails = $router.snapshot.data.dailyData.data;    
     $breadcrumb.replace(this.adviceDetails._id, this.adviceDetails.title);
   }
 

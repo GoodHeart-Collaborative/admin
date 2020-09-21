@@ -17,13 +17,11 @@ export class AppDateAdapter extends NativeDateAdapter {
             'Dec'
           ];
         if (displayFormat === "input") {
-            // console.log(date.getMonthNames());
             let day: string = date.getDate().toString();
             day = +day < 10 ? "0" + day : day;
             let month: string = (date.getMonth() + 1).toString();
             // month = +month < 10 ? "0" + month : month;
             let year = date.getFullYear();
-            console.log(months[date.getMonth()]);
             // return `${day}/${month}/${year}`;
             return ` ${day} ${months[date.getMonth()]},${year}`;
         }

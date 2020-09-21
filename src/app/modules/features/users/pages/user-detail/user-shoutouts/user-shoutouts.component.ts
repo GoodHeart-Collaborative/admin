@@ -108,7 +108,6 @@ export class UserShoutoutsComponent implements OnInit, OnChanges {
    * @param userRecords
    */
   setUpTableResource(userDetails: any) {
-    console.log(userDetails);
     const { pageIndex, pageSize } = this.eventData;
     this.tableSource = new ShoutoutsTableDataSource({
       pageIndex,
@@ -123,13 +122,10 @@ export class UserShoutoutsComponent implements OnInit, OnChanges {
    * @param id
    */
   onDetailsHandler(id: string, privacy: string) {
-    console.log(id, privacy);
     if (privacy == 'private') {
       return;
     }
-    console.log(this.userId);
     const userId = this.$global.encodeData(this.userId);
-  
     this.$router.navigate([`admin/users/${id}/shoutouts/details`],
       { queryParams: { userId } }
     );

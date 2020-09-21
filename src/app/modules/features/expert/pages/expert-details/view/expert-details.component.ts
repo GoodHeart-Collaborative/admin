@@ -87,7 +87,6 @@ export class ExpertDetailsComponent implements OnInit {
     }
     this.$expert.queryData(params).then(res => {
       this.expertListingData = res.data;
-      console.log(res);
     });
   }
 

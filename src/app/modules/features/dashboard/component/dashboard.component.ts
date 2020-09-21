@@ -76,8 +76,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   userStatisticsHnadler() {
     this.GraphThisYear = Object.values(this.data.userGraphThisYear);
     this.GraphLastYear = Object.values(this.data.userGraphLastYear);
-    this.currentYearUser = this.getPercentage(this.GraphThisYear, this.data.currentYearUserCount);
-    this.lastYearUser = this.getPercentage(this.GraphLastYear, this.data.previousYearUserCount);
+    // this.currentYearUser = this.getPercentage(this.GraphThisYear, this.data.currentYearUserCount);
+    // this.lastYearUser = this.getPercentage(this.GraphLastYear, this.data.previousYearUserCount);
   }
 
   getPercentage(values: number[], amount) {
@@ -131,7 +131,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   //     this.params.page--;
   //     this.memberOfTheDayList();
   //   }
-  //   console.log(this.params);
   // }
 
   // onNextPage() {
@@ -139,6 +138,4 @@ export class DashboardComponent implements OnInit, OnDestroy {
   //     this.params.page++;
   //     this.memberOfTheDayList();
   //   }
-  //   console.log(this.params);
-
   // }

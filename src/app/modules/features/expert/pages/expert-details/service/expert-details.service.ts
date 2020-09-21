@@ -30,7 +30,6 @@ export class ExpertDetailsService {
 export class ExpertDetailsServiceResolve implements Resolve<any>  {
   constructor(private $daily: ExpertDetailsService) { }
   resolve(route: ActivatedRouteSnapshot) {
-    console.log(route.parent.params.id);
     return this.$daily.updateDetails(route.parent.params.id).catch(err => {
       if (err) {
         return null;

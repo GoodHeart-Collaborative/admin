@@ -85,7 +85,6 @@ export class ForumListingComponent implements OnInit {
   }
 
   onActionHandler(id: string, action: ActionType) {
-    console.log(this.forumData);
     const index = this.forumData.findIndex(user => user._id === id);
     this.$confirmBox.listAction('forum', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
       .subscribe((confirm) => {

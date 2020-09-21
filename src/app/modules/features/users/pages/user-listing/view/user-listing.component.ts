@@ -142,7 +142,6 @@ export class UserListingComponent implements OnInit {
   }
 
   handleStatus(action: 'blocked' | 'active', index: number, adminStatus?) {
-    console.log(adminStatus, 'dddd');
     this.userData.data = this.userData.data.map((user, i) => {
       if (i === index) {
         if (action) {

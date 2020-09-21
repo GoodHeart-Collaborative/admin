@@ -26,7 +26,6 @@ export class BreadcrumbComponent {
         // label.replace('%', '')\
         label = label.split('%').join('');
       }
-      // console.log(target, label, label.includes('%'));
       this.$changes.set(target, label);
       const routeStep = this.routeSteps.find((step: RouteStep) => {
         return step.label === target;
@@ -34,7 +33,6 @@ export class BreadcrumbComponent {
 
       if (url) {
         setTimeout(() => {
-          console.log(this.routeSteps);
           const step = this.routeSteps.find((step: RouteStep) => step.label === target);
           if (step) {
 

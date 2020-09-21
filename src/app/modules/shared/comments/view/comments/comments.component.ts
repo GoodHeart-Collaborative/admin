@@ -15,16 +15,12 @@ export class CommentsComponent implements OnInit {
     private $dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private $common: CommonService,
-
   ) {
-    console.log(data);
   }
 
   async ngOnInit() {
     if (this.data) {
-
       this.comments = await this.getCommentHandler(this.data);
-      console.log(this.comments);
       this.comments = this.comments.map(comment => {
         comment['replies'] = [];
         comment['showReply'] = false;
@@ -37,7 +33,6 @@ export class CommentsComponent implements OnInit {
    * user Comment Handler
    */
   async getCommentHandler(id, commentId?) {
-    console.log(id);
     if (id) {
       const params = {
         pageNo: 1,

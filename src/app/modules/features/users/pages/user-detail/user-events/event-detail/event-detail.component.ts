@@ -79,7 +79,6 @@ export class EventDetailComponent implements OnInit {
     };
     this.$event.onGoingAndInterestHnadler(eventData).then(res => {
       if (res) {
-        console.log(res.data['list']);
         this.$matDailog.open(IntrestedListComponent, {
           width: '500px',
           data: res.data['list']

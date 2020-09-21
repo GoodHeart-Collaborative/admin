@@ -88,7 +88,6 @@ export class EventDetailsComponent implements OnInit {
   }
 
   onCopyHandler(el: HTMLDivElement) {
-    console.log(el);
     window.getSelection().selectAllChildren(el);
     document.execCommand('copy');
     window.getSelection().removeAllRanges();

@@ -12,7 +12,6 @@ export class MemberOfTheDayDetailsComponent implements OnInit {
   constructor($router: ActivatedRoute,
               $breadcrumb: BreadcrumbService) {
            this.memberDetails = $router.snapshot.data.dailyData.data;
-           console.log(this.memberDetails);
            $breadcrumb.replace(this.memberDetails.id, this.memberDetails.title);
           }
 

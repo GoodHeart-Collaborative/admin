@@ -74,7 +74,6 @@ export class ExpertListingComponent implements OnInit {
     this.$article.queryData(params).then(res => {
       this.userData = res.data['list'];
       this.total = res.data['total'];
-      // console.log(res.data['list']);
       this.setUpTableResource(this.userData);
     });
   }
@@ -86,7 +85,6 @@ export class ExpertListingComponent implements OnInit {
   }
 
   onActionHandler(id: string, action: ActionType) {
-    console.log(this.userData);
     const index = this.userData.findIndex(user => user._id === id);
     this.$confirmBox.listAction('expert', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
       .subscribe((confirm) => {

@@ -294,15 +294,12 @@ export class TableComponent implements OnInit {
     event.stopPropagation();
   }
   onSearchHandler(value) {
-    // console.log(event);
     // this.isSearchError = false;
     // this.$searchHintType = 'DEFAULT';
     // const target: HTMLInputElement = event.currentTarget as HTMLInputElement;
     // const key = event.code || event.key;
     // if (key === 'Enter') {
     //   const value = target.value.trim();
-    //   console.log(value.length , this.optionEvent.data.searchText);
-
     if (value.length >= 3 || (value.length === 0 && this.optionEvent.data.searchText)) {
       if (value !== this.optionEvent.data.searchText) {
         this.optionEvent = {

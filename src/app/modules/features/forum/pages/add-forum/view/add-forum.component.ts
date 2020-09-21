@@ -63,7 +63,6 @@ export class AddForumComponent implements OnInit {
     };
     this.$category.queryData(params).then(res => {
       this.categoryData = res.data['data'];
-      console.log(res.data['data']);
     });
   }
 

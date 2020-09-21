@@ -49,7 +49,6 @@ export class DailyAdviceFilterComponent implements OnInit {
       const filterData = { ...this.filterForm.value};
       // filterData.fromDate = new Date( filterData.fromDate);
       // filterData.toDate = new Date( filterData.toDate);
-      // console.log(filterData);
       this.dialogRef.close(filterData);
     }
   }
