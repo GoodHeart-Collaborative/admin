@@ -14,10 +14,10 @@
                                           <h3>$ 10k</h3>
                                     </div>
                               </div> -->
-                              <app-line-chart [type]="2"></app-line-chart>
+                              <app-line-chart [type]="2" [monthlyEarning]="data?.monthlyEarning"></app-line-chart>
 
                               <div class="current-balance-content">
-                                    <h3>$ 50,345.00</h3>
+                                    <h3>${{data?.earningYearly}}</h3>
                                     <p>Used balance this billing cycle</p>
                               </div>
 
@@ -28,7 +28,7 @@
                               <h3 style="margin-bottom: 10px;">Total Transaction</h3>
                               <p class="latest-text" style="font-size: 14px;margin-bottom: 0px; color: #777b8b;">This month transaction</p>
                               <div class="graph-cover">
-                                    <app-line-chart [type]="1"></app-line-chart>
+                                    <app-line-chart [type]="1" [subscriptionEarningMonthly]="subscriptionEarningMonthly"></app-line-chart>
                                     <!-- <img src="../../../../../assets/graph1.PNG" alt=""> -->
                               </div>
                         </div>

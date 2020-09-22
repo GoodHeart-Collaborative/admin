@@ -19,10 +19,9 @@ export class LineChartComponent implements OnInit, OnChanges {
   @Input() type = 1;
   @Input() userThisYear;
   @Input() userLastYear;
+  @Input() monthlyEarning;
+  @Input() subscriptionEarningMonthly;
   ngOnInit() {
-    this.initChart();
-    this.initCircleChart();
-    // this.initColumnChart();
     this.initAreaChart();
   }
 
@@ -30,7 +29,13 @@ export class LineChartComponent implements OnInit, OnChanges {
     if (this.userThisYear && this.userLastYear) {
       this.initColumnChart();
     }
-  }
+    if (this.monthlyEarning) {
+      this.initCircleChart();
+    }
+    if (this.subscriptionEarningMonthly) {
+      this.initChart();
+     }
+   }
 
   initChart() {
     let chart = new Chart(
@@ -51,13 +56,27 @@ export class LineChartComponent implements OnInit, OnChanges {
         },
 
         xAxis: {
-          type: 'datetime',
-          tickPixelInterval: 150
+          // type: 'datetime',
+          // tickPixelInterval: 150
+          categories: [
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'May',
+            'Jun',
+            'Jul',
+            'Aug',
+            'Sep',
+            'Oct',
+            'Nov',
+            'Dec'
+          ],
         },
 
         yAxis: {
           title: {
-            text: 'Value'
+            text: 'Transaction'
           },
           plotLines: [{
             value: 0,
@@ -68,7 +87,7 @@ export class LineChartComponent implements OnInit, OnChanges {
 
         tooltip: {
           headerFormat: '<b>{series.name}</b><br/>',
-          pointFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br/>{point.y:.2f}'
+          // pointFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br/>{point.y:.2f}'
         },
 
         legend: {
@@ -80,9 +99,9 @@ export class LineChartComponent implements OnInit, OnChanges {
         },
 
         series: [{
-          name: 'Random data',
+          name: 'Transaction',
           type: 'spline',
-          data: [1, 2, 4, 8, 16, 32, 64, 128, 256, 512],
+          data: this.subscriptionEarningMonthly,
         }]
       }
     )
@@ -103,7 +122,7 @@ export class LineChartComponent implements OnInit, OnChanges {
           borderRadius: 10
         },
         title: {
-          text: `£ ${100}`,
+          text: `£ ${this.monthlyEarning}`,
           align: 'center',
           verticalAlign: 'middle',
           y: 10,
@@ -194,7 +213,6 @@ export class LineChartComponent implements OnInit, OnChanges {
         },
         series: [{
           name: 'This Year',
-          
           data: this.userThisYear,
           type: 'column'
 
@@ -227,7 +245,20 @@ export class LineChartComponent implements OnInit, OnChanges {
         //   text: 'Source: Wikipedia.org'
         // },
         xAxis: {
-          categories: ['1750', '1800', '1850', '1900', '1950', '1999', '2050'],
+          categories: [
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'May',
+            'Jun',
+            'Jul',
+            'Aug',
+            'Sep',
+            'Oct',
+            'Nov',
+            'Dec'
+          ],
           tickmarkPlacement: 'on',
           // title: {
 
@@ -236,7 +267,7 @@ export class LineChartComponent implements OnInit, OnChanges {
         },
         yAxis: {
           title: {
-            text: 'Billions'
+            text: 'Revenue'
           },
 
         },
@@ -256,7 +287,7 @@ export class LineChartComponent implements OnInit, OnChanges {
           }
         },
         series: [{
-          name: 'Asia',
+          name: 'Revenue',
           data: [502, 635, 809, 947, 1402, 3634, 5268],
           type: 'area'
         }]
