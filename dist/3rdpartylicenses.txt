@@ -109,8 +109,6 @@ THE SOFTWARE.
 
 @angular/material/paginator
 
-@angular/material/radio
-
 @angular/material/select
 
 @angular/material/snack-bar

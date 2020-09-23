@@ -12,12 +12,12 @@ const defaultData: Table.Data<Category> = {
 export class NotificationTableDataSource implements Table.Source<Category> {
   label = 'Category Management';
   columns: Table.Column<Category>[] = [
-    {
-      title: 'Image',
-      id: 'profilePicUrl',
-      sorting: false,
-      templateBy: 'profilePicUrl'
-    },
+    // {
+    //   title: 'Image',
+    //   id: 'profilePicUrl',
+    //   sorting: false,
+    //   templateBy: 'profilePicUrl'
+    // },
     {
         title: 'Title',
         id: 'title',

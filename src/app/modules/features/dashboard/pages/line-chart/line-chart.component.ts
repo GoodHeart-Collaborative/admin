@@ -10,6 +10,7 @@ export class LineChartComponent implements OnInit, OnChanges {
   circleChart: Chart;
   columnChart: Chart;
   areaChart: Chart;
+  conversionRatioChart: Chart;
   GraphThisYear = [];
   GraphLastYear = [];
   sumGraphLastYear;
@@ -23,6 +24,7 @@ export class LineChartComponent implements OnInit, OnChanges {
   @Input() subscriptionEarningMonthly;
   ngOnInit() {
     this.initAreaChart();
+    this.initconversionRatioChart();
   }
 
   ngOnChanges() {
@@ -35,6 +37,54 @@ export class LineChartComponent implements OnInit, OnChanges {
     if (this.subscriptionEarningMonthly) {
       this.initChart();
      }
+   }
+
+
+   initconversionRatioChart() {
+  let  chart = new Chart(
+    {
+    chart: {
+        type: 'column',
+        width: 280,
+        height: 200,
+    },
+    title: {
+        text: ''
+    },
+    xAxis: {
+        categories: ['This month conversion ratio']
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Converstion Ratio'
+        }
+    },
+    tooltip: {
+        pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
+        shared: true
+    },
+    plotOptions: {
+        column: {
+            stacking: 'normal'
+        }
+    },
+    series: [
+      {
+      name: 'John',
+      type: 'column',
+      color: 'pink',
+      data: [40]
+  },
+  {
+      name: 'shama',
+      type: 'column',
+      data: [10]
+  }
+]
+   });
+  this.conversionRatioChart = chart;
+
    }
 
   initChart() {
