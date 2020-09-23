@@ -4,7 +4,7 @@
         <form [formGroup]="notificationForm">
             <div class="row-1">
                 <div class="left-portion">
-                    <app-image-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL" [aspectRatio]="4/4"></app-image-upload>
+                    <!-- <app-image-upload (uploadMedia)="setimageFile($event)" [profilePicURL]="profilePicURL" [aspectRatio]="4/4"></app-image-upload> -->
                 </div>
                 
                 <div class="right-portion">
@@ -30,12 +30,12 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12 radio-buttons-wrapper">
+                        <!-- <div class="col-md-12 radio-buttons-wrapper">
                             <h3 class="radio-buttons-heading">Select Platform</h3>
                             <mat-radio-group color="primary" aria-label="Select an option" formControlName="platform" >
                                 <mat-radio-button [value]="item?.value" *ngFor="let item of sentTo">{{item?.viewValue}}</mat-radio-button>
                             </mat-radio-group>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

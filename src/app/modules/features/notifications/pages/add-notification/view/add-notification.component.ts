@@ -34,7 +34,7 @@ export class AddNotificationComponent implements OnInit {
   createForm() {
     this.notificationForm = this.$fb.group({
       title: ['', [Validators.required, Validators.maxLength(this.titleNotificationMaxLimit)]],
-      platform: [],
+      // platform: [],
       message: ['', [Validators.required, Validators.maxLength(this.messageNotificationMaxLimit)]]
     });
   }
@@ -43,14 +43,15 @@ export class AddNotificationComponent implements OnInit {
     return this.notificationForm.controls[name];
   }
 
-  setimageFile(event) {
-    if (!event) {
-      this.imageFile = null;
-      this.profilePicURL = '';
-      return;
-    }
-    this.imageFile = event;
-  }
+  // setimageFile(event) {
+  //   if (!event) {
+  //     this.imageFile = null;
+  //     this.profilePicURL = '';
+  //     return;
+  //   }
+  //   this.imageFile = event;
+  // }
+
   ngOnInit() {
   }
 
@@ -59,15 +60,16 @@ export class AddNotificationComponent implements OnInit {
       this.notificationForm.markAllAsTouched();
       return;
     }
-    if (this.imageFile) {
-      let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
-      this.profilePicURL = data.Location;
-    }
+    // if (this.imageFile) {
+    //   let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
+    //   this.profilePicURL = data.Location;
+    // }
     if (!this.profilePicURL) {
       this.$fileUploadService.showAlert(requiredProfilePic);
       return;
     }
-    let body = { image: this.profilePicURL, ...this.notificationForm.value };
+    // let body = { image: this.profilePicURL, ...this.notificationForm.value };
+    let body = { ...this.notificationForm.value };
 
     this.$service.add(body).then(
       data => {
