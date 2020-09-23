@@ -11,17 +11,18 @@ export class LineChartComponent implements OnInit, OnChanges {
   columnChart: Chart;
   areaChart: Chart;
   conversionRatioChart: Chart;
+  chart: Chart;
   GraphThisYear = [];
   GraphLastYear = [];
   sumGraphLastYear;
 
   constructor() { }
-  chart: Chart;
   @Input() type = 1;
   @Input() userThisYear;
   @Input() userLastYear;
   @Input() monthlyEarning;
   @Input() subscriptionEarningMonthly;
+
   ngOnInit() {
     this.initAreaChart();
     this.initconversionRatioChart();
@@ -36,56 +37,59 @@ export class LineChartComponent implements OnInit, OnChanges {
     }
     if (this.subscriptionEarningMonthly) {
       this.initChart();
-     }
-   }
+      this.initAreaChart();
+    }
 
-
-   initconversionRatioChart() {
-  let  chart = new Chart(
-    {
-    chart: {
-        type: 'column',
-        width: 280,
-        height: 200,
-    },
-    title: {
-        text: ''
-    },
-    xAxis: {
-        categories: ['This month conversion ratio']
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: 'Converstion Ratio'
-        }
-    },
-    tooltip: {
-        pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
-        shared: true
-    },
-    plotOptions: {
-        column: {
-            stacking: 'normal'
-        }
-    },
-    series: [
-      {
-      name: 'John',
-      type: 'column',
-      color: 'pink',
-      data: [40]
-  },
-  {
-      name: 'shama',
-      type: 'column',
-      data: [10]
   }
-]
-   });
-  this.conversionRatioChart = chart;
 
-   }
+
+  initconversionRatioChart() {
+    let chart = new Chart(
+      {
+        chart: {
+          type: 'column',
+          width: 280,
+          height: 215,
+        },
+        title: {
+          text: ''
+        },
+        xAxis: {
+          categories: ['This month conversion ratio']
+        },
+        yAxis: {
+          min: 0,
+          title: {
+            text: 'Converstion Ratio'
+          }
+        },
+        tooltip: {
+          pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
+          shared: true
+        },
+        plotOptions: {
+          column: {
+            stacking: 'normal'
+          }
+        },
+        series: [
+          {
+            name: 'Paid',
+            type: 'column',
+            color: '#FB56B2',
+            data: [40]
+          },
+          {
+            name: 'Free',
+            type: 'column',
+            color: '#2FD3CF',
+            data: [10]
+          }
+        ]
+      });
+    this.conversionRatioChart = chart;
+
+  }
 
   initChart() {
     let chart = new Chart(
@@ -323,7 +327,7 @@ export class LineChartComponent implements OnInit, OnChanges {
         },
         tooltip: {
           split: true,
-          valueSuffix: ' millions'
+          valueSuffix: ''
         },
         plotOptions: {
           area: {
@@ -338,7 +342,8 @@ export class LineChartComponent implements OnInit, OnChanges {
         },
         series: [{
           name: 'Revenue',
-          data: [502, 635, 809, 947, 1402, 3634, 5268],
+          // data: [502, 635 809, 947, 1402, 3634, 5268],
+          data: this.subscriptionEarningMonthly,
           type: 'area'
         }]
       }
