@@ -58,6 +58,9 @@ export class LineChartComponent implements OnInit, OnChanges {
         title: {
           text: ''
         },
+        credits: {
+          enabled: false
+        },
         xAxis: {
           categories: ['This month conversion ratio']
         },
@@ -107,6 +110,9 @@ export class LineChartComponent implements OnInit, OnChanges {
 
         time: {
           useUTC: false
+        },
+        credits: {
+          enabled: false
         },
 
         title: {
@@ -179,6 +185,9 @@ export class LineChartComponent implements OnInit, OnChanges {
           height: 200,
           borderRadius: 10
         },
+        credits: {
+          enabled: false
+        },
         title: {
           text: `£ ${this.monthlyEarning}`,
           align: 'center',
@@ -200,9 +209,7 @@ export class LineChartComponent implements OnInit, OnChanges {
             enableMouseTracking: false
           }
         },
-        credits: {
-          enabled: false
-        },
+     
         tooltip: { pointFormat: '{point.name}: <b>{point.percentage}%</b>', enabled: false },
         series: [<any>{
           type: 'pie',
@@ -224,10 +231,14 @@ export class LineChartComponent implements OnInit, OnChanges {
         chart: {
           type: 'column',
           height: 200,
-          width: 440
+          width: 440,
+          
         },
         title: {
           text: ''
+        },
+        credits: {
+          enabled: false
         },
         // subtitle: {
         //   text: 'Source: WorldClimate.com'
@@ -270,7 +281,7 @@ export class LineChartComponent implements OnInit, OnChanges {
           }
         },
         series: [{
-          name: 'This Year',
+          name: 'Current year',
           data: this.userThisYear,
           type: 'column'
 
@@ -298,6 +309,9 @@ export class LineChartComponent implements OnInit, OnChanges {
         },
         title: {
           text: ''
+        },
+        credits: {
+          enabled: false
         },
         // subtitle: {
         //   text: 'Source: Wikipedia.org'
