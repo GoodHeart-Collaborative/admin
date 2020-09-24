@@ -2,11 +2,6 @@
     <div class="notification-detail-content">
         <div class="detail-ui">
             <div class="row-1">
-                <div class="left-portion">
-                    <!-- <div class="img-cover">
-                        <img [src]="notificationData?.image |customImage:'IMAGE_PLACEHOLDER'|async" alt="User Profile Image" (click)="openProfilePic(notificationData?.image)">
-                    </div> -->
-                </div>
                 <div class="right-portion">
                     <div class="row">
                         <div class="col-md-12">
@@ -25,14 +20,6 @@
                                 {{notificationData?.sentCount || 0}}
                             </p>
                         </div>
-                        <!-- <div class="col-md-12">
-                            <p class="label">Sent To</p>
-                            <div class="radio-buttons-wrapper value">
-                                <mat-radio-group color="primary" aria-label="Select an option"  [value]="notificationData?.platform" >
-                                    <mat-radio-button [value]="item?.value" *ngFor="let item of sentTo" [disabled]="notificationData?.platform">{{item?.viewValue}}</mat-radio-button>
-                                </mat-radio-group>
-                            </div>
-                        </div> -->
                         <div class="col-md-12">
                             <p class="label">Message</p>
                             <p class="value">
