@@ -42,7 +42,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
   GraphLastYear: any;
   currentYearUser: any;
   lastYearUser: any;
-  subscriptionEarningMonthly: unknown[];
+  subscriptionEarningMonthly: any[];
+  freeConversionRatio: any;
+  convesrionRatio: any;
   @HostListener('window:scroll', ['$event'])
   scrollHandler(event) { }
   industry = INDUSTRY;
@@ -78,8 +80,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.GraphThisYear = Object.values(this.data.userGraphThisYear);
     this.GraphLastYear = Object.values(this.data.userGraphLastYear);
     this.subscriptionEarningMonthly = Object.values(this.data.subscriptionEarningMonthly);
-    console.log(this.subscriptionEarningMonthly );
-    
+    const paidConversionRatio = this.data.freePaidConverion[0].price.toFixed(2);
+    const freeConversionRatio = this.data.freePaidConverion[1].price.toFixed(2);
+    this.convesrionRatio  = (paidConversionRatio / freeConversionRatio).toFixed(2);
     // this.currentYearUser = this.getPercentage(this.GraphThisYear, this.data.currentYearUserCount);
     // this.lastYearUser = this.getPercentage(this.GraphLastYear, this.data.previousYearUserCount);
   }

@@ -22,10 +22,11 @@ export class LineChartComponent implements OnInit, OnChanges {
   @Input() userLastYear;
   @Input() monthlyEarning;
   @Input() subscriptionEarningMonthly;
+  @Input() freePaidConverion;
 
   ngOnInit() {
     this.initAreaChart();
-    this.initconversionRatioChart();
+    // this.initconversionRatioChart();
   }
 
   ngOnChanges() {
@@ -34,6 +35,9 @@ export class LineChartComponent implements OnInit, OnChanges {
     }
     if (this.monthlyEarning) {
       this.initCircleChart();
+    }
+    if (this.freePaidConverion) {
+      this.initconversionRatioChart();
     }
     if (this.subscriptionEarningMonthly) {
       this.initChart();
@@ -77,13 +81,13 @@ export class LineChartComponent implements OnInit, OnChanges {
             name: 'Paid',
             type: 'column',
             color: '#FB56B2',
-            data: [40]
+            data: [this.freePaidConverion[1].price]
           },
           {
             name: 'Free',
             type: 'column',
             color: '#2FD3CF',
-            data: [10]
+            data: [this.freePaidConverion[0].price]
           }
         ]
       });

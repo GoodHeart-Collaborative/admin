@@ -92,12 +92,12 @@
                               <h3 style="margin-bottom: 20px;">Conversion Ratio</h3>
                               <div class="graph-cover">
                                     <!-- <img src="../../../../../assets/graph3.PNG" alt=""> -->
-                                    <app-line-chart [type]="5"></app-line-chart>
+                                    <app-line-chart [type]="5" [freePaidConverion]="data?.freePaidConverion"></app-line-chart>
 
                               </div>
                               <div class="conversion-ratio-content">
                                     <p>This month conversion ratio</p>
-                                    <h3>20%</h3>
+                                    <h3>{{convesrionRatio }}%</h3>
                               </div>
                         </div>
                   </div>
