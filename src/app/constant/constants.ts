@@ -14,3 +14,22 @@ export const MY_FORMATS = {
     monthYearA11yLabel: 'MMMM YYYY'
   }
 };
+
+export const USER_SUBSCRIPTION_PLAN = {
+	FREE: {
+		price: 0,
+		value: 1
+	},
+	MONTHLY: {
+		price: 8,
+		value: 2
+	},
+	YEARLY: {
+		price: 78,
+		value: 3
+	},
+	NONE: {
+		price: 0,
+		value: 4
+	}
+}
