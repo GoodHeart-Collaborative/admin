@@ -43,7 +43,7 @@ export class AddAdviceComponent implements OnInit {
     this.today = new Date(new Date(new Date().setHours(0, 0, 0)).setDate(new Date().getDate() + 1));
     if ($router.snapshot.data.dailyData && $router.snapshot.data.dailyData.data) {
       this.adviceDetails = $router.snapshot.data.dailyData.data;
-      $breadcrumb.replace(this.adviceDetails.id, this.adviceDetails.title);
+      $breadcrumb.replace(this.adviceDetails._id, this.adviceDetails.title);
     }
     this.getProfileDetail();
   }
