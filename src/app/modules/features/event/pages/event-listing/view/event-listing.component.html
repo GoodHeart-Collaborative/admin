@@ -48,9 +48,7 @@
                  <i class="material-icons icon-edit" (click)="oneditHandler(row?._id)" title="Edit">
                      edit
                  </i>
-                 <i class="material-icons icon-delete" (click)="onActionHandler(row._id, 'deleted')" title="Delete">
-                     delete
-                 </i>
+              
                  <i class="material-icons icon-block" (click)="onActionHandler(row._id, 'blocked')" *ngIf="row?.status === 'active';else templateAction"  title="Block">
                      blocked</i>
                  <ng-template #templateAction>
@@ -58,6 +56,9 @@
                          lock_open
                      </i>
                  </ng-template>
+                 <i class="material-icons icon-delete" (click)="onActionHandler(row._id, 'deleted')" title="Delete">
+                    delete
+                </i>
              </div>
          </ng-template>
      </ng-container>  
