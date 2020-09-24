@@ -67,7 +67,7 @@ export class AddDailyInspiratinComponent implements OnInit {
                 Validators.minLength(VALIDATION_CRITERIA.titleMinLength)]],
         isPostLater: [false],
         description: ['', [Validators.required, Validators.maxLength(this.descriptionMaxLength),
-          Validators.minLength(VALIDATION_CRITERIA.descriptionMinLength)]],
+          ]],
         type: HOME_TYPE.INSPIRATION,
         mediaType: [1],
         addedBy: ['']
@@ -117,8 +117,9 @@ export class AddDailyInspiratinComponent implements OnInit {
     if (this.inspirationForm.invalid) {
       if (this.inspirationForm.get('postedAt').value &&
         new Date(this.inspirationForm.get('postedAt').value).getTime()
-        < new Date(this.today).getTime()) {
+        < new Date().setHours(23, 59, 59, 999)) {
         this.$utility.error('Invalid date selected');
+        return;
       }
       this.inspirationForm.markAllAsTouched();
       return;

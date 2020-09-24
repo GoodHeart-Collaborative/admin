@@ -13,7 +13,12 @@
     <ng-template appFor="status" let-category="row">
         {{ category?.status | titlecase}}
     </ng-template>
-
+    
+    <ng-template appFor="reportCount" let-row="row">
+        <a  [class.erroneous]="row?.reportCount < 10" (click)="onReportProblem(row?._id, row?.reportCount)" [ngClass]="{'color-black': !row.reportCount , 'erroneous': row.reportCount <= 10}">
+            {{ row?.reportCount || 0}}
+        </a>
+    </ng-template>
     <ng-template appFor="title" let-category="row">
         <a href="javascript:void(0)" (click)="relatedCategoryHandler(category?._id)"
             title="{{ category?.title | titlecase}}">

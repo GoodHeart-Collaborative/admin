@@ -15,7 +15,7 @@ export class ExpertDetailsTableDataSource implements Table.Source<Category> {
     {
       title: 'Topic',
       id: 'topic',
-      sorting: false,
+      sorting: true,
       templateBy: 'topic'
     },
     {
@@ -67,7 +67,7 @@ export class ExpertDetailsTableDataSource implements Table.Source<Category> {
     {
       title: 'Added On',
       id: 'createdAt',
-      sorting: false,
+      sorting: true,
       templateBy: 'createdAt'
   },
 

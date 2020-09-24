@@ -44,6 +44,7 @@ export class AddAdviceComponent implements OnInit {
     if ($router.snapshot.data.dailyData && $router.snapshot.data.dailyData.data) {
       this.adviceDetails = $router.snapshot.data.dailyData.data;
       $breadcrumb.replace(this.adviceDetails._id, this.adviceDetails.title);
+      // this.today = this.adviceDetails && this.adviceDetails.postedAt 
     }
     this.getProfileDetail();
   }
@@ -88,7 +89,6 @@ export class AddAdviceComponent implements OnInit {
        }
       this.adviceForm.patchValue(this.adviceDetails);
       if (this.adviceDetails && this.adviceDetails.postedAt && this.adviceDetails.isPostLater) {
-
         this.adviceForm.get('postedAt').patchValue(new Date(this.adviceDetails.postedAt));
       }
     }
@@ -107,14 +107,21 @@ export class AddAdviceComponent implements OnInit {
 
   async onSubmit() {
     if (this.adviceForm.invalid) {
-      if (this.adviceForm.get('postedAt').value &&
-        new Date(this.adviceForm.get('postedAt').value).getTime()
-        < new Date(this.today).getTime()) {
-        this.$utility.error('Invalid date selected');
-      }
       this.adviceForm.markAllAsTouched();
       return;
     }
+    if (!this.adviceDetails && this.adviceForm.get('postedAt').value &&
+    new Date(this.adviceForm.get('postedAt').value).getTime()
+    < new Date(23, 59, 59, 999).getTime()) {
+    this.$utility.error('Invalid date selected');
+    return;
+  }
+  //   if (this.adviceDetails && this.adviceForm.get('postedAt').value &&
+  //   new Date(this.adviceForm.get('postedAt').value).getTime()
+  //   < new Date(this.today).getTime()) {
+  //   this.$utility.error('Invalid date selected');
+  //   return;
+  // }
     const body = { ...this.adviceForm.value };
     if (this.profileDetail) {
         body.addedBy = this.profileDetail.userId;

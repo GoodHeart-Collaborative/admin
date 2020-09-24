@@ -168,4 +168,5 @@ export class CategoryManagementListingComponent implements OnInit {
     }).afterClosed().subscribe();
   }
 
+
 }

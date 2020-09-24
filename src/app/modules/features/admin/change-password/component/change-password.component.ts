@@ -68,6 +68,7 @@ export class ChangePasswordComponent implements OnInit {
     this.onCloseHandler();
     this.$utility.success(res.message);
     }, err => {
+      // this.$dialogRef
       this.changePasswordForm.enable();
     });
   }

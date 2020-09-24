@@ -54,6 +54,7 @@ export class ValidationErrorPipe implements PipeTransform {
         name
       )} can not be less than minimum ${toTitleCase(name)}`;
     }
+    
     if (control.hasError('matchPassword')) {
       return VALIDATION_MESSAGES[name]['matchPassword'] || '';
     }

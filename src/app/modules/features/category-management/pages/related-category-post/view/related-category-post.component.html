@@ -27,10 +27,15 @@
             {{( category?.topic || '-') | titlecase }}
     </ng-template>
 
+    <ng-template appFor="contentType" let-category="row">
+            {{( category?.contentType ) | titlecase }}
+    </ng-template>
+
 
     <ng-template appFor="profilePicUrl" let-category="row">
         <div class="table-cell-image-cover" (click)="onImageClick(category?.mediaUrl, category?.mediaType)">
             <img [src]="(category?.mediaUrl )|customImage:'IMAGE_PLACEHOLDER'|async" *ngIf="category?.mediaType == 1" alt="category-image" title="Click to see the image">
+            <!-- <img [src]="(category?.thumbnailUrl )" *ngIf="category?.mediaType == 2" alt="category-image" title="Click to see the video"> -->
             <span class="material-icons" *ngIf="category?.mediaType == 2" title="Click to see the video">play_circle_filled</span>
         </div>
     </ng-template>

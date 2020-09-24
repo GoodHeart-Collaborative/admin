@@ -89,7 +89,7 @@ export class FaqsListingComponent implements OnInit {
    */
   onActionHandler(id: string, action: ActionType) {
     const index = this.faqList.contentList.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('faq', (action == 'deleted' ? 'delete' : ''))
+    this.$confirmBox.listAction('FAQ', (action == 'deleted' ? 'delete' : ''))
       .subscribe((confirm) => {
         if (confirm) {
           this.$content.onDeleteFaqHnadler(id).then((res) => {

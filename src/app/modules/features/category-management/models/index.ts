@@ -37,7 +37,7 @@ export class CategoryTableDataSource implements Table.Source<Category> {
       templateBy: 'createdAt',
     },
     {
-        title: 'Total Post',
+        title: 'Total Expert Post',
         id: 'post',
         sorting: false,
         resolve: (row: any) => row['totalPost'] || '0',

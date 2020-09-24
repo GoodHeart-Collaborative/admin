@@ -32,7 +32,7 @@ export class AddExpertContentComponent implements OnInit {
   allowedTypes: number[];
   topicMaxLength = VALIDATION_CRITERIA.topicMaxLength;
   descriptionMaxLength = VALIDATION_CRITERIA.descriptionMaxLength;
-  reset = 0
+  reset = 0;
   constructor(
     private $fb: FormBuilder,
     $activatedRoute: ActivatedRoute,
@@ -46,6 +46,7 @@ export class AddExpertContentComponent implements OnInit {
     if ($activatedRoute.snapshot.parent &&
       $activatedRoute.snapshot.parent.parent.params &&
       $activatedRoute.snapshot.parent.parent.params.id) {
+
       this.expertContentId = $activatedRoute.snapshot.parent.parent.params.id;
       this.$service.updateDetails(this.expertContentId).then(res => {
         if (res && res.data && res.data[0]) {
@@ -57,6 +58,7 @@ export class AddExpertContentComponent implements OnInit {
     }
     this.createForm();
     if ($activatedRoute.snapshot && $activatedRoute.snapshot.params.id) {
+
       $expertPostService.updateDetails($activatedRoute.snapshot.params.id).then(res => {
         if (res && res.data && res.data[0]) {
           this.details = res.data[0];
@@ -82,9 +84,9 @@ export class AddExpertContentComponent implements OnInit {
   createForm() {
     this.expertContentForm = this.$fb.group({
       expertId: [this.expertContentId],
-      categoryId: [],
+      categoryId: ['', Validators.required],
       price: [0, [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.priceMaxLength)]],
-      contentId: [null , Validators.required],
+      contentId: [null, Validators.required],
       mediaType: [],
       description: ['', [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.descriptionMaxLength)]],
       privacy: ['', [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.topicMaxLength)]],

@@ -38,6 +38,13 @@ export class RelatedCategoryTableDataSource implements Table.Source<Category> {
         resolve: (row: any) => row['description'] || '-',
     },
     {
+        title: 'Content Type',
+        id: 'contentType',
+        sorting: false,
+        templateBy: 'contentType'
+        // resolve: (row: any) => row['contentType'] || '-',
+    },
+    {
       title: 'Total Likes',
       id: 'likeCount',
       sorting: false,
@@ -50,6 +57,12 @@ export class RelatedCategoryTableDataSource implements Table.Source<Category> {
        sorting: false,
        templateBy: 'commentCount'
      },
+    // {
+    //    title: 'Report Count',
+    //    id: 'reportCount',
+    //    sorting: false,
+    //    templateBy: 'reportCount'
+    //  },
 
      {
       title: 'Added On',

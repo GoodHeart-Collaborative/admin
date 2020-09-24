@@ -24,7 +24,7 @@
                   video tag.</video>
             </div>
         </div>
-        <div class="row-2" *ngIf="dailyInspirationDetails?.likeCount">
+        <div class="row-2" >
             <div class="like-cover"
                 (click)="likeHandler(dailyInspirationDetails._id, dailyInspirationDetails?.likeCount)"><span
                     class="material-icons">thumb_up</span>
@@ -33,9 +33,9 @@
             <div class="like-cover"><span class="material-icons">comment</span>
                 <p>{{dailyInspirationDetails?.commentCount}}</p>
             </div>
-            <div class="like-cover" (click)="onReportProblem(dailyInspirationDetails?._id, dailyInspirationDetails?.reportCount)"><span class="material-icons">report</span>
+            <!-- <div class="like-cover" (click)="onReportProblem(dailyInspirationDetails?._id, dailyInspirationDetails?.reportCount)"><span class="material-icons">report</span>
                 <p>Report</p>
-            </div>
+            </div> -->
         </div>
         <app-comments-show [commentId]="dailyInspirationDetails?._id"></app-comments-show>
 

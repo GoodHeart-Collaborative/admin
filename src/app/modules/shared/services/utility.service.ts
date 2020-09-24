@@ -1,5 +1,5 @@
 import { Injectable, Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import {
   POPUP_MESSAGES,
@@ -13,9 +13,11 @@ import { PopupComponent } from '../popup/components/popup.component';
 
 @Injectable()
 export class UtilityService {
+  dialogRef;
   constructor(
     private dialog: MatDialog,
-    private $snackBar: MatSnackBar) { }
+    private $snackBar: MatSnackBar,
+    private $matDailog: MatDialogRef<ConfirmationModalComponent>) { }
   clearStorage() {
     localStorage.removeItem(environment.tokenKey);
   }
@@ -48,14 +50,18 @@ export class UtilityService {
     };
     this.openDialog(data).subscribe((success) => {
       this.dialog.closeAll();
+      // this.$matDailog.close();
     });
   }
   openDialog(data: IPopupData): Observable<IPopupResponse> {
-    const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+    // if (this.dialogRef) {
+    //   return;
+    // }
+    this.dialogRef = this.dialog.open(ConfirmationModalComponent, {
       width: '500px',
       data: data,
     });
-    return dialogRef.afterClosed();
+    return this.dialogRef.afterClosed();
   }
 
   parseDateToTimeStamp(obj: any) {

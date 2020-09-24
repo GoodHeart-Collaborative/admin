@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MatButtonModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ValidationErrorPipeModule } from 'src/app/pipes/validation-error/validation-error-pipe.module';
+import { WhiteSpaceModule } from 'src/app/modules/shared/white-space/white-space.module';
 
 
 
@@ -18,7 +19,8 @@ import { ValidationErrorPipeModule } from 'src/app/pipes/validation-error/valida
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
-    ValidationErrorPipeModule
+    ValidationErrorPipeModule,
+    WhiteSpaceModule
   ],
   entryComponents: [AddFaqsComponent]
 })
