@@ -12,7 +12,7 @@
             <input matInput formControlName="title" placeholder="Enter Category" [maxlength]="titleMaxLength"
               appWhiteSpace #name>
               <mat-hint>{{name.value.trim().length}}/{{titleMaxLength}}</mat-hint>
-            <mat-error>{{title |validate:'Title'}}</mat-error>
+            <mat-error>{{title |validate:'Category name'}}</mat-error>
           </mat-form-field>
         </div>
       </div>
