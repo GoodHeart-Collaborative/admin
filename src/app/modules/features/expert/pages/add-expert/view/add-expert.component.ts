@@ -93,7 +93,7 @@ export class AddExpertComponent implements OnInit {
       limit: 100,
     };
     this.$category.queryData(params).then(res => {
-      this.categoryData = res.data['data'];
+      this.categoryData = res.data['data'].filter(element => element.status != 'blocked' );
     });
   }
 

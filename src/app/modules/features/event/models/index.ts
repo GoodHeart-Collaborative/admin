@@ -13,14 +13,14 @@ export class EventTableDataSource implements Table.Source<Category> {
   label = 'Category Management';
   columns: Table.Column<Category>[] = [
     {
-        title: 'Title',
+        title: 'Event Title',
         id: 'title',
         sorting: true,
         templateBy: 'title'
         // resolve: (row: any) => row['title'] || '-',
     },
     {
-        title: 'Description',
+        title: 'Event Description',
         id: 'description',
         sorting: false,
         templateBy: 'description'
@@ -34,7 +34,7 @@ export class EventTableDataSource implements Table.Source<Category> {
         // resolve: (row: any) => row['eventCategory'] || '-'
     },
     {
-      title: 'Price',
+      title: 'Event Price',
       id: 'price',
       sorting: false,
       resolve: (row: any) => (row['price'] || 0)
@@ -46,13 +46,13 @@ export class EventTableDataSource implements Table.Source<Category> {
       templateBy: 'createdAt',
     },
     {
-      title: 'Start Date',
+      title: 'Event Start Date',
       id: 'startDate',
       sorting: true,
       templateBy: 'startDate',
     },
     {
-      title: 'End Date',
+      title: 'Event End Date',
       id: 'endDate',
       sorting: true,
       templateBy: 'endDate',
@@ -73,7 +73,7 @@ export class EventTableDataSource implements Table.Source<Category> {
   ];
   options: Table.Options = {
     selection: false,
-    search: 'Search by Title, Description',
+    search: 'Search by Event Title, Description',
     index: true,
     addComponent: true,
     sorting: true,
