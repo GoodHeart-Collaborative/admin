@@ -3,7 +3,6 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import {
   POPUP_MESSAGES,
-  SOMETHING_WENT_WRONG,
 } from '../../../constant/messages';
 import { ConfirmationModalComponent } from '../components/confirmation-modal/confirmation-modal.component';
 import { environment } from '../../../../environments/environment';
@@ -126,6 +125,5 @@ export class UtilityService {
 
   onCloseAll() {
     this.dialog.closeAll();
-
-  }
+   }
 }
