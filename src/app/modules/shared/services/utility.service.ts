@@ -13,7 +13,7 @@ import { PopupComponent } from '../popup/components/popup.component';
 
 @Injectable()
 export class UtilityService {
-  dialogRef;
+  dialogRef = 0;
   constructor(
     private dialog: MatDialog,
     private $snackBar: MatSnackBar,
@@ -41,7 +41,13 @@ export class UtilityService {
     }
     return data;
   }
+
   errorAlert(error) {
+    console.log(this.dialogRef);
+    if (this.dialogRef) {
+      return;
+    }
+    this.dialogRef = 1;
     let data: IPopupData = {
       title: '',
       message: error,
@@ -49,19 +55,18 @@ export class UtilityService {
       hideCancelButton: true,
     };
     this.openDialog(data).subscribe((success) => {
-      this.dialog.closeAll();
-      // this.$matDailog.close();
+      // this.dialog.closeAll();
+      this.$matDailog.close();
+      this.dialogRef = 0;
     });
   }
+
   openDialog(data: IPopupData): Observable<IPopupResponse> {
-    // if (this.dialogRef) {
-    //   return;
-    // }
-    this.dialogRef = this.dialog.open(ConfirmationModalComponent, {
+    const dialogRef = this.dialog.open(ConfirmationModalComponent, {
       width: '500px',
       data: data,
     });
-    return this.dialogRef.afterClosed();
+    return dialogRef.afterClosed();
   }
 
   parseDateToTimeStamp(obj: any) {
