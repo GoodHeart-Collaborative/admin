@@ -16,12 +16,12 @@
 					<mat-error>{{getControl('email')|validate:'email'}}</mat-error>
 				</mat-form-field>
 
-				<mat-form-field appearance="outline">
+				<mat-form-field class="password"appearance="outline">
 					<mat-label>Password</mat-label>
 					<input matInput required formControlName="password" [type]="hide ? 'password' :'text'" [maxlength]="20" autocomplete="false">
 					<mat-error>{{getControl('password')| validate:'password'}}</mat-error>
 					<mat-icon matSuffix (click)="hide= !hide">{{hide ? 'visibility_off' :'visibility'}}</mat-icon>
-					<app-invalid-password-hint [control]="getControl('password')"></app-invalid-password-hint>
+					<app-invalid-password-hint matSuffix [control]="getControl('password')"></app-invalid-password-hint>
 				</mat-form-field>
 
 				<div class="link-cover">

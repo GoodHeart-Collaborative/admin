@@ -2,10 +2,16 @@
     @import '../../auth.component.scss';
 }
 
-// .link-cover{
-//     display: flex;
-//     margin-bottom: 10px;
-//     margin-top: -5px !important;
-//     align-items: center;
-//     justify-content: space-between;
-// }
+:host ::ng-deep{
+    .password{
+        .mat-form-field-flex{
+            .mat-form-field-suffix{
+                display: flex;
+                align-items: flex-start;
+                .page-invalid-password-hint{
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+}
