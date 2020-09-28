@@ -13,7 +13,7 @@ export class ExpertTableDataSource implements Table.Source<Category> {
   label = 'Category Management';
   columns: Table.Column<Category>[] = [
     {
-      title: 'Image',
+      title: 'Profile Pic',
       id: 'image',
       sorting: false,
       templateBy: 'imageUrl'

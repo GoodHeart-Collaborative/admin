@@ -7,6 +7,8 @@ import { FeedService } from '../../../service/feed.service';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { FEED_TYPE } from 'src/app/constant/drawer';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
 @Component({
   selector: 'app-gratitude-feed-listing',
   templateUrl: './gratitude-feed-listing.component.html',
@@ -30,7 +32,8 @@ export class GratitudeFeedListingComponent implements OnInit, OnChanges {
     private $feed: FeedService,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
-    private $route: Router
+    private $route: Router,
+    private $matDailog: MatDialog
   ) {
   }
 
@@ -122,6 +125,16 @@ export class GratitudeFeedListingComponent implements OnInit, OnChanges {
 
   onUserDetail(id: string) {
     this.$route.navigate([`admin/users/${id}/details`]);
+  }
+
+  onImageClick(image, type) {
+    if (!image) {
+      return;
+    }
+    this.$matDailog.open(ViewFullImageComponent, {
+      panelClass: 'view-full-image-modal',
+      data: {image, type}
+    }).afterClosed().subscribe();
   }
 
 }

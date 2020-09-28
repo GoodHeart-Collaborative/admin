@@ -13,6 +13,12 @@ export class GratitudeFeedTableDataSource implements Table.Source<User> {
   label = 'Users Management';
   columns: Table.Column<User>[] = [
     {
+      title: 'Image',
+      id: 'image',
+      sorting: false,
+      templateBy: 'imageUrl'
+    },
+    {
       title: 'User Name',
       id: 'name',
       sorting: true,
