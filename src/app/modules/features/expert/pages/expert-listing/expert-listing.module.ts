@@ -9,6 +9,8 @@ import { DateFilterModule } from 'src/app/modules/layout/layout-shared/date-filt
 import { MatOptionModule, MatSelectModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ReportProblemModule } from 'src/app/modules/shared/report-problem/report-problem.module';
+import { ViewFullImageModule } from 'src/app/modules/shared/view-full-image/view-full-image.module';
+import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 
 const routes: Routes = [
   {
@@ -28,7 +30,9 @@ const routes: Routes = [
     MatOptionModule,
     ReactiveFormsModule,
     MatSelectModule,
-    ReportProblemModule
+    ReportProblemModule,
+    ViewFullImageModule,
+    CustomImageModule
   ],
   entryComponents: [ListingFilterComponent]
 })

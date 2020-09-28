@@ -36,6 +36,14 @@
         </a>
     </ng-template>
 
+
+    <ng-template appFor="imageUrl" let-row="row">
+        <div class="table-cell-image-cover" title="Click to see the image">
+            <img [src]="row?.mediaUrl |customImage:'IMAGE_PLACEHOLDER'|async" alt="row-image"
+                (click)="onImageClick(row?.mediaUrl)">
+        </div>
+    </ng-template>
+
     <ng-template appFor="description" let-forum="row">
         <a href="javascript:void(0)" (click)="onDetails(forum?._id, forum?.userType)"
             title="{{ (forum?.description | titlecase) || 'String'}}">

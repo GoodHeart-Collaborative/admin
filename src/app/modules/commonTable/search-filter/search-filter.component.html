@@ -1,5 +1,5 @@
 <mat-form-field class="search_filter" appearance="outline">
-    <input type="text" matInput [placeholder]="placeholder" [formControl]="searchValue" appWhiteSpace>
+    <input type="text" matInput [placeholder]="placeholder" [formControl]="searchValue" appWhiteSpace >
     <span matSuffix (click)="searchResult()" *ngIf="!searchValue.value.trim()"> <mat-icon>search</mat-icon></span>
     <span matSuffix (click)="clearSearch()" *ngIf="searchValue.value.trim()"> <mat-icon>close</mat-icon></span>
 </mat-form-field>

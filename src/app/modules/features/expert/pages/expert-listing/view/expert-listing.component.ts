@@ -12,6 +12,7 @@ import { EVENT_CATEGORY } from 'src/app/constant/drawer';
 import { ReportProblemComponent } from 'src/app/modules/shared/report-problem/view/report-problem.component';
 import { CommonService } from 'src/app/modules/shared/services/common.service';
 import { MatDialog } from '@angular/material';
+import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
 @Component({
   selector: 'app-expert-listing',
   templateUrl: './expert-listing.component.html',
@@ -157,6 +158,14 @@ export class ExpertListingComponent implements OnInit {
     this.$router.navigate([`${ADD_EXPERT.fullUrl}`]);
   }
 
-
+  onImageClick(image, type = 1) {
+    if (!image) {
+      return;
+    }
+    this.$matDailog.open(ViewFullImageComponent, {
+      panelClass: 'view-full-image-modal',
+      data: {image, type}
+    }).afterClosed().subscribe();
+  }
 
 }

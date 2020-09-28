@@ -11,6 +11,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LikeActionModule } from 'src/app/modules/shared/like-action/like-action.module';
 import { CommentsModule } from 'src/app/modules/shared/comments/comments.module';
 import { ReportProblemModule } from 'src/app/modules/shared/report-problem/report-problem.module';
+import { ViewFullImageModule } from 'src/app/modules/shared/view-full-image/view-full-image.module';
+import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 
 const routes: Routes = [
   {
@@ -31,7 +33,9 @@ const routes: Routes = [
     ReactiveFormsModule,
     LikeActionModule,
     CommentsModule,
-    ReportProblemModule
+    ReportProblemModule,
+    ViewFullImageModule,
+    CustomImageModule
   ],
   entryComponents: [ListingFilterComponent]
 })

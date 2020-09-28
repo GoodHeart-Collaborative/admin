@@ -7,6 +7,8 @@ import { UtilityService } from 'src/app/modules/shared/services/utility.service'
 import { EventService } from '../../../service/event.service';
 import { EVENT_CATEGORY } from 'src/app/constant/drawer';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
+import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
+import { MatDialog } from '@angular/material';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 
 @Component({
@@ -31,6 +33,7 @@ export class EventListingComponent implements OnInit {
     private $router: Router,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
+    private $matDailog: MatDialog
   ) {
   }
 
@@ -194,5 +197,16 @@ export class EventListingComponent implements OnInit {
   //      data: id
   //    }).afterClosed().subscribe();
   //  }
+
+
+  onImageClick(image, type = 1) {
+    if (!image) {
+      return;
+    }
+    this.$matDailog.open(ViewFullImageComponent, {
+      panelClass: 'view-full-image-modal',
+      data: {image, type}
+    }).afterClosed().subscribe();
+  }
 
 }

@@ -15,7 +15,12 @@
         </a>
     </ng-template>
 
- 
+    <ng-template appFor="imageUrl" let-row="row">
+        <div class="table-cell-image-cover" title="Click to see the image">
+            <img [src]="row?.profilePicUrl[0] |customImage:'IMAGE_PLACEHOLDER'|async" alt="row-image"
+                (click)="onImageClick(row?.profilePicUrl[0])">
+        </div>
+    </ng-template>
 
     <ng-template appFor="categoryData" let-post="row">
         <span *ngFor="let item of post?.categoryData ; let i = index" title="{{ item?.title | titlecase}}">

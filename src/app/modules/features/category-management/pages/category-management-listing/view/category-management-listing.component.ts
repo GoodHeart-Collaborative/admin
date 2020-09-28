@@ -138,13 +138,6 @@ export class CategoryManagementListingComponent implements OnInit {
   }
 
   onAddCategory() {
-    // this.matDailog.open(AddCategoryManagementComponent, {
-    //   width: '500px',
-    //  }).afterClosed().subscribe(res => {
-    //   if (res) {
-    //       this.updateUsers();
-    //   }
-    // });
     this.$router.navigate([ADD_CATEGORY.fullUrl]);
   }
 

@@ -12,6 +12,7 @@ import { MatDialog } from '@angular/material';
 import { CommonService } from 'src/app/modules/shared/services/common.service';
 import { ReportProblemComponent } from 'src/app/modules/shared/report-problem/view/report-problem.component';
 import { REPORT_TYPE } from 'src/app/constant/drawer';
+import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 @Component({
   selector: 'app-forum-listing',
@@ -211,5 +212,15 @@ export class ForumListingComponent implements OnInit {
         }).afterClosed().subscribe();
       }
     });
+  }
+  
+  onImageClick(image, type = 1) {
+    if (!image) {
+      return;
+    }
+    this.$matDailog.open(ViewFullImageComponent, {
+      panelClass: 'view-full-image-modal',
+      data: {image, type}
+    }).afterClosed().subscribe();
   }
 }

@@ -18,6 +18,12 @@ export class ForumTableDataSource implements Table.Source<forum> {
     //     sorting: true,
     //     templateBy: 'topic'
     // },
+    {
+      title: 'Image',
+      id: 'image',
+      sorting: false,
+      templateBy: 'imageUrl'
+    },
 
     {
         title: 'Description',

@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchFilterComponent } from './search-filter.component';
 import { MatIconModule, MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/material';
 import { WhiteSpaceModule } from '../../shared/white-space/white-space.module';
+import { DigitOnlyModule } from 'src/app/directives/digit-only/digit-only.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { WhiteSpaceModule } from '../../shared/white-space/white-space.module';
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
-    WhiteSpaceModule
+    WhiteSpaceModule,
+    DigitOnlyModule
   ],
   declarations: [
     SearchFilterComponent,

@@ -28,6 +28,13 @@
              {{ data?.title | titlecase}}
          </a>
      </ng-template>
+
+     <ng-template appFor="imageUrl" let-row="row">
+        <div class="table-cell-image-cover" title="Click to see the image">
+            <img [src]="row?.imageUrl |customImage:'IMAGE_PLACEHOLDER'|async" alt="row-image"
+                (click)="onImageClick(row?.imageUrl)">
+        </div>
+    </ng-template>
  
      <!-- <ng-template appFor="likeCount" let-row="row">
          <a (click)="onlikeHandler(row._id, row?.likeCount)" [class.color-black]="row?.likeCount < 1">

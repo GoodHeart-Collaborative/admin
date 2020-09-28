@@ -13,6 +13,12 @@ export class EventTableDataSource implements Table.Source<Category> {
   label = 'Category Management';
   columns: Table.Column<Category>[] = [
     {
+      title: 'Image',
+      id: 'image',
+      sorting: false,
+      templateBy: 'imageUrl'
+    },
+    {
         title: 'Event Title',
         id: 'title',
         sorting: true,
