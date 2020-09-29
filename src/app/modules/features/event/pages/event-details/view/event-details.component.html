@@ -66,13 +66,11 @@
                                 *ngIf="eventDetails?.status == 'blocked'"
                                 (click)="onActionHandler(eventDetails?._id, 'active')">Active </button>
 
+                            <div (click)="onCopyHandler($event.currentTarget)" *ngIf="eventDetails?.userType =='admin' && eventDetails?.allowSharing">
+                                {{eventDetails?.shareUrl}}
+                            </div>
+                            <!-- <span class="info"> (click to copy URL) </span> -->
 
-                            <button class="btn btn-primary" mat-stroked-button type="button"
-                                (click)="onCopyHandler($event.currentTarget)"
-                                *ngIf="eventDetails?.userType =='admin' && eventDetails?.allowSharing">
-                                <span class="info"> {{eventDetails?.eventUrl}} </span>&nbsp;
-                                <span class="info"> (click to copy URL) </span>
-                            </button>
                         </div>
                     </div>
                 </div>
