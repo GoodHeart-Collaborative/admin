@@ -30,7 +30,7 @@ export const invalidFileError =
 export const invalidFileSize = (size = 4) =>
   `File size can not be more than ${size} MB`;
 
-export const COPIED = `Copied URL`;
+export const COPIED = `Copied shared URL`;
 
 export const requiredProfilePic = `Image is required`;
 export const requiredMedia = `Media is required`;
