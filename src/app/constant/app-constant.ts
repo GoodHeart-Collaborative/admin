@@ -36,6 +36,9 @@ export const USER_ACCOUNT_STATUS_LIST = [
   },
 ];
 
+
+
+
 export const USER_COMPANY_TYPE_CONST = [
   {
     value: USER_COMPANY_TYPE.COMPANY,

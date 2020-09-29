@@ -1,15 +1,18 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, Renderer2, ChangeDetectorRef } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import {
+  Component, OnInit, Input, Output, EventEmitter,
+  ViewChild, ElementRef, Renderer2,
+  ChangeDetectorRef
+} from '@angular/core';
 import { FileUploadService } from '../../services/file-upload.service';
 import { PopupService } from '../../popup';
 import {
   invalidImageError, videoFormatFile,
   invalidFileSize,
   invalidContentType,
-  videoFileSize
+  videoFileSize,
+  invalidFileError
 } from 'src/app/constant/messages';
 import { onSelectFile } from 'src/app/constant/file-input';
-import { Subject, Observable } from 'rxjs';
 
 @Component({
   selector: 'media-upload',
@@ -39,19 +42,11 @@ export class MediaUploadComponent implements OnInit {
   @Input() videoSrc: string | ArrayBuffer;
   private _canvas: HTMLCanvasElement;
   saveEvent: any;
-
-  // mediaFiles: any[] = [];
-  // @Input() mediaControl: FormControl;
-  // @Input() maxlength: number;
-  // currentMediaCounts = 0;
-  // @Output() removeMedia = new EventEmitter();
   constructor(
-    private $popup: PopupService,
     renderer: Renderer2,
     private $upload: FileUploadService,
-    private $cdr: ChangeDetectorRef) {
+  ) {
     this._canvas = renderer.createElement('canvas');
-
   }
 
   ngOnInit() {
@@ -64,8 +59,11 @@ export class MediaUploadComponent implements OnInit {
       this.checkMediaType(event.target.files[0], event);
       // Image Upload
       if (this.isImage) {
+
         let result = await onSelectFile(event);
         this.imageFile = result.file;
+        console.log(this.imageFile);
+
         this.imageSelectedFromInput(event);
       }
       // Video Upload
@@ -93,7 +91,7 @@ export class MediaUploadComponent implements OnInit {
       this.videoSelected(event);
 
     } else {
-      this.$upload.showAlert(invalidImageError());
+      this.$upload.showAlert(invalidFileError);
       return null;
     }
   }

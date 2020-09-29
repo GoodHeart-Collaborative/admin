@@ -11,11 +11,11 @@ import { DOCUMENT } from '@angular/common';
 })
 export class FileUploadService {
     bucket: S3;
-    scaleFactor: number = 0.25;
+    scaleFactor = 0.25;
     constructor(
         @Inject(DOCUMENT) private document: Document,
-        private _loaderService: LoaderService,
-        private _utilityService: UtilityService
+        private $loaderService: LoaderService,
+        private $utilityService: UtilityService
     ) {
         this.bucket = new S3(
             {
@@ -34,19 +34,19 @@ export class FileUploadService {
                 ACL: 'public-read'
             };
             if (loader) {
-                this._loaderService.loader.next(true);
+                this.$loaderService.loader.next(true);
             }
             return new Promise((resolve, reject) => {
                 this.bucket.upload(params, (err, data) => {
                     if (err) {
                         if (loader) {
-                            this._loaderService.loader.next(false);
+                            this.$loaderService.loader.next(false);
                         }
-                        this._utilityService.error(SOMETHING_WENT_WRONG);
+                        this.$utilityService.error(SOMETHING_WENT_WRONG);
                         reject(err);
                     } else {
                         if (loader) {
-                            this._loaderService.loader.next(false);
+                            this.$loaderService.loader.next(false);
                         }
                         resolve(data);
                     }
@@ -55,12 +55,12 @@ export class FileUploadService {
 
             });
         } catch (err) {
-            this._loaderService.loader.next(false);
+            this.$loaderService.loader.next(false);
         }
     }
 
     showAlert(message) {
-        this._utilityService.error(message);
+        this.$utilityService.error(message);
     }
 
     async capture(video, blob) {
@@ -72,8 +72,8 @@ export class FileUploadService {
         // let ctx = canvas.getContext('2d');
         // ctx.drawImage(video, 0, 0, w, h);
         // let dataURI = canvas.toDataURL('image/jpeg');
-        const abc = await this.generateThumbnail(blob)
-        // let a = 
+        const abc = await this.generateThumbnail(blob);
+        // let a =
         let boj = {
             // canvas: canvas,
             file: this.dataURLtoFile(abc, `${'Thumb'}${+new Date()}.jpg`),
