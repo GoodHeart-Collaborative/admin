@@ -23,7 +23,6 @@ export class BreadcrumbComponent {
   ) {
     breadcrumb.events.subscribe(({ label, target, url = '' }: any) => {
       if (label.includes('%')) {
-        // label.replace('%', '')\
         label = label.split('%').join('');
       }
       this.$changes.set(target, label);
@@ -34,18 +33,16 @@ export class BreadcrumbComponent {
       if (url) {
         setTimeout(() => {
           const step = this.routeSteps.find((step: RouteStep) => step.label === target);
+          console.log(step);
           if (step) {
-
             step.url = url;
           }
-
-
-        }, 0);
+        }, 1000);
       }
 
       if (routeStep) {
-        routeStep.label = label;
 
+        routeStep.label = label;
       }
     });
     this.$listenRouteChange(router);

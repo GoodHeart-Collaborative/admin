@@ -28,9 +28,10 @@ export class UserShoutoutsDetailsComponent implements OnInit {
         return;
       }
       this.userID = $global.decodeData(userId);
+      console.log(this.userID);
       $breadcrumb.replace($router.snapshot.params.id, this.shoutoutsData.title, `/admin/users/${this.userID}/details`);
+      $breadcrumb.replace(this.shoutoutsData.title, this.shoutoutsData.title, `/admin/users/${this.userID}/details`);
     });
-   
   }
 
   ngOnInit() { }
