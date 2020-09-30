@@ -33,7 +33,7 @@
                     class="material-icons">thumb_up</span>
                 <p>{{post?.likeCount}}</p>
             </div>
-            <div class="like-cover"><span class="material-icons">comment</span>
+            <div class="like-cover" [class.comment]="post?.commentCount > 0"><span class="material-icons">comment</span>
                 <p>{{post?.commentCount}}</p>
             </div>
             <div class="like-cover" (click)="onReportProblem(post?._id, post?.reportCount)"><span

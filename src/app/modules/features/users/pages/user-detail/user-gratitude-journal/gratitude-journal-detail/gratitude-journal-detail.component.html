@@ -4,11 +4,15 @@
             <div class="textual-detail">
                 <div class="card_header_container profile_header">
                     <div class="card_header">
-                        <figure mat-card-avatar class="image-cover" *ngIf="gratitudeDetails?.userData?.profilePicUrl[0]">
-                            <img class="img-cover-fit" [src]="gratitudeDetails?.userData?.profilePicUrl[0] | customImage:'USERS'|async " alt="">
+                        <figure mat-card-avatar class="image-cover"
+                            *ngIf="gratitudeDetails?.userData?.profilePicUrl[0]">
+                            <img class="img-cover-fit"
+                                [src]="gratitudeDetails?.userData?.profilePicUrl[0] | customImage:'USERS'|async "
+                                alt="">
                         </figure>
                         <div class="heading-cover">
-                            <a class="user_name" href="javascript:void()">{{gratitudeDetails?.userData?.firstName}} {{gratitudeDetails?.userData?.lastName || ''}}</a>
+                            <a class="user_name" href="javascript:void()">{{gratitudeDetails?.userData?.firstName}}
+                                {{gratitudeDetails?.userData?.lastName || ''}}</a>
                             <p class="posted-on-date">Created On: {{gratitudeDetails?.createdAt | dateTime}}</p>
                         </div>
                     </div>
@@ -20,10 +24,12 @@
             </div>
         </div>
         <div class="row-2">
-            <div class="like-cover" (click)="likeHandler(gratitudeDetails?._id ,gratitudeDetails?.likeCount)"><span class="material-icons">thumb_up</span>
+            <div class="like-cover" (click)="likeHandler(gratitudeDetails?._id ,gratitudeDetails?.likeCount)"><span
+                    class="material-icons">thumb_up</span>
                 <p>{{gratitudeDetails?.likeCount}}</p>
             </div>
-            <div class="like-cover"><span class="material-icons">comment</span>
+            <div class="like-cover" [class.comment]="gratitudeDetails?.commentCount"><span
+                    class="material-icons">comment</span>
                 <p>{{gratitudeDetails?.commentCount}}</p>
             </div>
         </div>

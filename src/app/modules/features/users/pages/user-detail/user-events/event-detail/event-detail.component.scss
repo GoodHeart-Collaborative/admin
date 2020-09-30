@@ -15,13 +15,18 @@
         .left-portion{
             width: calc(100% - 300px);
             padding-right: 30px;
+            max-width: 900px;
             .event-cover-photo{
                 width: 100%;
-                height: auto;
+                height: 450px;
+                @media screen and (max-width: 992px){
+                    height: auto;
+                }
                 img{
                     width: 100%;
                     max-height: 100%;
                     height: auto;
+                    object-fit: cover;
                     box-shadow: 0px 0px 3px 1px rgba(0,0,0,.6);
                 }
             }
@@ -50,6 +55,9 @@
                 position: sticky;
                 position: -webkit-sticky;
                 top: 0;
+                @media screen and (max-width: 992px){
+                    position: static;
+                }
                 .like-cover{
                     display: flex;
                     align-items: center;

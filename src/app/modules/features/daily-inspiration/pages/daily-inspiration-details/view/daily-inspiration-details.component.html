@@ -5,32 +5,38 @@
                 <div class="card_header_container profile_header">
                     <div class="card_header">
                         <figure mat-card-avatar class="image-cover">
-                            <img class="img-cover-fit" [src]="(dailyInspirationDetails?.adminData[0]?.profilePicture ? dailyInspirationDetails?.adminData[0]?.profilePicture : dailyInspirationDetails?.addedBy?.profilePicture ) | customImage:'USERS'|async  " alt="">
+                            <img class="img-cover-fit"
+                                [src]="(dailyInspirationDetails?.adminData[0]?.profilePicture ? dailyInspirationDetails?.adminData[0]?.profilePicture : dailyInspirationDetails?.addedBy?.profilePicture ) | customImage:'USERS'|async  "
+                                alt="">
                         </figure>
                         <div class="heading-cover">
-                            <a class="user_name" href="javascript:void()">{{(dailyInspirationDetails?.adminData[0]?.name ? dailyInspirationDetails?.adminData[0]?.name : dailyInspirationDetails?.addedBy?.name) | titlecase}}</a>
+                            <a class="user_name"
+                                href="javascript:void()">{{(dailyInspirationDetails?.adminData[0]?.name ? dailyInspirationDetails?.adminData[0]?.name : dailyInspirationDetails?.addedBy?.name) | titlecase}}</a>
                             <p class="posted-on-date">Scheduled On: {{dailyInspirationDetails?.postedAt | dateTime}}</p>
                         </div>
                     </div>
                     <h1>{{dailyInspirationDetails?.title | titlecase}}</h1>
                     <p>{{dailyInspirationDetails?.description | titlecase}}</p>
                 </div>
-            
+
             </div>
-            <div class="image-detail" >
-                <img [src]="dailyInspirationDetails?.mediaUrl | customImage:'IMAGE_PLACEHOLDER'|async " *ngIf="dailyInspirationDetails?.mediaType == 1">
-                <video #myVideo muted [src]="dailyInspirationDetails?.mediaUrl" *ngIf="dailyInspirationDetails?.mediaType == 2" loop id="video"  controls
-                >Your browser does not support the
-                  video tag.</video>
+            <div class="image-detail">
+                <img [src]="dailyInspirationDetails?.mediaUrl | customImage:'IMAGE_PLACEHOLDER'|async "
+                    *ngIf="dailyInspirationDetails?.mediaType == 1">
+                <video #myVideo muted [src]="dailyInspirationDetails?.mediaUrl"
+                    *ngIf="dailyInspirationDetails?.mediaType == 2" loop id="video" controls>Your browser does not
+                    support the
+                    video tag.</video>
             </div>
         </div>
-        <div class="row-2" >
+        <div class="row-2">
             <div class="like-cover"
                 (click)="likeHandler(dailyInspirationDetails._id, dailyInspirationDetails?.likeCount)"><span
                     class="material-icons">thumb_up</span>
                 <p>{{dailyInspirationDetails?.likeCount}}</p>
             </div>
-            <div class="like-cover"><span class="material-icons">comment</span>
+            <div class="like-cover" [class.comment]="dailyInspirationDetails?.commentCount > 0"><span
+                    class="material-icons">comment</span>
                 <p>{{dailyInspirationDetails?.commentCount}}</p>
             </div>
             <!-- <div class="like-cover" (click)="onReportProblem(dailyInspirationDetails?._id, dailyInspirationDetails?.reportCount)"><span class="material-icons">report</span>

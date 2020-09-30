@@ -31,7 +31,7 @@
                     class="material-icons">thumb_up</span>
                 <p>{{smilesDetails?.likeCount}}</p>
             </div>
-            <div class="like-cover"><span class="material-icons">comment</span>
+            <div class="like-cover" [class.comment]="smilesDetails?.commentCount > 0"><span class="material-icons">comment</span>
                 <p>{{smilesDetails?.commentCount}}</p>
             </div>
 

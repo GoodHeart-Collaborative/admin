@@ -5,10 +5,13 @@
                 <div class="card_header_container profile_header">
                     <div class="card_header">
                         <figure mat-card-avatar class="image-cover">
-                            <img class="img-cover-fit" [src]="(adviceDetails?.adminData[0]?.profilePicture ? adviceDetails?.adminData[0]?.profilePicture : adviceDetails?.addedBy?.profilePicture ) | customImage:'USERS'|async "  alt="">
+                            <img class="img-cover-fit"
+                                [src]="(adviceDetails?.adminData[0]?.profilePicture ? adviceDetails?.adminData[0]?.profilePicture : adviceDetails?.addedBy?.profilePicture ) | customImage:'USERS'|async "
+                                alt="">
                         </figure>
                         <div class="heading-cover">
-                            <a class="user_name" href="javascript:void()">{{(adviceDetails?.adminData[0]?.name ? adviceDetails?.adminData[0]?.name : adviceDetails?.addedBy?.name) | titlecase }}</a>
+                            <a class="user_name"
+                                href="javascript:void()">{{(adviceDetails?.adminData[0]?.name ? adviceDetails?.adminData[0]?.name : adviceDetails?.addedBy?.name) | titlecase }}</a>
                             <p class="posted-on-date" *ngIf="adviceDetails?.postedAt">Scheduled On:
                                 {{adviceDetails?.postedAt |dateTime}}</p>
                         </div>
@@ -18,10 +21,11 @@
                 </div>
             </div>
             <div class="image-detail" *ngIf="adviceDetails?.mediaUrl">
-                <img [src]="adviceDetails?.mediaUrl | customImage:'IMAGE_PLACEHOLDER'|async " *ngIf="adviceDetails?.mediaType == 1">
-                <video #myVideo muted [src]="adviceDetails?.mediaUrl" *ngIf="adviceDetails?.mediaType == 2" loop id="video"  controls
-                >Your browser does not support the
-                  video tag.</video>
+                <img [src]="adviceDetails?.mediaUrl | customImage:'IMAGE_PLACEHOLDER'|async "
+                    *ngIf="adviceDetails?.mediaType == 1">
+                <video #myVideo muted [src]="adviceDetails?.mediaUrl" *ngIf="adviceDetails?.mediaType == 2" loop
+                    id="video" controls>Your browser does not support the
+                    video tag.</video>
             </div>
         </div>
         <div class="row-2">
@@ -29,7 +33,8 @@
                     class="material-icons">thumb_up</span>
                 <p>{{adviceDetails?.likeCount}}</p>
             </div>
-            <div class="like-cover"><span class="material-icons">comment</span>
+            <div class="like-cover" [class.comment]="adviceDetails?.commentCount > 0"><span
+                    class="material-icons">comment</span>
                 <p>{{adviceDetails?.commentCount}}</p>
             </div>
             <!-- <div class="like-cover" (click)="onReportProblem(adviceDetails?._id, adviceDetails?.reportCount)"><span class="material-icons">report</span>
@@ -37,6 +42,6 @@
             </div> -->
         </div>
         <app-comments-show [commentId]="adviceDetails?._id"></app-comments-show>
-       
+
     </div>
 </div>

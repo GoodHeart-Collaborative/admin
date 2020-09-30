@@ -45,10 +45,12 @@
                     class="material-icons">thumb_up</span>
                 <p>{{forumsData?.likeCount}}</p>
             </div>
-            <div class="like-cover"><span class="material-icons">comment</span>
+            <div class="like-cover" [class.comment]="forumsData?.commentCount > 0"><span
+                    class="material-icons">comment</span>
                 <p>{{forumsData?.commentCount}}</p>
             </div>
-            <div class="like-cover" (click)="onReportProblem(forumsData._id, forumsData?.reportCount)"><span class="material-icons">report</span>
+            <div class="like-cover" (click)="onReportProblem(forumsData._id, forumsData?.reportCount)"><span
+                    class="material-icons">report</span>
                 <p>{{forumsData?.reportCount}}</p>
             </div>
         </div>
