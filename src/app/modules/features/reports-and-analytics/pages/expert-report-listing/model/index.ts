@@ -50,6 +50,12 @@ export class ExpertReportTableDataSource implements Table.Source<User> {
       templateBy: 'reason',
     },
     {
+      title: 'Reported Message',
+      id: 'message',
+      sorting: false,
+      templateBy: 'message',
+    },
+    {
       title: 'Added On',
       id: 'createdAt',
       sorting: true,

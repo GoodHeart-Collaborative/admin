@@ -9,6 +9,7 @@ import { ListingFilterComponent } from 'src/app/modules/features/users/pages/use
 import { DateFilterModule } from 'src/app/modules/layout/layout-shared/date-filter/date-filter.module';
 import { MatSelectModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DateTimePipeModule } from 'src/app/pipes/date-time-pipe/date-time-pipe.module';
 
 const routes: Routes = [
 ];
@@ -22,7 +23,8 @@ const routes: Routes = [
     CustomDatePipeModule,
     DateFilterModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DateTimePipeModule
   ],
   exports: [UserEventsComponent],
   providers: [UserEventService],

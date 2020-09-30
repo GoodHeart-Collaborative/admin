@@ -14,6 +14,10 @@
         {{ report?.userData?.status | titlecase}}
     </ng-template>
 
+    <ng-template appFor="message" let-report="row">
+        {{ REPORT_MESSAGE[report?.reportOption] }}
+    </ng-template>
+
     <ng-template appFor="profilePicUrl" let-report="row" >
         <div (click)="onImageClick(report?.userData?.profilePicUrl[0], 1)" class="table-cell-image-cover">
             <img [src]="(report?.userData?.profilePicUrl[0] )|customImage:'IMAGE_PLACEHOLDER'|async"  alt="category-image" title="Click to see the image">

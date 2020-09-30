@@ -49,7 +49,13 @@ export class ReportTableDataSource implements Table.Source<User> {
       sorting: false,
       templateBy: 'reason',
     },
- 
+    {
+      title: 'Reported Message',
+      id: 'message',
+      sorting: false,
+      templateBy: 'message',
+    },
+
     {
       title: 'Added On',
       id: 'createdAt',

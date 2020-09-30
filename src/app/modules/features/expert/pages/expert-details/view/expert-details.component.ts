@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
-import { GlobalService } from 'src/app/services/global/global.service';
 import { MatTabChangeEvent } from '@angular/material';
 import { ExpertDetailsService } from '../service/expert-details.service';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';

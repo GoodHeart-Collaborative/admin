@@ -5,6 +5,7 @@ import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/v
 import { MatDialog } from '@angular/material';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { FORUM } from 'src/app/constant/routes';
+import { REPORT_MESSAGE } from 'src/app/constant/app-constant';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 @Component({
   selector: 'app-report-listing',
@@ -14,6 +15,7 @@ export type ActionType = 'deleted' | 'blocked' | 'active';
 export class ReportListingComponent implements OnInit, OnChanges {
 
   tableSource = new ReportTableDataSource();
+  REPORT_MESSAGE = REPORT_MESSAGE;
   eventData: Table.OptionData = {
     pageIndex: 0,
     pageSize: 10,

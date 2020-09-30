@@ -6,6 +6,8 @@ import { UtilityService } from 'src/app/modules/shared/services/utility.service'
 import { FeedService } from '../../../service/feed.service';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { Router } from '@angular/router';
+import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-shoutouts-listing',
@@ -30,7 +32,8 @@ export class ShoutoutsListingComponent implements OnInit , OnChanges{
     private $feed: FeedService,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
-    private $router: Router
+    private $router: Router,
+    private $matDailog: MatDialog
   ) {
   }
 
@@ -40,6 +43,8 @@ export class ShoutoutsListingComponent implements OnInit , OnChanges{
   ngOnChanges() {
     if (this.shoutOutsDetails) {
       this.setUpTableResource(this.shoutOutsDetails);
+      console.log(this.shoutOutsDetails);
+      
 
     }
   }
@@ -112,12 +117,19 @@ export class ShoutoutsListingComponent implements OnInit , OnChanges{
     this.tableSource = new ShoutoutsTableDataSource({
       pageIndex,
       pageSize,
-      rows: userDetails.list,
+      rows: userDetails.data,
       total: userDetails.total
     });
   }
 
   onUserDetail(id: string) {
     this.$router.navigate([`admin/users/${id}/details`]);
+  }
+
+  openGif(image: string ) {
+    this.$matDailog.open(ViewFullImageComponent, {
+      width: '500px',
+      data: {image , type: 0}
+    }).afterClosed().subscribe();
   }
 }

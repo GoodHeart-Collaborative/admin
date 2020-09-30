@@ -3,6 +3,7 @@ import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { ExpertReportTableDataSource } from '../model';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
+import { REPORT_MESSAGE } from 'src/app/constant/app-constant';
 import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 @Component({
@@ -12,6 +13,7 @@ export type ActionType = 'deleted' | 'blocked' | 'active';
 })
 export class ExpertReportListingComponent implements OnInit, OnChanges {
   tableSource = new ExpertReportTableDataSource();
+  REPORT_MESSAGE = REPORT_MESSAGE;
   eventData: Table.OptionData = {
     pageIndex: 0,
     pageSize: 10,

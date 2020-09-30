@@ -50,3 +50,10 @@ export const USER_COMPANY_TYPE_CONST = [
   },
 ];
 
+
+export const REPORT_MESSAGE = {
+ [1]: 'Explicit photos',
+ [2]: 'Offensive content',
+ [3]: 'Impostor accounts',
+ [4]: 'Other',
+}

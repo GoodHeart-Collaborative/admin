@@ -84,10 +84,13 @@ export class FeedManagementComponent implements OnInit {
         break;
       }
       case 1: {
+        this.shoutOutsDetails = response.data;
+        console.log(this.shoutOutsDetails);
         break;
       }
       case 2: {
-        this.shoutOutsDetails = response.data;
+       
+        
         break;
       }
        default:

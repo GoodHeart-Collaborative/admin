@@ -11,6 +11,8 @@
         {{ category?.privacy | titlecase}}
     </ng-template>
 
+
+
     <ng-template appFor="likeCount" let-category="row">
         <a (click)="likeHandler(category._id, category?.likeCount)" [class.color-black]="category?.likeCount < 1">
             {{ category?.likeCount}}
@@ -20,6 +22,12 @@
     <ng-template appFor="commentCount" let-category="row">
         <a (click)="onCommentsHandler(category._id, category?.commentCount)" [class.color-black]="category?.commentCount < 1">
             {{ category?.commentCount}}
+        </a>
+    </ng-template>
+
+    <ng-template appFor="name" let-category="row">
+        <a (click)="onExpertDetailsHandler(category?.expertId)" >
+            {{ category?.expertData?.name}}
         </a>
     </ng-template>
 
@@ -37,6 +45,12 @@
             <img [src]="(category?.mediaUrl )|customImage:'IMAGE_PLACEHOLDER'|async" *ngIf="category?.mediaType == 1" alt="category-image" title="Click to see the image">
             <!-- <img [src]="(category?.thumbnailUrl )" *ngIf="category?.mediaType == 2" alt="category-image" title="Click to see the video"> -->
             <span class="material-icons" *ngIf="category?.mediaType == 2" title="Click to see the video">play_circle_filled</span>
+        </div>
+    </ng-template>
+
+    <ng-template appFor="pic" let-category="row">
+        <div class="table-cell-image-cover" (click)="onImageClick(category?.expertData?.profilePicUrl[0], 1)">
+            <img [src]="(category?.expertData?.profilePicUrl[0] )|customImage:'IMAGE_PLACEHOLDER'|async" alt="category-image" title="Click to see the image">
         </div>
     </ng-template>
 

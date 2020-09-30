@@ -45,15 +45,14 @@ export class ShoutoutsTableDataSource implements Table.Source<User> {
       id: 'privacy',
       sorting: false,
       templateBy: 'privacy'
-      // resolve: (row: any) => row['privacy'] || '-',
     },
     {
-      title: 'User Name',
-      id: 'userData',
+      title: 'Gif',
+      id: 'gif',
       sorting: false,
-      templateBy: 'userData'
-      // resolve: (row: any) => row['privacy'] || '-',
+      templateBy: 'gif'
     },
+ 
     {
       title: 'Added On',
       id: 'createdAt',

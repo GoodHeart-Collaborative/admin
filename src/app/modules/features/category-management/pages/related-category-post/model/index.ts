@@ -12,14 +12,21 @@ const defaultData: Table.Data<Category> = {
 export class RelatedCategoryTableDataSource implements Table.Source<Category> {
   label = 'Related Category Management';
   columns: Table.Column<Category>[] = [
-    // {
-    //   title: 'Name ',
-    //   id: 'name',
-    //   sorting: false,
-    //   templateBy: 'name'
-    // },
     {
-      title: 'Image',
+      title: 'Expert Profile Pic ',
+      id: 'pic',
+      sorting: false,
+      templateBy: 'pic'
+    },
+    {
+      title: 'Expert Name ',
+      id: 'name',
+      sorting: false,
+      templateBy: 'name'
+    },
+ 
+    {
+      title: 'Post Image',
       id: 'profilePicUrl',
       sorting: false,
       templateBy: 'profilePicUrl'

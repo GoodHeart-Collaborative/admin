@@ -60,7 +60,7 @@ export class GratitudeFeedListingComponent implements OnInit, OnChanges {
     if (privacy == 'private') {
       return;
     }
-    const index = this.gratitudeDetails.list.findIndex(user => user._id === id);
+    const index = this.gratitudeDetails.data.findIndex(user => user._id === id);
     this.$confirmBox.listAction('gratitude', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
       .subscribe((confirm) => {
         if (confirm) {
@@ -83,7 +83,7 @@ export class GratitudeFeedListingComponent implements OnInit, OnChanges {
   handleActions(action: ActionType, index: number) {
     switch (action) {
       case 'deleted':
-        this.gratitudeDetails.list.splice(index, 1);
+        this.gratitudeDetails.data.splice(index, 1);
         this.gratitudeDetails.total = this.gratitudeDetails.total - 1;
         break;
       case 'active':
@@ -101,7 +101,7 @@ export class GratitudeFeedListingComponent implements OnInit, OnChanges {
   }
 
   handleStatus(action: 'blocked' | 'active', index: number) {
-    this.gratitudeDetails.list = this.gratitudeDetails.list.map((user, i) => {
+    this.gratitudeDetails.data = this.gratitudeDetails.data.map((user, i) => {
       if (i === index) {
         user.status = action;
       }
@@ -118,7 +118,7 @@ export class GratitudeFeedListingComponent implements OnInit, OnChanges {
     this.tableSource = new GratitudeFeedTableDataSource({
       pageIndex,
       pageSize,
-      rows: userDetails.list,
+      rows: userDetails.data,
       total: userDetails.total
     });
   }

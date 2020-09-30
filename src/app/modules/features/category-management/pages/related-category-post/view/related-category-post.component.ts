@@ -202,4 +202,8 @@ export class RelatedCategoryPostComponent implements OnInit {
     }).afterClosed().subscribe();
   }
 
+
+  onExpertDetailsHandler(id: string) {
+    this.$router.navigate([`admin/expert/${id}/details`]);
+  }
 }

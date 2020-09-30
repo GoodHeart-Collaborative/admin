@@ -7,6 +7,7 @@ import { ListingFilterComponent } from './component/listing-filter.component';
 import { DateFilterModule } from 'src/app/modules/layout/layout-shared/date-filter/date-filter.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule, MatOptionModule, MatSelectModule } from '@angular/material';
+import { ViewFullImageModule } from 'src/app/modules/shared/view-full-image/view-full-image.module';
 
 
 
@@ -20,7 +21,8 @@ import { MatDialogModule, MatOptionModule, MatSelectModule } from '@angular/mate
     ReactiveFormsModule,
     MatDialogModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    ViewFullImageModule
   ],
   exports: [ShoutoutsListingComponent],
   entryComponents: [ListingFilterComponent]

@@ -33,3 +33,4 @@ export const USER_SUBSCRIPTION_PLAN = {
 		value: 4
 	}
 }
+
