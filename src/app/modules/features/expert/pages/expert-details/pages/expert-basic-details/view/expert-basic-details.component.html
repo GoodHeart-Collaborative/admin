@@ -4,7 +4,8 @@
             <div class="row-1">
                 <div class="left-portion">
                     <div class="img-cover">
-                        <img [src]="data?.profilePicUrl[0] |customImage:'IMAGE_PLACEHOLDER'|async" alt="User Profile Image">
+                        <img [src]="data?.profilePicUrl[0] |customImage:'IMAGE_PLACEHOLDER'|async"
+                            alt="User Profile Image">
                     </div>
                 </div>
                 <div class="right-portion">
@@ -17,21 +18,24 @@
                             <p class="label">Email</p>
                             <p class="value">{{data?.email}}</p>
                         </div>
-                   
+
                         <div class="col-md-4">
                             <p class="label">Profession</p>
                             <p class="value">{{data?.profession | titlecase}}</p>
                         </div>
                         <div class="col-md-4">
+                            <p class="label">Category</p>
+                            <div class="category-wrapper">
+                                <p class="value category-value" *ngFor="let item of data?.categoryData ; let i = index">
+                                    {{ item?.title | titlecase}}{{i< data?.categoryData?.length -1 ?',' : '' }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
                             <p class="label">Industry</p>
                             <p class="value">{{industry[data?.industry] }}</p>
                         </div>
-                        <div class="col-md-4">
-                            <p class="label">Category</p>
-                            <p class="value" *ngFor="let item of data?.categoryData ; let i = index">
-                                {{ item?.title | titlecase}}{{i< data?.categoryData?.length -1 ?',' : '' }}
-                            </p>                        
-                        </div>
+
                         <div class="col-md-4">
                             <p class="label">Experience</p>
                             <p class="value">{{(data?.experience | titlecase) || 'none'}}</p>

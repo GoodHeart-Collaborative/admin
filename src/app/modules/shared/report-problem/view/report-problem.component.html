@@ -8,13 +8,15 @@
             <ul class="users-listing">
                 <li class="single-user" *ngFor="let item of data">
                     <div class="img-cover">
-                        <img alt="Profile"  [src]="item?.userData?.profilePicUrl[0] |customImage:'IMAGE_PLACEHOLDER'|async" >
+                        <img alt="Profile"
+                            [src]="item?.userData?.profilePicUrl[0] |customImage:'IMAGE_PLACEHOLDER'|async">
                     </div>
                     <div class="textual-cover">
-                        <h4><span>{{item?.userData?.firstName}} {{item?.userData?.lastName}}</span>
+                        <h4>
+                            <span class="user-name">{{item?.userData?.firstName}} {{item?.userData?.lastName}}</span>
                             <p class="comment-time">{{item?.createdAt | time}}</p>
-                            <p>{{item?.reason}}</p>
                         </h4>
+                        <p class="report-reason">{{item?.reason}}</p>
                     </div>
                     <div class="see-profile-cover">
                         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">

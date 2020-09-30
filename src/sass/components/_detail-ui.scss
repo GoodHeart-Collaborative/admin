@@ -16,6 +16,13 @@
             margin-top: 8px;
             line-height: 22px;
             display: block;
+            &.category-value {
+                display: inline;
+            }
+        }
+        .category-wrapper {
+            margin-top: 10px;
+            margin-bottom: 20px;
         }
     }
 }
