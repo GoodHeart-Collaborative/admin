@@ -38,13 +38,13 @@ export class ReportTableDataSource implements Table.Source<User> {
     //   templateBy: 'type',
     // },
     {
-      title: 'Post',
+      title: 'Reported Post',
       id: 'description',
       sorting: false,
       templateBy: 'description',
     },
     {
-      title: 'Report Message',
+      title: 'Reason of Report',
       id: 'reason',
       sorting: false,
       templateBy: 'reason',
@@ -56,12 +56,12 @@ export class ReportTableDataSource implements Table.Source<User> {
       sorting: true,
       templateBy: 'createdAt',
     },
-    {
-      title: 'Status',
-      id: 'status',
-      sorting: false,
-      templateBy: 'status'
-    },
+    // {
+    //   title: 'Status',
+    //   id: 'status',
+    //   sorting: false,
+    //   templateBy: 'status'
+    // },
 
     // {
     //   title: 'Actions',

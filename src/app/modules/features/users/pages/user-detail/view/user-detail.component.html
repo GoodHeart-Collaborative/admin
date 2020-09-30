@@ -11,7 +11,7 @@
         </mat-tab>
         <mat-tab label="Events">
             <ng-container *ngIf="eventListData">
-                <app-user-events [userData]="eventListData" [otherData]="userDetails?._id"  (changeHandler)="onOptionChange($event)"></app-user-events>
+                <app-user-events [userData]="eventListData" [userId]="userDetails?._id"  (changeHandler)="onOptionChange($event)"></app-user-events>
            </ng-container>
         </mat-tab>
         <mat-tab label="Topics">

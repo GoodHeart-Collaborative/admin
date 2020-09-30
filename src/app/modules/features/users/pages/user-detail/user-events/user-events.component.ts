@@ -6,6 +6,7 @@ export type ActionType = 'deleted' | 'blocked' | 'active';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { EventTableDataSource } from './model';
 import { UserEventService } from './service/user-event.service';
+import { GlobalService } from 'src/app/services/global/global.service';
 @Component({
   selector: 'app-user-events',
   templateUrl: './user-events.component.html',
@@ -24,12 +25,13 @@ export class UserEventsComponent implements OnInit, OnChanges {
   isProcessing = false;
   @Input() userData;
   @Output() changeHandler = new EventEmitter();
-  @Input() otherData;
+  @Input() userId;
   constructor(
     private $router: Router,
     private $userService: UserEventService,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
+    private $global: GlobalService
   ) {
   }
 
@@ -38,7 +40,7 @@ export class UserEventsComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     if (this.userData) {
-       this.setUpTableResource(this.userData);
+      this.setUpTableResource(this.userData);
     }
   }
 
@@ -113,7 +115,10 @@ export class UserEventsComponent implements OnInit, OnChanges {
   }
 
   onDetailsHandler(id: string) {
-       this.$router.navigate([`admin/users/${id}/event/details`, {userID: this.otherData}]);
+    const userId = this.$global.encodeData(this.userId);
+    this.$router.navigate([`admin/users/${id}/event/details`],
+      { queryParams: { userId }}
+    );
   }
 
 }

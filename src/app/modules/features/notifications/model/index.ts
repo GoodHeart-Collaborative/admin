@@ -19,11 +19,18 @@ export class NotificationTableDataSource implements Table.Source<Category> {
     //   templateBy: 'profilePicUrl'
     // },
     {
-        title: 'Title',
+        title: 'Topic',
         id: 'title',
         sorting: true,
         templateBy: 'fullName'
         // resolve: (row: any) => row['title'] || '-',
+    },
+    {
+      title: 'Message',
+      id: 'message',
+      sorting: false,
+      templateBy: 'message'
+      // resolve: (row: any ) => row['message'] || '-'
     },
     // {
     //     title: 'Description',
@@ -33,7 +40,7 @@ export class NotificationTableDataSource implements Table.Source<Category> {
     //     // resolve: (row: any) => row['title'] || '-',
     // },
     {
-        title: 'Sent Count',
+        title: 'Sent To',
         id: 'sentCount',
         sorting: true,
         // templateBy: 'sentCount'
@@ -51,13 +58,7 @@ export class NotificationTableDataSource implements Table.Source<Category> {
       sorting: true,
       templateBy: 'created',
     },
-    {
-      title: 'Message',
-      id: 'message',
-      sorting: false,
-      templateBy: 'message'
-      // resolve: (row: any ) => row['message'] || '-'
-    },
+
 
     {
       title: 'Actions',

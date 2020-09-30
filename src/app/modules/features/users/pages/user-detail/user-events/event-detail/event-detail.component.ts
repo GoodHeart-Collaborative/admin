@@ -5,10 +5,11 @@ import { GoingListComponent } from 'src/app/modules/shared/going-list/view/going
 import { IntrestedListComponent } from 'src/app/modules/shared/intrested-list/view/intrested-list.component';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
-import {  UserEventService } from 'src/app/modules/features/users/pages/user-detail/user-events/service/user-event.service';
+import { UserEventService } from 'src/app/modules/features/users/pages/user-detail/user-events/service/user-event.service';
 import { MatDialog } from '@angular/material';
 import { EVENT_INTEREST } from 'src/app/constant/drawer';
-export type ActionType =  'blocked' | 'active';
+import { GlobalService } from 'src/app/services/global/global.service';
+export type ActionType = 'blocked' | 'active';
 
 @Component({
   selector: 'app-event-detail',
@@ -17,6 +18,7 @@ export type ActionType =  'blocked' | 'active';
 })
 export class EventDetailComponent implements OnInit {
   eventDetails: any;
+  userID: any;
 
   constructor(
     $router: ActivatedRoute,
@@ -24,16 +26,20 @@ export class EventDetailComponent implements OnInit {
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
     private $event: UserEventService,
-    private $matDailog: MatDialog
-    ) {
-    this.eventDetails = $router.snapshot.data.eventData.data;
+    private $matDailog: MatDialog,
+    $global: GlobalService
+  ) {
+    $router.queryParams.subscribe(({ userId }) => {
+      this.userID = $global.decodeData(userId);
+      $breadcrumb.replace($router.snapshot.params.id, $router.snapshot.params.id, `/admin/users/${this.userID}/details`);
+    });
+    // this.eventDetails = $router.snapshot.data.eventData.data;
     // $breadcrumb.replace(this.eventDetails.id, this.eventDetails.title);
-    $breadcrumb.replace($router.snapshot.params.id, $router.snapshot.params.id, `/admin/users/${$router.snapshot.params.userID}/details`);
+    // $breadcrumb.replace($router.snapshot.params.id, $router.snapshot.params.id, `/admin/users/${$router.snapshot.params.userID}/details`);
 
-    }
-
-  ngOnInit() {
   }
+
+  ngOnInit() { }
 
   onActionHandler(id: string, action: ActionType) {
     this.$confirmBox.listAction('event', action == 'active' ? 'active' : 'block')
@@ -65,7 +71,6 @@ export class EventDetailComponent implements OnInit {
         }).afterClosed().subscribe();
       }
     });
-
   }
 
   onInterestCount(count: number) {
@@ -76,6 +81,7 @@ export class EventDetailComponent implements OnInit {
       pageIndex: 0,
       pageSize: 20,
       eventId: this.eventDetails.id,
+      type: EVENT_INTEREST.INTEREST
     };
     this.$event.onGoingAndInterestHnadler(eventData).then(res => {
       if (res) {

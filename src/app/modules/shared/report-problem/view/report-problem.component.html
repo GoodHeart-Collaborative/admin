@@ -12,8 +12,8 @@
                     </div>
                     <div class="textual-cover">
                         <h4><span>{{item?.userData?.firstName}} {{item?.userData?.lastName}}</span>
-                            <!-- {{item?.createdAt}} -->
                             <p class="comment-time">{{item?.createdAt | time}}</p>
+                            <p>{{item?.reason}}</p>
                         </h4>
                     </div>
                     <div class="see-profile-cover">
@@ -24,9 +24,6 @@
                             <button mat-menu-item (click)="onSeeProfile(item?.userData?._id)">
                                 See Profile
                             </button>
-                            <!-- <button mat-menu-item>
-                                {{item?.user?.status | titlecase}} User
-                            </button> -->
                         </mat-menu>
                     </div>
                 </li>

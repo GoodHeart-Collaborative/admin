@@ -4,7 +4,10 @@ import { EventDetailComponent } from './event-detail.component';
 import { Routes, RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material';
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
-import { UserEventService, UserEventServiceResolve } from '../service/user-event.service';
+import { UserEventService } from '../service/user-event.service';
+import { DateTimePipeModule } from 'src/app/pipes/date-time-pipe/date-time-pipe.module';
+import { IntrestedListModule } from 'src/app/modules/shared/intrested-list/intrested-list.module';
+import { GoingListModule } from 'src/app/modules/shared/going-list/going-list.module';
 
 const routes: Routes = [
   {
@@ -19,7 +22,10 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     MatIconModule,
-    CustomImageModule
+    CustomImageModule,
+    DateTimePipeModule,
+    IntrestedListModule,
+    GoingListModule
   ],
   exports: [
     EventDetailComponent

@@ -84,7 +84,6 @@ export class UserGratitudeJournalComponent implements OnInit, OnChanges {
         break;
       case 'blocked':
         this.handleStatus(action, index);
-
         break;
       default:
         break;

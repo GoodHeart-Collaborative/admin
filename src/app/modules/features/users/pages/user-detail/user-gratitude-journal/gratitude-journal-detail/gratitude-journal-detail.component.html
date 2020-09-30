@@ -4,7 +4,7 @@
             <div class="textual-detail">
                 <div class="card_header_container profile_header">
                     <div class="card_header">
-                        <figure mat-card-avatar class="image-cover">
+                        <figure mat-card-avatar class="image-cover" *ngIf="gratitudeDetails?.userData?.profilePicUrl[0]">
                             <img class="img-cover-fit" [src]="gratitudeDetails?.userData?.profilePicUrl[0] | customImage:'USERS'|async " alt="">
                         </figure>
                         <div class="heading-cover">
@@ -15,7 +15,7 @@
                     <p>{{gratitudeDetails?.description | titlecase}}</p>
                 </div>
             </div>
-            <div class="image-detail">
+            <div class="image-detail" *ngIf="gratitudeDetails?.mediaUrl">
                 <img [src]="gratitudeDetails?.mediaUrl |customImage:'USER'|async">
             </div>
         </div>
