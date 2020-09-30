@@ -20,16 +20,17 @@ export class UserShoutoutsDetailsComponent implements OnInit {
     $global: GlobalService,
     private $matDailog: MatDialog
   ) {
+    if ($router.snapshot.data && $router.snapshot.data.shoutoutsData) {
+      this.shoutoutsData = $router.snapshot.data.shoutoutsData;
+    }
     $router.queryParams.subscribe(({ userId }) => {
       if (!userId) {
         return;
       }
       this.userID = $global.decodeData(userId);
-      $breadcrumb.replace($router.snapshot.params.id, $router.snapshot.params.id, `/admin/users/${this.userID}/details`);
+      $breadcrumb.replace($router.snapshot.params.id, this.shoutoutsData.title, `/admin/users/${this.userID}/details`);
     });
-    if ($router.snapshot.data && $router.snapshot.data.shoutoutsData) {
-      this.shoutoutsData = $router.snapshot.data.shoutoutsData;
-    }
+   
   }
 
   ngOnInit() { }

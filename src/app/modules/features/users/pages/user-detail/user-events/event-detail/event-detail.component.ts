@@ -30,10 +30,10 @@ export class EventDetailComponent implements OnInit {
     $global: GlobalService
   ) {
     $router.queryParams.subscribe(({ userId }) => {
+      this.eventDetails = $router.snapshot.data.eventData.data;
       this.userID = $global.decodeData(userId);
-      $breadcrumb.replace($router.snapshot.params.id, $router.snapshot.params.id, `/admin/users/${this.userID}/details`);
+      $breadcrumb.replace($router.snapshot.params.id, this.eventDetails.title, `/admin/users/${this.userID}/details`);
     });
-    // this.eventDetails = $router.snapshot.data.eventData.data;
     // $breadcrumb.replace(this.eventDetails.id, this.eventDetails.title);
     // $breadcrumb.replace($router.snapshot.params.id, $router.snapshot.params.id, `/admin/users/${$router.snapshot.params.userID}/details`);
 

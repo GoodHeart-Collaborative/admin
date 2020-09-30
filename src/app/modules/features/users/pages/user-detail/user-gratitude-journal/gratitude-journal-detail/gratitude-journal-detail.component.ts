@@ -26,10 +26,10 @@ export class GratitudeJournalDetailComponent implements OnInit {
     $global: GlobalService
   ) {
     $router.queryParams.subscribe(({ userId }) => {
+      this.gratitudeDetails = $router.snapshot.data.gratitudeData;
       this.userID = $global.decodeData(userId);
-      $breadcrumb.replace($router.snapshot.params.id, $router.snapshot.params.id, `/admin/users/${this.userID}/details`)
+      $breadcrumb.replace($router.snapshot.params.id, this.gratitudeDetails.description, `/admin/users/${this.userID}/details`)
     });
-    this.gratitudeDetails = $router.snapshot.data.gratitudeData;
   }
 
   /**
