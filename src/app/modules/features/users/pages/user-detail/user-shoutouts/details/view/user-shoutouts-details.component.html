@@ -16,18 +16,18 @@
                             <p class="label">Greetings Type</p>
                             <p class="value">{{shoutoutsData?.title}}</p>
                         </div> -->
-                        <!-- <div class="col-md-4">
-                            <p class="label">To</p>
-                            <p class="value">{{shoutoutsData?.title}}</p>
+                        <div class="col-md-4">
+                            <p class="label">Send To</p>
+                            <p class="value" *ngFor="let item of shoutoutsData?.memberData">{{item?.firstName || ''}} {{item?.lastName || ''}}</p>
                         </div>
                         <div class="col-md-4">
                             <p class="label">From</p>
-                            <p class="value">{{shoutoutsData?.title}}</p>
-                        </div> -->
-                        <div class="col-md-4">
-                            <p class="label">Status</p>
-                            <p class="value">{{shoutoutsData?.status | titlecase}}</p>
+                            <p class="value">{{shoutoutsData?.senderData?.firstName || ''}} {{shoutoutsData?.senderData?.lastName || ''}}</p>
                         </div>
+                        <!-- <div class="col-md-4">
+                            <p class="label">Privacy</p>
+                            <p class="value">{{shoutoutsData?.privacy | titlecase}}</p>
+                        </div> -->
                         <div class="col-md-6">
                             <p class="label">GIF URL</p>
                             <a class="value" (click)="openGif(shoutoutsData?.gif)">{{shoutoutsData?.gif}}</a>
