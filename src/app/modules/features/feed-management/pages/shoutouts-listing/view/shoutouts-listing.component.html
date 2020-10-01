@@ -14,7 +14,7 @@
     </ng-template>
 
     <ng-template appFor="gif" let-shoutouts="row">
-        <a href="javascript:void(0)"  [class.click-not-allowed]="shoutouts?.privacy == 'private'" (click)="openGif(shoutoutsData?.gif)">
+        <a href="javascript:void(0)"  [class.click-not-allowed]="shoutouts?.privacy == 'private'" (click)="openGif(shoutouts?.gif)">
         {{ shoutouts?.gif | titlecase}}
     </a>
     </ng-template>
@@ -35,7 +35,6 @@
 
     <ng-template appFor="userData" let-shoutouts="row">
             {{ (shoutouts?.userData?.firstName  | titlecase) || 'String'}} {{ (shoutouts?.userData?.lastName  | titlecase) || ''}}
-
     </ng-template>
 
     <ng-container>
