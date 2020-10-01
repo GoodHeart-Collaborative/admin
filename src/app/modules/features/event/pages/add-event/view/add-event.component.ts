@@ -107,7 +107,7 @@ export class AddEventComponent implements OnInit {
   }
   get minForStartDate() {
     return this.eventDetails && this.eventDetails.id ?
-      this.eventDetails.endDate : new Date(new Date(this.startDate.value).getTime() + 3600000);
+      this.eventDetails.endDate : new Date(new Date(this.startDate.value).getTime() + 1800000);
   }
 
 
@@ -208,7 +208,7 @@ export class AddEventComponent implements OnInit {
 
   onDateSelected(event) {
     if (event && this.startDate.value &&  new Date(event.value) < new Date(new Date(this.startDate.value).getTime() + 3600000)) {
-        this.endDate.setValue(new Date(new Date(this.startDate.value).getTime() + 3600000));
+        this.endDate.setValue(new Date(new Date(this.startDate.value).getTime() + 1800000));
     }
   }
 }
