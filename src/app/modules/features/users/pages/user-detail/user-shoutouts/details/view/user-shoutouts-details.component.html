@@ -8,7 +8,7 @@
                             <p class="label">Title</p>
                             <p class="value">{{shoutoutsData?.title |titlecase}}</p>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <p class="label">Privacy Type</p>
                             <p class="value">{{shoutoutsData?.privacy |titlecase }}</p>
                         </div>
@@ -16,22 +16,26 @@
                             <p class="label">Greetings Type</p>
                             <p class="value">{{shoutoutsData?.title}}</p>
                         </div> -->
+                        <div class="col-md-5">
+                            <p class="label">GIF URL</p>
+                            <a class="value" (click)="openGif(shoutoutsData?.gif)">{{shoutoutsData?.gif}}</a>
+                        </div>
                         <div class="col-md-4">
                             <p class="label">Send To</p>
-                            <p class="value" *ngFor="let item of shoutoutsData?.memberData">{{item?.firstName || ''}} {{item?.lastName || ''}}</p>
+                            <p class="value" *ngFor="let item of shoutoutsData?.memberData">{{item?.firstName || ''}}
+                                {{item?.lastName || ''}}
+                                <span class="email-wrapper"> <i class="icon far fa-envelope"></i> shubham.maheswari@appinventiv.com</span></p>
                         </div>
                         <div class="col-md-4">
                             <p class="label">From</p>
-                            <p class="value">{{shoutoutsData?.senderData?.firstName || ''}} {{shoutoutsData?.senderData?.lastName || ''}}</p>
+                            <p class="value">{{shoutoutsData?.senderData?.firstName || ''}}
+                                {{shoutoutsData?.senderData?.lastName || ''}}</p>
                         </div>
                         <!-- <div class="col-md-4">
                             <p class="label">Privacy</p>
                             <p class="value">{{shoutoutsData?.privacy | titlecase}}</p>
                         </div> -->
-                        <div class="col-md-6">
-                            <p class="label">GIF URL</p>
-                            <a class="value" (click)="openGif(shoutoutsData?.gif)">{{shoutoutsData?.gif}}</a>
-                        </div>
+
                         <div class="col-md-12">
                             <p class="label">Description</p>
                             <p class="value">{{shoutoutsData?.description}}</p>
