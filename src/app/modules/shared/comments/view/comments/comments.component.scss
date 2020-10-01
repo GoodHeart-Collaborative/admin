@@ -1,55 +1,80 @@
 :host{
     @import 'components/popup-ui';
-    // @import 'components/common-detail-page-ui';
 }
 
-.users-listing{
+.page-comments{
+    .comments-popup-content{
+        max-height: calc(100vh - 150px) !important;
+    }    
+}
+
+.users-listing {
     padding: 0px;
     margin: 0px;
-    .single-user{
-        &:not(:first-child){
+    .single-user {
+        &:not(:first-child) {
             padding-top: 6px;
         }
-        &:not(:last-child){
+        &:not(:last-child) {
             padding-bottom: 6px;
         }
-        .li-content{
+        .li-content {
             display: flex;
             align-items: flex-start;
             justify-content: space-between;
-            text-align: left;
-            .img-cover{
-                width: 35px;
-                height: 35px;
+            .img-cover {
+                width: 40px;
+                height: 40px;
                 overflow: hidden;
-                border-radius: 35px;
+                border-radius: 50%;
                 box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.1);
-                img{
+                img {
                     width: 100%;
                     height: 100%;
                 }
             }
-            .textual-cover{
-                padding-left: 10px;
-                width: calc(100% - 35px);
+            .textual-cover {
+                margin-left: 20px;
                 display: block;
-                h4{
-                    margin: 0px;
-                    font-size: 14px;
+                padding: 10px;
+                background-color: #f2f2f2;
+                border-radius: 5px;
+                position: relative;
+                flex: 1;
+                text-align: left;
+                &::before {
+                    content: "";
+                    display: block;
+                    width: 0;
+                    height: 0;
+                    position: absolute;
+                    top: 12px;
+                    right: 100%;
+                    border-top: 10px solid transparent;
+                    border-right: 10px solid #f2f2f2;
+                    border-bottom: 10px solid transparent;
+                }
+                h4 {
+                    margin: 0 0 5px 0;
+                    font-size: 15px;
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
+                    font-weight: 600;
                     max-width: 100%;
                     position: relative;
                     padding-right: 100px;
-                    .more-icon{
+                    span{
+                        font-weight: 600;
+                    }
+                    .more-icon {
                         position: absolute;
                         right: 0px;
                         top: 2px;
                         cursor: pointer;
                     }
-                    p{
-                        &.comment-time{
+                    p {
+                        &.comment-time {
                             position: absolute;
                             right: 0px;
                             top: 2px;
@@ -57,57 +82,61 @@
                         }
                     }
                 }
-                p{
-                    margin: 0px;
-                    font-size: 12px;
+                p {
+                    margin: 0;
+                    font-size: 14px;
+                    line-height: 18px;
                     color: #868686;
                     word-break: break-word;
-                    &.comment-time{
+                    &.comment-time {
                         font-size: 10px;
                     }
+                    &.comment {
+                        margin: 0 0 8px 0;
+                    }
                 }
-                .like-cover{
+                .like-cover {
                     display: flex;
+                    margin-top: 8px;
                     align-items: center;
-                    margin-top: 4px;
-                    .material-icons{
+                    .material-icons {
                         color: #556080;
                         margin-right: 10px;
                         font-size: 16px;
                     }
-                    p{
+                    p {
                         font-size: 14px;
                     }
-                    .see-hide-replies{
+                    .see-hide-replies {
                         text-decoration: none;
                         cursor: pointer;
                         color: black;
-                        margin-left: 50px;
-                        font-size: 11px;
+                        margin-left: 20px;
+                        font-size: 12px;
                     }
                 }
             }
         }
-        .comment-listing{
+        .comment-listing {
             width: 100%;
-            padding: 10px 0px 0px 45px;
-            .single-comment{
-                &:not(:first-child){
+            padding: 10px 0px 0px 60px;
+            .single-comment {
+                &:not(:first-child) {
                     padding-top: 5px;
                 }
-                &:not(:last-child){
+                &:not(:last-child) {
                     padding-bottom: 5px;
                 }
-                .li-content{
+                .li-content {
                     width: 100%;
-                    .img-cover{
-                        width: 25px;
-                        height: 25px;
+                    .img-cover {
+                        width: 32px;
+                        height: 32px;
                     }
-                    .textual-cover{
+                    .textual-cover {
                         padding-left: 10px;
-                        width: calc(100% - 25px);
-                        p{
+                        width: calc(100% - 32px);
+                        p {
                             word-break: break-word;
                         }
                     }
