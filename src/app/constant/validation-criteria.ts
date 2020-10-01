@@ -20,7 +20,7 @@ export const VALIDATION_CRITERIA = {
   descriptionMinLength: 10,
   descriptionMaxLength: 400,
   eventDescriptionMaxLength: 500,
-  forumDescriptionMaxLength: 1000,
+  forumDescriptionMaxLength: 500,
   bioMinLength: 10,
   bioMaxLength: 500,
   professionMinLength: 3,

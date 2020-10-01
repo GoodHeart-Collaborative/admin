@@ -36,7 +36,7 @@
             <div class="like-cover" [class.comment]="post?.commentCount > 0"><span class="material-icons">comment</span>
                 <p>{{post?.commentCount}}</p>
             </div>
-            <div class="like-cover" (click)="onReportProblem(post?._id, post?.reportCount)"><span
+            <div class="like-cover" (click)="onReportProblem(post?._id, post?.reportCount)" *ngIf="post?.reportCount"><span
                     class="material-icons">report</span>
                 <p>{{post?.reportCount}}</p>
             </div>
