@@ -24,12 +24,13 @@
                             <p class="label">Send To</p>
                             <p class="value" *ngFor="let item of shoutoutsData?.memberData">{{item?.firstName || ''}}
                                 {{item?.lastName || ''}}
-                                <span class="email-wrapper"> <i class="icon far fa-envelope"></i> shubham.maheswari@appinventiv.com</span></p>
+                                <span class="email-wrapper"> <i class="icon far fa-envelope"></i> {{item?.email}}</span></p>
                         </div>
                         <div class="col-md-4">
                             <p class="label">From</p>
                             <p class="value">{{shoutoutsData?.senderData?.firstName || ''}}
-                                {{shoutoutsData?.senderData?.lastName || ''}}</p>
+                                {{shoutoutsData?.senderData?.lastName || ''}}
+                                <span class="email-wrapper"> <i class="icon far fa-envelope"></i> {{shoutoutsData?.senderData?.email}}</span></p>
                         </div>
                         <!-- <div class="col-md-4">
                             <p class="label">Privacy</p>

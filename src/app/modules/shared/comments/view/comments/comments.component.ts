@@ -9,8 +9,10 @@ import { CommonService } from '../../../services/common.service';
 })
 export class CommentsComponent implements OnInit {
 
-  public hideShowReplies: boolean = false;
-  comments: any;
+  public hideShowReplies = false;
+  comments: any = [];
+  pageIndex = 0;
+  commentsData: any;
   constructor(
     private $dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -20,30 +22,34 @@ export class CommentsComponent implements OnInit {
 
   async ngOnInit() {
     if (this.data) {
-      this.comments = await this.getCommentHandler(this.data);
-      this.comments = this.comments.map(comment => {
-        comment['replies'] = [];
-        comment['showReply'] = false;
-        return comment;
-      });
+      this.commentsData = await this.getCommentHandler(this.data);
+      this.addComments(this.commentsData.list);
     }
   }
 
+  addComments(data: any[]) {
+    const mappedArray = data.map(comment => {
+      comment['replies'] = [];
+      comment['showReply'] = false;
+      return comment;
+    });
+    this.comments = [...this.comments, ...mappedArray];
+  }
   /**
    * user Comment Handler
    */
   async getCommentHandler(id, commentId?) {
     if (id) {
       const params = {
-        pageNo: 1,
-        limit: 100,
+        pageNo: `${this.pageIndex + 1}`,
+        limit: 5,
         postId: id
       };
       if (commentId) {
         params['commentId'] = commentId;
       }
       return await this.$common.onCommentHandler(params).then(res => {
-        return res.data['list'];
+        return res.data;
       });
     }
   }
@@ -60,5 +66,12 @@ export class CommentsComponent implements OnInit {
     this.hideShowReplies = !this.hideShowReplies;
   }
 
+  async onLoadMore() {
+    if (this.pageIndex < this.commentsData.total_page) {
+      this.pageIndex++;
+      const loadData: any = await  this.getCommentHandler(this.data);
+      this.addComments(loadData.list);
+    }
+  }
 
 }

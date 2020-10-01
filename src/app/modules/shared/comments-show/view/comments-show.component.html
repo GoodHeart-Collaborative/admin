@@ -1,6 +1,9 @@
-<div class="comments-wrapper" *ngIf="comments && comments.length > 0">
+
+<!-- {{comments |json}} -->
+<div class="comments-wrapper" *ngIf="comments && comments?.length > 0">
     <div class="comment-row">
         <ul class="users-listing">
+          
             <li class="single-user" *ngFor="let item of comments; let commentIndex = index">
                 <div class="li-content">
                     <div class="img-cover">
@@ -43,7 +46,7 @@
                 </ul>
             </li>
             <div class="load-more-wrapper">
-                <button class="btn btn-primary" mat-stroked-button>Load more comments</button>
+                <button class="btn btn-primary" mat-stroked-button (click)="onLoadMore()">Load more comments</button>
             </div>
         </ul>
     </div>
