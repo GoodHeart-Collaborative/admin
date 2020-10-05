@@ -47,6 +47,8 @@ export class AddEventComponent implements OnInit {
     if (activateRoute.snapshot.data.eventDetails && activateRoute.snapshot.data.eventDetails.data) {
       this.eventDetails = activateRoute.snapshot.data.eventDetails.data;
       $breadcrumb.replace(this.eventDetails.id, this.eventDetails.title);
+      console.log(this.eventDetails);
+      
       this.setEditFormHandler();
     }
   }
@@ -107,7 +109,7 @@ export class AddEventComponent implements OnInit {
   }
   get minForStartDate() {
     return this.eventDetails && this.eventDetails.id ?
-      this.eventDetails.endDate : new Date(new Date(this.startDate.value).getTime() + 3600000);
+      this.eventDetails.endDate : new Date(new Date(this.startDate.value).getTime() + 1800000);
   }
 
 
@@ -137,12 +139,12 @@ export class AddEventComponent implements OnInit {
     if (!body.eventUrl) {
       delete body.eventUrl;
     }
-    // if (this.location && this.address) {
-    //   body.location = this.location;
-    //   body.address = this.address;
-    // }
+    if (this.location && this.address) {
+      body.location = this.location;
+      body.address = this.address;
+    }
     if (this.address) {
-      // body.location = this.location;
+      body.location = this.location;
       body.address = this.address;
     }
     if (body.endDate) {
@@ -203,12 +205,12 @@ export class AddEventComponent implements OnInit {
     //     event.lng, event.lat
     //   ]
     // };
-    this.address = event.formatted_address;
+    // this.address = event.formatted_address;
   }
 
   onDateSelected(event) {
     if (event && this.startDate.value &&  new Date(event.value) < new Date(new Date(this.startDate.value).getTime() + 3600000)) {
-        this.endDate.setValue(new Date(new Date(this.startDate.value).getTime() + 3600000));
+        this.endDate.setValue(new Date(new Date(this.startDate.value).getTime() + 1800000));
     }
   }
 }

@@ -89,8 +89,6 @@ export class FeedManagementComponent implements OnInit {
         break;
       }
       case 2: {
-       
-        
         break;
       }
        default:

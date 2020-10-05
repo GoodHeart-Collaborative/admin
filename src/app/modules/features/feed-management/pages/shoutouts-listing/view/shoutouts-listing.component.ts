@@ -44,9 +44,7 @@ export class ShoutoutsListingComponent implements OnInit , OnChanges{
     if (this.shoutOutsDetails) {
       this.setUpTableResource(this.shoutOutsDetails);
       console.log(this.shoutOutsDetails);
-      
-
-    }
+     }
   }
 
   onOptionChange(event: Table.OptionEvent) {
@@ -127,6 +125,8 @@ export class ShoutoutsListingComponent implements OnInit , OnChanges{
   }
 
   openGif(image: string ) {
+    console.log(image);
+    
     this.$matDailog.open(ViewFullImageComponent, {
       width: '500px',
       data: {image , type: 0}

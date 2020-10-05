@@ -3,36 +3,39 @@
         <h3>Comments</h3>
         <mat-icon class="close-icon" [mat-dialog-close]="false">close</mat-icon>
     </div>
-    <div class="popup-content">
+    <div class="popup-content comments-popup-content">
         <div class="popup-body">
-            <ul class="users-listing" >
-                <li class="single-user"  *ngFor="let item of comments; let commentIndex = index">
+            <ul class="users-listing">
+                <li class="single-user" *ngFor="let item of comments; let commentIndex = index">
                     <div class="li-content">
                         <div class="img-cover">
                             <img [src]="item?.users?.profilePicUrl[0] |customImage:'USER'|async" alt="Profile">
                         </div>
                         <div class="textual-cover">
-                            <h4><span title="{{item?.users?.firstName || 'String' }} {{item?.users?.lastName || '' }}S">{{item?.users?.firstName || 'String' }} {{item?.users?.lastName || '' }}</span>
+                            <h4><span
+                                    title="{{item?.users?.firstName || 'String' }} {{item?.users?.lastName || '' }}S">{{item?.users?.firstName || 'String' }}
+                                    {{item?.users?.lastName || '' }}</span>
                                 <p class="comment-time">{{item?.created | time}}</p>
                             </h4>
                             <p>{{item?.comment}}</p>
-                            <div class="like-cover" >
-                            </div> 
-                            <div *ngIf="item.likeCount > 0">
-                                <span class="material-icons" >thumb_up</span>
-                                <p >{{item?.likeCount}}</p>
+
+                            <div class="like-cover" *ngIf="item.likeCount > 0">
+                                <span class="material-icons">thumb_up</span>
+                                <p>{{item?.likeCount}}</p>
+                                <a class="see-hide-replies" (click)="toggleReplies(item?._id, commentIndex)"
+                                    *ngIf="item?.commentCount">{{item?.showReply? "Hide" : "See"}} Replies
+                                    ({{item?.commentCount}})</a>
                             </div>
-                            <a class="see-hide-replies" (click)="toggleReplies(item?._id, commentIndex)" *ngIf="item?.commentCount">{{item?.showReply? "Hide" : "See"}} Replies ({{item?.commentCount}})</a>
                         </div>
                     </div>
-                    <ul class="comment-listing" *ngIf="item?.showReply" >
+                    <ul class="comment-listing" *ngIf="item?.showReply">
                         <li class="single-comment" *ngFor="let reply of item?.replies">
                             <div class="li-content">
                                 <div class="img-cover">
                                     <img [src]="reply?.users?.profilePicUrl[0] |customImage:'USER'|async" alt="Profile">
                                 </div>
                                 <div class="textual-cover">
-                                    <h4>{{reply?.users?.firstName }}  {{reply?.users?.lastName || '' }} 
+                                    <h4>{{reply?.users?.firstName }} {{reply?.users?.lastName || '' }}
                                         <p class="comment-time">{{reply?.createdAt | time}}</p>
                                     </h4>
                                     <p>{{reply?.comment}}</p>
@@ -42,14 +45,16 @@
                                 </div>
                             </div>
                         </li>
-                       
-                    </ul> 
+
+                    </ul>
                 </li>
             </ul>
             <div *ngIf="!comments?.length">
                 <p>Loading....</p>
             </div>
         </div>
-       
+        <div class="load-more-wrapper">
+            <button class="btn btn-primary" mat-stroked-button (click)="onLoadMore()">Load more comments</button>
+        </div>
     </div>
 </div>

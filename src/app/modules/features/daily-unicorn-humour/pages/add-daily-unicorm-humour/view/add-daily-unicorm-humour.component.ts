@@ -118,7 +118,7 @@ export class AddDailyUnicormHumourComponent implements OnInit {
    */
   async onSubmit() {
     if (this.unicornForm.invalid) {
-      if (this.unicornForm.get('postedAt').value &&
+      if (this.unicornForm.get('postedAt').value && this.isPostLater.value &&
         new Date(this.unicornForm.get('postedAt').value).getTime()
         < new Date(23, 59, 59, 999).getTime()) {
         this.$utility.error('Invalid date selected');
