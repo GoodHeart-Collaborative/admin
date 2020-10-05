@@ -86,7 +86,7 @@ export class AddAdviceComponent implements OnInit {
       this.profilePicURL = this.adviceDetails.mediaUrl;
       if (this.adviceDetails.mediaType == 2) {
         this.thumbnailUrl = this.adviceDetails.mediaUrl;
-       }
+      }
       this.adviceForm.patchValue(this.adviceDetails);
       if (this.adviceDetails && this.adviceDetails.postedAt && this.adviceDetails.isPostLater) {
         this.adviceForm.get('postedAt').patchValue(new Date(this.adviceDetails.postedAt));
@@ -110,21 +110,21 @@ export class AddAdviceComponent implements OnInit {
       this.adviceForm.markAllAsTouched();
       return;
     }
-    if (!this.adviceDetails && this.adviceForm.get('postedAt').value &&
-    new Date(this.adviceForm.get('postedAt').value).getTime()
-    < new Date(23, 59, 59, 999).getTime()) {
-    this.$utility.error('Invalid date selected');
-    return;
-  }
-  //   if (this.adviceDetails && this.adviceForm.get('postedAt').value &&
-  //   new Date(this.adviceForm.get('postedAt').value).getTime()
-  //   < new Date(this.today).getTime()) {
-  //   this.$utility.error('Invalid date selected');
-  //   return;
-  // }
+    if (!this.adviceDetails && this.isPostLater.value && this.adviceForm.get('postedAt').value &&
+      new Date(this.adviceForm.get('postedAt').value).getTime()
+      < new Date(23, 59, 59, 999).getTime()) {
+      this.$utility.error('Invalid date selected');
+      return;
+    }
+    //   if (this.adviceDetails && this.adviceForm.get('postedAt').value &&
+    //   new Date(this.adviceForm.get('postedAt').value).getTime()
+    //   < new Date(this.today).getTime()) {
+    //   this.$utility.error('Invalid date selected');
+    //   return;
+    // }
     const body = { ...this.adviceForm.value };
     if (this.profileDetail) {
-        body.addedBy = this.profileDetail.userId;
+      body.addedBy = this.profileDetail.userId;
     }
     if (this.imageFile) {
       if (this.imageFile && this.imageFile.type == 1) {
@@ -171,7 +171,6 @@ export class AddAdviceComponent implements OnInit {
 
       body.postedAt = new Date(this.adviceForm.get('postedAt').value).toString();
       console.log(body.postedAt);
-      
     }
 
     this.adviceForm.disable();

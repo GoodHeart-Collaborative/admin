@@ -115,7 +115,7 @@ export class AddDailyInspiratinComponent implements OnInit {
    */
   async onSubmit() {
     if (this.inspirationForm.invalid) {
-      if (this.inspirationForm.get('postedAt').value &&
+      if (this.inspirationForm.get('postedAt').value && this.isPostLater.value &&
         new Date(this.inspirationForm.get('postedAt').value).getTime()
         < new Date().setHours(23, 59, 59, 999)) {
         this.$utility.error('Invalid date selected');
