@@ -61,7 +61,7 @@ export class AddEventComponent implements OnInit {
     if (this.eventDetails) {
       this.eventForm.patchValue(this.eventDetails);
       if (this.eventDetails.address) {
-        // this.eventForm.get('location').patchValue(this.eventDetails.location);
+        this.eventForm.get('location').patchValue(this.eventDetails.location);
         this.eventForm.get('address').patchValue(this.eventDetails.address);
       }
       if (this.eventDetails.imageUrl) {
@@ -88,7 +88,7 @@ export class AddEventComponent implements OnInit {
       price: [null, [Validators.maxLength(this.priceMaxLength), Validators.pattern(PATTERN.price), Validators.required,]],
       eventUrl: ['', [Validators.pattern(PATTERN.url)]],
       description: ['', [Validators.required, Validators.maxLength(this.descriptionMaxLength)]],
-      // location: [''],
+      location: [''],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
       address: ['', Validators.required],
@@ -199,13 +199,13 @@ export class AddEventComponent implements OnInit {
   }
 
   selectLocation(event) {
-    // this.location = {
-    //   type: "Point",
-    //   coordinates: [
-    //     event.lng, event.lat
-    //   ]
-    // };
-    // this.address = event.formatted_address;
+    this.location = {
+      type: "Point",
+      coordinates: [
+        event.lng, event.lat
+      ]
+    };
+    this.address = event.formatted_address;
   }
 
   onDateSelected(event) {
