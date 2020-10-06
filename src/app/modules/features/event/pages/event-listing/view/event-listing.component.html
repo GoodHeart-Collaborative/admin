@@ -57,7 +57,9 @@
                  </i>
               
                  <i class="material-icons icon-block" (click)="onActionHandler(row._id, 'blocked')" *ngIf="row?.status === 'active';else templateAction"  title="Block">
-                     blocked</i>
+                     blocked
+                 </i>
+
                  <ng-template #templateAction>
                      <i class="material-icons icon-unblock" (click)="onActionHandler(row._id, 'active')" title="Unblock">
                          lock_open
@@ -65,7 +67,7 @@
                  </ng-template>
                  <i class="material-icons icon-delete" (click)="onActionHandler(row._id, 'deleted')" title="Delete">
                     delete
-                </i>
+                 </i>
              </div>
          </ng-template>
      </ng-container>  
