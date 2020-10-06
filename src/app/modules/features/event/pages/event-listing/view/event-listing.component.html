@@ -30,7 +30,7 @@
      </ng-template>
 
      <ng-template appFor="imageUrl" let-row="row">
-        <div class="table-cell-image-cover" title="Click to see the image">
+        <div class="table-cell-image-cover event-image-cover" title="Click to see the image">
             <img [src]="row?.imageUrl |customImage:'IMAGE_PLACEHOLDER'|async" alt="row-image"
                 (click)="onImageClick(row?.imageUrl)">
         </div>
