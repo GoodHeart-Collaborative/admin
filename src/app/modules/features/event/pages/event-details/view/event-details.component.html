@@ -4,7 +4,7 @@
             <div class="left-portion">
                 <div class="event-cover-photo">
 
-                    <img [src]="eventDetails?.imageUrl | customImage:'USERS'|async">
+                    <img [src]="eventDetails?.imageUrl | customImage:'USERS'|async" (click)="onViewPic(eventDetails?.imageUrl)">
                 </div>
                 <div class="event-about">
                     <h4 class="event-title">{{eventDetails?.title}}</h4>

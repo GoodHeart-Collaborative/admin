@@ -7,6 +7,7 @@ import { IntrestedListModule } from 'src/app/modules/shared/intrested-list/intre
 import { GoingListModule } from 'src/app/modules/shared/going-list/going-list.module';
 import { MatDialogModule } from '@angular/material';
 import { DateTimePipeModule } from 'src/app/pipes/date-time-pipe/date-time-pipe.module';
+import { ViewFullImageModule } from 'src/app/modules/shared/view-full-image/view-full-image.module';
 
 const routes: Routes = [
   {
@@ -24,7 +25,8 @@ const routes: Routes = [
     IntrestedListModule,
     GoingListModule,
     MatDialogModule,
-    DateTimePipeModule
+    DateTimePipeModule,
+    ViewFullImageModule
   ]
 })
 export class EventDetailsModule { }

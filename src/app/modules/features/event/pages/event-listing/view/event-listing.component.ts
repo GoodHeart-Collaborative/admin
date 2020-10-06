@@ -26,8 +26,8 @@ export class EventListingComponent implements OnInit {
     filterData: null,
     sortData: null
   };
-  eventCategory = Object.values(EVENT_CATEGORY) ;
-
+  eventCategory = Object.values(EVENT_CATEGORY);
+  today = new Date().getTime();
   constructor(
     private $event: EventService,
     private $router: Router,
@@ -154,7 +154,10 @@ export class EventListingComponent implements OnInit {
    * Edit Handler
    * @param id
    */
-  oneditHandler(id) {
+  oneditHandler(id: string, endDate: number) {
+    if (this.today > endDate) {
+      return;
+    }
     this.$router.navigate([`${EVENTS.fullUrl}`, 'edit', id]);
   }
 
@@ -205,7 +208,7 @@ export class EventListingComponent implements OnInit {
     }
     this.$matDailog.open(ViewFullImageComponent, {
       panelClass: 'view-full-image-modal',
-      data: {image, type}
+      data: { image, type }
     }).afterClosed().subscribe();
   }
 

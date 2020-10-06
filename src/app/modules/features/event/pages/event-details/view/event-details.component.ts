@@ -9,6 +9,7 @@ import { IntrestedListComponent } from 'src/app/modules/shared/intrested-list/vi
 import { GoingListComponent } from 'src/app/modules/shared/going-list/view/going-list.component';
 import { EVENT_INTEREST } from 'src/app/constant/drawer';
 import { COPIED } from 'src/app/constant/messages';
+import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
 export type ActionType = 'blocked' | 'active';
 
 @Component({
@@ -50,7 +51,7 @@ export class EventDetailsComponent implements OnInit {
     if (!count) {
       return;
     }
-    const   eventData = {
+    const eventData = {
       pageIndex: 0,
       pageSize: 20,
       eventId: this.eventDetails.id,
@@ -92,5 +93,15 @@ export class EventDetailsComponent implements OnInit {
     document.execCommand('copy');
     window.getSelection().removeAllRanges();
     this.$utility.success(COPIED);
+  }
+
+  onViewPic(image: string, type = 1) {
+    if (!image) {
+      return;
+    }
+    this.$matDailog.open(ViewFullImageComponent, {
+      panelClass: 'view-full-image-modal',
+      data: { image, type }
+    }).afterClosed().subscribe();
   }
 }
