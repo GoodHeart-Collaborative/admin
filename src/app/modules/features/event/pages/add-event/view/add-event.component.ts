@@ -139,7 +139,6 @@ export class AddEventComponent implements OnInit {
     }
 
     if (this.location && this.address) {
-      debugger;
       body.location = this.location;
       body.address = this.address;
     }
