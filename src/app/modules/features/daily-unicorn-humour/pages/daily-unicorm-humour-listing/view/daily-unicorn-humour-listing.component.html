@@ -17,6 +17,12 @@
         </a>
     </ng-template>
 
+    <ng-template appFor="commentCount" let-daily="row">
+        <a (click)="onCommentsHandler(daily._id, daily?.commentCount)" [class.color-black]="daily?.commentCount < 1">
+            {{ daily?.commentCount}}
+        </a>
+    </ng-template>
+
     <ng-template appFor="mediaUrl" let-category="row">
         <div class="table-cell-image-cover" (click)="onImageClick(category?.mediaUrl, category?.mediaType)">
             <img [src]="(category?.mediaUrl )|customImage:'IMAGE_PLACEHOLDER'|async" *ngIf="category?.mediaType == 1" alt="category-image" title="Click to see the image">
@@ -24,11 +30,7 @@
         </div>
     </ng-template>
 
-    <ng-template appFor="commentCount" let-daily="row">
-        <a (click)="onCommentsHandler(daily._id, daily?.commentCount)" [class.color-black]="daily?.commentCount < 1">
-            {{ daily?.commentCount}}
-        </a>
-    </ng-template>
+
 
     <ng-template appFor="description" let-post="row">
         <a href="javascript:void(0)" (click)="onDetailsHandler(post?._id)" title="{{ post?.title | titlecase}}">

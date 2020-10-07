@@ -9,6 +9,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule, MatOptionModule, MatSelectModule } from '@angular/material';
 import { ViewFullImageModule } from 'src/app/modules/shared/view-full-image/view-full-image.module';
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
+import { LikeActionModule } from 'src/app/modules/shared/like-action/like-action.module';
+import { CommentsModule } from 'src/app/modules/shared/comments/comments.module';
 
 
 
@@ -24,7 +26,9 @@ import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.modul
     MatOptionModule,
     MatSelectModule,
     ViewFullImageModule,
-    CustomImageModule
+    CustomImageModule,
+    LikeActionModule,
+    CommentsModule
   ],
   exports: [GratitudeFeedListingComponent],
   entryComponents: [ListingFilterComponent]

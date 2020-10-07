@@ -7,6 +7,10 @@ import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { GratitudeTableDataSource } from './model';
 import { UserGratitudeJournalService } from './service/user-gratitude-journal.service';
 import { GlobalService } from 'src/app/services/global/global.service';
+import { CommentsComponent } from 'src/app/modules/shared/comments/view/comments/comments.component';
+import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
+import { CommonService } from 'src/app/modules/shared/services/common.service';
+import { MatDialog } from '@angular/material';
 @Component({
   selector: 'app-user-gratitude-journal',
   templateUrl: './user-gratitude-journal.component.html',
@@ -32,6 +36,8 @@ export class UserGratitudeJournalComponent implements OnInit, OnChanges {
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
     private $global: GlobalService,
+    private $common: CommonService,
+    private $matDailog: MatDialog
   ) {
   }
 
@@ -129,4 +135,39 @@ export class UserGratitudeJournalComponent implements OnInit, OnChanges {
   }
 
 
+  /**
+   * ON LIKE Handler
+   * @param id
+   */
+  likeHandler(id: string, likesCount: number) {
+    if (!likesCount) {
+      return;
+    }
+    this.$common.onLikeHandler(id).then(res => {
+      const like = res.data['list'];
+      this.onlikeHandler(like);
+    });
+  }
+
+/**
+ * user Like Handler
+ * @param id
+ */
+  onlikeHandler(like: any) {
+    this.$matDailog.open(LikeActionComponent, {
+      width: '500px',
+      data: like
+    }).afterClosed().subscribe();
+  }
+
+
+  onCommentsHandler(id: string, commentCount: number) {
+    if (!commentCount) {
+      return;
+    }
+    this.$matDailog.open(CommentsComponent, {
+      width: '500px',
+      data: id
+    }).afterClosed().subscribe();
+  }
 }

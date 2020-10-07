@@ -10,6 +10,8 @@ import { ListingFilterComponent } from './component/listing-filter.component';
 import { DateFilterModule } from 'src/app/modules/layout/layout-shared/date-filter/date-filter.module';
 import { MatSelectModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LikeActionModule } from 'src/app/modules/shared/like-action/like-action.module';
+import { CommentsModule } from 'src/app/modules/shared/comments/comments.module';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     CustomDatePipeModule,
     DateFilterModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LikeActionModule,
+    CommentsModule
   ],
   providers: [UsersService],
   exports : [UserGratitudeJournalComponent],

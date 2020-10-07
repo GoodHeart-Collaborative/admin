@@ -39,6 +39,21 @@ export class GratitudeFeedTableDataSource implements Table.Source<User> {
       templateBy: 'description'
       // resolve: (row: any) => row['description'] || '-',
     },
+    {
+      title: 'Total Likes',
+      id: 'likeCount',
+      sorting: false,
+      templateBy: 'likeCount'
+      // resolve: (row: any) => row['likeCount'] || '0',
+    },
+    
+    {
+      title: 'Total Comments',
+      id: 'commentCount',
+      sorting: false,
+      templateBy: 'commentCount'
+      // resolve: (row: any) => row['totalComments'] || '0',
+    },
 
     {
       title: 'Privacy',

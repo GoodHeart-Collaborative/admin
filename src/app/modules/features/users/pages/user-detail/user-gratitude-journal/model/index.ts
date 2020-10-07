@@ -20,6 +20,18 @@ export class GratitudeTableDataSource implements Table.Source<User> {
       templateBy: 'description'
     },
     {
+      title: 'Total Likes',
+      id: 'likeCount',
+      sorting: false,
+      templateBy: 'likeCount'
+    },
+    {
+      title: 'Total Comments',
+      id: 'commentCount',
+      sorting: false,
+      templateBy: 'commentCount'
+    },
+    {
       title: 'Privacy',
       id: 'privacy',
       sorting: false,

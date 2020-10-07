@@ -9,6 +9,9 @@ import { FEED_TYPE } from 'src/app/constant/drawer';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
+import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
+import { CommentsComponent } from 'src/app/modules/shared/comments/view/comments/comments.component';
+import { CommonService } from 'src/app/modules/shared/services/common.service';
 @Component({
   selector: 'app-gratitude-feed-listing',
   templateUrl: './gratitude-feed-listing.component.html',
@@ -33,7 +36,8 @@ export class GratitudeFeedListingComponent implements OnInit, OnChanges {
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
     private $route: Router,
-    private $matDailog: MatDialog
+    private $matDailog: MatDialog,
+    private $common: CommonService
   ) {
   }
 
@@ -137,4 +141,40 @@ export class GratitudeFeedListingComponent implements OnInit, OnChanges {
     }).afterClosed().subscribe();
   }
 
+
+  /**
+   * ON LIKE Handler
+   * @param id
+   */
+  likeHandler(id: string, likesCount: number) {
+    if (!likesCount) {
+      return;
+    }
+    this.$common.onLikeHandler(id).then(res => {
+      const like = res.data['list'];
+      this.onlikeHandler(like);
+    });
+  }
+
+/**
+ * user Like Handler
+ * @param id
+ */
+  onlikeHandler(like: any) {
+    this.$matDailog.open(LikeActionComponent, {
+      width: '500px',
+      data: like
+    }).afterClosed().subscribe();
+  }
+
+
+  onCommentsHandler(id: string, commentCount: number) {
+    if (!commentCount) {
+      return;
+    }
+    this.$matDailog.open(CommentsComponent, {
+      width: '500px',
+      data: id
+    }).afterClosed().subscribe();
+  }
 }
