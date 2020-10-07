@@ -97,10 +97,10 @@ export class CommentsShowComponent implements OnInit, OnChanges {
     }).afterClosed().subscribe();
   }
 
- async onLoadMore() {
-    if (this.pageIndex < this.commentsData.total_page) {
+  async onLoadMore() {
+    if (this.pageIndex + 1 < this.commentsData.total_page) {
       this.pageIndex++;
-      const loadData: any = await  this.getCommentHandler(this.commentId);
+      const loadData: any = await this.getCommentHandler(this.commentId);
       this.addComments(loadData.list);
     }
   }

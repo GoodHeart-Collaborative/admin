@@ -67,9 +67,10 @@ export class CommentsComponent implements OnInit {
   }
 
   async onLoadMore() {
-    if (this.pageIndex < this.commentsData.total_page) {
+
+    if (this.pageIndex + 1 < this.commentsData.total_page) {
       this.pageIndex++;
-      const loadData: any = await  this.getCommentHandler(this.data);
+      const loadData: any = await this.getCommentHandler(this.data);
       this.addComments(loadData.list);
     }
   }
