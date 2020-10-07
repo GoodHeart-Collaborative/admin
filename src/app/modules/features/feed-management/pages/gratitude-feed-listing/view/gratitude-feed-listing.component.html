@@ -51,7 +51,8 @@
         <ng-template appFor="actions" let-gratitude="row">
             <div class="action-icon-cover">
 
-                <i class="material-icons icon-block" (click)="onActionHandler(gratitude._id, 'blocked', gratitude?.privacy)" [class.click-not-allowed]="gratitude?.privacy == 'private'"
+                <i class="material-icons icon-block" (click)="onActionHandler(gratitude._id, 'blocked', gratitude?.privacy)" 
+                 [class.click-not-allowed]="gratitude?.privacy == 'private'"
                     *ngIf="gratitude?.status === 'active';else templateAction" title="Block gratitude">
                     blocked</i>
                 <ng-template #templateAction>
