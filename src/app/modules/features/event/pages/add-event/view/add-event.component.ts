@@ -198,12 +198,10 @@ export class AddEventComponent implements OnInit {
   }
 
   selectLocation(event) {
-    console.log(event);
-    
     this.location = {
       type: "Point",
       coordinates: [
-        event.lng, event.lat
+        event.lat, event.lng
       ]
     };
     this.address = event.formatted_address;
