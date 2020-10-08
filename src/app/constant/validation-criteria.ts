@@ -27,6 +27,7 @@ export const VALIDATION_CRITERIA = {
   professionMaxLength: 50,
   topicMaxLength: 50,
   eventNameMaxlength : 50,
+  expertNameMaxlength : 50,
   titleNotificationMaxLimit: 50,
   messageNotificationMaxLimit: 125,
   questionFaqMaxLimit: 100,

@@ -52,7 +52,7 @@
  
          <ng-template appFor="actions"  let-row="row">
              <div class="action-icon-cover">
-                 <i class="material-icons icon-edit" (click)="oneditHandler(row?._id , row?.endDate)" title="Edit" [class.disabled-icon]="today > row?.endDate">
+                 <i class="material-icons icon-edit" (click)="oneditHandler(row?._id , row?.endDate, row?.userType)" title="Edit" [class.disabled-icon]="today > row?.endDate || row?.userType == 'user'">
                      edit
                  </i>
               

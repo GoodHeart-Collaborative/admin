@@ -154,8 +154,8 @@ export class EventListingComponent implements OnInit {
    * Edit Handler
    * @param id
    */
-  oneditHandler(id: string, endDate: number) {
-    if (this.today > endDate) {
+  oneditHandler(id: string, endDate: number , type: string) {
+    if (this.today > endDate || type == 'user') {
       return;
     }
     this.$router.navigate([`${EVENTS.fullUrl}`, 'edit', id]);

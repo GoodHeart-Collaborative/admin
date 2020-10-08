@@ -25,7 +25,7 @@ export class AddExpertComponent implements OnInit {
   categoryData: any;
   profilePicURL: any;
   details: any;
-  nameMaxLenght = VALIDATION_CRITERIA.nameMaxLength;
+  nameMaxLenght = VALIDATION_CRITERIA.eventNameMaxlength;
   emailMaxLenght = VALIDATION_CRITERIA.emailMaxLength;
   bioMaxLength = VALIDATION_CRITERIA.bioMaxLength;
   constructor(
@@ -69,9 +69,9 @@ export class AddExpertComponent implements OnInit {
   createForm() {
     this.expertForm = this.$fb.group({
       categoryId: ['', Validators.required],
-      name: ['', Validators.compose(this.$formService.VALIDATION.name)],
+      name: ['', [Validators.required , Validators.maxLength(this.nameMaxLenght)]],
       email: ['', Validators.compose(this.$formService.VALIDATION.email)],
-      profession: ['', [Validators.required, Validators.maxLength(VALIDATION_CRITERIA.professionMaxLength)]],
+      profession: ['', Validators.required],
       industry: [null, Validators.required],
       bio: ['', [Validators.required, Validators.maxLength(this.bioMaxLength)]],
       experience: ['', Validators.required]

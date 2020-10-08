@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { CommonService } from '../../services/common.service';
 import { Router } from '@angular/router';
 import { USER } from 'src/app/constant/routes';
+import { REPORT_MESSAGE } from 'src/app/constant/app-constant';
 
 @Component({
   selector: 'app-report-problem',
@@ -10,7 +11,7 @@ import { USER } from 'src/app/constant/routes';
   styleUrls: ['./report-problem.component.scss']
 })
 export class ReportProblemComponent implements OnInit {
-
+  REPORT_MESSAGE = REPORT_MESSAGE;
   constructor(
     private $dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: any,

@@ -16,6 +16,7 @@
                             <span class="user-name">{{item?.userData?.firstName}} {{item?.userData?.lastName}}</span>
                             <p class="comment-time">{{item?.createdAt | time}}</p>
                         </h4>
+                        <p class="report-reason">{{REPORT_MESSAGE[item?.reportOption]}}</p>
                         <p class="report-reason">{{item?.reason}}</p>
                     </div>
                     <div class="see-profile-cover">

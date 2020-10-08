@@ -4,7 +4,6 @@ import {
   ChangeDetectorRef
 } from '@angular/core';
 import { FileUploadService } from '../../services/file-upload.service';
-import { PopupService } from '../../popup';
 import {
   invalidImageError, videoFormatFile,
   invalidFileSize,

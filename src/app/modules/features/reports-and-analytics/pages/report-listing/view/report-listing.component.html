@@ -5,9 +5,7 @@
     </ng-template>
 
     <ng-template appFor="reason" let-report="row">
-        <a href="javascript:void(0)" title="{{ (report?.reason | titlecase)}}" class="color-black" >
-           {{ report?.reason | titlecase}} 
-        </a>
+       {{ REPORT_MESSAGE[report?.reportOption] }}
     </ng-template>
 
     <ng-template appFor="status" let-report="row">
@@ -15,7 +13,10 @@
     </ng-template>
 
     <ng-template appFor="message" let-report="row">
-        {{ REPORT_MESSAGE[report?.reportOption] }}
+        <!-- {{ REPORT_MESSAGE[report?.reportOption] }} -->
+        <a href="javascript:void(0)" title="{{(report?.reason | titlecase)}}" class="color-black" >
+            {{ report?.reason | titlecase}} 
+         </a>
     </ng-template>
 
     <ng-template appFor="profilePicUrl" let-report="row" >
