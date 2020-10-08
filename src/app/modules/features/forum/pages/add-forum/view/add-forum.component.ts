@@ -74,7 +74,8 @@ export class AddForumComponent implements OnInit {
       categoryId: ['', Validators.required],
       categoryName: [''],
       userType: ['admin'],
-      postAnonymous: [false]
+      postAnonymous: [false],
+      mediaType: []
     });
   }
 
@@ -107,7 +108,7 @@ export class AddForumComponent implements OnInit {
   }
 
   async onSubmit() {
-    if (this.forumForm.invalid ) {
+    if (this.forumForm.invalid) {
       this.forumForm.markAllAsTouched();
       return;
     }
@@ -147,12 +148,12 @@ export class AddForumComponent implements OnInit {
     //     }
     //   }
     // }
-        // if (!body.mediaUrl) {
+    // if (!body.mediaUrl) {
     //   this.$fileUploadService.showAlert(requiredMedia);
     //   return;
     // }
     if (this.imageFile) {
-      let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
+      const data: any = await this.$fileUploadService.uploadFile(this.imageFile);
       this.profilePicURL = data.Location;
     }
     // if (!this.profilePicURL) {
@@ -161,7 +162,12 @@ export class AddForumComponent implements OnInit {
     // }
 
     let body = { mediaUrl: this.profilePicURL, ...this.forumForm.value };
+    if (body.mediaUrl) {
+      body['mediaType'] = 1;
+    } else {
+      body['mediaType'] = 5;
 
+    }
     body.categoryName = this.categoryData.find(categgory => categgory._id === body.categoryId).name;
     if (this.forumsData && this.forumsData._id) {
       this.$service.edit(this.forumsData._id, body).then(
