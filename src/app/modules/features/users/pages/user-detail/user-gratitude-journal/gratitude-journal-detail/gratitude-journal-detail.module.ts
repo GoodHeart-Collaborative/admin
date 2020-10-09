@@ -3,11 +3,9 @@ import { CommonModule } from '@angular/common';
 import { GratitudeJournalDetailComponent } from './gratitude-journal-detail.component';
 import { RouterModule, Routes } from '@angular/router';
 import { LikeActionModule } from 'src/app/modules/shared/like-action/like-action.module';
-import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 import { TimePipeModule } from 'src/app/pipes/time-pipe/time-pipe.module';
 import { CommentsModule } from 'src/app/modules/shared/comments/comments.module';
-import { CommentsShowModule } from 'src/app/modules/shared/comments-show/comments-show.module';
 import { DateTimePipeModule } from 'src/app/pipes/date-time-pipe/date-time-pipe.module';
 
 const routes: Routes = [
@@ -25,7 +23,7 @@ const routes: Routes = [
     LikeActionModule,
     CustomImageModule,
     TimePipeModule,
-    CommentsShowModule,
+    CommentsModule,
     DateTimePipeModule
   ],
   exports : [GratitudeJournalDetailComponent],

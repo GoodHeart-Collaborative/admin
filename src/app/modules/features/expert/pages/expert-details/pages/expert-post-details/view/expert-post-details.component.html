@@ -33,7 +33,7 @@
                     class="material-icons">thumb_up</span>
                 <p>{{post?.likeCount}}</p>
             </div>
-            <div class="like-cover" [class.comment]="post?.commentCount > 0"><span class="material-icons">comment</span>
+            <div class="like-cover" [class.comment]="post?.commentCount > 0" (click)="onCommentsHandler(post?._id, post?.commentCount)"><span class="material-icons">comment</span>
                 <p>{{post?.commentCount}}</p>
             </div>
             <div class="like-cover" (click)="onReportProblem(post?._id, post?.reportCount)" *ngIf="post?.reportCount"><span
@@ -43,7 +43,7 @@
 
         </div>
         <div class="row-3">
-            <app-comments-show [commentId]="post?._id"></app-comments-show>
+            <!-- <app-comments-show [commentId]="post?._id"></app-comments-show> -->
         </div>
     </div>
 </div>

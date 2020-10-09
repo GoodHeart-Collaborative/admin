@@ -58,11 +58,12 @@ export class CommentsComponent implements OnInit {
    * Show nested comment
    * @param id
    */
-  async toggleReplies(commentId: string, commenIndex: number) {
+  async toggleReplies(commentId: string, commenIndex: number) {    
     if (!this.comments[commenIndex].showReply) {
       this.comments[commenIndex].replies = await this.getCommentHandler(this.data, commentId);
+      console.log(this.comments[commenIndex].replies);
     }
-    this.comments[commenIndex]['showReply'] = !this.comments[commenIndex]['showReply']
+    this.comments[commenIndex]['showReply'] = !this.comments[commenIndex]['showReply'];
     this.hideShowReplies = !this.hideShowReplies;
   }
 

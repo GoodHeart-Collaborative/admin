@@ -33,7 +33,7 @@
                     class="material-icons">thumb_up</span>
                 <p>{{adviceDetails?.likeCount}}</p>
             </div>
-            <div class="like-cover" [class.comment]="adviceDetails?.commentCount > 0"><span
+            <div class="like-cover" [class.comment]="adviceDetails?.commentCount > 0" (click)="onCommentsHandler(adviceDetails?._id, adviceDetails?.commentCount)"><span
                     class="material-icons">comment</span>
                 <p>{{adviceDetails?.commentCount}}</p>
             </div>
@@ -41,7 +41,7 @@
                 <p>Report</p>
             </div> -->
         </div>
-        <app-comments-show [commentId]="adviceDetails?._id"></app-comments-show>
+        <!-- <app-comments-show [commentId]="adviceDetails?._id"></app-comments-show> -->
 
     </div>
 </div>

@@ -116,12 +116,6 @@ export class AddAdviceComponent implements OnInit {
       this.$utility.error('Invalid date selected');
       return;
     }
-    //   if (this.adviceDetails && this.adviceForm.get('postedAt').value &&
-    //   new Date(this.adviceForm.get('postedAt').value).getTime()
-    //   < new Date(this.today).getTime()) {
-    //   this.$utility.error('Invalid date selected');
-    //   return;
-    // }
     const body = { ...this.adviceForm.value };
     if (this.profileDetail) {
       body.addedBy = this.profileDetail.userId;
@@ -168,9 +162,7 @@ export class AddAdviceComponent implements OnInit {
       return;
     }
     if (this.isPostLater.value) {
-
       body.postedAt = new Date(this.adviceForm.get('postedAt').value).toString();
-      console.log(body.postedAt);
     }
 
     this.adviceForm.disable();

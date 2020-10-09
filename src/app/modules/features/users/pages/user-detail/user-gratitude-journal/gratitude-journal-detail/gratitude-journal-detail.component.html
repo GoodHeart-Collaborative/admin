@@ -28,13 +28,13 @@
                     class="material-icons">thumb_up</span>
                 <p>{{gratitudeDetails?.likeCount}}</p>
             </div>
-            <div class="like-cover" [class.comment]="gratitudeDetails?.commentCount"><span
+            <div class="like-cover" [class.comment]="gratitudeDetails?.commentCount" (click)="onCommentsHandler(gratitudeDetails?._id, gratitudeDetails?.commentCount)"><span
                     class="material-icons">comment</span>
                 <p>{{gratitudeDetails?.commentCount}}</p>
             </div>
         </div>
         <div class="row-3">
-            <app-comments-show [commentId]="gratitudeDetails?._id"></app-comments-show>
+            <!-- <app-comments-show [commentId]="gratitudeDetails?._id"></app-comments-show> -->
 
         </div>
     </div>

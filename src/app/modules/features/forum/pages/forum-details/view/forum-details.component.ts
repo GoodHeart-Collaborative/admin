@@ -6,6 +6,7 @@ import { CommonService } from 'src/app/modules/shared/services/common.service';
 import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
 import { ReportProblemComponent } from 'src/app/modules/shared/report-problem/view/report-problem.component';
 import { REPORT_TYPE } from 'src/app/constant/drawer';
+import { CommentsComponent } from 'src/app/modules/shared/comments/view/comments/comments.component';
 
 @Component({
   selector: 'app-forum-details',
@@ -64,5 +65,15 @@ export class ForumDetailsComponent implements OnInit {
         }).afterClosed().subscribe();
       }
     });
+  }
+
+  onCommentsHandler(id: string, commentCount: number) {
+    if (!commentCount) {
+      return;
+    }
+    this.$matDailog.open(CommentsComponent, {
+      width: '500px',
+      data: id
+    }).afterClosed().subscribe();
   }
 }

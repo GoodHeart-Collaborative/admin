@@ -26,7 +26,7 @@
                     <!-- (click)="onNestedComment()" -->
                 </div>
                 <ul class="comment-listing" *ngIf="item?.showReply">
-                    <li class="single-comment" *ngFor="let reply of item?.replies">
+                    <li class="single-comment" *ngFor="let reply of item?.replies?.list">
                         <div class="li-content">
                             <div class="img-cover">
                                 <img [src]="reply?.users?.profilePicUrl[0] |customImage:'USER'|async" alt="Profile">

@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
 import { CommonService } from 'src/app/modules/shared/services/common.service';
 import { GlobalService } from 'src/app/services/global/global.service';
+import { CommentsComponent } from 'src/app/modules/shared/comments/view/comments/comments.component';
 
 
 @Component({
@@ -33,6 +34,7 @@ export class GratitudeJournalDetailComponent implements OnInit {
     });
   }
 
+  ngOnInit(){}
   /**
    * ON LIKE Handler
    * @param id
@@ -58,39 +60,15 @@ export class GratitudeJournalDetailComponent implements OnInit {
     }).afterClosed().subscribe();
   }
 
-
-  async ngOnInit() {
-    // this.comments = await this.getCommentHandler(this.gratitudeDetails._id);
-    // this.comments = this.comments.map(comment => {
-    //   comment['replies'] = [];
-    //   comment['showReply'] = false;
-    //   return comment;
-    // });
+  onCommentsHandler(id: string, commentCount: number) {
+    if (!commentCount) {
+      return;
+    }
+    this.$matDailog.open(CommentsComponent, {
+      width: '500px',
+      data: id
+    }).afterClosed().subscribe();
   }
-
-  // async toggleReplies(commentId: string, commenIndex: number) {
-  //   if (!this.comments[commenIndex].showReply) {
-  //       this.comments[commenIndex].replies = await this.getCommentHandler(this.gratitudeDetails._id, commentId);
-  //   }
-  //   this.comments[commenIndex]['showReply'] = !this.comments[commenIndex]['showReply']
-  //   this.hideShowReplies = !this.hideShowReplies;
-  // }
-
-  /**
-   * user Comment Handler
-   */
-  // async getCommentHandler(id, commentId?) {
-  //   const params = {
-  //     pageNo: 1,
-  //     limit: 100,
-  //     postId: id
-  //   };
-  //   if (commentId) {
-  //     params['commentId'] = commentId;
-  //   }
-  //   return await this.$common.onCommentHandler(params).then(res => {
-  //     return res.data['list'];
-  //   });
-  // }
+  
 
 }

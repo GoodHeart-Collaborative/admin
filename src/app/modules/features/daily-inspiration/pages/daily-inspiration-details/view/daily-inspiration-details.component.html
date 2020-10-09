@@ -35,7 +35,7 @@
                     class="material-icons">thumb_up</span>
                 <p>{{dailyInspirationDetails?.likeCount}}</p>
             </div>
-            <div class="like-cover" [class.comment]="dailyInspirationDetails?.commentCount > 0"><span
+            <div class="like-cover" [class.comment]="dailyInspirationDetails?.commentCount > 0" (click)="onCommentsHandler(dailyInspirationDetails?._id, dailyInspirationDetails?.commentCount)"><span
                     class="material-icons">comment</span>
                 <p>{{dailyInspirationDetails?.commentCount}}</p>
             </div>
@@ -43,7 +43,7 @@
                 <p>Report</p>
             </div> -->
         </div>
-        <app-comments-show [commentId]="dailyInspirationDetails?._id"></app-comments-show>
+        <!-- <app-comments-show [commentId]="dailyInspirationDetails?._id"></app-comments-show> -->
 
     </div>
 </div>

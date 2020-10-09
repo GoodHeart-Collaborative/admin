@@ -5,6 +5,7 @@ import { CommonService } from 'src/app/modules/shared/services/common.service';
 import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
 import { MatDialog } from '@angular/material';
 import { ReportProblemComponent } from 'src/app/modules/shared/report-problem/view/report-problem.component';
+import { CommentsComponent } from 'src/app/modules/shared/comments/view/comments/comments.component';
 
 @Component({
   selector: 'app-daily-advice-details',
@@ -57,6 +58,16 @@ export class DailyAdviceDetailsComponent implements OnInit {
     }).afterClosed().subscribe();
   }
 
+
+  onCommentsHandler(id: string, commentCount: number) {
+    if (!commentCount) {
+      return;
+    }
+    this.$matDailog.open(CommentsComponent, {
+      width: '500px',
+      data: id
+    }).afterClosed().subscribe();
+  }
   // onReportProblem(id: string, count: number) {
   //   if (!count) {
   //     return;

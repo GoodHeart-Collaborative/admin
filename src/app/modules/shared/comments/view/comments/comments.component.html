@@ -29,7 +29,8 @@
                         </div>
                     </div>
                     <ul class="comment-listing" *ngIf="item?.showReply">
-                        <li class="single-comment" *ngFor="let reply of item?.replies">
+        
+                        <li class="single-comment" *ngFor="let reply of item?.replies?.list">
                             <div class="li-content">
                                 <div class="img-cover">
                                     <img [src]="reply?.users?.profilePicUrl[0] |customImage:'USER'|async" alt="Profile">
@@ -54,7 +55,7 @@
             </div>
         </div>
         <div class="load-more-wrapper">
-            <button class="btn btn-primary" mat-stroked-button (click)="onLoadMore()">Load more comments</button>
+            <button class="btn btn-primary" mat-stroked-button (click)="onLoadMore()" *ngIf="pageIndex + 1 < commentsData?.total_page">Load more comments</button>
         </div>
     </div>
 </div>

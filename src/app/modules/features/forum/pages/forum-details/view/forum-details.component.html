@@ -45,7 +45,7 @@
                     class="material-icons">thumb_up</span>
                 <p>{{forumsData?.likeCount}}</p>
             </div>
-            <div class="like-cover" [class.comment]="forumsData?.commentCount > 0"><span
+            <div class="like-cover" [class.comment]="forumsData?.commentCount > 0" (click)="onCommentsHandler(forumsData?._id, forumsData?.commentCount)"><span
                     class="material-icons">comment</span>
                 <p>{{forumsData?.commentCount}}</p>
             </div>
@@ -55,6 +55,6 @@
             </div>
         </div>
 
-        <app-comments-show [commentId]="forumsData?._id"></app-comments-show>
+        <!-- <app-comments-show [commentId]="forumsData?._id"></app-comments-show> -->
     </div>
 </div>

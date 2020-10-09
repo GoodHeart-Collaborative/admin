@@ -31,7 +31,7 @@
                     class="material-icons">thumb_up</span>
                 <p>{{smilesDetails?.likeCount}}</p>
             </div>
-            <div class="like-cover" [class.comment]="smilesDetails?.commentCount > 0"><span class="material-icons">comment</span>
+            <div class="like-cover" [class.comment]="smilesDetails?.commentCount > 0" (click)="onCommentsHandler(smilesDetails?._id, smilesDetails?.commentCount)"><span class="material-icons">comment</span>
                 <p>{{smilesDetails?.commentCount}}</p>
             </div>
 
@@ -40,6 +40,6 @@
         </div> -->
 
         </div>
-        <app-comments-show [commentId]="smilesDetails?._id"></app-comments-show>
+        <!-- <app-comments-show [commentId]="smilesDetails?._id"></app-comments-show> -->
     </div>
 </div>
