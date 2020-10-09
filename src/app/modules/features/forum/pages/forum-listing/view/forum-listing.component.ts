@@ -213,7 +213,7 @@ export class ForumListingComponent implements OnInit {
       }
     });
   }
-  
+
   onImageClick(image, type = 1) {
     if (!image) {
       return;
