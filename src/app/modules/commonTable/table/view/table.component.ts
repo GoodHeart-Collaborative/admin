@@ -181,8 +181,8 @@ export class TableComponent implements OnInit {
     return this.tableSource && this.tableSource.options && this.tableSource.options.pagination;
   }
   constructor(
-            private $dialog: MatDialog,
-            private $utility: UtilityService) {
+    private $dialog: MatDialog,
+    private $utility: UtilityService) {
 
   }
   private $disabled = false;
@@ -330,6 +330,7 @@ export class TableComponent implements OnInit {
 
   onSortHandler(event) {
     let obj = {};
+    console.log(event);
 
     if (event.active) {
       obj['sortBy'] = event.active;
@@ -347,7 +348,7 @@ export class TableComponent implements OnInit {
       data: {
         ...this.optionEvent.data,
         sortData: obj || null,
-        pageIndex: 0
+        // pageIndex: this.pageIndex
       }
     };
     this._emitOptionEvent();
@@ -366,7 +367,9 @@ export class TableComponent implements OnInit {
   }
 
   private _emitOptionEvent() {
-     this.optionChange.emit(this.optionEvent);
+    console.log(this.optionEvent);
+    
+    this.optionChange.emit(this.optionEvent);
   }
 
   onAddHandler() {
