@@ -26,7 +26,7 @@ export class CategoryManagementService {
   async  addCategory(params: any) {
     return  this.$http.post(CATEGORY, params).toPromise();
   }
-  async  editCategory(id: string, params: any) {
+   editCategory(id: string, params: any) {
     return  this.$http.patch(EDIT_CATEGORY(id), params).toPromise();
   }
   async updateStatus(id: string, status: any) {

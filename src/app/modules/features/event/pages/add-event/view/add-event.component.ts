@@ -46,7 +46,7 @@ export class AddEventComponent implements OnInit {
     this.createForm();
     if (activateRoute.snapshot.data.eventDetails && activateRoute.snapshot.data.eventDetails.data) {
       this.eventDetails = activateRoute.snapshot.data.eventDetails.data;
-      $breadcrumb.replace(this.eventDetails.id, this.eventDetails.title);      
+      $breadcrumb.replace(this.eventDetails.id, this.eventDetails.title);
       this.setEditFormHandler();
     }
   }

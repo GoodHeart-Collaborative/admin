@@ -33,7 +33,7 @@
             <div class="like-cover"
                 (click)="likeHandler(dailyInspirationDetails._id, dailyInspirationDetails?.likeCount)"><span
                     class="material-icons">thumb_up</span>
-                <p>{{dailyInspirationDetails?.likeCount}}</p>
+                <p>{{dailyInspirationDetails?.likeCount > 0 ? dailyInspirationDetails?.likeCount  : 0}}</p>
             </div>
             <div class="like-cover" [class.comment]="dailyInspirationDetails?.commentCount > 0" (click)="onCommentsHandler(dailyInspirationDetails?._id, dailyInspirationDetails?.commentCount)"><span
                     class="material-icons">comment</span>

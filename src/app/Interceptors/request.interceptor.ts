@@ -82,7 +82,6 @@ export class RequestInterceptor implements HttpInterceptor {
                             this.router.navigate([LOGIN.fullUrl]);
                         }
                         this.utilityService.errorAlert(message);
-                        
                     }
                 }
          ));

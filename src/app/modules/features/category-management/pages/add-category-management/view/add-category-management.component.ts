@@ -90,11 +90,14 @@ export class AddCategoryManagementComponent implements OnInit {
     if (this.categoryId) {
       this.$category.editCategory(this.categoryId, body).then(
         data => {
+          console.log(data);
+          
           this.categoryForm.enable();
           this.$utility.success(data.message);
           this.$router.navigate([CATEGORY.fullUrl]);
         },
         err => {
+          console.log(err);
           this.categoryForm.enable();
         }
       );
