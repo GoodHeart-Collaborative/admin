@@ -12,17 +12,19 @@ const defaultData: Table.Data<forum> = {
 export class ForumTableDataSource implements Table.Source<forum> {
   label = 'Forum Management';
   columns: Table.Column<forum>[] = [
-    // {
-    //     title: 'Name',
-    //     id: 'topic',
-    //     sorting: true,
-    //     templateBy: 'topic'
-    // },
+   
     {
       title: 'Image',
       id: 'image',
       sorting: false,
       templateBy: 'imageUrl'
+    },
+
+     {
+        title: 'Name',
+        id: 'topic',
+        sorting: true,
+        templateBy: 'topic'
     },
 
     {

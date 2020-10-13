@@ -34,7 +34,7 @@ export class ShoutoutsTableDataSource implements Table.Source<User> {
       // resolve: (row: any) => row['privacy'] || '-',
     },
     {
-      title: 'Gif',
+      title: 'GIF URL',
       id: 'gif',
       sorting: false,
       templateBy: 'gif'

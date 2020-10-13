@@ -1,6 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { CategoryManagementService } from 'src/app/modules/features/category-management/service/category-management.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VALIDATION_CRITERIA } from 'src/app/constant/validation-criteria';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';

@@ -11,7 +11,6 @@ import { FileUploadService } from 'src/app/modules/shared/services/file-upload.s
 import { requiredProfilePic } from 'src/app/constant/messages';
 import { PRAVICY, EVENT_CATEGORY } from 'src/app/constant/drawer';
 import { PATTERN } from 'src/app/constant/patterns';
-import { element } from 'protractor';
 
 @Component({
   selector: 'app-add-event',

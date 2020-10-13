@@ -13,8 +13,10 @@
     </ng-template>
     <ng-template appFor="gif" let-shoutouts="row">
         <span [title]="shoutouts?.gif">
-            {{ shoutouts?.gif }}
+          
+            <img src="{{ shoutouts?.gif }}" alt="">
         </span>
+
     </ng-template>
 
 

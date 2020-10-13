@@ -91,7 +91,7 @@ export const EXPERT_CONTENT_TYPE = [
 
 export const PRAVICY = [
     { value: 'private', viewValue: 'Private' },
-    { value: 'protected', viewValue: 'Protected' },
+    // { value: 'protected', viewValue: 'Protected' },
     { value: 'public', viewValue: 'Public' },
 
 ];

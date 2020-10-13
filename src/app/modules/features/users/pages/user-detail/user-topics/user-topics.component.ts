@@ -114,8 +114,8 @@ export class UserTopicsComponent implements OnInit , OnChanges{
     });
   }
 
-    onClick() {
-     this.$router.navigate([`admin/users/${this.userDetails._id}/topic/details`]);
-   }
+  //   onClick() {
+  //    this.$router.navigate([`admin/users/${this.userDetails._id}/topic/details`]);
+  //  }
 }
- 
+

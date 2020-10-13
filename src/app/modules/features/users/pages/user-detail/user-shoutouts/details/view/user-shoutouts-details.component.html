@@ -18,7 +18,10 @@
                         </div> -->
                         <div class="col-md-5">
                             <p class="label">GIF URL</p>
-                            <a class="value" (click)="openGif(shoutoutsData?.gif)">{{shoutoutsData?.gif}}</a>
+                            <span [title]="shoutouts?.gif" (click)="openGif(shoutoutsData?.gif)">
+                                    <img src="{{ shoutoutsData?.gif }}" alt="">
+                            </span>
+                            <!-- <a class="value" (click)="openGif(shoutoutsData?.gif)">{{shoutoutsData?.gif}}</a> -->
                         </div>
                         <div class="col-md-4">
                             <p class="label">Send To</p>
