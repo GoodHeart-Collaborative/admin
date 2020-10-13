@@ -24,6 +24,7 @@ export class UserDetailComponent implements OnInit {
   index = 1;
   eventListData: any;
   shoutoutsListData: unknown;
+  topicListData: unknown;
 
   constructor(
     private $router: ActivatedRoute,
@@ -86,6 +87,9 @@ export class UserDetailComponent implements OnInit {
         });
         break;
       case 3:
+        this.$userService.onTopicHandler(params).then(res => {
+          this.topicListData = res.data;
+        });
         break;
       case 4:
         this.$userService.onShoutoutsHandler(params).then(res => {

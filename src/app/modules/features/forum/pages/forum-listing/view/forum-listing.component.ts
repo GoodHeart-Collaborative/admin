@@ -20,7 +20,7 @@ export type ActionType = 'deleted' | 'blocked' | 'active';
   styleUrls: ['./forum-listing.component.scss']
 })
 export class ForumListingComponent implements OnInit {
-
+  // adminLogo = 'src/';
   tableSource = new ForumTableDataSource();
   forumData: any;
   eventData: Table.OptionData = {

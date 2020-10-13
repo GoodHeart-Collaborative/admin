@@ -1,40 +1,79 @@
 
 <app-table [tableSource]="tableSource" (optionChange)="onOptionChange($event)">
-
-    <ng-template appFor="createdAt" let-user="row">
-        {{ user?.createdAt |customDate}}
+    <ng-template appFor="createdAt" let-forum="row">
+        {{ forum?.createdAt |customDate}}
     </ng-template>
 
-    <ng-template appFor="status" let-user="row">
-        {{ user?.status | titlecase}}
+    <ng-template appFor="status" let-forum="row">
+        {{ forum?.status | titlecase}}
     </ng-template>
 
-    <ng-template appFor="privacy" let-user="row">
-        {{ user?.privacy | titlecase}}
+    <ng-template appFor="userType" let-forum="row">
+        {{ forum?.userType | titlecase}}
     </ng-template>
 
+    <ng-template appFor="postAnonymous" let-forum="row">
+        {{ forum?.postAnonymous ? 'True' : 'False' }}
+    </ng-template>
 
-    <ng-template appFor="description" let-user="row">
-        <a href="javascript:void(0)" (click)="onDetailsHandler(user?._id, user?.privacy)" [class.click-not-allowed]="user?.privacy == 'private'">
-            {{ (user?.description  | titlecase) || 'String'}}
+    <ng-template appFor="categoryName" let-forum="row">
+        {{ forum?.categoryData?.title | titlecase}}
+    </ng-template>
+
+    <ng-template appFor="commentCount" let-row="row">
+        <a (click)="onCommentsHandler(row?._id, row?.commentCount)" [class.color-black]="row?.commentCount < 1">
+            {{ row?.commentCount || 0}}
         </a>
+    </ng-template>
+    <ng-template appFor="likeCount" let-row="row">
+        <a (click)="likeHandler(row?._id, row?.likeCount)" [class.color-black]="row?.likeCount < 1">
+            {{ row?.likeCount || 0}}
+        </a>
+    </ng-template>
+
+    <ng-template appFor="reportCount" let-row="row">
+        <a  [class.erroneous]="row?.reportCount < 10" (click)="onReportProblem(row?._id, row?.reportCount)" [ngClass]="{'color-black': !row.reportCount , 'erroneous': row.reportCount <= 10}">
+            {{ row?.reportCount || 0}}
+        </a>
+    </ng-template>
+
+
+    <ng-template appFor="imageUrl" let-row="row">
+        <div class="table-cell-image-cover" title="Click to see the image">
+            <img [src]="(row?.mediaUrl |customImage:'IMAGE_PLACEHOLDER'|async) " alt="row-image"
+                (click)="onImageClick( row?.mediaUrl  )">
+        </div>
+    </ng-template>
+
+    <ng-template appFor="description" let-forum="row">
+        <a href="javascript:void(0)" (click)="onDetails(forum?._id, forum?.userType)"
+            title="{{ (forum?.description | titlecase) || 'String'}}">
+            {{ (forum?.description | titlecase) || 'String'}}
+        </a>
+    </ng-template>
+
+    <ng-template appFor="topic" let-forum="row">
+
+            {{forum?.userType == 'admin' ?  'Good Heart Collaborate' :  (forum?.userData?.firstName | titlecase)}} {{ (forum?.userData?.lastName | titlecase) || ''}}
+  
     </ng-template>
 
     <ng-container>
 
-        <ng-template appFor="actions" let-user="row">
+        <ng-template appFor="actions" let-forum="row">
             <div class="action-icon-cover">
+               
 
-                <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked', user?.privacy)" [class.click-not-allowed]="user?.privacy == 'private'"
-                    *ngIf="user?.status === 'active';else templateAction" title="Block">
+                <i class="material-icons icon-block" (click)="onActionHandler(forum._id, 'blocked')"
+                    *ngIf="forum?.status === 'active';else templateAction" title="Block">
                     blocked</i>
                 <ng-template #templateAction>
-                    <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active', user?.privacy)" [class.click-not-allowed]="user?.privacy == 'private'"
+                    <i class="material-icons icon-unblock" (click)="onActionHandler(forum._id, 'active')"
                         title="Unblock">
                         lock_open
                     </i>
                 </ng-template>
-                <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted',  user?.privacy)" [class.click-not-allowed]="user?.privacy == 'private'"
+                <i class="material-icons icon-delete" (click)="onActionHandler(forum._id, 'deleted')"
                     title="Delete">
                     delete
                 </i>

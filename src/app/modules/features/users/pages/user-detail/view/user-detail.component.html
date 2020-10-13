@@ -14,9 +14,15 @@
                 <app-user-events [userData]="eventListData" [userId]="userDetails?._id"  (changeHandler)="onOptionChange($event)"></app-user-events>
            </ng-container>
         </mat-tab>
-        <mat-tab label="Topics">
-            <app-user-topics ></app-user-topics>
+
+        <mat-tab label="Topics" >
+            <ng-container *ngIf="topicListData">
+            <app-user-topics [forumData]="topicListData" [userId]="userDetails?._id"  (changeHandler)="onOptionChange($event)" >
+
+           </app-user-topics>
+            </ng-container>
         </mat-tab>
+
         <mat-tab label="Shoutouts">
             <ng-container *ngIf="shoutoutsListData">
                 <app-user-shoutouts [userData]="shoutoutsListData" [userId]="userDetails?._id"  (changeHandler)="onOptionChange($event)"></app-user-shoutouts>

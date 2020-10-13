@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TableModule } from 'src/app/modules/commonTable/table';
 import { CustomDatePipeModule } from 'src/app/pipes/custom-date/custom-date-pipe.module';
 import { UsersService } from '../../../service/users.service';
+import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 
 const routes: Routes = [
 ];
@@ -16,7 +17,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     TableModule,
-    CustomDatePipeModule
+    CustomDatePipeModule,
+    CustomImageModule
   ],
   providers: [UsersService],
   exports : [UserTopicsComponent]

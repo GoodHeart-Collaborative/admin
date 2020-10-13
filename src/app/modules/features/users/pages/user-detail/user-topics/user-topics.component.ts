@@ -6,6 +6,7 @@ export type ActionType = 'deleted' | 'blocked' | 'active';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { UserGratitudeJournalService } from '../user-gratitude-journal/service/user-gratitude-journal.service';
 import { EventTableDataSource } from './model';
+import { ForumService } from 'src/app/modules/features/forum/service/forum.service';
 @Component({
   selector: 'app-user-topics',
   templateUrl: './user-topics.component.html',
@@ -22,15 +23,16 @@ export class UserTopicsComponent implements OnInit , OnChanges{
     sortData: null
   };
   isProcessing = false;
-  @Input() userData;
+  @Input() forumData;
+  @Input() userId;
   @Output() changeHandler = new EventEmitter();
   userDetails: any;
 
   constructor(
     private $router: Router,
-    private $userService: UserGratitudeJournalService,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
+    private $forum: ForumService,
   ) {
   }
 
@@ -38,7 +40,7 @@ export class UserTopicsComponent implements OnInit , OnChanges{
   }
 
   ngOnChanges() {
-    this.setUpTableResource(this.userData);
+    this.setUpTableResource(this.forumData);
   }
 
   onOptionChange(event: Table.OptionEvent) {
@@ -46,36 +48,25 @@ export class UserTopicsComponent implements OnInit , OnChanges{
     this.changeHandler.emit(this.eventData);
   }
 
-  /**
-   * User Action Handler
-   * @param id
-   * @param action
-   */
-  onActionHandler(id: string, action: ActionType, privacy: string) {
-    if (privacy == 'private') {
-      return;
-    }
-    const index = this.userData.data.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('gratitude', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
+
+  onActionHandler(id: string, action: ActionType) {
+    const index = this.forumData.list.findIndex(user => user._id === id);
+    this.$confirmBox.listAction('forum', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
       .subscribe((confirm) => {
         if (confirm) {
-          this.$userService.updateStatus(id, action).then((res) => {
+          this.$forum.updateStatus(id, action).then((res) => {
             this.$utility.success(res.message);
             this.handleActions(action, index);
           });
         }
       });
   }
-  /**
-   * Action Update Handler
-   * @param action
-   * @param index
-   */
-  handleActions(action: ActionType, index: number) {
+
+  handleActions(action: ActionType, index) {
     switch (action) {
       case 'deleted':
-        this.userData.data.splice(index, 1);
-        this.userData.total = this.userData.total - 1;
+        this.forumData.list.splice(index, 1);
+        this.forumData.total = this.forumData.total - 1;
         break;
       case 'active':
         this.handleStatus(action, index);
@@ -83,16 +74,15 @@ export class UserTopicsComponent implements OnInit , OnChanges{
         break;
       case 'blocked':
         this.handleStatus(action, index);
-
         break;
       default:
         break;
     }
-    this.setUpTableResource(this.userData);
+    this.setUpTableResource(this.forumData);
   }
 
   handleStatus(action: 'blocked' | 'active', index: number) {
-    this.userData.data = this.userData.data.map((user, i) => {
+    this.forumData.list = this.forumData.list.map((user, i) => {
       if (i === index) {
         user.status = action;
       }
@@ -109,13 +99,17 @@ export class UserTopicsComponent implements OnInit , OnChanges{
     this.tableSource = new EventTableDataSource({
       pageIndex,
       pageSize,
-      rows: userDetails.data,
+      rows: userDetails.list,
       total: userDetails.total
     });
   }
 
-  //   onClick() {
-  //    this.$router.navigate([`admin/users/${this.userDetails._id}/topic/details`]);
-  //  }
+    onDetails(id: string , type: string) {
+     this.$router.navigate([`admin/forum/${id}/details`],
+     {
+      queryParams: { type }
+    }
+    );
+   }
 }
 

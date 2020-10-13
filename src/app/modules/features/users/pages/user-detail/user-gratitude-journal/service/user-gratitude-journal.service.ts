@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/modules/shared/services/http.service';
-import { GRATITUDE, GRATITUDE_DETAILS, ACTION_GRATITUDE, EVENT, ACTION_EVENT, SHOUTOUTS } from 'src/app/constant/urls';
+import { GRATITUDE, GRATITUDE_DETAILS, ACTION_GRATITUDE, EVENT, 
+  FORUM, SHOUTOUTS } from 'src/app/constant/urls';
 import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
 
 @Injectable({
@@ -21,6 +22,10 @@ export class UserGratitudeJournalService {
 
   async  onShoutoutsHandler(params) {
     return  this.$http.get(SHOUTOUTS, params).toPromise();
+  }
+
+  async  onTopicHandler(params) {
+    return  this.$http.get(FORUM, params).toPromise();
   }
 
 

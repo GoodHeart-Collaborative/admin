@@ -39,8 +39,8 @@
 
     <ng-template appFor="imageUrl" let-row="row">
         <div class="table-cell-image-cover" title="Click to see the image">
-            <img [src]="row?.userType == 'admin' ? (row?.mediaUrl |customImage:'IMAGE_PLACEHOLDER'|async) : (row?.userData?.profilePic[0] |customImage:'IMAGE_PLACEHOLDER'|async)" alt="row-image"
-                (click)="onImageClick(row?.userType == 'admin' ? row?.mediaUrl : row?.userData?.profilePic[0] )">
+            <img [src]="(row?.mediaUrl |customImage:'IMAGE_PLACEHOLDER'|async) " alt="row-image"
+                (click)="onImageClick( row?.mediaUrl  )">
         </div>
     </ng-template>
 
@@ -54,7 +54,7 @@
     <ng-template appFor="topic" let-forum="row">
         <!-- <a href="javascript:void(0)" 
             title="{{ (forum?.userData?.firstName | titlecase) }}"> -->
-            {{ (forum?.userData?.firstName | titlecase)}} {{ (forum?.userData?.lastName | titlecase) || ''}}
+            {{forum?.userType == 'admin' ?  'Good Heart Collaborate' :  (forum?.userData?.firstName | titlecase)}} {{ (forum?.userData?.lastName | titlecase) || ''}}
         <!-- </a> -->
     </ng-template>
 

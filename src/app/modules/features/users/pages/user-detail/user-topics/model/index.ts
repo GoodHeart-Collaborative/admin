@@ -11,39 +11,80 @@ const defaultData: Table.Data<User> = {
 export class EventTableDataSource implements Table.Source<User> {
   label = 'Users Management';
   columns: Table.Column<User>[] = [
-    // {
-    //   title: 'Title',
-    //   id: 'title',
-    //   sorting: true,
-    //   templateBy: 'title'
-    // //   resolve: (row: any) => `${row['firstName']} ${row['lastName']}` || 'NA',
-    // },
     {
-      title: 'Description',
-      id: 'description',
+      title: 'Image',
+      id: 'image',
       sorting: false,
-      templateBy: 'description'
-      // resolve: (row: any) => row['description'] || '-',
+      templateBy: 'imageUrl'
+    },
+
+     {
+        title: 'Name',
+        id: 'topic',
+        sorting: true,
+        templateBy: 'topic'
+    },
+
+    {
+        title: 'Description',
+        id: 'description',
+        sorting: false,
+        templateBy: 'description'
+        // resolve: (row: any) => row['description'],
+      },
+    {
+        title: 'Post Anonymous',
+        id: 'postAnonymous',
+        sorting: false,
+        templateBy: 'postAnonymous'
+        // resolve: (row: any) => row['postAnonymous'],
+      },
+      {
+        title: 'Posted By',
+        id: 'userType',
+        sorting: false,
+        templateBy: 'userType'
     },
     {
-      title: 'Privacy',
-      id: 'privacy',
-      sorting: false,
-      templateBy: 'privacy'
-      // resolve: (row: any) => row['privacy'] || '-',
-    },
+        title: 'Category Name',
+        id: 'categoryName',
+        sorting: false,
+        templateBy: 'categoryName'
+        // resolve: (row: any) => row['categoryName'],
+      },
+      {
+        title: 'Total Likes',
+        id: 'likeCount',
+        sorting: false,
+        templateBy: 'likeCount'
+        // resolve: (row: any) => row['likeCount'] || '0',
+      },
     {
-      title: 'Added On',
-      id: 'createdAt',
-      sorting: true,
-      templateBy: 'createdAt',
-    },
+        title: 'Total Comments',
+        id: 'commentCount',
+        sorting: false,
+        templateBy: 'commentCount',
+
+        // resolve: (row: any) => row['totalComments'] || '0',
+      },
+     {
+        title: 'Total Report',
+        id: 'reportCount',
+        sorting: false,
+        templateBy: 'reportCount',
+      },
+      {
+        title: 'Added On',
+        id: 'createdAt',
+        sorting: true,
+        templateBy: 'createdAt',
+      },
+
     {
       title: 'Status',
       id: 'status',
       sorting: false,
       templateBy: 'status'
-      // resolve: (row: any) => row['status'] || 'NA',
     },
 
     {
