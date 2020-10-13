@@ -2,6 +2,11 @@
     <div class="user-detail-content">
         <div class="detail-ui">
             <div class="row-1">
+                <div class="left-portion" *ngIf="shoutoutsData?.gif">
+                    <div class="img-cover" [title]="shoutouts?.gif" (click)="openGif(shoutoutsData?.gif)">
+                        <img src="{{ shoutoutsData?.gif }}" alt="">
+                    </div>
+                </div>
                 <div class="right-portion">
                     <div class="row">
                         <div class="col-md-4">
@@ -16,31 +21,27 @@
                             <p class="label">Greetings Type</p>
                             <p class="value">{{shoutoutsData?.title}}</p>
                         </div> -->
-                        <div class="col-md-5">
-                            <p class="label">GIF URL</p>
-                            <span [title]="shoutouts?.gif" (click)="openGif(shoutoutsData?.gif)">
-                                    <img src="{{ shoutoutsData?.gif }}" alt="">
-                            </span>
-                            <!-- <a class="value" (click)="openGif(shoutoutsData?.gif)">{{shoutoutsData?.gif}}</a> -->
+                        <div class="col-md-4">
+                            <p class="label">From</p>
+                            <p class="value">{{shoutoutsData?.senderData?.firstName || ''}}
+                                {{shoutoutsData?.senderData?.lastName || ''}}
+                                <span class="email-wrapper"> <i class="icon far fa-envelope"></i>
+                                    {{shoutoutsData?.senderData?.email}}</span></p>
                         </div>
                         <div class="col-md-4">
                             <p class="label">Send To</p>
                             <p class="value" *ngFor="let item of shoutoutsData?.memberData">{{item?.firstName || ''}}
                                 {{item?.lastName || ''}}
-                                <span class="email-wrapper"> <i class="icon far fa-envelope"></i> {{item?.email}}</span></p>
+                                <span class="email-wrapper"> <i class="icon far fa-envelope"></i> {{item?.email}}</span>
+                            </p>
                         </div>
-                        <div class="col-md-4">
-                            <p class="label">From</p>
-                            <p class="value">{{shoutoutsData?.senderData?.firstName || ''}}
-                                {{shoutoutsData?.senderData?.lastName || ''}}
-                                <span class="email-wrapper"> <i class="icon far fa-envelope"></i> {{shoutoutsData?.senderData?.email}}</span></p>
-                        </div>
+
                         <!-- <div class="col-md-4">
                             <p class="label">Privacy</p>
                             <p class="value">{{shoutoutsData?.privacy | titlecase}}</p>
                         </div> -->
 
-                        <div class="col-md-12">
+                        <div class="col-md-8">
                             <p class="label">Description</p>
                             <p class="value">{{shoutoutsData?.description}}</p>
                         </div>
