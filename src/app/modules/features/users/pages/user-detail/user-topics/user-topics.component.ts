@@ -7,6 +7,13 @@ import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { UserGratitudeJournalService } from '../user-gratitude-journal/service/user-gratitude-journal.service';
 import { EventTableDataSource } from './model';
 import { ForumService } from 'src/app/modules/features/forum/service/forum.service';
+import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
+import { ReportProblemComponent } from 'src/app/modules/shared/report-problem/view/report-problem.component';
+import { REPORT_TYPE } from 'src/app/constant/drawer';
+import { CommentsComponent } from 'src/app/modules/shared/comments/view/comments/comments.component';
+import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
+import { CommonService } from 'src/app/modules/shared/services/common.service';
+import { MatDialog } from '@angular/material';
 @Component({
   selector: 'app-user-topics',
   templateUrl: './user-topics.component.html',
@@ -33,6 +40,8 @@ export class UserTopicsComponent implements OnInit , OnChanges{
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
     private $forum: ForumService,
+    private $matDailog: MatDialog,
+    private $common: CommonService
   ) {
   }
 
@@ -51,7 +60,7 @@ export class UserTopicsComponent implements OnInit , OnChanges{
 
   onActionHandler(id: string, action: ActionType) {
     const index = this.forumData.list.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('forum', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
+    this.$confirmBox.listAction('topic Post', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
       .subscribe((confirm) => {
         if (confirm) {
           this.$forum.updateStatus(id, action).then((res) => {
@@ -111,5 +120,66 @@ export class UserTopicsComponent implements OnInit , OnChanges{
     }
     );
    }
+
+
+  /**
+   * ON LIKE Handler
+   * @param id
+   */
+  likeHandler(id: string, likesCount: number) {
+    if (!likesCount) {
+      return;
+    }
+    this.$common.onLikeHandler(id).then(res => {
+      const like = res.data['list'];
+      this.onlikeHandler(like, likesCount);
+    });
+  }
+
+  /**
+   * user Like Handler
+   * @param id
+   */
+  onlikeHandler(like: any, likesCount: number) {
+    this.$matDailog.open(LikeActionComponent, {
+      width: '500px',
+      data: like
+    }).afterClosed().subscribe();
+  }
+
+  onCommentsHandler(id: string, commentCount: number) {
+    if (!commentCount) {
+      return;
+    }
+    this.$matDailog.open(CommentsComponent, {
+      width: '500px',
+      data: id
+    }).afterClosed().subscribe();
+  }
+
+
+  onReportProblem(id: string, count: number, type = REPORT_TYPE.FORUM) {
+    if (!count) {
+      return;
+    }
+    this.$common.onReportProblemHandler(id, type).then(res => {
+      if (res && res.data) {
+        this.$matDailog.open(ReportProblemComponent, {
+          width: '500px',
+          data: res.data['data']
+        }).afterClosed().subscribe();
+      }
+    });
+  }
+
+  onImageClick(image, type = 1) {
+    if (!image) {
+      return;
+    }
+    this.$matDailog.open(ViewFullImageComponent, {
+      panelClass: 'view-full-image-modal',
+      data: {image, type}
+    }).afterClosed().subscribe();
+  }
 }
 
