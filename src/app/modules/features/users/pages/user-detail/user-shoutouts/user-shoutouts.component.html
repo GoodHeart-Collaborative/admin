@@ -12,10 +12,9 @@
         {{ shoutouts?.privacy | titlecase}}
     </ng-template>
     <ng-template appFor="gif" let-shoutouts="row">
-        <span [title]="shoutouts?.gif">
-          
-            <img src="{{ shoutouts?.gif }}" alt="">
-        </span>
+        <div class="table-cell-image-cover" [title]="shoutouts?.gif">
+            <img  src="{{ shoutouts?.gif }}" alt="">
+        </div>
 
     </ng-template>
 
