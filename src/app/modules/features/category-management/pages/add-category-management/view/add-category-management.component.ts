@@ -7,7 +7,8 @@ import { CATEGORY } from 'src/app/constant/routes';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
-import { requiredProfilePic } from 'src/app/constant/messages';
+import { requiredProfilePic, categoryRequiredProfilePic } from 'src/app/constant/messages';
+import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 @Component({
   selector: 'app-add-category-management',
   templateUrl: './add-category-management.component.html',
@@ -26,7 +27,8 @@ export class AddCategoryManagementComponent implements OnInit {
     private $router: Router,
     $activateRoute: ActivatedRoute,
     private $breadcrumb: BreadcrumbService,
-    private $utility: UtilityService
+    private $utility: UtilityService,
+    private $confirmBox: ConfirmBoxService,
   ) {
     this.createForm();
     if ($activateRoute.snapshot.params && $activateRoute.snapshot.params.id) {
@@ -54,8 +56,8 @@ export class AddCategoryManagementComponent implements OnInit {
     this.categoryForm = this.$formBuilder.group(
       {
         title: ['', [Validators.required,
-          Validators.minLength(VALIDATION_CRITERIA.categorytitleMinLength), 
-          Validators.maxLength(VALIDATION_CRITERIA.categorytitleMaxLength)]]
+        Validators.minLength(VALIDATION_CRITERIA.categorytitleMinLength),
+        Validators.maxLength(VALIDATION_CRITERIA.categorytitleMaxLength)]]
       });
   }
 
@@ -77,42 +79,48 @@ export class AddCategoryManagementComponent implements OnInit {
       this.categoryForm.markAllAsTouched();
       return;
     }
-    if (this.imageFile) {
-      let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
-      this.profilePicURL = data.Location;
-    }
-    if (!this.profilePicURL) {
-      this.$fileUploadService.showAlert(requiredProfilePic);
-      return;
-    }
-    let body = { imageUrl: this.profilePicURL, ...this.categoryForm.value };
-    this.categoryForm.disable();
-    if (this.categoryId) {
-      this.$category.editCategory(this.categoryId, body).then(
-        data => {
-          console.log(data);
-          
-          this.categoryForm.enable();
-          this.$utility.success(data.message);
-          this.$router.navigate([CATEGORY.fullUrl]);
-        },
-        err => {
-          console.log(err);
-          this.categoryForm.enable();
+    this.$confirmBox.confirmCategoryAction(this.title.value)
+      .subscribe(async (confirm) => {
+        if (!confirm) {
+              return;
         }
-      );
-      return;
-    }
-    this.$category.addCategory(body).then(
-      data => {
-        this.categoryForm.enable();
-        this.$utility.success(data.message);
-        this.$router.navigate([CATEGORY.fullUrl]);
-      },
-      err => {
-        this.categoryForm.enable();
-      }
-    );
+        if (this.imageFile) {
+          let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
+          this.profilePicURL = data.Location;
+        }
+        if (!this.profilePicURL) {
+          this.$fileUploadService.showAlert(categoryRequiredProfilePic);
+          return;
+        }
+        let body = { imageUrl: this.profilePicURL, ...this.categoryForm.value };
+
+        this.categoryForm.disable();
+        if (this.categoryId) {
+          this.$category.editCategory(this.categoryId, body).then(
+            data => {
+              this.categoryForm.enable();
+              this.$utility.success(data.message);
+              this.$router.navigate([CATEGORY.fullUrl]);
+            },
+            err => {
+              console.log(err);
+              this.categoryForm.enable();
+            }
+          );
+          return;
+        }
+        this.$category.addCategory(body).then(
+          data => {
+            this.categoryForm.enable();
+            this.$utility.success(data.message);
+            this.$router.navigate([CATEGORY.fullUrl]);
+          },
+          err => {
+            this.categoryForm.enable();
+          }
+        );
+      })
+
   }
 
 

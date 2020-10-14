@@ -33,6 +33,7 @@ export const invalidFileSize = (size = 4) =>
 export const COPIED = `Copied shared URL`;
 
 export const requiredProfilePic = `Image is required`;
+export const categoryRequiredProfilePic = `Category Image is required`;
 export const requiredMedia = `Media is required`;
 export const invalidContentType = 'Invalid content type selected';
 export const videoFormatFile = (format = 'mp4/x-m4v/3gp') =>  `Please select  video ${format} format file.`;

@@ -50,12 +50,12 @@ export class GratitudeTableDataSource implements Table.Source<User> {
       templateBy: 'status'
     },
 
-    {
-      title: 'Actions',
-      id: 'actions',
-      sorting: false,
-      templateBy: 'actions',
-    },
+    // {
+    //   title: 'Actions',
+    //   id: 'actions',
+    //   sorting: false,
+    //   templateBy: 'actions',
+    // },
   ];
   options: Table.Options = {
     selection: false,

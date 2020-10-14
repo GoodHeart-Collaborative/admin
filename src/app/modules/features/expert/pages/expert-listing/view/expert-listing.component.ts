@@ -36,7 +36,6 @@ export class ExpertListingComponent implements OnInit {
     private $router: Router,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
-    private $common: CommonService,
     private $matDailog: MatDialog
   ) {
   }

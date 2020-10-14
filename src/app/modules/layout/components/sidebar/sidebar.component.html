@@ -77,6 +77,11 @@
 			<mat-icon>category</mat-icon> Category
 		</mat-list-item>
 
+		<mat-list-item (click)="mep.expanded = false;" color="primary" [routerLink]="['EVENT_CATEGORY' | absolutePath]"
+			routerLinkActive="active">
+			<mat-icon>category</mat-icon>Event Category
+		</mat-list-item>
+
 		<mat-list-item (click)="mep.expanded = false;" color="primary" routerLinkActive="active" [routerLink]="['REPORTS_AND_ANALYTICS' | absolutePath]">
 			<mat-icon> insert_chart </mat-icon> Report & Analytics
 		</mat-list-item>

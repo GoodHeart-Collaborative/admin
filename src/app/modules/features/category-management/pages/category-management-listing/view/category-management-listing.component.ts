@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryTableDataSource } from '../../../models';
-import { UsersService } from 'src/app/modules/features/users/service/users.service';
 import { Router } from '@angular/router';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { USER, CATEGORY, ADD_CATEGORY } from 'src/app/constant/routes';
 import { CategoryManagementService } from '../../../service/category-management.service';
-import { AddCategoryManagementComponent } from '../../add-category-management/view/add-category-management.component';
 import { MatDialog } from '@angular/material';
-import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
+import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 
 @Component({

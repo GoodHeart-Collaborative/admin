@@ -260,6 +260,12 @@ export const CATEGORY: IRoute = {
     return `${ADMIN.fullUrl}/${this.path}`;
   }
 };
+export const EVENT_CATEGORY: IRoute = {
+  path: 'event-category',
+  get fullUrl(): string {
+    return `${ADMIN.fullUrl}/${this.path}`;
+  }
+};
 export const CATEGORY_LIST: IRoute = {
   path: 'list',
   get fullUrl(): string {
