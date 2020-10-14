@@ -14,9 +14,14 @@
     </ng-template>
 
     <ng-template appFor="gif" let-shoutouts="row">
-        <a href="javascript:void(0)"  [class.click-not-allowed]="shoutouts?.privacy == 'private'" (click)="openGif(shoutouts?.gif)">
+        <!-- <a href="javascript:void(0)"  [class.click-not-allowed]="shoutouts?.privacy == 'private'" (click)="openGif(shoutouts?.gif)">
         {{ shoutouts?.gif | titlecase}}
-    </a>
+    </a> -->
+    <div class="img-cover" [title]="shoutouts?.gif" (click)="openGif(shoutoutsData?.gif)">
+        <img src="{{ shoutouts?.gif }}" alt="">
+    </div>
+
+   
     </ng-template>
 
     <ng-template appFor="privacy" let-shoutouts="row">
