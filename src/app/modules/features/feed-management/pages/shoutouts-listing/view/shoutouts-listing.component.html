@@ -17,7 +17,7 @@
         <!-- <a href="javascript:void(0)"  [class.click-not-allowed]="shoutouts?.privacy == 'private'" (click)="openGif(shoutouts?.gif)">
         {{ shoutouts?.gif | titlecase}}
     </a> -->
-    <div class="img-cover" [title]="shoutouts?.gif" (click)="openGif(shoutoutsData?.gif)">
+    <div class="img-cover table-cell-image-cover" [title]="shoutouts?.gif" (click)="openGif(shoutoutsData?.gif)">
         <img src="{{ shoutouts?.gif }}" alt="">
     </div>
 
