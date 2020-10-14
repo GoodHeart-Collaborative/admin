@@ -49,12 +49,12 @@ export class CategoryTableDataSource implements Table.Source<Category> {
       templateBy: 'status'
     },
 
-    {
-      title: 'Actions',
-      id: 'actions',
-      sorting: false,
-      templateBy: 'actions',
-    },
+    // {
+    //   title: 'Actions',
+    //   id: 'actions',
+    //   sorting: false,
+    //   templateBy: 'actions',
+    // },
   ];
   options: Table.Options = {
     selection: false,
