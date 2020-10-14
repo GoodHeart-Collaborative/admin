@@ -1,0 +1,52 @@
+<app-table [tableSource]="tableSource" (optionChange)="onOptionChange($event)" (onAddCahnges)="onAddCategory()">
+    <ng-template appFor="createdAt" let-category="row">
+        {{ category?.createdAt |customDate}}
+    </ng-template>
+
+    <ng-template appFor="imageUrl" let-category="row">
+        <div class="table-cell-image-cover" title="Click to see the image">
+            <img [src]="category?.imageUrl |customImage:'IMAGE_PLACEHOLDER'|async" alt="category-image"
+                (click)="onImageClick(category?.imageUrl)">
+        </div>
+    </ng-template>
+
+    <ng-template appFor="status" let-category="row">
+        {{ category?.status | titlecase}}
+    </ng-template>
+    
+    <ng-template appFor="reportCount" let-row="row">
+        <a  [class.erroneous]="row?.reportCount < 10" (click)="onReportProblem(row?._id, row?.reportCount)" [ngClass]="{'color-black': !row.reportCount , 'erroneous': row.reportCount <= 10}">
+            {{ row?.reportCount || 0}}
+        </a>
+    </ng-template>
+    <ng-template appFor="title" let-category="row">
+        <a href="javascript:void(0)" (click)="relatedCategoryHandler(category?._id)"
+            title="{{ category?.title | titlecase}}">
+            {{ category?.title | titlecase}}
+        </a>
+    </ng-template>
+
+    <ng-container>
+        <ng-template appFor="actions" let-user="row">
+            <div class="action-icon-cover">
+                <i class="material-icons icon-edit" (click)="oneditHandler(user?._id)" title="Edit">
+                    edit
+                </i>
+                <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked')"
+                    *ngIf="user?.status === 'active';else templateAction" title="Block">
+                    blocked</i>
+                <ng-template #templateAction>
+                    <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active')"
+                        title="Unblock">
+                        lock_open
+                    </i>
+                </ng-template>
+                <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')"
+                    title="Delete">
+                    delete
+                </i>
+            </div>
+        </ng-template>
+
+    </ng-container>
+</app-table>
