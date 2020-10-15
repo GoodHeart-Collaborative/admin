@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material';
 import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 export type ActionType = 'deleted' | 'blocked' | 'active';
+import { CATEGORY_TYPE } from 'src/app/constant/app-constant';
 
 @Component({
   selector: 'app-category-management-listing',
@@ -45,6 +46,7 @@ export class CategoryManagementListingComponent implements OnInit {
     let params = {
       page: `${pageIndex + 1}`,
       limit: `${pageSize}`,
+      type: `${CATEGORY_TYPE.OTHER_CATEGORY}`
     };
     if (filterData) {
       const keys = Object.keys(filterData).filter(el => filterData[el]);

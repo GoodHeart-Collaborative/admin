@@ -11,6 +11,7 @@ import { FileUploadService } from 'src/app/modules/shared/services/file-upload.s
 import { requiredProfilePic } from 'src/app/constant/messages';
 import { PRAVICY, EVENT_CATEGORY } from 'src/app/constant/drawer';
 import { PATTERN } from 'src/app/constant/patterns';
+import { CATEGORY_TYPE } from 'src/app/constant/app-constant';
 
 @Component({
   selector: 'app-add-event',
@@ -190,6 +191,7 @@ export class AddEventComponent implements OnInit {
     const params = {
       page: 1,
       limit: 100,
+      type: CATEGORY_TYPE.EVENT_CAEGORY
     };
     this.$category.queryData(params).then(res => {
       this.eventCategory = res.data['data'].filter(element => element.status != 'blocked' );

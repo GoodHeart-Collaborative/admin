@@ -12,6 +12,7 @@ import { CommentsComponent } from 'src/app/modules/shared/comments/view/comments
 import { MatDialog } from '@angular/material';
 import { CommonService } from 'src/app/modules/shared/services/common.service';
 import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
+import { CATEGORY_TYPE } from 'src/app/constant/app-constant';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 
 @Component({
@@ -52,7 +53,8 @@ export class RelatedCategoryPostComponent implements OnInit {
     let params = {
       page: `${pageIndex + 1}`,
       limit: `${pageSize}`,
-      categoryId: this.categoryId
+      categoryId: this.categoryId,
+      type: `${CATEGORY_TYPE.OTHER_CATEGORY}`
     };
     if (filterData) {
       const keys = Object.keys(filterData).filter(el => filterData[el]);

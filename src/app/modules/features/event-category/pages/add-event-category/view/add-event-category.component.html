@@ -1,0 +1,25 @@
+<div class="page-add-category-management">
+    <div class="add-category-mangement-content">
+      <form [formGroup]="categoryForm">
+        <div class="row-1">
+          <div class="left-portion">
+            <app-image-upload (uploadMedia)="setimageFile($event)" [aspectRatio]="4/4" [profilePicURL]="profilePicURL"></app-image-upload>
+          </div>
+          <div class="right-portion">
+            <p>Category Name</p>
+            <mat-form-field appearance="outline">
+              <mat-label>Category</mat-label>
+              <input matInput formControlName="title" placeholder="Enter Category" [maxlength]="titleMaxLength"
+                appWhiteSpace #name>
+                <mat-hint>{{name.value.trim().length}}/{{titleMaxLength}}</mat-hint>
+              <mat-error>{{title |validate:'Category name'}}</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+      <div class="btn-row">
+        <button class="btn btn-simple" mat-stroked-button (click)="onCancel()" type="button">Cancel</button>
+        <button class="btn btn-primary" mat-stroked-button type="button" (click)="onSubmit()">Confirm</button>
+      </div>
+    </div>
+  </div>

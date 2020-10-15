@@ -13,7 +13,6 @@ export class CategoryManagementService {
 
   constructor(
     private $http: HttpService,
-    private $utilityService: UtilityService
   ) { }
 
   async  queryData(params: any) {
@@ -23,6 +22,7 @@ export class CategoryManagementService {
     return  this.$http.get(CATEGORY_POST_LISTING, params).toPromise();
   }
 
+  
   async  addCategory(params: any) {
     return  this.$http.post(CATEGORY, params).toPromise();
   }
@@ -46,16 +46,15 @@ export class CategoryManagementService {
   }
 }
 
-@Injectable()
-export class CategoryManagementServiceResolve implements Resolve<any>  {
-  constructor(private $category: CategoryManagementService, private $router: Router) { }
-  resolve(route: ActivatedRouteSnapshot) {
-    const userId = route.params['id'];
-    return this.$category.updateCategory(userId).catch(err => {
-      if (err) {
-        return null;
-      }
-    }
-    );
-  }
-}
+// @Injectable()
+// export class CategoryManagementServiceResolve implements Resolve<any>  {
+//   constructor(private $category: CategoryManagementService, private $router: Router) { }
+//   resolve(route: ActivatedRouteSnapshot) {
+//     return this.$category.updateCategory(route.params['id']).catch(err => {
+//       if (err) {
+//         return null;
+//       }
+//     }
+//     );
+//   }
+// }

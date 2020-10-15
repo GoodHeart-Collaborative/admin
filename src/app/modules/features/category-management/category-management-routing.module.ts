@@ -38,12 +38,12 @@ const routes: Routes = [
       .then( (m) => m.RelatedCategoryPostModule
       ),
     },
-    {
-      path: ':id/:id/details',
-      loadChildren: () => import('./pages/category-management-details/category-management-details.module')
-      .then( (m) => m.CategoryManagementDetailsModule
-      ),
-    },
+    // {
+    //   path: ':id/:id/details',
+    //   loadChildren: () => import('./pages/category-management-details/category-management-details.module')
+    //   .then( (m) => m.CategoryManagementDetailsModule
+    //   ),
+    // },
   ]
 }
 ];

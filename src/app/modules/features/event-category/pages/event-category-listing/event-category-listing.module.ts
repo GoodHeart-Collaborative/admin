@@ -10,6 +10,7 @@ import { MatIconModule, MatSelectModule, MatOptionModule, MatFormFieldModule } f
 import { ConfirmBoxModule } from 'src/app/modules/shared/confirm-box';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ViewFullImageModule } from 'src/app/modules/shared/view-full-image/view-full-image.module';
+import { ListingFilterComponent } from '../event-category-listing/component/listing-filter.component';
 
 const routes: Routes = [
   {path: '' ,
@@ -18,7 +19,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [EventCategoryListingComponent],
+  declarations: [EventCategoryListingComponent, ListingFilterComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -33,6 +34,8 @@ const routes: Routes = [
     MatFormFieldModule,
     ReactiveFormsModule,
     ViewFullImageModule
-  ]
+  ],
+
+  entryComponents: [ListingFilterComponent]
 })
 export class EventCategoryListingModule { }

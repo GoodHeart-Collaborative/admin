@@ -57,3 +57,9 @@ export const REPORT_MESSAGE = {
  [3]: 'Impostor accounts',
  [4]: 'Other',
 }
+
+
+export const CATEGORY_TYPE = {
+  EVENT_CAEGORY: 1,
+  OTHER_CATEGORY: 2
+};

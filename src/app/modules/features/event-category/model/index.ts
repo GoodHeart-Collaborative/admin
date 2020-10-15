@@ -1,4 +1,6 @@
 import * as Table from 'src/app/modules/commonTable/table/interfaces';
+import { ListingFilterComponent } from '../pages/event-category-listing/component/listing-filter.component';
+
 type Category = any;
 
 const defaultData: Table.Data<Category> = {
@@ -36,7 +38,7 @@ export class CategoryTableDataSource implements Table.Source<Category> {
       templateBy: 'createdAt',
     },
     {
-        title: 'Total Expert Post',
+        title: 'Total Event Post',
         id: 'post',
         sorting: false,
         resolve: (row: any) => row['totalPost'] || '0',
@@ -60,7 +62,7 @@ export class CategoryTableDataSource implements Table.Source<Category> {
     search: 'Search by Category name',
     index: true,
     addComponent: true,
-    // filterComponent: ListingFilterComponent,
+    filterComponent: ListingFilterComponent,
     sorting: true,
   };
   constructor(public data: Table.Data<Category> = defaultData) {}

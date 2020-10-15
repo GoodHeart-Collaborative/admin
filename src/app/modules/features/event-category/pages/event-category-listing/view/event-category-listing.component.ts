@@ -5,9 +5,10 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
-import { USER, ADD_CATEGORY, CATEGORY } from 'src/app/constant/routes';
+import { USER, CATEGORY, ADD_EVENT_CATEGORY, EVENT_CATEGORY } from 'src/app/constant/routes';
 import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
+import { CATEGORY_TYPE } from 'src/app/constant/app-constant';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 @Component({
   selector: 'app-event-category-listing',
@@ -45,6 +46,7 @@ export class EventCategoryListingComponent implements OnInit {
     let params = {
       page: `${pageIndex + 1}`,
       limit: `${pageSize}`,
+      type: `${CATEGORY_TYPE.EVENT_CAEGORY}`
     };
     if (filterData) {
       const keys = Object.keys(filterData).filter(el => filterData[el]);
@@ -136,7 +138,7 @@ export class EventCategoryListingComponent implements OnInit {
   }
 
   onAddCategory() {
-    this.$router.navigate([ADD_CATEGORY.fullUrl]);
+    this.$router.navigate([ADD_EVENT_CATEGORY.fullUrl]);
   }
 
   oneditHandler(id) {
@@ -145,7 +147,7 @@ export class EventCategoryListingComponent implements OnInit {
   }
 
   relatedCategoryHandler(id) {
-    this.$router.navigate([`${CATEGORY.fullUrl}`, id]);
+    this.$router.navigate([`${EVENT_CATEGORY.fullUrl}`, id]);
   }
 
   onImageClick(image, type = 1) {

@@ -7,8 +7,9 @@ import { CATEGORY } from 'src/app/constant/routes';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
-import { requiredProfilePic, categoryRequiredProfilePic } from 'src/app/constant/messages';
+import {  categoryRequiredProfilePic } from 'src/app/constant/messages';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
+import { CATEGORY_TYPE } from 'src/app/constant/app-constant';
 @Component({
   selector: 'app-add-category-management',
   templateUrl: './add-category-management.component.html',
@@ -57,8 +58,10 @@ export class AddCategoryManagementComponent implements OnInit {
       {
         title: ['', [Validators.required,
         Validators.minLength(VALIDATION_CRITERIA.categorytitleMinLength),
-        Validators.maxLength(VALIDATION_CRITERIA.categorytitleMaxLength)]]
-      });
+        Validators.maxLength(VALIDATION_CRITERIA.categorytitleMaxLength)]],
+        type: CATEGORY_TYPE.OTHER_CATEGORY
+      },
+      );
   }
 
   get title() {
@@ -93,7 +96,8 @@ export class AddCategoryManagementComponent implements OnInit {
           return;
         }
         let body = { imageUrl: this.profilePicURL, ...this.categoryForm.value };
-
+        console.log(body);
+        
         this.categoryForm.disable();
         if (this.categoryId) {
           this.$category.editCategory(this.categoryId, body).then(

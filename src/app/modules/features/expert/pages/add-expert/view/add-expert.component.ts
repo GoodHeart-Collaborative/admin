@@ -10,6 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { EXPERT } from 'src/app/constant/routes';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
+import { CATEGORY_TYPE } from 'src/app/constant/app-constant';
 
 @Component({
   selector: 'app-add-expert',
@@ -91,6 +92,7 @@ export class AddExpertComponent implements OnInit {
     const params = {
       page: 1,
       limit: 100,
+      type: CATEGORY_TYPE.OTHER_CATEGORY
     };
     this.$category.queryData(params).then(res => {
       this.categoryData = res.data['data'].filter(element => element.status != 'blocked' );

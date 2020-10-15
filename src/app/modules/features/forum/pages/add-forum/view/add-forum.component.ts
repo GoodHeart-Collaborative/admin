@@ -8,6 +8,7 @@ import { VALIDATION_CRITERIA } from 'src/app/constant/validation-criteria';
 import { FORUM } from 'src/app/constant/routes';
 import { CategoryManagementService } from 'src/app/modules/features/category-management/service/category-management.service';
 import { ForumService } from '../../../service/forum.service';
+import { CATEGORY_TYPE } from 'src/app/constant/app-constant';
 
 @Component({
   selector: 'app-add-forum',
@@ -60,6 +61,7 @@ export class AddForumComponent implements OnInit {
     const params = {
       page: 1,
       limit: 100,
+      type: CATEGORY_TYPE.OTHER_CATEGORY
     };
     this.$category.queryData(params).then(res => {
       this.categoryData = res.data['data'];

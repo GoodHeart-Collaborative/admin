@@ -252,6 +252,26 @@ export const AMENITY_DETAIL: IRoute = {
 
 // AMENITY ROUTES //
 
+export const EVENT_CATEGORY: IRoute = {
+  path: 'event-category',
+  get fullUrl(): string {
+    return `${ADMIN.fullUrl}/${this.path}`;
+  }
+};
+export const ADD_EVENT_CATEGORY: IRoute = {
+  path: 'add',
+  get fullUrl(): string {
+    return `${EVENT_CATEGORY.fullUrl}/${this.path}`;
+  }
+};
+
+export const EVENT_CATEGORY_DETAIL = {
+  path: 'detail',
+  fullUrl(categoryId) {
+    return `${EVENT_CATEGORY.fullUrl}/${categoryId}/${this.path}`;
+  }
+};
+
 // CATEGORY ROUTES //
 
 export const CATEGORY: IRoute = {
@@ -260,12 +280,7 @@ export const CATEGORY: IRoute = {
     return `${ADMIN.fullUrl}/${this.path}`;
   }
 };
-export const EVENT_CATEGORY: IRoute = {
-  path: 'event-category',
-  get fullUrl(): string {
-    return `${ADMIN.fullUrl}/${this.path}`;
-  }
-};
+
 export const CATEGORY_LIST: IRoute = {
   path: 'list',
   get fullUrl(): string {
