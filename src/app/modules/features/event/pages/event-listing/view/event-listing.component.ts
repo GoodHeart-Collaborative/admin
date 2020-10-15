@@ -90,7 +90,10 @@ export class EventListingComponent implements OnInit {
    * @param id
    * @param action
    */
-  onActionHandler(id: string, action: ActionType) {
+  onActionHandler(id: string, action: ActionType, endDate) {
+    if (this.today > endDate) {
+      return;
+    }
     const index = this.eventList.list.findIndex(user => user._id === id);
     this.$confirmBox.listAction('event', action == 'active' ? 'active' : (action == 'deleted' ? 'delete' : 'block'))
       .subscribe((confirm) => {

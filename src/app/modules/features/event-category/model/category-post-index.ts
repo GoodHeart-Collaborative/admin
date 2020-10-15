@@ -57,19 +57,19 @@ export class EventRelatedCategoryTableDataSource implements Table.Source<Categor
       sorting: false,
       resolve: (row: any) => (row['price'] || 0)
       },
-    {
-      title: 'Total Likes',
-      id: 'likeCount',
-      sorting: false,
-      templateBy: 'likeCount'
-      },
+    // {
+    //   title: 'Total Likes',
+    //   id: 'likeCount',
+    //   sorting: false,
+    //   templateBy: 'likeCount'
+    //   },
 
-    {
-       title: 'Total Comments',
-       id: 'commentCount',
-       sorting: false,
-       templateBy: 'commentCount'
-     },
+    // {
+    //    title: 'Total Comments',
+    //    id: 'commentCount',
+    //    sorting: false,
+    //    templateBy: 'commentCount'
+    //  },
     // {
     //    title: 'Report Count',
     //    id: 'reportCount',
@@ -84,14 +84,14 @@ export class EventRelatedCategoryTableDataSource implements Table.Source<Categor
       templateBy: 'createdAt',
     },
 
-    {
-      title: 'Privacy',
-      id: 'privacy',
-      sorting: false,
-      // resolve: (row: any) => row['privacy'] || '-',
+    // {
+    //   title: 'Privacy',
+    //   id: 'privacy',
+    //   sorting: false,
+    //   // resolve: (row: any) => row['privacy'] || '-',
 
-      templateBy: 'privacy',
-    },
+    //   templateBy: 'privacy',
+    // },
     {
       title: 'Status',
       id: 'status',

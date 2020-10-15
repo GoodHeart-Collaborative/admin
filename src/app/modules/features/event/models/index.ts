@@ -46,6 +46,12 @@ export class EventTableDataSource implements Table.Source<Category> {
       resolve: (row: any) => (row['price'] || 0)
      },
     {
+      title: 'Added By',
+      id: 'addedBy',
+      sorting: true,
+      templateBy: 'addedBy',
+    },
+    {
       title: 'Added On',
       id: 'createdAt',
       sorting: true,

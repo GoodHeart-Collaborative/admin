@@ -8,7 +8,7 @@ import { UtilityService } from 'src/app/modules/shared/services/utility.service'
 import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
 import { MatDialog } from '@angular/material';
 import { CommonService } from 'src/app/modules/shared/services/common.service';
-import { USER, CATEGORY, EXPERT } from 'src/app/constant/routes';
+import { USER, CATEGORY, EXPERT, EVENTS } from 'src/app/constant/routes';
 import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
 import { CommentsComponent } from 'src/app/modules/shared/comments/view/comments/comments.component';
 import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
@@ -147,47 +147,11 @@ export class EventRelatedCategoryPostComponent implements OnInit {
     });
   }
 
-  categoryDetailsHandler(id: string) {
-    this.$router.navigate([`${CATEGORY.fullUrl}`, id, id, 'details']);
-  }
 
-  /**
-   * ON LIKE Handler
-   * @param id
-   */
-  likeHandler(id: string, likesCount: number) {
-    if (!likesCount) {
-      return;
-    }
-    this.$common.onLikeHandler(id).then(res => {
-      const like = res.data['list'];
-      this.onlikeHandler(like, likesCount);
-    });
-  }
 
-/**
- * user Like Handler
- * @param id
- */
-  onlikeHandler(like: any, likesCount: number) {
-    this.$matDailog.open(LikeActionComponent, {
-      width: '500px',
-      data: like
-    }).afterClosed().subscribe();
-  }
 
-  onCommentsHandler(id: string, commentCount: number) {
-    if (!commentCount) {
-      return;
-    }
-    this.$matDailog.open(CommentsComponent, {
-      width: '500px',
-      data: id
-    }).afterClosed().subscribe();
-  }
-
-  ondetailsHandler(id: string) {
-    this.$router.navigate([`${EXPERT.fullUrl}`, id, 'details']);
+onEventHandler(id: string) {
+    this.$router.navigate([`${EVENTS.fullUrl}`, id, 'details']);
   }
 
   /**
