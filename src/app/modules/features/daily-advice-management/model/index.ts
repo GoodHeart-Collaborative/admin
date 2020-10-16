@@ -26,12 +26,12 @@ export class DailyAdviceTableDataSource implements Table.Source<Category> {
         templateBy: 'title'
         // resolve: (row: any) => row['title'] || '-',
     },
-    // {
-    //     title: 'Description',
-    //     id: 'description',
-    //     sorting: false,
-    //     templateBy: 'description'
-    // },
+    {
+        title: 'Description',
+        id: 'description',
+        sorting: false,
+        templateBy: 'description'
+    },
     {
         title: 'Total Likes',
         id: 'likeCount',

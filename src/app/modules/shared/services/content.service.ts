@@ -42,7 +42,7 @@ export class ContentService {
   }
 
   onGetContentDetails(type) {
-    return fetch(`http://womencomdevapi.appskeeper.com/v1/content/view?type=${type}`)
+    return fetch(`http://womencomstgapi.appskeeper.com/v1/content/view?type=${type}`)
       .then(response => {
         return response.clone().text();
       });
