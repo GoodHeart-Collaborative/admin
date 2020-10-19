@@ -27,7 +27,7 @@ export const invalidImageError = (format = "JPG, JPEG, PNG") =>
 export const invalidFileError =
   `Only JPG, JPEG, PNG   are allowed`;
 
-export const invalidFileSize = (size = 4) =>
+export const invalidFileSize = (size = 10) =>
   `File size can not be more than ${size} MB`;
 
 export const COPIED = `Copied shared URL`;
@@ -37,7 +37,7 @@ export const categoryRequiredProfilePic = `Category Image is required`;
 export const requiredMedia = `Media is required`;
 export const invalidContentType = 'Invalid content type selected';
 export const videoFormatFile = (format = 'mp4/x-m4v/3gp') =>  `Please select  video ${format} format file.`;
-export const videoFileSize = (size = 10) =>  `File size should not be greater then ${size} MB`;
+export const videoFileSize = (size = 50) =>  `File size should not be greater then ${size} MB`;
 
 
 export const COMMON_MESSAGES = {

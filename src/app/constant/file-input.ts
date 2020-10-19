@@ -1,7 +1,7 @@
 export const onSelectFile = (
   event,
   accept = 'image/jpeg,image/png,image/png',
-  maxSize = 4
+  maxSize = 10
 ): Promise<any> => {
   return new Promise((resolve, reject) => {
     if (event.target.files && event.target.files[0]) {

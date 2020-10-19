@@ -121,7 +121,7 @@ export class MediaUploadComponent implements OnInit {
     if (type !== "video/mp4" && type !== "video/x-m4v" &&
       type !== "video/3gpp" && this.file) {
       this.$upload.showAlert(videoFormatFile());
-    } else if (size > 1024 * 10) {
+    } else if (size > 1024 * 50) {
       this.$upload.showAlert(videoFileSize());
     } else {
       const reader = new FileReader();

@@ -51,8 +51,9 @@
 
         <ng-template appFor="actions" let-user="row">
             <div class="action-icon-cover">
+                <!-- [class.disabled-icon]="user?.status != 'active'" -->
                 <i class="material-icons icon-edit" (click)="oneditHandler(user?._id, user?.status)" title="Edit"
-                    [class.disabled-icon]="user?.status != 'active'">
+                   >
                     edit
                 </i>
                 <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked')"
