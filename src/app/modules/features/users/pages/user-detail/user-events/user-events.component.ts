@@ -2,18 +2,18 @@ import { Router } from '@angular/router';
 import { Component, OnInit, Input, EventEmitter, Output, OnChanges } from '@angular/core';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
-export type ActionType = 'deleted' | 'blocked' | 'active';
-import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { EventTableDataSource } from './model';
 import { UserEventService } from './service/user-event.service';
 import { GlobalService } from 'src/app/services/global/global.service';
+import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
+export type ActionType = 'deleted' | 'blocked' | 'active';
 @Component({
   selector: 'app-user-events',
   templateUrl: './user-events.component.html',
   styleUrls: ['./user-events.component.scss']
 })
 export class UserEventsComponent implements OnInit, OnChanges {
-
+  today = new Date().getTime();
   tableSource = new EventTableDataSource();
   eventData: Table.OptionData = {
     pageIndex: 0,
@@ -54,7 +54,10 @@ export class UserEventsComponent implements OnInit, OnChanges {
    * @param id
    * @param action
    */
-  onActionHandler(id: string, action: ActionType, privacy: string) {
+  onActionHandler(id: string, action: ActionType, endDate ) {
+    if (this.today > endDate) {
+      return;
+    }
     const index = this.userData.list.findIndex(user => user._id === id);
     this.$confirmBox.listAction('gratitude', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
       .subscribe((confirm) => {
