@@ -202,7 +202,7 @@ export class AddEventComponent implements OnInit {
     this.location = {
       type: "Point",
       coordinates: [
-        event.lat, event.lng
+        event.lng, event.lat
       ]
     };
     this.address = event.formatted_address;
