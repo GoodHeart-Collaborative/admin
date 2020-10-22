@@ -98,7 +98,7 @@ export class UserEventsComponent implements OnInit, OnChanges {
   }
 
   handleStatus(action: 'blocked' | 'active', index: number) {
-    this.userData.data = this.userData.data.map((user, i) => {
+    this.userData.list = this.userData.list.map((user, i) => {
       if (i === index) {
         user.status = action;
       }
