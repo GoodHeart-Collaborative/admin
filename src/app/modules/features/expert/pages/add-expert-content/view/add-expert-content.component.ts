@@ -51,6 +51,7 @@ export class AddExpertContentComponent implements OnInit {
         if (res && res.data && res.data[0]) {
           this.expertData = res.data[0];
           $breadcrumb.replace(this.expertContentId, this.expertData.name);
+          $breadcrumb.replace(this.expertData.name, this.expertData.name, `/admin/expert/${this.expertContentId}/details`);
           this.categoryData = this.expertData.categoryData;
         }
       });

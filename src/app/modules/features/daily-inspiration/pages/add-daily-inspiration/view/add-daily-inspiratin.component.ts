@@ -64,7 +64,7 @@ export class AddDailyInspiratinComponent implements OnInit {
     this.inspirationForm = this.$formBuilder.group(
       {
         title: ['', [Validators.required, Validators.maxLength(this.titleMaxLength),
-                Validators.minLength(VALIDATION_CRITERIA.titleMinLength)]],
+                ]],
         isPostLater: [false],
         description: ['', [Validators.required, Validators.maxLength(this.descriptionMaxLength),
           ]],

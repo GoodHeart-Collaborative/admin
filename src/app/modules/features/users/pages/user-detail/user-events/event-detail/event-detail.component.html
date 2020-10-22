@@ -35,15 +35,15 @@
                         <div class="col-md-12" *ngIf="eventDetails?.eventUrl">
                             <p class="label">Event's More Details</p>
                             <p class="value">
-                                <a [href]="eventDetails?.eventUrl" target="_blank">
+                                <a (click)="openEventUrl(eventDetails?.eventUrl)" >
                                     {{eventDetails?.eventUrl}}
                                 </a>
                             </p>
                         </div>
-                        <!-- <div class="col-md-12">
+                        <div class="col-md-12">
                                 <p class="label">Hosted By</p>
-                                <p class="value">Alex Dolgove</p>
-                            </div> -->
+                                <p class="value">{{eventDetails?.eventUrl}}</p>
+                            </div>
                         <div class="col-md-4">
                             <p class="label">Going</p>
                             <p class="value like-cover" (click)="onGoingCount(eventDetails?.goingCount)">

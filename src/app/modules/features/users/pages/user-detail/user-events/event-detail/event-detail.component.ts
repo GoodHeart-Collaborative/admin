@@ -94,4 +94,9 @@ export class EventDetailComponent implements OnInit {
     });
   }
 
+
+
+  openEventUrl(url: string) {
+    window.open('http://' +  url , '_blank')
+}
 }

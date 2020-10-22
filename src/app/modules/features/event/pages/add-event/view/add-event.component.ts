@@ -73,7 +73,8 @@ export class AddEventComponent implements OnInit {
         //  = this.eventDetails.endDate;
       }
       if (this.eventDetails.startDate) {
-        this.eventForm.get('startDate').patchValue(new Date(this.eventDetails.startDate));
+        this.eventDetails.startDate = new Date(this.eventDetails.startDate);
+        this.eventForm.get('startDate').patchValue( this.eventDetails.startDate);
         //  = this.eventDetails.endDate;
       }
     }

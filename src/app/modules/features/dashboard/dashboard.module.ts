@@ -11,6 +11,7 @@ import { MatProgressSpinnerModule } from '@angular/material';
 import { ViewFullImageModule } from '../../shared/view-full-image/view-full-image.module';
 import { LineChartComponent } from './pages/line-chart/line-chart.component';
 import { ChartModule } from 'angular-highcharts';
+import { ConvertNumberModule } from 'src/app/pipes/convert-number/convert-number.module';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ChartModule } from 'angular-highcharts';
     ChartModule,
     MatProgressSpinnerModule,
     CustomImageModule,
-    ViewFullImageModule
+    ViewFullImageModule,
+    ConvertNumberModule
   ],
   exports: [DashboardComponent],
   providers: [

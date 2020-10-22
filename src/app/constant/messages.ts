@@ -27,6 +27,9 @@ export const invalidImageError = (format = "JPG, JPEG, PNG") =>
 export const invalidFileError =
   `Only JPG, JPEG, PNG   are allowed`;
 
+export const invalidFile = (format ) =>
+  ` ${format} type not allowed`;
+
 export const invalidFileSize = (size = 10) =>
   `File size can not be more than ${size} MB`;
 

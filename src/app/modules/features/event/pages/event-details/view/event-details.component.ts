@@ -104,4 +104,8 @@ export class EventDetailsComponent implements OnInit {
       data: { image, type }
     }).afterClosed().subscribe();
   }
+
+  openEventUrl(url: string) {
+      window.open('http://' +  url , '_blank')
+  }
 }

@@ -40,7 +40,7 @@ export class NotificationTableDataSource implements Table.Source<Category> {
     //     // resolve: (row: any) => row['title'] || '-',
     // },
     {
-        title: 'Sent To',
+        title: 'Sent To (No of active users)',
         id: 'sentCount',
         sorting: true,
         // templateBy: 'sentCount'
