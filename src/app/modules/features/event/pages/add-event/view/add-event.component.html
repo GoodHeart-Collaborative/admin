@@ -29,15 +29,15 @@
                             </mat-form-field>
                         </div>
                     </div>
-                    {{eventDetails?.id ? (eventDetails?.startDate | date: 'fullDate') :today}}
+                   
                     <div class="row">
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Choose a start date </mat-label>
                                 <input [max]="maxDate"
-                                    [min]="eventDetails?.id ? (eventDetails?.startDate | date) :today "
+                                    [min]="eventDetails?.id ? (eventDetails?.startDate ) :today "
                                     [owlDateTimeTrigger]="dt1" formControlName="startDate" matInput [owlDateTime]="dt1"
-                                    placeholder="Start" readonly>
+                                    placeholder="Start" readonly (dateTimeChange)="onStartDateSelected($event)">
                                 <owl-date-time [hour12Timer]="true" #dt1></owl-date-time>
                                 <mat-error>{{form('startDate') |validate:'Start Date' }}</mat-error>
 
