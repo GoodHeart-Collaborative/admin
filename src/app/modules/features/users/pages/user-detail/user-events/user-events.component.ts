@@ -6,6 +6,8 @@ import { EventTableDataSource } from './model';
 import { UserEventService } from './service/user-event.service';
 import { GlobalService } from 'src/app/services/global/global.service';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
+import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
+import { MatDialog } from '@angular/material';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 @Component({
   selector: 'app-user-events',
@@ -31,7 +33,8 @@ export class UserEventsComponent implements OnInit, OnChanges {
     private $userService: UserEventService,
     private $confirmBox: ConfirmBoxService,
     private $utility: UtilityService,
-    private $global: GlobalService
+    private $global: GlobalService,
+    private $matDailog: MatDialog
   ) {
   }
 
@@ -59,7 +62,7 @@ export class UserEventsComponent implements OnInit, OnChanges {
       return;
     }
     const index = this.userData.list.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('gratitude', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
+    this.$confirmBox.listAction('user-event', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
       .subscribe((confirm) => {
         if (confirm) {
           this.$userService.updateEventStatus(id, action).then((res) => {
@@ -95,7 +98,7 @@ export class UserEventsComponent implements OnInit, OnChanges {
   }
 
   handleStatus(action: 'blocked' | 'active', index: number) {
-    this.userData.data = this.userData.data.map((user, i) => {
+    this.userData.list = this.userData.list.map((user, i) => {
       if (i === index) {
         user.status = action;
       }
@@ -122,6 +125,16 @@ export class UserEventsComponent implements OnInit, OnChanges {
     this.$router.navigate([`admin/users/${id}/event/details`],
       { queryParams: { userId }}
     );
+  }
+
+  onImageClick(image, type = 1) {
+    if (!image) {
+      return;
+    }
+    this.$matDailog.open(ViewFullImageComponent, {
+      panelClass: 'view-full-image-modal',
+      data: { image, type }
+    }).afterClosed().subscribe();
   }
 
 }

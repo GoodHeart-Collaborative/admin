@@ -23,12 +23,6 @@ export class CommentsShowComponent implements OnInit, OnChanges {
 
   async ngOnChanges() {
     this.commentsData = await this.getCommentHandler(this.commentId);
-    // this.comments = this.commentsData.list.map(comment => {
-    //   comment['replies'] = [];
-    //   comment['showReply'] = false;
-    //   return comment;
-    // });
-    // console.log(this.comments);
     this.addComments(this.commentsData.list);
   }
 
@@ -101,6 +95,8 @@ export class CommentsShowComponent implements OnInit, OnChanges {
     if (this.pageIndex + 1 < this.commentsData.total_page) {
       this.pageIndex++;
       const loadData: any = await this.getCommentHandler(this.commentId);
+      console.log(loadData);
+      
       this.addComments(loadData.list);
     }
   }

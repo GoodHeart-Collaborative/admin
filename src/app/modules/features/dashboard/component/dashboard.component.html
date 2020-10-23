@@ -72,7 +72,7 @@
                   <div class="col-md-4 animate__animated animate__flipInX animate__delay-1s">
                         <div class="mat-card new-users-card">
                               <h3 style="margin-bottom: 10px;">Recent Users</h3>
-                              <p class="latest-text" style="font-size: 14px;margin-bottom: 12px; color: #777b8b;">Latest Four</p>
+                              <p class="latest-text" style="font-size: 14px;margin-bottom: 12px; color: #777b8b;">Latest {{userList?.length | convertNumber}}</p>
                               <ul class="users-listing">
                                     <li class="single-user" *ngFor="let item of userList">
                                           <div class="img-cover">

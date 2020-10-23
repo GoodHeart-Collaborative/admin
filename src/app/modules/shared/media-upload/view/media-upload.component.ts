@@ -9,7 +9,8 @@ import {
   invalidFileSize,
   invalidContentType,
   videoFileSize,
-  invalidFileError
+  invalidFileError,
+  invalidFile
 } from 'src/app/constant/messages';
 import { onSelectFile } from 'src/app/constant/file-input';
 
@@ -82,6 +83,7 @@ export class MediaUploadComponent implements OnInit {
    * @param file
    */
   checkMediaType(file, event) {
+    console.log(file , event);
     if (file.type.split('/')[0] == 'image' && this.checkContentType(1)) {
       this.isImage = true;
     } else if (file.type.split('/')[0].toLowerCase() == 'video' && this.checkContentType(2)) {
@@ -90,7 +92,8 @@ export class MediaUploadComponent implements OnInit {
       this.videoSelected(event);
 
     } else {
-      this.$upload.showAlert(invalidFileError);
+      console.log(file.type.split('/')[0]);
+      this.$upload.showAlert(invalidFile(file.type));
       return null;
     }
   }
@@ -121,7 +124,7 @@ export class MediaUploadComponent implements OnInit {
     if (type !== "video/mp4" && type !== "video/x-m4v" &&
       type !== "video/3gpp" && this.file) {
       this.$upload.showAlert(videoFormatFile());
-    } else if (size > 1024 * 10) {
+    } else if (size > 1024 * 50) {
       this.$upload.showAlert(videoFileSize());
     } else {
       const reader = new FileReader();

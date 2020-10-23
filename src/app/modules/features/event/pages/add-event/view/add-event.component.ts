@@ -69,11 +69,13 @@ export class AddEventComponent implements OnInit {
         this.eventCategory = this.eventDetails.categoryData;
       }
       if (this.eventDetails.endDate) {
-        this.eventForm.get('endDate').patchValue(new Date(this.eventDetails.endDate));
+        this.eventDetails.endDate = new Date(this.eventDetails.endDate);
+        this.eventForm.get('endDate').patchValue(this.eventDetails.endDate);
         //  = this.eventDetails.endDate;
       }
       if (this.eventDetails.startDate) {
-        this.eventForm.get('startDate').patchValue(new Date(this.eventDetails.startDate));
+        this.eventDetails.startDate = new Date(this.eventDetails.startDate);
+        this.eventForm.get('startDate').patchValue(this.eventDetails.startDate);
         //  = this.eventDetails.endDate;
       }
     }
@@ -152,8 +154,8 @@ export class AddEventComponent implements OnInit {
     if (body.startDate) {
       body.startDate = new Date(body.startDate).getTime();
     }
-    body.isFeatured =   body.isFeatured ? 1 : 0;
-    body.allowSharing =   body.allowSharing ? 1 : 0;
+    body.isFeatured = body.isFeatured ? 1 : 0;
+    body.allowSharing = body.allowSharing ? 1 : 0;
     if (this.eventDetails && this.eventDetails._id) {
       this.$service.edit(this.eventDetails._id, body).then(
         data => {
@@ -194,7 +196,7 @@ export class AddEventComponent implements OnInit {
       type: CATEGORY_TYPE.EVENT_CAEGORY
     };
     this.$category.queryData(params).then(res => {
-      this.eventCategory = res.data['data'].filter(element => element.status != 'blocked' );
+      this.eventCategory = res.data['data'].filter(element => element.status != 'blocked');
     });
   }
 
@@ -202,15 +204,22 @@ export class AddEventComponent implements OnInit {
     this.location = {
       type: "Point",
       coordinates: [
-        event.lat, event.lng
+        event.lng, event.lat
       ]
     };
     this.address = event.formatted_address;
   }
 
   onDateSelected(event) {
-    if (event && this.startDate.value &&  new Date(event.value) < new Date(new Date(this.startDate.value).getTime() + 3600000)) {
-        this.endDate.setValue(new Date(new Date(this.startDate.value).getTime() + 1800000));
+    if (event && this.startDate.value && new Date(event.value) < new Date(new Date(this.startDate.value).getTime() + 3600000)) {
+      this.endDate.setValue(new Date(new Date(this.startDate.value).getTime() + 1800000));
+    }
+  }
+
+  onStartDateSelected(event) {
+    this.maxDate = new Date(new Date(event.value).getTime() + 2592000000);
+    if (event && this.endDate.value && new Date(event.value).getTime() > new Date(this.endDate.value).getTime()) {
+        this.endDate.setValue(null);
     }
   }
 }

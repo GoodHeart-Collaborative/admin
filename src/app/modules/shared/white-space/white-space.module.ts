@@ -9,6 +9,6 @@ import { WhiteSpaceDirective } from './white-space.directive';
   imports: [
     CommonModule
   ],
-  exports:[WhiteSpaceDirective]
+  exports: [WhiteSpaceDirective]
 })
 export class WhiteSpaceModule { }

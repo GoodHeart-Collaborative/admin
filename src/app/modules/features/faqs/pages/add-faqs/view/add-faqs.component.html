@@ -8,14 +8,16 @@
             <form [formGroup]="faqForm">
                 <mat-form-field appearance="outline">
                     <mat-label for="question">Question</mat-label>
-                    <textarea  formControlName="question" rows="3" matInput appWhiteSpace #question [maxlength]="questionFaqMaxLimit"></textarea>
+                    <input formControlName="question" rows="3" matInput appWhiteSpace #question
+                        [maxlength]="questionFaqMaxLimit" />
                     <mat-hint>{{question.value.trim().length}}/{{questionFaqMaxLimit}}</mat-hint>
                     <mat-error>{{form('question') |validate:'Question' }}</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
                     <mat-label for="answer">Answer</mat-label>
-                    <textarea  rows="3" matInput appWhiteSpace formControlName="answer" #answer [maxlength]="answerFaqMaxLimit"></textarea>
+                    <input rows="3" matInput appWhiteSpace formControlName="answer" #answer
+                        [maxlength]="answerFaqMaxLimit" />
                     <mat-hint>{{answer.value.trim().length}}/{{answerFaqMaxLimit}}</mat-hint>
                     <mat-error>{{form('answer') |validate:'Answer' }}</mat-error>
 

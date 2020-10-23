@@ -24,7 +24,6 @@ export class ImageUploadComponent implements OnInit {
   ngOnInit() {
   }
 
-  
   async onSelectFile(event) {
     this.saveEvent = event;
     try {
