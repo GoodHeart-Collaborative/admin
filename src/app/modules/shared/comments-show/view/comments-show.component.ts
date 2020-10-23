@@ -96,7 +96,6 @@ export class CommentsShowComponent implements OnInit, OnChanges {
       this.pageIndex++;
       const loadData: any = await this.getCommentHandler(this.commentId);
       console.log(loadData);
-      
       this.addComments(loadData.list);
     }
   }

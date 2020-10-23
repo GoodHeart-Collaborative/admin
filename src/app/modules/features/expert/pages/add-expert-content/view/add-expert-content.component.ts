@@ -170,6 +170,7 @@ export class AddExpertContentComponent implements OnInit {
         body.mediaType = this.details.mediaType;
       }
       if (this.details.mediaType == 2) {
+        body['mediaUrl'] = this.details.mediaUrl;
         body['thumbnailUrl'] = this.thumbnailUrl;
         body.mediaType = this.details.mediaType;
       }

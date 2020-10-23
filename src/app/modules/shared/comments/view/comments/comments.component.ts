@@ -1,6 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { CommonService } from '../../../services/common.service';
+import { Router } from '@angular/router';
+import { USER } from 'src/app/constant/routes';
 
 @Component({
   selector: 'app-comments',
@@ -17,13 +19,15 @@ export class CommentsComponent implements OnInit {
     private $dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private $common: CommonService,
+    private $router: Router
   ) {
   }
 
   async ngOnInit() {
     if (this.data) {
       this.commentsData = await this.getCommentHandler(this.data);
-      this.addComments(this.commentsData.list);
+      console.log(this.commentsData);
+      this.addComments(this.commentsData.data);
     }
   }
 
@@ -41,8 +45,8 @@ export class CommentsComponent implements OnInit {
   async getCommentHandler(id, commentId?) {
     if (id) {
       const params = {
-        pageNo: `${this.pageIndex + 1}`,
-        limit: 5,
+        pageNo: `${1}`,
+        limit: 25,
         postId: id
       };
       if (commentId) {
@@ -58,22 +62,26 @@ export class CommentsComponent implements OnInit {
    * Show nested comment
    * @param id
    */
-  async toggleReplies(commentId: string, commenIndex: number) {    
+  async toggleReplies(commentId: string, commenIndex: number) {
     if (!this.comments[commenIndex].showReply) {
       this.comments[commenIndex].replies = await this.getCommentHandler(this.data, commentId);
-      console.log(this.comments[commenIndex].replies);
+      console.log(this.comments[commenIndex].replies.data);
     }
     this.comments[commenIndex]['showReply'] = !this.comments[commenIndex]['showReply'];
     this.hideShowReplies = !this.hideShowReplies;
   }
 
   async onLoadMore() {
-
-    if (this.pageIndex + 1 < this.commentsData.total_page) {
+    if (this.pageIndex + 1 < this.commentsData.totalPage) {
       this.pageIndex++;
       const loadData: any = await this.getCommentHandler(this.data);
-      this.addComments(loadData.list);
+      this.addComments(loadData.data);
     }
   }
 
+
+  seeProfile(id) {
+    this.$router.navigate([`${USER.fullUrl}`, id, 'details']);
+    this.$dialogRef.close();
+  }
 }

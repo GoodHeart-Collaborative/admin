@@ -58,7 +58,7 @@ export class CategoryTableDataSource implements Table.Source<Category> {
   ];
   options: Table.Options = {
     selection: false,
-    search: 'Search by Category name',
+    search: 'Search by Category name , Category name',
     index: true,
     addComponent: true,
     filterComponent: ListingFilterComponent,

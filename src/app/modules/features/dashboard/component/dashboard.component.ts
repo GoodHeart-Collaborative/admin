@@ -72,6 +72,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   onDrashboardHandler() {
     this.$dashboardService.onDrashboardHandler().then(res => {
       this.data = res.data;
+      console.log(this.data.freePaidConverion);
+
       this.userStatisticsHnadler();
     });
   }
@@ -80,9 +82,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.GraphThisYear = Object.values(this.data.userGraphThisYear);
     this.GraphLastYear = Object.values(this.data.userGraphLastYear);
     this.subscriptionEarningMonthly = Object.values(this.data.subscriptionEarningMonthly);
-    const paidConversionRatio = this.data.freePaidConverion[0].price.toFixed(2);
-    const freeConversionRatio = this.data.freePaidConverion[1].price.toFixed(2);
-    this.convesrionRatio  = (paidConversionRatio / freeConversionRatio).toFixed(2);
+    if (this.data.freePaidConverion.length > 1) {
+
+      const paidConversionRatio = this.data.freePaidConverion[0].price.toFixed(2);
+      const freeConversionRatio = this.data.freePaidConverion[1].price.toFixed(2);
+      this.convesrionRatio = (paidConversionRatio / freeConversionRatio).toFixed(2);
+    }
     // this.currentYearUser = this.getPercentage(this.GraphThisYear, this.data.currentYearUserCount);
     // this.lastYearUser = this.getPercentage(this.GraphLastYear, this.data.previousYearUserCount);
   }

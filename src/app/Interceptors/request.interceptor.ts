@@ -8,7 +8,7 @@ import {
     HttpResponse
 } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, fromEvent } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { UtilityService } from '../modules/shared/services/utility.service';
 import { LoaderService } from '../modules/shared/services/loader.service';
@@ -20,13 +20,13 @@ import {
 import { MatDialog } from '@angular/material';
 @Injectable()
 export class RequestInterceptor implements HttpInterceptor {
+    connectionStatus =  true;
     constructor(
         private router: Router,
         private utilityService: UtilityService,
         private loaderService: LoaderService,
         private dialog: MatDialog,
-    ) {
-    }
+    ) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
@@ -72,8 +72,9 @@ export class RequestInterceptor implements HttpInterceptor {
                         || err.status === 500  ) {
                             message = err.error.message;
                         }
-                        if ( err.status === 0) {
-                            message = SLOW_INTERNET_CONNECTION;
+                        if ( err.status === 0 ) {
+                            // console.log(this.connectionStatus , navigator.onLine);
+                            message =  navigator.onLine ? SOMETHING_WENT_WRONG : SLOW_INTERNET_CONNECTION;
                         }
                         if ( err.error.type === 'INVALID_TOKEN'
                         ||  err.error.type === 'SESSION_EXPIRED'
@@ -81,7 +82,7 @@ export class RequestInterceptor implements HttpInterceptor {
                             this.utilityService.clearStorage();
                             this.router.navigate([LOGIN.fullUrl]);
                         }
-                        this.utilityService.errorAlert(message);
+                        this.utilityService.errorAlert(message || SOMETHING_WENT_WRONG);
                     }
                 }
          ));

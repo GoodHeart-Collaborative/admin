@@ -32,7 +32,7 @@
                                 <mat-icon>more_vert</mat-icon>
                             </button>
                             <mat-menu #menu="matMenu" class="card_menu">
-                                <button mat-menu-item>
+                                <button mat-menu-item (click)="seeProfile(item?.users?._id)">
                                     See Profile
                                 </button>
                             </mat-menu>
@@ -40,7 +40,7 @@
                     </div>
                     <ul class="comment-listing" *ngIf="item?.showReply">
 
-                        <li class="single-comment" *ngFor="let reply of item?.replies?.list">
+                        <li class="single-comment" *ngFor="let reply of item?.replies?.data">
                             <div class="li-content">
                                 <div class="img-cover">
                                     <img [src]="reply?.users?.profilePicUrl[0] |customImage:'USER'|async" alt="Profile">
@@ -76,7 +76,7 @@
         </div>
         <div class="load-more-wrapper">
             <button class="btn btn-primary" mat-stroked-button (click)="onLoadMore()"
-                *ngIf="pageIndex + 1 < commentsData?.total_page">Load more comments</button>
+                *ngIf="pageIndex + 1 < commentsData?.totalPage">Load more comments</button>
         </div>
     </div>
 </div>

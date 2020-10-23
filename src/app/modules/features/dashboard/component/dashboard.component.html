@@ -90,7 +90,7 @@
                   <div class="col-md-3 animate__animated animate__bounceInLeft animate__delay-1s">
                         <div class="mat-card conversion-ratio-card">
                               <h3 style="margin-bottom: 20px;">Conversion Ratio</h3>
-                              <div class="graph-cover">
+                              <div class="graph-cover" *ngIf="data?.freePaidConverion?.length > 1">
                                     <!-- <img src="../../../../../assets/graph3.PNG" alt=""> -->
                                     <app-line-chart [type]="5" [freePaidConverion]="data?.freePaidConverion"></app-line-chart>
 

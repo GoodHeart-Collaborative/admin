@@ -40,9 +40,9 @@
                                 </a>
                             </p>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-12" >
                                 <p class="label">Hosted By</p>
-                                <p class="value">{{eventDetails?.eventUrl}}</p>
+                                <p class="value">{{eventDetails?.hostUser?.length ? (eventDetails?.hostUser?.firstName) + (eventDetails?.hostUser?.lastName) : 'Good heart Collaborative' }}</p>
                             </div>
                         <div class="col-md-4">
                             <p class="label">Going</p>
@@ -58,7 +58,7 @@
                                 <a href="javascript:void();">{{eventDetails?.interestCount}}</a>
                             </p>
                         </div>
-                        <div class="col-md-12" *ngIf="eventDetails?.userType =='admin' && eventDetails?.allowSharing">
+                        <div class="col-md-12" *ngIf=" eventDetails?.allowSharing">
                             <p class="label">Share Event</p>
                             <div class="value" (click)="onCopyHandler($event.currentTarget)">
                                 <a class="link"> {{eventDetails?.shareUrl}}</a>

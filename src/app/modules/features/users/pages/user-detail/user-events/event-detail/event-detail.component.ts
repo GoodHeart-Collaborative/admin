@@ -35,9 +35,6 @@ export class EventDetailComponent implements OnInit {
       $breadcrumb.replace($router.snapshot.params.id, this.eventDetails.title, `/admin/users/${this.userID}/details`);
       $breadcrumb.replace( this.eventDetails.title, this.eventDetails.title, `/admin/users/${this.userID}/details`);
     });
-    // $breadcrumb.replace(this.eventDetails.id, this.eventDetails.title);
-    // $breadcrumb.replace($router.snapshot.params.id, $router.snapshot.params.id, `/admin/users/${$router.snapshot.params.userID}/details`);
-
   }
 
   ngOnInit() { }
@@ -94,9 +91,11 @@ export class EventDetailComponent implements OnInit {
     });
   }
 
-
-
   openEventUrl(url: string) {
-    window.open('http://' +  url , '_blank')
-}
+    if (url.includes('https://') || url.includes('http://')) {
+      window.open(url, '_blank');
+     } else {
+      window.open(`http://` + url, '_blank');
+       }
+  }
 }

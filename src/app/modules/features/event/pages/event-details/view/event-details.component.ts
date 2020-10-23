@@ -29,7 +29,7 @@ export class EventDetailsComponent implements OnInit {
     private $matDailog: MatDialog
   ) {
     this.eventDetails = $router.snapshot.data.eventDetails.data;
-    $breadcrumb.replace(this.eventDetails.id, this.eventDetails.title);
+    $breadcrumb.replace(this.eventDetails._id, this.eventDetails.title);
   }
 
   ngOnInit() {
@@ -106,6 +106,11 @@ export class EventDetailsComponent implements OnInit {
   }
 
   openEventUrl(url: string) {
-      window.open('http://' +  url , '_blank')
+    if (url.includes('https://') || url.includes('http://')) {
+      window.open(url, '_blank');
+     } else {
+      window.open(`http://` + url, '_blank');
+
+     }
   }
 }
