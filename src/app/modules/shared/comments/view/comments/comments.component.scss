@@ -127,6 +127,15 @@
                 }
             }
         }
+        .see-profile-cover{
+            margin-right: -15px;
+            margin-left: 10px;
+            .mat-icon-button{
+                width: 35px;
+                height: 35px;
+                padding: 0 !important;
+            }
+        }
         .comment-listing {
             width: 100%;
             padding: 10px 0px 0px 60px;
