@@ -26,10 +26,10 @@
                         </div>
                         <div class="col-md-12" *ngIf="eventDetails?.address">
                             <p class="label">Event Place</p>
-                            <p class="value">{{eventDetails?.address}}</p>
+                            <p class="value"> <i class="fas fa-map-marker-alt"></i>&nbsp; {{eventDetails?.address}}</p>
                         </div>
                         <div class="col-md-12" *ngIf="eventDetails?.price">
-                            <p class="label">Event Price</p>
+                            <p class="label">Event Price <mat-icon>place</mat-icon></p>
                             <p class="value">{{eventDetails?.price}}</p>
                         </div>
                         <div class="col-md-12" *ngIf="eventDetails?.eventUrl">

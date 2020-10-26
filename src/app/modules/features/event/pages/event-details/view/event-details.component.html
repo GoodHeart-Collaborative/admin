@@ -4,7 +4,8 @@
             <div class="left-portion">
                 <div class="event-cover-photo">
 
-                    <img [src]="eventDetails?.imageUrl | customImage:'USERS'|async" (click)="onViewPic(eventDetails?.imageUrl)">
+                    <img [src]="eventDetails?.imageUrl | customImage:'USERS'|async"
+                        (click)="onViewPic(eventDetails?.imageUrl)">
                 </div>
                 <div class="event-about">
                     <h4 class="event-title">{{eventDetails?.title}}</h4>
@@ -25,8 +26,9 @@
                             <p class="value"></p>
                         </div>
                         <div class="col-md-12" *ngIf="eventDetails?.address">
-                            <p class="label">Event Place</p>
-                            <p class="value">{{eventDetails?.address}}</p>
+                            <p class="label"> 
+                                Event Place </p>
+                            <p class="value"> <i class="fas fa-map-marker-alt"></i>&nbsp; {{eventDetails?.address}}</p>
                         </div>
                         <div class="col-md-12" *ngIf="eventDetails?.price">
                             <p class="label">Event Price</p>
@@ -35,15 +37,17 @@
                         <div class="col-md-12" *ngIf="eventDetails?.eventUrl">
                             <p class="label">Event's More Details</p>
                             <p class="value">
-                                <a   (click)="openEventUrl(eventDetails?.eventUrl)">
+                                <a (click)="openEventUrl(eventDetails?.eventUrl)">
                                     {{eventDetails?.eventUrl}}
                                 </a>
                             </p>
                         </div>
-                        <div class="col-md-12" >
-                                <p class="label">Hosted By</p>
-                                <p class="value">{{eventDetails?.hostUser?.length ? (eventDetails?.hostUser?.firstName) + (eventDetails?.hostUser?.lastName) : 'Good heart Collaborative' }}</p>
-                            </div>
+                        <div class="col-md-12">
+                            <p class="label">Hosted By</p>
+                            <p class="value">
+                                {{eventDetails?.hostUser?.length ? (eventDetails?.hostUser?.firstName) + (eventDetails?.hostUser?.lastName) : 'Good heart Collaborative' }}
+                            </p>
+                        </div>
                         <div class="col-md-4">
                             <p class="label">Going</p>
                             <p class="value like-cover" (click)="onGoingCount(eventDetails?.goingCount)">
