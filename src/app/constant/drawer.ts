@@ -132,7 +132,7 @@ export const FEED_TYPE = {
 
 export const privacyList = [
     { view: 'Private', value: 'private' },
-    { view: 'Protected', value: 'protected' },
+    // { view: 'Protected', value: 'protected' },
     { view: 'Public', value: 'public' },
 ];
 

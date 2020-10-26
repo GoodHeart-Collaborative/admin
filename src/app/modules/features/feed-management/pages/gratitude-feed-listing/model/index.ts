@@ -70,13 +70,13 @@ export class GratitudeFeedTableDataSource implements Table.Source<User> {
       templateBy: 'createdAt',
     },
 
-    {
-      title: 'Status',
-      id: 'status',
-      sorting: false,
-      templateBy: 'status'
-      // resolve: (row: any) => row['status'] || 'NA',
-    },
+    // {
+    //   title: 'Status',
+    //   id: 'status',
+    //   sorting: false,
+    //   templateBy: 'status'
+    //   // resolve: (row: any) => row['status'] || 'NA',
+    // },
 
     // {
     //   title: 'Actions',

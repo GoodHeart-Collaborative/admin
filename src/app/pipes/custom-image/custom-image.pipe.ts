@@ -9,6 +9,7 @@ export class CustomImagePipe implements PipeTransform {
   defaultImages = {
     USER: '/assets/default-image/user.jpg',
     IMAGE_PLACEHOLDER: '/assets/default-image/image_placeholder.jpg',
+    GRATITUDE_IMAGE : '/assets/images/gratitute placeholder_pink@3x.png'
   }
   constructor() {
 

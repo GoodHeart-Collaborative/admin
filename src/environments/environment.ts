@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  url: 'http://womencomstgapi.appskeeper.com/v1/',
+  // url: 'http://womencomstgapi.appskeeper.com/v1/',
   // url: 'http://womencomstgapiccxc.appskeeper.com/v1/',
-  // url: 'http://womencomdevapi.appskeeper.com/v1/',
+  url: 'http://womencomdevapi.appskeeper.com/v1/',
   // url: 'http://womencomqaapi.appskeeper.com/v1/',
   tokenKey: 'desknow-admin-token',
   config: {

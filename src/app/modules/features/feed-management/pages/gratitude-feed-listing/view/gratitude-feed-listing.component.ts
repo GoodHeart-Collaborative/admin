@@ -30,6 +30,7 @@ export class GratitudeFeedListingComponent implements OnInit, OnChanges {
   isProcessing = false;
   @Input() gratitudeDetails;
   @Output() changeHandler = new EventEmitter();
+  gratitudeImage = 'assets/images/gratitute placeholder_pink@3x.png';
 
   constructor(
     private $feed: FeedService,
