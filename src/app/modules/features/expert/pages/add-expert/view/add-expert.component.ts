@@ -54,9 +54,9 @@ export class AddExpertComponent implements OnInit {
       if (this.details.profilePicUrl) {
         this.profilePicURL = this.details.profilePicUrl[0];
       }
-      // if (this.details.email) {
-      //   this.expertForm.get('email').disable();
-      // }
+      if (this.details.email) {
+        this.expertForm.get('email').disable();
+      }
       if (this.details.categoryData) {
         this.categoryData = this.details.categoryData;
       }

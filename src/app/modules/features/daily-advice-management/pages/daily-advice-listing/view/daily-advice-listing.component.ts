@@ -137,9 +137,9 @@ export class DailyAdviceListingComponent implements OnInit {
   }
 
   oneditHandler(id: string, status: string) {
-    if (status == 'blocked') {
-      return;
-    }
+    // if (status == 'blocked') {
+    //   return;
+    // }
     this.$router.navigate([`${DAILY_ADVICE.fullUrl}`, 'edit', id]);
   }
 
