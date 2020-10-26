@@ -63,15 +63,15 @@
                             </p>
                         </div>
                         <!-- eventDetails?.userType =='admin' &&  -->
-                        <div class="col-md-12" *ngIf="eventDetails?.allowSharing">
+                       <!--  <div class="col-md-12" *ngIf="eventDetails?.allowSharing">
                             <p class="label">Share Event</p>
                             <div class="value" (click)="onCopyHandler()">
                                 <a class="link"> {{eventDetails?.shareUrl}}</a>
                                 <br>
                             </div>
-                            <span class="info">(Click to copy URL)</span>
+                            <span class="info">(Click to copy URL)</span> 
 
-                        </div>
+                        </div> --> 
                         <div class="col-md-12 btn-row">
                             <button class="btn btn-simple" mat-stroked-button type="button"
                                 *ngIf="eventDetails?.status == 'active'"

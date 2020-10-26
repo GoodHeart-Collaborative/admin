@@ -43,12 +43,12 @@ export class CategoryTableDataSource implements Table.Source<Category> {
         sorting: false,
         resolve: (row: any) => row['totalPost'] || '0',
       },
-    {
-      title: 'Status',
-      id: 'status',
-      sorting: false,
-      templateBy: 'status'
-    },
+    // {
+    //   title: 'Status',
+    //   id: 'status',
+    //   sorting: false,
+    //   templateBy: 'status'
+    // },
 
     // {
     //   title: 'Actions',
