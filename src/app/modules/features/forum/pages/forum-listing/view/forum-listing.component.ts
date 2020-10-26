@@ -85,7 +85,10 @@ export class ForumListingComponent implements OnInit {
     this.updateUsers();
   }
 
-  onActionHandler(id: string, action: ActionType) {
+  onActionHandler(id: string, action: ActionType, type: string) {
+    if (action == 'deleted' && type == 'user') {
+      return;
+    }
     const index = this.forumData.findIndex(user => user._id === id);
     this.$confirmBox.listAction('forum', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
       .subscribe((confirm) => {
@@ -220,7 +223,7 @@ export class ForumListingComponent implements OnInit {
     }
     this.$matDailog.open(ViewFullImageComponent, {
       panelClass: 'view-full-image-modal',
-      data: {image, type}
+      data: { image, type }
     }).afterClosed().subscribe();
   }
 }

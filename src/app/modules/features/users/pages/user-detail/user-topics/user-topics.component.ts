@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, OnInit, Input , EventEmitter, Output, OnChanges} from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, OnChanges } from '@angular/core';
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { UtilityService } from 'src/app/modules/shared/services/utility.service';
 export type ActionType = 'deleted' | 'blocked' | 'active';
@@ -19,7 +19,7 @@ import { MatDialog } from '@angular/material';
   templateUrl: './user-topics.component.html',
   styleUrls: ['./user-topics.component.scss']
 })
-export class UserTopicsComponent implements OnInit , OnChanges{
+export class UserTopicsComponent implements OnInit, OnChanges {
 
   tableSource = new EventTableDataSource();
   eventData: Table.OptionData = {
@@ -58,7 +58,10 @@ export class UserTopicsComponent implements OnInit , OnChanges{
   }
 
 
-  onActionHandler(id: string, action: ActionType) {
+  onActionHandler(id: string, action: ActionType, type) {
+    if (action == 'deleted' && type == 'user') {
+      return;
+    }
     const index = this.forumData.list.findIndex(user => user._id === id);
     this.$confirmBox.listAction('topic Post', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
       .subscribe((confirm) => {
@@ -113,13 +116,13 @@ export class UserTopicsComponent implements OnInit , OnChanges{
     });
   }
 
-    onDetails(id: string , type: string) {
-     this.$router.navigate([`admin/forum/${id}/details`],
-     {
-      queryParams: { type }
-    }
+  onDetails(id: string, type: string) {
+    this.$router.navigate([`admin/forum/${id}/details`],
+      {
+        queryParams: { type }
+      }
     );
-   }
+  }
 
 
   /**
@@ -178,7 +181,7 @@ export class UserTopicsComponent implements OnInit , OnChanges{
     }
     this.$matDailog.open(ViewFullImageComponent, {
       panelClass: 'view-full-image-modal',
-      data: {image, type}
+      data: { image, type }
     }).afterClosed().subscribe();
   }
 }

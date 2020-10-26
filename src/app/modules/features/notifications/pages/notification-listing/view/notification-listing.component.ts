@@ -87,7 +87,7 @@ export class NotificationListingComponent implements OnInit {
    */
   onActionHandler(id: string, action: ActionType) {
     const index = this.notificationData.notificationList.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('notification' , action )
+    this.$confirmBox.listAction('notification' , action  == 'deleted' ? 'delete' : '')
     .subscribe((confirm) => {
       if (confirm) {
         this.$notification.updateStatus(id).then((res) => {

@@ -73,8 +73,8 @@
                         lock_open
                     </i>
                 </ng-template>
-                <i class="material-icons icon-delete" (click)="onActionHandler(forum._id, 'deleted' , row?.userType)"
-                    title="Delete" *ngIf="row?.userType == 'user'">
+                <i class="material-icons icon-delete" (click)="onActionHandler(forum._id, 'deleted' , forum?.userType)"
+                    title="Delete" [class.disabled-icon]="forum?.userType == 'user'" >
                     delete
                 </i>
             </div>
