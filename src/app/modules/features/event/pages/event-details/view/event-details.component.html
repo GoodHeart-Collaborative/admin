@@ -65,7 +65,7 @@
                         <!-- eventDetails?.userType =='admin' &&  -->
                         <div class="col-md-12" *ngIf="eventDetails?.allowSharing">
                             <p class="label">Share Event</p>
-                            <div class="value" (click)="onCopyHandler($event.currentTarget)">
+                            <div class="value" (click)="onCopyHandler()">
                                 <a class="link"> {{eventDetails?.shareUrl}}</a>
                                 <br>
                             </div>

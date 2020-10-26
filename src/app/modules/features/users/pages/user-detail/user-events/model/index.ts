@@ -43,7 +43,13 @@ export class EventTableDataSource implements Table.Source<Category> {
       title: 'Event Price',
       id: 'price',
       sorting: false,
-      resolve: (row: any) => row['price'] || 0
+      resolve: (row: any) =>'$' + row['price'] || 0
+     },
+    {
+      title: 'Event Place',
+      id: 'place',
+      sorting: false,
+      resolve: (row: any) => row['address']
      },
     {
       title: 'Added On',
@@ -79,7 +85,7 @@ export class EventTableDataSource implements Table.Source<Category> {
   ];
   options: Table.Options = {
     selection: false,
-    search: 'Search by Description',
+    search: 'Search by Event Title , Place',
     index: true,
     sorting: true,
     filterComponent: ListingFilterComponent

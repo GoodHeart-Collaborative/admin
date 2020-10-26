@@ -57,8 +57,8 @@ export class UserEventsComponent implements OnInit, OnChanges {
    * @param id
    * @param action
    */
-  onActionHandler(id: string, action: ActionType, endDate ) {
-    if (this.today > endDate) {
+  onActionHandler(id: string, action: ActionType, endDate , type:string) {
+    if (this.today > endDate || type == 'user') {
       return;
     }
     const index = this.userData.list.findIndex(user => user._id === id);

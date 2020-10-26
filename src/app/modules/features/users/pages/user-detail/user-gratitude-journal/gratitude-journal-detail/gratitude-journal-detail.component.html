@@ -17,6 +17,8 @@
                         </div>
                     </div>
                     <p>{{gratitudeDetails?.description | titlecase}}</p>
+                    <p class="posted-on-date">Updated On: {{gratitudeDetails?.updatedAt | dateTime}}</p>
+
                 </div>
             </div>
             <div class="image-detail" *ngIf="gratitudeDetails?.mediaUrl">

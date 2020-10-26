@@ -98,4 +98,14 @@ export class EventDetailComponent implements OnInit {
       window.open(`http://` + url, '_blank');
        }
   }
+
+
+  onCopyHandler(el: HTMLDivElement) {
+    this.$utility.show('This is a deeplink URL, used in mobile platform to view respective event detail.');
+
+    // window.getSelection().selectAllChildren(el);
+    // document.execCommand('copy');
+    // window.getSelection().removeAllRanges();
+    // this.$utility.success(COPIED);
+  }
 }

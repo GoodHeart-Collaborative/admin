@@ -102,7 +102,7 @@ export class RelatedCategoryTableDataSource implements Table.Source<Category> {
   ];
   options: Table.Options = {
     selection: false,
-    search: 'Search by Title',
+    search: 'Search by Title , Expert name',
     index: true,
     sorting: true,
     filterComponent: ListingFilterComponent

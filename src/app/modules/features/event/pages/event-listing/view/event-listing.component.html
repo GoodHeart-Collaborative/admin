@@ -60,18 +60,18 @@
                      edit
                  </i>
               
-                 <i class="material-icons icon-block" (click)="onActionHandler(row._id, 'blocked', row?.endDate)" *ngIf="row?.status === 'active';else templateAction"  title="Block" [class.disabled-icon]="today > row?.endDate">
+                 <i class="material-icons icon-block" (click)="onActionHandler(row._id, 'blocked', row?.endDate , row?.userType)" *ngIf="row?.status === 'active';else templateAction"  title="Block" [class.disabled-icon]="today > row?.endDate ||  row?.userType== 'user'">
                      blocked
                  </i>
 
                  <ng-template #templateAction>
-                     <i class="material-icons icon-unblock" (click)="onActionHandler(row._id, 'active' , row?.endDate)" title="Unblock" [class.disabled-icon]="today > row?.endDate">
+                     <i class="material-icons icon-unblock" (click)="onActionHandler(row._id, 'active' , row?.endDate, row?.userType)" title="Unblock" [class.disabled-icon]="today > row?.endDate ||  row?.userType== 'user'">
                          lock_open
                      </i>
                  </ng-template>
-                 <i class="material-icons icon-delete" (click)="onActionHandler(row._id, 'deleted', row?.endDate)" title="Delete" [class.disabled-icon]="today > row?.endDate">
+                 <!-- <i class="material-icons icon-delete" (click)="onActionHandler(row._id, 'deleted', row?.endDate)" title="Delete" [class.disabled-icon]="today > row?.endDate">
                     delete
-                 </i>
+                 </i> -->
              </div>
          </ng-template>
      </ng-container>  

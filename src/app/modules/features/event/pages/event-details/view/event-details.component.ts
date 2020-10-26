@@ -89,10 +89,12 @@ export class EventDetailsComponent implements OnInit {
   }
 
   onCopyHandler(el: HTMLDivElement) {
-    window.getSelection().selectAllChildren(el);
-    document.execCommand('copy');
-    window.getSelection().removeAllRanges();
-    this.$utility.success(COPIED);
+    this.$utility.show('This is a deeplink URL, used in mobile platform to view respective event detail.');
+
+    // window.getSelection().selectAllChildren(el);
+    // document.execCommand('copy');
+    // window.getSelection().removeAllRanges();
+    // this.$utility.success(COPIED);
   }
 
   onViewPic(image: string, type = 1) {
