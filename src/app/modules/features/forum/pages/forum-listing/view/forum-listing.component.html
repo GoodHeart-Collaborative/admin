@@ -77,7 +77,7 @@
                     </i>
                 </ng-template>
                 <i class="material-icons icon-delete" (click)="onActionHandler(forum._id, 'deleted')"
-                    title="Delete">
+                    title="Delete" *ngIf="row?.userType == 'user'">
                     delete
                 </i>
             </div>
