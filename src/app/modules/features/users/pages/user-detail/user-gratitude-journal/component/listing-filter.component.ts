@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { privacyList } from 'src/app/constant/drawer';
 
 @Component({
   selector: 'app-listing-filter',
@@ -18,6 +19,7 @@ export class ListingFilterComponent implements OnInit {
     view: 'Active', value: 'active'},
     {view: 'Blocked', value: 'blocked'},
   ];
+  privacyList = privacyList;
   isProcessing = true;
   constructor(
      private $fb: FormBuilder,
@@ -39,7 +41,7 @@ export class ListingFilterComponent implements OnInit {
       {
         fromDate: [],
         toDate: [],
-        // status: []
+        privacy: []
       },
     );
   }
