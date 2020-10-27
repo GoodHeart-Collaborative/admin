@@ -11,6 +11,8 @@ export class ViewFullImageComponent implements OnInit {
   constructor(
               private $dialogRef: MatDialogRef<ViewFullImageComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) {
+                console.log(data);
+                
               }
 
   ngOnInit() {

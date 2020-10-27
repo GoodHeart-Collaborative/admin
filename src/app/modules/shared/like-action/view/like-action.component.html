@@ -8,7 +8,7 @@
             <ul class="users-listing" >
                 <li class="single-user" *ngFor="let item of data">
                     <div class="img-cover">
-                        <img [src]="item?.user?.profilePicUrl[0] |customImage:'USER'|async" alt="Profile" (click)="onViewPic(item?.user?.profilePicture)">
+                        <img [src]="item?.user?.profilePicUrl[0] |customImage:'USER'|async" alt="Profile" (click)="onViewPic(item?.user?.profilePicUrl[0])">
                     </div>
                     <div class="textual-cover">
                         <h4><span title="{{item?.user?.name}}">{{item?.user?.firstName}} {{item?.user?.lastName}}</span>

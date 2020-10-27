@@ -24,17 +24,17 @@ export class LikeActionComponent implements OnInit {
     private $utility: UtilityService,
     private $router: Router,
     private $confirmBox: ConfirmBoxService,
-  ) {
-    // this.likeHandler();
-  }
+  ) {  }
 
   ngOnInit() {
   }
 
-  onViewPic(pic) {
+  onViewPic(image , type = 1) {
+    console.log(image);
+     
     this.matDailog.open(ViewFullImageComponent, {
       panelClass: 'view-full-image-modal',
-      data: pic
+      data: {image , type}
     }).afterClosed().subscribe();
   }
 
