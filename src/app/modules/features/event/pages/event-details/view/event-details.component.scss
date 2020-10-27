@@ -88,6 +88,19 @@
                         }
                     }
                 }
+                .for-desktop{
+                    display: block;
+                    @media screen and (max-width: 1024px){
+                        display: none;
+                    }
+                }
+                .for-mobile{
+                    display: none;
+                    @media screen and (max-width: 1024px){
+                        display: block;
+                    }
+                }
+                
             }
             .btn-row {
                 margin-top: 16px;
