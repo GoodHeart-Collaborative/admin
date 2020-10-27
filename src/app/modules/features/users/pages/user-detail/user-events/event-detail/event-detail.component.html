@@ -73,7 +73,7 @@
 
                         <div class="col-md-12 for-mobile" *ngIf=" eventDetails?.allowSharing">
                             <p class="label">Share Event</p>
-                            <div class="value" (click)="onCopyHandler()">
+                            <div class="value" (click)="onMobileCopyHandler($event.currentTarget)">
                                 <a class="link"> {{eventDetails?.shareUrl}}</a>
                                 <br>
                             </div>

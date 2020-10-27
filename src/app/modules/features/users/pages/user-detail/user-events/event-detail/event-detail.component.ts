@@ -9,6 +9,7 @@ import { UserEventService } from 'src/app/modules/features/users/pages/user-deta
 import { MatDialog } from '@angular/material';
 import { EVENT_INTEREST } from 'src/app/constant/drawer';
 import { GlobalService } from 'src/app/services/global/global.service';
+import { COPIED } from 'src/app/constant/messages';
 export type ActionType = 'blocked' | 'active';
 
 @Component({
@@ -107,5 +108,12 @@ export class EventDetailComponent implements OnInit {
     // document.execCommand('copy');
     // window.getSelection().removeAllRanges();
     // this.$utility.success(COPIED);
+  }
+
+  onMobileCopyHandler(element: HTMLDivElement) {
+    window.getSelection().selectAllChildren(element);
+    document.execCommand('copy');
+    window.getSelection().removeAllRanges();
+    this.$utility.success(COPIED);
   }
 }
