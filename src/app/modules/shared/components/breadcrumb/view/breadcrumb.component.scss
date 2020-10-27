@@ -98,8 +98,8 @@
                     top: 0px;
                     transform: none;
                     @media screen and (max-width: 767px) {
-                        border-width: 12px 0px 13px 10px;
-                        right: -10px;
+                        border-width: 11px 0px 11px 11px;
+                        right: -11px;
                     }
                 }
             }
@@ -129,8 +129,8 @@
                     transform: rotate(225deg);
                     box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.18);
                     @media screen and (max-width: 767px) {
-                        top: 4px;
-                        right: -8px;
+                        top: 2px;
+                        right: -9px;
                         border: 9px solid transparent;
                         border-color: transparent transparent #a990ca #af8fcb;
                     }
