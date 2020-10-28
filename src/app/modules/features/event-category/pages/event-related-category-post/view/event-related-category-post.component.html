@@ -84,6 +84,9 @@
     <ng-container>
         <ng-template appFor="actions" let-user="row">
             <div class="action-icon-cover">
+                <i class="material-icons icon-edit" (click)="oneditHandler(user?._id , user?.endDate, user?.userType)" title="Edit" [class.disabled-icon]="today > user?.endDate || user?.userType == 'user'">
+                    edit
+                </i>
                 <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked', user?.endDate )"
                     *ngIf="user?.status === 'active';else templateAction" title="Block" [class.disabled-icon]="today > user?.endDate ">
                     blocked</i>

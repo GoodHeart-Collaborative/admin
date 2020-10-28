@@ -176,4 +176,15 @@ onEventHandler(id: string) {
   onExpertDetailsHandler(id: string) {
     this.$router.navigate([`admin/expert/${id}/details`]);
   }
+
+  /**
+   * Edit Handler
+   * @param id
+   */
+  oneditHandler(id: string, endDate: number , type: string) {
+    if (this.today > endDate || type === 'user') {
+      return;
+    }
+    this.$router.navigate([`${EVENTS.fullUrl}`, 'edit', id]);
+  }
 }
