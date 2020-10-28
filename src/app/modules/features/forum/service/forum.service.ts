@@ -44,9 +44,6 @@ export class ForumServiceResolve implements Resolve<any>  {
   constructor(private $daily: ForumService, private $route: Router ) { }
   resolve(route: ActivatedRouteSnapshot) {
     return this.$daily.updateDetails(route.params['id'], route.queryParams.type).catch(err => {
-      if (err) {
-        return null;
-      }
     }
     );
   }

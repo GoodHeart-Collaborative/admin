@@ -54,7 +54,6 @@ export class UtilityService {
       hideCancelButton: true,
     };
     this.openDialog(data).subscribe((success) => {
-      // this.dialog.closeAll();
       this.$matDailog.close();
       this.dialogRef = 0;
     });
