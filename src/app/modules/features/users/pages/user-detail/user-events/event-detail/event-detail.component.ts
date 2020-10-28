@@ -102,7 +102,7 @@ export class EventDetailComponent implements OnInit {
 
 
   onCopyHandler(el: HTMLDivElement) {
-    this.$utility.show('This is a deeplink URL, used in mobile platform to view respective event detail.');
+    this.$utility.show('This is deeplink URL, used in mobile platform to view respective shared event details.');
 
     // window.getSelection().selectAllChildren(el);
     // document.execCommand('copy');

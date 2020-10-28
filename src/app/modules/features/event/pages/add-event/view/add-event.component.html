@@ -35,7 +35,7 @@
                             <mat-form-field appearance="outline">
                                 <mat-label>Choose a start date </mat-label>
                                 <input [max]="maxDate"
-                                    [min]="eventDetails?.id ? (eventDetails?.startDate ) :today "
+                                    [min]="eventDetails?._id ? (eventDetails?.startDate ) :today "
                                     [owlDateTimeTrigger]="dt1" formControlName="startDate" matInput [owlDateTime]="dt1"
                                     placeholder="Start" readonly (dateTimeChange)="onStartDateSelected($event)">
                                 <owl-date-time [hour12Timer]="true" #dt1></owl-date-time>

@@ -55,7 +55,7 @@ export class EventTableDataSource implements Table.Source<Category> {
     {
       title: 'Added By',
       id: 'addedBy',
-      sorting: true,
+      sorting: false,
       templateBy: 'addedBy',
     },
     {
@@ -67,13 +67,13 @@ export class EventTableDataSource implements Table.Source<Category> {
     {
       title: 'Event Start Date',
       id: 'startDate',
-      sorting: true,
+      sorting: false,
       templateBy: 'startDate',
     },
     {
       title: 'Event End Date',
       id: 'endDate',
-      sorting: true,
+      sorting: false,
       templateBy: 'endDate',
     },
     {

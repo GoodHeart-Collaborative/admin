@@ -9,10 +9,35 @@
 
     <ng-template appFor="title" let-category="row">
         <a (click)="onEventHandler(category?._id)" >
-        {{ category?.title | titlecase}}
+            {{ category?.title | titlecase}}
         </a>
     </ng-template>
 
+    <ng-template appFor="addedBy" let-data="row">
+        {{ data?.userType | titlecase}}
+    </ng-template>
+
+    <ng-template appFor="startDate" let-row="row">
+        {{ row?.startDate |dateTime}}
+    </ng-template>
+    
+   <ng-template appFor="endDate" let-row="row">
+        {{ row?.endDate |dateTime}}
+    </ng-template>
+
+
+    <ng-template appFor="eventCategory" let-data="row">
+        {{ data?.eventCategoryName | titlecase}}
+    </ng-template>
+
+  
+
+    <ng-template appFor="imageUrl" let-row="row">
+       <div class="table-cell-image-cover event-image-cover" title="Click to see the image">
+           <img [src]="row?.imageUrl |customImage:'IMAGE_PLACEHOLDER'|async" alt="row-image"
+               (click)="onImageClick(row?.imageUrl)">
+       </div>
+   </ng-template>
     <!-- <ng-template appFor="privacy" let-category="row">
         {{ category?.privacy | titlecase}}
     </ng-template> -->
@@ -59,19 +84,19 @@
     <ng-container>
         <ng-template appFor="actions" let-user="row">
             <div class="action-icon-cover">
-                <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked')"
-                    *ngIf="user?.status === 'active';else templateAction" title="Block">
+                <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked', user?.endDate )"
+                    *ngIf="user?.status === 'active';else templateAction" title="Block" [class.disabled-icon]="today > user?.endDate ">
                     blocked</i>
                 <ng-template #templateAction>
-                    <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active')"
-                        title="Unblock">
+                    <i class="material-icons icon-unblock" (click)="onActionHandler(user._id, 'active', user?.endDate  )"
+                        title="Unblock" [class.disabled-icon]="today > user?.endDate ">
                         lock_open
                     </i>
                 </ng-template>
-                <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted')"
-                    title="Delete">
+                <!-- <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted',row?.endDate , row?.userType)"
+                    title="Delete" [class.disabled-icon]="today > row?.endDate ||  row?.userType== 'user'">
                     delete
-                </i>
+                </i> -->
             </div>
         </ng-template>
     </ng-container>

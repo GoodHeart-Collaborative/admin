@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { VALIDATION_CRITERIA } from 'src/app/constant/validation-criteria';
-import { CategoryManagementService } from 'src/app/modules/features/category-management/service/category-management.service';
 import { FileUploadService } from 'src/app/modules/shared/services/file-upload.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BreadcrumbService } from 'src/app/modules/shared/components/breadcrumb/service/breadcrumb.service';
@@ -9,7 +8,7 @@ import { UtilityService } from 'src/app/modules/shared/services/utility.service'
 import { ConfirmBoxService } from 'src/app/modules/shared/confirm-box';
 import { CATEGORY_TYPE } from 'src/app/constant/app-constant';
 import { categoryRequiredProfilePic } from 'src/app/constant/messages';
-import { CATEGORY, EVENT_CATEGORY } from 'src/app/constant/routes';
+import {  EVENT_CATEGORY } from 'src/app/constant/routes';
 import { EventCategoryService } from '../../../service/event-category.service';
 
 @Component({
@@ -131,7 +130,7 @@ export class AddEventCategoryComponent implements OnInit {
 
 
   onCancel() {
-    this.$router.navigate([CATEGORY.fullUrl]);
+    this.$router.navigate([EVENT_CATEGORY.fullUrl]);
   }
 
 

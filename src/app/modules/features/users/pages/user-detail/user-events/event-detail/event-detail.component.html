@@ -42,7 +42,7 @@
                         </div>
                         <div class="col-md-12" >
                                 <p class="label">Hosted By</p>
-                                <p class="value">{{eventDetails?.hostUser?.length ? (eventDetails?.hostUser?.firstName) + (eventDetails?.hostUser?.lastName) : 'Good heart Collaborative' }}</p>
+                                <p class="value">{{eventDetails?.hostUser?.length ? (eventDetails?.hostUser[0]?.firstName) + (eventDetails?.hostUser[0]?.lastName) : 'Good heart Collaborative' }}</p>
                             </div>
                         <div class="col-md-4">
                             <p class="label">Going</p>
@@ -67,6 +67,8 @@
                                 <a class="link"> {{eventDetails?.shareUrl}}</a>
                                 <br>
                             </div>
+                            <span class="info" (click)="onCopyHandler()">(Click to copy URL)</span> 
+
                         </div>
 
                         <!-- Share event for MOBILE -->
@@ -77,6 +79,7 @@
                                 <a class="link"> {{eventDetails?.shareUrl}}</a>
                                 <br>
                             </div>
+                            
                         </div>
                         
                         <div class="col-md-12 btn-row">

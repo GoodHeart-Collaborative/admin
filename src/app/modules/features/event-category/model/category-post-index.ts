@@ -12,18 +12,6 @@ const defaultData: Table.Data<Category> = {
 export class EventRelatedCategoryTableDataSource implements Table.Source<Category> {
   label = 'Related Category Management';
   columns: Table.Column<Category>[] = [
-    // {
-    //   title: 'Expert Profile Pic ',
-    //   id: 'pic',
-    //   sorting: false,
-    //   templateBy: 'pic'
-    // },
-    // {
-    //   title: 'Expert Name ',
-    //   id: 'name',
-    //   sorting: false,
-    //   templateBy: 'name'
-    // },
 
     {
       title: 'Post Image',
@@ -44,54 +32,54 @@ export class EventRelatedCategoryTableDataSource implements Table.Source<Categor
         sorting: false,
         resolve: (row: any) => row['description'] || '-',
     },
-    // {
-    //     title: 'Content Type',
-    //     id: 'contentType',
-    //     sorting: false,
-    //     templateBy: 'contentType'
-    //     // resolve: (row: any) => row['contentType'] || '-',
-    // },
+
     {
-      title: 'Event Price',
-      id: 'price',
+      title: 'Event Category',
+      id: 'eventCategory',
       sorting: false,
-      resolve: (row: any) => (row['price'] || 0)
-      },
-    // {
-    //   title: 'Total Likes',
-    //   id: 'likeCount',
-    //   sorting: false,
-    //   templateBy: 'likeCount'
-    //   },
+      templateBy: 'eventCategory'
+      // resolve: (row: any) => row['eventCategory'] || '-'
+  },
+  {
+    title: 'Event Price',
+    id: 'price',
+    sorting: false,
+    resolve: (row: any) => '$' + (row['price'] || 0)
+   },
 
-    // {
-    //    title: 'Total Comments',
-    //    id: 'commentCount',
-    //    sorting: false,
-    //    templateBy: 'commentCount'
-    //  },
-    // {
-    //    title: 'Report Count',
-    //    id: 'reportCount',
-    //    sorting: false,
-    //    templateBy: 'reportCount'
-    //  },
+   {
+    title: 'Event Place',
+    id: 'place',
+    sorting: false,
+    resolve: (row: any) => row['address']
+   },
+   {
+    title: 'Added By',
+    id: 'addedBy',
+    sorting: false,
+    templateBy: 'addedBy',
+  },
 
-     {
-      title: 'Added On',
-      id: 'createdAt',
-      sorting: true,
-      templateBy: 'createdAt',
+  {
+    title: 'Added On',
+    id: 'createdAt',
+    sorting: true,
+    templateBy: 'createdAt',
+  },
+ 
+  {
+      title: 'Event Start Date',
+      id: 'startDate',
+      sorting: false,
+      templateBy: 'startDate',
+    },
+    {
+      title: 'Event End Date',
+      id: 'endDate',
+      sorting: false,
+      templateBy: 'endDate',
     },
 
-    // {
-    //   title: 'Privacy',
-    //   id: 'privacy',
-    //   sorting: false,
-    //   // resolve: (row: any) => row['privacy'] || '-',
-
-    //   templateBy: 'privacy',
-    // },
     {
       title: 'Status',
       id: 'status',
@@ -108,7 +96,7 @@ export class EventRelatedCategoryTableDataSource implements Table.Source<Categor
   ];
   options: Table.Options = {
     selection: false,
-    search: 'Search by Title',
+    search: 'Search by Event Title ,Place ',
     index: true,
     sorting: true,
     filterComponent: ListingFilterComponent

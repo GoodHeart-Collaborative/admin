@@ -12,6 +12,7 @@ import { ViewFullImageModule } from 'src/app/modules/shared/view-full-image/view
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ListingFilterComponent } from '../event-related-category-post/component/listing-filter.component';
+import { DateTimePipeModule } from 'src/app/pipes/date-time-pipe/date-time-pipe.module';
 
 
 const routes: Routes = [
@@ -34,7 +35,8 @@ const routes: Routes = [
     CustomImageModule,
     ReactiveFormsModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    DateTimePipeModule
   ],
   entryComponents: [ListingFilterComponent]
 

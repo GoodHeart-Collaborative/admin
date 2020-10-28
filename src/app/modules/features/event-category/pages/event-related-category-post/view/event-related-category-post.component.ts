@@ -32,6 +32,7 @@ export class EventRelatedCategoryPostComponent implements OnInit {
     sortData: null
   };
   categoryId: string;
+  today = new Date().getTime();
   constructor(
     private $category: EventCategoryService,
     private $router: Router,
@@ -97,9 +98,12 @@ export class EventRelatedCategoryPostComponent implements OnInit {
     this.updateUsers();
   }
 
-  onActionHandler(id: string, action: ActionType) {
+  onActionHandler(id: string, action: ActionType,endDate) {
+    if (this.today > endDate ) {
+      return;
+    }
     const index = this.userData.data.findIndex(user => user._id === id);
-    this.$confirmBox.listAction('category post', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
+    this.$confirmBox.listAction(' category event', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
       .subscribe((confirm) => {
         if (confirm) {
           this.$category.updatePostStatus(id, action).then((res) => {

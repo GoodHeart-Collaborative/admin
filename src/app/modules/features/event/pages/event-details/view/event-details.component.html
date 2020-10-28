@@ -45,7 +45,7 @@
                         <div class="col-md-12">
                             <p class="label">Hosted By</p>
                             <p class="value">
-                                {{eventDetails?.hostUser?.length ? (eventDetails?.hostUser?.firstName) + (eventDetails?.hostUser?.lastName) : 'Good heart Collaborative' }}
+                                {{eventDetails?.hostUser?.length ? (eventDetails?.hostUser[0]?.firstName) + (eventDetails?.hostUser[0]?.lastName) : 'Good heart Collaborative' }}
                             </p>
                         </div>
                         <div class="col-md-4">
@@ -66,11 +66,14 @@
                         <!--Share EVENT For DESKTOP -->
                         <div class="col-md-12 for-desktop" *ngIf="eventDetails?.allowSharing">
                             <p class="label">Share Event</p>
-                            <div class="value" (click)="onCopyHandler($event.currentTarget)">
-                                <a class="link"> {{eventDetails?.shareUrl}}</a>
-                                <br>
-                            </div>
-                            <span class="info">(Click to copy URL)</span> 
+                        
+
+                                <div class="value" (click)="onCopyHandler($event.currentTarget)">
+                                    <a class="link"> {{eventDetails?.shareUrl}}</a>
+                                    <br>
+                                </div>
+                                <span class="info" (click)="onCopyHandler($event.currentTarget)">(Click to copy URL)</span> 
+                         
 
                         </div> 
 

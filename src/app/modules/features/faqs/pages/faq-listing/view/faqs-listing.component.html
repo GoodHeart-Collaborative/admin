@@ -1,4 +1,4 @@
-<app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)" (onAddCahnges)="onAdd()">
+<app-table [tableSource]="tableSource"  (optionChange)="onOptionChange($event)" (onAddCahnges)="onAdd()" [noPaginator]="true">
  <ng-template appFor="answer" let-row="row">
       <a class="color-black" href="javascript:void(0)" title="{{ row?.answer | titlecase}}">
             {{ (row?.answer | titlecase)}}

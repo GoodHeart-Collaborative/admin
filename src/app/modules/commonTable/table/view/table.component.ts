@@ -25,6 +25,7 @@ import { UtilityService } from 'src/app/modules/shared/services/utility.service'
 })
 export class TableComponent implements OnInit {
   filterCount: any;
+  @Input() noPaginator = false;
   @Input()
   set disabled(state: boolean) {
     this.$disabled = coerceBooleanProperty(state);
@@ -300,7 +301,7 @@ export class TableComponent implements OnInit {
     // const key = event.code || event.key;
     // if (key === 'Enter') {
     //   const value = target.value.trim();
-    if (value.length >= 3 || (value.length === 0 && this.optionEvent.data.searchText)) {
+    if (value.length >= 1|| (value.length === 0 && this.optionEvent.data.searchText)) {
       if (value !== this.optionEvent.data.searchText) {
         this.optionEvent = {
           type: 'SEARCH',

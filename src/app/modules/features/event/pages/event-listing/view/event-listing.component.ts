@@ -91,7 +91,7 @@ export class EventListingComponent implements OnInit {
    * @param action
    */
   onActionHandler(id: string, action: ActionType, endDate, type: string) {
-    if (this.today > endDate || type == 'user') {
+    if (this.today > endDate ) {
       return;
     }
     

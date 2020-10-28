@@ -22,16 +22,18 @@
      <ng-template appFor="addedBy" let-data="row">
          {{ data?.userType | titlecase}}
      </ng-template>
+     
+     <ng-template appFor="title" let-data="row">
+        <a href="javascript:void(0)" (click)="onDetailsHandler(data?._id)" title="{{ data?.title | titlecase}}">
+            {{ data?.title | titlecase}}
+        </a>
+    </ng-template>
 
      <ng-template appFor="eventCategory" let-data="row">
          {{ data?.eventCategoryName | titlecase}}
      </ng-template>
  
-     <ng-template appFor="title" let-data="row">
-         <a href="javascript:void(0)" (click)="onDetailsHandler(data?._id)" title="{{ data?.title | titlecase}}">
-             {{ data?.title | titlecase}}
-         </a>
-     </ng-template>
+   
 
      <ng-template appFor="imageUrl" let-row="row">
         <div class="table-cell-image-cover event-image-cover" title="Click to see the image">
@@ -60,12 +62,12 @@
                      edit
                  </i>
               
-                 <i class="material-icons icon-block" (click)="onActionHandler(row._id, 'blocked', row?.endDate , row?.userType)" *ngIf="row?.status === 'active';else templateAction"  title="Block" [class.disabled-icon]="today > row?.endDate ||  row?.userType== 'user'">
+                 <i class="material-icons icon-block" (click)="onActionHandler(row._id, 'blocked', row?.endDate )" *ngIf="row?.status === 'active';else templateAction"  title="Block" [class.disabled-icon]="today > row?.endDate ">
                      blocked
                  </i>
 
                  <ng-template #templateAction>
-                     <i class="material-icons icon-unblock" (click)="onActionHandler(row._id, 'active' , row?.endDate, row?.userType)" title="Unblock" [class.disabled-icon]="today > row?.endDate ||  row?.userType== 'user'">
+                     <i class="material-icons icon-unblock" (click)="onActionHandler(row._id, 'active' , row?.endDate)" title="Unblock" [class.disabled-icon]="today > row?.endDate ">
                          lock_open
                      </i>
                  </ng-template>

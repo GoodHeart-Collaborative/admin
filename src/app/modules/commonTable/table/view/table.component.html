@@ -58,8 +58,8 @@
 			<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 		</table>
 	</div>
-	<mat-paginator *ngIf="!isEmpty" [length]="total" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]"
-		(page)="onPageHandler($event)"></mat-paginator>
+	<mat-paginator *ngIf="!isEmpty && !noPaginator" [length]="total" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]"
+		(page)="onPageHandler($event)" ></mat-paginator>
 	
 	<span class="table-placeholder" *ngIf="!isLoaded">
 		<h3 class="loading-text">Loading...</h3>

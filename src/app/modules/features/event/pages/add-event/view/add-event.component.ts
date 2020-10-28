@@ -23,7 +23,7 @@ export class AddEventComponent implements OnInit {
   imageFile: any;
   profilePicURL: any;
   privacyData = PRAVICY;
-  eventCategory = Object.values(EVENT_CATEGORY);
+  eventCategory = [];
   today = new Date();
   location: {};
   eventDetails: any;
@@ -42,17 +42,18 @@ export class AddEventComponent implements OnInit {
     $breadcrumb: BreadcrumbService,
     private $category: CategoryManagementService
   ) {
+    this.categoryList();
     this.maxDate = new Date(new Date().getTime() + 2592000000);
     this.createForm();
     if (activateRoute.snapshot.data.eventDetails && activateRoute.snapshot.data.eventDetails.data) {
       this.eventDetails = activateRoute.snapshot.data.eventDetails.data;
-      $breadcrumb.replace(this.eventDetails.id, this.eventDetails.title);
+      $breadcrumb.replace(this.eventDetails._id, this.eventDetails.title);
       this.setEditFormHandler();
     }
   }
 
   ngOnInit() {
-    this.categoryList();
+
   }
 
   setEditFormHandler() {
@@ -65,8 +66,9 @@ export class AddEventComponent implements OnInit {
       if (this.eventDetails.imageUrl) {
         this.profilePicURL = this.eventDetails.imageUrl;
       }
-      if (this.eventDetails.categoryData) {
-        this.eventCategory = this.eventDetails.categoryData;
+      if (this.eventDetails.eventCategoryName) {
+        // this.eventCategory = this.eventDetails.categoryData;
+        // this.eventCategory = this.eventDetails.eventCategoryName;
       }
       if (this.eventDetails.endDate) {
         this.eventDetails.endDate = new Date(this.eventDetails.endDate);
@@ -197,6 +199,11 @@ export class AddEventComponent implements OnInit {
     };
     this.$category.queryData(params).then(res => {
       this.eventCategory = res.data['data'].filter(element => element.status != 'blocked');
+      if (this.eventDetails && this.eventDetails._id) {
+        const category = this.eventCategory.find(category => category.title == this.eventDetails.eventCategoryName);
+        this.eventForm.get('eventCategoryId').patchValue(category._id);
+        console.log(category);
+      }
     });
   }
 
@@ -219,7 +226,7 @@ export class AddEventComponent implements OnInit {
   onStartDateSelected(event) {
     this.maxDate = new Date(new Date(event.value).getTime() + 2592000000);
     if (event && this.endDate.value && new Date(event.value).getTime() > new Date(this.endDate.value).getTime()) {
-        this.endDate.setValue(null);
+      this.endDate.setValue(null);
     }
   }
 }

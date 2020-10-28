@@ -11,12 +11,16 @@ import { LikeActionModule } from 'src/app/modules/shared/like-action/like-action
 import { CommentsModule } from 'src/app/modules/shared/comments/comments.module';
 import { ReportProblemModule } from 'src/app/modules/shared/report-problem/report-problem.module';
 import { ViewFullImageModule } from 'src/app/modules/shared/view-full-image/view-full-image.module';
+import { ListingFilterComponent } from './component/listing-filter.component';
+import { DateFilterModule } from 'src/app/modules/layout/layout-shared/date-filter/date-filter.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatOptionModule, MatSelectModule } from '@angular/material';
 
 const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [UserTopicsComponent],
+  declarations: [UserTopicsComponent, ListingFilterComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -27,8 +31,13 @@ const routes: Routes = [
     CommentsModule,
     ReportProblemModule,
     ViewFullImageModule,
+    DateFilterModule,
+    ReactiveFormsModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   providers: [UsersService],
-  exports : [UserTopicsComponent]
+  exports : [UserTopicsComponent],
+  entryComponents: [ListingFilterComponent]
 })
 export class UserTopicsModule { }
