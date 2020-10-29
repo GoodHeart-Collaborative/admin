@@ -12,6 +12,11 @@
             {{ daily?.likeCount}}
         </a>
     </ng-template>
+    <ng-template appFor="commentCount" let-row="row">
+        <a (click)="onCommentsHandler(row._id, row?.commentCount)" [class.color-black]="row?.commentCount < 1">
+            {{ row?.commentCount}}
+        </a>
+    </ng-template>
 
     <ng-template appFor="profilePicUrl" let-category="row">
         <div class="table-cell-image-cover" title="Click to see the image">

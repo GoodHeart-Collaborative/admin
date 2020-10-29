@@ -17,7 +17,11 @@ export const PATTERN_ERRORS = (pattern, key) => {
     if (pattern == PATTERN.price) {
         return `${toTitleCase(key)} is an Invalid Price`;
     }
-    if (pattern == PATTERN.url) {
+
+    const otherUrlPatter = RegExp(
+        /((?:http|https):\/\/)?(?:www\.)?[\w\d\-_]+\.\w{2,3}(\.\w{2})?(\/(?<=\/)(?:[\w\d\-./_]+)?)?/).toString()
+
+    if (pattern == PATTERN.url || pattern.toString() == otherUrlPatter) {
         return `${toTitleCase(key)} is an invalid url`;
     }
 };

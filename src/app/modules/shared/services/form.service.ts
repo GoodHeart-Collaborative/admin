@@ -10,35 +10,35 @@ export class FormService {
   constructor() { }
   VALIDATION = {
     name: [
-      Validators.pattern(PATTERN.name),
+      Validators.pattern(new RegExp(PATTERN.name)),
       Validators.required,
       Validators.minLength(VALIDATION_CRITERIA.nameMinLength),
       Validators.maxLength(VALIDATION_CRITERIA.nameMaxLength),
     ],
     price: [
-      Validators.pattern(PATTERN.price),
+      Validators.pattern(new RegExp(PATTERN.price)),
       Validators.minLength(VALIDATION_CRITERIA.priceMinLength),
       Validators.maxLength(VALIDATION_CRITERIA.priceMaxLength),
       Validators.min(0),
     ],
     email: [
-      Validators.pattern(PATTERN.email),
+      Validators.pattern(new RegExp(PATTERN.email)),
       Validators.required,
       Validators.maxLength(VALIDATION_CRITERIA.emailMaxLength),
     ],
     description: [
-      Validators.pattern(PATTERN.name),
+      Validators.pattern(new RegExp(PATTERN.name)),
       Validators.minLength(VALIDATION_CRITERIA.locationMinLength),
       Validators.maxLength(VALIDATION_CRITERIA.locationMaxLength),
     ],
     password: [
-      Validators.pattern(PATTERN.password),
+      Validators.pattern(new RegExp(PATTERN.password)),
       Validators.minLength(VALIDATION_CRITERIA.passwordMinLength),
       Validators.maxLength(VALIDATION_CRITERIA.passwordMaxLength),
     ],
     phone: [
       Validators.required,
-      Validators.pattern(PATTERN.phone),
+      Validators.pattern(new RegExp(PATTERN.phone)),
       Validators.minLength(VALIDATION_CRITERIA.phoneMinLength),
       Validators.maxLength(VALIDATION_CRITERIA.phoneMaxLength),
     ],

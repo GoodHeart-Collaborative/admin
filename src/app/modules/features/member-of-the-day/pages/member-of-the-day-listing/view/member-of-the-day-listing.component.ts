@@ -11,6 +11,7 @@ import {  USER } from 'src/app/constant/routes';
 import { LikeActionComponent } from 'src/app/modules/shared/like-action/view/like-action.component';
 import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
 import { CommonService } from 'src/app/modules/shared/services/common.service';
+import { CommentsComponent } from 'src/app/modules/shared/comments/view/comments/comments.component';
 export type ActionType = 'deleted' | 'blocked' | 'active';
 
 @Component({
@@ -193,6 +194,17 @@ export class MemberOfTheDayListingComponent implements OnInit {
     this.$matDailog.open(ViewFullImageComponent, {
       panelClass: 'view-full-image-modal',
       data: {image, type}
+    }).afterClosed().subscribe();
+  }
+
+
+  onCommentsHandler(id: string, commentCount: number) {
+    if (!commentCount) {
+      return;
+    }
+    this.$matDailog.open(CommentsComponent, {
+      width: '500px',
+      data: id
     }).afterClosed().subscribe();
   }
 

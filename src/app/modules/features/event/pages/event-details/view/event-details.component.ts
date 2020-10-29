@@ -19,7 +19,7 @@ export type ActionType = 'blocked' | 'active';
 })
 export class EventDetailsComponent implements OnInit {
   eventDetails: any;
-
+  today = new Date().getTime();
   constructor(
     $router: ActivatedRoute,
     $breadcrumb: BreadcrumbService,
@@ -35,7 +35,10 @@ export class EventDetailsComponent implements OnInit {
   ngOnInit() {
   }
 
-  onActionHandler(id: string, action: ActionType) {
+  onActionHandler(id: string, action: ActionType , endDate) {
+    if (this.today > endDate ) {
+      return;
+    }
     this.$confirmBox.listAction('event', action == 'active' ? 'active' : 'block')
       .subscribe((confirm) => {
         if (confirm) {
@@ -54,7 +57,7 @@ export class EventDetailsComponent implements OnInit {
     const eventData = {
       pageIndex: 0,
       pageSize: 20,
-      eventId: this.eventDetails.id,
+      eventId: this.eventDetails._id,
       type: EVENT_INTEREST.GOING
     };
     this.$event.onGoingAndInterestHnadler(eventData).then(res => {
@@ -75,7 +78,7 @@ export class EventDetailsComponent implements OnInit {
     const eventData = {
       pageIndex: 0,
       pageSize: 20,
-      eventId: this.eventDetails.id,
+      eventId: this.eventDetails._id,
       type: EVENT_INTEREST.INTEREST
     };
     this.$event.onGoingAndInterestHnadler(eventData).then(res => {
@@ -114,7 +117,6 @@ export class EventDetailsComponent implements OnInit {
       window.open(url, '_blank');
      } else {
       window.open(`http://` + url, '_blank');
-
-     }
+    }
   }
 }

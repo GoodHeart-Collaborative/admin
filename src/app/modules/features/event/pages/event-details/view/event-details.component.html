@@ -91,10 +91,10 @@
                         <div class="col-md-12 btn-row">
                             <button class="btn btn-simple" mat-stroked-button type="button"
                                 *ngIf="eventDetails?.status == 'active'"
-                                (click)="onActionHandler(eventDetails?._id, 'blocked')"> Block </button>
+                                (click)="onActionHandler(eventDetails?._id, 'blocked', eventDetails?.endDate )" [disabled]="today > eventDetails?.endDate "> Block </button>
                             <button class="btn btn-primary" mat-stroked-button type="button"
                                 *ngIf="eventDetails?.status == 'blocked'"
-                                (click)="onActionHandler(eventDetails?._id, 'active')">Active </button>
+                                (click)="onActionHandler(eventDetails?._id, 'active', eventDetails?.endDate )" [disabled]="today > eventDetails?.endDate ">Active </button>
 
                         </div>
                     </div>

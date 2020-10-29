@@ -18,6 +18,7 @@ import { AbsoluteRoutingModule } from '../../pipes/absolute-routing/absolute-rou
 import { LoaderComponent } from './components/loader/loader.component';
 import { MatIconModule } from '@angular/material';
 import { PopupModule } from './popup';
+import { LinkExpiredComponent } from './link-expired/link-expired.component';
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import { PopupModule } from './popup';
   declarations: [
     ConfirmationModalComponent,
     LoaderComponent,
+    LinkExpiredComponent,
   ],
   exports : [
     MatButtonModule,

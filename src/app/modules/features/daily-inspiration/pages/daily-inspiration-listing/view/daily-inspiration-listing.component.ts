@@ -173,9 +173,9 @@ export class DailyInspirationListingComponent implements OnInit {
   /**
    * Add Handler
    */
-onAdd() {
+  onAdd() {
     this.$router.navigate([`${ADD_DAILY_INSPIRATION.fullUrl}`]);
-}
+  }
 
 
   /**

@@ -33,13 +33,13 @@ export class EventRelatedCategoryTableDataSource implements Table.Source<Categor
         resolve: (row: any) => row['description'] || '-',
     },
 
-    {
-      title: 'Event Category',
-      id: 'eventCategory',
-      sorting: false,
-      templateBy: 'eventCategory'
-      // resolve: (row: any) => row['eventCategory'] || '-'
-  },
+  //   {
+  //     title: 'Event Category',
+  //     id: 'eventCategory',
+  //     sorting: false,
+  //     templateBy: 'eventCategory'
+  //     // resolve: (row: any) => row['eventCategory'] || '-'
+  // },
   {
     title: 'Event Price',
     id: 'price',

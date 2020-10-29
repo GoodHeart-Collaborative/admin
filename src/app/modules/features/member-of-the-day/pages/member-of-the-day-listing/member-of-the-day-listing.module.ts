@@ -13,6 +13,7 @@ import { ListingFilterComponent } from '../member-of-the-day-listing/component/l
 import { LikeActionModule } from 'src/app/modules/shared/like-action/like-action.module';
 import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.module';
 import { ViewFullImageModule } from 'src/app/modules/shared/view-full-image/view-full-image.module';
+import { CommentsModule } from 'src/app/modules/shared/comments/comments.module';
 
 const routes: Routes = [
   {
@@ -36,7 +37,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     LikeActionModule,
     CustomImageModule,
-    ViewFullImageModule
+    ViewFullImageModule,
+    CommentsModule
   ],
   entryComponents: [ListingFilterComponent,]
 })

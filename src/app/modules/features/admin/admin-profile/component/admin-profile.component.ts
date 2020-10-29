@@ -25,7 +25,6 @@ export class AdminProfileComponent implements OnInit {
 
   ngOnInit() {
     this.getDetail();
-    
   }
 
   /**
@@ -35,7 +34,7 @@ export class AdminProfileComponent implements OnInit {
    this.$dataService.getProfileDetail()
       .subscribe(
         (response: any) => {
-          this.profileDetail = response.data;          
+          this.profileDetail = response.data;
         }, err => { }
       );
     }
