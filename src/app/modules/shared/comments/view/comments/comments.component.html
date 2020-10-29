@@ -20,8 +20,7 @@
                             <p>{{item?.comment}}</p>
 
                             <div class="like-cover" >
-                                <div *ngIf="item.likeCount > 0">
-
+                                <div *ngIf="item.likeCount > 0" class="d-flex">
                                     <span class="material-icons">thumb_up</span>
                                     <p>{{item?.likeCount}}</p>
                                 </div>
