@@ -26,6 +26,9 @@
         &:not(:last-child) {
             padding-bottom: 6px;
         }
+        .d-flex{
+            display: flex;
+        }
         .li-content {
             display: flex;
             align-items: flex-start;
@@ -51,7 +54,7 @@
                 position: relative;
                 flex: 1;
                 text-align: left;
-                width: calc(100% - 60px);
+                width: calc(100% - 90px);
                 &::before {
                     content: "";
                     display: block;
@@ -154,7 +157,7 @@
                     }
                     .textual-cover {
                         padding-left: 10px;
-                        width: calc(100% - 60px);
+                        width: calc(100% - 90px);
                         p {
                             word-break: break-word;
                         }
