@@ -46,7 +46,7 @@ export class CommentsComponent implements OnInit {
     if (id) {
       const params = {
         pageNo: `${1}`,
-        limit: 25,
+        limit: 10,
         postId: id
       };
       if (commentId) {
