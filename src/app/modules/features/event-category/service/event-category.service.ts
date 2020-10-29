@@ -45,18 +45,20 @@ export class EventCategoryService {
     const categoryId = id;
     return  this.$http.get(CATEGORY_DETAILS(categoryId)).toPromise();
   }
+
+
 }
 
 
-// @Injectable()
-// export class CEventCategoryServiceResolve implements Resolve<any>  {
-//   constructor(private $category: EventCategoryService) { }
-//   resolve(route: ActivatedRouteSnapshot) {
-//     return this.$category.updateCategory(route.params['id']).catch(err => {
-//       if (err) {
-//         return null;
-//       }
-//     }
-//     );
-//   }
-// }
+@Injectable()
+export class CEventCategoryServiceResolve implements Resolve<any>  {
+  constructor(private $category: EventCategoryService) { }
+  resolve(route: ActivatedRouteSnapshot) {
+    return this.$category.updateCategory(route.params['id']).catch(err => {
+      if (err) {
+        return null;
+      }
+    }
+    );
+  }
+}
