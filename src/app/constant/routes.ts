@@ -15,7 +15,7 @@ export const ADMIN: IRoute = {
 };
 
 export const LINK_EXPIRED: IRoute = {
-  path: 'link-expired',
+  path: 'LinkExpired',
   get fullUrl(): string {
     return `/${this.path}`;
   }

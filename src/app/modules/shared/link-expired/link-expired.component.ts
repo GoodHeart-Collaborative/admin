@@ -13,7 +13,7 @@ export class LinkExpiredComponent implements OnInit {
     private _router: Router,
     private _utilityService: UtilityService
   ) {
-    if (this._router.url == '/link-expired') {
+    if (this._router.url == '/LinkExpired') {
       console.log(this.linkExpired, this._router.url);
       this.linkExpired = true;
     }
