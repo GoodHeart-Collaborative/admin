@@ -15,7 +15,6 @@ export class LinkExpiredComponent implements OnInit {
   ) {
     if (this._router.url == '/link-expired') {
       console.log(this.linkExpired, this._router.url);
-      
       this.linkExpired = true;
     }
   }
@@ -26,8 +25,7 @@ export class LinkExpiredComponent implements OnInit {
     if (this._utilityService.getAuthToken()) {
       this._utilityService.clearStorage();
       this._router.navigate(["/auth/login"]);
-    }
-    else { this._router.navigate(["/auth/login"]); }
+    }else { this._router.navigate(["/auth/login"]); }
   }
 
 }

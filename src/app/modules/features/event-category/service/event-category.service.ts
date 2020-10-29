@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/modules/shared/services/http.service';
 import { CATEGORY_LISTING, EDIT_CATEGORY , 
   CATEGORY, CATEGORY_DETAILS, CATEGORY_POST_ACTION, 
-  CATEGORY_POST_LISTING} from 'src/app/constant/urls';
+  CATEGORY_POST_LISTING,
+  ACTION_EVENT} from 'src/app/constant/urls';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 
 @Injectable({
@@ -35,6 +36,9 @@ export class EventCategoryService {
 
   async updatePostStatus(id: string, status: any) {
     return await this.$http.patch(CATEGORY_POST_ACTION(id, status), {}).toPromise();
+  }
+  async updateEventPostStatus(id: string, status: any) {
+    return await this.$http.patch(ACTION_EVENT(id, status), {}).toPromise();
   }
 
   async  updateCategory(id:string) {

@@ -106,7 +106,7 @@ export class EventRelatedCategoryPostComponent implements OnInit {
     this.$confirmBox.listAction(' category event', action == 'active' ? 'Active' : (action == 'deleted' ? 'Delete' : 'Block'))
       .subscribe((confirm) => {
         if (confirm) {
-          this.$category.updatePostStatus(id, action).then((res) => {
+          this.$category.updateEventPostStatus(id, action).then((res) => {
             this.$utility.success(res.message);
             this.handleActions(action, index);
           });
