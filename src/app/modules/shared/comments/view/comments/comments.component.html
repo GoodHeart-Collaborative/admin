@@ -19,9 +19,12 @@
                             </h4>
                             <p>{{item?.comment}}</p>
 
-                            <div class="like-cover" *ngIf="item.likeCount > 0">
-                                <span class="material-icons">thumb_up</span>
-                                <p>{{item?.likeCount}}</p>
+                            <div class="like-cover" >
+                                <div *ngIf="item.likeCount > 0">
+
+                                    <span class="material-icons">thumb_up</span>
+                                    <p>{{item?.likeCount}}</p>
+                                </div>
                                 <a class="see-hide-replies" (click)="toggleReplies(item?._id, commentIndex)"
                                     *ngIf="item?.commentCount">{{item?.showReply? "Hide" : "See"}} Replies
                                     ({{item?.commentCount}})</a>
