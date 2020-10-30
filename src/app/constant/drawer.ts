@@ -140,6 +140,10 @@ export const statusList = [
     { view: 'Active', value: 'active' },
     { view: 'Blocked', value: 'blocked' },
 ];
+export const expiredList = [
+    { view: 'Expired', value: true },
+    // { view: 'Blocked', value: 'blocked' },
+];
 
 
 

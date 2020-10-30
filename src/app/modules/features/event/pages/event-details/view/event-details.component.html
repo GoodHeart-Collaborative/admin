@@ -99,7 +99,7 @@
                                 (click)="onActionHandler(eventDetails?._id, 'active', eventDetails?.endDate )"
                                 [disabled]="today > eventDetails?.endDate">Active </button>
                         </div>
-                        <div class="col-md-12 btn-row">
+                        <div class="col-md-12 btn-row" *ngIf="eventDetails?.isExpired">
                             <button class="btn btn-expired" mat-stroked-button type="button"
                                 [disabled]="true"> Expired </button>
                         </div>

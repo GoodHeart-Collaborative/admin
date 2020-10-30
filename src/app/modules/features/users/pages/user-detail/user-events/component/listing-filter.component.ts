@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { expiredList, statusList } from 'src/app/constant/drawer';
 
 @Component({
   selector: 'app-listing-filter',
@@ -14,10 +15,8 @@ export class ListingFilterComponent implements OnInit {
     maxFromDate: new Date(),
    };
   filterForm: FormGroup;
-  statusList = [{
-    view: 'Active', value: 'active'},
-    {view: 'Blocked', value: 'blocked'},
-  ];
+  statusList =statusList;
+  expiredList = expiredList;
   isProcessing = true;
   constructor(
      private $fb: FormBuilder,
@@ -39,6 +38,8 @@ export class ListingFilterComponent implements OnInit {
       {
         fromDate: [],
         toDate: [],
+        status: [],
+        isExpired: []
       },
     );
   }
