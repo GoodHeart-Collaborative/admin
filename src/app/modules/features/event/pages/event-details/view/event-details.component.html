@@ -25,15 +25,18 @@
 
                             <p class="value"></p>
                         </div>
+
                         <div class="col-md-12" *ngIf="eventDetails?.address">
                             <p class="label"> 
                                 Event Place </p>
                             <p class="value"> <i class="fas fa-map-marker-alt"></i>&nbsp; {{eventDetails?.address}}</p>
                         </div>
+
                         <div class="col-md-12" *ngIf="eventDetails?.price">
                             <p class="label">Event Price</p>
                             <p class="value">${{eventDetails?.price}}</p>
                         </div>
+
                         <div class="col-md-12" *ngIf="eventDetails?.eventUrl">
                             <p class="label">Event's More Details</p>
                             <p class="value">
@@ -66,15 +69,12 @@
                         <!--Share EVENT For DESKTOP -->
                         <div class="col-md-12 for-desktop" *ngIf="eventDetails?.allowSharing">
                             <p class="label">Share Event</p>
-                        
 
-                                <div class="value" (click)="onCopyHandler($event.currentTarget)">
-                                    <a class="link"> {{eventDetails?.shareUrl}}</a>
-                                    <br>
-                                </div>
-                                <span class="info" (click)="onCopyHandler($event.currentTarget)">(Click to copy URL)</span> 
-                         
-
+                            <div class="value" (click)="onCopyHandler($event.currentTarget)">
+                                <a class="link"> {{eventDetails?.shareUrl}}</a>
+                                <br>
+                            </div>
+                            <span class="info" (click)="onCopyHandler($event.currentTarget)">(Click to copy URL)</span> 
                         </div> 
 
                         <!--Share EVENT For MOBILE -->
@@ -88,15 +88,18 @@
 
                         </div> 
 
-                        <div class="col-md-12 btn-row">
+                        <div class="col-md-12 btn-row" *ngIf="!eventDetails?.isExpired">
                             <button class="btn btn-simple" mat-stroked-button type="button"
                                 *ngIf="eventDetails?.status == 'active'"
                                 (click)="onActionHandler(eventDetails?._id, 'blocked', eventDetails?.endDate )" [disabled]="today > eventDetails?.endDate "> Block </button>
                             <button class="btn btn-primary" mat-stroked-button type="button"
                                 *ngIf="eventDetails?.status == 'blocked'"
-                                (click)="onActionHandler(eventDetails?._id, 'active', eventDetails?.endDate )" [disabled]="today > eventDetails?.endDate ">Active </button>
+                                (click)="onActionHandler(eventDetails?._id, 'active', eventDetails?.endDate )" [disabled]="today > eventDetails?.endDate">Active </button>
+                         </div>
+                         <div >
+                             <button class="status_expired" [disabled]="true">Expired</button>
+                         </div>
 
-                        </div>
                     </div>
                 </div>
             </div>

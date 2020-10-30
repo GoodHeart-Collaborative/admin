@@ -12,7 +12,9 @@
      </ng-template>
  
      <ng-template appFor="status" let-data="row">
-         {{ data?.status | titlecase}}
+         <!-- {{ data?.status | titlecase}} -->
+         <p class="status_expired">{{data?.isExpired ? 'Expired' : (data?.status | titlecase)}}</p>
+
      </ng-template>
  
      <ng-template appFor="title" let-data="row">

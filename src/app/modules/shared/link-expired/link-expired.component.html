@@ -7,7 +7,7 @@
 
   <div class="col-sm-6" *ngIf="linkExpired">
     <h3> Link Expired </h3>
-    <button class="back_btn" (click)="onBackLogin()">Back to Login</button>
+    <button class="back_btn"  >Back to Login</button>
   </div> -->
 
 <div class="not-found-wrapper">
@@ -17,6 +17,6 @@
     <p>Sorry, your login link has expired because you haven't used it. <br /> Login link expires in every 10 minutes and can only be used once. </p>
   </div>
   <div class="btn-wrap">
-    <button class="btn btn-primary" mat-stroked-button routerLinkActive="router-link-active">Back to login</button>
+    <button class="btn btn-primary" mat-stroked-button routerLinkActive="router-link-active" (click)="onBackLogin()">Back to login</button>
   </div>
 </div>

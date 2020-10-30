@@ -29,6 +29,8 @@ export class EventDetailsComponent implements OnInit {
     private $matDailog: MatDialog
   ) {
     this.eventDetails = $router.snapshot.data.eventDetails.data;
+    console.log(this.eventDetails);
+    
     $breadcrumb.replace(this.eventDetails._id, this.eventDetails.title);
   }
 

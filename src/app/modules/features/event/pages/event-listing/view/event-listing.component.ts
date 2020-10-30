@@ -73,6 +73,7 @@ export class EventListingComponent implements OnInit {
     this.$event.queryData(params).then(res => {
 
       this.eventList = res.data;
+      console.log(this.eventList);
       this.setUpTableResource(this.eventList);
     });
   }

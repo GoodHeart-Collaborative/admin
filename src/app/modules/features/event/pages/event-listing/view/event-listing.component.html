@@ -11,9 +11,8 @@
          {{ row?.endDate |dateTime}}
      </ng-template>
  
-     <ng-template appFor="status" let-data="row">
-        <!-- <p>{{ data?.status | titlecase}}</p> -->
-        <p class="status_expired">Expired</p>
+     <ng-template appFor="status" let-data="row" >
+        <p class="status_expired">{{data?.isExpired ? 'Expired' : (data?.status | titlecase)}}</p>
      </ng-template>
  
      <ng-template appFor="description" let-data="row">
