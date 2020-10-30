@@ -105,6 +105,11 @@
             .btn-row {
                 margin-top: 16px;
                 justify-content: flex-start;
+                .btn-expired{
+                    color: #F64E60;
+                    background-color: #FFE2E5;
+                    border-color: #F64E60 !important;
+                }
             }
         }
     }

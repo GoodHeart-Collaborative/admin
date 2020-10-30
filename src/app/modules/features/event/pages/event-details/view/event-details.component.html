@@ -8,7 +8,8 @@
                         (click)="onViewPic(eventDetails?.imageUrl)">
                 </div>
                 <div class="event-about">
-                    <h4 class="event-title">{{eventDetails?.title}}</h4>
+                    <h4 class="event-title">{{eventDetails?.title}}
+                    </h4>
                     <p class="paraText">{{eventDetails?.description}}
                     </p>
                 </div>
@@ -27,7 +28,7 @@
                         </div>
 
                         <div class="col-md-12" *ngIf="eventDetails?.address">
-                            <p class="label"> 
+                            <p class="label">
                                 Event Place </p>
                             <p class="value"> <i class="fas fa-map-marker-alt"></i>&nbsp; {{eventDetails?.address}}</p>
                         </div>
@@ -65,7 +66,7 @@
                                 <a href="javascript:void();">{{eventDetails?.interestCount}}</a>
                             </p>
                         </div>
-                        
+
                         <!--Share EVENT For DESKTOP -->
                         <div class="col-md-12 for-desktop" *ngIf="eventDetails?.allowSharing">
                             <p class="label">Share Event</p>
@@ -74,8 +75,8 @@
                                 <a class="link"> {{eventDetails?.shareUrl}}</a>
                                 <br>
                             </div>
-                            <span class="info" (click)="onCopyHandler($event.currentTarget)">(Click to copy URL)</span> 
-                        </div> 
+                            <span class="info" (click)="onCopyHandler($event.currentTarget)">(Click to copy URL)</span>
+                        </div>
 
                         <!--Share EVENT For MOBILE -->
                         <div class="col-md-12 for-mobile" *ngIf="eventDetails?.allowSharing">
@@ -84,21 +85,24 @@
                                 <a class="link"> {{eventDetails?.shareUrl}}</a>
                                 <br>
                             </div>
-                            <span class="info">(Click to copy URL)</span> 
+                            <span class="info">(Click to copy URL)</span>
 
-                        </div> 
+                        </div>
 
                         <div class="col-md-12 btn-row" *ngIf="!eventDetails?.isExpired">
                             <button class="btn btn-simple" mat-stroked-button type="button"
                                 *ngIf="eventDetails?.status == 'active'"
-                                (click)="onActionHandler(eventDetails?._id, 'blocked', eventDetails?.endDate )" [disabled]="today > eventDetails?.endDate "> Block </button>
+                                (click)="onActionHandler(eventDetails?._id, 'blocked', eventDetails?.endDate )"
+                                [disabled]="today > eventDetails?.endDate "> Block </button>
                             <button class="btn btn-primary" mat-stroked-button type="button"
                                 *ngIf="eventDetails?.status == 'blocked'"
-                                (click)="onActionHandler(eventDetails?._id, 'active', eventDetails?.endDate )" [disabled]="today > eventDetails?.endDate">Active </button>
-                         </div>
-                         <div >
-                             <button class="status_expired" [disabled]="true">Expired</button>
-                         </div>
+                                (click)="onActionHandler(eventDetails?._id, 'active', eventDetails?.endDate )"
+                                [disabled]="today > eventDetails?.endDate">Active </button>
+                        </div>
+                        <div class="col-md-12 btn-row">
+                            <button class="btn btn-expired" mat-stroked-button type="button"
+                                [disabled]="true"> Expired </button>
+                        </div>
 
                     </div>
                 </div>
