@@ -9,6 +9,13 @@
                     <mat-option [value]="item?.value" *ngFor="let item of statusList">{{item?.view}}</mat-option>
                 </mat-select>
             </mat-form-field> -->
+
+            <mat-form-field appearance="outline">
+                <mat-label>Expired</mat-label>
+                <mat-select  placeholder="Status" formControlName="isExpired" >
+                    <mat-option [value]="item?.value" *ngFor="let item of expiredList">{{item?.view}}</mat-option>
+                </mat-select>
+            </mat-form-field>
             
             <mat-form-field appearance="outline">
                 <mat-label>Privacy</mat-label>

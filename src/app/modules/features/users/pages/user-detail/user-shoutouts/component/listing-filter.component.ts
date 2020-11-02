@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { privacyList } from 'src/app/constant/drawer';
+import { expiredList, privacyList } from 'src/app/constant/drawer';
 
 @Component({
   selector: 'app-listing-filter',
@@ -15,10 +15,7 @@ export class ListingFilterComponent implements OnInit {
     maxFromDate: new Date(),
    };
   filterForm: FormGroup;
-  // statusList = [{
-  //   view: 'Active', value: 'active'},
-  //   {view: 'Blocked', value: 'blocked'},
-  // ];
+  expiredList = expiredList;
   privacyList = privacyList;
     isProcessing = true;
   constructor(
@@ -41,7 +38,8 @@ export class ListingFilterComponent implements OnInit {
       {
         fromDate: [],
         toDate: [],
-        privacy: []
+        privacy: [],
+        isExpired: []
       },
     );
   }

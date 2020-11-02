@@ -4,11 +4,11 @@
         {{ shoutouts?.createdAt |customDate}}
     </ng-template>
 
-    <ng-template appFor="status" let-shoutouts="row" >
+    <!-- <ng-template appFor="status" let-shoutouts="row" >
         <div *ngIf="shoutouts?.isExpired">
              Expired
         </div>
-    </ng-template>
+    </ng-template> -->
 
     <ng-template appFor="title" let-shoutouts="row">
         {{ shoutouts?.title | titlecase}}

@@ -52,20 +52,19 @@ export class ShoutoutsTableDataSource implements Table.Source<User> {
       sorting: false,
       templateBy: 'gif'
     },
- 
     {
       title: 'Added On',
       id: 'createdAt',
       sorting: true,
       templateBy: 'createdAt',
     },
-    // {
-    //   title: 'Status',
-    //   id: 'status',
-    //   sorting: false,
-    //   templateBy: 'status'
-    //   // resolve: (row: any) => row['status'] || 'NA',
-    // },
+    {
+      title: 'Status',
+      id: 'status',
+      sorting: false,
+      // templateBy: 'status'
+      resolve: (row: any) =>  row['isExpired'] ? 'Expired' : '-',
+    },
 
     // {
     //   title: 'Actions',

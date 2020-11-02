@@ -51,6 +51,8 @@ export class CommentsComponent implements OnInit {
       };
       if (commentId) {
         params['commentId'] = commentId;
+        params.pageNo = 1;
+        params.limit = 20;
       }
       return await this.$common.onCommentHandler(params).then(res => {
         return res.data;
