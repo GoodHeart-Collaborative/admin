@@ -16,14 +16,9 @@
     </ng-template>
 
     <ng-template appFor="gif" let-shoutouts="row">
-        <!-- <a href="javascript:void(0)"  [class.click-not-allowed]="shoutouts?.privacy == 'private'" (click)="openGif(shoutouts?.gif)">
-        {{ shoutouts?.gif | titlecase}}
-    </a> -->
-    <div class="img-cover table-cell-image-cover" [title]="shoutouts?.gif" (click)="openGif(shoutouts?.gif)">
+      <div class="img-cover table-cell-image-cover" [title]="shoutouts?.gif" (click)="openGif(shoutouts?.gif)">
         <img src="{{ shoutouts?.gif }}" alt="">
-    </div>
-
-   
+      </div>
     </ng-template>
 
     <ng-template appFor="privacy" let-shoutouts="row">
@@ -33,9 +28,9 @@
     <ng-template appFor="name" let-gratitude="row">
         <a href="javascript:void(0)"  [class.click-not-allowed]="gratitude?.privacy == 'private'" (click)="onUserDetail(gratitude?.userData?._id)">
             {{ (gratitude?.userData?.firstName  | titlecase) || 'String'}}  {{ (gratitude?.userData?.lastName  | titlecase) || ''}}
-
         </a>
     </ng-template>
+
     <ng-template appFor="description" let-shoutouts="row">
             {{ (shoutouts?.description  | titlecase) || 'String'}}
     </ng-template>

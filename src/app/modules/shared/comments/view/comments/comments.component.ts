@@ -45,7 +45,7 @@ export class CommentsComponent implements OnInit {
   async getCommentHandler(id, commentId?) {
     if (id) {
       const params = {
-        pageNo: `${1}`,
+        pageNo: this.pageIndex + 1 ,
         limit: 10,
         postId: id
       };
