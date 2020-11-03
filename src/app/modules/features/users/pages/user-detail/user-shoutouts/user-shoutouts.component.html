@@ -11,6 +11,7 @@
     <ng-template appFor="privacy" let-shoutouts="row">
         {{ shoutouts?.privacy | titlecase}}
     </ng-template>
+    
     <ng-template appFor="gif" let-shoutouts="row">
         <div class="table-cell-image-cover" [title]="shoutouts?.gif">
             <img  src="{{ shoutouts?.gif }}" alt="">
@@ -18,7 +19,7 @@
 
     </ng-template>
 
-
+`
     <ng-template appFor="title" let-shoutouts="row">
         <a href="javascript:void(0)" (click)="onDetailsHandler(shoutouts?._id, shoutouts?.privacy)"
             [class.click-not-allowed]="shoutouts?.privacy == 'private'">

@@ -16,21 +16,21 @@ export const MY_FORMATS = {
 };
 
 export const USER_SUBSCRIPTION_PLAN = {
-	FREE: {
+	[1]: {
 		price: 0,
-		value: 1
+		value: 'Free'
 	},
-	MONTHLY: {
+	[2]: {
 		price: 8,
-		value: 2
+		value: 'Monthly'
 	},
-	YEARLY: {
+	[3]: {
 		price: 78,
-		value: 3
+		value: 'Yearly'
 	},
-	NONE: {
+	[4]: {
 		price: 0,
-		value: 4
+		value: 'None'
 	}
 }
 

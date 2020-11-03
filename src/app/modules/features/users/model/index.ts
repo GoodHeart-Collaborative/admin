@@ -52,13 +52,18 @@ export class UserTableDataSource implements Table.Source<User> {
       sorting: true,
       templateBy: 'createdAt',
     },
-    // {
-    //   title: 'Member Type',
-    //   id: 'isAdminVerified',
-    //   sorting: false,
-    //   templateBy: 'isAdminVerified'
-    //   // resolve: (row: any) => row['status'] || 'NA',
-    // },
+    {
+      title: 'Subscription Type',
+      id: 'subscriptionType',
+      sorting: false,
+      templateBy: 'subscriptionType'
+    },
+    {
+      title: 'Subscription End ',
+      id: 'subscriptionEndDate',
+      sorting: false,
+      templateBy: 'subscriptionEndDate'
+    },
     {
       title: 'Status',
       id: 'status',

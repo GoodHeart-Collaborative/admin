@@ -11,6 +11,7 @@ import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 import { ReportProblemComponent } from 'src/app/modules/shared/report-problem/view/report-problem.component';
 import { CommonService } from 'src/app/modules/shared/services/common.service';
 import { REPORT_TYPE } from 'src/app/constant/drawer';
+import { USER_SUBSCRIPTION_PLAN } from 'src/app/constant/constants';
 export type ActionType = 'deleted' | 'blocked' | 'active' | 'pending';
 
 @Component({
@@ -30,6 +31,7 @@ export class UserListingComponent implements OnInit {
   };
   statusCount: any;
   filterCount: number;
+  subscriptionPlan = USER_SUBSCRIPTION_PLAN;
   constructor(
     private $router: Router,
     private $userService: UsersService,
@@ -38,6 +40,8 @@ export class UserListingComponent implements OnInit {
     private matDailog: MatDialog,
     private $common: CommonService
   ) {
+    console.log(this.subscriptionPlan);
+    
   }
 
   ngOnInit() {

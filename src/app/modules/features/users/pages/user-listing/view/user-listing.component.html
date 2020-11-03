@@ -23,6 +23,10 @@
             {{ user?.createdAt |customDate}}
         </ng-template>
 
+        <ng-template appFor="subscriptionEndDate" let-user="row">
+            {{ user?.subscriptionEndDate |customDate}}
+        </ng-template>
+
         <ng-template appFor="status" let-user="row">
             {{ user?.adminStatus | titlecase}}
         </ng-template>
@@ -41,6 +45,10 @@
 
         <ng-template appFor="email" let-user="row">
             <span>{{ user?.email || '-'}}</span>
+        </ng-template>
+
+        <ng-template appFor="subscriptionType" let-user="row">
+            <span>{{ subscriptionPlan[user?.subscriptionType]?.value}}</span>
         </ng-template>
 
         <ng-template appFor="reportCount" let-row="row">
