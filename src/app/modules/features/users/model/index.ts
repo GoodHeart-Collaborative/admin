@@ -58,12 +58,12 @@ export class UserTableDataSource implements Table.Source<User> {
       sorting: false,
       templateBy: 'subscriptionType'
     },
-    {
-      title: 'Subscription End ',
-      id: 'subscriptionEndDate',
-      sorting: false,
-      templateBy: 'subscriptionEndDate'
-    },
+    // {
+    //   title: 'Subscription End ',
+    //   id: 'subscriptionEndDate',
+    //   sorting: false,
+    //   templateBy: 'subscriptionEndDate'
+    // },
     {
       title: 'Status',
       id: 'status',

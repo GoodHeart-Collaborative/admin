@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { USER_SUBSCRIPTION_PLAN } from 'src/app/constant/constants';
 
 @Component({
   selector: 'app-users-listing-filter',
@@ -12,6 +13,7 @@ export class UsersListingFilterComponent implements OnInit {
     label: 'User Date Filter',
     maxFromDate: new Date(),
   };
+  subscriptionTypeList = Object.values(USER_SUBSCRIPTION_PLAN);
   userFilterForm: FormGroup;
   isProcessing = true;
   constructor(
@@ -19,6 +21,8 @@ export class UsersListingFilterComponent implements OnInit {
      private dialogRef: MatDialogRef<UsersListingFilterComponent>,
      @Inject(MAT_DIALOG_DATA) data: any,
   ) {
+    console.log(this.subscriptionTypeList);
+    
     this.getFilterForm();
     this.dateFilterObject = {...this.dateFilterObject, ...this.userFilterForm.controls};
     if (data) {
@@ -26,14 +30,14 @@ export class UsersListingFilterComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   getFilterForm() {
     this.userFilterForm = this.$fb.group(
       {
         fromDate: [],
-        toDate: []
+        toDate: [],
+        subscriptionType: []
       },
     );
   }
@@ -42,7 +46,6 @@ export class UsersListingFilterComponent implements OnInit {
    if (this.userFilterForm.valid && this.userFilterForm.touched) {
       this.isProcessing = false;
       const filterData = { ...this.userFilterForm.value};
-    
       this.dialogRef.close(filterData);
     }
   }

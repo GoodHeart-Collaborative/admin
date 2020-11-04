@@ -18,19 +18,23 @@ export const MY_FORMATS = {
 export const USER_SUBSCRIPTION_PLAN = {
 	[1]: {
 		price: 0,
-		value: 'Free'
+		value: 'Free',
+		sendValue: 1
 	},
 	[2]: {
 		price: 8,
-		value: 'Monthly'
+		value: 'Monthly',
+		sendValue: 2
 	},
 	[3]: {
 		price: 78,
-		value: 'Yearly'
+		value: 'Yearly',
+		sendValue: 3
 	},
 	[4]: {
 		price: 0,
-		value: 'None'
+		value: 'None',
+		sendValue: 4
 	}
 }
 

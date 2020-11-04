@@ -58,9 +58,13 @@
                             <p class="label">Industry</p>
                             <p class="value">{{ industry[userDetails?.industryType]  || 'None'}}</p>
                         </div>
-                        <div class="col-md-4">
-                            <p class="label">Subscription Type</p>
-                            <p class="value">{{ subscriptionPlan[userDetails?.subscriptionType]?.value }}</p>
+                        <!-- <div class="col-md-4">
+                            <p class="label">Subscription Start Date</p>
+                            <p class="value">{{ userDetails?.experience }}</p>
+                        </div> -->
+                        <div class="col-md-4" *ngIf="userDetails?.subscriptionEndDate">
+                            <p class="label">Subscription End Date</p>
+                            <p class="value">{{ userDetails?.subscriptionEndDate  | customDate}}</p>
                         </div>
                         <div class="col-md-12">
                             <p class="label">Bio</p>

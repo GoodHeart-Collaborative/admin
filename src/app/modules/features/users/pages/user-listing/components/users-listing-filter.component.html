@@ -1,3 +1,14 @@
 <app-filter (apply)="onApplyHandler()" (reset)="resetFilter()" [disableValue]="userFilterForm.touched">
    <app-date-filter [dateObject]="dateFilterObject" ></app-date-filter>
+   <div>
+      <form [formGroup]="userFilterForm">
+          <mat-form-field appearance="outline">
+              <mat-label>Subscription Type</mat-label>
+              <mat-select  placeholder="Subscription" formControlName="subscriptionType" >
+                 
+                  <mat-option [value]="item?.sendValue" *ngFor="let item of subscriptionTypeList">{{item?.value}}</mat-option>
+              </mat-select>
+          </mat-form-field>
+      </form>
+  </div>
 </app-filter>

@@ -18,6 +18,7 @@ export class GratitudeJournalDetailComponent implements OnInit {
   public hideShowReplies = false;
   gratitudeDetails: any;
   comments: any;
+  GRATITUDE_IMAGE : '/assets/images/gratitute placeholder_pink@3x.png';
   userID: any;
   constructor(
     private $matDailog: MatDialog,

@@ -21,8 +21,11 @@
 
                 </div>
             </div>
-            <div class="image-detail" *ngIf="gratitudeDetails?.mediaUrl">
-                <img [src]="gratitudeDetails?.mediaUrl |customImage:'USER'|async">
+            <div class="image-detail">
+
+                <img [src]="gratitudeDetails?.mediaUrl |customImage:'USER'|async"
+                    *ngIf="gratitudeDetails?.mediaType != 5">
+                <img *ngIf="gratitudeDetails?.mediaType == 5" src="/assets/images/gratitute placeholder_pink@3x.png">
             </div>
         </div>
         <div class="row-2">
@@ -30,7 +33,8 @@
                     class="material-icons">thumb_up</span>
                 <p>{{gratitudeDetails?.likeCount}}</p>
             </div>
-            <div class="like-cover" [class.comment]="gratitudeDetails?.commentCount" (click)="onCommentsHandler(gratitudeDetails?._id, gratitudeDetails?.commentCount)"><span
+            <div class="like-cover" [class.comment]="gratitudeDetails?.commentCount"
+                (click)="onCommentsHandler(gratitudeDetails?._id, gratitudeDetails?.commentCount)"><span
                     class="material-icons">comment</span>
                 <p>{{gratitudeDetails?.commentCount}}</p>
             </div>
