@@ -73,7 +73,6 @@ export class RequestInterceptor implements HttpInterceptor {
                             message = err.error.message;
                         }
                         if ( err.status === 0 ) {
-                            // console.log(this.connectionStatus , navigator.onLine);
                             message =  navigator.onLine ? SOMETHING_WENT_WRONG : SLOW_INTERNET_CONNECTION;
                         }
                         if ( err.error.type === 'INVALID_TOKEN'
@@ -81,6 +80,7 @@ export class RequestInterceptor implements HttpInterceptor {
                         || err.error.responseType === 'UNAUTHORIZED' ) {
                             this.utilityService.clearStorage();
                             this.router.navigate([LOGIN.fullUrl]);
+                            
                         }
                         this.utilityService.errorAlert(message || SOMETHING_WENT_WRONG);
                     }

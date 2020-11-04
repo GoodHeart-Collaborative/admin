@@ -58,6 +58,12 @@ export class AddEventComponent implements OnInit {
 
   setEditFormHandler() {
     if (this.eventDetails) {
+      if (this.eventDetails.isExpired) {
+        this.$route.navigate([EVENTS.fullUrl]);
+        return;
+      } else if (Date.now() > new Date(this.eventDetails.startDate).getTime()) {
+        this.eventForm.get('startDate').disable();
+      }
       this.eventForm.patchValue(this.eventDetails);
       if (this.eventDetails.address) {
         this.eventForm.get('location').patchValue(this.eventDetails.location);
@@ -66,10 +72,10 @@ export class AddEventComponent implements OnInit {
       if (this.eventDetails.imageUrl) {
         this.profilePicURL = this.eventDetails.imageUrl;
       }
-      if (this.eventDetails.eventCategoryName) {
-        // this.eventCategory = this.eventDetails.categoryData;
-        // this.eventCategory = this.eventDetails.eventCategoryName;
-      }
+      // if (this.eventDetails.eventCategoryName) {
+      //   // this.eventCategory = this.eventDetails.categoryData;
+      //   // this.eventCategory = this.eventDetails.eventCategoryName;
+      // }
       if (this.eventDetails.endDate) {
         this.eventDetails.endDate = new Date(this.eventDetails.endDate);
         this.eventForm.get('endDate').patchValue(this.eventDetails.endDate);
@@ -88,7 +94,7 @@ export class AddEventComponent implements OnInit {
       title: ['', [Validators.maxLength(this.eventNameMaxlength), Validators.required]],
       // privacy: ['', [Validators.required]],
       price: [null, [Validators.maxLength(this.priceMaxLength), Validators.pattern(PATTERN.price), Validators.required,]],
-      eventUrl: ['', [Validators.pattern(new RegExp(PATTERN.url))]],
+      eventUrl: ['', [Validators.pattern(PATTERN.url)]],
       description: ['', [Validators.required, Validators.maxLength(this.descriptionMaxLength)]],
       location: [''],
       startDate: ['', Validators.required],
@@ -125,8 +131,17 @@ export class AddEventComponent implements OnInit {
   }
 
   async onSubmit() {
+
+
     if (this.eventForm.invalid) {
       this.eventForm.markAllAsTouched();
+
+      return;
+    }
+
+    if (!this.eventDetails && this.form('startDate').value && Date.now() > new Date(this.form('startDate').value).getTime()) {
+      this.$utility.errorAlert('Start date must be greater than current time');
+      // this.form('startDate').reset(null);
       return;
     }
     if (this.imageFile) {
@@ -155,7 +170,10 @@ export class AddEventComponent implements OnInit {
     }
     if (body.startDate) {
       body.startDate = new Date(body.startDate).getTime();
+    } else if (this.startDate.disabled) {
+      body.startDate = new Date(this.eventDetails.startDate).getTime();
     }
+
     body.isFeatured = body.isFeatured ? 1 : 0;
     body.allowSharing = body.allowSharing ? 1 : 0;
     if (this.eventDetails && this.eventDetails._id) {
@@ -224,10 +242,25 @@ export class AddEventComponent implements OnInit {
   }
 
   onStartDateSelected(event) {
-    this.maxDate = new Date(new Date(event.value).getTime() + 2592000000);
-    if (event && this.endDate.value && new Date(event.value).getTime() > new Date(this.endDate.value).getTime()) {
-      this.endDate.setValue(null);
+    console.log(new Date(this.startDate.value).getTime() + 1800000, new Date(this.endDate.value).getTime());
+
+    // this.maxDate = new Date(new Date(event.value).getTime() + 2592000000);
+    if (event && this.endDate.value) {
+      const startDate = new Date(event.value).setSeconds(0);
+      const endDate = new Date(this.endDate.value).setSeconds(0);
+      if (endDate - startDate !== 1800000) {
+        console.log('paap h');
+        this.endDate.setValue(null);
+
+      }
+
+      console.log(new Date(startDate));
+
     }
+    // if (event && this.endDate.value && (new Date(event.value).getTime() > new Date(this.endDate.value).getTime() 
+    // || new Date(this.startDate.value).getTime() + 1800000 > new Date(this.endDate.value).getTime() )) {
+    //   this.endDate.setValue(null);
+    // }
   }
 }
 

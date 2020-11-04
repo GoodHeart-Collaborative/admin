@@ -18,10 +18,10 @@ export const PATTERN_ERRORS = (pattern, key) => {
         return `${toTitleCase(key)} is an Invalid Price`;
     }
 
-    const otherUrlPatter = RegExp(
-        /((?:http|https):\/\/)?(?:www\.)?[\w\d\-_]+\.\w{2,3}(\.\w{2})?(\/(?<=\/)(?:[\w\d\-./_]+)?)?/).toString()
-
-    if (pattern == PATTERN.url || pattern.toString() == otherUrlPatter) {
+    // const otherUrlPatter = RegExp(
+    //     /((?:http|https):\/\/)?(?:www\.)?[\w\d\-_]+\.\w{2,3}(\.\w{2})?(\/(?<=\/)(?:[\w\d\-./_]+)?)?/).toString()
+    //     || pattern.toString() == otherUrlPatter
+    if (pattern == PATTERN.url ) {
         return `${toTitleCase(key)} is an invalid url`;
     }
 };
