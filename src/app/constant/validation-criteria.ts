@@ -15,7 +15,7 @@ export const VALIDATION_CRITERIA = {
   locationMinLength: 2,
   locationMaxLength: 1000,
   priceMinLength: 1,
-  priceMaxLength: 6,
+  priceMaxLength: 8,
   maxRange: 1000,
   descriptionMinLength: 10,
   descriptionMaxLength: 400,

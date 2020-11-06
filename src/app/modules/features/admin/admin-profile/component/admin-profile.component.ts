@@ -3,7 +3,6 @@ import { DataTransferService } from '../../../../shared/services/data-transfer.s
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ChangePasswordComponent } from '../../change-password/component/change-password.component';
 import { Router } from '@angular/router';
-import { EDIT_PROFILE } from 'src/app/constant/routes';
 import { EditProfileComponent } from '../../edit-profile/component/edit-profile.component';
 import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
 

@@ -37,7 +37,7 @@ export class UsersListingFilterComponent implements OnInit {
       {
         fromDate: [],
         toDate: [],
-        subscriptionType: []
+        subscriptionType: [],
       },
     );
   }

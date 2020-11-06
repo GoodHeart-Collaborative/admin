@@ -8,6 +8,7 @@ import { UserEventsModule } from './user-events/user-events.module';
 import { UserGratitudeJournalModule } from './user-gratitude-journal/user-gratitude-journal.module';
 import { UserShoutoutsModule } from './user-shoutouts/user-shoutouts.module';
 import { UserTopicsModule } from './user-topics/user-topics.module';
+import { TimePipeModule } from 'src/app/pipes/time-pipe/time-pipe.module';
 import { CommonModule } from '@angular/common';
 
 
@@ -36,7 +37,8 @@ const routes: Routes = [
     FormsModule,
     CommonModule,
     UserShoutoutsModule,
-    UserTopicsModule
+    UserTopicsModule,
+    TimePipeModule
   ]
 })
 export class UserDetailModule { }
