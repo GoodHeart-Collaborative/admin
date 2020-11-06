@@ -25,7 +25,6 @@
     "@angular/platform-browser": "^8.2.14",
     "@angular/platform-browser-dynamic": "^8.2.14",
     "@angular/router": "^8.2.14",
-    "@rxweb/reactive-form-validators": "^2.1.2",
     "angular-highcharts": "^7.2.0",
     "as": "^0.4.1",
     "aws-sdk": "^2.656.0",
