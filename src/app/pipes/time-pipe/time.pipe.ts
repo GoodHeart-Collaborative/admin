@@ -24,7 +24,7 @@ export class TimePipe implements PipeTransform {
       let seconds = Math.floor((Math.abs(new Date().valueOf() - new Date(data).valueOf()) / 1000));
       console.log(days);
       if (days <= 365) {
-        return `${Math.round(365 / 222)} year`;
+        return `${Math.round(365 / days)} year`;
       } else if (days > 30) {
         // return new Date(data).toDateString().split(' ').splice(0,1).join(' ')
         return new Date(data).toDateString();
