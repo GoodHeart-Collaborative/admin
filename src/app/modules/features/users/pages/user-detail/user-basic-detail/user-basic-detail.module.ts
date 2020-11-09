@@ -7,6 +7,7 @@ import { CustomImageModule } from 'src/app/pipes/custom-image/custom-image.modul
 import { ViewFullImageModule } from 'src/app/modules/shared/view-full-image/view-full-image.module';
 import { SliderModule } from 'src/app/modules/shared/slider/slider.module';
 import { TimePipeModule } from 'src/app/pipes/time-pipe/time-pipe.module';
+import { ReportProblemModule } from 'src/app/modules/shared/report-problem/report-problem.module';
 
 
 
@@ -21,7 +22,8 @@ import { TimePipeModule } from 'src/app/pipes/time-pipe/time-pipe.module';
     SliderModule,
     MatMenuModule,
     MatIconModule,
-    TimePipeModule
+    TimePipeModule,
+    ReportProblemModule
   ],
   exports: [UserBasicDetailComponent]
 })
