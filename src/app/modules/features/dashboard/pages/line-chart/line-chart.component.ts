@@ -189,7 +189,7 @@ export class LineChartComponent implements OnInit, OnChanges {
           enabled: false
         },
         title: {
-          text: `£ ${this.monthlyEarning}`,
+          text: `$ ${this.monthlyEarning}`,
           align: 'center',
           verticalAlign: 'middle',
           y: 10,

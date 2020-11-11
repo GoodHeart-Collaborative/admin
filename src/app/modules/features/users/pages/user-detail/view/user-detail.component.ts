@@ -32,7 +32,9 @@ export class UserDetailComponent implements OnInit {
     private $userService: UserGratitudeJournalService,
   ) {
     this.userDetails = this.$router.snapshot.data.UserDetails;
-    this.$breadcrumb.replace(this.userDetails.id, this.userDetails['firstName']);
+    console.log(this.userDetails);
+    
+    this.$breadcrumb.replace(this.userDetails._id, `${this.userDetails['firstName']}  ${this.userDetails['lastName']}`);
   }
   ngOnInit() {
     // this.updateUsers(index);
@@ -48,7 +50,7 @@ export class UserDetailComponent implements OnInit {
     let params = {
       page: `${pageIndex + 1}`,
       limit: `${pageSize}`,
-      userId: `${this.userDetails.id}`
+      userId: `${this.userDetails._id}`
     };
     if (filterData) {
       const keys = Object.keys(filterData).filter(el => filterData[el]);
