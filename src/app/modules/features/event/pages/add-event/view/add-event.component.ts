@@ -121,6 +121,16 @@ export class AddEventComponent implements OnInit {
   }
 
 
+
+  keypressTest(event, prelength, id: string) {
+    if (event.target.value.split('.').length > 1) {
+      const splitArray = event.target.value.split('.');
+      document.getElementById(id).setAttribute('maxlength', splitArray[0].length + 3);
+    } else {
+      document.getElementById(id).setAttribute('maxlength', prelength);
+    }
+  }
+
   setimageFile(event) {
     if (!event) {
       this.imageFile = null;
