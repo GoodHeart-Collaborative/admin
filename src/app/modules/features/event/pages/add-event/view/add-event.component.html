@@ -35,7 +35,7 @@
                             <mat-form-field appearance="outline">
                                 <mat-label>Choose a start date </mat-label>
                                 <input [max]="maxDate"
-                                    [min]="today "
+                                    [min]="today"
                                     [owlDateTimeTrigger]="dt1" formControlName="startDate" matInput [owlDateTime]="dt1"
                                     placeholder="Start" readonly (dateTimeChange)="onStartDateSelected($event)" >
                                 <owl-date-time [hour12Timer]="true" #dt1></owl-date-time>
@@ -46,7 +46,7 @@
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Choose an end date</mat-label>
-                                <input [min]="today" [owlDateTimeTrigger]="dt2" formControlName="endDate"
+                                <input [min]="startDate?.value ? startDate?.value : today " [owlDateTimeTrigger]="dt2" formControlName="endDate"
                                     matInput [owlDateTime]="dt2" placeholder="End" readonly
                                     (dateTimeChange)="onDateSelected($event)" [max]="maxDate">
                                 <owl-date-time [hour12Timer]="true" #dt2></owl-date-time>

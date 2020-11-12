@@ -32,6 +32,8 @@ export class AddEventComponent implements OnInit {
   eventNameMaxlength = VALIDATION_CRITERIA.eventNameMaxlength;
   priceMaxLength = VALIDATION_CRITERIA.priceMaxLength;
   maxDate: Date;
+  minStartDate: Date;
+  minEndDate: Date;
   constructor(
     private $fb: FormBuilder,
     private $service: EventService,
@@ -256,10 +258,10 @@ export class AddEventComponent implements OnInit {
       const startDate = new Date(event.value).setSeconds(0);
       const endDate = new Date(this.endDate.value).setSeconds(0);
       if (endDate - startDate !== 1800000) {
-        console.log('paap h');
+        // console.log('paap h');
         this.endDate.setValue(null);
+       }
 
-      }
 
       console.log(new Date(startDate));
 
