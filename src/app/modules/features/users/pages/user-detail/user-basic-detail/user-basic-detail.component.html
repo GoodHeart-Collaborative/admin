@@ -57,12 +57,12 @@
                         <div class="col-md-4">
                             <p class="label">Total Report</p>
                             <!-- <p class="value">{{userDetails?.reportCount || 0}}</p> -->
-                            <a   (click)="onReportProblem(userDetails?.postId, userDetails?.reportCount)" [ngClass]="{'color-black': !userDetails?.reportCount , 'erroneous': userDetails?.reportCount <= 10}">
+                            <a   (click)="onReportProblem(userDetails?._id, userDetails?.reportCount)" [ngClass]="{'color-black': !userDetails?.reportCount , 'erroneous': userDetails?.reportCount <= 10}">
                                 {{ userDetails?.reportCount || 0}}
                             </a>
                 
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4" *ngIf="userDetails?.industryType">
                             <p class="label">Industry</p>
                             <p class="value">{{ industry[userDetails?.industryType]  || 'None'}}</p>
                         </div>

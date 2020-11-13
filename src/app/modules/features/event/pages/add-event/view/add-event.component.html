@@ -79,7 +79,7 @@
                                 <mat-label>Price</mat-label>
                                 <input matInput placeholder="Price" appWhiteSpace formControlName="price" 
                                  id="eventPrice" (input)="keypressTest($event, 6, 'eventPrice')"
-                                 numeric >
+                                 numeric decimals=2 >
                                     <!-- numeric decimals=2  [maxlength]="priceMaxLength"  numeric="2" -->
                                 <mat-error>{{form('price') |validate:' Price' }}</mat-error>
                             </mat-form-field>

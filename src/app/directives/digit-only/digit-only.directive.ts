@@ -27,14 +27,17 @@ export class DigitOnlyDirective {
       (e.keyCode === 67 && e.metaKey === true) || // Cmd+C (Mac)
       (e.keyCode === 86 && e.metaKey === true) || // Cmd+V (Mac)
       (e.keyCode === 88 && e.metaKey === true) || // Cmd+X (Mac)
-      (e.keyCode >= 35 && e.keyCode <= 39) // Home, End, Left, Right
+      (e.keyCode >= 35 && e.keyCode <= 39) ||// Home, End, Left, Right
+      (e.keyCode == 190 && e.metaKey === true) ||
+      (e.keyCode == 110 && e.metaKey === true) 
+      // Home, End, Left, Right
     ) {
       return; // let it happen, don't do anything
     }
     // Ensure that it is a number and stop the keypress
     if (
       (e.shiftKey || e.keyCode < 48 || e.keyCode > 57) &&
-      (e.keyCode < 96 || e.keyCode > 105)
+      (e.keyCode < 96 || e.keyCode > 105 )
     ) {
       e.preventDefault();
     }
