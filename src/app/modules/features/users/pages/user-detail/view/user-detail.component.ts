@@ -33,7 +33,6 @@ export class UserDetailComponent implements OnInit {
   ) {
     this.userDetails = this.$router.snapshot.data.UserDetails;
     console.log(this.userDetails);
-    
     this.$breadcrumb.replace(this.userDetails._id, `${this.userDetails['firstName']}  ${this.userDetails['lastName']}`);
   }
   ngOnInit() {
