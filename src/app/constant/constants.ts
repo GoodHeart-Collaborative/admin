@@ -38,3 +38,42 @@ export const USER_SUBSCRIPTION_PLAN = {
 	}
 }
 
+
+export const REPORT_MESSAGE = {
+    Explicit_photos: {
+        reason: "Explicit photos",
+        id: 1
+    },
+    Offensive_content: {
+        reason: "Offensive content",
+        id: 2
+    },
+    Impostor_accounts: {
+        reason: "Impostor accounts",
+        id: 3
+    },
+    Other: {
+        reason: "Other",
+        id: 4
+    },
+	 PretendingToBeSomeOne: {
+        reason: "Pretending to be Someone",
+        id: 10
+    },
+    FAKE_ACCOUNT: {
+        reason: "Fake account",
+        id: 11
+    },
+    FAKE_NAME: {
+        reason: "Fake name",
+        id: 12
+    },
+    POSTING_IN_APPROPRIATE_THINGS: {
+        reason: "Posting in appropriate things",
+        id: 13
+    },
+    SOMETHING_ELSE: {
+        reason: "Other",
+        id: 14
+    }
+}

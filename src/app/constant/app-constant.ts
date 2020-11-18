@@ -55,7 +55,14 @@ export const REPORT_MESSAGE = {
  [1]: 'Explicit photos',
  [2]: 'Offensive content',
  [3]: 'Impostor accounts',
- [4]: 'Other',
+
+//  [4]: 'Other',
+ [10]: 'Pretending to be Someone',
+ [11]: 'Fake account',
+ [12]: 'Fake name',
+ [13]: 'Posting in appropriate things',
+ [14]: 'Other',
+
 }
 
 
