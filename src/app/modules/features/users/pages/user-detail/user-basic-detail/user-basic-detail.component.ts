@@ -43,7 +43,7 @@ export class UserBasicDetailComponent implements OnInit {
           const params = {
             status: isDelete ? 'deleted' : (this.userDetails.status === 'blocked' ? 'active' : 'blocked')
           };
-          this.$userService.onVerifiedHnadler(this.userDetails.id, params).then((res) => {
+          this.$userService.onVerifiedHnadler(this.userDetails._id, params).then((res) => {
             this.$utility.success(res.message);
             if (isDelete) {
               this.$router.navigate([USER.fullUrl]);

@@ -96,12 +96,15 @@
                         <button class="btn " mat-stroked-button
                             *ngIf="(userDetails?.adminStatus == 'rejected' ) || (userDetails?.adminStatus == 'pending')"
                             (click)="onverifyHandler(userDetails?._id, 'verified')">Verify </button>
+
                         <button class="btn btn-delete" mat-stroked-button
                             *ngIf="(userDetails?.adminStatus == 'verified') || (userDetails?.adminStatus == 'pending')"
                             (click)="onverifyHandler(userDetails?._id, 'rejected')">Reject </button>
+
                         <button class="btn btn-delete" mat-stroked-button (click)="onBlockUSer()"
                             [class.btn-green]="userDetails?.status != 'active' ">
                             {{userDetails?.status === 'active' ? 'Block' : 'Unblock'}}  </button>
+                            
                         <button class="btn btn-delete" mat-stroked-button (click)="onBlockUSer(true)">Delete
                             </button>
                     </div>  

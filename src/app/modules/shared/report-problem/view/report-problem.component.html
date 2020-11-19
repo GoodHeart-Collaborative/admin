@@ -11,7 +11,7 @@
                         <img alt="Profile"
                             [src]="item?.userData?.profilePicUrl[0] |customImage:'IMAGE_PLACEHOLDER'|async">
                     </div>
-                    <div class="textual-cover">
+                    <div class="textual-cover" [class.action-blocked]="item?.status =='blocked'">
                         <h4>
                             <span class="user-name">{{item?.userData?.firstName}} {{item?.userData?.lastName}}</span>
                             <p class="comment-time">{{item?.createdAt | time}}</p>

@@ -149,7 +149,7 @@ export class AddEventComponent implements OnInit {
     }
 
     if (!this.eventDetails && this.form('startDate').value && Date.now() > new Date(this.form('startDate').value).getTime()) {
-      this.$utility.errorAlert('Start date must be greater than current time');
+      this.$utility.errorAlert('Start time must be greater than current time');
       // this.form('startDate').reset(null);
       return;
     }
