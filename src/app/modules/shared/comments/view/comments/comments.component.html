@@ -11,7 +11,7 @@
                         <div class="img-cover">
                             <img [src]="item?.users?.profilePicUrl[0] |customImage:'USER'|async" alt="Profile">
                         </div>
-                        <div class="textual-cover">
+                        <div class="textual-cover" [class.action-blocked]="item?.users?.status =='blocked' || item?.users?.status =='deleted'">
                             <h4><span
                                     title="{{item?.users?.firstName || 'String' }} {{item?.users?.lastName || '' }}">{{item?.users?.firstName || 'String' }}
                                     {{item?.users?.lastName || '' }}</span>
@@ -34,7 +34,7 @@
                                 <mat-icon>more_vert</mat-icon>
                             </button>
                             <mat-menu #menu="matMenu" class="card_menu">
-                                <button mat-menu-item (click)="seeProfile(item?.users?._id)">
+                                <button mat-menu-item (click)="seeProfile(item?.users?._id)" [disabled]="item?.users?.status =='deleted'">
                                     See Profile
                                 </button>
                             </mat-menu>
@@ -47,7 +47,7 @@
                                 <div class="img-cover">
                                     <img [src]="reply?.users?.profilePicUrl[0] |customImage:'USER'|async" alt="Profile">
                                 </div>
-                                <div class="textual-cover">
+                                <div class="textual-cover" [class.action-blocked]="reply?.users?.status =='blocked' || reply?.users?.status =='deleted'">
                                     <h4>{{reply?.users?.firstName }} {{reply?.users?.lastName || '' }}
                                         <p class="comment-time">{{reply?.createdAt | time}}</p>
                                     </h4>
@@ -61,7 +61,7 @@
                                         <mat-icon>more_vert</mat-icon>
                                     </button>
                                     <mat-menu #menu="matMenu" class="card_menu">
-                                        <button mat-menu-item>
+                                        <button mat-menu-item [disabled]="reply?.users?.status =='deleted'">
                                             See Profile
                                         </button>
                                     </mat-menu>
