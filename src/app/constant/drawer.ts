@@ -80,7 +80,7 @@ export const PROFESSION = [
     { value: 'CEO', viewValue: 'CEO' },
     { value: 'Executive Director', viewValue: 'Executive Director' },
     { value: 'Managing Director', viewValue: 'Managing Director' },
-    { value: 'Licensed_Counselor', viewValue: 'Licensed_Counselor' },
+    { value: 'Licensed Counselor', viewValue: 'Licensed Counselor' },
     { value: 'Professional Coach', viewValue: 'Professional Coach' },
     { value: 'Consultant', viewValue: 'Consultant' },
     { value: 'Professor', viewValue: 'Professor' },
