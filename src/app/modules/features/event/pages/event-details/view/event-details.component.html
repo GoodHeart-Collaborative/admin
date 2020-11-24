@@ -35,7 +35,8 @@
 
                         <div class="col-md-12" *ngIf="eventDetails?.price">
                             <p class="label">Event Price</p>
-                            <p class="value">${{eventDetails?.price}}</p>
+                            <!-- <p class="value">${{eventDetails?.price}}</p> -->
+                            <p class="value">  {{ eventDetails?.price  ?  ('$' + eventDetails?.price) : 'Free'}}</p>
                         </div>
 
                         <div class="col-md-12" *ngIf="eventDetails?.eventUrl">
