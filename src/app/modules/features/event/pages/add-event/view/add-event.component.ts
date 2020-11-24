@@ -95,7 +95,7 @@ export class AddEventComponent implements OnInit {
       eventCategoryId: [null, Validators.required],
       title: ['', [Validators.maxLength(this.eventNameMaxlength), Validators.required]],
       // privacy: ['', [Validators.required]],
-      price: [null, [Validators.maxLength(this.priceMaxLength), Validators.pattern(PATTERN.price), Validators.required]],
+      price: [null, [Validators.maxLength(this.priceMaxLength), Validators.pattern(PATTERN.price)]],
       eventUrl: ['', [Validators.pattern(PATTERN.url)]],
       description: ['', [Validators.required, Validators.maxLength(this.descriptionMaxLength)]],
       location: [''],
