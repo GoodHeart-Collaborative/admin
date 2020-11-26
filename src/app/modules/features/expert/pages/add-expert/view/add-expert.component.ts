@@ -74,7 +74,7 @@ export class AddExpertComponent implements OnInit {
       name: ['', [Validators.required , Validators.maxLength(this.nameMaxLenght)]],
       email: ['', Validators.compose(this.$formService.VALIDATION.email)],
       profession: ['', Validators.required],
-      industry: [null, Validators.required],
+      industry: ['', [ Validators.required, Validators.maxLength(this.emailMaxLenght)]],
       bio: ['', [Validators.required, Validators.maxLength(this.bioMaxLength)]],
       experience: ['', Validators.required]
     });

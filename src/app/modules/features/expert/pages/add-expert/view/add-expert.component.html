@@ -40,9 +40,11 @@
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Industry</mat-label>
-                                <mat-select formControlName="industry">
+                                <input matInput placeholder="Industry" appWhiteSpace formControlName="industry" #industry [maxlength]="emailMaxLenght">
+                                <mat-hint>{{industry.value.trim().length}}/{{emailMaxLenght}}</mat-hint>
+                                <!-- <mat-select formControlName="industry">
                                     <mat-option *ngFor="let type of industryType" [value]="type?.value">{{type?.viewValue}}</mat-option>
-                                </mat-select>
+                                </mat-select> -->
                                 <mat-error>{{form('industry') |validate:'Industry' }}</mat-error>
                             </mat-form-field>
                         </div>
