@@ -63,7 +63,7 @@ export class ShoutoutsTableDataSource implements Table.Source<User> {
       id: 'status',
       sorting: false,
       // templateBy: 'status'
-      resolve: (row: any) =>  row['isExpired'] ? 'Expired' : '-',
+      resolve: (row: any) =>  row['isExpired'] ? 'Expired' : 'Active',
     },
 
     // {

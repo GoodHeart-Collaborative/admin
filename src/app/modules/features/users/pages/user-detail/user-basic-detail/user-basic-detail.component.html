@@ -57,14 +57,20 @@
                         <div class="col-md-4">
                             <p class="label">Total Report</p>
                             <!-- <p class="value">{{userDetails?.reportCount || 0}}</p> -->
-                            <a   (click)="onReportProblem(userDetails?.postId, userDetails?.reportCount)" [ngClass]="{'color-black': !userDetails?.reportCount , 'erroneous': userDetails?.reportCount <= 10}">
+                            <a   (click)="onReportProblem(userDetails?._id, userDetails?.reportCount)" [ngClass]="{'color-black': !userDetails?.reportCount , 'erroneous': userDetails?.reportCount <= 10}">
                                 {{ userDetails?.reportCount || 0}}
                             </a>
                 
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4" >
                             <p class="label">Industry</p>
-                            <p class="value">{{ industry[userDetails?.industryType]  || 'None'}}</p>
+                            <!-- <p class="value">{{ industry[userDetails?.industryType]  || 'None'}}</p> -->
+                            <p class="value">{{ (userDetails?.industryType | titlecase) || 'None'}}</p>
+                        </div>
+
+                        <div class="col-md-4" >
+                            <p class="label">Company Name</p>
+                            <p class="value">{{ userDetails?.companyName  || 'None'}}</p>
                         </div>
                       
                         <div class="col-md-4" >
@@ -96,12 +102,15 @@
                         <button class="btn " mat-stroked-button
                             *ngIf="(userDetails?.adminStatus == 'rejected' ) || (userDetails?.adminStatus == 'pending')"
                             (click)="onverifyHandler(userDetails?._id, 'verified')">Verify </button>
+
                         <button class="btn btn-delete" mat-stroked-button
                             *ngIf="(userDetails?.adminStatus == 'verified') || (userDetails?.adminStatus == 'pending')"
                             (click)="onverifyHandler(userDetails?._id, 'rejected')">Reject </button>
+
                         <button class="btn btn-delete" mat-stroked-button (click)="onBlockUSer()"
                             [class.btn-green]="userDetails?.status != 'active' ">
                             {{userDetails?.status === 'active' ? 'Block' : 'Unblock'}}  </button>
+                            
                         <button class="btn btn-delete" mat-stroked-button (click)="onBlockUSer(true)">Delete
                             </button>
                     </div>  

@@ -31,6 +31,8 @@ export class CommonService {
   }
 
   async onReportProblemHandler(id: string, type: number) {
+    console.log(id);
+    
     this.params['postId'] = id;
     this.params['type'] = type;
     return this.$http.get(REPORT, this.params).toPromise();

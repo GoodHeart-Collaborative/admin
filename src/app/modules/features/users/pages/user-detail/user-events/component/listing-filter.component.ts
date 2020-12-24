@@ -15,7 +15,7 @@ export class ListingFilterComponent implements OnInit {
     maxFromDate: new Date(),
    };
   filterForm: FormGroup;
-  statusList =statusList;
+  statusList = statusList;
   expiredList = expiredList;
   isProcessing = true;
   constructor(

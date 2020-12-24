@@ -18,6 +18,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_FORMATS } fro
 import { DateTimePipeModule } from 'src/app/pipes/date-time-pipe/date-time-pipe.module';
 import { NumericDecimalModule } from 'src/app/pipes/numeric-decimal/numeric-decimal.module';
 import {  RxReactiveFormsModule } from "@rxweb/reactive-form-validators";
+import { DigitOnlyModule } from 'src/app/directives/digit-only/digit-only.module';
 
 
 const routes: Routes = [
@@ -46,8 +47,9 @@ const routes: Routes = [
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
     DateTimePipeModule,
-    NumericDecimalModule,
-    RxReactiveFormsModule
+    DigitOnlyModule,
+    RxReactiveFormsModule,
+    NumericDecimalModule
   ],
   providers : [
       // {provide: OWL_DATE_TIME_FORMATS, useValue: MY_CUSTOM_FORMATS},

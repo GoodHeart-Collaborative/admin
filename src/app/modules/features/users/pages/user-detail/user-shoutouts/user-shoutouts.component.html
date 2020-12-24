@@ -4,9 +4,10 @@
         {{ shoutouts?.createdAt |customDate}}
     </ng-template>
 
-    <!-- <ng-template appFor="status" let-shoutouts="row">
-        {{( shoutouts?.status  | titlecase) || 'Active'}}
-    </ng-template> -->
+   
+    <ng-template appFor="status" let-data="row" >
+        <p [class.status_expired]="data?.isExpired">{{data?.isExpired ? 'Expired' : 'Active'}}</p>
+     </ng-template>
 
     <ng-template appFor="privacy" let-shoutouts="row">
         {{ shoutouts?.privacy | titlecase}}

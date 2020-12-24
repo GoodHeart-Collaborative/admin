@@ -3,9 +3,13 @@
         {{ category?.createdAt |customDate}}
     </ng-template>
 
-    <ng-template appFor="status" let-category="row">
+    <!-- <ng-template appFor="status" let-category="row">
         {{ category?.status | titlecase}}
-    </ng-template>
+    </ng-template> -->
+
+    <ng-template appFor="status" let-data="row" >
+        <p [class.status_expired]="data?.isExpired">{{data?.isExpired ? 'Expired' : (data?.status | titlecase)}}</p>
+     </ng-template>
 
     <ng-template appFor="title" let-category="row">
         <a (click)="onEventHandler(category?._id)" >

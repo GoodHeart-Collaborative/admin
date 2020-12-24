@@ -10,7 +10,7 @@
                     <div class="img-cover">
                         <img [src]="item?.user?.profilePicUrl[0] |customImage:'USER'|async" alt="Profile" (click)="onViewPic(item?.user?.profilePicUrl[0])">
                     </div>
-                    <div class="textual-cover">
+                    <div class="textual-cover" [class.action-blocked]="item?.user?.status =='blocked' || item?.user?.status =='deleted'" >
                         <h4><span title="{{item?.user?.name}}">{{item?.user?.firstName}} {{item?.user?.lastName}}</span>
                             <p class="comment-time">{{item?.createdAt | time}}</p>
                         </h4>
@@ -20,7 +20,7 @@
                             <mat-icon>more_vert</mat-icon>
                         </button>
                         <mat-menu #menu="matMenu" class="card_menu">
-                            <button mat-menu-item (click)="onSeeProfile(item?.user?._id)">
+                            <button mat-menu-item (click)="onSeeProfile(item?.user?._id)" [disabled]="item?.user?.status =='deleted'">
                                 See Profile
                             </button>
                         </mat-menu>

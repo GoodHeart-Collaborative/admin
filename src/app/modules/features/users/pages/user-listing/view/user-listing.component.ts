@@ -228,6 +228,8 @@ export class UserListingComponent implements OnInit {
   }
 
   onReportProblem(id: string, count: number, type = REPORT_TYPE.USER) {
+    console.log(id);
+    
     if (!count) {
       return;
     }

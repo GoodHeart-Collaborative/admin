@@ -173,7 +173,7 @@ export class AddDailyUnicormHumourComponent implements OnInit {
       return;
     }
     if (this.isPostLater.value) {
-      body.postedAt = new Date(this.unicornForm.get('postedAt').value).toString();
+      body.postedAt = new Date(this.unicornForm.get('postedAt').value).getTime();
     }
 
     getTrimmed(body);

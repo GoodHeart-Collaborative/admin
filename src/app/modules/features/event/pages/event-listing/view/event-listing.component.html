@@ -15,6 +15,10 @@
         <p [class.status_expired]="data?.isExpired">{{data?.isExpired ? 'Expired' : (data?.status | titlecase)}}</p>
      </ng-template>
  
+     <ng-template appFor="price" let-data="row">
+         {{ data?.price  ?  ('$' + data?.price) : 'Free'}}
+     </ng-template>
+
      <ng-template appFor="description" let-data="row">
          {{ data?.description | titlecase}}
      </ng-template>

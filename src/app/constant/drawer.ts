@@ -80,6 +80,12 @@ export const PROFESSION = [
     { value: 'CEO', viewValue: 'CEO' },
     { value: 'Executive Director', viewValue: 'Executive Director' },
     { value: 'Managing Director', viewValue: 'Managing Director' },
+    { value: 'Licensed Counselor', viewValue: 'Licensed Counselor' },
+    { value: 'Professional Coach', viewValue: 'Professional Coach' },
+    { value: 'Consultant', viewValue: 'Consultant' },
+    { value: 'Professor', viewValue: 'Professor' },
+    { value: 'Professional Trainer', viewValue: 'Professional Trainer' },
+    { value: 'Director', viewValue: 'Director' }
 
 ];
 
@@ -142,6 +148,7 @@ export const statusList = [
 ];
 export const expiredList = [
     { view: 'Expired', value: true },
+    // { view: 'Active', value: 'active' },
     // { view: 'Blocked', value: 'blocked' },
 ];
 

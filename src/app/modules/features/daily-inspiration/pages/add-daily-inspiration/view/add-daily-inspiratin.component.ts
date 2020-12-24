@@ -171,7 +171,7 @@ export class AddDailyInspiratinComponent implements OnInit {
       return;
     }
     if (this.isPostLater.value) {
-      body.postedAt = new Date(this.inspirationForm.get('postedAt').value).toString();
+      body.postedAt = new Date(this.inspirationForm.get('postedAt').value).getTime();
     }
     getTrimmed(body);
     this.inspirationForm.disable();

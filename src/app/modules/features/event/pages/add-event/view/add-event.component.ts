@@ -9,7 +9,7 @@ import { VALIDATION_CRITERIA } from 'src/app/constant/validation-criteria';
 import { EVENTS } from 'src/app/constant/routes';
 import { FileUploadService } from 'src/app/modules/shared/services/file-upload.service';
 import { requiredProfilePic } from 'src/app/constant/messages';
-import { PRAVICY, EVENT_CATEGORY } from 'src/app/constant/drawer';
+import { PRAVICY } from 'src/app/constant/drawer';
 import { PATTERN } from 'src/app/constant/patterns';
 import { CATEGORY_TYPE } from 'src/app/constant/app-constant';
 
@@ -32,6 +32,8 @@ export class AddEventComponent implements OnInit {
   eventNameMaxlength = VALIDATION_CRITERIA.eventNameMaxlength;
   priceMaxLength = VALIDATION_CRITERIA.priceMaxLength;
   maxDate: Date;
+  minStartDate: Date;
+  minEndDate: Date;
   constructor(
     private $fb: FormBuilder,
     private $service: EventService,
@@ -93,7 +95,7 @@ export class AddEventComponent implements OnInit {
       eventCategoryId: [null, Validators.required],
       title: ['', [Validators.maxLength(this.eventNameMaxlength), Validators.required]],
       // privacy: ['', [Validators.required]],
-      price: [null, [Validators.maxLength(this.priceMaxLength), Validators.pattern(PATTERN.price), Validators.required]],
+      price: [null, [Validators.maxLength(this.priceMaxLength), Validators.pattern(PATTERN.price)]],
       eventUrl: ['', [Validators.pattern(PATTERN.url)]],
       description: ['', [Validators.required, Validators.maxLength(this.descriptionMaxLength)]],
       location: [''],
@@ -101,7 +103,8 @@ export class AddEventComponent implements OnInit {
       endDate: ['', Validators.required],
       address: ['', Validators.required],
       isFeatured: [0],
-      allowSharing: [0]
+      allowSharing: [0],
+      isEventFree: false
     });
   }
 
@@ -121,6 +124,16 @@ export class AddEventComponent implements OnInit {
   }
 
 
+
+  keypressTest(event, prelength, id: string) {
+    if (event.target.value.split('.').length > 1) {
+      const splitArray = event.target.value.split('.');
+      document.getElementById(id).setAttribute('maxlength', splitArray[0].length + 3);
+    } else {
+      document.getElementById(id).setAttribute('maxlength', prelength);
+    }
+  }
+
   setimageFile(event) {
     if (!event) {
       this.imageFile = null;
@@ -137,7 +150,7 @@ export class AddEventComponent implements OnInit {
     }
 
     if (!this.eventDetails && this.form('startDate').value && Date.now() > new Date(this.form('startDate').value).getTime()) {
-      this.$utility.errorAlert('Start date must be greater than current time');
+      this.$utility.errorAlert('Start time must be greater than current time');
       // this.form('startDate').reset(null);
       return;
     }
@@ -173,6 +186,10 @@ export class AddEventComponent implements OnInit {
 
     body.isFeatured = body.isFeatured ? 1 : 0;
     body.allowSharing = body.allowSharing ? 1 : 0;
+    if (!body.price) {
+        body.isEventFree = true;
+        delete body.price;
+    }
     if (this.eventDetails && this.eventDetails._id) {
       this.$service.edit(this.eventDetails._id, body).then(
         data => {
@@ -246,10 +263,10 @@ export class AddEventComponent implements OnInit {
       const startDate = new Date(event.value).setSeconds(0);
       const endDate = new Date(this.endDate.value).setSeconds(0);
       if (endDate - startDate !== 1800000) {
-        console.log('paap h');
+        // console.log('paap h');
         this.endDate.setValue(null);
-
       }
+
 
       console.log(new Date(startDate));
 

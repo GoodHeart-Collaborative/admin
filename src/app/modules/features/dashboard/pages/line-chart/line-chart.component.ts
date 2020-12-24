@@ -67,7 +67,7 @@ export class LineChartComponent implements OnInit, OnChanges {
         yAxis: {
           min: 0,
           title: {
-            text: 'Converstion Ratio'
+            text: ''
           }
         },
         tooltip: {
@@ -140,7 +140,7 @@ export class LineChartComponent implements OnInit, OnChanges {
 
         yAxis: {
           title: {
-            text: 'Transaction'
+            text: 'Transaction ($)'
           },
           plotLines: [{
             value: 0,
@@ -189,7 +189,7 @@ export class LineChartComponent implements OnInit, OnChanges {
           enabled: false
         },
         title: {
-          text: `£ ${this.monthlyEarning}`,
+          text: `$ ${this.monthlyEarning}`,
           align: 'center',
           verticalAlign: 'middle',
           y: 10,
