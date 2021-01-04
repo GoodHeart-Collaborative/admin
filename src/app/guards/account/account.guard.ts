@@ -30,7 +30,6 @@ export class AccountGuard implements CanActivate, CanLoad {
 
     if (!this._utilityService.getAuthToken()) {
       let token = next.params.token;
-      
       if (token) {
         return true;
         // return this.validateResetPasswordToken(token);

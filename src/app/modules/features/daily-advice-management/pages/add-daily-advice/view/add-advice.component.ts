@@ -43,6 +43,8 @@ export class AddAdviceComponent implements OnInit {
     this.today = new Date(new Date(new Date().setHours(0, 0, 0)).setDate(new Date().getDate() + 1));
     if ($router.snapshot.data.dailyData && $router.snapshot.data.dailyData.data) {
       this.adviceDetails = $router.snapshot.data.dailyData.data;
+      console.log(this.adviceDetails);
+      
       $breadcrumb.replace(this.adviceDetails._id, this.adviceDetails.title);
       // this.today = this.adviceDetails && this.adviceDetails.postedAt 
     }
@@ -106,17 +108,21 @@ export class AddAdviceComponent implements OnInit {
   }
 
   async onSubmit() {
-    if (this.adviceForm.invalid) {
-      this.adviceForm.markAllAsTouched();
-      return;
-    }
-    if (!this.adviceDetails && this.isPostLater.value && this.adviceForm.get('postedAt').value &&
+    console.log(this.adviceForm.value);
+    
+    if (this.adviceForm.invalid || this.adviceForm.disabled) {
+      if ( this.isPostLater.value && this.adviceForm.get('postedAt').value &&
       new Date(this.adviceForm.get('postedAt').value).getTime()
-      < new Date(23, 59, 59, 999).getTime()) {
+      < new Date().setHours(23, 59, 59, 999)) {
       this.$utility.error('Invalid date selected');
       return;
     }
+      this.adviceForm.markAllAsTouched();
+      return;
+    }
+ 
     const body = { ...this.adviceForm.value };
+    this.adviceForm.disable();
     if (this.profileDetail) {
       body.addedBy = this.profileDetail.userId;
     }
@@ -158,6 +164,7 @@ export class AddAdviceComponent implements OnInit {
     }
 
     if (!body.mediaUrl) {
+      this.adviceForm.enable();
       this.$fileUploadService.showAlert(requiredMedia);
       return;
     }
@@ -165,7 +172,7 @@ export class AddAdviceComponent implements OnInit {
       body.postedAt = new Date(this.adviceForm.get('postedAt').value).getTime();
     }
 
-    this.adviceForm.disable();
+  
     if (this.adviceDetails && this.adviceDetails._id) {
       delete body.type;
       delete body.status;

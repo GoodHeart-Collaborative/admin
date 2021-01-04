@@ -114,8 +114,8 @@ export class AddDailyInspiratinComponent implements OnInit {
    * Submit Form
    */
   async onSubmit() {
-    if (this.inspirationForm.invalid) {
-      if (this.inspirationForm.get('postedAt').value && this.isPostLater.value &&
+    if (this.inspirationForm.invalid || this.inspirationForm.disabled) {
+      if (this.inspirationForm.get('postedAt') && this.inspirationForm.get('postedAt').value && this.isPostLater.value &&
         new Date(this.inspirationForm.get('postedAt').value).getTime()
         < new Date().setHours(23, 59, 59, 999)) {
         this.$utility.error('Invalid date selected');
@@ -125,6 +125,7 @@ export class AddDailyInspiratinComponent implements OnInit {
       return;
     }
     const body = { ...this.inspirationForm.value };
+    this.inspirationForm.disable();
     if (this.profileDetail) {
 
       body.addedBy = this.profileDetail.userId;
@@ -167,6 +168,7 @@ export class AddDailyInspiratinComponent implements OnInit {
       }
     }
     if (!body.mediaUrl) {
+      this.inspirationForm.enable();
       this.$fileUploadService.showAlert(requiredMedia);
       return;
     }

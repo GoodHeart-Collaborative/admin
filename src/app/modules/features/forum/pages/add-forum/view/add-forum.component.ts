@@ -110,7 +110,7 @@ export class AddForumComponent implements OnInit {
   }
 
   async onSubmit() {
-    if (this.forumForm.invalid) {
+    if (this.forumForm.invalid || this.forumForm.disabled) {
       this.forumForm.markAllAsTouched();
       return;
     }
@@ -154,6 +154,7 @@ export class AddForumComponent implements OnInit {
     //   this.$fileUploadService.showAlert(requiredMedia);
     //   return;
     // }
+    this.forumForm.disable();
     if (this.imageFile) {
       const data: any = await this.$fileUploadService.uploadFile(this.imageFile);
       this.profilePicURL = data.Location;

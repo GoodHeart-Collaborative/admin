@@ -110,20 +110,23 @@ export class AddExpertComponent implements OnInit {
   }
 
   async onSubmit() {
-    if (this.expertForm.invalid) {
+    if (this.expertForm.invalid || this.expertForm.disabled) {
       this.expertForm.markAllAsTouched();
       return;
     }
+    this.expertForm.disable();
     if (this.imageFile) {
       let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
       this.profilePicURL = data.Location;
     }
     if (!this.profilePicURL) {
+      this.expertForm.enable();
       this.$fileUploadService.showAlert('Image is required');
       return;
     }
     let body = { profilePicUrl: [this.profilePicURL], ...this.expertForm.value };
     if (this.details && this.details._id) {
+      delete body.email;
       this.$service.edit(this.details._id, body).then(
         data => {
           this.expertForm.enable();

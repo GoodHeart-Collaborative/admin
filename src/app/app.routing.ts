@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccountGuard } from './guards/account/account.guard';
 import { HomeGuard } from './guards/home/home.guard';
-import { ADMIN, ACCOUNT , CONTENT,SETTINGS , LINK_EXPIRED} from './constant/routes';
+import { ADMIN, ACCOUNT , CONTENT, SETTINGS , LINK_EXPIRED} from './constant/routes';
 import { LinkExpiredComponent } from './modules/shared/link-expired/link-expired.component';
 
 const appRoutes: Routes = [

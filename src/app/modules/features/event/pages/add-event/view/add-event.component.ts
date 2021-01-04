@@ -144,12 +144,13 @@ export class AddEventComponent implements OnInit {
   }
 
   async onSubmit() {
-    if (this.eventForm.invalid) {
+    if (this.eventForm.invalid || this.eventForm.disabled) {
       this.eventForm.markAllAsTouched();
       return;
     }
-
+    this.eventForm.disable();
     if (!this.eventDetails && this.form('startDate').value && Date.now() > new Date(this.form('startDate').value).getTime()) {
+      this.eventForm.enable();
       this.$utility.errorAlert('Start time must be greater than current time');
       // this.form('startDate').reset(null);
       return;
@@ -159,6 +160,7 @@ export class AddEventComponent implements OnInit {
       this.profilePicURL = data.Location;
     }
     if (!this.profilePicURL) {
+      this.eventForm.enable();
       this.$fileUploadService.showAlert(requiredProfilePic);
       return;
     }
@@ -187,8 +189,8 @@ export class AddEventComponent implements OnInit {
     body.isFeatured = body.isFeatured ? 1 : 0;
     body.allowSharing = body.allowSharing ? 1 : 0;
     if (!body.price) {
-        body.isEventFree = true;
-        delete body.price;
+      body.isEventFree = true;
+      delete body.price;
     }
     if (this.eventDetails && this.eventDetails._id) {
       this.$service.edit(this.eventDetails._id, body).then(

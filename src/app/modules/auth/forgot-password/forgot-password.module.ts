@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ForgotPasswordService } from './service/forgot-password.service';
 import { ValidationErrorPipeModule } from '../../../pipes/validation-error/validation-error-pipe.module';
+import { WhiteSpaceModule } from '../../shared/white-space/white-space.module';
 
 const routes: Routes = [
   {path: '', component: ForgotPasswordComponent,canActivate:[AccountGuard] }
@@ -26,7 +27,8 @@ const routes: Routes = [
     MatIconModule,
     MatInputModule,
     ReactiveFormsModule,
-    ValidationErrorPipeModule
+    ValidationErrorPipeModule,
+    WhiteSpaceModule
   ],
   declarations: [ForgotPasswordComponent],
   providers:[ForgotPasswordService]

@@ -19,7 +19,6 @@ export class HomeGuard implements CanActivate,CanLoad {
       return true;
     }
     return this.navigate();
-    
   }
   
   canLoad(route: Route): Observable<boolean>|Promise<boolean>|boolean {

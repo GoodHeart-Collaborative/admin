@@ -81,10 +81,11 @@ export class AddEventCategoryComponent implements OnInit {
   }
 
   async onSubmit() {
-    if (this.categoryForm.invalid) {
+    if (this.categoryForm.invalid || this.categoryForm.disabled) {
       this.categoryForm.markAllAsTouched();
       return;
     }
+    this.categoryForm.disable();
     this.$confirmBox.confirmCategoryAction(this.title.value)
       .subscribe(async (confirm) => {
         if (!confirm) {
@@ -95,6 +96,7 @@ export class AddEventCategoryComponent implements OnInit {
           this.profilePicURL = data.Location;
         }
         if (!this.profilePicURL) {
+          this.categoryForm.enable();
           this.$fileUploadService.showAlert(categoryRequiredProfilePic);
           return;
         }

@@ -15,8 +15,6 @@ export class ContentManagementComponent implements OnInit {
     contentTabs = [
         { tabName: 'Privacy Policy' },
         { tabName: 'Terms and Conditions' },
-        // { tabName: 'FAQ' },
-        // { tabName: 'Contact Us' },
         { tabName: 'About Us' },
     ];
     selectedTab: any = 0;
@@ -26,7 +24,8 @@ export class ContentManagementComponent implements OnInit {
         private activatedRoute: ActivatedRoute,
         private router: Router,
         private $http: ContentService,
-        private $popUp: UtilityService) {
+        private $popUp: UtilityService
+        ) {
     }
 
     ngOnInit() {
@@ -73,16 +72,6 @@ export class ContentManagementComponent implements OnInit {
             this.content = this.data;
         }
     }
-
-    // onAddContent(event) {
-    //     const data = {
-    //         title: this.data.data.title,
-    //         description: event.content,
-    //         type: this.data.data.type
-    //     };
-    //     this.$http.onAddContentHnadler(data).then(res => {
-    //     });
-    // }
 
     onEditContent(event) {
         if (!this.getDescription(event.content)) {

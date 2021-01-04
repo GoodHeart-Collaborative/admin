@@ -145,10 +145,11 @@ export class AddExpertContentComponent implements OnInit {
 
 
   async onSubmit() {
-    if (this.expertContentForm.invalid) {
+    if (this.expertContentForm.invalid  || this.expertContentForm.disabled) {
       this.expertContentForm.markAllAsTouched();
       return;
     }
+    this.expertContentForm.disable();
     let body = { ...this.expertContentForm.value };
     if (this.imageFile) {
       if (this.imageFile && this.imageFile.type == 1) {
@@ -176,6 +177,7 @@ export class AddExpertContentComponent implements OnInit {
       }
     }
     if (!body.mediaUrl) {
+      this.expertContentForm.enable();
       this.$fileUploadService.showAlert(requiredMedia);
       return;
     }

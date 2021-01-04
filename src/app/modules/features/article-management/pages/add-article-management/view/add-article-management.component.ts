@@ -74,7 +74,7 @@ export class AddArticleManagementComponent implements OnInit {
   }
 
   async onSubmit() {
-    if (this.articleForm.invalid) {
+    if (this.articleForm.invalid || this.articleForm.disabled) {
       this.articleForm.markAllAsTouched();
       return;
     }
@@ -82,8 +82,8 @@ export class AddArticleManagementComponent implements OnInit {
       let data: any = await this.$fileUploadService.uploadFile(this.imageFile);
       this.profilePicURL = data.Location;
     }
-    const body = { imageUrl: this.profilePicURL, ...this.articleForm.value };
     this.articleForm.disable();
+    const body = { imageUrl: this.profilePicURL, ...this.articleForm.value };
     getTrimmed(body);
     if (this.articleDetails && this.articleDetails._id) {
       body.status = this.articleDetails.status;

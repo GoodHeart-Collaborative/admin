@@ -117,17 +117,26 @@ export class AddDailyUnicormHumourComponent implements OnInit {
    * Submit Form
    */
   async onSubmit() {
-    if (this.unicornForm.invalid) {
-      if (this.unicornForm.get('postedAt').value && this.isPostLater.value &&
-        new Date(this.unicornForm.get('postedAt').value).getTime()
-        < new Date(23, 59, 59, 999).getTime()) {
-        this.$utility.error('Invalid date selected');
+    console.log(this.unicornForm);
+    
 
-      }
+    if (this.unicornForm.invalid || this.unicornForm.disabled) {
+      if (this.unicornForm.get('postedAt') && this.unicornForm.get('postedAt').value && this.isPostLater.value &&
+      new Date(this.unicornForm.get('postedAt').value).getTime()
+      < new Date().setHours(23, 59, 59, 999)) {
+        debugger;
+      this.$utility.error('Invalid date selected');
+  
+    }
+   
       this.unicornForm.markAllAsTouched();
       return;
     }
+ 
     const body = { ...this.unicornForm.value };
+    console.log(body, 'sssssssssssssssssssssssssss');
+    this.unicornForm.disable();
+    
     if (this.profileDetail) {
 
       body.addedBy = this.profileDetail.userId;
@@ -169,6 +178,7 @@ export class AddDailyUnicormHumourComponent implements OnInit {
       }
     }
     if (!body.mediaUrl) {
+      this.unicornForm.enable();
       this.$fileUploadService.showAlert(requiredMedia);
       return;
     }
@@ -176,8 +186,9 @@ export class AddDailyUnicormHumourComponent implements OnInit {
       body.postedAt = new Date(this.unicornForm.get('postedAt').value).getTime();
     }
 
+    console.log(body);
     getTrimmed(body);
-    this.unicornForm.disable();
+    
     if (this.unicornDetails && this.unicornDetails._id) {
       delete body.type;
       this.$daily.editCategory(this.unicornDetails._id, body).then(

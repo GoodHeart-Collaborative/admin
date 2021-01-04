@@ -78,10 +78,11 @@ export class AddCategoryManagementComponent implements OnInit {
   }
 
   async onSubmit() {
-    if (this.categoryForm.invalid) {
+    if (this.categoryForm.invalid || this.categoryForm.disabled) {
       this.categoryForm.markAllAsTouched();
       return;
     }
+    this.categoryForm.disable();
     this.$confirmBox.confirmCategoryAction(this.title.value)
       .subscribe(async (confirm) => {
         if (!confirm) {
@@ -92,13 +93,13 @@ export class AddCategoryManagementComponent implements OnInit {
           this.profilePicURL = data.Location;
         }
         if (!this.profilePicURL) {
+          this.categoryForm.enable();
           this.$fileUploadService.showAlert(categoryRequiredProfilePic);
           return;
         }
         let body = { imageUrl: this.profilePicURL, ...this.categoryForm.value };
         console.log(body);
         
-        this.categoryForm.disable();
         if (this.categoryId) {
           this.$category.editCategory(this.categoryId, body).then(
             data => {

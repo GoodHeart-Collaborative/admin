@@ -56,7 +56,7 @@ export class AddNotificationComponent implements OnInit {
   }
 
   async onSubmit() {
-    if (this.notificationForm.invalid ) {
+    if (this.notificationForm.invalid  || this.notificationForm.disabled) {
       this.notificationForm.markAllAsTouched();
       return;
     }
@@ -69,8 +69,8 @@ export class AddNotificationComponent implements OnInit {
     //   return;
     // }
     // let body = { image: this.profilePicURL, ...this.notificationForm.value };
+    this.notificationForm.disable();
     let body = { ...this.notificationForm.value };
-
     this.$service.add(body).then(
       data => {
         this.notificationForm.enable();
