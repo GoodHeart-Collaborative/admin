@@ -1,9 +1,3 @@
-<!-- <ng-template ngFor let-step [ngForOf]="routeSteps" let-i="index">
-  <mat-icon style="color: #AAA" *ngIf="i > 0">chevron_right</mat-icon>
-  <a href="javascript:void(0)" [routerLink]="step.url" routerLinkActive="disabled"
-    [routerLinkActiveOptions]="{exact: true }" class="breadcrumb-link border-link text--primary">{{step.label}}</a> -->
-
-
 <ul class="breadcrumb">
   <li *ngFor="let step of routeSteps; let i = index">
     <a [ngClass]="{chevron: i > 1}" [routerLink]="step.url" routerLinkActive="disabled" title="{{step.label}}"
