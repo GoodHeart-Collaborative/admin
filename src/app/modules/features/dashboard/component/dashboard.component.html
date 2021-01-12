@@ -50,7 +50,7 @@
                                           </div>
                                           <div class="this-year-stat">
                                                 <p>Current year</p>
-                                                <h3>{{data?.currentYearUserCount  ? data?.currentYearUserCount  : 0}}
+                                                <h3>{{data?.currentYearUserCount ? data?.currentYearUserCount : 0}}
                                                 </h3>
                                                 <!-- <h3>{{currentYearUser  || 0}}%</h3> -->
                                           </div>
@@ -107,7 +107,7 @@
                               </div>
                               <div class="conversion-ratio-content">
                                     <p>This month conversion ratio</p>
-                                    <h3>{{convesrionRatio ?  convesrionRatio : 0}}%</h3>
+                                    <h3>{{convesrionRatio ? convesrionRatio : 0}}%</h3>
                               </div>
                         </div>
                   </div>
@@ -171,10 +171,11 @@
                                                       <td>{{industry[item?.industryType]|| 'dummy data'}}</td>
                                                       <td>{{item?.memberCreatedAt | customDate}}</td>
                                                 </tr>
-                                                <div *ngIf="!memberList">No Data</div>
+
                                           </tbody>
 
                                     </table>
+                                    <div class="no_leader_found" *ngIf="!memberList">No Data</div>
                               </div>
                         </div>
                   </div>
