@@ -24,13 +24,13 @@ export class AddEventComponent implements OnInit {
   profilePicURL: any;
   privacyData = PRAVICY;
   eventCategory = [];
-  today = new Date();
   location: {};
   eventDetails: any;
   address: any;
   descriptionMaxLength = VALIDATION_CRITERIA.eventDescriptionMaxLength;
   eventNameMaxlength = VALIDATION_CRITERIA.eventNameMaxlength;
   priceMaxLength = VALIDATION_CRITERIA.priceMaxLength;
+  today = new Date();
   maxDate: Date;
   minStartDate: Date;
   minEndDate: Date;
