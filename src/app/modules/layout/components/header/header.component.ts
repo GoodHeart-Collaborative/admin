@@ -26,7 +26,6 @@ export class HeaderComponent implements OnInit {
   constructor(
     private _utilityService: UtilityService,
     private renderer: Renderer2,
-    private _http: HttpService,
     private $router: Router,
     private _dataService: DataTransferService,
     private matDailog: MatDialog
