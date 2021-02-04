@@ -1,0 +1,28 @@
+version: 0.2
+env:
+  variables:
+    S3_BUCKET: "goodheart-admin"
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12
+  pre_build:
+    commands:
+      - echo Installing source NPM dependencies...
+      - npm install -g @angular/cli@9.1.1
+      - npm install
+  build:
+    commands:
+      - echo Build started on `date`
+      - ng build --prod
+      - echo clear bucket
+  post_build:
+    commands:
+      - aws s3 rm s3://${S3_BUCKET} --recursive
+      - aws s3 cp dist s3://${S3_BUCKET} --recursive
+
+artifacts:
+  files:
+    - "**/*"
+  base-directory: "dist*"
+  discard-paths: yes

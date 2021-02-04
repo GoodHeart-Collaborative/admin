@@ -1,6 +1,7 @@
 export const environment = {
   production: true,
   url: 'http://womencomdevapi.appskeeper.com/v1/',
+  S3_BUCKET: "goodheart-admin",
   tokenKey: 'desknow-admin-token',
   config: {
     AWS_ACCESS_KEY: 'AKIA6DQMUBGGZSBCXSFA',
