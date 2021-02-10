@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  url: 'http://womencomstgapi.appskeeper.com/v1/',
+  url: 'https://api.goodheart.app/v1/',
   tokenKey: 'desknow-admin-token',
   S3_BUCKET: "goodheart-admin",
   config: {
