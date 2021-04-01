@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { INDUSTRY } from 'src/app/constant/drawer';
+import { INDUSTRY, PROFESSION_TYPE } from 'src/app/constant/drawer';
 @Component({
   selector: 'app-expert-basic-details',
   templateUrl: './expert-basic-details.component.html',
@@ -8,6 +8,7 @@ import { INDUSTRY } from 'src/app/constant/drawer';
 export class ExpertBasicDetailsComponent implements OnInit , OnChanges{
 @Input() data:any;
 industry = INDUSTRY;
+profession = PROFESSION_TYPE;
   constructor() { }
 
   ngOnInit() {

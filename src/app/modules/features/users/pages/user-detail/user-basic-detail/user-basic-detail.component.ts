@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { USER } from 'src/app/constant/routes';
 import { MatDialog } from '@angular/material';
 import { SliderComponent } from 'src/app/modules/shared/slider/view/slider.component';
-import { INDUSTRY, REPORT_TYPE } from 'src/app/constant/drawer';
+import { INDUSTRY, REPORT_TYPE , PROFESSION_TYPE} from 'src/app/constant/drawer';
 import { USER_SUBSCRIPTION_PLAN } from 'src/app/constant/constants';
 import { ReportProblemComponent } from 'src/app/modules/shared/report-problem/view/report-problem.component';
 import { CommonService } from 'src/app/modules/shared/services/common.service';
@@ -20,6 +20,7 @@ export class UserBasicDetailComponent implements OnInit {
   @Input() userDetails;
   selectedIndex = 0;
   industry = INDUSTRY;
+  profession = PROFESSION_TYPE;
   subscriptionPlan = USER_SUBSCRIPTION_PLAN;
   constructor(
     private $userService: UsersService,

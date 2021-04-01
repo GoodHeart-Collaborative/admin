@@ -99,9 +99,29 @@ export const PROFESSION = [
     { value: 'Doctor_Nurse_Medical_Staff', viewValue: 'Doctor/Nurse/Medical Staff' },
     { value: 'Teacher_School_Staff', viewValue: 'Teacher/School Staff' },
     { value: 'First_Responder', viewValue: 'First Responder' },
-
-
 ];
+
+export const PROFESSION_TYPE = {
+    ['Founder']: 'Founder',
+    ['CEO']: 'CEO',
+    ['Executive Director']: 'Executive Director',
+    ['Managing Director']: 'Managing Director',
+    ['Licensed Counselor']: 'Licensed Counselor',
+    ['Professional Coach']: 'Professional Coach',
+    ['Consultant']: 'Consultant',
+    ['Professor']: 'Professor',
+    ['Professional Trainer']: 'Professional Trainer',
+    ['Director']: 'Director',
+    ['Manager_Supervisor']: 'Manager/Supervisor',
+    ['Therapist_Counselor']: 'Therapist/Counselor',
+    ['Social_Worker']: 'Social Worker',
+    ['Direct_Care_Staff']: 'Direct Care Staff',
+    ['Caregiver']: 'Caregiver',
+    ['Doctor_Nurse_Medical_Staff']: 'Doctor/Nurse/Medical Staff',
+    ['Teacher_School_Staff']: 'Teacher/School Staff',
+    ['First_Responder']: 'First Responder',
+   
+}
 
 
 export const EXPERT_CONTENT_TYPE = [

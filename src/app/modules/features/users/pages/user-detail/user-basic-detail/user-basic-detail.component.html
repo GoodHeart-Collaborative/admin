@@ -33,7 +33,7 @@
                         <div class="col-md-4">
                             <p class="label">Phone</p>
                             <p class="value phone-value">
-                                +{{userDetails?.countryCode }} {{userDetails?.mobileNo}} <span
+                                +{{userDetails?.countryCode }} {{userDetails?.mobileNo || '-'}} <span
                                     class="material-icons verified-icon"
                                     *ngIf="userDetails?.isMobileVerified">verified_user</span>
                             </p>
@@ -48,7 +48,7 @@
                         </div>
                         <div class="col-md-4">
                             <p class="label">Profession</p>
-                            <p class="value">{{userDetails?.profession || 'None'}}</p>
+                            <p class="value">{{profession[userDetails?.profession] || 'None'}}</p>
                         </div>
                         <div class="col-md-4">
                             <p class="label">Experience</p>
@@ -65,7 +65,7 @@
                         <div class="col-md-4" >
                             <p class="label">Industry</p>
                             <!-- <p class="value">{{ industry[userDetails?.industryType]  || 'None'}}</p> -->
-                            <p class="value">{{ (userDetails?.industryType | titlecase) || 'None'}}</p>
+                            <p class="value">{{ industry[userDetails?.industryType] || 'None'}}</p>
                         </div>
 
                         <div class="col-md-4" >
