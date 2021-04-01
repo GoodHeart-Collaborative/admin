@@ -57,8 +57,11 @@ export const INDUSTRY = {
     [2]: 'Emergency Services',
     [3]: 'Social And Community Services',
     [4]: 'Law Enforcement',
+    [6]: 'Mental Health',
+    [7]: 'Education',
     [5]: 'Healthcare And Community Medical Services'
 };
+
 
 export const INDUSTRY_TYPE = [
     { value: 1, viewValue: 'Nonprofit' },
@@ -66,6 +69,8 @@ export const INDUSTRY_TYPE = [
     { value: 3, viewValue: 'Social And Community Services' },
     { value: 4, viewValue: 'Law Enforcement' },
     { value: 5, viewValue: 'Healthcare And Community Medical Services' },
+    { value: 6, viewValue: 'Mental Health' },
+    { value: 7, viewValue: 'Education' },
 ];
 
 
@@ -85,9 +90,19 @@ export const PROFESSION = [
     { value: 'Consultant', viewValue: 'Consultant' },
     { value: 'Professor', viewValue: 'Professor' },
     { value: 'Professional Trainer', viewValue: 'Professional Trainer' },
-    { value: 'Director', viewValue: 'Director' }
+    { value: 'Director', viewValue: 'Director' },
+    { value: 'Manager_Supervisor', viewValue: 'Manager/Supervisor' },
+    { value: 'Therapist_Counselor', viewValue: 'Therapist/Counselor' },
+    { value: 'Social_Worker', viewValue: 'Social Worker' },
+    { value: 'Direct_Care_Staff', viewValue: 'Direct Care Staff' },
+    { value: 'Caregiver', viewValue: 'Caregiver' },
+    { value: 'Doctor_Nurse_Medical_Staff', viewValue: 'Doctor/Nurse/Medical Staff' },
+    { value: 'Teacher_School_Staff', viewValue: 'Teacher/School Staff' },
+    { value: 'First_Responder', viewValue: 'First Responder' },
+
 
 ];
+
 
 export const EXPERT_CONTENT_TYPE = [
     { value: 2, viewValue: 'Video', disabled: false },

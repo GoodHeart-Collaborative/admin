@@ -40,7 +40,7 @@ export class ImageCropComponent implements OnInit {
       type !== "image/png") {
       this.fileSizeInvalid = true;
       // this.msg = ERROR_MESSAGES.INVAID_MEDIA.image;
-    } else if (size > 1024 * 10) {
+    } else if (size > 1024 * 1000) {
 
       this.fileSizeInvalid = true;
       // this.msg = ERROR_MESSAGES.INVAID_MEDIA.image_size
