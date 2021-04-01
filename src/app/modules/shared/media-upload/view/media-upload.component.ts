@@ -68,10 +68,13 @@ export class MediaUploadComponent implements OnInit {
       }
       // Video Upload
     } catch (err) {
+      console.log(err);
+      
       this.saveEvent.target.value = null;
       if (err.type) {
         this.$upload.showAlert(invalidImageError());
       } else if (err.size) {
+        
         this.$upload.showAlert(invalidFileSize());
       }
     }
@@ -85,6 +88,7 @@ export class MediaUploadComponent implements OnInit {
   checkMediaType(file, event) {
     console.log(file , event);
     if (file.type.split('/')[0] == 'image' && this.checkContentType(1)) {
+      
       this.isImage = true;
     } else if (file.type.split('/')[0].toLowerCase() == 'video' && this.checkContentType(2)) {
       // return 'video';
@@ -124,7 +128,8 @@ export class MediaUploadComponent implements OnInit {
     if (type !== "video/mp4" && type !== "video/x-m4v" &&
       type !== "video/3gpp" && this.file) {
       this.$upload.showAlert(videoFormatFile());
-    } else if (size > 1024 * 1000) {
+    } else if (size > 1024 * 5000) {
+      
       this.$upload.showAlert(videoFileSize());
     } else {
       const reader = new FileReader();

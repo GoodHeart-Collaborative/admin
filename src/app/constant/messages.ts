@@ -30,8 +30,8 @@ export const invalidFileError =
 export const invalidFile = (format ) =>
   ` ${format} type not allowed`;
 
-export const invalidFileSize = (size = 1) =>
-  `File size can not be more than ${size} MB`;
+export const invalidFileSize = (size = 5) =>
+  `File size can not be more than ${size} GB`;
 
 export const COPIED = `Copied shared URL`;
 
@@ -40,7 +40,7 @@ export const categoryRequiredProfilePic = `Category Image is required`;
 export const requiredMedia = `Media is required`;
 export const invalidContentType = 'Invalid content type selected';
 export const videoFormatFile = (format = 'mp4/x-m4v/3gp') =>  `Please select  video ${format} format file.`;
-export const videoFileSize = (size = 1) =>  `File size should not be greater then ${size} gb`;
+export const videoFileSize = (size = 5) =>  `File size should not be greater then ${size} GB`;
 
 
 export const COMMON_MESSAGES = {
