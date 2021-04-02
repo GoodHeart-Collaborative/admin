@@ -11,7 +11,7 @@ import { statusList} from 'src/app/constant/drawer';
 export class DailyUnicornFilterComponent implements OnInit {
 
   dateFilterObject = {
-    label: 'Daily Smiles Date Filter',
+    label: 'Mindful Minute Date Filter',
     maxFromDate: new Date(),
   };
   filterForm: FormGroup;
