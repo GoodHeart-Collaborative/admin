@@ -242,6 +242,8 @@ export class AddEventComponent implements OnInit {
   }
 
   selectLocation(event) {
+    console.log(event);
+    
     this.location = {
       type: "Point",
       coordinates: [

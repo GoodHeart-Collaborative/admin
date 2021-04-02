@@ -10,7 +10,7 @@ import { statusList} from 'src/app/constant/drawer';
 })
 export class DailyInspirationFilterComponent implements OnInit {
   dateFilterObject = {
-    label: 'History to Daily Inspiration  Date Filter',
+    label: 'Daily Inspiration  Date Filter',
     maxFromDate: new Date(),
   };
   filterForm: FormGroup;

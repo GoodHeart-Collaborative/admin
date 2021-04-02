@@ -364,7 +364,7 @@ export const NOTIFICATIONS_DETAIL = {
 
 // DAILY_INSPIRATION ROUTES //
 export const DAILY_INSPIRATION: IRoute = {
-  path: 'history-to-daily-inspiration',
+  path: 'daily-inspiration',
   get fullUrl(): string {
     return `${ADMIN.fullUrl}/${this.path}`;
   }
