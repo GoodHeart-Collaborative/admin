@@ -17,7 +17,7 @@ import { AppDateAdapter, APP_DATE_FORMATS } from 'src/app/constant/format-datepi
 import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
 import { DateTimePipeModule } from 'src/app/pipes/date-time-pipe/date-time-pipe.module';
 import { NumericDecimalModule } from 'src/app/pipes/numeric-decimal/numeric-decimal.module';
-import {  RxReactiveFormsModule } from "@rxweb/reactive-form-validators";
+
 import { DigitOnlyModule } from 'src/app/directives/digit-only/digit-only.module';
 
 
@@ -48,7 +48,7 @@ const routes: Routes = [
     OwlNativeDateTimeModule,
     DateTimePipeModule,
     DigitOnlyModule,
-    RxReactiveFormsModule,
+    ReactiveFormsModule,
     NumericDecimalModule
   ],
   providers : [

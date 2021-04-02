@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 import { SharedModule } from './modules/shared/shared.module';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material';
+import { environment } from 'src/environments/environment';
+import { AgmCoreModule } from '@agm/core';
 export const obj = {
   close : function(){}
 }
@@ -17,7 +19,11 @@ export const obj = {
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
-    MatDialogModule
+    MatDialogModule,
+    AgmCoreModule.forRoot({
+      apiKey: environment.mapsApiKey
+      
+    }),
   ],
   providers: [
     { provide: MatDialogRef, useValue: obj },

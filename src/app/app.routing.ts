@@ -5,6 +5,7 @@ import { HomeGuard } from './guards/home/home.guard';
 import { ADMIN, ACCOUNT , CONTENT, SETTINGS , LINK_EXPIRED} from './constant/routes';
 import { LinkExpiredComponent } from './modules/shared/link-expired/link-expired.component';
 
+
 const appRoutes: Routes = [
   { path: '', redirectTo: ADMIN.path, pathMatch: 'full' },
   {
