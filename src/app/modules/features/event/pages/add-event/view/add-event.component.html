@@ -64,7 +64,10 @@
                                 <mat-error>{{form('privacy') |validate:'Privacy' }}</mat-error>
                             </mat-form-field>
                         </div> -->
-                        
+                        <div class="col-md-6 checkbox-wrapper">
+                            <mat-checkbox color="primary" formControlName="isVirtual" (change)="isVirtualClicked($event)">Is virtual
+                            </mat-checkbox>
+                        </div>
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Event Location</mat-label>
@@ -72,6 +75,16 @@
                                     (onSelect)="selectLocation($event)" autocomplete="off" appGooglePlaces appWhiteSpace>
                                 <mat-error>{{form('address') |validate:'Event Location' }}</mat-error>
 
+                            </mat-form-field>
+                        </div>
+                  
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Website Link</mat-label>
+                                <input matInput placeholder="URL" appWhiteSpace formControlName="eventUrl">
+                                <mat-error>{{form('eventUrl') |validate:'Event Url' }}</mat-error>
                             </mat-form-field>
                         </div>
                         <div class="col-md-6">
@@ -82,15 +95,6 @@
                                  numeric decimals=2 >
                                     <!-- numeric decimals=2  [maxlength]="priceMaxLength"  numeric="2" -->
                                 <mat-error>{{form('price') |validate:' Price' }}</mat-error>
-                            </mat-form-field>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <mat-form-field appearance="outline">
-                                <mat-label>Website Link</mat-label>
-                                <input matInput placeholder="URL" appWhiteSpace formControlName="eventUrl">
-                                <mat-error>{{form('eventUrl') |validate:'Event Url' }}</mat-error>
                             </mat-form-field>
                         </div>
                     </div>

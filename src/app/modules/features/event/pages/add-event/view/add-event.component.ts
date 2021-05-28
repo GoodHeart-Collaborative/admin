@@ -88,6 +88,9 @@ export class AddEventComponent implements OnInit {
         this.eventForm.get('startDate').patchValue(this.eventDetails.startDate);
         //  = this.eventDetails.endDate;
       }
+      if(this.eventDetails.isVirtual){
+        this.form('address').disable();
+      }
     }
   }
   createForm() {
@@ -101,10 +104,11 @@ export class AddEventComponent implements OnInit {
       location: [''],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
-      address: ['', Validators.required],
+      address: [''],
       isFeatured: [0],
       allowSharing: [0],
-      isEventFree: false
+      isEventFree: false,
+      isVirtual: false
     });
   }
 
@@ -176,6 +180,13 @@ export class AddEventComponent implements OnInit {
     if (this.address) {
       body.location = this.location;
       body.address = this.address;
+    } else {
+      delete body.address;
+      delete body.location;
+    }
+    if(!body.isVirtual && !body.address && !body.location){
+      this.$utility.error('Address is required');
+      return
     }
     if (body.endDate) {
       body.endDate = new Date(body.endDate).getTime();
@@ -192,6 +203,7 @@ export class AddEventComponent implements OnInit {
       body.isEventFree = true;
       delete body.price;
     }
+    
     if (this.eventDetails && this.eventDetails._id) {
       this.$service.edit(this.eventDetails._id, body).then(
         data => {
@@ -241,7 +253,20 @@ export class AddEventComponent implements OnInit {
     });
   }
 
-  selectLocation(event) {    
+
+  isVirtualClicked(event) {
+    if (event.checked) {
+      this.form('address').disable();
+      this.form('address').reset();
+      this.location = {};
+      this.address = ''
+    } else {
+      this.form('address').enable();
+
+    }
+  }
+
+  selectLocation(event) {
     this.location = {
       type: "Point",
       coordinates: [
