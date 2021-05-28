@@ -7,10 +7,6 @@ import { UtilityService } from 'src/app/modules/shared/services/utility.service'
 import { ExpertTableDataSource } from '../models/index';
 import * as Table from 'src/app/modules/commonTable/table/interfaces/index';
 export type ActionType = 'deleted' | 'blocked' | 'active';
-import { GlobalService } from 'src/app/services/global/global.service';
-import { EVENT_CATEGORY } from 'src/app/constant/drawer';
-import { ReportProblemComponent } from 'src/app/modules/shared/report-problem/view/report-problem.component';
-import { CommonService } from 'src/app/modules/shared/services/common.service';
 import { MatDialog } from '@angular/material';
 import { ViewFullImageComponent } from 'src/app/modules/shared/view-full-image/view/view-full-image.component';
 @Component({

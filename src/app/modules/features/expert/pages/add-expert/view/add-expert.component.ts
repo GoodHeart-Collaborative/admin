@@ -71,10 +71,10 @@ export class AddExpertComponent implements OnInit {
   createForm() {
     this.expertForm = this.$fb.group({
       categoryId: ['', Validators.required],
-      name: ['', [Validators.required , Validators.maxLength(this.nameMaxLenght)]],
+      name: ['', [Validators.required, Validators.maxLength(this.nameMaxLenght)]],
       email: ['', Validators.compose(this.$formService.VALIDATION.email)],
       profession: ['', Validators.required],
-      industry: ['', [ Validators.required, Validators.maxLength(this.emailMaxLenght)]],
+      industry: ['', [Validators.required, Validators.maxLength(this.emailMaxLenght)]],
       bio: ['', [Validators.required, Validators.maxLength(this.bioMaxLength)]],
       experience: ['', Validators.required]
     });
@@ -96,7 +96,7 @@ export class AddExpertComponent implements OnInit {
       type: CATEGORY_TYPE.OTHER_CATEGORY
     };
     this.$category.queryData(params).then(res => {
-      this.categoryData = res.data['data'].filter(element => element.status != 'blocked' );
+      this.categoryData = res.data['data'].filter(element => element.status != 'blocked');
     });
   }
 
@@ -125,6 +125,10 @@ export class AddExpertComponent implements OnInit {
       return;
     }
     let body = { profilePicUrl: [this.profilePicURL], ...this.expertForm.value };
+    if (body.name) {
+     body.name =  body.name.toLowerCase().replace(/\b(\w)/g, s => s.toUpperCase());
+      }
+    
     if (this.details && this.details._id) {
       delete body.email;
       this.$service.edit(this.details._id, body).then(
