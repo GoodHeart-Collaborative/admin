@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
   profileSubscriber;
   profileDetail;
   flag = true;
-  changePassword = ['/', ...CHANGE_PASSWORD.fullUrl.split('/')];
+  // changePassword = ['/', ...CHANGE_PASSWORD.fullUrl.split('/')];
 
   constructor(
     private _utilityService: UtilityService,

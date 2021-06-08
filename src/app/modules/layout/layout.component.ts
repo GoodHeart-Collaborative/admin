@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, HostListener, OnDestroy } from '@angular/core';
 import { MatSidenav } from '@angular/material';
-import { ActivatedRoute } from '@angular/router';
 import { CommonService } from '../shared/services/common.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
