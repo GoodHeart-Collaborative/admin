@@ -22,8 +22,8 @@ export class LayoutComponent implements OnInit, OnDestroy {
           this.isFlag = flag;
         });
   }
-  ngOnInit() {
-  }
+
+  ngOnInit() { }
 
 
   ngOnDestroy() {

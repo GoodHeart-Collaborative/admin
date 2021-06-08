@@ -7,7 +7,7 @@ export const environment = {
   
     BUCKET_NAME: 'goodheartapp',
     REGION: 'us-west-2',
-    AWS_ACCESS_KEY: "AKIA6DQMUBGGZLL3VB6F",
-    AWS_SECRET_KEY: "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"
+    AWS_ACCESS_KEY: "AKIASLXO7KC323DPIGNM",
+    AWS_SECRET_KEY: "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"
     },
 };
