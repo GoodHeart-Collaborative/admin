@@ -21,10 +21,11 @@ export class ConfirmBoxService {
       message: `Are you sure you want to ${action} this ${entity}?`,
     });
   }
-  confirmCategoryAction(entity: string) {
+
+  confirmCategoryAction(entity: string, add?) {
     return this.open({
       title: `${entity}`,
-      message: `Are you sure you want to create this category?
+      message: `Are you sure you want to ${add} this category?
        You can't change or edit the name of category once it is created.`,
     });
   }

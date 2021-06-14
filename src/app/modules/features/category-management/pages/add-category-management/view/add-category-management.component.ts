@@ -49,10 +49,12 @@ export class AddCategoryManagementComponent implements OnInit {
         this.categoryForm.patchValue({
           title: categoryDetails['title']
         });
+        // this.
         this.profilePicURL = categoryDetails['imageUrl'];
       }
     });
   }
+
   createForm() {
     this.categoryForm = this.$formBuilder.group(
       {
@@ -83,7 +85,7 @@ export class AddCategoryManagementComponent implements OnInit {
       return;
     }
     this.categoryForm.disable();
-    this.$confirmBox.confirmCategoryAction(this.title.value)
+    this.$confirmBox.confirmCategoryAction(this.title.value, this.categoryId ? 'Edit' : 'Create')
       .subscribe(async (confirm) => {
         if (!confirm) {
               return;
