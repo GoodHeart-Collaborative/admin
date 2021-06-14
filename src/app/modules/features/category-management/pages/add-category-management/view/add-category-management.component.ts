@@ -49,7 +49,8 @@ export class AddCategoryManagementComponent implements OnInit {
         this.categoryForm.patchValue({
           title: categoryDetails['title']
         });
-        // this.
+        
+        this.categoryForm.get('title').disable();
         this.profilePicURL = categoryDetails['imageUrl'];
       }
     });
@@ -103,6 +104,10 @@ export class AddCategoryManagementComponent implements OnInit {
         console.log(body);
         
         if (this.categoryId) {
+          if(body.type){
+            delete body.type;
+          }
+          console.log(body);
           this.$category.editCategory(this.categoryId, body).then(
             data => {
               this.categoryForm.enable();

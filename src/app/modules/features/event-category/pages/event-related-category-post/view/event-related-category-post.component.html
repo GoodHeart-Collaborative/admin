@@ -91,7 +91,7 @@
                 <i class="material-icons icon-edit" (click)="oneditHandler(user?._id , user?.endDate, user?.userType)" title="Edit" [class.disabled-icon]="today > user?.endDate || user?.userType == 'user'">
                     edit
                 </i>
-                <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked', user?.endDate )"
+                <!-- <i class="material-icons icon-block" (click)="onActionHandler(user._id, 'blocked', user?.endDate )"
                     *ngIf="user?.status === 'active';else templateAction" title="Block" [class.disabled-icon]="today > user?.endDate ">
                     blocked</i>
                 <ng-template #templateAction>
@@ -103,7 +103,7 @@
                 <i class="material-icons icon-delete" (click)="onActionHandler(user._id, 'deleted',row?.endDate , row?.userType)"
                     title="Delete" [class.disabled-icon]="today > row?.endDate ||  row?.userType== 'user'">
                     delete
-                </i>
+                </i> -->
             </div>
         </ng-template>
     </ng-container>

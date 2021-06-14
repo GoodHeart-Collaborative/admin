@@ -51,6 +51,7 @@ export class AddEventCategoryComponent implements OnInit {
         this.categoryForm.patchValue({
           title: categoryDetails['title']
         });
+        this.categoryForm.get('title').disable();
         this.profilePicURL = categoryDetails['imageUrl'];
       }
     });
@@ -103,6 +104,11 @@ export class AddEventCategoryComponent implements OnInit {
         let body = { imageUrl: this.profilePicURL, ...this.categoryForm.value };
         this.categoryForm.disable();
         if (this.categoryId) {
+          if(body.type){
+            delete body.type;
+          }
+          console.log(body);
+          
           this.$category.editCategory(this.categoryId, body).then(
             data => {
               this.categoryForm.enable();
