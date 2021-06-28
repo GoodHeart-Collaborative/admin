@@ -46,7 +46,7 @@ export class HeaderComponent implements OnInit {
   getProfileDetail() {
     this._dataService.getProfileDetail().subscribe(
       (response: any) => {
-        this.profileDetail = response.data;
+        this.profileDetail = response.data;        
         this._dataService.profileDetail.next(this.profileDetail);
       }, err => {
 

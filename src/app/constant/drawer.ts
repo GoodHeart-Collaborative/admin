@@ -98,7 +98,10 @@ export const PROFESSION = [
     { value: 'Caregiver', viewValue: 'Caregiver' },
     { value: 'Doctor_Nurse_Medical_Staff', viewValue: 'Doctor/Nurse/Medical Staff' },
     { value: 'Teacher_School_Staff', viewValue: 'Teacher/School Staff' },
-    { value: 'First_Responder', viewValue: 'First Responder' },
+    { value: 'Attorney', viewValue: 'Attorney' },
+    { value: 'Lawyer', viewValue: 'Lawyer' },
+    { value: 'Paralegal', viewValue: 'Paralegal' },
+    { value: 'Judge', viewValue: 'Judge' },
 ];
 
 export const PROFESSION_TYPE = {
@@ -120,6 +123,10 @@ export const PROFESSION_TYPE = {
     ['Doctor_Nurse_Medical_Staff']: 'Doctor/Nurse/Medical Staff',
     ['Teacher_School_Staff']: 'Teacher/School Staff',
     ['First_Responder']: 'First Responder',
+    ['Attorney']: 'Attorney',
+    ['Lawyer']: 'Lawyer',
+    ['Paralegal']: 'Paralegal',
+    ['Judge']: 'Judge',
    
 }
 
