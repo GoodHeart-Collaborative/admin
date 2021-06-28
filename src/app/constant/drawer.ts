@@ -57,9 +57,10 @@ export const INDUSTRY = {
     [2]: 'Emergency Services',
     [3]: 'Social And Community Services',
     [4]: 'Law Enforcement',
+    [5]: 'Healthcare And Community Medical Services',
     [6]: 'Mental Health',
     [7]: 'Education',
-    [5]: 'Healthcare And Community Medical Services'
+    [8]: 'Legal Profession',
 };
 
 
@@ -71,6 +72,7 @@ export const INDUSTRY_TYPE = [
     { value: 5, viewValue: 'Healthcare And Community Medical Services' },
     { value: 6, viewValue: 'Mental Health' },
     { value: 7, viewValue: 'Education' },
+    { value: 8, viewValue: 'Legal Profession' },
 ];
 
 
